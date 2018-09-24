@@ -1,0 +1,46 @@
+@mixin tooltip {
+  background-color: rgba(0, 0, 0, 0.75);
+  display: none;
+  padding: 1.5vw;
+  position: fixed;
+}
+
+//global styles
+
+line, path { stroke: white; }
+
+svg { width: 100%; }
+
+text {
+  @include font-body;
+  fill: white;
+  font-size: 16px; //scales with svg
+}
+
+//components
+
+.c-axis {
+  alignment-baseline: middle;
+  text-anchor: middle;
+}
+
+.c-tooltip {
+
+  @include tooltip;
+  width: 18vw;
+
+  &--wide {
+    @include tooltip;
+    width: 21vw;
+  }
+
+  &__header { text-align: center; }
+
+  &__hr { margin: 1.5vw 0; }
+
+  &__text {
+    margin: 0.5vw 0 0;
+    text-align: left;
+  }
+
+}

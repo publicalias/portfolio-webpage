@@ -1,0 +1,13 @@
+@import "master";
+
+//components
+
+.c-headless-hr { margin-top: 0; }
+
+.c-toggle-btn {
+  font-size: 2.4vw;
+  margin: 0 auto;
+  padding: 1vw 1.5vw;
+}
+
+.c-weather { @include square(100% * 1 / 3); }

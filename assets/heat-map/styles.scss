@@ -1,0 +1,10 @@
+@import "master";
+@import "d3-projects";
+
+//components
+
+.c-cell { &:hover { fill: white; } }
+
+.c-scale {
+  fill: url("#css-ref-gradient");
+}

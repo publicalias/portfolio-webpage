@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Ethan Frost - Heat Map</title>
+  <meta content="D3-generated heat map showing surface temperatures relative to the mean." name="description">
+  <meta content="Ethan Frost" name="author">
+  <link href="../master/media/favicon.ico" rel="icon">
+  <link href="styles.css" rel="stylesheet">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js"></script>
+  <script defer src="script.js"></script>
+</head>
+
+<body>
+  <div class="c-content--xl">
+    <h3 class="u-align-center u-margin-half">Surface Temperatures from 1753 to 2014</h3>
+    <h4 class="u-align-center">Relative to the Mean of <span class="js-edit-mean">0.000</span>&deg;C</h4>
+    <hr>
+    <svg class="js-ref-svg" viewBox="0 0 800 450">
+      <defs>
+        <linearGradient id="css-ref-gradient" x1="0" x2="100%" y1="0" y2="0">
+          <stop offset="0" stop-color="rgb(0, 0, 0)" />
+          <stop offset="100%" stop-color="rgb(255, 255, 255)" />
+        </linearGradient>
+      </defs>
+      <g class="js-render-chart" />
+    </svg>
+  </div>
+  <div class="c-tooltip--wide js-toggle-tooltip">
+    <h5 class="c-tooltip__header js-edit-date u-align-left"></h5>
+    <p class="c-tooltip__text js-edit-temp"></p>
+    <p class="c-tooltip__text js-edit-variance"></p>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+@import "master";
+
+@mixin first {
+  margin-right: 0.5vw;
+  padding: 0;
+}
+
+//components
+
+.c-control {
+
+  display: flex;
+  flex-direction: column;
+
+  &__btn {
+    padding: 0;
+    &--first { @include first; }
+  }
+
+  &__btn-set {
+    display: flex;
+    flex: 1;
+    margin-top: 0.5vw;
+  }
+
+  &__input { &--first { @include first; } }
+
+  &__text {
+    flex: 1;
+    margin-bottom: 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+}
+
+//utilities
+
+.u-cursor-crosshair { cursor: crosshair; }
+
+.u-flex-1 { flex: 1; }
+.u-flex-2 { flex: 2; }
+.u-flex-3 { flex: 3; }

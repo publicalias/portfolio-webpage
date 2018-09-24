@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Ethan Frost - Twitch Viewer</title>
+  <meta content="See who's streaming on Twitch." name="description">
+  <meta content="Ethan Frost" name="author">
+  <link href="../master/media/favicon.ico" rel="icon">
+  <link href="styles.css" rel="stylesheet">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script defer src="script.js"></script>
+</head>
+
+<body>
+  <div class="c-content--md">
+    <div class="c-row">
+      <div class="c-row__col--9">
+        <h1>Twitch.tv<br>Streamer</h1>
+      </div>
+      <div class="c-row__col--3">
+        <button class="c-right-btn js-filter-all u-margin-half">Twitch</button>
+        <button class="c-right-btn js-filter-on u-margin-half">Online</button>
+        <button class="c-right-btn js-filter-off u-margin-half">Offline</button>
+      </div>
+      <div class="c-row__col--9">
+        <input class="js-submit-input" placeholder="Comma-separated channel names">
+      </div>
+      <div class="c-row__col--3">
+        <button class="c-right-btn js-submit-button">Search</button>
+      </div>
+      <div class="c-row__col--12">
+        <div class="js-render-output"></div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

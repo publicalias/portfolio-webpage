@@ -1,0 +1,32 @@
+@import "master";
+@import "d3-projects";
+
+@mixin path-color($color) {
+  fill: $color;
+  stroke: $color;
+}
+
+//components
+
+.c-land {
+  &--back { @include path-color(lightgray); }
+  &--front { @include path-color(white); }
+}
+
+.c-point {
+  @include path-color(black);
+  &:hover { @include path-color(red); }
+}
+
+.c-rotate {
+
+  @include basic-grid(3);
+  @include square(7.5vw);
+  position: absolute;
+
+  &__btn {
+    @include centered;
+    cursor: pointer;
+  }
+
+}

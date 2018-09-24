@@ -1,0 +1,148 @@
+@import "master";
+@import "accordion";
+
+@mixin layer {
+  @include square(100%);
+  position: absolute;
+  top: 0;
+}
+
+@mixin nav-item {
+
+  @include heading(2.8vw);
+  cursor: pointer;
+  display: block;
+  padding: 1.5vw 0;
+  text-align: center;
+
+  &:hover {
+    background-color: white;
+    color: black;
+  }
+
+}
+
+@mixin swipe-btn($x, $y) {
+  @include square(3vw);
+  position: absolute;
+  top: 50%;
+  transform: translate($x, $y);
+  z-index: 2;
+}
+
+@mixin wide-btn {
+  padding: 1vw 0;
+  width: 100%;
+}
+
+//components
+
+.c-btn-set {
+
+  display: flex;
+
+  &__btn { @include wide-btn; }
+
+  &__link {
+
+    flex: 1;
+
+    &--first {
+      flex: 1;
+      margin-right: 1.5vw;
+    }
+
+  }
+
+}
+
+.c-wide-btn { @include wide-btn; }
+
+.c-footer {
+  padding: 0 4.5vw;
+  &__text { padding: 1.5vw 0; }
+}
+
+.c-media-icons {
+  &__icon {
+    float: right;
+    margin-left: 3vw;
+  }
+}
+
+.c-nav-bar {
+
+  padding: 0 4.5vw;
+  position: sticky;
+  top: 0;
+  z-index: 3; //overlaps project previews
+
+  &__expand {
+    background: rgba(0, 0, 0, 0.75);
+    display: none;
+    padding: 0;
+    position: fixed;
+    width: 18vw;
+  }
+
+  &__item {
+
+    &--flex {
+      @include nav-item;
+      flex: 1;
+    }
+
+    &--sublist {
+      @include nav-item;
+    }
+
+    &--toggle {
+      @include nav-item;
+      width: 18vw;
+    }
+
+  }
+
+  &__list {
+    display: flex;
+    padding-left: 0;
+  }
+
+  &__rule { margin: 1.5vw 4.5vw; }
+
+}
+
+.c-preview {
+
+  padding-top: 100% * 9 / 16;
+  position: relative;
+
+  &__layer {
+
+    @include layer;
+
+    &--top {
+      @include layer;
+      z-index: 1;
+    }
+
+  }
+
+  &__swipe-btn {
+
+    &--left {
+      @include swipe-btn(50%, -50%);
+    }
+
+    &--right {
+      @include swipe-btn(-50%, -50%);
+      right: 0;
+    }
+
+  }
+
+}
+
+//utilities
+
+.u-padding-left { padding-left: 1.5vw; }

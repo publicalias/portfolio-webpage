@@ -1,0 +1,17 @@
+@import "master";
+@import "accordion";
+@import "modal";
+
+//components
+
+.c-edit-btns {
+  &__btn, &__text {
+    display: inline;
+    margin-right: 1.5vw;
+  }
+}
+
+.c-modal-btn {
+  float: right;
+  margin-left: 1.5vw;
+}

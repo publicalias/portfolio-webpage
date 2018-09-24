@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Ethan Frost - Orthographic Projection</title>
+  <meta content="D3-generated geographic projection showing meteorite falls." name="description">
+  <meta content="Ethan Frost" name="author">
+  <link href="../master/media/favicon.ico" rel="icon">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
+  <script defer src="script.js"></script>
+</head>
+
+<body>
+  <div class="c-content--md">
+    <h3 class="u-align-center">Observed Falls Across the World</h3>
+    <hr>
+    <div class="c-rotate">
+      <div class="c-rotate__block"></div>
+      <div class="c-rotate__btn js-click-up"><i class="fa fa-chevron-up"></i></div>
+      <div class="c-rotate__block"></div>
+      <div class="c-rotate__btn js-click-left"><i class="fa fa-chevron-left"></i></div>
+      <div class="c-rotate__btn js-click-center"><i class="fa fa-circle"></i></div>
+      <div class="c-rotate__btn js-click-right"><i class="fa fa-chevron-right"></i></div>
+      <div class="c-rotate__block"></div>
+      <div class="c-rotate__btn js-click-down"><i class="fa fa-chevron-down"></i></div>
+      <div class="c-rotate__block"></div>
+    </div>
+    <svg class="js-ref-svg js-render-chart" viewBox="0 0 450 450"></svg>
+  </div>
+  <div class="c-tooltip js-toggle-tooltip">
+    <h5 class="c-tooltip__header js-edit-name"></h5>
+    <hr class="c-tooltip__hr">
+    <p class="c-tooltip__text"><span class="js-edit-mass"></span>, <span class="js-edit-class"></span></p>
+    <p class="c-tooltip__text js-edit-address"></p>
+  </div>
+</body>
+
+</html>

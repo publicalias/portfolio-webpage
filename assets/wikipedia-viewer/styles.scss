@@ -1,0 +1,44 @@
+@import "master";
+@import "modal";
+
+//components
+
+.c-iframe-viewer {
+  height: calc(100vh - 9vw);
+  max-height: (91vw - 9vw) * 11 / 8.5;
+  width: 100%;
+}
+
+.c-search-bar {
+
+  display: flex;
+  outline-offset: -1px;
+
+  &__input {
+    padding-right: 0;
+    &:focus { outline: none; } //parent receives focus
+  }
+
+  &__submit {
+
+    padding-right: 1vw;
+    &:focus { outline: none; }
+
+    &:enabled {
+      &:hover {
+        background-color: $bg-input;
+        color: white;
+      }
+    }
+
+  }
+
+}
+
+.c-search-result {
+  &__block {
+    border-left: 0.4vw solid white;
+    margin: 0;
+    padding-left: 3vw;
+  }
+}

@@ -1,0 +1,136 @@
+{
+
+  //use all rules by default
+
+  "extends": ["eslint:all", "plugin:react/all"],
+
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+
+  "globals": {
+    "__rootdir": false,
+    "$": false,
+    "d3": false,
+    "React": false,
+    "ReactDOM": false
+  },
+
+  "rules": {
+
+    //error
+
+    "array-bracket-newline": [2, "consistent"],
+    "capitalized-comments": [2, "never"],
+    "dot-location": [2, "property"],
+    "function-paren-newline": [2, "consistent"],
+    "indent": [2, 2, { "SwitchCase": 1 }],
+    "lines-around-comment": [2, {
+      "beforeBlockComment": true,
+      "afterBlockComment": true,
+      "beforeLineComment": true,
+      "afterLineComment": true
+    }],
+    "multiline-comment-style": [2, "bare-block"],
+    "new-cap": [2, { "capIsNew": false }],
+    "no-extra-parens": [2, "all", { "ignoreJSX": "multi-line" }],
+    "object-curly-spacing": [2, "always"],
+    "one-var": [2, "never"],
+    "padding-line-between-statements": [2, {
+      "blankLine": "always",
+      "prev": ["block-like", "const", "directive", "let", "return", "throw"],
+      "next": "*"
+    }, {
+      "blankLine": "always",
+      "prev": "*",
+      "next": ["block-like", "const", "directive", "let", "return", "throw"]
+    }, {
+      "blankLine": "any",
+      "prev": "const",
+      "next": "const"
+    }, {
+      "blankLine": "any",
+      "prev": "let",
+      "next": "let"
+    }, {
+      "blankLine": "any",
+      "prev": "*",
+      "next": ["case", "default"]
+    }],
+    "quote-props": [2, "consistent-as-needed"],
+    "space-before-function-paren": [2, { "named": "never" }],
+    "spaced-comment": [2, "never"],
+
+    "react/jsx-indent": [2, 2],
+    "react/jsx-indent-props": [2, 2],
+    "react/jsx-max-props-per-line": [2, { "maximum": 2 }],
+
+    //warning
+
+    "complexity": [1, 10],
+    "max-len": [1, 120],
+    "max-lines": 1,
+    "max-nested-callbacks": [1, 1],
+    "max-params": [1, 5],
+    "max-statements": 1,
+    "object-curly-newline": 1, //js-beautify conflict
+
+    "react/no-danger": 1,
+    "react/no-unused-state": 1,
+
+    /*
+      padding between concerns
+      padding in blocks that contain padding
+      exports are objects, jsx
+    */
+
+    //off
+
+    "array-element-newline": 0,
+    "callback-return": 0,
+    "class-methods-use-this": 0,
+    "consistent-return": 0,
+    "default-case": 0,
+    "global-require": 0,
+    "guard-for-in": 0,
+    "id-length": 0,
+    "init-declarations": 0,
+    "line-comment-position": 0,
+    "multiline-ternary": 0,
+    "no-confusing-arrow": 0,
+    "no-continue": 0,
+    "no-fallthrough": 0,
+    "no-inline-comments": 0,
+    "no-magic-numbers": 0,
+    "no-mixed-operators": 0,
+    "no-plusplus": 0,
+    "no-process-env": 0,
+    "no-prototype-builtins": 0,
+    "no-script-url": 0,
+    "no-shadow": 0,
+    "no-ternary": 0,
+    "no-undefined": 0,
+    "no-underscore-dangle": 0,
+    "padded-blocks": 0,
+    "prefer-destructuring": 0,
+    "sort-keys": 0,
+    "wrap-regex": 0,
+
+    "react/button-has-type": 0,
+    "react/destructuring-assignment": 0,
+    "react/display-name": 0,
+    "react/jsx-handler-names": 0,
+    "react/jsx-max-depth": 0,
+    "react/jsx-no-literals": 0,
+    "react/jsx-one-expression-per-line": 0,
+    "react/no-set-state": 0,
+    "react/no-unescaped-entities": 0,
+    "react/prop-types": 0,
+    "react/require-optimization": 0,
+    "react/sort-comp": 0
+
+  }
+
+}

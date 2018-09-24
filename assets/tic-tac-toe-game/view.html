@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Ethan Frost - Tic Tac Toe Game</title>
+  <meta content="Unbeatable tic tac toe AI using a minimax algorithm." name="description">
+  <meta content="Ethan Frost" name="author">
+  <link href="../master/media/favicon.ico" rel="icon">
+  <link href="styles.css" rel="stylesheet">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script defer src="script.js"></script>
+</head>
+
+<body class="c-modal-hide js-hide-modal">
+  <div class="c-content--sm">
+    <div class="c-row">
+      <div class="js-click-restart u-cursor-pointer">
+        <div class="c-row__col--6 u-margin-full">
+          <h2 class="u-margin-half">Tic Tac Toe</h2>
+          <h2>Game: <span class="js-edit-rounds">0</span></h2>
+        </div>
+        <div class="c-row__col--6 u-margin-full">
+          <h2 class="u-align-right u-margin-half">X Wins: <span class="js-edit-wins-x">0</span></h2>
+          <h2 class="u-align-right">O Wins: <span class="js-edit-wins-o">0</span></h2>
+        </div>
+      </div>
+      <div class="c-row__col--12">
+        <div class="c-board">
+          <div class="c-board__cell js-click-cell js-click-cell-0">&nbsp;</div>
+          <div class="c-board__cell js-click-cell js-click-cell-1">&nbsp;</div>
+          <div class="c-board__cell js-click-cell js-click-cell-2">&nbsp;</div>
+          <div class="c-board__cell js-click-cell js-click-cell-3">&nbsp;</div>
+          <div class="c-board__cell js-click-cell js-click-cell-4">&nbsp;</div>
+          <div class="c-board__cell js-click-cell js-click-cell-5">&nbsp;</div>
+          <div class="c-board__cell js-click-cell js-click-cell-6">&nbsp;</div>
+          <div class="c-board__cell js-click-cell js-click-cell-7">&nbsp;</div>
+          <div class="c-board__cell js-click-cell js-click-cell-8">&nbsp;</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="c-modal-show">
+    <div class="c-modal-show__shadow js-fade-modal"></div>
+    <div class="c-modal-show__window js-show-modal">
+      <div class="c-content--xs u-align-center u-inset-modal-deep">
+        <div>
+          <h2 class="js-edit-question">Single player?</h2>
+          <hr>
+          <div class="c-options">
+            <h2 class="c-options__option--left js-click-option-left">Y</h2>
+            <h2 class="c-options__option--right js-click-option-right">N</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,69 @@
+@import "master";
+
+//components
+
+.c-md-preview {
+  height: calc(100vh - 9vw);
+  max-height: (91vw - 12vw) / 2 * 11 / 8.5;
+  overflow-y: scroll;
+  text-align: left;
+}
+
+//utilities
+
+.u-emulate-md {
+
+  background: white;
+  color: black;
+  font-family: "Helvetica", sans-serif;
+  padding: 1.5vw 2.25vw;
+
+  * {
+    margin-bottom: 1.5vw;
+  }
+
+  a {
+    text-decoration: underline;
+    &:link { color: blue; }
+    &:visited { color: purple; }
+    &:active { color: red; }
+  }
+
+  blockquote {
+    border-left: 0.4vw solid lightgray;
+    color: gray;
+    margin: 0 0 1.5vw;
+    padding-left: 1.5vw;
+  }
+
+  code {
+    background-color: lightgray;
+    padding: 0 0.5vw;
+  }
+
+  h1, h2 {
+    border-bottom: 1px solid lightgray;
+    padding-bottom: 1.5vw;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Helvetica", sans-serif;
+    font-weight: bold;
+    margin-bottom: 3vw;
+  }
+
+  hr {
+    border-top: 0.4vw solid lightgray;
+    margin: 2.25vw 0;
+  }
+
+  li {
+    margin-bottom: 0;
+  }
+
+  ::selection {
+    background-color: dodgerblue;
+    color: white;
+  }
+
+}

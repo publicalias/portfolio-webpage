@@ -1,0 +1,17 @@
+@import "master";
+@import "d3-projects";
+
+//components
+
+.c-node { preserveAspectRatio: none; }
+
+.c-toggle-btn {
+  display: block;
+  padding: 0.5vw 0;
+  position: absolute;
+  width: 9vw;
+}
+
+//states
+
+.js-hover-node { &.is-active { stroke: red; } }

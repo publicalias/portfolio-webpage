@@ -1,0 +1,96 @@
+@import "master";
+
+$offset: calc(50% + 1.5vw);
+
+@mixin btn-path($quad) {
+  fill: rgba($quad * 85, $quad * 85, $quad * 85, 0.75);
+  stroke: none;
+}
+
+@mixin circle($outer, $inner) {
+  @include square(3vw * $outer);
+  border-radius: 50%;
+  padding: 3vw * $inner;
+}
+
+@mixin play-btn {
+  position: absolute;
+  width: calc(50% - 1.5vw);
+}
+
+//components
+
+.c-simon-game {
+
+  @include circle(20, 1);
+  background-color: rgba(0, 0, 0, 0.75);
+  margin: 4.5vw auto;
+
+  &__btn-path {
+    &--bl { @include btn-path(3); }
+    &--br { @include btn-path(2); }
+    &--tl { @include btn-path(0); }
+    &--tr { @include btn-path(1); }
+  }
+
+  &__btn-svg { width: 100%; }
+
+  &__inner-border {
+    @include circle(10, 2);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: absolute;
+  }
+
+  &__outer-border {
+    @include circle(18, 4);
+    position: absolute;
+  }
+
+  &__play-btn {
+
+    &--bl {
+      @include play-btn;
+      right: $offset;
+      top: $offset;
+    }
+
+    &--br {
+      @include play-btn;
+      left: $offset;
+      top: $offset;
+    }
+
+    &--tl {
+      @include play-btn;
+      bottom: $offset;
+      right: $offset;
+    }
+
+    &--tr {
+      @include play-btn;
+      bottom: $offset;
+      left: $offset;
+    }
+
+  }
+
+  &__set-btn { width: 100%; }
+
+}
+
+//states
+
+.js-hover-btn {
+
+  &.is-active { fill: white; }
+
+  &:not(.is-disabled) {
+    &:hover {
+      cursor: pointer;
+      fill: white;
+    }
+  }
+
+}

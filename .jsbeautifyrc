@@ -1,0 +1,13 @@
+{
+
+  //default extends https://github.com/HookyQR/VSCodeBeautify/blob/master/Settings.md
+
+  "brace_style": "collapse,preserve-inline",
+  "e4x": true,
+  "end_with_newline": true,
+  "indent_size": 2,
+  "max_preserve_newlines": 2,
+  "operator_position": "after-newline",
+  "preserve_newline": true
+
+}

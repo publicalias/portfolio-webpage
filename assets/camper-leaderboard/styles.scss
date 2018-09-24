@@ -1,0 +1,19 @@
+@import "master";
+
+//components
+
+.c-campers {
+
+  height: calc(100vh - 9vw);
+  max-height: (60vw - 9vw) * 11 / 8.5;
+  overflow-y: scroll;
+  padding-right: 4.5vw;
+
+  &__avatar { @include square(4.5vw); }
+
+  &__col {
+    &--2 { width: 100% * 2 / 12; }
+    &--4 { width: 100% * 4 / 12; }
+  }
+
+}

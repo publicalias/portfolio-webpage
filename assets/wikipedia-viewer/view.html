@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Ethan Frost - Wikipedia Viewer</title>
+  <meta content="Wikipedia viewer with open-ended searching and random article generation." name="description">
+  <meta content="Ethan Frost" name="author">
+  <link href="../master/media/favicon.ico" rel="icon">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script defer src="script.js"></script>
+</head>
+
+<body class="c-modal-hide js-hide-modal">
+  <div class="c-content--xl">
+    <div class="u-flow-root">
+      <h1><a class="u-float-left" href="https://en.wikipedia.org/wiki/Main_Page"><i class="fa fa-wikipedia-w"></i></a></h1>
+      <div class="u-float-right">
+        <div class="c-search-bar js-outline-search-bar u-margin-half">
+          <input class="c-search-bar__input js-submit-input">
+          <button class="c-search-bar__submit js-submit-button"><i class="fa fa-search"></i></button>
+        </div>
+        <a class="u-float-right" href="https://en.wikipedia.org/wiki/Special:Random" target="iframe-viewer">
+          <button>Random</button>
+        </a>
+      </div>
+    </div>
+    <hr>
+    <iframe class="c-iframe-viewer" name="iframe-viewer" src="https://en.wikipedia.org/wiki/Special:Random"></iframe>
+  </div>
+  <div class="c-modal-show">
+    <div class="c-modal-show__shadow js-fade-modal"></div>
+    <div class="c-modal-show__window js-show-modal">
+      <div class="c-content--lg u-inset-modal">
+        <div class="js-render-output"></div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

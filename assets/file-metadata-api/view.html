@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Ethan Frost - File Metadata API</title>
+  <meta name="description" content="Utility for parsing file metadata.">
+  <meta name="author" content="Ethan Frost">
+  <link rel="icon" href="../master/media/favicon.ico">
+</head>
+
+<body>
+  <p>Accepts a file upload (up to 1 MiB). Returns the file's name, encoding, MIME type, and size in bytes.</p>
+  <form action="/file-metadata-api/output" enctype="multipart/form-data" method="post">
+    <input name="input" type="file">
+    <button type="submit">Submit</button>
+  </form>
+</body>
+
+</html>
