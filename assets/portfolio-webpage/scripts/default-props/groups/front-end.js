@@ -85,10 +85,7 @@ const frontEnd = {
       preview: "window",
       links: {
         page: "/random-quote-machine",
-        code: {
-          client: "https://github.com/publicalias/portfolio-webpage/tree/master/assets/random-quote-machine",
-          server: "https://github.com/publicalias/portfolio-webpage/tree/master/routes/random-quote-machine"
-        },
+        code: "https://github.com/publicalias/portfolio-webpage/tree/master/assets/random-quote-machine",
         view: "media/screenshots/random-quote-machine.jpg"
       }
     }, {

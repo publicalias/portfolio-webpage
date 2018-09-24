@@ -223,7 +223,10 @@ const dataVis = {
       preview: "window",
       links: {
         page: "/orthographic-projection",
-        code: "https://github.com/publicalias/portfolio-webpage/tree/master/assets/orthographic-projection",
+        code: {
+          client: "https://github.com/publicalias/portfolio-webpage/tree/master/assets/orthographic-projection",
+          server: "https://github.com/publicalias/portfolio-webpage/tree/master/routes/orthographic-projection"
+        },
         view: "media/screenshots/orthographic-projection.jpg"
       }
     }]
