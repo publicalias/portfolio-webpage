@@ -16,6 +16,16 @@ const app = {
   degF: "0.0",
   unit: "degC",
 
+  //get weather
+
+  getWeather(pos) {
+
+    const { coords: { latitude: lat, longitude: lon } } = pos;
+
+    getJSON(`/weather-app/weather?lat=${lat}&lon=${lon}`).then(this.display);
+
+  },
+
   //initialize display
 
   display(res) {
@@ -49,7 +59,7 @@ bindObject(app);
 
 $(() => {
 
-  getJSON("/weather-app/weather").then(app.display);
+  navigator.geolocation.getCurrentPosition(app.getWeather);
 
   $(".js-click-toggle").click(app.toggle);
 
