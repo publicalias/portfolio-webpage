@@ -18,6 +18,14 @@ $bg-input: rgba(64, 64, 64, 0.75);
   justify-content: center;
 }
 
+@mixin clearfix {
+  &::after {
+    clear: both;
+    content: "";
+    display: block;
+  }
+}
+
 @mixin col($size) {
   float: left;
   min-height: 1px; //prevents collapse
@@ -176,7 +184,7 @@ thead { @include font-head; }
 
 .c-row {
 
-  display: flow-root; //prevents overflow
+  @include clearfix;
   margin: 0 -1.5vw;
 
   &__col {
@@ -202,12 +210,12 @@ thead { @include font-head; }
 .u-align-left { text-align: left; }
 .u-align-right { text-align: right; }
 
+.u-clearfix { @include clearfix; }
+
 .u-cursor-pointer { cursor: pointer; }
 
 .u-float-left { float: left; }
 .u-float-right { float: right; }
-
-.u-flow-root { display: flow-root; }
 
 .u-font-body { @include font-body; }
 .u-font-head { @include font-head; }

@@ -11,7 +11,7 @@ $margin: (6vw - 1.6vw * 1.4) / 2;
 
 .c-channel {
 
-  display: flow-root;
+  @include clearfix;
 
   &__avatar {
     @include square(6vw);
