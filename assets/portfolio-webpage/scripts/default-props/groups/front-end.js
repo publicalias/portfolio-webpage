@@ -79,8 +79,8 @@ const frontEnd = {
         "I can press a button to tweet out a quote."
       ],
       resources: [{
-        text: "Quote API",
-        link: "http://quotes.stormconsultancy.co.uk/api"
+        text: "Quote List",
+        link: "http://quotes.stormconsultancy.co.uk"
       }],
       preview: "window",
       links: {
