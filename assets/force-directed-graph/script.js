@@ -7,7 +7,7 @@ const { tooltipBorders, nodeAttr } = require("./scripts/view-logic");
 //global imports
 
 const { getSVG, tooltip } = require("d3-projects/app-logic");
-const { windowEvents } = require("d3-projects/event-handlers");
+const { windowEvents, checkTooltip } = require("d3-projects/event-handlers");
 const { bindObject, getJSON } = require("utilities");
 
 //app logic
@@ -47,9 +47,9 @@ const app = {
 
   },
 
-  handleMouseLeave(d) {
+  handleMouseLeave() {
 
-    $(`.js-hover-node-${d.code}`).removeClass("is-active");
+    $(".js-hover-node").removeClass("is-active");
 
     this.tooltip();
 
@@ -147,7 +147,8 @@ const svg = {
       .attr("width", nw)
       .attr("xlink:href", (d) => `media/${d.code}.svg`)
       .on("mouseenter", app.handleMouseEnter)
-      .on("mouseleave", app.handleMouseLeave);
+      .on("mouseleave", app.handleMouseLeave)
+      .on("click", checkTooltip(app));
 
   },
 

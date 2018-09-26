@@ -3,7 +3,7 @@
 //global imports
 
 const { getSVG, tooltip } = require("d3-projects/app-logic");
-const { windowEvents } = require("d3-projects/event-handlers");
+const { windowEvents, checkTooltip } = require("d3-projects/event-handlers");
 const { svgChart, svgParams, svgMargin } = require("d3-projects/view-logic");
 const { bindObject, getJSON } = require("utilities");
 
@@ -33,30 +33,28 @@ const app = {
 
   tooltip,
 
-  handleMouseEnter(h) {
-    return (d) => {
+  radius: null,
 
-      $(d3.event.target).attr("r", h * 0.05);
+  handleMouseEnter(d) {
 
-      $(".js-edit-name").text(`${d.Name}, ${d.Nationality}`);
-      $(".js-edit-rank").text(`Rank: ${d.Place}`);
-      $(".js-edit-time").text(`Time: ${d.Time}`);
-      $(".js-edit-year").text(`Year: ${d.Year}`);
-      $(".js-edit-dope").text(d.Doping || "No evidence of doping");
+    $(d3.event.target).attr("r", this.radius * 2);
 
-      this.tooltip(true);
+    $(".js-edit-name").text(`${d.Name}, ${d.Nationality}`);
+    $(".js-edit-rank").text(`Rank: ${d.Place}`);
+    $(".js-edit-time").text(`Time: ${d.Time}`);
+    $(".js-edit-year").text(`Year: ${d.Year}`);
+    $(".js-edit-dope").text(d.Doping || "No evidence of doping");
 
-    };
+    this.tooltip(true);
+
   },
 
-  handleMouseLeave(h) {
-    return () => {
+  handleMouseLeave() {
 
-      $(d3.event.target).attr("r", h * 0.025);
+    $(".js-ref-point").attr("r", this.radius);
 
-      this.tooltip();
+    this.tooltip();
 
-    };
   },
 
   //parse data
@@ -112,15 +110,19 @@ const svg = {
 
     const { w, h, chart } = params;
 
+    app.radius = h * 0.025;
+
     chart.selectAll("circle")
       .data(app.data)
       .enter()
       .append("circle")
+      .attr("class", "js-ref-point")
       .attr("fill", (d) => d.Doping ? "white" : "black")
-      .attr("r", h * 0.025)
+      .attr("r", app.radius)
       .attr("transform", (d) => `translate(${w * getYPos(d.Time)}, ${h * (d.Place / 40)})`)
-      .on("mouseenter", app.handleMouseEnter(h))
-      .on("mouseleave", app.handleMouseLeave(h));
+      .on("mouseenter", app.handleMouseEnter)
+      .on("mouseleave", app.handleMouseLeave)
+      .on("click", checkTooltip(app));
 
   }
 

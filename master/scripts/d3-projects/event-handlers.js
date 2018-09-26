@@ -4,6 +4,19 @@
 
 const { wrapFn } = require("utilities");
 
+//check tooltip
+
+const checkTooltip = (app) => (d) => {
+
+  //ensures mobile support
+
+  d3.event.stopPropagation();
+
+  app.handleMouseLeave();
+  app.handleMouseEnter(d);
+
+};
+
 //window events
 
 const windowEvents = (app) => () => {
@@ -15,8 +28,15 @@ const windowEvents = (app) => () => {
 
   $window.scroll(wrapFn(app.tooltip));
 
+  //ensures mobile support
+
+  $(".js-ref-svg").click(app.handleMouseLeave);
+
 };
 
 //exports
 
-module.exports = { windowEvents };
+module.exports = {
+  checkTooltip,
+  windowEvents
+};

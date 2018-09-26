@@ -11,7 +11,7 @@ const { tooltipText } = require("./scripts/view-logic");
 //global imports
 
 const { getSVG, tooltip } = require("d3-projects/app-logic");
-const { windowEvents } = require("d3-projects/event-handlers");
+const { windowEvents, checkTooltip } = require("d3-projects/event-handlers");
 const { bindObject, getJSON } = require("utilities");
 
 //app logic
@@ -158,7 +158,8 @@ const svg = {
       .attr("class", "c-point js-rotate-front")
       .attr("d", fp)
       .on("mouseenter", app.handleMouseEnter)
-      .on("mouseleave", app.handleMouseLeave);
+      .on("mouseleave", app.handleMouseLeave)
+      .on("click", checkTooltip(app));
 
   },
 

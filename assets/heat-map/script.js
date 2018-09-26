@@ -3,7 +3,7 @@
 //global imports
 
 const { getSVG, tooltip } = require("d3-projects/app-logic");
-const { windowEvents } = require("d3-projects/event-handlers");
+const { windowEvents, checkTooltip } = require("d3-projects/event-handlers");
 const { svgChart, svgParams, svgMargin } = require("d3-projects/view-logic");
 const { bindObject, getJSON, months } = require("utilities");
 
@@ -135,7 +135,8 @@ const svg = {
       })
       .attr("width", w / app.data.length * 12)
       .on("mouseenter", app.handleMouseEnter)
-      .on("mouseleave", app.handleMouseLeave);
+      .on("mouseleave", app.handleMouseLeave)
+      .on("click", checkTooltip(app));
 
   },
 
