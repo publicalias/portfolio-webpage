@@ -30,6 +30,11 @@
   z-index: 2;
 }
 
+@mixin webkit-sticky {
+  overflow: visible;
+  position: -webkit-sticky;
+};
+
 @mixin wide-btn {
   padding: 1vw 0;
   width: 100%;
@@ -72,6 +77,7 @@
 
 .c-nav-bar {
 
+  @include webkit-sticky;
   padding: 0 4.5vw;
   position: sticky;
   top: 0;
