@@ -36,7 +36,6 @@ rules:
   no-combinators: 2
   no-css-comments: 2
   no-debug: 2
-  no-duplicate-properties: 2
   no-empty-rulesets: 2
   no-extends: 2
   no-ids: 2
@@ -78,8 +77,8 @@ rules:
   max-line-length:
     - 1
     - length: 120
+  no-duplicate-properties: 1
   no-universal-selectors: 1
-  no-vendor-prefixes: 1
 
   #unenforced
 
@@ -93,6 +92,7 @@ rules:
   no-color-literals: 0
   no-disallowed-properties: 0
   no-misspelled-properties: 0
+  no-vendor-prefixes: 0
   property-units: 0
   single-line-per-selector: 0
   variable-for-property: 0

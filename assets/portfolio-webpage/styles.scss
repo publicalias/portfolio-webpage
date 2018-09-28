@@ -30,11 +30,6 @@
   z-index: 2;
 }
 
-@mixin webkit-sticky {
-  overflow: visible;
-  position: -webkit-sticky;
-};
-
 @mixin wide-btn {
   padding: 1vw 0;
   width: 100%;
@@ -77,8 +72,9 @@
 
 .c-nav-bar {
 
-  @include webkit-sticky;
+  overflow: visible; //fixes webkit issue
   padding: 0 4.5vw;
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
   z-index: 3; //overlaps project previews

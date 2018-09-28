@@ -4,9 +4,17 @@
 //components
 
 .c-iframe-viewer {
+
+  @supports (-webkit-overflow-scrolling: touch) {
+    -webkit-overflow-scrolling: touch;
+    overflow-y: scroll;
+  }
+
   height: calc(100vh - 9vw);
   max-height: (91vw - 9vw) * 11 / 8.5;
   width: 100%;
+  &__iframe { @include square(100%); }
+
 }
 
 .c-search-bar {

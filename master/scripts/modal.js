@@ -45,14 +45,6 @@ const toggleModal = (bool) => {
 
 const modalEvents = () => {
 
-  const $show = $(".js-show-modal");
-
-  $show.click((event) => {
-    if (event.target === $show[0]) {
-      toggleModal();
-    }
-  });
-
   $(window).keydown((event) => {
     if (event.key === "Escape") {
       toggleModal();
