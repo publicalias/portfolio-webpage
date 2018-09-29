@@ -95,19 +95,7 @@ body {
   text-align: justify;
 }
 
-button {
-
-  @include input;
-
-  &:enabled {
-    &:hover {
-      background-color: white;
-      color: black;
-      cursor: pointer;
-    }
-  }
-
-}
+button { @include input; }
 
 h1 { @include heading(3.6vw); }
 h2 { @include heading(3.2vw); }
@@ -203,6 +191,22 @@ thead { @include font-head; }
     &--12 { @include col(12); }
   }
 
+}
+
+//states
+
+.js-check-input {
+  &.is-mouse {
+    button {
+      &:enabled {
+        &:hover {
+          background-color: white;
+          color: black;
+          cursor: pointer;
+        }
+      }
+    }
+  }
 }
 
 //utilities

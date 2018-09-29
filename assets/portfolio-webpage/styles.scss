@@ -8,18 +8,11 @@
 }
 
 @mixin nav-item {
-
   @include heading(2.8vw);
   cursor: pointer;
   display: block;
   padding: 1.5vw 0;
   text-align: center;
-
-  &:hover {
-    background-color: white;
-    color: black;
-  }
-
 }
 
 @mixin swipe-btn($x, $y) {
@@ -143,6 +136,25 @@
 
   }
 
+}
+
+//states
+
+.js-check-input {
+  &.is-mouse {
+    .c-nav-bar {
+      &__item {
+        &--flex,
+        &--sublist,
+        &--toggle {
+          &:hover {
+            background-color: white;
+            color: black;
+          }
+        }
+      }
+    }
+  }
 }
 
 //utilities

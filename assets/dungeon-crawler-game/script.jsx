@@ -14,6 +14,7 @@ const { cycleHints, cycleWeapons } = require("./scripts/view-logic/event-handler
 
 //global imports
 
+const { checkInput } = require("check-input");
 const { bindReactClass } = require("react-utils");
 const { deepCopy, storageKey } = require("utilities");
 
@@ -142,6 +143,8 @@ class App extends React.Component {
   //lifecycle
 
   componentDidMount() {
+
+    checkInput();
 
     this.handleResize(); //not redundant
 

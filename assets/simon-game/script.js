@@ -8,6 +8,7 @@ const { audio, btnIDs, display, renderButtons, toggleBlock, toggleHover } = requ
 
 //global imports
 
+const { checkInput } = require("check-input");
 const { bindObject, cycleItems, rngInt } = require("utilities");
 
 //app logic
@@ -173,7 +174,11 @@ const app = {
 bindObject(app);
 
 $(() => {
+
+  checkInput();
+
   renderButtons();
   gameplayEvents(app);
   settingEvents(app);
+
 });

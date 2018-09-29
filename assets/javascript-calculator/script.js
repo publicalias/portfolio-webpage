@@ -8,6 +8,7 @@ const { updateView } = require("./scripts/view-logic");
 
 //global imports
 
+const { checkInput } = require("check-input");
 const { bindObject } = require("utilities");
 
 //app logic
@@ -231,6 +232,10 @@ const app = {
 bindObject(app);
 
 $(() => {
+
+  checkInput();
+
   buttonEvents(app);
   keyEvents(app);
+
 });

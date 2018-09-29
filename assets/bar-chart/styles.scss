@@ -1,19 +1,15 @@
 @import "master";
 @import "d3-projects";
 
-@mixin bar {
-  fill: url("#css-ref-gradient");
-}
+@mixin bar { fill: url("#css-ref-gradient"); }
 
 //components
 
 .c-bar {
-
   @include bar;
-
-  &--hover {
-    @include bar;
-    &:not(:hover) { fill: rgba(0, 0, 0, 0); }
-  }
-
+  &--hover { @include bar; }
 }
+
+//states
+
+.js-ref-data { &:not(.is-active) { fill: rgba(0, 0, 0, 0); } }

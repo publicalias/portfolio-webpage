@@ -6,6 +6,7 @@ const { tooltipBorders, nodeAttr } = require("./scripts/view-logic");
 
 //global imports
 
+const { checkInput } = require("check-input");
 const { getSVG, tooltip } = require("d3-projects/app-logic");
 const { windowEvents, checkTooltip } = require("d3-projects/event-handlers");
 const { bindObject, getJSON } = require("utilities");
@@ -41,7 +42,7 @@ const app = {
     $(".js-edit-country").text(d.country);
     $(".js-edit-borders").text(tooltipBorders(d, this.data));
 
-    $(`.js-hover-node-${d.code}`).addClass("is-active");
+    $(`.js-ref-data-${d.code}`).addClass("is-active");
 
     this.tooltip(true);
 
@@ -49,7 +50,7 @@ const app = {
 
   handleMouseLeave() {
 
-    $(".js-hover-node").removeClass("is-active");
+    $(".js-ref-data").removeClass("is-active");
 
     this.tooltip();
 
@@ -130,9 +131,9 @@ const svg = {
       .enter()
       .append("line")
       .attr("class", (d) => `
-        js-hover-node
-        js-hover-node-${app.data.nodes[d.source].code}
-        js-hover-node-${app.data.nodes[d.target].code}
+        js-ref-data
+        js-ref-data-${app.data.nodes[d.source].code}
+        js-ref-data-${app.data.nodes[d.target].code}
       `);
 
     //nodes
@@ -148,7 +149,7 @@ const svg = {
       .attr("xlink:href", (d) => `media/${d.code}.svg`)
       .on("mouseenter", app.handleMouseEnter)
       .on("mouseleave", app.handleMouseLeave)
-      .on("click", checkTooltip(app));
+      .on("touchstart", checkTooltip(app));
 
   },
 
@@ -193,6 +194,8 @@ bindObject(app);
 getJSON(app.dataURL).then(app.parseData);
 
 $(() => {
+
+  checkInput();
 
   windowEvents(app)();
 

@@ -37,12 +37,18 @@ const app = {
     $(".js-edit-gdp").text(`${d[1]}e+12`);
     $(".js-edit-quarter").text(d[0]);
 
+    $(d3.event.target).addClass("is-active");
+
     this.tooltip(true);
 
   },
 
   handleMouseLeave() {
+
+    $(".js-ref-data").removeClass("is-active");
+
     this.tooltip();
+
   },
 
   //parse data
@@ -131,13 +137,13 @@ const svg = {
       .attr("transform", (d, i) => `translate(${w / app.data.length * i}, ${h - h * Number(d[1]) / 18})`)
       .attr("width", w / app.data.length + 1);
 
-    createBars("c-bar--hover")
+    createBars("c-bar--hover js-ref-data")
       .attr("height", () => h)
       .attr("transform", (d, i) => `translate(${w / app.data.length * i}, 0)`)
       .attr("width", w / app.data.length)
       .on("mouseenter", app.handleMouseEnter)
       .on("mouseleave", app.handleMouseLeave)
-      .on("click", checkTooltip(app));
+      .on("touchstart", checkTooltip(app));
 
   }
 

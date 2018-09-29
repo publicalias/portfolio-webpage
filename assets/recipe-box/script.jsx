@@ -8,6 +8,7 @@ const RecipeEditor = require("./scripts/recipe-editor");
 //global imports
 
 const { closePanel, initPanel } = require("accordion");
+const { checkInput } = require("check-input");
 const { modalEvents, toggleModal } = require("modal");
 const { bindReactClass, initKeyGen } = require("react-utils");
 const { deepCopy, storageKey, wrapFn } = require("utilities");
@@ -105,6 +106,7 @@ class App extends React.Component {
 
   componentDidMount() {
     initPanel();
+    checkInput();
     modalEvents();
   }
 

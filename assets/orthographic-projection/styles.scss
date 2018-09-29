@@ -13,10 +13,7 @@
   &--front { @include path-color(white); }
 }
 
-.c-point {
-  @include path-color(black);
-  &:hover { @include path-color(red); }
-}
+.c-point { @include path-color(black); }
 
 .c-rotate {
 
@@ -30,3 +27,7 @@
   }
 
 }
+
+//states
+
+.js-ref-data { &.is-active { @include path-color(red); } }

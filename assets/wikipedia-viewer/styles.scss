@@ -28,17 +28,8 @@
   }
 
   &__submit {
-
     padding-right: 1vw;
     &:focus { outline: none; }
-
-    &:enabled {
-      &:hover {
-        background-color: $bg-input;
-        color: white;
-      }
-    }
-
   }
 
 }
@@ -48,5 +39,22 @@
     border-left: 0.4vw solid white;
     margin: 0;
     padding-left: 3vw;
+  }
+}
+
+//states
+
+.js-check-input {
+  &.is-mouse {
+    .c-search-bar {
+      &__submit {
+        &:enabled {
+          &:hover {
+            background-color: $bg-input;
+            color: white;
+          }
+        }
+      }
+    }
   }
 }

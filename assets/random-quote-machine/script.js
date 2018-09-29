@@ -2,6 +2,7 @@
 
 //global imports
 
+const { checkInput } = require("check-input");
 const { bindObject, getJSON, rngInt, wrapFn } = require("utilities");
 
 //utilities
@@ -60,6 +61,8 @@ getJSON("media/quotes.json").then((res) => {
 });
 
 $(() => {
+
+  checkInput();
 
   $(".js-click-refresh").click(wrapFn(app.refresh));
 

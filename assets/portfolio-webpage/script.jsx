@@ -14,6 +14,7 @@ const { defaultProps } = require("./scripts/default-props/default-props");
 //global imports
 
 const { initPanel } = require("accordion");
+const { checkInput } = require("check-input");
 const { initKeyGen } = require("react-utils");
 
 //app logic
@@ -22,6 +23,7 @@ class App extends React.Component {
 
   componentDidMount() {
     initPanel();
+    checkInput();
   }
 
   render() {

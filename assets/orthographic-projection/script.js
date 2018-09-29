@@ -6,7 +6,7 @@
 
 const { pointRadius, scrubData } = require("./scripts/app-logic");
 const { rotateHandlers } = require("./scripts/event-handlers");
-const { tooltipText } = require("./scripts/view-logic");
+const { tooltipHandler } = require("./scripts/view-logic");
 
 //global imports
 
@@ -37,12 +37,16 @@ const app = {
 
     const node = d3.event.target;
 
-    getJSON(`/orthographic-projection/address?lat=${reclat}&lon=${reclong}`).then(tooltipText(d, node, this.tooltip));
+    getJSON(`/orthographic-projection/address?lat=${reclat}&lon=${reclong}`).then(tooltipHandler(d, node, this.tooltip));
 
   },
 
   handleMouseLeave() {
+
+    $(".js-ref-data").removeClass("is-active");
+
     this.tooltip();
+
   },
 
   //parse data
@@ -155,11 +159,11 @@ const svg = {
       .data(app.data)
       .enter()
       .append("path")
-      .attr("class", "c-point js-rotate-front")
+      .attr("class", "c-point js-ref-data js-rotate-front")
       .attr("d", fp)
       .on("mouseenter", app.handleMouseEnter)
       .on("mouseleave", app.handleMouseLeave)
-      .on("click", checkTooltip(app));
+      .on("touchstart", checkTooltip(app));
 
   },
 
@@ -167,7 +171,7 @@ const svg = {
 
   svgRotate(params) {
 
-    const rotate = rotateHandlers(params, app.tooltip);
+    const rotate = rotateHandlers(params, app.handleMouseLeave);
 
     bindObject(rotate);
 

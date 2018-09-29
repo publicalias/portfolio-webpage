@@ -6,6 +6,7 @@ const { renderResults, toggleOutline } = require("./scripts/view-logic");
 
 //global imports
 
+const { checkInput } = require("check-input");
 const { modalEvents, toggleModal } = require("modal");
 const { submitKeys } = require("submit-keys");
 const { getJSON, wrapFn } = require("utilities");
@@ -33,6 +34,8 @@ const search = () => {
 //initialize app
 
 $(() => {
+
+  checkInput();
 
   $(".js-submit-input, .js-submit-button")
     .focus(toggleOutline)

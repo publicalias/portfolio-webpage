@@ -18,9 +18,7 @@
   font-family: "Helvetica", sans-serif;
   padding: 1.5vw 2.25vw;
 
-  * {
-    margin-bottom: 1.5vw;
-  }
+  * { margin-bottom: 1.5vw; }
 
   a {
     text-decoration: underline;
@@ -57,9 +55,7 @@
     margin: 2.25vw 0;
   }
 
-  li {
-    margin-bottom: 0;
-  }
+  li { margin-bottom: 0; }
 
   ::selection {
     background-color: dodgerblue;

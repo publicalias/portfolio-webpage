@@ -24,7 +24,7 @@ const tooltipAddress = (res, year) => {
 
 };
 
-const tooltipText = (d, node, tooltip) => (res) => {
+const tooltipHandler = (d, node, tooltip) => (res) => {
 
   //display tooltip
 
@@ -35,10 +35,12 @@ const tooltipText = (d, node, tooltip) => (res) => {
   $(".js-edit-class").text(`${recclass} class`);
   $(".js-edit-address").text(tooltipAddress(res, year));
 
+  $(node).addClass("is-active");
+
   tooltip(true, node);
 
 };
 
 //exports
 
-module.exports = { tooltipText };
+module.exports = { tooltipHandler };

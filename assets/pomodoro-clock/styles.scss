@@ -45,12 +45,16 @@
 
 //states
 
-.js-toggle-btn {
-  &.is-disabled {
-    &:enabled {
-      &:hover {
-        background-color: $bg-input;
-        color: white;
+.js-check-input {
+  &.is-mouse {
+    .js-toggle-btn {
+      &.is-disabled {
+        &:enabled {
+          &:hover {
+            background-color: $bg-input;
+            color: white;
+          }
+        }
       }
     }
   }

@@ -12,7 +12,7 @@ const getSVG = (app, svg, ready, steps) => () => {
 
   $(".js-render-chart").empty();
 
-  app.tooltip();
+  app.handleMouseLeave();
 
   if (app.resetData) {
     app.resetData();

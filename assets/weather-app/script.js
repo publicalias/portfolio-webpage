@@ -6,6 +6,7 @@ const { initDisplay, toggleMetric } = require("./scripts/view-logic");
 
 //global imports
 
+const { checkInput } = require("check-input");
 const { bindObject, getJSON } = require("utilities");
 
 //app logic
@@ -58,6 +59,8 @@ const app = {
 bindObject(app);
 
 $(() => {
+
+  checkInput();
 
   navigator.geolocation.getCurrentPosition(app.getWeather);
 

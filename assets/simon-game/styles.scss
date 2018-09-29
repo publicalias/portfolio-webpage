@@ -82,15 +82,17 @@ $offset: calc(50% + 1.5vw);
 
 //states
 
-.js-hover-btn {
-
-  &.is-active { fill: white; }
-
-  &:not(.is-disabled) {
-    &:hover {
-      cursor: pointer;
-      fill: white;
+.js-check-input {
+  &.is-mouse {
+    .js-hover-btn {
+      &:not(.is-disabled) {
+        &:hover {
+          cursor: pointer;
+          fill: white;
+        }
+      }
     }
   }
-
 }
+
+.js-hover-btn { &.is-active { fill: white; } }

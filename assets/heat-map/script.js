@@ -28,12 +28,18 @@ const app = {
     $(".js-edit-temp").html(`Temperature: ${d.temp}&deg;C`);
     $(".js-edit-variance").html(`Variance: ${d.variance}&deg;C`);
 
+    $(d3.event.target).addClass("is-active");
+
     this.tooltip(true);
 
   },
 
   handleMouseLeave() {
+
+    $(".js-ref-data").removeClass("is-active");
+
     this.tooltip();
+
   },
 
   //parse data
@@ -116,7 +122,7 @@ const svg = {
       .data(app.data)
       .enter()
       .append("rect")
-      .attr("class", "c-cell")
+      .attr("class", "js-ref-data")
       .attr("fill", (d) => {
 
         const rgb = Math.round((d.variance + 6) / 12 * 255); //-6 to +6
@@ -136,7 +142,7 @@ const svg = {
       .attr("width", w / app.data.length * 12)
       .on("mouseenter", app.handleMouseEnter)
       .on("mouseleave", app.handleMouseLeave)
-      .on("click", checkTooltip(app));
+      .on("touchstart", checkTooltip(app));
 
   },
 

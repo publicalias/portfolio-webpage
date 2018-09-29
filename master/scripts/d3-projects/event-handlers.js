@@ -26,11 +26,11 @@ const windowEvents = (app) => () => {
   app.ready++;
   app.getSVG();
 
-  $window.scroll(wrapFn(app.tooltip));
+  $window.scroll(wrapFn(app.handleMouseLeave));
 
   //ensures mobile support
 
-  $(".js-ref-svg").click(app.handleMouseLeave);
+  $(".js-ref-svg").on("touchstart", app.handleMouseLeave);
 
 };
 

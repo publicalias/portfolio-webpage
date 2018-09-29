@@ -11,6 +11,7 @@ const { childProps } = require("./scripts/view-logic");
 //global imports
 
 const { array2DEach, mouseYX } = require("canvas-games");
+const { checkInput } = require("check-input");
 const { bindReactClass } = require("react-utils");
 const { submitKeys } = require("submit-keys");
 const { cycleItems, deepCopy, storageKey } = require("utilities");
@@ -316,6 +317,8 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+
+    checkInput();
 
     this.handleResize(); //not redundant
 

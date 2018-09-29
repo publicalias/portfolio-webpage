@@ -7,6 +7,7 @@ const { getOutput, getStream, parseChannel, parseStream } = require("./scripts/v
 
 //global imports
 
+const { checkInput } = require("check-input");
 const { getJSON, storageKey } = require("utilities");
 
 //app logic
@@ -62,6 +63,8 @@ const submit = () => {
 //initialize app
 
 $(() => {
+
+  checkInput();
 
   submitEvents(submit);
   buttonEvents();

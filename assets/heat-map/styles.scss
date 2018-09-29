@@ -3,8 +3,10 @@
 
 //components
 
-.c-cell { &:hover { fill: white; } }
-
 .c-scale {
   fill: url("#css-ref-gradient");
 }
+
+//states
+
+.js-ref-data { &.is-active { fill: white; } }

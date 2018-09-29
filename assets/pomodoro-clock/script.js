@@ -7,6 +7,7 @@ const { emptyBar, playSound, readTime, toggleSet } = require("./scripts/view-log
 
 //global imports
 
+const { checkInput } = require("check-input");
 const { bindObject, storageKey } = require("utilities");
 
 //app logic
@@ -110,6 +111,8 @@ const app = {
 bindObject(app);
 
 $(() => {
+
+  checkInput();
 
   clickEvents(app);
   hoverEvents();
