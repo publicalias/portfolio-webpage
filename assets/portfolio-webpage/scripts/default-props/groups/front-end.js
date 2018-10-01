@@ -37,11 +37,14 @@ const frontEnd = {
         "I can navigate to different sections of the webpage by clicking buttons in the navigation."
       ],
       resources: [{
-        text: "Favicon",
-        link: "https://www.freefavicon.com/"
-      }, {
         text: "Background",
         link: "https://www.pexels.com/photo/art-backlit-black-and-white-bulb-286908/"
+      }, {
+        text: "Email Handler",
+        link: "https://nodemailer.com/about/"
+      }, {
+        text: "Favicon",
+        link: "https://www.freefavicon.com/"
       }, {
         text: "Fonts",
         link: "https://fonts.google.com/"
@@ -54,9 +57,6 @@ const frontEnd = {
       }, {
         text: "reCAPTCHA",
         link: "https://developers.google.com/recaptcha/docs/invisible"
-      }, {
-        text: "Email Handler",
-        link: "https://nodemailer.com/about/"
       }],
       preview: "none",
       links: {
@@ -80,7 +80,7 @@ const frontEnd = {
       ],
       resources: [{
         text: "Quote List",
-        link: "http://quotes.stormconsultancy.co.uk"
+        link: "http://quotes.stormconsultancy.co.uk/api"
       }],
       preview: "window",
       links: {
@@ -98,9 +98,6 @@ const frontEnd = {
         "I can push a button to toggle between Fahrenheit and Celsius."
       ],
       resources: [{
-        text: "Geolocation API",
-        link: "http://ip-api.com/"
-      }, {
         text: "Weather API",
         link: "https://openweathermap.org/api"
       }],
@@ -226,14 +223,14 @@ const frontEnd = {
         "I can win the game by getting a series of 20 steps correct. I am notified of my victory, then the game starts over."
       ],
       resources: [{
-        text: "Win Sound Effect",
-        link: "https://www.freesound.org/people/nc3studios08/sounds/354038/"
+        text: "Button Sound Effects",
+        link: "https://www.freesound.org/people/pinkyfinger/packs/4409/"
       }, {
         text: "Lose Sound Effect",
         link: "https://www.freesound.org/people/freki3333/sounds/131594/"
       }, {
-        text: "Button Sound Effects",
-        link: "https://www.freesound.org/people/pinkyfinger/packs/4409/"
+        text: "Win Sound Effect",
+        link: "https://www.freesound.org/people/nc3studios08/sounds/354038/"
       }],
       preview: "window",
       links: {

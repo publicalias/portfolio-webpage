@@ -211,14 +211,14 @@ const dataVis = {
         "I can mouse over the meteorite's data point for additional data."
       ],
       resources: [{
-        text: "World Map",
-        link: "https://github.com/topojson/world-atlas"
+        text: "Geocoding API",
+        link: "https://developers.google.com/maps/documentation/geocoding/start"
       }, {
         text: "Meteorite Data Set",
         link: "https://github.com/freeCodeCamp/ProjectReferenceData/blob/master/meteorite-strike-data.json"
       }, {
-        text: "Geocoding API",
-        link: "https://developers.google.com/maps/documentation/geocoding/start"
+        text: "World Map",
+        link: "https://github.com/topojson/world-atlas"
       }],
       preview: "window",
       links: {
