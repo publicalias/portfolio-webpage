@@ -24,7 +24,7 @@ const wpOptions = {
       test: /(\.js|\.jsx)$/,
       use: {
         loader: "babel-loader",
-        options: { presets: ["react"] }
+        options: { presets: ["flow", "react"] }
       }
     }]
   },

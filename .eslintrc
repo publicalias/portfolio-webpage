@@ -2,13 +2,13 @@
 
   //use all rules by default
 
-  "extends": ["eslint:all", "plugin:react/all"],
-
   "env": {
     "browser": true,
     "es6": true,
     "node": true
   },
+
+  "extends": ["eslint:all", "plugin:react/all"],
 
   "globals": {
     "__rootdir": false,
@@ -17,6 +17,10 @@
     "React": false,
     "ReactDOM": false
   },
+
+  "parser": "babel-eslint",
+
+  "parserOptions": { "sourceType": "script" },
 
   "rules": {
 
