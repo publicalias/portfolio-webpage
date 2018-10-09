@@ -5,12 +5,12 @@
 const Control = require("./scripts/control");
 const Culture = require("./scripts/culture");
 
-const { createNewCulture, getNextGen, loadSavedCulture, validRules } = require("./scripts/app-logic");
+const { createCulture, getNextGen, loadCulture, createCell, validRules } = require("./scripts/app-logic");
 const { childProps } = require("./scripts/view-logic");
 
 //global imports
 
-const { array2DEach, mouseYX } = require("canvas-games");
+const { array2D, array2DEach, mouseYX } = require("canvas-games");
 const { checkInput } = require("check-input");
 const { bindReactClass } = require("react-utils");
 const { submitKeys } = require("submit-keys");
@@ -24,11 +24,19 @@ class App extends React.Component {
 
     super(props);
 
+    const culture = array2D(48, 48, createCell());
+
+    let pop = 0;
+
+    array2DEach(culture, (e, i, f) => {
+      pop += f > 0 ? 1 : 0;
+    });
+
     this.state = {
 
-      culture: null,
+      culture,
       start: null,
-      stable: null,
+      stable: pop === 0,
 
       history: [],
       reverse: false,
@@ -40,8 +48,8 @@ class App extends React.Component {
 
       canvas: null,
 
-      gen: null,
-      pop: null,
+      gen: 0,
+      pop,
 
       rulesText: "",
       scaleText: ""
@@ -67,9 +75,9 @@ class App extends React.Component {
     const resize = scale !== this.state.scale;
 
     if (load) {
-      loadSavedCulture(state);
+      loadCulture(state);
     } else {
-      createNewCulture(state, clear, scale, resize);
+      createCulture(state, clear, scale, resize);
     }
 
     this.setState(state, this.getPopulation);
@@ -311,10 +319,6 @@ class App extends React.Component {
   }
 
   //lifecycle
-
-  componentWillMount() {
-    this.resetCulture();
-  }
 
   componentDidMount() {
 

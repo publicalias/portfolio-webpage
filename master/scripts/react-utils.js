@@ -6,14 +6,14 @@ const bindReactClass = (that) => {
 
   const ignore = [
     "constructor",
+    "getDerivedStateFromProps",
     "render",
-    "componentWillMount",
     "componentDidMount",
-    "componentWillReceiveProps",
     "shouldComponentUpdate",
-    "componentWillUpdate",
+    "getSnapshotBeforeUpdate",
     "componentDidUpdate",
-    "componentWillUnmount"
+    "componentWillUnmount",
+    "componentDidCatch"
   ];
 
   const methods = Object.getOwnPropertyNames(Object.getPrototypeOf(that));

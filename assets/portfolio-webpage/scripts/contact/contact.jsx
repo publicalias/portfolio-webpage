@@ -87,7 +87,7 @@ class Contact extends React.Component {
 
   //lifecycle
 
-  componentWillMount() {
+  componentDidMount() {
 
     window.getReCaptcha = this.getReCaptcha; //callback must precede script
 

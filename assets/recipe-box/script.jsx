@@ -118,6 +118,8 @@ class App extends React.Component {
 
     const keyGen = initKeyGen();
 
+    const entry = this.state.list[this.state.modalNum];
+
     return [
       <RecipeBox
         displayModal={this.displayModal}
@@ -127,8 +129,8 @@ class App extends React.Component {
         updateList={this.updateList}
       />,
       <RecipeEditor
-        entry={this.state.list[this.state.modalNum]}
-        key={keyGen("recipe-editor")}
+        entry={entry}
+        key={keyGen(entry ? entry.name : "undefined")}
         modalNum={this.state.modalNum}
         updateList={this.updateList}
         used={this.state.list.map((e) => e.name)}

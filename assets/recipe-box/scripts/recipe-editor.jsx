@@ -59,12 +59,6 @@ class RecipeEditor extends React.Component {
 
   }
 
-  //lifecycle
-
-  componentWillReceiveProps(nextProps) {
-    this.setState(populateModal(nextProps));
-  }
-
   render() {
     return (
       <div className="c-modal-show">

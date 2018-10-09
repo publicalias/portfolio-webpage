@@ -39,7 +39,7 @@ class App extends React.Component {
 
   //lifecycle
 
-  componentWillMount() {
+  componentDidMount() {
 
     const url = {
       recent: "https://fcctop100.herokuapp.com/api/fccusers/top/recent",

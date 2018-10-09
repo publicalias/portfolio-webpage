@@ -5,18 +5,20 @@
 const { array2D } = require("canvas-games");
 const { chance, rngInt, storageKey } = require("utilities");
 
-//create new culture
+//create cell
 
-const createNewCulture = (state, clear, scale, resize) => {
+const createCell = (clear) => () => clear || chance(75) ? 0 : rngInt(1, 2, true);
 
-  const setVal = () => clear || chance(75) ? 0 : rngInt(1, 2, true);
+//create culture
+
+const createCulture = (state, clear, scale, resize) => {
 
   if (resize) {
     state.scale = scale;
     state.scaleText = "";
   }
 
-  state.culture = array2D(scale, scale, setVal);
+  state.culture = array2D(scale, scale, createCell(clear));
 
 };
 
@@ -105,9 +107,9 @@ const getNextGen = (params) => {
 
 };
 
-//load saved culture
+//load culture
 
-const loadSavedCulture = (state) => {
+const loadCulture = (state) => {
 
   const culture = storageKey("culture");
 
@@ -139,8 +141,9 @@ const validRules = (str) => {
 //exports
 
 module.exports = {
-  createNewCulture,
+  createCell,
+  createCulture,
   getNextGen,
-  loadSavedCulture,
+  loadCulture,
   validRules
 };
