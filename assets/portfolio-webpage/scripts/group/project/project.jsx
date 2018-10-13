@@ -6,6 +6,10 @@ const CodeBtn = require("./code-btn");
 const List = require("./list");
 const Preview = require("./preview");
 
+//node modules
+
+const React = require("react");
+
 //project
 
 const Project = (props) => {

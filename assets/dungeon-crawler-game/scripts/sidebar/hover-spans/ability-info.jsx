@@ -8,6 +8,10 @@ const HoverSpan = require("./hover-span");
 
 const { initKeyGen } = require("react-utils");
 
+//node modules
+
+const React = require("react");
+
 //ability info
 
 const AbilityInfo = (props) => {

@@ -13,6 +13,10 @@ const { loadReCaptcha, resetForm } = require("../app-logic");
 
 const { bindReactClass } = require("react-utils");
 
+//node modules
+
+const React = require("react");
+
 //contact
 
 class Contact extends React.Component {

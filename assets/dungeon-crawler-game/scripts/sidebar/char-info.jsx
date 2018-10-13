@@ -12,6 +12,10 @@ const UtilityBtn = require("./utility-btn");
 
 const { roundTo, storageKey } = require("utilities");
 
+//node modules
+
+const React = require("react");
+
 //char info
 
 const CharInfo = (props) => {

@@ -8,6 +8,10 @@ const UtilityBtn = require("./utility-btn");
 
 const { initKeyGen } = require("react-utils");
 
+//node modules
+
+const React = require("react");
+
 //hover box
 
 const HoverBox = (props) => {

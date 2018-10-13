@@ -6,6 +6,11 @@
 
 const { bindReactClass } = require("react-utils");
 
+//node modules
+
+const React = require("react");
+const ReactDOM = require("react-dom");
+
 //utilities
 
 marked.setOptions({ breaks: true });

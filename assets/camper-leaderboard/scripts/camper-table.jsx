@@ -8,6 +8,10 @@ const Camper = require("./camper");
 
 const { initKeyGen } = require("react-utils");
 
+//node modules
+
+const React = require("react");
+
 //camper table
 
 const CamperTable = (props) => {

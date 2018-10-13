@@ -4,6 +4,10 @@
 
 const { initKeyGen } = require("react-utils");
 
+//node modules
+
+const React = require("react");
+
 //media icons
 
 const MediaIcons = (props) => {

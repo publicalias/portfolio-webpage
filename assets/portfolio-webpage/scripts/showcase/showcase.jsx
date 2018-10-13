@@ -11,6 +11,10 @@ const { getNextView } = require("../app-logic");
 const { bindReactClass } = require("react-utils");
 const { itemIsInView } = require("utilities");
 
+//node modules
+
+const React = require("react");
+
 //showcase
 
 class Showcase extends React.Component {

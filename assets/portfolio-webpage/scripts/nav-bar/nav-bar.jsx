@@ -9,6 +9,10 @@ const NavSublist = require("./nav-sublist");
 
 const { initKeyGen } = require("react-utils");
 
+//node modules
+
+const React = require("react");
+
 //nav bar
 
 const NavBar = (props) => {

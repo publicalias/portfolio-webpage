@@ -8,6 +8,10 @@ const SwipeBtn = require("./swipe-btn");
 
 const { voidLink } = require("utilities");
 
+//node modules
+
+const React = require("react");
+
 //carousel
 
 const Carousel = (props) => (

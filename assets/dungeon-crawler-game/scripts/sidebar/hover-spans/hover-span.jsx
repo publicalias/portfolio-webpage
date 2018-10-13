@@ -4,6 +4,10 @@
 
 const { wrapFn } = require("utilities");
 
+//node modules
+
+const React = require("react");
+
 //hover span
 
 const HoverSpan = (props) => (

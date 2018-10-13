@@ -10,6 +10,10 @@ const { togglePanel } = require("accordion");
 const { bindReactClass, initKeyGen } = require("react-utils");
 const { storageKey } = require("utilities");
 
+//node modules
+
+const React = require("react");
+
 //subgroup
 
 class Subgroup extends React.Component {

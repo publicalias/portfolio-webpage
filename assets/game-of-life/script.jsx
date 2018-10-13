@@ -16,6 +16,11 @@ const { bindReactClass } = require("react-utils");
 const { submitKeys } = require("submit-keys");
 const { cycleItems, deepCopy, storageKey } = require("utilities");
 
+//node modules
+
+const React = require("react");
+const ReactDOM = require("react-dom");
+
 //app logic
 
 class App extends React.Component {

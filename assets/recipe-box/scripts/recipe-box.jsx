@@ -8,6 +8,10 @@ const Recipe = require("./recipe/recipe");
 
 const { initKeyGen } = require("react-utils");
 
+//node modules
+
+const React = require("react");
+
 //recipe box
 
 const RecipeBox = (props) => {

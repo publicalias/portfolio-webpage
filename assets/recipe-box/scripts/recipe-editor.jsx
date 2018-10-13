@@ -10,6 +10,10 @@ const { toggleModal } = require("modal");
 const { bindReactClass } = require("react-utils");
 const { deepCopy } = require("utilities");
 
+//node modules
+
+const React = require("react");
+
 //recipe editor
 
 class RecipeEditor extends React.Component {

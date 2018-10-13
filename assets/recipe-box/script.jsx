@@ -13,6 +13,11 @@ const { modalEvents, toggleModal } = require("modal");
 const { bindReactClass, initKeyGen } = require("react-utils");
 const { deepCopy, storageKey, wrapFn } = require("utilities");
 
+//node modules
+
+const React = require("react");
+const ReactDOM = require("react-dom");
+
 //app logic
 
 class App extends React.Component {

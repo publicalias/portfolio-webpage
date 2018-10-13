@@ -10,6 +10,10 @@ const List = require("./list");
 const { togglePanel } = require("accordion");
 const { bindReactClass } = require("react-utils");
 
+//node modules
+
+const React = require("react");
+
 //recipe
 
 class Recipe extends React.Component {

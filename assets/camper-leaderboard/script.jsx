@@ -9,6 +9,11 @@ const CamperTable = require("./scripts/camper-table");
 const { bindReactClass } = require("react-utils");
 const { getJSON } = require("utilities");
 
+//node modules
+
+const React = require("react");
+const ReactDOM = require("react-dom");
+
 //app logic
 
 class App extends React.Component {

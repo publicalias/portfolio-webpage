@@ -4,6 +4,10 @@
 
 const { scrollToItem } = require("../app-logic");
 
+//node modules
+
+const React = require("react");
+
 //nav item
 
 const NavItem = (props) => (

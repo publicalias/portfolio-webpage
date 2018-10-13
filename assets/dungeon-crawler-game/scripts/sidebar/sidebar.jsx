@@ -5,6 +5,10 @@
 const CharInfo = require("./char-info");
 const HoverBox = require("./hover-box");
 
+//node modules
+
+const React = require("react");
+
 //sidebar
 
 const Sidebar = (props) => {

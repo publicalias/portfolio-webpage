@@ -4,6 +4,10 @@
 
 const HoverSpan = require("./hover-span");
 
+//node modules
+
+const React = require("react");
+
 //potion info
 
 const PotionInfo = (props) => {

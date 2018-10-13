@@ -8,6 +8,10 @@ const HoverSpan = require("./hover-span");
 
 const { roundTo, storageKey } = require("utilities");
 
+//node modules
+
+const React = require("react");
+
 //exp info
 
 const ExpInfo = (props) => {

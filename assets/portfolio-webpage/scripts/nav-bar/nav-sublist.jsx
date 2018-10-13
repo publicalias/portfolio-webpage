@@ -10,6 +10,10 @@ const { positionMenu } = require("../app-logic");
 
 const { bindReactClass, initKeyGen } = require("react-utils");
 
+//node modules
+
+const React = require("react");
+
 //nav sublist
 
 class NavSublist extends React.Component {

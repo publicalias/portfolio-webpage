@@ -4,6 +4,10 @@
 
 const { voidLink } = require("utilities");
 
+//node modules
+
+const React = require("react");
+
 //code btn
 
 const CodeBtn = (props) => {

@@ -17,6 +17,11 @@ const { initPanel } = require("accordion");
 const { checkInput } = require("check-input");
 const { initKeyGen } = require("react-utils");
 
+//node modules
+
+const React = require("react");
+const ReactDOM = require("react-dom");
+
 //app logic
 
 class App extends React.Component {

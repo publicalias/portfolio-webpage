@@ -8,6 +8,10 @@ const { clearCanvas, paintCanvas } = require("./view-logic");
 
 const { bindReactClass } = require("react-utils");
 
+//node modules
+
+const React = require("react");
+
 //culture
 
 class Culture extends React.Component {

@@ -1,5 +1,9 @@
 "use strict";
 
+//node modules
+
+const React = require("react");
+
 //footer
 
 const Footer = (props) => (

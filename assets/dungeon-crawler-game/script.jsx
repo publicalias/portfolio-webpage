@@ -18,6 +18,11 @@ const { checkInput } = require("check-input");
 const { bindReactClass } = require("react-utils");
 const { deepCopy, storageKey } = require("utilities");
 
+//node modules
+
+const React = require("react");
+const ReactDOM = require("react-dom");
+
 //app logic
 
 class App extends React.Component {

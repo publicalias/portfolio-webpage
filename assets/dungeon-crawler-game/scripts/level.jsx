@@ -11,6 +11,10 @@ const { mouseYX } = require("canvas-games");
 const { bindReactClass } = require("react-utils");
 const { arrEqual } = require("utilities");
 
+//node modules
+
+const React = require("react");
+
 //level
 
 class Level extends React.Component {

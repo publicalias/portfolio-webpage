@@ -29,7 +29,7 @@ const wpOptions = {
     }]
   },
   resolve: {
-    modules: ["master/scripts"],
+    modules: ["master/scripts", "node_modules"],
     extensions: [".js", ".jsx"]
   }
 };

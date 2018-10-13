@@ -1,5 +1,9 @@
 "use strict";
 
+//node modules
+
+const React = require("react");
+
 //contact form
 
 const ContactForm = (props) => {

@@ -8,6 +8,10 @@ const Subgroup = require("./subgroup");
 
 const { initKeyGen } = require("react-utils");
 
+//node modules
+
+const React = require("react");
+
 //group
 
 const Group = (props) => {
