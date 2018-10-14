@@ -26,7 +26,7 @@ router.get("/search/:term", (req, res) => {
 
   const options = { useNewUrlParser: true };
 
-  MongoClient.connect(process.env.MLAB, options, upsertLog(req));
+  MongoClient.connect(process.env.MONGODB, options, upsertLog(req));
 
   request(api, apiHandler(req, res));
 
@@ -38,7 +38,7 @@ router.get("/recent", (req, res) => {
 
   const options = { useNewUrlParser: true };
 
-  MongoClient.connect(process.env.MLAB, options, readLogs(res));
+  MongoClient.connect(process.env.MONGODB, options, readLogs(res));
 
 });
 

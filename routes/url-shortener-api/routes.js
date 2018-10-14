@@ -23,7 +23,7 @@ router.get("/*", (req, res) => {
 
   const options = { useNewUrlParser: true };
 
-  MongoClient.connect(process.env.MLAB, options, parseInput(req, res));
+  MongoClient.connect(process.env.MONGODB, options, parseInput(req, res));
 
 });
 
