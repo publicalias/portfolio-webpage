@@ -122,7 +122,7 @@ const loadCulture = (state) => {
 
 const validRules = (str) => {
 
-  if (/^B[0-8]*\/S[0-8]*$/.test(str)) {
+  if (/^B[0-8]*\/S[0-8]*$/u.test(str)) {
 
     const [a, b] = str.split("/").map((e) => e.slice(1));
     const [c, d] = [a, b].map((e) => e.split("")

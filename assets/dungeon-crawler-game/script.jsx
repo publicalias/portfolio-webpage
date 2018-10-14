@@ -88,6 +88,32 @@ class App extends React.Component {
 
   }
 
+  initKeyHandler() {
+
+    let move = true;
+
+    setInterval(() => {
+      move = true;
+    }, 100);
+
+    return (event) => {
+
+      if (event.key === "ArrowUp" || event.key === "ArrowDown") {
+        event.preventDefault();
+      }
+
+      if (!move) {
+        return;
+      }
+
+      move = false;
+
+      this.handleKeyDown(event);
+
+    };
+
+  }
+
   //button events
 
   handleSwitch() {
@@ -153,34 +179,12 @@ class App extends React.Component {
 
     this.handleResize(); //not redundant
 
-    //movement
-
-    let move = true;
-
-    setInterval(() => {
-      move = true;
-    }, 100);
-
     //window events
 
     $(window).on("load resize", this.handleResize);
-    $(window).keydown((event) => {
+    $(window).keydown(this.initKeyHandler());
 
-      if (event.key === "ArrowUp" || event.key === "ArrowDown") {
-        event.preventDefault();
-      }
-
-      if (!move) {
-        return;
-      }
-
-      move = false;
-
-      this.handleKeyDown(event);
-
-    });
-
-    //auto-save
+    //auto-save and update timer
 
     setInterval(() => {
 

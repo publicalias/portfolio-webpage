@@ -8,7 +8,7 @@ const parseArith = (that, str) => {
     that.chain = `${that.val} ${str}`;
     that.val = "0";
   } else if (that.val === "0") {
-    that.chain = that.chain.replace(/[+\-*/]$/, str);
+    that.chain = that.chain.replace(/[+\-*/]$/u, str);
   } else {
     that.chain = `${that.chain} ${that.val} ${str}`;
     that.val = "0";

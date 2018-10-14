@@ -38,18 +38,20 @@ const respondWith = (res, client) => (status) => {
 
 const parseCode = (input, client) => (status) => new Promise((resolve, reject) => {
 
-  const isValid = /^[a-z]{3}$/i.test(input);
+  const isValid = /^[a-z]{3}$/iu.test(input);
 
   if (isValid) {
-    client.collection("url-codes").findOne({ code: input }, (err, doc) => {
-      if (err) {
-        reject(statusObj(500));
-      } else if (doc) {
-        resolve(statusObj(303, doc.url));
-      } else {
-        reject(statusObj(404));
-      }
-    });
+    client.db()
+      .collection("url-shortener-api")
+      .findOne({ code: input }, (err, doc) => {
+        if (err) {
+          reject(statusObj(500));
+        } else if (doc) {
+          resolve(statusObj(303, doc.url));
+        } else {
+          reject(statusObj(404));
+        }
+      });
   } else {
     resolve(status);
   }
@@ -78,23 +80,27 @@ const codifyURL = (input, client, tries) => new Promise((resolve, reject) => {
 
   const code = createCode();
 
-  client.collection("url-codes").findOne({ code }, (err, doc) => {
-    if (err) {
-      reject(statusObj(500));
-    } else if (doc) {
-      if (tries) {
-        resolve(codifyURL(input, client, tries - 1));
-      } else {
+  client.db()
+    .collection("url-shortener-api")
+    .findOne({ code }, (err, doc) => {
+      if (err) {
         reject(statusObj(500));
+      } else if (doc) {
+        if (tries) {
+          resolve(codifyURL(input, client, tries - 1));
+        } else {
+          reject(statusObj(500));
+        }
+      } else {
+
+        client.db()
+          .collection("url-shortener-api")
+          .insertOne(createRes(input, code)); //mutates object
+
+        resolve(statusObj(201, createRes(input, code)));
+
       }
-    } else {
-
-      client.collection("url-codes").insertOne(createRes(input, code)); //mutates object
-
-      resolve(statusObj(201, createRes(input, code)));
-
-    }
-  });
+    });
 
 });
 
@@ -103,15 +109,17 @@ const parseURL = (input, client) => (status) => new Promise((resolve, reject) =>
   const isValid = valid.isWebUri(input);
 
   if (isValid) {
-    client.collection("url-codes").findOne({ url: input }, (err, doc) => {
-      if (err) {
-        reject(statusObj(500));
-      } else if (doc) {
-        resolve(statusObj(200, createRes(input, doc.code)));
-      } else {
-        resolve(codifyURL(input, client, 5));
-      }
-    });
+    client.db()
+      .collection("url-shortener-api")
+      .findOne({ url: input }, (err, doc) => {
+        if (err) {
+          reject(statusObj(500));
+        } else if (doc) {
+          resolve(statusObj(200, createRes(input, doc.code)));
+        } else {
+          resolve(codifyURL(input, client, 5));
+        }
+      });
   } else {
     resolve(status);
   }

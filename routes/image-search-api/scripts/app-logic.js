@@ -71,8 +71,9 @@ const readLogs = (res) => (err, client) => {
 
   }
 
-  client.collection("search-terms")
-    .find({}, { _id: false })
+  client.db()
+    .collection("image-search-api")
+    .find({}, { projection: { _id: false } })
     .sort({ unix: -1 })
     .limit(10)
     .toArray(logHandler(res));
@@ -99,12 +100,13 @@ const upsertLog = (req) => (err, client) => {
     return; //oh well
   }
 
-  const log = {
-    term: req.params.term,
-    unix: Date.now()
-  };
+  const term = req.params.term;
 
-  client.collection("search-terms").update({ term: log.term }, log, { upsert: true });
+  const log = { $set: { unix: Date.now() } };
+
+  client.db()
+    .collection("image-search-api")
+    .updateOne({ term }, log, { upsert: true });
 
   client.close();
 

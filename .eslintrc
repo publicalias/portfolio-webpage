@@ -100,6 +100,7 @@
     "id-length": 0,
     "init-declarations": 0,
     "line-comment-position": 0,
+    "max-lines-per-function": 0,
     "multiline-ternary": 0,
     "no-confusing-arrow": 0,
     "no-continue": 0,
@@ -117,6 +118,7 @@
     "no-underscore-dangle": 0,
     "padded-blocks": 0,
     "prefer-destructuring": 0,
+    "prefer-object-spread": 0,
     "sort-keys": 0,
     "wrap-regex": 0,
 

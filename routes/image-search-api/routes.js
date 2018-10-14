@@ -24,7 +24,9 @@ router.get("/search/:term", (req, res) => {
 
   const api = `https://www.googleapis.com/customsearch/v1?cx=${encodeURIComponent(process.env.GCSID)}&key=${process.env.GCSKEY}&searchType=image&fields=items(title%2Clink%2Cimage%2FcontextLink)&q=${encodeURIComponent(req.params.term)}${startParam(req.query.offset)}`;
 
-  MongoClient.connect(process.env.MLAB, upsertLog(req));
+  const options = { useNewUrlParser: true };
+
+  MongoClient.connect(process.env.MLAB, options, upsertLog(req));
 
   request(api, apiHandler(req, res));
 
@@ -33,7 +35,11 @@ router.get("/search/:term", (req, res) => {
 //get recent searches
 
 router.get("/recent", (req, res) => {
-  MongoClient.connect(process.env.MLAB, readLogs(res));
+
+  const options = { useNewUrlParser: true };
+
+  MongoClient.connect(process.env.MLAB, options, readLogs(res));
+
 });
 
 //exports

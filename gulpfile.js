@@ -21,10 +21,10 @@ const wpOptions = {
   mode: "production",
   module: {
     rules: [{
-      test: /(\.js|\.jsx)$/,
+      test: /(\.js|\.jsx)$/u,
       use: {
         loader: "babel-loader",
-        options: { presets: ["flow", "react"] }
+        options: { presets: ["@babel/preset-flow", "@babel/preset-react"] }
       }
     }]
   },

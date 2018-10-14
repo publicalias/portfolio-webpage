@@ -38,7 +38,7 @@ const submit = () => {
 
   let channels = $(".js-submit-input").val();
 
-  if (!(/^(\w{4,25},\s)*\w{4,25}$/).test(channels)) {
+  if (!(/^(\w{4,25},\s)*\w{4,25}$/u).test(channels)) {
     return;
   }
 
