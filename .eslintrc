@@ -83,9 +83,9 @@
     "react/no-unused-state": 1,
 
     /*
-      padding between concerns
-      padding in blocks that contain padding
-      exports are objects, jsx
+      pad separate concerns
+      pad blocks that contain padding
+      export objects or jsx
     */
 
     //off
@@ -135,6 +135,8 @@
     "react/require-optimization": 0,
     "react/sort-comp": 0
 
-  }
+  },
+
+  "settings": { "react": { "version": "detect" } }
 
 }

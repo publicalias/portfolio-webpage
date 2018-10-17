@@ -82,8 +82,9 @@ rules:
 
   #unenforced
 
-  #nest elements, modifiers
-  #padding in blocks that contain padding
+  #nest elements and modifiers
+  #pad blocks that contain padding
+  #prefer inline declarations
 
   #off
 
