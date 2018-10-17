@@ -35,6 +35,7 @@ const tooltipHandler = (d, node, tooltip) => (res) => {
   $(".js-edit-class").text(`${recclass} class`);
   $(".js-edit-address").text(tooltipAddress(res, year));
 
+  $(".js-ref-data").removeClass("is-active");
   $(node).addClass("is-active");
 
   tooltip(true, node);
