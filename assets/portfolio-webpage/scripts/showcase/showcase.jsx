@@ -9,7 +9,7 @@ const { getNextView } = require("../app-logic");
 //global imports
 
 const { bindReactClass } = require("react-utils");
-const { itemIsInView } = require("utilities");
+const { animate, itemIsInView } = require("utilities");
 
 //node modules
 
@@ -61,9 +61,9 @@ class Showcase extends React.Component {
 
       const view = getNextView(right, this.props.showcase, this.state.view);
 
-      $showcase.fadeOut(() => {
+      animate($showcase, { opacity: 0 }, () => {
         this.setState({ view }, () => {
-          $showcase.fadeIn();
+          animate($showcase, { opacity: 1 });
         });
       });
 

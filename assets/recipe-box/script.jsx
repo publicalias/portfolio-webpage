@@ -78,7 +78,7 @@ class App extends React.Component {
           e.num = i;
         });
         closePanel();
-        setTimeout(save, 400);
+        setTimeout(save, 500);
         break;
       case "edit":
         list[entry.num] = entry;

@@ -29,3 +29,7 @@ $margin: (6vw - 1.6vw * 1.4) / 2;
   }
 
 }
+
+//states
+
+.js-filter-output { &.is-hidden { display: none; } }

@@ -3,7 +3,7 @@
 //global imports
 
 const { toggleModal } = require("modal");
-const { bindObject } = require("utilities");
+const { animate, bindObject } = require("utilities");
 
 //utilities
 
@@ -28,14 +28,14 @@ const utils = {
         $right.text("N");
         break;
       case 2:
-        $question.fadeOut(() => {
-          $question.text("Play as X or O?").fadeIn();
+        animate($question, { opacity: 0 }, () => {
+          animate($question.text("Play as X or O?"), { opacity: 1 });
         });
-        $left.fadeOut(() => {
-          $left.text("X").fadeIn();
+        animate($left, { opacity: 0 }, () => {
+          animate($left.text("X"), { opacity: 1 });
         });
-        $right.fadeOut(() => {
-          $right.text("O").fadeIn();
+        animate($right, { opacity: 0 }, () => {
+          animate($right.text("O"), { opacity: 1 });
         });
     }
 

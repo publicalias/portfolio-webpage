@@ -37,7 +37,7 @@ const positionMenu = () => {
 
   const offsetTop = scrollTop < margin ? margin - scrollTop : 0;
 
-  $(".js-expand-sublist").css("top", $(".js-ref-nav-bar").outerHeight() + offsetTop);
+  $(".js-expand-sublist").css({ top: $(".js-ref-nav-bar").outerHeight() + offsetTop });
 
 };
 

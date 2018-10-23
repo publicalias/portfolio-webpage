@@ -17,6 +17,7 @@
     @include modal(10);
     background-color: rgba(0, 0, 0, 0.75);
     display: none;
+    opacity: 0;
   }
 
   &__window {
@@ -28,7 +29,8 @@
 
 //states
 
-.js-hide-modal { &.is-hidden { overflow: hidden; } }
+.js-fade-modal { &.is-open { display: block; } }
+.js-hide-modal { &.is-open { overflow: hidden; } }
 .js-show-modal { &.is-open { overflow-y: scroll; } }
 
 //utilities

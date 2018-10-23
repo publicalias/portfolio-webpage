@@ -3,19 +3,21 @@
 //global imports
 
 const { checkInput } = require("check-input");
-const { bindObject, getJSON, rngInt, wrapFn } = require("utilities");
+const { animate, bindObject, getJSON, rngInt, wrapFn } = require("utilities");
 
 //utilities
 
-const display = (res) => {
+const display = (next, init) => {
 
-  const href = `https://twitter.com/intent/tweet?hashtags=quotes&text=${encodeURIComponent(`"${res.quote}" ${res.author}`)}`;
+  const href = `https://twitter.com/intent/tweet?hashtags=quotes&text=${encodeURIComponent(`"${next.quote}" ${next.author}`)}`;
 
-  $(".js-edit-quote").text(res.quote);
-  $(".js-edit-attr").text(res.author);
+  $(".js-edit-quote").text(next.quote);
+  $(".js-edit-attr").text(next.author);
   $(".js-edit-twitter").attr("href", href);
 
-  $(".js-fade-text").fadeIn();
+  if (!init) {
+    animate(".js-fade-text", { opacity: 1 });
+  }
 
 };
 
@@ -38,9 +40,11 @@ const app = {
     const next = this.data[rngInt(0, this.data.length)];
 
     if (init) {
-      display(next);
+      display(next, init);
     } else {
-      $(".js-fade-text").fadeOut(wrapFn(display, next));
+      animate(".js-fade-text", { opacity: 0 }, () => {
+        display(next);
+      });
     }
 
   }

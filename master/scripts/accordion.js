@@ -2,15 +2,17 @@
 
 //global imports
 
-const { smoothScroll, storageKey } = require("utilities");
+const { animate, smoothScroll, storageKey } = require("utilities");
 
 //close panel
 
 const closePanel = () => {
 
-  $(".js-expand-panel.is-open")
-    .removeClass("is-open")
-    .slideUp();
+  const $open = $(".js-expand-panel.is-open");
+
+  animate($open, { height: 0 }, () => {
+    $open.removeClass("is-open").css({ height: "auto" });
+  });
 
   storageKey("panel", "", true);
 
@@ -40,7 +42,11 @@ const togglePanel = (id, padding) => {
 
   if (shouldOpen) {
 
-    $this.addClass("is-open").slideDown();
+    const h = $this.addClass("is-open").height();
+
+    animate($this.height(0), { height: h }, () => {
+      $this.css({ height: "auto" });
+    });
 
     storageKey("panel", id, true);
 
@@ -56,9 +62,7 @@ const initPanel = () => {
 
   const id = storageKey("panel", null, true);
 
-  $(`.js-expand-panel-${id}`)
-    .addClass("is-open")
-    .css("display", "block");
+  $(`.js-expand-panel-${id}`).addClass("is-open");
 
 };
 

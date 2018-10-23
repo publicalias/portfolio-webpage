@@ -2,12 +2,12 @@
 
 //global imports
 
-const { wrapFn } = require("utilities");
+const { animate, wrapFn } = require("utilities");
 
 //toggle modal
 
 const toggleState = (bool = false, $hide, $show) => {
-  $hide.toggleClass("is-hidden", bool);
+  $hide.toggleClass("is-open", bool);
   $show.toggleClass("is-open", bool);
 };
 
@@ -18,13 +18,15 @@ const toggleModal = (bool) => {
   const $show = $(".js-show-modal");
 
   if (bool) {
-    $fade.fadeIn();
+    animate($fade.addClass("is-open"), { opacity: 1 });
     $hide.css({
       "background-size": $hide.css("width"),
       "width": $hide.css("width")
     });
   } else {
-    $fade.fadeOut();
+    animate($fade, { opacity: 0 }, () => {
+      $fade.removeClass("is-open");
+    });
     $hide.css({
       "background-size": "100%",
       "width": "auto"
@@ -32,7 +34,7 @@ const toggleModal = (bool) => {
     toggleState(bool, $hide, $show);
   }
 
-  $show.animate({ top: bool ? 0 : "100vh" }, () => {
+  animate($show, { top: bool ? 0 : "100vh" }, () => {
     if (bool) {
       toggleState(bool, $hide, $show);
       $show.scrollTop(0);

@@ -51,8 +51,8 @@ const tooltip = (bool = false, node, top, left) => {
 
     const pos = getPosition(thisRect, $tooltip);
 
-    $tooltip.css("top", top || (displayBelow ? pos.below : pos.above));
-    $tooltip.css("left", left || (displayRight ? pos.right : pos.left));
+    $tooltip.css({ top: top || (displayBelow ? pos.below : pos.above) });
+    $tooltip.css({ left: left || (displayRight ? pos.right : pos.left) });
 
   }
 

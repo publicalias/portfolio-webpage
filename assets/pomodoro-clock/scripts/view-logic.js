@@ -7,7 +7,7 @@ const { leadZero } = require("utilities");
 //empty bar
 
 const emptyBar = () => {
-  $(".js-edit-progress-bar").css("width", "0");
+  $(".js-edit-progress-bar").css({ width: 0 });
 };
 
 //play sound
@@ -27,7 +27,7 @@ const readTime = (set, count, id) => {
 
   $(`.js-edit-${id}-timer`).text(`${leadZero(Math.floor(count / 60))}:${leadZero(Math.round(count % 60))}`);
 
-  $(".js-edit-progress-bar").css("width", `${barWidth}%`);
+  $(".js-edit-progress-bar").css({ width: `${barWidth}%` });
 
 };
 

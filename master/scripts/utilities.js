@@ -1,5 +1,16 @@
 "use strict";
 
+/*global TweenMax, Linear*/
+
+//animate
+
+const animate = (id, props, cb) => {
+  TweenMax.to(id, 0.5, Object.assign(props, {
+    ease: Linear.easeNone,
+    onComplete: cb
+  }));
+};
+
 //arr equal
 
 const arrEqual = (a, b) => a.toString() === b.toString();
@@ -112,7 +123,7 @@ const sendData = (res) => (err, status, body) => {
 //smooth scroll
 
 const smoothScroll = (scrollTop) => {
-  $(document.scrollingElement).animate({ scrollTop });
+  animate(document.scrollingElement, { scrollTop });
 };
 
 //storage key
@@ -147,6 +158,7 @@ const wrapFn = (fn, ...args) => () => fn(...args);
 //exports
 
 module.exports = {
+  animate,
   arrEqual,
   bindObject,
   chance,

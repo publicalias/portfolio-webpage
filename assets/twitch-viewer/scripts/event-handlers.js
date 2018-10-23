@@ -3,6 +3,7 @@
 //global imports
 
 const { submitKeys } = require("submit-keys");
+const { animate } = require("utilities");
 
 //button events
 
@@ -12,11 +13,19 @@ const buttonEvents = () => {
 
     const output = ".js-filter-output";
 
-    const fade = (bool) => bool ? "fadeIn" : "fadeOut";
+    const fade = ($group, bool) => {
+      if (bool) {
+        animate($group.removeClass("is-hidden"), { opacity: 1 });
+      } else {
+        animate($group, { opacity: 0 }, () => {
+          $group.addClass("is-hidden");
+        });
+      }
+    };
 
-    $(`${output}.is-online`)[fade(online)]();
-    $(`${output}.is-offline`)[fade(offline)]();
-    $(`${output}.is-closed`)[fade(closed)]();
+    fade($(`${output}.is-online`), online);
+    fade($(`${output}.is-offline`), offline);
+    fade($(`${output}.is-closed`), closed);
 
   };
 

@@ -1,6 +1,16 @@
 //components
 
 .c-panel {
-  &__expand { display: none; }
+
+  &__expand {
+    display: none;
+    overflow: hidden;
+  }
+
   &__toggle { cursor: pointer; }
+
 }
+
+//states
+
+.js-expand-panel { &.is-open { display: block; } }

@@ -8,7 +8,7 @@ const { getOutput, getStream, parseChannel, parseStream } = require("./scripts/v
 //global imports
 
 const { checkInput } = require("check-input");
-const { getJSON, storageKey } = require("utilities");
+const { animate, getJSON, storageKey } = require("utilities");
 
 //app logic
 
@@ -53,9 +53,9 @@ const submit = () => {
 
   const $output = $(".js-render-output");
 
-  $output.fadeOut(() => {
+  animate($output, { opacity: 0 }, () => {
     search(channels);
-    $output.fadeIn();
+    animate($output, { opacity: 1 });
   });
 
 };
