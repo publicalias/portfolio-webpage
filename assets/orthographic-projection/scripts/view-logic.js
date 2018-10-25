@@ -1,6 +1,20 @@
 "use strict";
 
-//tooltip text
+//tooltip address
+
+const tooltipAddress = (d) => (res) => {
+
+  const { year } = d.properties;
+
+  if (res.status === "OK") {
+    d.properties.address = `Fell near ${res.results[0].formatted_address} in ${year}`;
+  } else {
+    d.properties.address = "No address found";
+  }
+
+};
+
+//tooltip handler
 
 const tooltipMass = (mass) => {
 
@@ -14,28 +28,25 @@ const tooltipMass = (mass) => {
 
 };
 
-const tooltipAddress = (res, year) => {
+const tooltipHandler = (d, node, tooltip) => () => {
 
-  if (res.status === "OK") {
-    return `Fell near ${res.results[0].formatted_address} in ${year}`;
+  //check current node
+
+  const domHover = document.querySelectorAll(":hover");
+
+  if (domHover[domHover.length - 1] !== node) {
+    return;
   }
-
-  return "No address found";
-
-};
-
-const tooltipHandler = (d, node, tooltip) => (res) => {
 
   //display tooltip
 
-  const { mass, year, name, recclass } = d.properties;
+  const { address, mass, name, recclass } = d.properties;
 
   $(".js-edit-name").text(name);
   $(".js-edit-mass").text(tooltipMass(mass));
   $(".js-edit-class").text(`${recclass} class`);
-  $(".js-edit-address").text(tooltipAddress(res, year));
+  $(".js-edit-address").text(address);
 
-  $(".js-ref-data").removeClass("is-active");
   $(node).addClass("is-active");
 
   tooltip(true, node);
@@ -44,4 +55,7 @@ const tooltipHandler = (d, node, tooltip) => (res) => {
 
 //exports
 
-module.exports = { tooltipHandler };
+module.exports = {
+  tooltipAddress,
+  tooltipHandler
+};

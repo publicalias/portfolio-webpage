@@ -6,7 +6,7 @@
 
 const { pointRadius, scrubData } = require("./scripts/app-logic");
 const { rotateHandlers } = require("./scripts/event-handlers");
-const { tooltipHandler } = require("./scripts/view-logic");
+const { tooltipAddress, tooltipHandler } = require("./scripts/view-logic");
 
 //global imports
 
@@ -33,11 +33,17 @@ const app = {
 
   handleMouseEnter(d) {
 
-    const { reclat, reclong } = d.properties;
+    const { address, reclat, reclong } = d.properties;
 
     const node = d3.event.target;
 
-    getJSON(`/orthographic-projection/address?lat=${reclat}&lon=${reclong}`).then(tooltipHandler(d, node, this.tooltip));
+    if (address) {
+      tooltipHandler(d, node, this.tooltip)();
+    } else {
+      getJSON(`/orthographic-projection/address?lat=${reclat}&lon=${reclong}`)
+        .then(tooltipAddress(d))
+        .then(tooltipHandler(d, node, this.tooltip));
+    }
 
   },
 
