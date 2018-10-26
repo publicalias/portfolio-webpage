@@ -8,7 +8,7 @@ const updateView = (that, id) => {
   $(".js-edit-chain").text(that.chain);
 
   if (id) {
-    $(`.js-click-${id}`).focus();
+    document.querySelector(`.js-click-${id}`).focus();
   }
 
 };

@@ -32,9 +32,9 @@ const tooltipHandler = (d, node, tooltip) => () => {
 
   //check current node
 
-  const domHover = document.querySelectorAll(":hover");
+  const DOMHover = document.querySelectorAll(":hover");
 
-  if (domHover[domHover.length - 1] !== node) {
+  if (DOMHover[DOMHover.length - 1] !== node) {
     return;
   }
 

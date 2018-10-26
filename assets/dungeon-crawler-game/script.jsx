@@ -16,7 +16,7 @@ const { cycleHints, cycleWeapons } = require("./scripts/view-logic/event-handler
 
 const { checkInput } = require("check-input");
 const { bindReactClass } = require("react-utils");
-const { deepCopy, storageKey } = require("utilities");
+const { deepCopy, listen, storageKey } = require("utilities");
 
 //node modules
 
@@ -181,8 +181,8 @@ class App extends React.Component {
 
     //window events
 
-    $(window).on("load resize", this.handleResize);
-    $(window).keydown(this.initKeyHandler());
+    listen(window, "load resize", this.handleResize);
+    listen(window, "keydown", this.initKeyHandler());
 
     //auto-save and update timer
 

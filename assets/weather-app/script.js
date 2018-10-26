@@ -7,7 +7,7 @@ const { initDisplay, toggleMetric } = require("./scripts/view-logic");
 //global imports
 
 const { checkInput } = require("check-input");
-const { bindObject, getJSON } = require("utilities");
+const { bindObject, getJSON, listen } = require("utilities");
 
 //app logic
 
@@ -58,12 +58,12 @@ const app = {
 
 bindObject(app);
 
-$(() => {
+listen(document, "DOMContentLoaded", () => {
 
   checkInput();
 
   navigator.geolocation.getCurrentPosition(app.getWeather);
 
-  $(".js-click-toggle").click(app.toggle);
+  listen(".js-click-toggle", "click", app.toggle);
 
 });

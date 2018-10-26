@@ -2,7 +2,7 @@
 
 //global imports
 
-const { wrapFn } = require("utilities");
+const { listen, wrapFn } = require("utilities");
 
 //check tooltip
 
@@ -21,16 +21,14 @@ const checkTooltip = (app) => (d) => {
 
 const windowEvents = (app) => () => {
 
-  const $window = $(window);
-
   app.ready++;
   app.getSVG();
 
-  $window.scroll(wrapFn(app.handleMouseLeave));
+  listen(window, "scroll", wrapFn(app.handleMouseLeave));
 
   //ensures mobile support
 
-  $(".js-ref-svg").on("touchstart", app.handleMouseLeave);
+  listen(".js-ref-svg", "touchstart", app.handleMouseLeave);
 
 };
 

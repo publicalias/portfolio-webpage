@@ -14,7 +14,7 @@ const { array2D, array2DEach, mouseYX } = require("canvas-games");
 const { checkInput } = require("check-input");
 const { bindReactClass } = require("react-utils");
 const { submitKeys } = require("submit-keys");
-const { cycleItems, deepCopy, storageKey } = require("utilities");
+const { cycleItems, deepCopy, listen, storageKey } = require("utilities");
 
 //node modules
 
@@ -331,10 +331,10 @@ class App extends React.Component {
 
     this.handleResize(); //not redundant
 
-    $(window).on("load resize", this.handleResize);
+    listen(window, "load resize", this.handleResize);
 
-    $(window).keydown(submitKeys("rules"));
-    $(window).keydown(submitKeys("scale"));
+    listen(window, "keydown", submitKeys("rules"));
+    listen(window, "keydown", submitKeys("scale"));
 
     this.startIter();
 

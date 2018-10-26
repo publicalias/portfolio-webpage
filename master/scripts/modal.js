@@ -2,7 +2,7 @@
 
 //global imports
 
-const { animate, wrapFn } = require("utilities");
+const { animate, listen, wrapFn } = require("utilities");
 
 //toggle modal
 
@@ -46,15 +46,12 @@ const toggleModal = (bool) => {
 //modal events
 
 const modalEvents = () => {
-
-  $(window).keydown((event) => {
+  listen(window, "resize", wrapFn(toggleModal));
+  listen(window, "keydown", (event) => {
     if (event.key === "Escape") {
       toggleModal();
     }
   });
-
-  $(window).resize(wrapFn(toggleModal, false));
-
 };
 
 //exports

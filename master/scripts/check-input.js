@@ -1,39 +1,54 @@
 "use strict";
 
+//global imports
+
+const { bindObject, listen } = require("utilities");
+
 //check input
 
-const checkInput = () => {
+const utils = {
 
-  const $check = $(".js-check-input");
+  timer: null,
+  block: false,
 
-  let timer;
-  let block = false;
+  isTouch() {
 
-  const isTouch = () => {
+    clearTimeout(this.timer);
 
-    clearTimeout(timer);
+    this.block = true;
 
-    block = true;
-
-    timer = setTimeout(() => {
-      block = false;
+    this.timer = setTimeout(() => {
+      this.block = false;
     }, 1000);
 
-    $check.removeClass("is-mouse").addClass("is-touch");
+    $(".js-check-input")
+      .removeClass("is-mouse")
+      .addClass("is-touch");
 
-  };
+  },
 
-  const isMouse = () => {
+  isMouse() {
 
-    if (block) {
+    if (this.block) {
       return;
     }
 
-    $check.addClass("is-mouse").removeClass("is-touch");
+    $(".js-check-input")
+      .addClass("is-mouse")
+      .removeClass("is-touch");
 
-  };
+  }
 
-  $check.on("touchstart", isTouch).on("mouseover", isMouse);
+};
+
+bindObject(utils);
+
+const checkInput = () => {
+
+  const DOMCheck = document.querySelector(".js-check-input");
+
+  listen(DOMCheck, "touchstart", utils.isTouch);
+  listen(DOMCheck, "mouseover", utils.isMouse);
 
 };
 

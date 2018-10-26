@@ -32,12 +32,18 @@ const loadReCaptcha = () => {
 
 const positionMenu = () => {
 
+  const $sublist = $(".js-expand-sublist");
+
+  if ($sublist.css("display") === "none") {
+    return;
+  }
+
   const scrollTop = $(document.scrollingElement).scrollTop();
   const margin = $(window).outerWidth() * 0.045;
 
   const offsetTop = scrollTop < margin ? margin - scrollTop : 0;
 
-  $(".js-expand-sublist").css({ top: $(".js-ref-nav-bar").outerHeight() + offsetTop });
+  $sublist.css({ top: $(".js-ref-nav-bar").outerHeight() + offsetTop });
 
 };
 

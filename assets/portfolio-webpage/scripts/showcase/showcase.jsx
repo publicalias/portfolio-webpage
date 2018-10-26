@@ -9,7 +9,7 @@ const { getNextView } = require("../app-logic");
 //global imports
 
 const { bindReactClass } = require("react-utils");
-const { animate, itemIsInView } = require("utilities");
+const { animate, itemIsInView, listen } = require("utilities");
 
 //node modules
 
@@ -95,7 +95,7 @@ class Showcase extends React.Component {
 
     this.initCarousel();
 
-    $(window).scroll(this.initCarousel);
+    listen(window, "scroll", this.initCarousel);
 
   }
 

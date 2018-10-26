@@ -8,7 +8,7 @@ const { getOutput, getStream, parseChannel, parseStream } = require("./scripts/v
 //global imports
 
 const { checkInput } = require("check-input");
-const { animate, getJSON, storageKey } = require("utilities");
+const { animate, getJSON, listen, storageKey } = require("utilities");
 
 //app logic
 
@@ -62,7 +62,7 @@ const submit = () => {
 
 //initialize app
 
-$(() => {
+listen(document, "DOMContentLoaded", () => {
 
   checkInput();
 

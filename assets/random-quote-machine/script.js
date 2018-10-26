@@ -3,7 +3,7 @@
 //global imports
 
 const { checkInput } = require("check-input");
-const { animate, bindObject, getJSON, rngInt, wrapFn } = require("utilities");
+const { animate, bindObject, getJSON, listen, rngInt, wrapFn } = require("utilities");
 
 //utilities
 
@@ -64,11 +64,11 @@ getJSON("media/quotes.json").then((res) => {
 
 });
 
-$(() => {
+listen(document, "DOMContentLoaded", () => {
 
   checkInput();
 
-  $(".js-click-refresh").click(wrapFn(app.refresh));
+  listen(".js-click-refresh", "click", wrapFn(app.refresh));
 
   app.ready++;
   app.refresh(true);

@@ -4,21 +4,25 @@
 
 const { btnIDs } = require("./view-logic");
 
+//global imports
+
+const { listen } = require("utilities");
+
 //gameplay events
 
 const gameplayEvents = (app) => {
   btnIDs.forEach((e, i) => {
-    $(`.js-click-btn-${e}`).click(app.playBtn(i));
+    listen(`.js-click-btn-${e}`, "click", app.playBtn(i));
   });
 };
 
 //setting events
 
 const settingEvents = (app) => {
-  $(".js-click-btn-steps").click(app.stepsBtn);
-  $(".js-click-btn-start").click(app.startBtn);
-  $(".js-click-btn-restart").click(app.restartBtn);
-  $(".js-click-btn-strict").click(app.strictBtn);
+  listen(".js-click-btn-steps", "click", app.stepsBtn);
+  listen(".js-click-btn-start", "click", app.startBtn);
+  listen(".js-click-btn-restart", "click", app.restartBtn);
+  listen(".js-click-btn-strict", "click", app.strictBtn);
 };
 
 //exports

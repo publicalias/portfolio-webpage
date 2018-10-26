@@ -16,13 +16,13 @@ const submitKeys = (id) => (event) => {
 
   const enterFn = () => {
     if (active.includes(input)) {
-      $(button).focus(); //fires event
+      document.querySelector(button).focus(); //fires event
     }
   };
 
   const otherFn = () => {
     if (active.includes(button)) {
-      $(input).focus();
+      document.querySelector(input).focus();
     }
   };
 

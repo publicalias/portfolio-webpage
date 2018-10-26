@@ -9,7 +9,7 @@ const { tooltipBorders, nodeAttr } = require("./scripts/view-logic");
 const { checkInput } = require("check-input");
 const { getSVG, tooltip } = require("d3-projects/app-logic");
 const { windowEvents, checkTooltip } = require("d3-projects/event-handlers");
-const { bindObject, getJSON } = require("utilities");
+const { bindObject, getJSON, listen } = require("utilities");
 
 //app logic
 
@@ -193,12 +193,11 @@ bindObject(app);
 
 getJSON(app.dataURL).then(app.parseData);
 
-$(() => {
+listen(document, "DOMContentLoaded", () => {
 
   checkInput();
 
   windowEvents(app)();
-
-  $(".js-click-toggle").click(app.toggle);
+  listen(".js-click-toggle", "click", app.toggle);
 
 });

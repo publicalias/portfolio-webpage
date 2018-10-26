@@ -3,7 +3,7 @@
 //global imports
 
 const { toggleModal } = require("modal");
-const { animate, bindObject } = require("utilities");
+const { animate, bindObject, listen } = require("utilities");
 
 //utilities
 
@@ -75,17 +75,17 @@ bindObject(utils);
 
 const clickEvents = (app) => {
 
-  $(".js-click-restart").click(() => {
+  listen(".js-click-restart", "click", () => {
     app.restart();
     utils.updatePrompt(1);
     toggleModal(true);
   });
 
-  $(".js-click-option-left").click(utils.settings(app, true, 1));
-  $(".js-click-option-right").click(utils.settings(app, false, -1));
+  listen(".js-click-option-left", "click", utils.settings(app, true, 1));
+  listen(".js-click-option-right", "click", utils.settings(app, false, -1));
 
   for (let i = 0; i < 9; i++) {
-    $(`.js-click-cell-${i}`).click(app.move(i));
+    listen(`.js-click-cell-${i}`, "click", app.move(i));
   }
 
 };

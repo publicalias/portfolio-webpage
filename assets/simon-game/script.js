@@ -9,7 +9,7 @@ const { audio, btnIDs, display, renderButtons, toggleBlock, toggleHover } = requ
 //global imports
 
 const { checkInput } = require("check-input");
-const { bindObject, cycleItems, rngInt } = require("utilities");
+const { bindObject, cycleItems, listen, rngInt } = require("utilities");
 
 //app logic
 
@@ -173,7 +173,7 @@ const app = {
 
 bindObject(app);
 
-$(() => {
+listen(document, "DOMContentLoaded", () => {
 
   checkInput();
 

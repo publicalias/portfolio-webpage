@@ -9,7 +9,7 @@ const { renderResults, toggleOutline } = require("./scripts/view-logic");
 const { checkInput } = require("check-input");
 const { modalEvents, toggleModal } = require("modal");
 const { submitKeys } = require("submit-keys");
-const { getJSON, wrapFn } = require("utilities");
+const { getJSON, listen } = require("utilities");
 
 //app logic
 
@@ -31,20 +31,35 @@ const search = () => {
 
 };
 
+const closeModal = (parent) => (event) => {
+
+  const path = event.composedPath();
+
+  for (let i = 0; i < path.indexOf(parent); i++) {
+    if (path[i].classList.contains("js-close-modal")) {
+
+      toggleModal();
+
+      return;
+
+    }
+  }
+
+};
+
 //initialize app
 
-$(() => {
+listen(document, "DOMContentLoaded", () => {
+
+  const DOMRender = document.querySelector(".js-render-output");
 
   checkInput();
 
-  $(".js-submit-input, .js-submit-button")
-    .focus(toggleOutline)
-    .blur(toggleOutline);
-
-  $(window).keydown(submitKeys());
-  $(".js-submit-button").click(search);
+  listen(".js-submit-input, .js-submit-button", "blur focus", toggleOutline);
+  listen(window, "keydown", submitKeys());
+  listen(".js-submit-button", "click", search);
 
   modalEvents();
-  $(".js-render-output").on("click", ".js-close-modal", wrapFn(toggleModal));
+  listen(DOMRender, "click", closeModal(DOMRender));
 
 });

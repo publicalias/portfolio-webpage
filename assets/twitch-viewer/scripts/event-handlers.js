@@ -3,7 +3,7 @@
 //global imports
 
 const { submitKeys } = require("submit-keys");
-const { animate } = require("utilities");
+const { animate, listen } = require("utilities");
 
 //button events
 
@@ -29,17 +29,17 @@ const buttonEvents = () => {
 
   };
 
-  $(".js-filter-all").click(filter(true, true, true));
-  $(".js-filter-on").click(filter(true, false, false));
-  $(".js-filter-off").click(filter(false, true, false));
+  listen(".js-filter-all", "click", filter(true, true, true));
+  listen(".js-filter-on", "click", filter(true, false, false));
+  listen(".js-filter-off", "click", filter(false, true, false));
 
 };
 
 //submit events
 
 const submitEvents = (submit) => {
-  $(".js-submit-button").click(submit);
-  $(window).keydown(submitKeys());
+  listen(".js-submit-button", "click", submit);
+  listen(window, "keydown", submitKeys());
 };
 
 //exports

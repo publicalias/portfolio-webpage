@@ -9,7 +9,7 @@ const { updateView } = require("./scripts/view-logic");
 //global imports
 
 const { checkInput } = require("check-input");
-const { bindObject } = require("utilities");
+const { bindObject, listen } = require("utilities");
 
 //app logic
 
@@ -231,7 +231,7 @@ const app = {
 
 bindObject(app);
 
-$(() => {
+listen(document, "DOMContentLoaded", () => {
 
   checkInput();
 

@@ -93,6 +93,28 @@ const roundTo = (val, dec) => Math.round(val * Math.pow(10, dec)) / Math.pow(10,
 
 const leadZero = (val) => `${val < 10 ? "0" : ""}${val}`;
 
+//listen
+
+const listen = (query, event, fn) => {
+
+  const types = event.split(" ");
+
+  let nodes = query; //query string, node, or node list
+
+  if (typeof query === "string") {
+    nodes = document.querySelectorAll(query);
+  } else if (typeof query[Symbol.iterator] !== "function") {
+    nodes = [query];
+  }
+
+  for (const e of nodes) {
+    for (const f of types) {
+      e.addEventListener(f, fn);
+    }
+  }
+
+};
+
 //months
 
 const months = [
@@ -169,6 +191,7 @@ module.exports = {
   rngInt,
   roundTo,
   leadZero,
+  listen,
   months,
   sendData,
   smoothScroll,
