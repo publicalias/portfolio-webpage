@@ -12,7 +12,8 @@ const { tooltipAddress, tooltipHandler } = require("./scripts/view-logic");
 
 const { getSVG, tooltip } = require("d3-projects/app-logic");
 const { windowEvents, checkTooltip } = require("d3-projects/event-handlers");
-const { bindObject, getJSON, listen } = require("utilities");
+const { listen } = require("dom-utils");
+const { bindObject, getJSON } = require("utilities");
 
 //app logic
 

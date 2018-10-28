@@ -6,8 +6,8 @@ const { clearCanvas, paintCanvas } = require("./view-logic");
 
 //global imports
 
+const { listen } = require("dom-utils");
 const { bindReactClass } = require("react-utils");
-const { listen } = require("utilities");
 
 //node modules
 

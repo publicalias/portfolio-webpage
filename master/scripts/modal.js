@@ -2,7 +2,8 @@
 
 //global imports
 
-const { animate, listen, wrapFn } = require("utilities");
+const { animate, listen } = require("dom-utils");
+const { wrapFn } = require("utilities");
 
 //toggle modal
 

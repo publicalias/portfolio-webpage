@@ -2,7 +2,7 @@
 
 //global imports
 
-const { smoothScroll } = require("utilities");
+const { smoothScroll } = require("dom-utils");
 
 //get next view
 

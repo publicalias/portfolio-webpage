@@ -9,7 +9,8 @@ const { audio, btnIDs, display, renderButtons, toggleBlock, toggleHover } = requ
 //global imports
 
 const { checkInput } = require("check-input");
-const { bindObject, cycleItems, listen, rngInt } = require("utilities");
+const { listen } = require("dom-utils");
+const { bindObject, cycleItems, rngInt } = require("utilities");
 
 //app logic
 

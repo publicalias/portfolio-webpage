@@ -6,7 +6,7 @@ const { btnIDs } = require("./view-logic");
 
 //global imports
 
-const { listen } = require("utilities");
+const { listen } = require("dom-utils");
 
 //gameplay events
 

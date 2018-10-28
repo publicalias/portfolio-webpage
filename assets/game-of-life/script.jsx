@@ -12,9 +12,10 @@ const { childProps } = require("./scripts/view-logic");
 
 const { array2D, array2DEach, mouseYX } = require("canvas-games");
 const { checkInput } = require("check-input");
+const { listen } = require("dom-utils");
 const { bindReactClass } = require("react-utils");
 const { submitKeys } = require("submit-keys");
-const { cycleItems, deepCopy, listen, storageKey } = require("utilities");
+const { cycleItems, deepCopy, storageKey } = require("utilities");
 
 //node modules
 

@@ -9,7 +9,8 @@ const { tooltipBorders, nodeAttr } = require("./scripts/view-logic");
 const { checkInput } = require("check-input");
 const { getSVG, tooltip } = require("d3-projects/app-logic");
 const { windowEvents, checkTooltip } = require("d3-projects/event-handlers");
-const { bindObject, getJSON, listen } = require("utilities");
+const { listen } = require("dom-utils");
+const { bindObject, getJSON } = require("utilities");
 
 //app logic
 

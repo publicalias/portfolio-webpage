@@ -1,16 +1,5 @@
 "use strict";
 
-/*global TweenMax, Linear*/
-
-//animate
-
-const animate = (id, props, cb) => {
-  TweenMax.to(id, 0.5, Object.assign(props, {
-    ease: Linear.easeNone,
-    onComplete: cb
-  }));
-};
-
 //arr equal
 
 const arrEqual = (a, b) => a.toString() === b.toString();
@@ -64,23 +53,6 @@ const getJSON = (url) => fetch(url).then((res) => {
 
 });
 
-//item is in view
-
-const itemIsInView = ($item, addTop = 0, addBottom = 0) => {
-
-  const windowTop = $(document.scrollingElement).scrollTop();
-  const windowBottom = windowTop + $(window).outerHeight();
-
-  const itemTop = $item.offset().top;
-  const itemBottom = itemTop + $item.outerHeight();
-
-  const notAbove = windowBottom - addBottom > itemTop;
-  const notBelow = windowTop + addTop < itemBottom;
-
-  return notAbove && notBelow;
-
-};
-
 //rng int
 
 const rngInt = (min, max, inclusive = false) => Math.floor(Math.random() * (max - min + (inclusive ? 1 : 0))) + min;
@@ -92,28 +64,6 @@ const roundTo = (val, dec) => Math.round(val * Math.pow(10, dec)) / Math.pow(10,
 //lead zero
 
 const leadZero = (val) => `${val < 10 ? "0" : ""}${val}`;
-
-//listen
-
-const listen = (query, event, fn) => {
-
-  const types = event.split(" ");
-
-  let nodes = query; //query string, node, or node list
-
-  if (typeof query === "string") {
-    nodes = document.querySelectorAll(query);
-  } else if (typeof query[Symbol.iterator] !== "function") {
-    nodes = [query];
-  }
-
-  for (const e of nodes) {
-    for (const f of types) {
-      e.addEventListener(f, fn);
-    }
-  }
-
-};
 
 //months
 
@@ -142,12 +92,6 @@ const sendData = (res) => (err, status, body) => {
   }
 };
 
-//smooth scroll
-
-const smoothScroll = (scrollTop) => {
-  animate(document.scrollingElement, { scrollTop });
-};
-
 //storage key
 
 const storageKey = (key, val, session) => {
@@ -169,10 +113,6 @@ const storageKey = (key, val, session) => {
 
 };
 
-//void link
-
-const voidLink = (link) => link || "javascript:void(0)";
-
 //wrap fn
 
 const wrapFn = (fn, ...args) => () => fn(...args);
@@ -180,22 +120,17 @@ const wrapFn = (fn, ...args) => () => fn(...args);
 //exports
 
 module.exports = {
-  animate,
   arrEqual,
   bindObject,
   chance,
   cycleItems,
   deepCopy,
   getJSON,
-  itemIsInView,
   rngInt,
   roundTo,
   leadZero,
-  listen,
   months,
   sendData,
-  smoothScroll,
   storageKey,
-  voidLink,
   wrapFn
 };

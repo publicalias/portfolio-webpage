@@ -2,8 +2,8 @@
 
 //global imports
 
+const { animate, listen } = require("dom-utils");
 const { submitKeys } = require("submit-keys");
-const { animate, listen } = require("utilities");
 
 //button events
 

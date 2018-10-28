@@ -8,8 +8,8 @@ const { positionMenu } = require("../app-logic");
 
 //global imports
 
+const { listen } = require("dom-utils");
 const { bindReactClass, initKeyGen } = require("react-utils");
-const { listen } = require("utilities");
 
 //node modules
 

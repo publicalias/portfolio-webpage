@@ -2,8 +2,9 @@
 
 //global imports
 
+const { animate, listen } = require("dom-utils");
 const { toggleModal } = require("modal");
-const { animate, bindObject, listen } = require("utilities");
+const { bindObject } = require("utilities");
 
 //utilities
 

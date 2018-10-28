@@ -2,7 +2,7 @@
 
 //global imports
 
-const { voidLink } = require("utilities");
+const { voidLink } = require("dom-utils");
 
 //node modules
 

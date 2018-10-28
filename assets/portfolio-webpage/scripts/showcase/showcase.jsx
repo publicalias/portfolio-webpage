@@ -8,8 +8,8 @@ const { getNextView } = require("../app-logic");
 
 //global imports
 
+const { animate, itemIsInView, listen } = require("dom-utils");
 const { bindReactClass } = require("react-utils");
-const { animate, itemIsInView, listen } = require("utilities");
 
 //node modules
 

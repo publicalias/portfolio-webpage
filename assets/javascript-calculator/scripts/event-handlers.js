@@ -2,7 +2,8 @@
 
 //global imports
 
-const { listen, wrapFn } = require("utilities");
+const { listen } = require("dom-utils");
+const { wrapFn } = require("utilities");
 
 //button events
 

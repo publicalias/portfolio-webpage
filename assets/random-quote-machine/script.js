@@ -3,7 +3,8 @@
 //global imports
 
 const { checkInput } = require("check-input");
-const { animate, bindObject, getJSON, listen, rngInt, wrapFn } = require("utilities");
+const { animate, listen } = require("dom-utils");
+const { bindObject, getJSON, rngInt, wrapFn } = require("utilities");
 
 //utilities
 

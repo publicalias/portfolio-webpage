@@ -8,7 +8,8 @@ const { getOutput, getStream, parseChannel, parseStream } = require("./scripts/v
 //global imports
 
 const { checkInput } = require("check-input");
-const { animate, getJSON, listen, storageKey } = require("utilities");
+const { animate, listen } = require("dom-utils");
+const { getJSON, storageKey } = require("utilities");
 
 //app logic
 

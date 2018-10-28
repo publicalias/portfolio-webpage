@@ -2,7 +2,8 @@
 
 //global imports
 
-const { animate, smoothScroll, storageKey } = require("utilities");
+const { animate, smoothScroll } = require("dom-utils");
+const { storageKey } = require("utilities");
 
 //close panel
 
@@ -42,9 +43,9 @@ const togglePanel = (id, padding) => {
 
   if (shouldOpen) {
 
-    const h = $this.addClass("is-open").height();
+    const h = $this.addClass("is-open").outerHeight();
 
-    animate($this.height(0), { height: h }, () => {
+    animate($this.outerHeight(0), { height: h }, () => {
       $this.css({ height: "auto" });
     });
 

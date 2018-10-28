@@ -2,7 +2,8 @@
 
 //global imports
 
-const { bindObject, listen } = require("utilities");
+const { listen } = require("dom-utils");
+const { bindObject } = require("utilities");
 
 //utilities
 

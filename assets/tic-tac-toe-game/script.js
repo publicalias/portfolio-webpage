@@ -8,8 +8,9 @@ const { updateBoard, updateCount } = require("./scripts/view-logic");
 
 //global imports
 
+const { listen } = require("dom-utils");
 const { modalEvents, toggleModal } = require("modal");
-const { bindObject, listen } = require("utilities");
+const { bindObject } = require("utilities");
 
 //app logic
 
