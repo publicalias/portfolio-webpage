@@ -1,5 +1,9 @@
 "use strict";
 
+//global imports
+
+const { select } = require("dom-api");
+
 //submit keys
 
 const submitKeys = (id) => (event) => {
@@ -16,13 +20,13 @@ const submitKeys = (id) => (event) => {
 
   const enterFn = () => {
     if (active.includes(input)) {
-      document.querySelector(button).focus(); //fires event
+      select(button).focus(); //fires event
     }
   };
 
   const otherFn = () => {
     if (active.includes(button)) {
-      document.querySelector(input).focus();
+      select(input).focus();
     }
   };
 

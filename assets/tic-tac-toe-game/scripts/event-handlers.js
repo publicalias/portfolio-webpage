@@ -2,7 +2,7 @@
 
 //global imports
 
-const { animate, listen } = require("dom-utils");
+const { select } = require("dom-api");
 const { toggleModal } = require("modal");
 const { bindObject } = require("utilities");
 
@@ -16,27 +16,27 @@ const utils = {
 
   updatePrompt(val) {
 
-    const $question = $(".js-edit-question");
-    const $left = $(".js-click-option-left");
-    const $right = $(".js-click-option-right");
+    const DOMQuestion = select(".js-edit-question");
+    const DOMLeft = select(".js-click-option-left");
+    const DOMRight = select(".js-click-option-right");
 
     this.prompt = val;
 
     switch (this.prompt) {
       case 1:
-        $question.text("Single player?");
-        $left.text("Y");
-        $right.text("N");
+        DOMQuestion.text("Single player?");
+        DOMLeft.text("Y");
+        DOMRight.text("N");
         break;
       case 2:
-        animate($question, { opacity: 0 }, () => {
-          animate($question.text("Play as X or O?"), { opacity: 1 });
+        DOMQuestion.animate({ opacity: 0 }, () => {
+          DOMQuestion.text("Play as X or O?").animate({ opacity: 1 });
         });
-        animate($left, { opacity: 0 }, () => {
-          animate($left.text("X"), { opacity: 1 });
+        DOMLeft.animate({ opacity: 0 }, () => {
+          DOMLeft.text("X").animate({ opacity: 1 });
         });
-        animate($right, { opacity: 0 }, () => {
-          animate($right.text("O"), { opacity: 1 });
+        DOMRight.animate({ opacity: 0 }, () => {
+          DOMRight.text("O").animate({ opacity: 1 });
         });
     }
 
@@ -76,17 +76,17 @@ bindObject(utils);
 
 const clickEvents = (app) => {
 
-  listen(".js-click-restart", "click", () => {
+  select(".js-click-restart").on("click", () => {
     app.restart();
     utils.updatePrompt(1);
     toggleModal(true);
   });
 
-  listen(".js-click-option-left", "click", utils.settings(app, true, 1));
-  listen(".js-click-option-right", "click", utils.settings(app, false, -1));
+  select(".js-click-option-left").on("click", utils.settings(app, true, 1));
+  select(".js-click-option-right").on("click", utils.settings(app, false, -1));
 
   for (let i = 0; i < 9; i++) {
-    listen(`.js-click-cell-${i}`, "click", app.move(i));
+    select(`.js-click-cell-${i}`).on("click", app.move(i));
   }
 
 };

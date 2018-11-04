@@ -2,49 +2,60 @@
 
 //global imports
 
-const { animate, listen } = require("dom-utils");
+const { select } = require("dom-api");
 const { submitKeys } = require("submit-keys");
 
-//button events
+//filter events
 
-const buttonEvents = () => {
+const handleFilter = (online, offline, closed) => () => {
 
-  const filter = (online, offline, closed) => () => {
+  const output = ".js-filter-output";
 
-    const output = ".js-filter-output";
-
-    const fade = ($group, bool) => {
-      if (bool) {
-        animate($group.removeClass("is-hidden"), { opacity: 1 });
-      } else {
-        animate($group, { opacity: 0 }, () => {
-          $group.addClass("is-hidden");
-        });
-      }
-    };
-
-    fade($(`${output}.is-online`), online);
-    fade($(`${output}.is-offline`), offline);
-    fade($(`${output}.is-closed`), closed);
-
+  const fade = (DOMGroup, bool) => {
+    if (bool) {
+      DOMGroup.class("is-hidden", true, false).animate({ opacity: 1 });
+    } else {
+      DOMGroup.animate({ opacity: 0 }, () => {
+        DOMGroup.class("is-hidden", true, true);
+      });
+    }
   };
 
-  listen(".js-filter-all", "click", filter(true, true, true));
-  listen(".js-filter-on", "click", filter(true, false, false));
-  listen(".js-filter-off", "click", filter(false, true, false));
+  fade(select(`${output}.is-online`), online);
+  fade(select(`${output}.is-offline`), offline);
+  fade(select(`${output}.is-closed`), closed);
+
+};
+
+const filterEvents = () => {
+
+  const buttons = [{
+    id: "all",
+    args: [true, true, true]
+  }, {
+    id: "on",
+    args: [true, false, false]
+  }, {
+    id: "off",
+    args: [false, true, false]
+  }];
+
+  for (const e of buttons) {
+    select(`.js-filter-${e.id}`).on("click", handleFilter(...e.args));
+  }
 
 };
 
 //submit events
 
 const submitEvents = (submit) => {
-  listen(".js-submit-button", "click", submit);
-  listen(window, "keydown", submitKeys());
+  select(".js-submit-button").on("click", submit);
+  select(window).on("keydown", submitKeys());
 };
 
 //exports
 
 module.exports = {
-  buttonEvents,
+  filterEvents,
   submitEvents
 };

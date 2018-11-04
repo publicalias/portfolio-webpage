@@ -2,7 +2,7 @@
 
 //global imports
 
-const { listen } = require("dom-utils");
+const { select } = require("dom-api");
 const { bindObject } = require("utilities");
 
 //utilities
@@ -43,24 +43,29 @@ bindObject(utils);
 
 const clickEvents = (app) => {
 
-  listen(".js-click-work-plus", "click", app.set(true, 5));
-  listen(".js-click-work-minus", "click", app.set(true, -5));
-  listen(".js-click-break-plus", "click", app.set(false, 5));
-  listen(".js-click-break-minus", "click", app.set(false, -5));
+  const buttons = ["work-plus", "work-minus", "break-plus", "break-minus"];
 
-  listen(".js-toggle-timer", "click", utils.toggle(app));
+  for (const e of buttons) {
+
+    const [timer, delta] = e.split("-");
+
+    const bool = timer === "work";
+    const val = 5 * (delta === "plus" ? 1 : -1);
+
+    select(`.js-click-${e}`).on("click", app.set(bool, val));
+
+  }
+
+  select(".js-toggle-timer").on("click", utils.toggle(app));
 
 };
 
 //hover events
 
 const hoverEvents = () => {
-
-  const DOMToggle = document.querySelectorAll(".js-toggle-btn");
-
-  listen(DOMToggle, "mouseenter", utils.hover(true));
-  listen(DOMToggle, "mouseleave", utils.hover());
-
+  select(".js-toggle-btn")
+    .on("mouseenter", utils.hover(true))
+    .on("mouseleave", utils.hover());
 };
 
 //exports

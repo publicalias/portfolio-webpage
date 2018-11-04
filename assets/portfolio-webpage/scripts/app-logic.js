@@ -2,7 +2,7 @@
 
 //global imports
 
-const { smoothScroll } = require("dom-utils");
+const { select } = require("dom-api");
 
 //get next view
 
@@ -19,6 +19,23 @@ const getNextView = (right, showcase, last) => {
   }
 
   return next;
+
+};
+
+//item is in view
+
+const itemIsInView = ($item, addTop = 0, addBottom = 0) => {
+
+  const windowTop = $(document.scrollingElement).scrollTop();
+  const windowBottom = windowTop + $(window).outerHeight();
+
+  const itemTop = $item.offset().top;
+  const itemBottom = itemTop + $item.outerHeight();
+
+  const notAbove = windowBottom - addBottom > itemTop;
+  const notBelow = windowTop + addTop < itemBottom;
+
+  return notAbove && notBelow;
 
 };
 
@@ -64,18 +81,26 @@ const scrollToItem = (link) => () => {
   const navBar = $(".js-ref-nav-bar").outerHeight();
   const margin = $(window).outerWidth() * 0.045;
 
+  const scrollTop = link === ".js-scroll-bio" ? 0 : offsetTop - navBar - margin;
+
   $(".js-expand-sublist").hide();
 
-  smoothScroll(link === ".js-scroll-bio" ? 0 : offsetTop - navBar - margin);
+  select(document.scrollingElement).animate({ scrollTop });
 
 };
+
+//void link
+
+const voidLink = (link) => link || "javascript:void(0)";
 
 //exports
 
 module.exports = {
   getNextView,
+  itemIsInView,
   loadReCaptcha,
   positionMenu,
   resetForm,
-  scrollToItem
+  scrollToItem,
+  voidLink
 };

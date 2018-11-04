@@ -12,7 +12,7 @@ const { childProps } = require("./scripts/view-logic");
 
 const { array2D, array2DEach, mouseYX } = require("canvas-games");
 const { checkInput } = require("check-input");
-const { listen } = require("dom-utils");
+const { select } = require("dom-api");
 const { bindReactClass } = require("react-utils");
 const { submitKeys } = require("submit-keys");
 const { cycleItems, deepCopy, storageKey } = require("utilities");
@@ -332,10 +332,12 @@ class App extends React.Component {
 
     this.handleResize(); //not redundant
 
-    listen(window, "load resize", this.handleResize);
-
-    listen(window, "keydown", submitKeys("rules"));
-    listen(window, "keydown", submitKeys("scale"));
+    select(window)
+      .on("load resize", this.handleResize)
+      .on("keydown", (event) => {
+        submitKeys("rules")(event);
+        submitKeys("scale")(event);
+      });
 
     this.startIter();
 

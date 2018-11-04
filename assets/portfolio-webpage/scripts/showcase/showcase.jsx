@@ -4,11 +4,11 @@
 
 const Carousel = require("./carousel");
 
-const { getNextView } = require("../app-logic");
+const { getNextView, itemIsInView } = require("../app-logic");
 
 //global imports
 
-const { animate, itemIsInView, listen } = require("dom-utils");
+const { select } = require("dom-api");
 const { bindReactClass } = require("react-utils");
 
 //node modules
@@ -57,13 +57,13 @@ class Showcase extends React.Component {
   turnCarousel(right, reset) {
     return () => {
 
-      const $showcase = $(".js-toggle-showcase");
+      const DOMShowcase = select(".js-toggle-showcase");
 
       const view = getNextView(right, this.props.showcase, this.state.view);
 
-      animate($showcase, { opacity: 0 }, () => {
+      DOMShowcase.animate({ opacity: 0 }, () => {
         this.setState({ view }, () => {
-          animate($showcase, { opacity: 1 });
+          DOMShowcase.animate({ opacity: 1 });
         });
       });
 
@@ -95,7 +95,7 @@ class Showcase extends React.Component {
 
     this.initCarousel();
 
-    listen(window, "scroll", this.initCarousel);
+    select(window).on("scroll", this.initCarousel);
 
   }
 

@@ -2,13 +2,13 @@
 
 //local imports
 
-const { buttonEvents, submitEvents } = require("./scripts/event-handlers");
+const { filterEvents, submitEvents } = require("./scripts/event-handlers");
 const { getOutput, getStream, parseChannel, parseStream } = require("./scripts/view-logic");
 
 //global imports
 
 const { checkInput } = require("check-input");
-const { animate, listen } = require("dom-utils");
+const { select } = require("dom-api");
 const { getJSON, storageKey } = require("utilities");
 
 //app logic
@@ -52,23 +52,23 @@ const submit = () => {
     return;
   }
 
-  const $output = $(".js-render-output");
+  const DOMOutput = select(".js-render-output");
 
-  animate($output, { opacity: 0 }, () => {
+  DOMOutput.animate({ opacity: 0 }, () => {
     search(channels);
-    animate($output, { opacity: 1 });
+    DOMOutput.animate({ opacity: 1 });
   });
 
 };
 
 //initialize app
 
-listen(document, "DOMContentLoaded", () => {
+select(document).on("DOMContentLoaded", () => {
 
   checkInput();
 
   submitEvents(submit);
-  buttonEvents();
+  filterEvents();
 
   search(storageKey("channels"));
 

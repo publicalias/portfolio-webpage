@@ -9,7 +9,7 @@ const { audio, btnIDs, display, renderButtons, toggleBlock, toggleHover } = requ
 //global imports
 
 const { checkInput } = require("check-input");
-const { listen } = require("dom-utils");
+const { select } = require("dom-api");
 const { bindObject, cycleItems, rngInt } = require("utilities");
 
 //app logic
@@ -94,7 +94,7 @@ const app = {
   playBtn(num) {
     return () => {
 
-      if ($(`.js-click-btn-${btnIDs[num]}`).hasClass("is-disabled")) {
+      if ($(`.js-click-${btnIDs[num]}`).hasClass("is-disabled")) {
         return;
       }
 
@@ -174,7 +174,7 @@ const app = {
 
 bindObject(app);
 
-listen(document, "DOMContentLoaded", () => {
+select(document).on("DOMContentLoaded", () => {
 
   checkInput();
 

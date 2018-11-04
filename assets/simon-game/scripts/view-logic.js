@@ -23,7 +23,7 @@ const createAudio = () => {
   for (let i = 0; i < btnIDs.length; i++) {
 
     const btn = {
-      id: `.js-click-btn-${btnIDs[i]}`,
+      id: `.js-click-${btnIDs[i]}`,
       playback: 0,
       sound: []
     };
@@ -66,7 +66,7 @@ const renderButtons = () => {
   btnIDs.forEach((e, i) => {
     $(".js-render-buttons").append(`
       <svg class="c-simon-game__play-btn--${e}" viewBox="0 0 100 100">
-        <path class="c-simon-game__btn-path--${e} js-click-btn-${e} js-hover-btn" d="M 0 100 H 47.5 A 57.5 57.5 0 0 1 100 47.5 V 0 A 107.5 107.5 0 0 0 0 100" transform="rotate(${i * 90}, 50, 50)" />
+        <path class="c-simon-game__btn-path--${e} js-click-${e} js-hover-btn" d="M 0 100 H 47.5 A 57.5 57.5 0 0 1 100 47.5 V 0 A 107.5 107.5 0 0 0 0 100" transform="rotate(${i * 90}, 50, 50)" />
       </svg>
     `);
   });

@@ -2,17 +2,21 @@
 
 //global imports
 
-const { animate, smoothScroll } = require("dom-utils");
+const { select } = require("dom-api");
 const { storageKey } = require("utilities");
 
 //close panel
 
 const closePanel = () => {
 
-  const $open = $(".js-expand-panel.is-open");
+  const DOMOpen = select(".js-expand-panel.is-open");
 
-  animate($open, { height: 0 }, () => {
-    $open.removeClass("is-open").css({ height: "auto" });
+  if (!DOMOpen) {
+    return;
+  }
+
+  DOMOpen.animate({ height: 0 }, () => {
+    DOMOpen.class("is-open", true, false).css({ height: "auto" });
   });
 
   storageKey("panel", "", true);
@@ -28,25 +32,26 @@ const handleScroll = (id, padding, $open) => {
 
   const scrollTop = thisOffsetTop - openOffsetTop - padding;
 
-  smoothScroll(scrollTop);
+  select(document.scrollingElement).animate({ scrollTop });
 
 };
 
 const togglePanel = (id, padding) => {
 
-  const $this = $(`.js-expand-panel-${id}`);
+  const DOMThis = select(`.js-expand-panel-${id}`);
+
   const $open = $(".js-expand-panel.is-open");
 
-  const shouldOpen = !$this.hasClass("is-open");
+  const shouldOpen = !DOMThis.class("is-open");
 
   closePanel();
 
   if (shouldOpen) {
 
-    const h = $this.addClass("is-open").outerHeight();
+    const h = DOMThis.class("is-open", true, true).rect().height;
 
-    animate($this.outerHeight(0), { height: h }, () => {
-      $this.css({ height: "auto" });
+    DOMThis.rect({ height: 0 }).animate({ height: h }, () => {
+      DOMThis.css({ height: "auto" });
     });
 
     storageKey("panel", id, true);

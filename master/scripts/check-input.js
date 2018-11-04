@@ -2,7 +2,7 @@
 
 //global imports
 
-const { listen } = require("dom-utils");
+const { select } = require("dom-api");
 const { bindObject } = require("utilities");
 
 //check input
@@ -45,12 +45,9 @@ const utils = {
 bindObject(utils);
 
 const checkInput = () => {
-
-  const DOMCheck = document.querySelector(".js-check-input");
-
-  listen(DOMCheck, "touchstart", utils.isTouch);
-  listen(DOMCheck, "mouseover", utils.isMouse);
-
+  select(".js-check-input")
+    .on("touchstart", utils.isTouch)
+    .on("mouseover", utils.isMouse);
 };
 
 //exports

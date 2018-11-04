@@ -1,5 +1,9 @@
 "use strict";
 
+//global imports
+
+const { select } = require("dom-api");
+
 //update view
 
 const updateView = (that, id) => {
@@ -8,7 +12,7 @@ const updateView = (that, id) => {
   $(".js-edit-chain").text(that.chain);
 
   if (id) {
-    document.querySelector(`.js-click-${id}`).focus();
+    select(`.js-click-${id}`).focus();
   }
 
 };

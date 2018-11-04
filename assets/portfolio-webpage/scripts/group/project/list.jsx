@@ -19,8 +19,8 @@ const List = (props) => {
       <h5 className="u-margin-full">{props.name}</h5>
       <ul>
         {props.list.map((e) => typeof e === "object" ? (
-          <li className="u-underline">
-            <a href={e.link} key={keyGen(e.link)}>{e.text}</a>
+          <li className="u-underline" key={keyGen(e.link)}>
+            <a href={e.link}>{e.text}</a>
           </li>
         ) : <li key={keyGen(e)}>{e}</li>)}
       </ul>

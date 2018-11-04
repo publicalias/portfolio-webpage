@@ -3,8 +3,9 @@
 //global imports
 
 const { getSVG, tooltip } = require("d3-projects/app-logic");
-const { windowEvents, checkTooltip } = require("d3-projects/event-handlers");
+const { checkTooltip, globalEvents } = require("d3-projects/event-handlers");
 const { svgChart, svgParams, svgMargin } = require("d3-projects/view-logic");
+const { select } = require("dom-api");
 const { bindObject, getJSON, months } = require("utilities");
 
 //app logic
@@ -189,4 +190,4 @@ bindObject(app);
 
 getJSON(app.dataURL).then(app.parseData);
 
-$(windowEvents(app));
+select(document).on("DOMContentLoaded", globalEvents(app));

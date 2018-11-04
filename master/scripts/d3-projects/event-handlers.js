@@ -2,7 +2,7 @@
 
 //global imports
 
-const { listen } = require("dom-utils");
+const { select } = require("dom-api");
 const { wrapFn } = require("utilities");
 
 //check tooltip
@@ -18,18 +18,16 @@ const checkTooltip = (app) => (d) => {
 
 };
 
-//window events
+//global events
 
-const windowEvents = (app) => () => {
+const globalEvents = (app) => () => {
 
   app.ready++;
   app.getSVG();
 
-  listen(window, "scroll", wrapFn(app.handleMouseLeave));
+  select(window).on("scroll", wrapFn(app.handleMouseLeave));
 
-  //ensures mobile support
-
-  listen(".js-ref-svg", "touchstart", app.handleMouseLeave);
+  select(".js-ref-svg").on("touchstart", app.handleMouseLeave); //ensures mobile support
 
 };
 
@@ -37,5 +35,5 @@ const windowEvents = (app) => () => {
 
 module.exports = {
   checkTooltip,
-  windowEvents
+  globalEvents
 };

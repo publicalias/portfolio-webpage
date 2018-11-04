@@ -1,5 +1,9 @@
 "use strict";
 
+//global imports
+
+const { select } = require("dom-api");
+
 //tooltip address
 
 const tooltipAddress = (d) => (res) => {
@@ -32,7 +36,7 @@ const tooltipHandler = (d, node, tooltip) => () => {
 
   //check current node
 
-  const DOMHover = document.querySelectorAll(":hover");
+  const DOMHover = select(":hover");
 
   if (DOMHover[DOMHover.length - 1] !== node) {
     return;

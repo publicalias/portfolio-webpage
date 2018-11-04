@@ -6,23 +6,38 @@ const { btnIDs } = require("./view-logic");
 
 //global imports
 
-const { listen } = require("dom-utils");
+const { select } = require("dom-api");
 
 //gameplay events
 
 const gameplayEvents = (app) => {
   btnIDs.forEach((e, i) => {
-    listen(`.js-click-btn-${e}`, "click", app.playBtn(i));
+    select(`.js-click-${e}`).on("click", app.playBtn(i));
   });
 };
 
 //setting events
 
 const settingEvents = (app) => {
-  listen(".js-click-btn-steps", "click", app.stepsBtn);
-  listen(".js-click-btn-start", "click", app.startBtn);
-  listen(".js-click-btn-restart", "click", app.restartBtn);
-  listen(".js-click-btn-strict", "click", app.strictBtn);
+
+  const buttons = [{
+    id: "steps",
+    fn: app.stepsBtn
+  }, {
+    id: "start",
+    fn: app.startBtn
+  }, {
+    id: "restart",
+    fn: app.restartBtn
+  }, {
+    id: "strict",
+    fn: app.strictBtn
+  }];
+
+  for (const e of buttons) {
+    select(`.js-click-${e.id}`).on("click", e.fn);
+  }
+
 };
 
 //exports

@@ -6,7 +6,7 @@ const SwipeBtn = require("./swipe-btn");
 
 //global imports
 
-const { voidLink } = require("dom-utils");
+const { voidLink } = require("../app-logic");
 
 //node modules
 

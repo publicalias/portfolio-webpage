@@ -2,38 +2,40 @@
 
 //global imports
 
-const { listen } = require("dom-utils");
+const { select } = require("dom-api");
 const { wrapFn } = require("utilities");
 
 //button events
 
 const buttonEvents = (app) => {
 
-  const fns = ["dec", "ms", "mc", "mr", "mp", "mm", "radix", "square", "frac", "neg", "ce", "c", "del", "equals"];
-  const ops = [{
-    id: ".js-click-div",
-    op: "/"
-  }, {
-    id: ".js-click-mult",
-    op: "*"
-  }, {
-    id: ".js-click-sub",
-    op: "-"
-  }, {
-    id: ".js-click-add",
-    op: "+"
-  }];
+  const buttons = {
+    special: ["dec", "ms", "mc", "mr", "mp", "mm", "radix", "square", "frac", "neg", "ce", "c", "del", "equals"],
+    basic: [{
+      id: "div",
+      op: "/"
+    }, {
+      id: "mult",
+      op: "*"
+    }, {
+      id: "sub",
+      op: "-"
+    }, {
+      id: "add",
+      op: "+"
+    }]
+  };
 
-  for (const e of fns) {
-    listen(`.js-click-${e}`, "click", app[e]);
+  for (const e of buttons.special) {
+    select(`.js-click-${e}`).on("click", app[e]);
   }
 
-  for (const e of ops) {
-    listen(e.id, "click", wrapFn(app.arith, e.op));
+  for (const e of buttons.basic) {
+    select(`.js-click-${e.id}`).on("click", wrapFn(app.arith, e.op));
   }
 
   for (let i = 0; i < 10; i++) {
-    listen(`.js-click-${i}`, "click", wrapFn(app.num, i.toString()));
+    select(`.js-click-${i}`).on("click", wrapFn(app.num, i.toString()));
   }
 
 };
@@ -41,7 +43,7 @@ const buttonEvents = (app) => {
 //key events
 
 const keyEvents = (app) => {
-  listen(window, "keydown", (event) => {
+  select(window).on("keydown", (event) => {
     switch (event.key) {
       case ".":
         app.dec(true);

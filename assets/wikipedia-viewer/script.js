@@ -7,10 +7,10 @@ const { renderResults, toggleOutline } = require("./scripts/view-logic");
 //global imports
 
 const { checkInput } = require("check-input");
-const { listen } = require("dom-utils");
+const { select } = require("dom-api");
 const { modalEvents, toggleModal } = require("modal");
 const { submitKeys } = require("submit-keys");
-const { getJSON } = require("utilities");
+const { getJSON, wrapFn } = require("utilities");
 
 //app logic
 
@@ -32,35 +32,19 @@ const search = () => {
 
 };
 
-const closeModal = (parent) => (event) => {
-
-  const path = event.composedPath();
-
-  for (let i = 0; i < path.indexOf(parent); i++) {
-    if (path[i].classList.contains("js-close-modal")) {
-
-      toggleModal();
-
-      return;
-
-    }
-  }
-
-};
-
 //initialize app
 
-listen(document, "DOMContentLoaded", () => {
-
-  const DOMRender = document.querySelector(".js-render-output");
+select(document).on("DOMContentLoaded", () => {
 
   checkInput();
 
-  listen(".js-submit-input, .js-submit-button", "blur focus", toggleOutline);
-  listen(window, "keydown", submitKeys());
-  listen(".js-submit-button", "click", search);
+  select(".js-submit-input, .js-submit-button").on("blur focus", toggleOutline);
+  select(".js-submit-button").on("click", search);
+
+  select(window).on("keydown", submitKeys());
 
   modalEvents();
-  listen(DOMRender, "click", closeModal(DOMRender));
+
+  select(".js-render-output").on("click", ".js-close-modal", wrapFn(toggleModal));
 
 });

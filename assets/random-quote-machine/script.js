@@ -3,7 +3,7 @@
 //global imports
 
 const { checkInput } = require("check-input");
-const { animate, listen } = require("dom-utils");
+const { select } = require("dom-api");
 const { bindObject, getJSON, rngInt, wrapFn } = require("utilities");
 
 //utilities
@@ -17,7 +17,7 @@ const display = (next, init) => {
   $(".js-edit-twitter").attr("href", href);
 
   if (!init) {
-    animate(".js-fade-text", { opacity: 1 });
+    select(".js-fade-text").animate({ opacity: 1 });
   }
 
 };
@@ -43,9 +43,7 @@ const app = {
     if (init) {
       display(next, init);
     } else {
-      animate(".js-fade-text", { opacity: 0 }, () => {
-        display(next);
-      });
+      select(".js-fade-text").animate({ opacity: 0 }, wrapFn(display, next));
     }
 
   }
@@ -65,11 +63,11 @@ getJSON("media/quotes.json").then((res) => {
 
 });
 
-listen(document, "DOMContentLoaded", () => {
+select(document).on("DOMContentLoaded", () => {
 
   checkInput();
 
-  listen(".js-click-refresh", "click", wrapFn(app.refresh));
+  select(".js-click-refresh").on("click", wrapFn(app.refresh));
 
   app.ready++;
   app.refresh(true);

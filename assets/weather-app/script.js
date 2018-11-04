@@ -7,7 +7,7 @@ const { initDisplay, toggleMetric } = require("./scripts/view-logic");
 //global imports
 
 const { checkInput } = require("check-input");
-const { listen } = require("dom-utils");
+const { select } = require("dom-api");
 const { bindObject, getJSON } = require("utilities");
 
 //app logic
@@ -20,9 +20,9 @@ const app = {
 
   //get weather
 
-  getWeather(pos) {
+  getWeather(position) {
 
-    const { coords: { latitude: lat, longitude: lon } } = pos;
+    const { coords: { latitude: lat, longitude: lon } } = position;
 
     getJSON(`/weather-app/weather?lat=${lat}&lon=${lon}`).then(this.display);
 
@@ -59,12 +59,12 @@ const app = {
 
 bindObject(app);
 
-listen(document, "DOMContentLoaded", () => {
+select(document).on("DOMContentLoaded", () => {
 
   checkInput();
 
   navigator.geolocation.getCurrentPosition(app.getWeather);
 
-  listen(".js-click-toggle", "click", app.toggle);
+  select(".js-click-toggle").on("click", app.toggle);
 
 });

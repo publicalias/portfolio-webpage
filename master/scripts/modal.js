@@ -2,43 +2,43 @@
 
 //global imports
 
-const { animate, listen } = require("dom-utils");
+const { select } = require("dom-api");
 const { wrapFn } = require("utilities");
 
 //toggle modal
 
-const toggleState = (bool = false, $hide, $show) => {
-  $hide.toggleClass("is-open", bool);
-  $show.toggleClass("is-open", bool);
+const toggleState = (bool = false, DOMHide, DOMShow) => {
+  DOMHide.class("is-open", true, bool);
+  DOMShow.class("is-open", true, bool);
 };
 
 const toggleModal = (bool) => {
 
-  const $fade = $(".js-fade-modal");
-  const $hide = $(".js-hide-modal");
-  const $show = $(".js-show-modal");
+  const DOMFade = select(".js-fade-modal");
+  const DOMHide = select(".js-hide-modal");
+  const DOMShow = select(".js-show-modal");
 
   if (bool) {
-    animate($fade.addClass("is-open"), { opacity: 1 });
-    $hide.css({
-      "background-size": $hide.css("width"),
-      "width": $hide.css("width")
+    DOMFade.class("is-open", true, true).animate({ opacity: 1 });
+    DOMHide.css({
+      backgroundSize: DOMHide.css().width,
+      width: DOMHide.css().width
     });
   } else {
-    animate($fade, { opacity: 0 }, () => {
-      $fade.removeClass("is-open");
+    DOMFade.animate({ opacity: 0 }, () => {
+      DOMFade.class("is-open", true, false);
     });
-    $hide.css({
-      "background-size": "100%",
-      "width": "auto"
+    DOMHide.css({
+      backgroundSize: "100%",
+      width: "auto"
     });
-    toggleState(bool, $hide, $show);
+    toggleState(bool, DOMHide, DOMShow);
   }
 
-  animate($show, { top: bool ? 0 : "100vh" }, () => {
+  DOMShow.animate({ top: bool ? 0 : "100vh" }, () => {
     if (bool) {
-      toggleState(bool, $hide, $show);
-      $show.scrollTop(0);
+      toggleState(bool, DOMHide, DOMShow);
+      DOMShow.scrollTop = 0; //debug
     }
   });
 
@@ -47,12 +47,13 @@ const toggleModal = (bool) => {
 //modal events
 
 const modalEvents = () => {
-  listen(window, "resize", wrapFn(toggleModal));
-  listen(window, "keydown", (event) => {
-    if (event.key === "Escape") {
-      toggleModal();
-    }
-  });
+  select(window)
+    .on("resize", wrapFn(toggleModal))
+    .on("keydown", (event) => {
+      if (event.key === "Escape") {
+        toggleModal();
+      }
+    });
 };
 
 //exports

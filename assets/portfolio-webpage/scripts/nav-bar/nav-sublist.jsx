@@ -8,7 +8,7 @@ const { positionMenu } = require("../app-logic");
 
 //global imports
 
-const { listen } = require("dom-utils");
+const { select } = require("dom-api");
 const { bindReactClass, initKeyGen } = require("react-utils");
 
 //node modules
@@ -36,7 +36,7 @@ class NavSublist extends React.Component {
   }
 
   componentDidMount() {
-    listen(window, "resize scroll", positionMenu);
+    select(window).on("resize scroll", positionMenu);
   }
 
   render() {

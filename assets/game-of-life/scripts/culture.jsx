@@ -6,7 +6,7 @@ const { clearCanvas, paintCanvas } = require("./view-logic");
 
 //global imports
 
-const { listen } = require("dom-utils");
+const { select } = require("dom-api");
 const { bindReactClass } = require("react-utils");
 
 //node modules
@@ -60,7 +60,7 @@ class Culture extends React.Component {
 
     this.updateDisplay();
 
-    listen(".js-ref-canvas", "mousedown", (event) => {
+    select(".js-ref-canvas").on("mousedown", (event) => {
       if (event.detail > 1) {
         event.preventDefault(); //ignore select
       }

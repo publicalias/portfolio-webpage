@@ -8,7 +8,7 @@ const { updateBoard, updateCount } = require("./scripts/view-logic");
 
 //global imports
 
-const { listen } = require("dom-utils");
+const { select } = require("dom-api");
 const { modalEvents, toggleModal } = require("modal");
 const { bindObject } = require("utilities");
 
@@ -165,7 +165,7 @@ const app = {
 
 bindObject(app);
 
-listen(document, "DOMContentLoaded", () => {
+select(document).on("DOMContentLoaded", () => {
 
   clickEvents(app);
   modalEvents();

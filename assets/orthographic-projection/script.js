@@ -11,8 +11,8 @@ const { tooltipAddress, tooltipHandler } = require("./scripts/view-logic");
 //global imports
 
 const { getSVG, tooltip } = require("d3-projects/app-logic");
-const { windowEvents, checkTooltip } = require("d3-projects/event-handlers");
-const { listen } = require("dom-utils");
+const { checkTooltip, globalEvents } = require("d3-projects/event-handlers");
+const { select } = require("dom-api");
 const { bindObject, getJSON } = require("utilities");
 
 //app logic
@@ -183,7 +183,7 @@ const svg = {
     bindObject(rotate);
 
     for (const e of rotate.ids) {
-      listen(`.js-click-${e}`, "click", () => {
+      select(`.js-click-${e}`).on("click", () => {
         if (e === "center") {
           rotate[e]();
         } else if (!rotate.int) {
@@ -205,4 +205,4 @@ bindObject(app);
 getJSON(app.dataURL).then(app.parseData);
 getJSON(app.landURL).then(app.parseLand);
 
-$(windowEvents(app));
+select(document).on("DOMContentLoaded", globalEvents(app));
