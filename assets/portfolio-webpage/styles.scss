@@ -157,6 +157,8 @@
   }
 }
 
+.js-expand-sublist { &.is-open { display: block } }
+
 //utilities
 
 .u-padding-left { padding-left: 1.5vw; }

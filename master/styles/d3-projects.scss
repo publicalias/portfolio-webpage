@@ -44,3 +44,7 @@ text {
   }
 
 }
+
+//states
+
+.js-toggle-tooltip { &.is-open { display: block; } }

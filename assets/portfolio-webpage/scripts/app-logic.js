@@ -49,9 +49,9 @@ const loadReCaptcha = () => {
 
 const positionMenu = () => {
 
-  const $sublist = $(".js-expand-sublist");
+  const DOMSublist = select(".js-expand-sublist");
 
-  if ($sublist.css("display") === "none") {
+  if (DOMSublist.css().display === "none") {
     return;
   }
 
@@ -60,7 +60,7 @@ const positionMenu = () => {
 
   const offsetTop = scrollTop < margin ? margin - scrollTop : 0;
 
-  $sublist.css({ top: $(".js-ref-nav-bar").outerHeight() + offsetTop });
+  DOMSublist.css({ top: `${$(".js-ref-nav-bar").outerHeight() + offsetTop}px` });
 
 };
 
@@ -83,7 +83,7 @@ const scrollToItem = (link) => () => {
 
   const scrollTop = link === ".js-scroll-bio" ? 0 : offsetTop - navBar - margin;
 
-  $(".js-expand-sublist").hide();
+  select(".js-expand-sublist").class("is-open", true, false);
 
   select(document.scrollingElement).animate({ scrollTop });
 

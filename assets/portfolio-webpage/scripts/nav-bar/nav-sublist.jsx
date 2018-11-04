@@ -29,7 +29,7 @@ class NavSublist extends React.Component {
 
   handleClick() {
 
-    $(".js-expand-sublist").toggle();
+    select(".js-expand-sublist").class("is-open", true);
 
     positionMenu();
 

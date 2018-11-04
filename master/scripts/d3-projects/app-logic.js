@@ -1,5 +1,9 @@
 "use strict";
 
+//global imports
+
+const { select } = require("dom-api");
+
 //get svg
 
 const getSVG = (app, svg, ready, steps) => () => {
@@ -30,16 +34,18 @@ const getSVG = (app, svg, ready, steps) => () => {
 
 //tooltip
 
-const getPosition = ({ height, left, top, width }, $tooltip) => ({
-  above: top - $tooltip.outerHeight(),
+const getPosition = ({ height, left, top, width }, DOMTooltip) => ({
+  above: top - DOMTooltip.rect().height,
   below: top + height,
-  left: left - $tooltip.outerWidth(),
+  left: left - DOMTooltip.rect().width,
   right: left + width
 });
 
 const tooltip = (bool = false, node, top, left) => {
 
-  const $tooltip = $(".js-toggle-tooltip");
+  const DOMTooltip = select(".js-toggle-tooltip");
+
+  DOMTooltip.class("is-open", true, bool);
 
   if (bool) {
 
@@ -49,14 +55,12 @@ const tooltip = (bool = false, node, top, left) => {
     const displayBelow = thisRect.top - svgRect.top < svgRect.height / 2;
     const displayRight = thisRect.left - svgRect.left < svgRect.width / 2;
 
-    const pos = getPosition(thisRect, $tooltip);
+    const p = getPosition(thisRect, DOMTooltip);
 
-    $tooltip.css({ top: top || (displayBelow ? pos.below : pos.above) });
-    $tooltip.css({ left: left || (displayRight ? pos.right : pos.left) });
+    DOMTooltip.css({ top: `${top || (displayBelow ? p.below : p.above)}px` });
+    DOMTooltip.css({ left: `${left || (displayRight ? p.right : p.left)}px` });
 
   }
-
-  $tooltip.toggle(bool);
 
 };
 

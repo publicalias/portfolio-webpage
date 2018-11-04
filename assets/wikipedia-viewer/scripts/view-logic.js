@@ -2,6 +2,7 @@
 
 //global imports
 
+const { select } = require("dom-api");
 const { toggleModal } = require("modal");
 
 //render results
@@ -47,7 +48,7 @@ const renderResults = (res) => {
 //toggle outline
 
 const toggleOutline = (event) => {
-  $(".js-outline-search-bar").css({ outline: event.type === "focus" ? "1px solid white" : "none" });
+  select(".js-outline-search-bar").css({ outline: event.type === "focus" ? "1px solid white" : "none" });
 };
 
 //exports

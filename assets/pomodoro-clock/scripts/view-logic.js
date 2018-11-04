@@ -2,12 +2,13 @@
 
 //global imports
 
+const { select } = require("dom-api");
 const { leadZero } = require("utilities");
 
 //empty bar
 
 const emptyBar = () => {
-  $(".js-edit-progress-bar").css({ width: 0 });
+  select(".js-edit-progress-bar").css({ width: 0 });
 };
 
 //play sound
@@ -27,7 +28,7 @@ const readTime = (set, count, id) => {
 
   $(`.js-edit-${id}-timer`).text(`${leadZero(Math.floor(count / 60))}:${leadZero(Math.round(count % 60))}`);
 
-  $(".js-edit-progress-bar").css({ width: `${barWidth}%` });
+  select(".js-edit-progress-bar").css({ width: `${barWidth}%` });
 
 };
 
