@@ -27,6 +27,7 @@ const display = (next, init) => {
 const app = {
 
   data: null,
+  last: null,
 
   ready: 0,
 
@@ -39,6 +40,16 @@ const app = {
     }
 
     const next = this.data[rngInt(0, this.data.length)];
+
+    if (next === this.last) {
+
+      this.refresh();
+
+      return;
+
+    }
+
+    this.last = next;
 
     if (init) {
       display(next, init);
