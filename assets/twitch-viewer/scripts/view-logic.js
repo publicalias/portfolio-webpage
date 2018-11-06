@@ -2,6 +2,7 @@
 
 //global imports
 
+const { select } = require("dom-api");
 const { getJSON } = require("utilities");
 
 //get output
@@ -31,9 +32,7 @@ const parseChannel = (id) => (res) => {
     return;
   }
 
-  $(`.js-edit-state-${id}`)
-    .removeClass("is-closed")
-    .addClass("is-offline");
+  select(`.js-edit-state-${id}`).class("is-closed is-offline", true);
 
   $(`.js-edit-link-${id}`).attr("href", res.url);
   $(`.js-edit-avatar-${id}`).attr("src", res.logo || undefined);
@@ -51,9 +50,7 @@ const parseStream = (id) => (res) => {
 
   const status = `${res.stream.channel.game}: ${res.stream.channel.status}`;
 
-  $(`.js-edit-state-${id}`)
-    .removeClass("is-offline")
-    .addClass("is-online");
+  select(`.js-edit-state-${id}`).class("is-offline is-online", true);
 
   $(`.js-edit-status-${id}`).text(status.length < 30 ? status : `${status.slice(0, 26)}...`);
 

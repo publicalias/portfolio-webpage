@@ -1,22 +1,28 @@
 "use strict";
 
+//global imports
+
+const { select } = require("dom-api");
+
 //update board
 
 const updateBoard = (board) => {
   for (let i = 0; i < board.length; i++) {
 
-    const $id = $(`.js-click-cell-${i}`);
+    const DOMCell = select(`.js-click-cell-${i}`);
 
     switch (board[i]) {
       case 1:
-        $id.text("X").removeClass("is-empty");
+        DOMCell.text("X");
         break;
       case 0:
-        $id.html("&nbsp;").addClass("is-empty");
+        DOMCell.html("&nbsp;");
         break;
       case -1:
-        $id.text("O").removeClass("is-empty");
+        DOMCell.text("O");
     }
+
+    DOMCell.class("is-empty", true, board[i] === 0);
 
   }
 };

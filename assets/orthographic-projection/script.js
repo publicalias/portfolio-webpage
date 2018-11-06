@@ -50,7 +50,7 @@ const app = {
 
   handleMouseLeave() {
 
-    $(".js-ref-data").removeClass("is-active");
+    select(".js-ref-data").class("is-active", true, false);
 
     this.tooltip();
 

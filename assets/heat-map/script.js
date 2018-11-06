@@ -29,7 +29,7 @@ const app = {
     $(".js-edit-temp").html(`Temperature: ${d.temp}&deg;C`);
     $(".js-edit-variance").html(`Variance: ${d.variance}&deg;C`);
 
-    $(d3.event.target).addClass("is-active");
+    select(d3.event.target).class("is-active", true, true);
 
     this.tooltip(true);
 
@@ -37,7 +37,7 @@ const app = {
 
   handleMouseLeave() {
 
-    $(".js-ref-data").removeClass("is-active");
+    select(".js-ref-data").class("is-active", true, false);
 
     this.tooltip();
 

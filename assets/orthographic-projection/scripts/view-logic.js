@@ -51,7 +51,7 @@ const tooltipHandler = (d, node, tooltip) => () => {
   $(".js-edit-class").text(`${recclass} class`);
   $(".js-edit-address").text(address);
 
-  $(node).addClass("is-active");
+  select(node).class("is-active", true, true);
 
   tooltip(true, node);
 

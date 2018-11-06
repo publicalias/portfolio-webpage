@@ -94,7 +94,7 @@ const app = {
   playBtn(num) {
     return () => {
 
-      if ($(`.js-click-${btnIDs[num]}`).hasClass("is-disabled")) {
+      if (select(`.js-click-${btnIDs[num]}`).class("is-disabled")) {
         return;
       }
 

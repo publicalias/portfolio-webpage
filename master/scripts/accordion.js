@@ -11,12 +11,8 @@ const closePanel = () => {
 
   const DOMOpen = select(".js-expand-panel.is-open");
 
-  if (!DOMOpen) {
-    return;
-  }
-
   DOMOpen.animate({ height: 0 }, () => {
-    DOMOpen.class("is-open", true, false).css({ height: "auto" });
+    DOMOpen.class("is-open", true).css({ height: "auto" });
   });
 
   storageKey("panel", "", true);
@@ -48,7 +44,7 @@ const togglePanel = (id, padding) => {
 
   if (shouldOpen) {
 
-    const h = DOMThis.class("is-open", true, true).rect().height;
+    const h = DOMThis.class("is-open", true).rect().height;
 
     DOMThis.rect({ height: 0 }).animate({ height: h }, () => {
       DOMThis.css({ height: "auto" });
@@ -68,7 +64,7 @@ const initPanel = () => {
 
   const id = storageKey("panel", null, true);
 
-  $(`.js-expand-panel-${id}`).addClass("is-open");
+  select(`.js-expand-panel-${id}`).class("is-open", true);
 
 };
 

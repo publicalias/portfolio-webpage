@@ -38,7 +38,7 @@ const app = {
     $(".js-edit-gdp").text(`${d[1]}e+12`);
     $(".js-edit-quarter").text(d[0]);
 
-    $(d3.event.target).addClass("is-active");
+    select(d3.event.target).class("is-active", true, true);
 
     this.tooltip(true);
 
@@ -46,7 +46,7 @@ const app = {
 
   handleMouseLeave() {
 
-    $(".js-ref-data").removeClass("is-active");
+    select(".js-ref-data").class("is-active", true, false);
 
     this.tooltip();
 

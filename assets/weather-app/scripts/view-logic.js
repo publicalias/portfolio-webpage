@@ -1,5 +1,9 @@
 "use strict";
 
+//global imports
+
+const { select } = require("dom-api");
+
 //init display
 
 const thermoClass = (temp) => {
@@ -22,9 +26,7 @@ const thermoClass = (temp) => {
 
 const initDisplay = (res, temp) => {
 
-  $(".js-edit-thermo")
-    .removeClass("fa-thermometer-0")
-    .addClass(thermoClass(temp));
+  select(".js-edit-thermo").class(`fa-thermometer-0 ${thermoClass(temp)}`, true);
 
   $(".js-edit-city").text(res.name);
   $(".js-edit-country").text(res.sys.country);
@@ -41,7 +43,7 @@ const toggleMetric = (temp, unit) => {
   $(".js-edit-temp").text(temp);
   $(".js-edit-unit").text(unit);
 
-  $(".js-edit-toggle").toggleClass("fa-toggle-off fa-toggle-on");
+  select(".js-edit-toggle").class("fa-toggle-off fa-toggle-on", true);
 
 };
 

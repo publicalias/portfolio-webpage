@@ -43,7 +43,7 @@ const app = {
     $(".js-edit-country").text(d.country);
     $(".js-edit-borders").text(tooltipBorders(d, this.data));
 
-    $(`.js-ref-data-${d.code}`).addClass("is-active");
+    select(`.js-ref-data-${d.code}`).class("is-active", true, true);
 
     this.tooltip(true);
 
@@ -51,7 +51,7 @@ const app = {
 
   handleMouseLeave() {
 
-    $(".js-ref-data").removeClass("is-active");
+    select(".js-ref-data").class("is-active", true, false);
 
     this.tooltip();
 

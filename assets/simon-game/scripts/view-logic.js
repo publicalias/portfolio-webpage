@@ -2,6 +2,7 @@
 
 //global imports
 
+const { select } = require("dom-api");
 const { leadZero } = require("utilities");
 
 //btn ids
@@ -75,18 +76,14 @@ const renderButtons = () => {
 //toggle block
 
 const toggleBlock = (bool = false) => {
-  $(".js-hover-btn").toggleClass("is-disabled", bool);
+  select(".js-hover-btn").class("is-disabled", true, bool);
   $(".js-toggle-btn").prop("disabled", bool);
 };
 
 //toggle hover
 
 const toggleHover = (id) => {
-  if (id) {
-    $(id).addClass("is-active");
-  } else {
-    $(".js-hover-btn").removeClass("is-active");
-  }
+  select(id || ".js-hover-btn").class("is-active", true, id !== undefined);
 };
 
 //exports

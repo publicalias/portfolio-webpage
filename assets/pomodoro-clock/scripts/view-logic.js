@@ -35,7 +35,7 @@ const readTime = (set, count, id) => {
 //toggle set
 
 const toggleSet = (bool = false) => {
-  $(".js-toggle-btn").toggleClass("is-disabled", bool);
+  select(".js-toggle-btn").class("is-disabled", true, bool);
 };
 
 //exports

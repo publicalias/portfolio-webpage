@@ -7,6 +7,8 @@ const { bindObject } = require("utilities");
 
 //check input
 
+const DOMInput = select(".js-check-input");
+
 const utils = {
 
   timer: null,
@@ -20,11 +22,9 @@ const utils = {
 
     this.timer = setTimeout(() => {
       this.block = false;
-    }, 1000);
+    }, 500);
 
-    $(".js-check-input")
-      .removeClass("is-mouse")
-      .addClass("is-touch");
+    DOMInput.class("is-mouse", true, false).class("is-touch", true, true);
 
   },
 
@@ -34,9 +34,7 @@ const utils = {
       return;
     }
 
-    $(".js-check-input")
-      .addClass("is-mouse")
-      .removeClass("is-touch");
+    DOMInput.class("is-mouse", true, true).class("is-touch", true, false);
 
   }
 
@@ -45,9 +43,7 @@ const utils = {
 bindObject(utils);
 
 const checkInput = () => {
-  select(".js-check-input")
-    .on("touchstart", utils.isTouch)
-    .on("mouseover", utils.isMouse);
+  DOMInput.on("touchstart", utils.isTouch).on("mouseover", utils.isMouse);
 };
 
 //exports

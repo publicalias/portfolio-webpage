@@ -19,7 +19,7 @@ const animateUtil = (api) => (props, fn) => {
 
 const getNodeList = (query) => {
 
-  const isElement = query instanceof HTMLElement;
+  const isElement = query instanceof Element;
   const isSpecial = query === document || query === window;
 
   if (typeof query === "string") {
@@ -227,16 +227,12 @@ const select = (query) => {
 
   const list = getNodeList(query);
 
-  if (list.length === 0) {
-    return;
-  }
-
-  const proto = list.length > 1 ? list : list[0]; //default to the node or node list
-
   const api = {
-    first: list[0],
+    first: list[0] || null,
     all: list
   };
+
+  const proto = list.length > 1 ? api.all : api.first; //default to the node or node list
 
   Object.assign(api, {
     animate: animateUtil(api),
