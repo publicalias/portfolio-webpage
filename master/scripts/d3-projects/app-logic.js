@@ -12,12 +12,6 @@ const getSVG = (app, svg, ready, steps) => () => {
     return;
   }
 
-  //reset chart
-
-  $(".js-render-chart").empty();
-
-  app.handleMouseLeave();
-
   //build chart
 
   const params = svg.svgParams();

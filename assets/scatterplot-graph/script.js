@@ -123,7 +123,7 @@ const svg = {
       .attr("transform", (d) => `translate(${w * getYPos(d.Time)}, ${h * (d.Place / 40)})`)
       .on("mouseenter", app.handleMouseEnter)
       .on("mouseleave", app.handleMouseLeave)
-      .on("touchstart", checkTooltip(app));
+      .on("touchstart", checkTooltip(app), { passive: true });
 
   }
 

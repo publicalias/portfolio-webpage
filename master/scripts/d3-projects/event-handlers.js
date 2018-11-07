@@ -27,7 +27,7 @@ const globalEvents = (app) => () => {
 
   select(window).on("scroll", wrapFn(app.handleMouseLeave));
 
-  select(".js-ref-svg").on("touchstart", app.handleMouseLeave); //ensures mobile support
+  select(".js-ref-svg").on("touchstart", app.handleMouseLeave, { passive: true }); //ensures mobile support
 
 };
 

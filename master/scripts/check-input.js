@@ -43,7 +43,7 @@ const utils = {
 bindObject(utils);
 
 const checkInput = () => {
-  DOMInput.on("touchstart", utils.isTouch).on("mouseover", utils.isMouse);
+  DOMInput.on("touchstart", utils.isTouch, { passive: true }).on("mouseover", utils.isMouse);
 };
 
 //exports

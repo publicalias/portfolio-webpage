@@ -144,7 +144,7 @@ const svg = {
       .attr("xlink:href", (d) => `media/${d.code}.svg`)
       .on("mouseenter", app.handleMouseEnter)
       .on("mouseleave", app.handleMouseLeave)
-      .on("touchstart", checkTooltip(app));
+      .on("touchstart", checkTooltip(app), { passive: true });
 
   },
 

@@ -4,6 +4,47 @@
 
 //utilities
 
+const getNodeList = (query) => {
+
+  const isElement = query instanceof Element;
+  const isSpecial = query === document || query === window;
+
+  if (typeof query === "string") {
+    return Array.from(document.querySelectorAll(query)); //query string
+  } else if (isElement || isSpecial) {
+    return [query]; //node, document, or window
+  }
+
+  return Array.from(query); //node list
+
+};
+
+const getOrSet = (api, set, getter, setter) => {
+
+  const { all } = api;
+
+  const values = [];
+
+  for (const e of all) {
+    if (set) {
+      setter(e);
+    } else {
+      values.push(getter(e));
+    }
+  }
+
+  if (set) {
+    return api;
+  } else if (values.length > 1) {
+    return values;
+  }
+
+  return values[0];
+
+};
+
+//select
+
 const animateUtil = (api) => (props, fn) => {
 
   const { all } = api;
@@ -17,18 +58,20 @@ const animateUtil = (api) => (props, fn) => {
 
 };
 
-const getNodeList = (query) => {
+const defineArgs = (args) => {
 
-  const isElement = query instanceof Element;
-  const isSpecial = query === document || query === window;
-
-  if (typeof query === "string") {
-    return Array.from(document.querySelectorAll(query)); //query string
-  } else if (isElement || isSpecial) {
-    return [query]; //node, document, or window
+  if (typeof args[0] === "function") {
+    return {
+      fn: args[0],
+      options: args[1]
+    };
   }
 
-  return Array.from(query); //node list
+  return {
+    child: args[0],
+    fn: args[1],
+    options: args[2]
+  };
 
 };
 
@@ -54,41 +97,15 @@ const delegate = (fn, parent, child) => (event) => {
 const eventUtil = (api) => (events, ...args) => {
 
   const { all } = api;
-
-  const fn = args.length === 1 ? args[0] : args[1];
-  const child = args.length === 1 ? null : args[0];
+  const { child, fn, options } = defineArgs(args);
 
   for (const e of all) {
     for (const f of events.split(" ")) {
-      e.addEventListener(f, child ? delegate(fn, e, child) : fn);
+      e.addEventListener(f, child ? delegate(fn, e, child) : fn, options);
     }
   }
 
   return api;
-
-};
-
-const getOrSet = (api, set, getter, setter) => {
-
-  const { all } = api;
-
-  const values = [];
-
-  for (const e of all) {
-    if (set) {
-      setter(e);
-    } else {
-      values.push(getter(e));
-    }
-  }
-
-  if (set) {
-    return api;
-  } else if (values.length > 1) {
-    return values;
-  }
-
-  return values[0];
 
 };
 
@@ -149,34 +166,6 @@ const cssUtil = (api) => (styles) => {
 
 };
 
-const proxyProto = (obj, proto) => new Proxy(obj, {
-
-  get(obj, key) {
-
-    if (obj.hasOwnProperty(key)) {
-      return obj[key];
-    } else if (typeof proto[key] === "function") {
-      return (...args) => proto[key](...args);
-    }
-
-    return proto[key];
-
-  },
-
-  set(obj, key, val) {
-
-    if (obj.hasOwnProperty(key)) {
-      obj[key] = val;
-    } else {
-      proto[key] = val;
-    }
-
-    return true;
-
-  }
-
-});
-
 const parseCSS = (e, prop) => {
 
   const [t, r, b, l] = window.getComputedStyle(e)[prop]
@@ -232,7 +221,33 @@ const rectUtil = (api) => (rect) => {
 
 };
 
-//select
+const proxyProto = (obj, proto) => new Proxy(obj, {
+
+  get(obj, key) {
+
+    if (obj.hasOwnProperty(key)) {
+      return obj[key];
+    } else if (typeof proto[key] === "function") {
+      return (...args) => proto[key](...args);
+    }
+
+    return proto[key];
+
+  },
+
+  set(obj, key, val) {
+
+    if (obj.hasOwnProperty(key)) {
+      obj[key] = val;
+    } else {
+      proto[key] = val;
+    }
+
+    return true;
+
+  }
+
+});
 
 const select = (query) => {
 

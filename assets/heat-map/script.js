@@ -151,7 +151,7 @@ const svg = {
       .attr("width", w / app.data.length * 12)
       .on("mouseenter", app.handleMouseEnter)
       .on("mouseleave", app.handleMouseLeave)
-      .on("touchstart", checkTooltip(app));
+      .on("touchstart", checkTooltip(app), { passive: true });
 
   },
 

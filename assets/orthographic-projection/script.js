@@ -170,7 +170,7 @@ const svg = {
       .attr("d", fp)
       .on("mouseenter", app.handleMouseEnter)
       .on("mouseleave", app.handleMouseLeave)
-      .on("touchstart", checkTooltip(app));
+      .on("touchstart", checkTooltip(app), { passive: true });
 
   },
 
