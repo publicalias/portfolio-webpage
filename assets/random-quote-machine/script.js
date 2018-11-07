@@ -14,7 +14,8 @@ const display = (next, init) => {
 
   select(".js-edit-quote").text(next.quote);
   select(".js-edit-attr").text(next.author);
-  $(".js-edit-twitter").attr("href", href);
+
+  select(".js-edit-twitter").href = href;
 
   if (!init) {
     select(".js-fade-text").animate({ opacity: 1 });

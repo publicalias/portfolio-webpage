@@ -87,7 +87,7 @@ const toggleBlock = (bool = false) => {
 
   select(".js-hover-btn").class("is-disabled", true, bool);
 
-  $(".js-toggle-btn").prop("disabled", bool);
+  select(".js-toggle-btn").disabled = bool;
 
 };
 

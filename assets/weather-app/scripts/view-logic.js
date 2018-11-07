@@ -32,7 +32,7 @@ const initDisplay = (res, temp) => {
   select(".js-edit-country").text(res.sys.country);
   select(".js-edit-temp").text(temp);
 
-  $(".js-edit-weather").attr("src", `https://openweathermap.org/img/w/${res.weather[0].icon}.png`);
+  select(".js-edit-weather").src = `https://openweathermap.org/img/w/${res.weather[0].icon}.png`;
 
 };
 

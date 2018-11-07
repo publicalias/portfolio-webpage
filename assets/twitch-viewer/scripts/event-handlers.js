@@ -50,7 +50,7 @@ const filterEvents = () => {
 
 const submitEvents = (submit) => {
   select(".js-submit-button").on("click", submit);
-  select(window).on("keydown", submitKeys());
+  submitKeys();
 };
 
 //exports

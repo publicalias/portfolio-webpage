@@ -9,6 +9,7 @@ const RecipeEditor = require("./scripts/recipe-editor");
 
 const { closePanel, initPanel } = require("accordion");
 const { checkInput } = require("check-input");
+const { select } = require("dom-api");
 const { modalEvents, toggleModal } = require("modal");
 const { bindReactClass, initKeyGen } = require("react-utils");
 const { deepCopy, storageKey, wrapFn } = require("utilities");
@@ -148,4 +149,4 @@ class App extends React.Component {
 
 //initialize app
 
-ReactDOM.render(<App />, document.querySelector(".js-render-react"));
+ReactDOM.render(<App />, select(".js-render-react").first);

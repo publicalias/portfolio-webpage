@@ -16,9 +16,9 @@ const { getJSON, wrapFn } = require("utilities");
 
 const search = () => {
 
-  const $input = $(".js-submit-input");
+  const DOMInput = select(".js-submit-input");
 
-  const term = $input.val().trim();
+  const term = DOMInput.value.trim();
 
   if (!term) {
     return;
@@ -26,7 +26,7 @@ const search = () => {
 
   const url = `https://en.wikipedia.org/w/api.php?origin=*&action=opensearch&search=${encodeURIComponent(term)}`;
 
-  $input.val("");
+  DOMInput.value = "";
 
   getJSON(url).then(renderResults);
 
@@ -41,10 +41,10 @@ select(document).on("DOMContentLoaded", () => {
   select(".js-submit-input, .js-submit-button").on("blur focus", toggleOutline);
   select(".js-submit-button").on("click", search);
 
-  select(window).on("keydown", submitKeys());
-
-  modalEvents();
+  submitKeys();
 
   select(".js-render-output").on("click", ".js-close-modal", wrapFn(toggleModal));
+
+  modalEvents();
 
 });

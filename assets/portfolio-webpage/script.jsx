@@ -15,6 +15,7 @@ const { defaultProps } = require("./scripts/default-props/default-props");
 
 const { initPanel } = require("accordion");
 const { checkInput } = require("check-input");
+const { select } = require("dom-api");
 const { initKeyGen } = require("react-utils");
 
 //node modules
@@ -52,4 +53,4 @@ App.defaultProps = defaultProps;
 
 //initialize app
 
-ReactDOM.render(<App />, document.querySelector(".js-render-react"));
+ReactDOM.render(<App />, select(".js-render-react").first);

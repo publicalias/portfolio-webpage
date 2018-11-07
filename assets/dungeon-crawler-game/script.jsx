@@ -245,4 +245,4 @@ App.defaultProps = defaultProps;
 
 //initialize app
 
-ReactDOM.render(<App />, document.querySelector(".js-render-react"));
+ReactDOM.render(<App />, select(".js-render-react").first);

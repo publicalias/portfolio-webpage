@@ -332,12 +332,10 @@ class App extends React.Component {
 
     this.handleResize(); //not redundant
 
-    select(window)
-      .on("load resize", this.handleResize)
-      .on("keydown", (event) => {
-        submitKeys("rules")(event);
-        submitKeys("scale")(event);
-      });
+    select(window).on("load resize", this.handleResize);
+
+    submitKeys("rules");
+    submitKeys("scale");
 
     this.startIter();
 
@@ -374,4 +372,4 @@ class App extends React.Component {
 
 //initialize app
 
-ReactDOM.render(<App />, document.querySelector(".js-render-react"));
+ReactDOM.render(<App />, select(".js-render-react").first);

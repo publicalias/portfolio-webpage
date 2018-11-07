@@ -38,7 +38,7 @@ const app = {
 
   handleMouseEnter(d) {
 
-    $(d3.event.target).attr("r", this.radius * 2);
+    select(d3.event.target).setAttribute("r", this.radius * 2);
 
     select(".js-edit-name").text(`${d.Name}, ${d.Nationality}`);
     select(".js-edit-rank").text(`Rank: ${d.Place}`);
@@ -52,7 +52,9 @@ const app = {
 
   handleMouseLeave() {
 
-    $(".js-ref-point").attr("r", this.radius);
+    for (const e of select(".js-ref-point")) {
+      e.setAttribute("r", this.radius);
+    }
 
     this.tooltip();
 

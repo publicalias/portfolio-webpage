@@ -38,8 +38,9 @@ const parseChannel = (id) => (res) => {
 
   select(`.js-edit-state-${id}`).class("is-closed is-offline", true);
 
-  $(`.js-edit-link-${id}`).attr("href", res.url);
-  $(`.js-edit-avatar-${id}`).attr("src", res.logo || undefined);
+  select(`.js-edit-link-${id}`).href = res.url;
+  select(`.js-edit-avatar-${id}`).src = res.logo || undefined;
+
   select(`.js-edit-status-${id}`).text("Offline");
 
 };

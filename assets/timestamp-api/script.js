@@ -1,5 +1,7 @@
 "use strict";
 
+const { select } = require("dom-api");
+
 //initialize app
 
-document.querySelector(".js-edit-unix").setAttribute("href", `/timestamp-api/${Date.now()}`);
+select(".js-edit-unix").href = `/timestamp-api/${Date.now()}`;

@@ -4,6 +4,7 @@
 
 //global imports
 
+const { select } = require("dom-api");
 const { bindReactClass } = require("react-utils");
 
 //node modules
@@ -60,4 +61,4 @@ class App extends React.Component {
 
 //initialize app
 
-ReactDOM.render(<App />, document.querySelector(".js-render-react"));
+ReactDOM.render(<App />, select(".js-render-react").first);

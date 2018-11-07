@@ -6,40 +6,28 @@ const { select } = require("dom-api");
 
 //submit keys
 
-const submitKeys = (id) => (event) => {
+const submitKeys = (id) => {
 
   const pairID = id ? `-${id}` : "";
 
-  const input = `.js-submit-input${pairID}`;
-  const button = `.js-submit-button${pairID}`;
+  const DOMInput = select(`.js-submit-input${pairID}`);
+  const DOMButton = select(`.js-submit-button${pairID}`);
 
-  const active = $(document.activeElement)
-    .attr("class")
-    .split(" ")
-    .map((e) => `.${e}`);
-
-  const enterFn = () => {
-    if (active.includes(input)) {
-      select(button).focus(); //fires event
+  DOMInput.on("keydown", (event) => {
+    if (event.key === "Enter") {
+      DOMButton.focus(); //fires event
     }
-  };
+  });
 
-  const otherFn = () => {
-    if (active.includes(button)) {
-      select(input).focus();
+  DOMButton.on("keydown", (event) => {
+
+    const ignore = ["Enter", "Tab", "Shift"];
+
+    if (!ignore.includes(event.key)) {
+      DOMInput.focus();
     }
-  };
 
-  switch (event.key) {
-    case "Enter":
-      enterFn();
-      break;
-    case "Tab":
-    case "shift":
-      break;
-    default:
-      otherFn();
-  }
+  });
 
 };
 
