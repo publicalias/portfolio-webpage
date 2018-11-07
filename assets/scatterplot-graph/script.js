@@ -40,11 +40,11 @@ const app = {
 
     $(d3.event.target).attr("r", this.radius * 2);
 
-    $(".js-edit-name").text(`${d.Name}, ${d.Nationality}`);
-    $(".js-edit-rank").text(`Rank: ${d.Place}`);
-    $(".js-edit-time").text(`Time: ${d.Time}`);
-    $(".js-edit-year").text(`Year: ${d.Year}`);
-    $(".js-edit-dope").text(d.Doping || "No evidence of doping");
+    select(".js-edit-name").text(`${d.Name}, ${d.Nationality}`);
+    select(".js-edit-rank").text(`Rank: ${d.Place}`);
+    select(".js-edit-time").text(`Time: ${d.Time}`);
+    select(".js-edit-year").text(`Year: ${d.Year}`);
+    select(".js-edit-dope").text(d.Doping || "No evidence of doping");
 
     this.tooltip(true);
 

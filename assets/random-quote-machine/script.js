@@ -12,8 +12,8 @@ const display = (next, init) => {
 
   const href = `https://twitter.com/intent/tweet?hashtags=quotes&text=${encodeURIComponent(`"${next.quote}" ${next.author}`)}`;
 
-  $(".js-edit-quote").text(next.quote);
-  $(".js-edit-attr").text(next.author);
+  select(".js-edit-quote").text(next.quote);
+  select(".js-edit-attr").text(next.author);
   $(".js-edit-twitter").attr("href", href);
 
   if (!init) {

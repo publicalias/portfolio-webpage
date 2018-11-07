@@ -39,9 +39,9 @@ const app = {
 
   handleMouseEnter(d) {
 
-    $(".js-edit-date").text(`${months[d.month - 1]} ${d.year}`);
-    $(".js-edit-temp").html(`Temperature: ${d.temp}&deg;C`);
-    $(".js-edit-variance").html(`Variance: ${d.variance}&deg;C`);
+    select(".js-edit-date").text(`${months[d.month - 1]} ${d.year}`);
+    select(".js-edit-temp").html(`Temperature: ${d.temp}&deg;C`);
+    select(".js-edit-variance").html(`Variance: ${d.variance}&deg;C`);
 
     select(d3.event.target).class("is-active", true, true);
 
@@ -75,7 +75,7 @@ const app = {
 
     this.ready++;
 
-    $(".js-edit-mean").text(app.mean);
+    select(".js-edit-mean").text(app.mean);
 
     this.getSVG();
 

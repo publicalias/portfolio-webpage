@@ -22,12 +22,10 @@ const app = {
   tooltip(bool) {
     if (bool) {
 
-      const rectTop = select(d3.event.target).rect().top;
-      const tooltipHeight = select(".js-toggle-tooltip")
-        .class("is-open", true, true)
-        .rect().height;
+      const thisRect = select(d3.event.target).getBoundingClientRect();
+      const svgRect = select(".js-ref-svg").getBoundingClientRect();
 
-      tooltip(bool, null, rectTop + tooltipHeight);
+      tooltip(bool, null, thisRect.top + svgRect.height * 0.2);
 
     } else {
       tooltip(bool);
@@ -36,8 +34,8 @@ const app = {
 
   handleMouseEnter(d) {
 
-    $(".js-edit-gdp").text(`${d[1]}e+12`);
-    $(".js-edit-quarter").text(d[0]);
+    select(".js-edit-gdp").text(`${d[1]}e+12`);
+    select(".js-edit-quarter").text(d[0]);
 
     select(d3.event.target).class("is-active", true, true);
 

@@ -8,8 +8,8 @@ const { select } = require("dom-api");
 
 const updateView = (that, id) => {
 
-  $(".js-edit-val").text(that.val);
-  $(".js-edit-chain").text(that.chain);
+  select(".js-edit-val").text(that.val);
+  select(".js-edit-chain").text(that.chain);
 
   if (id) {
     select(`.js-click-${id}`).focus();

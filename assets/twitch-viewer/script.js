@@ -18,7 +18,7 @@ const search = (channels = "ESL_SC2, OgamingSC2, RobotCaleb, brunofin, comster40
   storageKey("channels", channels);
 
   $(".js-submit-input").val(channels);
-  $(".js-render-output").empty();
+  select(".js-render-output").html("");
 
   for (const e of channels.split(", ")) {
 

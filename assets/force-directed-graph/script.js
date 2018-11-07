@@ -30,7 +30,7 @@ const app = {
 
     this.toggled = !this.toggled;
 
-    $(".js-edit-toggle").text(this.toggled ? "On" : "Off");
+    select(".js-edit-toggle").text(this.toggled ? "On" : "Off");
 
   },
 
@@ -40,8 +40,8 @@ const app = {
 
   handleMouseEnter(d) {
 
-    $(".js-edit-country").text(d.country);
-    $(".js-edit-borders").text(tooltipBorders(d, this.data));
+    select(".js-edit-country").text(d.country);
+    select(".js-edit-borders").text(tooltipBorders(d, this.data));
 
     select(`.js-ref-data-${d.code}`).class("is-active", true, true);
 

@@ -23,10 +23,13 @@ const playSound = () => {
 
 const readTime = (set, count, id) => {
 
+  const minutes = leadZero(Math.floor(count / 60));
+  const seconds = leadZero(Math.round(count % 60));
+
   const total = set * 60;
   const barWidth = (total - count) / total * 100;
 
-  $(`.js-edit-${id}-timer`).text(`${leadZero(Math.floor(count / 60))}:${leadZero(Math.round(count % 60))}`);
+  select(`.js-edit-${id}-timer`).text(`${minutes}:${seconds}`);
 
   select(".js-edit-progress-bar").css({ width: `${barWidth}%` });
 

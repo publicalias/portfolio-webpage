@@ -8,7 +8,8 @@ const { getJSON } = require("utilities");
 //get output
 
 const getOutput = (id, name) => {
-  $(".js-render-output").append(`
+
+  const html = `
     <div class="is-closed js-edit-state-${id} js-filter-output">
       <hr>
       <a class="c-channel js-edit-link-${id}" href="javascript:void(0)">
@@ -17,7 +18,10 @@ const getOutput = (id, name) => {
         <p class="c-channel__status js-edit-status-${id}">Closed</p>
       </a>
     </div>
-  `);
+  `;
+
+  select(".js-render-output").html(html, true);
+
 };
 
 //get stream
@@ -36,7 +40,7 @@ const parseChannel = (id) => (res) => {
 
   $(`.js-edit-link-${id}`).attr("href", res.url);
   $(`.js-edit-avatar-${id}`).attr("src", res.logo || undefined);
-  $(`.js-edit-status-${id}`).text("Offline");
+  select(`.js-edit-status-${id}`).text("Offline");
 
 };
 
@@ -52,7 +56,7 @@ const parseStream = (id) => (res) => {
 
   select(`.js-edit-state-${id}`).class("is-offline is-online", true);
 
-  $(`.js-edit-status-${id}`).text(status.length < 30 ? status : `${status.slice(0, 26)}...`);
+  select(`.js-edit-status-${id}`).text(status.length < 30 ? status : `${status.slice(0, 26)}...`);
 
 };
 

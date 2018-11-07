@@ -28,9 +28,9 @@ const initDisplay = (res, temp) => {
 
   select(".js-edit-thermo").class(`fa-thermometer-0 ${thermoClass(temp)}`, true);
 
-  $(".js-edit-city").text(res.name);
-  $(".js-edit-country").text(res.sys.country);
-  $(".js-edit-temp").text(temp);
+  select(".js-edit-city").text(res.name);
+  select(".js-edit-country").text(res.sys.country);
+  select(".js-edit-temp").text(temp);
 
   $(".js-edit-weather").attr("src", `https://openweathermap.org/img/w/${res.weather[0].icon}.png`);
 
@@ -40,8 +40,8 @@ const initDisplay = (res, temp) => {
 
 const toggleMetric = (temp, unit) => {
 
-  $(".js-edit-temp").text(temp);
-  $(".js-edit-unit").text(unit);
+  select(".js-edit-temp").text(temp);
+  select(".js-edit-unit").text(unit);
 
   select(".js-edit-toggle").class("fa-toggle-off fa-toggle-on", true);
 

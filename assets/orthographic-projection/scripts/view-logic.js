@@ -46,10 +46,10 @@ const tooltipHandler = (d, node, tooltip) => () => {
 
   const { address, mass, name, recclass } = d.properties;
 
-  $(".js-edit-name").text(name);
-  $(".js-edit-mass").text(tooltipMass(mass));
-  $(".js-edit-class").text(`${recclass} class`);
-  $(".js-edit-address").text(address);
+  select(".js-edit-name").text(name);
+  select(".js-edit-mass").text(tooltipMass(mass));
+  select(".js-edit-class").text(`${recclass} class`);
+  select(".js-edit-address").text(address);
 
   select(node).class("is-active", true, true);
 

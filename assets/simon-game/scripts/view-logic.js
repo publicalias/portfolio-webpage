@@ -48,15 +48,15 @@ const audio = createAudio();
 const display = (steps, total, strict) => {
 
   if (typeof steps === "number") {
-    $(".js-edit-steps").text(leadZero(steps));
+    select(".js-edit-steps").text(leadZero(steps));
   }
 
   if (typeof total === "number") {
-    $(".js-edit-total").text(total);
+    select(".js-edit-total").text(total);
   }
 
   if (typeof strict === "boolean") {
-    $(".js-edit-strict").text(strict ? "(Hard)" : "(Easy)");
+    select(".js-edit-strict").text(strict ? "(Hard)" : "(Easy)");
   }
 
 };
@@ -64,13 +64,21 @@ const display = (steps, total, strict) => {
 //render buttons
 
 const renderButtons = () => {
+
+  const DOMRender = select(".js-render-buttons");
+
   btnIDs.forEach((e, i) => {
-    $(".js-render-buttons").append(`
+
+    const html = `
       <svg class="c-simon-game__play-btn--${e}" viewBox="0 0 100 100">
         <path class="c-simon-game__btn-path--${e} js-click-${e} js-hover-btn" d="M 0 100 H 47.5 A 57.5 57.5 0 0 1 100 47.5 V 0 A 107.5 107.5 0 0 0 0 100" transform="rotate(${i * 90}, 50, 50)" />
       </svg>
-    `);
+    `;
+
+    DOMRender.html(html, true);
+
   });
+
 };
 
 //toggle block

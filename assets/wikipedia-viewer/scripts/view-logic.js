@@ -37,9 +37,7 @@ const renderResults = (res) => {
 
   results = results.concat(list.length ? list : empty);
 
-  $(".js-render-output")
-    .empty()
-    .append(results);
+  select(".js-render-output").html(results.join(""));
 
   toggleModal(true);
 

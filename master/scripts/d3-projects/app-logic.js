@@ -39,8 +39,8 @@ const tooltip = (bool = false, node, top, left) => {
 
   if (bool) {
 
-    const thisRect = select(node || d3.event.target).rect();
-    const svgRect = select(".js-ref-svg").rect();
+    const thisRect = select(node || d3.event.target).getBoundingClientRect(); //tooltip is fixed
+    const svgRect = select(".js-ref-svg").getBoundingClientRect();
 
     const displayBelow = thisRect.top - svgRect.top < svgRect.height / 2;
     const displayRight = thisRect.left - svgRect.left < svgRect.width / 2;

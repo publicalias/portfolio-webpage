@@ -44,7 +44,13 @@ const itemIsInView = (id, addTop = 0, addBottom = 0) => {
 //load recaptcha
 
 const loadReCaptcha = () => {
-  $(".js-load-script").append("<script src=\"https://www.google.com/recaptcha/api.js\"></script>");
+
+  const script = document.createElement("script"); //doesn't execute as dom string
+
+  script.src = "https://www.google.com/recaptcha/api.js";
+
+  select(".js-load-script").appendChild(script);
+
 };
 
 //position menu

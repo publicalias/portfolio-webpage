@@ -30,9 +30,9 @@ const updateBoard = (board) => {
 //update count
 
 const updateCount = (rounds, winsX, winsO) => {
-  $(".js-edit-rounds").text(rounds);
-  $(".js-edit-wins-x").text(winsX);
-  $(".js-edit-wins-o").text(winsO);
+  select(".js-edit-rounds").text(rounds);
+  select(".js-edit-wins-x").text(winsX);
+  select(".js-edit-wins-o").text(winsO);
 };
 
 //exports
