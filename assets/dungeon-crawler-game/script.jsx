@@ -162,11 +162,11 @@ class App extends React.Component {
 
   handleResize() {
 
-    const w = Math.round($(".js-resize-level").outerWidth());
+    const w = Math.round(select(".js-resize-level").rect().width);
     const h = Math.round(w * 0.8);
 
-    $(".js-resize-sidebar").outerHeight(h);
-    $(".js-resize-event-log").outerHeight(w * 0.12);
+    select(".js-resize-sidebar").rect({ height: h });
+    select(".js-resize-event-log").rect({ height: h * 0.15 });
 
     this.setState({ canvas: [w, h] });
 

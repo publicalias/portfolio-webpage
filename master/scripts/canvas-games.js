@@ -1,5 +1,9 @@
 "use strict";
 
+//global imports
+
+const { select } = require("dom-api");
+
 //array 2d
 
 const array2D = (height, width, setVal) => {
@@ -32,19 +36,18 @@ const array2DEach = (arr, fn) => {
 
 //mouse yx
 
-const mouseYX = (event, arr) => {
+const mouseYX = (event, grid) => {
 
-  const $canvas = $(".js-ref-canvas");
-  const $scroll = $(document.scrollingElement);
+  const { height, width, top, left } = select(".js-ref-canvas").rect();
 
-  const top = event.clientY - $canvas.offset().top + $scroll.scrollTop();
-  const left = event.clientX - $canvas.offset().left + $scroll.scrollLeft();
+  const mt = event.clientY - top + window.scrollY;
+  const ml = event.clientX - left + window.scrollX;
 
-  const height = $canvas.outerHeight() / arr.length;
-  const width = $canvas.outerWidth() / arr[0].length;
+  const mh = height / grid.length;
+  const mw = width / grid[0].length;
 
-  const y = Math.floor(top / height);
-  const x = Math.floor(left / width);
+  const y = Math.floor(mt / mh);
+  const x = Math.floor(ml / mw);
 
   return [y, x];
 

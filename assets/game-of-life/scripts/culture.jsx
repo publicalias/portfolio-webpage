@@ -29,10 +29,11 @@ class Culture extends React.Component {
 
   updateDisplay() {
 
-    const $canvas = $(".js-ref-canvas");
-    const ctx = $canvas[0].getContext("2d");
-    const w = $canvas.outerWidth();
-    const h = $canvas.outerHeight();
+    const DOMCanvas = select(".js-ref-canvas");
+
+    const ctx = DOMCanvas.getContext("2d");
+    const w = DOMCanvas.rect().width;
+    const h = DOMCanvas.rect().height;
 
     const color = ["rgba(64, 64, 64, 0.75)", "black", "white"];
 

@@ -194,7 +194,18 @@ const parseCSS = (e, prop) => {
 
 const rectUtil = (api) => (rect) => {
 
-  const getter = (e) => e.getBoundingClientRect();
+  const getter = (e) => {
+
+    const { height, width, top, left } = e.getBoundingClientRect();
+
+    return {
+      height,
+      width,
+      top: top + window.scrollY,
+      left: left + window.scrollX
+    };
+
+  };
 
   const setter = (e) => {
 

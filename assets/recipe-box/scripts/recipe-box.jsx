@@ -19,7 +19,7 @@ const RecipeBox = (props) => {
   const keyGen = initKeyGen();
 
   return (
-    <div className="c-content--md">
+    <div className="c-content--md js-scroll-recipe-box">
       <div className="c-row">
         <div className="c-row__col--12">
           {props.list.length ? props.list.map((e) => (

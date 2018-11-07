@@ -76,8 +76,11 @@ const renderButtons = () => {
 //toggle block
 
 const toggleBlock = (bool = false) => {
+
   select(".js-hover-btn").class("is-disabled", true, bool);
+
   $(".js-toggle-btn").prop("disabled", bool);
+
 };
 
 //toggle hover

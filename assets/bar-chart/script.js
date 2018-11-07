@@ -22,11 +22,12 @@ const app = {
   tooltip(bool) {
     if (bool) {
 
-      const thisRect = d3.event.target.getBoundingClientRect();
+      const rectTop = select(d3.event.target).rect().top;
+      const tooltipHeight = select(".js-toggle-tooltip")
+        .class("is-open", true, true)
+        .rect().height;
 
-      const top = thisRect.top + $(".js-toggle-tooltip").outerHeight();
-
-      tooltip(bool, null, top);
+      tooltip(bool, null, rectTop + tooltipHeight);
 
     } else {
       tooltip(bool);

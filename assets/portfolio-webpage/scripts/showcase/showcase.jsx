@@ -41,10 +41,8 @@ class Showcase extends React.Component {
       return;
     }
 
-    const $showcase = $(".js-toggle-showcase");
-    const navHeight = $(".js-ref-nav-bar").outerHeight();
-
-    const inView = itemIsInView($showcase, navHeight);
+    const navHeight = select(".js-ref-nav-bar").rect().height;
+    const inView = itemIsInView(".js-toggle-showcase", navHeight);
 
     if (inView && !this.state.next) {
       this.spinCarousel();

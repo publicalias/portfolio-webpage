@@ -27,6 +27,7 @@ const Group = (props) => {
         <div className="c-row__col--8">
           {props.group.subgroups.map((e, i, arr) => (
             <Subgroup
+              groupId={props.group.id}
               isLastSubgroup={i === arr.length - 1}
               key={keyGen(e.id)}
               subgroup={e}

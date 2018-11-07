@@ -7,6 +7,7 @@ const Project = require("./project/project");
 //global imports
 
 const { togglePanel } = require("accordion");
+const { select } = require("dom-api");
 const { bindReactClass, initKeyGen } = require("react-utils");
 const { storageKey } = require("utilities");
 
@@ -30,9 +31,10 @@ class Subgroup extends React.Component {
 
   handleClick() {
 
-    const padding = $(".js-ref-nav-bar").outerHeight() + $(window).outerWidth() * 0.03;
+    const navHeight = select(".js-ref-nav-bar").rect().height;
+    const groupPadding = select(`.js-scroll-${this.props.groupId}`).css().paddingTop;
 
-    togglePanel(this.props.subgroup.id, padding);
+    togglePanel(this.props.subgroup.id, navHeight + parseFloat(groupPadding));
 
     if (!this.state.viewed) {
       this.setState({ viewed: true });

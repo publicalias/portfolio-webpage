@@ -24,13 +24,15 @@ const getNextView = (right, showcase, last) => {
 
 //item is in view
 
-const itemIsInView = ($item, addTop = 0, addBottom = 0) => {
+const itemIsInView = (id, addTop = 0, addBottom = 0) => {
 
-  const windowTop = $(document.scrollingElement).scrollTop();
-  const windowBottom = windowTop + $(window).outerHeight();
+  const DOMRect = select(id).rect();
 
-  const itemTop = $item.offset().top;
-  const itemBottom = itemTop + $item.outerHeight();
+  const windowTop = window.scrollY;
+  const windowBottom = windowTop + window.innerHeight;
+
+  const itemTop = DOMRect.top;
+  const itemBottom = itemTop + DOMRect.height;
 
   const notAbove = windowBottom - addBottom > itemTop;
   const notBelow = windowTop + addTop < itemBottom;
@@ -55,12 +57,13 @@ const positionMenu = () => {
     return;
   }
 
-  const scrollTop = $(document.scrollingElement).scrollTop();
-  const margin = $(window).outerWidth() * 0.045;
+  const DOMNavBar = select(".js-ref-nav-bar");
 
-  const offsetTop = scrollTop < margin ? margin - scrollTop : 0;
+  const windowTop = window.scrollY;
+  const navMargin = parseFloat(DOMNavBar.css().marginTop);
+  const offsetTop = windowTop < navMargin ? navMargin - windowTop : 0;
 
-  DOMSublist.css({ top: `${$(".js-ref-nav-bar").outerHeight() + offsetTop}px` });
+  DOMSublist.css({ top: `${DOMNavBar.rect().height + offsetTop}px` });
 
 };
 
@@ -77,11 +80,13 @@ const resetForm = (btnIndex) => ({
 
 const scrollToItem = (link) => () => {
 
-  const offsetTop = $(link).offset().top;
-  const navBar = $(".js-ref-nav-bar").outerHeight();
-  const margin = $(window).outerWidth() * 0.045;
+  const DOMNavBar = select(".js-ref-nav-bar");
 
-  const scrollTop = link === ".js-scroll-bio" ? 0 : offsetTop - navBar - margin;
+  const offsetTop = select(link).rect().top;
+  const navHeight = DOMNavBar.rect().height;
+  const navMargin = parseFloat(DOMNavBar.css().marginTop);
+
+  const scrollTop = link === ".js-scroll-bio" ? 0 : offsetTop - navHeight - navMargin;
 
   select(".js-expand-sublist").class("is-open", true, false);
 

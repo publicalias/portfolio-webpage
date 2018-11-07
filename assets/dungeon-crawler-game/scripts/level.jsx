@@ -8,6 +8,7 @@ const { paintCanvas } = require("./view-logic/paint-canvas");
 //global imports
 
 const { mouseYX } = require("canvas-games");
+const { select } = require("dom-api");
 const { bindReactClass } = require("react-utils");
 const { arrEqual } = require("utilities");
 
@@ -31,10 +32,11 @@ class Level extends React.Component {
 
   updateDisplay() {
 
-    const $canvas = $(".js-ref-canvas");
-    const ctx = $canvas[0].getContext("2d");
-    const w = $canvas.outerWidth();
-    const h = $canvas.outerHeight();
+    const DOMCanvas = select(".js-ref-canvas");
+
+    const ctx = DOMCanvas.getContext("2d");
+    const w = DOMCanvas.rect().width;
+    const h = DOMCanvas.rect().height;
 
     const scale = [h / this.props.level.length, w / this.props.level[0].length];
 

@@ -21,12 +21,13 @@ const closePanel = () => {
 
 //toggle panel
 
-const handleScroll = (id, padding, $open) => {
+const handleScroll = (id, padding, DOMOpen) => {
 
-  const thisOffsetTop = $(`.js-toggle-panel-${id}`).offset().top;
-  const openOffsetTop = $open.length && $open.offset().top < thisOffsetTop ? $open.outerHeight() : 0;
+  const thisOffsetTop = select(`.js-toggle-panel-${id}`).rect().top;
+  const belowOpen = DOMOpen.first && DOMOpen.rect().top < thisOffsetTop;
+  const openHeight = belowOpen ? DOMOpen.rect().height : 0;
 
-  const scrollTop = thisOffsetTop - openOffsetTop - padding;
+  const scrollTop = thisOffsetTop - openHeight - padding;
 
   select(document.scrollingElement).animate({ scrollTop });
 
@@ -35,8 +36,7 @@ const handleScroll = (id, padding, $open) => {
 const togglePanel = (id, padding) => {
 
   const DOMThis = select(`.js-expand-panel-${id}`);
-
-  const $open = $(".js-expand-panel.is-open");
+  const DOMOpen = select(".js-expand-panel.is-open");
 
   const shouldOpen = !DOMThis.class("is-open");
 
@@ -54,7 +54,7 @@ const togglePanel = (id, padding) => {
 
   }
 
-  handleScroll(id, padding, $open);
+  handleScroll(id, padding, DOMOpen);
 
 };
 

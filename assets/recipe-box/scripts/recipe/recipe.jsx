@@ -8,6 +8,7 @@ const List = require("./list");
 //global imports
 
 const { togglePanel } = require("accordion");
+const { select } = require("dom-api");
 const { bindReactClass } = require("react-utils");
 
 //node modules
@@ -33,9 +34,10 @@ class Recipe extends React.Component {
   handleClick() {
 
     const id = this.props.entry.num;
-    const padding = $(window).outerWidth() * 0.03;
 
-    togglePanel(id, padding);
+    const boxPadding = select(".js-scroll-recipe-box").css().paddingTop;
+
+    togglePanel(id, parseFloat(boxPadding));
 
   }
 

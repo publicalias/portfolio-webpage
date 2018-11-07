@@ -316,9 +316,9 @@ class App extends React.Component {
 
   handleResize() {
 
-    const w = Math.round($(".js-resize-culture").outerWidth());
+    const w = Math.round(select(".js-resize-culture").rect().width);
 
-    $(".js-resize-control, .js-resize-culture").outerHeight(w);
+    select(".js-resize-control, .js-resize-culture").rect({ height: w });
 
     this.setState({ canvas: w });
 
