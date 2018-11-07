@@ -16,12 +16,19 @@ const rotateHandlers = (params, tooltip) => {
   return {
 
     int: null,
-    ids: ["up", "down", "left", "right", "center"],
+    ids: ["up", "down", "left", "right", "reset"],
 
     xc: w / 2,
     yc: h / 2,
 
-    //rotate logic
+    //pause
+
+    pause() {
+      clearInterval(this.int);
+      this.int = null;
+    },
+
+    //rotate
 
     rotate() {
 
@@ -33,6 +40,8 @@ const rotateHandlers = (params, tooltip) => {
       tooltip();
 
     },
+
+    //int
 
     up() {
       this.yc += h * 0.02;
@@ -54,17 +63,12 @@ const rotateHandlers = (params, tooltip) => {
       this.rotate();
     },
 
-    //stop or reset
+    //reset
 
-    center() {
-      if (this.int) {
-        clearInterval(this.int);
-        this.int = null;
-      } else {
-        this.xc = w / 2;
-        this.yc = h / 2;
-        this.rotate();
-      }
+    reset() {
+      this.xc = w / 2;
+      this.yc = h / 2;
+      this.rotate();
     }
 
   };

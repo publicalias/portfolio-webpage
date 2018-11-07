@@ -184,9 +184,11 @@ const svg = {
 
     for (const e of rotate.ids) {
       select(`.js-click-${e}`).on("click", () => {
-        if (e === "center") {
-          rotate[e]();
-        } else if (!rotate.int) {
+        if (rotate.int) {
+          rotate.pause();
+        } else if (e === "reset") {
+          rotate.reset();
+        } else {
           rotate.int = setInterval(rotate[e], 100);
         }
       });
