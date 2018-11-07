@@ -18,10 +18,6 @@ const getSVG = (app, svg, ready, steps) => () => {
 
   app.handleMouseLeave();
 
-  if (app.resetData) {
-    app.resetData();
-  }
-
   //build chart
 
   const params = svg.svgParams();

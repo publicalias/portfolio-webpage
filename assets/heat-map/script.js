@@ -8,6 +8,20 @@ const { svgChart, svgParams, svgMargin } = require("d3-projects/view-logic");
 const { select } = require("dom-api");
 const { bindObject, getJSON, months } = require("utilities");
 
+//utilities
+
+const calcMeanTemp = (data) => {
+
+  const mean = [];
+
+  for (const e of data) {
+    mean.push(e.temp);
+  }
+
+  return Number(d3.mean(mean).toFixed(3));
+
+};
+
 //app logic
 
 const app = {
@@ -48,14 +62,12 @@ const app = {
   parseData(res) {
 
     this.data = res.monthlyVariance.slice(0, 3144); //flat edge
-    this.mean = [];
 
     for (const e of this.data) {
       e.temp = Number((e.variance + res.baseTemperature).toFixed(3));
-      this.mean.push(e.temp);
     }
 
-    this.mean = Number(d3.mean(this.mean).toFixed(3));
+    this.mean = calcMeanTemp(this.data);
 
     for (const e of this.data) {
       e.variance = Number((e.temp - this.mean).toFixed(3));
@@ -63,14 +75,10 @@ const app = {
 
     this.ready++;
 
+    $(".js-edit-mean").text(app.mean);
+
     this.getSVG();
 
-  },
-
-  //reset data
-
-  resetData() {
-    $(".js-edit-mean").text(app.mean);
   }
 
 };

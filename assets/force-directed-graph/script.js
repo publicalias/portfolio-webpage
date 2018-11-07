@@ -61,17 +61,11 @@ const app = {
 
   parseData(res) {
 
-    this.reset = JSON.stringify(res);
+    this.data = res;
     this.ready++;
 
     this.getSVG();
 
-  },
-
-  //reset data
-
-  resetData() {
-    this.data = JSON.parse(this.reset);
   }
 
 };
