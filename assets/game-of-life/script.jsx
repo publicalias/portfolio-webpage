@@ -330,8 +330,6 @@ class App extends React.Component {
 
     checkInput();
 
-    this.handleResize(); //not redundant
-
     select(window).on("load resize", this.handleResize);
 
     submitKeys("rules");

@@ -178,8 +178,6 @@ class App extends React.Component {
 
     checkInput();
 
-    this.handleResize(); //not redundant
-
     //window events
 
     select(window)

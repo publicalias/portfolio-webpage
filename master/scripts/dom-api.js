@@ -45,7 +45,7 @@ const getOrSet = (api, set, getter, setter) => {
 
 //select
 
-const animateUtil = (api, props, fn) => {
+const animateUtil = (api) => (props, fn) => {
 
   const { all } = api;
 
@@ -94,7 +94,7 @@ const delegate = (fn, parent, child) => (event) => {
 
 };
 
-const eventUtil = (api, events, ...args) => {
+const eventUtil = (api) => (events, ...args) => {
 
   const { all } = api;
   const { child, fn, options } = defineArgs(args);
@@ -109,7 +109,7 @@ const eventUtil = (api, events, ...args) => {
 
 };
 
-const classUtil = (api, classes, toggle, force) => {
+const classUtil = (api) => (classes, toggle, force) => {
 
   const classList = classes.split(" ");
 
@@ -135,7 +135,7 @@ const classUtil = (api, classes, toggle, force) => {
 
 };
 
-const contentUtil = (api, isText, content, append, position = "beforeend") => {
+const contentUtil = (api, isText) => (content, append, position = "beforeend") => {
 
   const getProp = isText ? "textContent" : "innerHTML";
   const setProp = isText ? "insertAdjacentText" : "insertAdjacentHTML";
@@ -154,7 +154,7 @@ const contentUtil = (api, isText, content, append, position = "beforeend") => {
 
 };
 
-const cssUtil = (api, styles) => {
+const cssUtil = (api) => (styles) => {
 
   const getter = (e) => window.getComputedStyle(e);
 
@@ -166,22 +166,20 @@ const cssUtil = (api, styles) => {
 
 };
 
-const parseCSS = (e, prop) => {
+const parseCSS = (e) => {
 
-  const [t, r, b, l] = window.getComputedStyle(e)[prop]
-    .split(" ")
-    .map((e) => parseFloat(e));
+  const props = ["Top", "Right", "Bottom", "Left"];
+
+  const styles = window.getComputedStyle(e);
 
   return {
-    t,
-    r: r || t,
-    b: b || t,
-    l: l || r || t
+    b: props.map((e) => parseFloat(styles[`border${e}Width`])),
+    p: props.map((e) => parseFloat(styles[`padding${e}`]))
   };
 
 };
 
-const rectUtil = (api, rect) => {
+const rectUtil = (api) => (rect) => {
 
   const getter = (e) => {
 
@@ -199,21 +197,15 @@ const rectUtil = (api, rect) => {
   const setter = (e) => {
 
     const { height, width } = rect;
-
-    const b = parseCSS(e, "borderWidth");
-    const p = parseCSS(e, "padding");
-
-    const styles = {};
+    const { b: [bt, br, bb, bl], p: [pt, pr, pb, pl] } = parseCSS(e);
 
     if (height !== undefined) {
-      styles.height = `${Math.max(height - b.t - b.b - p.t - p.b, 0)}px`;
+      e.style.height = `${Math.max(height - bt - bb - pt - pb, 0)}px`;
     }
 
     if (width !== undefined) {
-      styles.width = `${Math.max(width - b.r - b.l - p.r - p.l, 0)}px`;
+      e.style.width = `${Math.max(width - br - bl - pr - pl, 0)}px`;
     }
-
-    Object.assign(e.style, styles);
 
   };
 
@@ -268,16 +260,14 @@ const select = (query) => {
     all: list
   };
 
-  const wrap = (util, ...opts) => (...args) => util(api, ...opts, ...args);
-
   Object.assign(api, {
-    animate: wrap(animateUtil), //should use one function for all instances
-    on: wrap(eventUtil),
-    class: wrap(classUtil),
-    text: wrap(contentUtil, true),
-    html: wrap(contentUtil, false),
-    css: wrap(cssUtil),
-    rect: wrap(rectUtil)
+    animate: animateUtil(api),
+    on: eventUtil(api),
+    class: classUtil(api),
+    text: contentUtil(api, true),
+    html: contentUtil(api),
+    css: cssUtil(api),
+    rect: rectUtil(api)
   });
 
   return proxyDOM(api);

@@ -64,7 +64,7 @@ const initPanel = () => {
 
   const id = storageKey("panel", null, true);
 
-  select(`.js-expand-panel-${id}`).class("is-open", true);
+  select(`.js-expand-panel-${id}`).class("is-open", true, true);
 
 };
 
