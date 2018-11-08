@@ -52,9 +52,7 @@ const app = {
 
   handleMouseLeave() {
 
-    for (const e of select(".js-ref-point")) {
-      e.setAttribute("r", this.radius);
-    }
+    select(".js-ref-point").setAttribute("r", this.radius);
 
     this.tooltip();
 
