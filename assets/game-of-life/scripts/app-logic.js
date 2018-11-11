@@ -92,7 +92,7 @@ const getNextGen = (params) => {
 
   const [b, s] = rules.split("/").map((e) => e.slice(1)
     .split("")
-    .map((e) => Number(e)));
+    .map(Number));
 
   params.culture = array2D(scale, scale, (i, j) => {
 

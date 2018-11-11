@@ -219,7 +219,7 @@ const proxyDOM = (api) => new Proxy(api, {
 
     const { first, all } = obj;
 
-    const firstOrAll = (fn) => all.length > 1 ? all.map((e) => fn(e)) : fn(first);
+    const firstOrAll = (fn) => all.length > 1 ? all.map(fn) : fn(first);
 
     if (obj.hasOwnProperty(key)) {
       return obj[key];
