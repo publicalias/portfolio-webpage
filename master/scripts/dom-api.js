@@ -199,12 +199,14 @@ const rectUtil = (api) => (rect) => {
     const { height, width } = rect;
     const { b: [bt, br, bb, bl], p: [pt, pr, pb, pl] } = parseCSS(e);
 
+    const borderBox = window.getComputedStyle(e).boxSizing === "border-box";
+
     if (height !== undefined) {
-      e.style.height = `${Math.max(height - bt - bb - pt - pb, 0)}px`;
+      e.style.height = `${borderBox ? height : Math.max(height - bt - bb - pt - pb, 0)}px`;
     }
 
     if (width !== undefined) {
-      e.style.width = `${Math.max(width - br - bl - pr - pl, 0)}px`;
+      e.style.width = `${borderBox ? width : Math.max(width - br - bl - pr - pl, 0)}px`;
     }
 
   };
