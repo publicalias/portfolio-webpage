@@ -4,27 +4,60 @@
 
 //local imports
 
-const { reducer } = require("../scripts/reducer");
+const { initialState, reducer } = require("../scripts/reducer");
+
+//global imports
+
+const { deepCopy } = require("utilities");
 
 //tests
 
 describe("reducer", () => {
 
-  const initialState = { counter: 0 };
-
-  const ADD = { type: "ADD" };
-  const INVALID = { type: "INVALID" };
-
   it("initializes the state", () => {
     expect(reducer()).toEqual(initialState);
   });
 
-  it("defaults to the old state", () => {
-    expect(reducer(initialState, INVALID)).toEqual(initialState);
+  it("defaults to the previous state", () => {
+
+    const prevState = deepCopy(initialState);
+
+    prevState.page = "view";
+
+    const INVALID = { type: "INVALID" };
+
+    expect(reducer(prevState, INVALID)).toEqual(prevState);
+
   });
 
-  it("accepts ADD actions", () => {
-    expect(reducer(initialState, ADD)).toEqual({ counter: 1 });
-  });
+});
 
+describe("reducer:meta", () => {
+  it("accepts META_SET_STATE actions", () => {
+
+    const nextState = deepCopy(initialState);
+
+    const poll = {
+      title: "",
+      author: "",
+      id: "",
+      date: 0,
+      private: false,
+      flagged: [""],
+      options: [{
+        text: "",
+        voted: [""]
+      }]
+    };
+
+    nextState.view.poll = poll;
+
+    const META_SET_STATE = {
+      type: "META_SET_STATE",
+      data: { view: { poll } }
+    };
+
+    expect(reducer(initialState, META_SET_STATE)).toEqual(nextState);
+
+  });
 });

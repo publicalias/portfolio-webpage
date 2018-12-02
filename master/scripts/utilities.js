@@ -41,6 +41,44 @@ const cycleItems = (arr, val) => arr[(arr.indexOf(val) + 1) % arr.length];
 
 const deepCopy = (obj) => JSON.parse(JSON.stringify(obj));
 
+//deep merge
+
+const deepMerge = (...args) => {
+
+  const merged = args.shift();
+  const done = new Map();
+
+  const mergeFn = (to, from) => {
+
+    for (const p in from) {
+
+      const prop = from[p];
+
+      if (done.has(prop)) {
+        to[p] = done.get(prop);
+      } else if (typeof prop === "object") {
+
+        if (to[p] === undefined) {
+          to[p] = Array.isArray(prop) ? [] : {};
+        }
+
+        done.set(prop, to[p]);
+        mergeFn(to[p], prop);
+
+      } else {
+        to[p] = prop;
+      }
+
+    }
+
+    return to;
+
+  };
+
+  return args.reduce(mergeFn, merged);
+
+};
+
 //get json
 
 const getJSON = (url) => fetch(url).then((res) => {
@@ -125,6 +163,7 @@ module.exports = {
   chance,
   cycleItems,
   deepCopy,
+  deepMerge,
   getJSON,
   rngInt,
   roundTo,
