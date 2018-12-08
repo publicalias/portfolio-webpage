@@ -4,11 +4,12 @@
 
 //local imports
 
+const { metaSetState } = require("../scripts/action-creators");
 const { initialState, reducer } = require("../scripts/reducer");
 
 //global imports
 
-const { deepCopy } = require("utilities");
+const { deepMerge } = require("utilities");
 
 //tests
 
@@ -18,46 +19,22 @@ describe("reducer", () => {
     expect(reducer()).toEqual(initialState);
   });
 
-  it("defaults to the previous state", () => {
+  it("defaults to the last state", () => {
 
-    const prevState = deepCopy(initialState);
+    const lastState = deepMerge({}, initialState, { page: "form" });
+    const action = { type: "INVALID" };
 
-    prevState.page = "view";
-
-    const INVALID = { type: "INVALID" };
-
-    expect(reducer(prevState, INVALID)).toEqual(prevState);
+    expect(reducer(lastState, action)).toEqual(lastState);
 
   });
 
-});
-
-describe("reducer:meta", () => {
   it("accepts META_SET_STATE actions", () => {
 
-    const nextState = deepCopy(initialState);
+    const merge = { list: { polls: [{ title: "" }] } };
+    const nextState = deepMerge({}, initialState, merge);
 
-    const poll = {
-      title: "",
-      author: "",
-      id: "",
-      date: 0,
-      private: false,
-      flagged: [""],
-      options: [{
-        text: "",
-        voted: [""]
-      }]
-    };
-
-    nextState.view.poll = poll;
-
-    const META_SET_STATE = {
-      type: "META_SET_STATE",
-      data: { view: { poll } }
-    };
-
-    expect(reducer(initialState, META_SET_STATE)).toEqual(nextState);
+    expect(reducer(initialState, metaSetState(merge))).toEqual(nextState);
 
   });
+
 });

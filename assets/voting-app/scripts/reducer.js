@@ -10,7 +10,7 @@ const initialState = {
   user: {},
   page: "list",
   list: {
-    filter: "all-polls",
+    filter: "all",
     search: "",
     sort: "new",
     polls: [{}]
@@ -33,11 +33,9 @@ const initialState = {
   }
 };
 
-//actions
-
-const META_SET_STATE = (state, action) => deepMerge({}, state, action.data);
-
 //reducer
+
+const META_SET_STATE = (state, { merge }) => deepMerge({}, state, merge);
 
 const reducer = (state = initialState, action) => {
 
