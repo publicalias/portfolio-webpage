@@ -35,11 +35,16 @@ const initialState = {
 
 //reducer
 
+const MENU_OPEN_FORM = (state) => deepMerge({}, state, { page: "form" });
+
 const META_SET_STATE = (state, { merge }) => deepMerge({}, state, merge);
 
 const reducer = (state = initialState, action) => {
 
-  const actions = { META_SET_STATE };
+  const actions = {
+    MENU_OPEN_FORM,
+    META_SET_STATE
+  };
 
   const valid = action && actions[action.type];
 

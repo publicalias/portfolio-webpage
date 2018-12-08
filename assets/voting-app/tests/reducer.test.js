@@ -4,7 +4,7 @@
 
 //local imports
 
-const { metaSetState } = require("../scripts/action-creators");
+const { menuOpenForm, metaSetState } = require("../scripts/action-creators");
 const { initialState, reducer } = require("../scripts/reducer");
 
 //global imports
@@ -25,6 +25,14 @@ describe("reducer", () => {
     const action = { type: "INVALID" };
 
     expect(reducer(lastState, action)).toEqual(lastState);
+
+  });
+
+  it("accepts MENU_OPEN_FORM actions", () => {
+
+    const nextState = deepMerge({}, initialState, { page: "form" });
+
+    expect(reducer(initialState, menuOpenForm())).toEqual(nextState);
 
   });
 

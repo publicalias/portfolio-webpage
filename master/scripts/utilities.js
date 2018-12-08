@@ -81,7 +81,7 @@ const deepMerge = (...args) => {
 
 //get json
 
-const getJSON = (url) => fetch(url).then((res) => {
+const getJSON = (url, body) => fetch(url, body).then((res) => {
 
   if (!res.ok) {
     throw Error(res.statusText);
