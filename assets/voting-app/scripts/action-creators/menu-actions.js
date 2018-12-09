@@ -2,18 +2,12 @@
 
 //local imports
 
-const { initialState } = require("./reducer");
+const { metaSetState } = require("./meta-actions");
+const { initialState } = require("../reducer/reducer");
 
 //global imports
 
 const { deepMerge, getJSON } = require("utilities");
-
-//meta set state
-
-const metaSetState = (merge) => ({
-  type: "META_SET_STATE",
-  merge
-});
 
 //menu auth user
 
@@ -62,6 +56,5 @@ const menuSetFilter = (filter) => (dispatch) => {
 module.exports = {
   menuAuthUser,
   menuOpenForm,
-  menuSetFilter,
-  metaSetState
+  menuSetFilter
 };
