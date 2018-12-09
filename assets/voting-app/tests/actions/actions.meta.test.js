@@ -2,11 +2,13 @@
 
 //local imports
 
-const { metaSetState } = require("../../scripts/action-creators/action-creators");
+const actions = require("../../scripts/actions/actions");
 
 //meta set state
 
 test("metaSetState creates META_SET_STATE actions", () => {
+
+  const { metaSetState } = actions;
 
   const merge = { list: { polls: [{ title: "" }] } };
 

@@ -5,10 +5,10 @@
 const menuActions = require("./menu-actions");
 const metaActions = require("./meta-actions");
 
-//action creators
+//actions
 
-const actionCreators = Object.assign(menuActions, metaActions);
+const actions = Object.assign(menuActions, metaActions);
 
 //exports
 
-module.exports = actionCreators;
+module.exports = actions;

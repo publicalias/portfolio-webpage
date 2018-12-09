@@ -2,7 +2,7 @@
 
 //local imports
 
-const { menuAuthUser, menuOpenForm, menuSetFilter } = require("../../scripts/action-creators/action-creators");
+const actions = require("../../scripts/actions/actions");
 const { initialState } = require("../../scripts/reducer/reducer");
 
 //global imports
@@ -32,11 +32,13 @@ afterAll(() => {
 
 test("menuAuthUser dispatches META_SET_STATE on success", () => {
 
+  const { menuAuthUser } = actions;
+
   const user = { name: "" };
   const auth = {}; //oauth token
 
   const store = mockStore(initialState);
-  const actions = [{
+  const actionList = [{
     type: "META_SET_STATE",
     merge: deepMerge(initialState, { user })
   }];
@@ -51,15 +53,17 @@ test("menuAuthUser dispatches META_SET_STATE on success", () => {
   global.fetch = jest.fn(fetch);
 
   return store.dispatch(menuAuthUser("auth", auth)).then(() => {
-    expect(store.getActions()).toEqual(actions);
+    expect(store.getActions()).toEqual(actionList);
   });
 
 });
 
 test("menuAuthUser dispatches META_SET_STATE on failure", () => {
 
+  const { menuAuthUser } = actions;
+
   const store = mockStore(initialState);
-  const actions = [{
+  const actionList = [{
     type: "META_SET_STATE",
     merge: deepMerge(initialState, { user: {} })
   }];
@@ -72,7 +76,7 @@ test("menuAuthUser dispatches META_SET_STATE on failure", () => {
   global.fetch = jest.fn(fetch);
 
   return store.dispatch(menuAuthUser("ip")).then(() => {
-    expect(store.getActions()).toEqual(actions);
+    expect(store.getActions()).toEqual(actionList);
   });
 
 });
@@ -80,18 +84,24 @@ test("menuAuthUser dispatches META_SET_STATE on failure", () => {
 //menu open form
 
 test("menuOpenForm creates MENU_OPEN_FORM actions", () => {
+
+  const { menuOpenForm } = actions;
+
   expect(menuOpenForm()).toEqual({ type: "MENU_OPEN_FORM" });
+
 });
 
 //menu set filter
 
 test("menuSetFilter dispatches META_SET_STATE on success", () => {
 
+  const { menuSetFilter } = actions;
+
   const filter = "voted";
   const polls = [{ title: "" }];
 
   const store = mockStore(initialState);
-  const actions = [{
+  const actionList = [{
     type: "META_SET_STATE",
     merge: {
       page: "list",
@@ -114,17 +124,19 @@ test("menuSetFilter dispatches META_SET_STATE on success", () => {
   global.fetch = jest.fn(fetch);
 
   return store.dispatch(menuSetFilter(filter)).then(() => {
-    expect(store.getActions()).toEqual(actions);
+    expect(store.getActions()).toEqual(actionList);
   });
 
 });
 
 test("menuSetFilter dispatches META_SET_STATE on failure", () => {
 
+  const { menuSetFilter } = actions;
+
   const filter = "created";
 
   const store = mockStore(initialState);
-  const actions = [{
+  const actionList = [{
     type: "META_SET_STATE",
     merge: {
       page: "list",
@@ -145,7 +157,7 @@ test("menuSetFilter dispatches META_SET_STATE on failure", () => {
   global.fetch = jest.fn(fetch);
 
   return store.dispatch(menuSetFilter(filter)).then(() => {
-    expect(store.getActions()).toEqual(actions);
+    expect(store.getActions()).toEqual(actionList);
   });
 
 });
