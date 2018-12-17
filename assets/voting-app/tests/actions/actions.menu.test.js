@@ -9,7 +9,9 @@ const { initialState } = require("../../scripts/reducer/reducer");
 
 //global imports
 
-const { deepCopy } = require("utilities");
+const { initDeepCopy } = require("utilities");
+
+const deepCopy = initDeepCopy();
 
 //node modules
 
@@ -34,7 +36,7 @@ describe("menuAuthUser", () => {
     delete merge.polls;
     delete merge.errors;
 
-    return [metaSetState(merge, { shallow: true })];
+    return [metaSetState(merge, { obj: true })];
 
   };
 

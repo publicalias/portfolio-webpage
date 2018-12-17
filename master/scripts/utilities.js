@@ -30,15 +30,35 @@ const chance = (val) => Math.random() >= (100 - val) / 100;
 
 const cycleItems = (arr, val) => arr[(arr.indexOf(val) + 1) % arr.length];
 
-//deep copy
+//get json
 
-const deepCopy = (...args) => {
+const getJSON = (url, body) => fetch(url, body).then((res) => {
+
+  if (!res.ok) {
+    throw Error(`${res.status} ${res.statusText}`);
+  }
+
+  return res.json();
+
+});
+
+//init deep copy
+
+const initDeepCopy = (config) => (...args) => {
+
+  const defaults = {
+    arr: true,
+    obj: false
+  };
+
+  const init = Object.assign(defaults, config);
 
   const mergeFn = (to, from) => {
 
     for (const p in from) {
 
       const prop = from[p];
+      const overwrite = Array.isArray(to[p]) ? init.arr : init.obj;
 
       if (!prop || typeof prop !== "object") {
 
@@ -48,10 +68,8 @@ const deepCopy = (...args) => {
 
       }
 
-      if (to[p] === undefined) {
+      if (to[p] === undefined || overwrite) {
         to[p] = Array.isArray(prop) ? [] : {};
-      } else if (Array.isArray(to[p])) {
-        to[p] = []; //overwrite arrays
       }
 
       mergeFn(to[p], prop);
@@ -65,18 +83,6 @@ const deepCopy = (...args) => {
   return args.reduce(mergeFn, {});
 
 };
-
-//get json
-
-const getJSON = (url, body) => fetch(url, body).then((res) => {
-
-  if (!res.ok) {
-    throw Error(`${res.status} ${res.statusText}`);
-  }
-
-  return res.json();
-
-});
 
 //rng int
 
@@ -149,8 +155,8 @@ module.exports = {
   bindObject,
   chance,
   cycleItems,
-  deepCopy,
   getJSON,
+  initDeepCopy,
   rngInt,
   roundTo,
   leadZero,

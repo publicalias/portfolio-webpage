@@ -17,7 +17,9 @@ const { cycleHints, cycleWeapons } = require("./scripts/view-logic/event-handler
 const { checkInput } = require("check-input");
 const { select } = require("dom-api");
 const { bindReactClass } = require("react-utils");
-const { deepCopy, storageKey } = require("utilities");
+const { initDeepCopy, storageKey } = require("utilities");
+
+const deepCopy = initDeepCopy();
 
 //node modules
 

@@ -7,7 +7,9 @@ const { initialState } = require("../reducer/reducer");
 
 //global imports
 
-const { deepCopy, getJSON } = require("utilities");
+const { initDeepCopy, getJSON } = require("utilities");
+
+const deepCopy = initDeepCopy();
 
 //menu auth user
 
@@ -26,7 +28,7 @@ const menuAuthUser = (type, auth) => (dispatch) => {
     delete merge.polls;
     delete merge.errors;
 
-    dispatch(metaSetState(merge, { shallow: true }));
+    dispatch(metaSetState(merge, { obj: true }));
 
   };
 

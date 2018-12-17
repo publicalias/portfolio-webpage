@@ -6,7 +6,9 @@ const initialState = require("./initial-state");
 
 //global imports
 
-const { deepCopy } = require("utilities");
+const { initDeepCopy } = require("utilities");
+
+const deepCopy = initDeepCopy();
 
 //menu open form
 

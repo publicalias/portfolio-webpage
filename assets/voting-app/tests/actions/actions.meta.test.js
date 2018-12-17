@@ -115,22 +115,21 @@ describe("metaSetState", () => {
 
     expect(metaSetState(merge)).toEqual({
       type: "META_SET_STATE",
-      merge,
-      options: { shallow: false }
+      merge
     });
 
   });
 
-  it("creates META_SET_STATE actions with options", () => {
+  it("creates META_SET_STATE actions with config", () => {
 
     const { metaSetState } = actions;
 
     const merge = { user: {} };
 
-    expect(metaSetState(merge, { shallow: true })).toEqual({
+    expect(metaSetState(merge, { obj: true })).toEqual({
       type: "META_SET_STATE",
       merge,
-      options: { shallow: true }
+      config: { obj: true }
     });
 
   });

@@ -20,10 +20,10 @@ const metaCloseError = (index) => ({
 
 //meta set state
 
-const metaSetState = (merge, options = { shallow: false }) => ({
+const metaSetState = (merge, config) => ({
   type: "META_SET_STATE",
   merge,
-  options
+  config
 });
 
 //meta get polls

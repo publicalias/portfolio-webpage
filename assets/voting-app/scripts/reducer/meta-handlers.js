@@ -2,7 +2,9 @@
 
 //global imports
 
-const { deepCopy } = require("utilities");
+const { initDeepCopy } = require("utilities");
+
+const deepCopy = initDeepCopy();
 
 //meta add errors
 
@@ -27,14 +29,7 @@ const META_CLOSE_ERROR = (state, { index }) => {
 
 //meta set state
 
-const META_SET_STATE = (state, { merge, options }) => {
-
-  const deep = deepCopy(state, merge);
-  const shallow = Object.assign(deepCopy(state), merge);
-
-  return options.shallow ? shallow : deep;
-
-};
+const META_SET_STATE = (state, { merge, config }) => initDeepCopy(config)(state, merge);
 
 //meta timeout error
 

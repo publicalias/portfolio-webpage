@@ -9,7 +9,9 @@ const { initialState, reducer } = require("../../scripts/reducer/reducer");
 
 //global imports
 
-const { deepCopy } = require("utilities");
+const { initDeepCopy } = require("utilities");
+
+const deepCopy = initDeepCopy();
 
 //reducer
 
@@ -68,7 +70,7 @@ describe("reducer", () => {
 
   });
 
-  it("accepts META_SET_STATE actions with options", () => {
+  it("accepts META_SET_STATE actions with config", () => {
 
     const { metaSetState } = actions;
 
@@ -77,7 +79,7 @@ describe("reducer", () => {
     const lastState = deepCopy(initialState, { user: { name: "" } });
     const nextState = deepCopy(initialState, merge);
 
-    expect(reducer(lastState, metaSetState(merge, { shallow: true }))).toEqual(nextState);
+    expect(reducer(lastState, metaSetState(merge, { obj: true }))).toEqual(nextState);
 
   });
 
