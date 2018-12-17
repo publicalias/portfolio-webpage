@@ -13,10 +13,7 @@ const initialState = {
   },
   form: {
     title: "",
-    options: [{
-      text: "",
-      voted: []
-    }],
+    options: [],
     add: "",
     private: false,
     confirm: false
@@ -26,7 +23,8 @@ const initialState = {
     add: "",
     settings: false,
     confirm: false
-  }
+  },
+  errors: []
 };
 
 //exports

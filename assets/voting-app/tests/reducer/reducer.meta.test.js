@@ -13,6 +13,47 @@ const { deepCopy } = require("utilities");
 
 //reducer
 
+test("reducer accepts META_ADD_ERRORS actions", () => {
+
+  const { metaAddErrors } = actions;
+
+  const errorA = {
+    text: "Error Type A",
+    timer: 100
+  };
+  const text = "Error Type B";
+  const errorB = {
+    text,
+    timer: 1000
+  };
+
+  const lastState = deepCopy(initialState, { errors: [errorA] });
+  const nextState = deepCopy(initialState, { errors: [errorA, errorB] });
+
+  expect(reducer(lastState, metaAddErrors([text]))).toEqual(nextState);
+
+});
+
+test("reducer accepts META_CLOSE_ERROR actions", () => {
+
+  const { metaCloseError } = actions;
+
+  const errorA = {
+    text: "Error Type A",
+    timer: 100
+  };
+  const errorB = {
+    text: "Error Type B",
+    timer: 1000
+  };
+
+  const lastState = deepCopy(initialState, { errors: [errorA, errorB] });
+  const nextState = deepCopy(initialState, { errors: [errorA] });
+
+  expect(reducer(lastState, metaCloseError(1))).toEqual(nextState);
+
+});
+
 describe("reducer", () => {
 
   it("accepts META_SET_STATE actions", () => {
@@ -39,5 +80,32 @@ describe("reducer", () => {
     expect(reducer(lastState, metaSetState(merge, { shallow: true }))).toEqual(nextState);
 
   });
+
+});
+
+test("reducer accepts META_TIMEOUT_ERROR actions", () => {
+
+  const { metaTimeoutError } = actions;
+
+  const errorA = {
+    text: "Error Type A",
+    timer: 100
+  };
+
+  const text = "Error Type B";
+
+  const errorB = {
+    text,
+    timer: 1000
+  };
+  const errorC = {
+    text,
+    timer: 900
+  };
+
+  const lastState = deepCopy(initialState, { errors: [errorA, errorB] });
+  const nextState = deepCopy(initialState, { errors: [errorC] });
+
+  expect(reducer(lastState, metaTimeoutError())).toEqual(nextState);
 
 });
