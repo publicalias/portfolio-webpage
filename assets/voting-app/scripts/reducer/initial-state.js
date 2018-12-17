@@ -4,12 +4,13 @@
 
 const initialState = {
   user: {},
+  polls: [],
   page: "list",
   list: {
     filter: "all",
     search: "",
     sort: "new",
-    polls: []
+    loaded: []
   },
   form: {
     title: "",
