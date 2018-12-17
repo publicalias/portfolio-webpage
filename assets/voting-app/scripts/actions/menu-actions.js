@@ -2,7 +2,7 @@
 
 //local imports
 
-const { metaSetState } = require("./meta-actions");
+const { metaAddErrors, metaSetState } = require("./meta-actions");
 const { initialState } = require("../reducer/reducer");
 
 //global imports
@@ -13,19 +13,30 @@ const { deepCopy, getJSON } = require("utilities");
 
 const menuAuthUser = (type, auth) => (dispatch) => {
 
-  const getState = (user = { user: {} }) => deepCopy(initialState, user);
-
-  const options = { shallow: true };
-
   const body = {
     method: "POST",
     body: auth,
     headers: new Headers({ "Content-Type": "application/json" })
   };
 
-  return getJSON(`/api/auth?type=${type}`, body)
-    .then((res) => dispatch(metaSetState(getState(res), options)))
-    .catch(() => dispatch(metaSetState(getState({}), options)));
+  const success = (res) => {
+
+    const merge = deepCopy(initialState, res);
+
+    delete merge.polls;
+    delete merge.errors;
+
+    dispatch(metaSetState(merge, { shallow: true }));
+
+  };
+
+  const failure = (err) => {
+    dispatch(metaAddErrors([err.message]));
+  };
+
+  return getJSON(`/api/auth-user?type=${type}`, body)
+    .then(success)
+    .catch(failure);
 
 };
 
