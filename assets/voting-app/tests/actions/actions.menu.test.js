@@ -95,73 +95,15 @@ test("menuOpenForm creates MENU_OPEN_FORM actions", () => {
 
 //menu set filter
 
-test("menuSetFilter dispatches META_SET_STATE on success", () => {
+test("menuSetFilter creates MENU_SET_FILTER actions", () => {
 
   const { menuSetFilter } = actions;
 
   const filter = "voted";
-  const polls = [{ title: "" }];
 
-  const store = mockStore(initialState);
-  const actionList = [{
-    type: "META_SET_STATE",
-    merge: {
-      page: "list",
-      list: {
-        filter,
-        search: "",
-        sort: "new",
-        polls
-      }
-    },
-    options: { shallow: false }
-  }];
-
-  const fetch = () => Promise.resolve({
-    ok: true,
-    json() {
-      return polls;
-    }
-  });
-
-  global.fetch = jest.fn(fetch);
-
-  return store.dispatch(menuSetFilter(filter)).then(() => {
-    expect(store.getActions()).toEqual(actionList);
-  });
-
-});
-
-test("menuSetFilter dispatches META_SET_STATE on failure", () => {
-
-  const { menuSetFilter } = actions;
-
-  const filter = "created";
-
-  const store = mockStore(initialState);
-  const actionList = [{
-    type: "META_SET_STATE",
-    merge: {
-      page: "list",
-      list: {
-        filter,
-        search: "",
-        sort: "new",
-        polls: []
-      }
-    },
-    options: { shallow: false }
-  }];
-
-  const fetch = () => Promise.resolve({
-    ok: false,
-    statusText: "Unauthorized"
-  });
-
-  global.fetch = jest.fn(fetch);
-
-  return store.dispatch(menuSetFilter(filter)).then(() => {
-    expect(store.getActions()).toEqual(actionList);
+  expect(menuSetFilter(filter)).toEqual({
+    type: "MENU_SET_FILTER",
+    filter
   });
 
 });

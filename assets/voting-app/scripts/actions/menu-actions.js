@@ -35,23 +35,10 @@ const menuOpenForm = () => ({ type: "MENU_OPEN_FORM" });
 
 //menu set filter
 
-const menuSetFilter = (filter) => (dispatch) => {
-
-  const getState = (polls) => ({
-    page: "list",
-    list: {
-      filter,
-      search: "",
-      sort: "new",
-      polls
-    }
-  });
-
-  return getJSON(`/api/list?filter=${filter}`)
-    .then((res) => dispatch(metaSetState(getState(res))))
-    .catch(() => dispatch(metaSetState(getState([]))));
-
-};
+const menuSetFilter = (filter) => ({
+  type: "MENU_SET_FILTER",
+  filter
+});
 
 //exports
 
