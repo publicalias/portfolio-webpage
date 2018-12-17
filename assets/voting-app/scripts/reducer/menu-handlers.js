@@ -2,11 +2,11 @@
 
 //global imports
 
-const { deepMerge } = require("utilities");
+const { deepCopy } = require("utilities");
 
 //menu open form
 
-const MENU_OPEN_FORM = (state) => deepMerge({}, state, { page: "form" });
+const MENU_OPEN_FORM = (state) => deepCopy({}, state, { page: "form" });
 
 //exports
 

@@ -6,7 +6,7 @@ const { initialState, reducer } = require("../../scripts/reducer/reducer");
 
 //global imports
 
-const { deepMerge } = require("utilities");
+const { deepCopy } = require("utilities");
 
 //reducer
 
@@ -16,7 +16,8 @@ test("reducer initializes the state", () => {
 
 test("reducer defaults to the last state", () => {
 
-  const lastState = deepMerge({}, initialState, { page: "form" });
+  const lastState = deepCopy(initialState, { page: "form" });
+
   const action = { type: "INVALID" };
 
   expect(reducer(lastState, action)).toEqual(lastState);

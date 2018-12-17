@@ -7,7 +7,7 @@ const { initialState } = require("../../scripts/reducer/reducer");
 
 //global imports
 
-const { deepMerge } = require("utilities");
+const { deepCopy } = require("utilities");
 
 //node modules
 
@@ -40,7 +40,7 @@ test("menuAuthUser dispatches META_SET_STATE on success", () => {
   const store = mockStore(initialState);
   const actionList = [{
     type: "META_SET_STATE",
-    merge: deepMerge(initialState, { user })
+    merge: deepCopy(initialState, { user })
   }];
 
   const fetch = () => Promise.resolve({
@@ -65,7 +65,7 @@ test("menuAuthUser dispatches META_SET_STATE on failure", () => {
   const store = mockStore(initialState);
   const actionList = [{
     type: "META_SET_STATE",
-    merge: deepMerge(initialState, { user: {} })
+    merge: deepCopy(initialState, { user: {} })
   }];
 
   const fetch = () => Promise.resolve({

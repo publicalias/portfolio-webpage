@@ -2,11 +2,11 @@
 
 //global imports
 
-const { deepMerge } = require("utilities");
+const { deepCopy } = require("utilities");
 
 //meta set state
 
-const META_SET_STATE = (state, { merge }) => deepMerge({}, state, merge);
+const META_SET_STATE = (state, { merge }) => deepCopy({}, state, merge);
 
 //exports
 

@@ -46,7 +46,7 @@ class Contact extends React.Component {
     fetch("/portfolio-webpage/contact", body)
       .then((res) => {
         if (!res.ok) {
-          throw Error(res.statusText);
+          throw Error(`${res.status} ${res.statusText}`);
         }
       })
       .then(() => {

@@ -6,27 +6,20 @@ const arrEqual = (a, b) => a.toString() === b.toString();
 
 //bind object
 
-const bindObject = (to, from = to, done = []) => {
-
-  done.push(from);
-
+const bindObject = (to, from = to) => {
   for (const p in from) {
 
     const prop = from[p];
-    const cyclic = done.includes(prop);
 
     switch (typeof prop) {
       case "function":
         from[p] = prop.bind(to);
         break;
       case "object":
-        if (!cyclic) {
-          bindObject(to, prop, done);
-        }
+        bindObject(to, prop);
     }
 
   }
-
 };
 
 //chance
@@ -39,14 +32,7 @@ const cycleItems = (arr, val) => arr[(arr.indexOf(val) + 1) % arr.length];
 
 //deep copy
 
-const deepCopy = (obj) => JSON.parse(JSON.stringify(obj));
-
-//deep merge
-
-const deepMerge = (...args) => {
-
-  const merged = args.shift();
-  const done = new Map();
+const deepCopy = (...args) => {
 
   const mergeFn = (to, from) => {
 
@@ -54,20 +40,21 @@ const deepMerge = (...args) => {
 
       const prop = from[p];
 
-      if (done.has(prop)) {
-        to[p] = done.get(prop);
-      } else if (typeof prop === "object") {
+      if (!prop || typeof prop !== "object") {
 
-        if (to[p] === undefined) {
-          to[p] = Array.isArray(prop) ? [] : {};
-        }
-
-        done.set(prop, to[p]);
-        mergeFn(to[p], prop);
-
-      } else {
         to[p] = prop;
+
+        continue;
+
       }
+
+      if (to[p] === undefined) {
+        to[p] = Array.isArray(prop) ? [] : {};
+      } else if (Array.isArray(to[p])) {
+        to[p] = []; //overwrite arrays
+      }
+
+      mergeFn(to[p], prop);
 
     }
 
@@ -75,7 +62,7 @@ const deepMerge = (...args) => {
 
   };
 
-  return args.reduce(mergeFn, merged);
+  return args.reduce(mergeFn, {});
 
 };
 
@@ -84,7 +71,7 @@ const deepMerge = (...args) => {
 const getJSON = (url, body) => fetch(url, body).then((res) => {
 
   if (!res.ok) {
-    throw Error(res.statusText);
+    throw Error(`${res.status} ${res.statusText}`);
   }
 
   return res.json();
@@ -163,7 +150,6 @@ module.exports = {
   chance,
   cycleItems,
   deepCopy,
-  deepMerge,
   getJSON,
   rngInt,
   roundTo,

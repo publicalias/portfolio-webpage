@@ -7,13 +7,13 @@ const { initialState } = require("../reducer/reducer");
 
 //global imports
 
-const { deepMerge, getJSON } = require("utilities");
+const { deepCopy, getJSON } = require("utilities");
 
 //menu auth user
 
 const menuAuthUser = (type, auth) => (dispatch) => {
 
-  const getState = (user) => deepMerge(initialState, user);
+  const getState = (user) => deepCopy(initialState, user);
 
   const body = {
     method: "POST",
