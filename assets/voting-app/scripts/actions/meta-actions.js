@@ -2,9 +2,10 @@
 
 //meta set state
 
-const metaSetState = (merge) => ({
+const metaSetState = (merge, options = { shallow: false }) => ({
   type: "META_SET_STATE",
-  merge
+  merge,
+  options
 });
 
 //exports

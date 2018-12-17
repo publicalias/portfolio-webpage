@@ -15,7 +15,7 @@ test("reducer accepts MENU_OPEN_FORM actions", () => {
 
   const { menuOpenForm } = actions;
 
-  const nextState = deepCopy({}, initialState, { page: "form" });
+  const nextState = deepCopy(initialState, { page: "form" });
 
   expect(reducer(initialState, menuOpenForm())).toEqual(nextState);
 

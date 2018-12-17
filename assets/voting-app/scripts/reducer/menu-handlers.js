@@ -6,7 +6,7 @@ const { deepCopy } = require("utilities");
 
 //menu open form
 
-const MENU_OPEN_FORM = (state) => deepCopy({}, state, { page: "form" });
+const MENU_OPEN_FORM = (state) => deepCopy(state, { page: "form" });
 
 //exports
 

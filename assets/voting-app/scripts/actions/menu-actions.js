@@ -13,7 +13,9 @@ const { deepCopy, getJSON } = require("utilities");
 
 const menuAuthUser = (type, auth) => (dispatch) => {
 
-  const getState = (user) => deepCopy(initialState, user);
+  const getState = (user = { user: {} }) => deepCopy(initialState, user);
+
+  const options = { shallow: true };
 
   const body = {
     method: "POST",
@@ -22,8 +24,8 @@ const menuAuthUser = (type, auth) => (dispatch) => {
   };
 
   return getJSON(`/api/auth?type=${type}`, body)
-    .then((res) => dispatch(metaSetState(getState(res))))
-    .catch(() => dispatch(metaSetState(getState({}))));
+    .then((res) => dispatch(metaSetState(getState(res), options)))
+    .catch(() => dispatch(metaSetState(getState({}), options)));
 
 };
 

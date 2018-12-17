@@ -40,13 +40,14 @@ test("menuAuthUser dispatches META_SET_STATE on success", () => {
   const store = mockStore(initialState);
   const actionList = [{
     type: "META_SET_STATE",
-    merge: deepCopy(initialState, { user })
+    merge: deepCopy(initialState, { user }),
+    options: { shallow: true }
   }];
 
   const fetch = () => Promise.resolve({
     ok: true,
     json() {
-      return user;
+      return { user };
     }
   });
 
@@ -65,7 +66,8 @@ test("menuAuthUser dispatches META_SET_STATE on failure", () => {
   const store = mockStore(initialState);
   const actionList = [{
     type: "META_SET_STATE",
-    merge: deepCopy(initialState, { user: {} })
+    merge: deepCopy(initialState, { user: {} }),
+    options: { shallow: true }
   }];
 
   const fetch = () => Promise.resolve({
@@ -111,7 +113,8 @@ test("menuSetFilter dispatches META_SET_STATE on success", () => {
         sort: "new",
         polls
       }
-    }
+    },
+    options: { shallow: false }
   }];
 
   const fetch = () => Promise.resolve({
@@ -146,7 +149,8 @@ test("menuSetFilter dispatches META_SET_STATE on failure", () => {
         sort: "new",
         polls: []
       }
-    }
+    },
+    options: { shallow: false }
   }];
 
   const fetch = () => Promise.resolve({
