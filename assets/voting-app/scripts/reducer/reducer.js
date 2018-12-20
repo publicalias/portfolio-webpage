@@ -2,7 +2,7 @@
 
 //local imports
 
-const initialState = require("./initial-state");
+const { initialState } = require("./initial-state");
 const menuHandlers = require("./menu-handlers");
 const metaHandlers = require("./meta-handlers");
 

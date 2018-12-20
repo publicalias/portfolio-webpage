@@ -2,7 +2,7 @@
 
 //local imports
 
-const actions = require("../../scripts/actions/actions");
+const { actions } = require("../../scripts/actions/actions");
 const { initialState, reducer } = require("../../scripts/reducer/reducer");
 
 //global imports

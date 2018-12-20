@@ -30,4 +30,4 @@ const initialState = {
 
 //exports
 
-module.exports = initialState;
+module.exports = { initialState };

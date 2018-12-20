@@ -11,4 +11,4 @@ const actions = Object.assign(menuActions, metaActions);
 
 //exports
 
-module.exports = actions;
+module.exports = { actions };
