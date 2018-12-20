@@ -10,7 +10,7 @@ const { arrEqual } = require("utilities");
 
 //viable pursuit
 
-const moveIsViable = (params, actors, pursue, moves, [y, x]) => {
+const moveIsViable = (params, actors, pursue) => ([y, x]) => {
 
   const { level } = params;
   const { self, target } = actors;
@@ -22,9 +22,7 @@ const moveIsViable = (params, actors, pursue, moves, [y, x]) => {
   const val = level[y][x];
   const viableCell = val === 0 || pursue && (val === 9 || val === 2) && arrEqual([y, x], target.stats.index);
 
-  if (viableDirection && viableCell) {
-    moves.push([y, x]);
-  }
+  return viableDirection && viableCell;
 
 };
 
@@ -32,14 +30,7 @@ const viablePursuit = (params, actors, pursue) => {
 
   const { self } = actors;
 
-  const cells = nearbyCells(self.stats.index);
-  const moves = [];
-
-  for (const e of cells) {
-    moveIsViable(params, actors, pursue, moves, e);
-  }
-
-  return moves;
+  return nearbyCells(self.stats.index).filter(moveIsViable(params, actors, pursue));
 
 };
 

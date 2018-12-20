@@ -12,15 +12,9 @@ const areaIsClear = (params) => {
 
   const { char, level } = params;
 
-  const range = findRange(char.stats.index, "short");
+  const actors = findRange(char.stats.index, "short").filter((e) => checkIndex(level, e) === 2);
 
-  for (const e of range) {
-    if (checkIndex(level, e) === 2) {
-      return false;
-    }
-  }
-
-  return true;
+  return !actors.length;
 
 };
 
