@@ -81,7 +81,7 @@ test("reducer accepts FORM_TOGGLE_CONFIRM actions", () => {
 
   const { formToggleConfirm } = actions;
 
-  const nextState = deepCopy(initialState, { form: { confirm: true } });
+  const nextState = deepCopy(initialState, { form: { confirmed: true } });
 
   expect(reducer(initialState, formToggleConfirm())).toEqual(nextState);
 

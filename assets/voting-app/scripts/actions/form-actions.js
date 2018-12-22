@@ -62,9 +62,7 @@ const formCreatePoll = (form) => (dispatch) => {
         filter: "created"
       }),
       form: deepCopy(initialState.form),
-      view: {
-        poll
-      }
+      view: { poll }
     }));
   };
 

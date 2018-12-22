@@ -36,7 +36,7 @@ const FORM_SET_TITLE_TEXT = (state, { title }) => deepCopy(state, { form: { titl
 
 //form toggle confirm
 
-const FORM_TOGGLE_CONFIRM = (state) => deepCopy(state, { form: { confirm: !state.form.confirm } });
+const FORM_TOGGLE_CONFIRM = (state) => deepCopy(state, { form: { confirmed: !state.form.confirmed } });
 
 //form toggle private
 

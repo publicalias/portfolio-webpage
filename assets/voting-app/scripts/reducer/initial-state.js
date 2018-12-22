@@ -9,21 +9,23 @@ const initialState = {
   list: {
     filter: "all",
     search: "",
+    searched: "",
     sort: "new",
+    results: [],
     loaded: []
   },
   form: {
     title: "",
     options: [],
     add: "",
-    private: false,
-    confirm: false
+    confirmed: false,
+    private: false
   },
   view: {
     poll: {},
     add: "",
-    settings: false,
-    confirm: false
+    confirmed: false,
+    settings: false
   },
   errors: []
 };
