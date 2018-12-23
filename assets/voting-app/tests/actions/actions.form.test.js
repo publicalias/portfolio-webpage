@@ -136,11 +136,7 @@ describe("formCreatePoll", () => {
 
   it("dispatches META_ADD_ERRORS actions on success (not created)", () => {
 
-    const errors = [
-      "Poll must have a unique title",
-      "Poll must have at least two options",
-      "User must have permission"
-    ];
+    const errors = ["Error A"];
 
     const store = mockStore(initialState);
     const actionList = [metaAddErrors(errors)];

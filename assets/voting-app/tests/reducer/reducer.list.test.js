@@ -19,21 +19,29 @@ describe("reducer", () => {
 
   const { listGetResults } = actions;
 
-  const mockPoll = (e) => deepCopy({
-    title: "",
-    author: "",
-    date: 0,
-    private: false,
-    users: {
-      created: "",
-      voted: [],
-      hidden: []
-    },
-    options: e.options ? e.options.map((f) => deepCopy({
+  const mockPoll = (e) => {
+
+    const poll = {
+      title: "",
+      author: "",
+      date: 0,
+      private: false,
+      users: {
+        created: "",
+        voted: [],
+        hidden: []
+      },
+      options: []
+    };
+
+    const options = e.options && e.options.map((f) => deepCopy({
       text: "",
       created: ""
-    }, f)) : []
-  }, e);
+    }, f));
+
+    return deepCopy(poll, e, options);
+
+  };
 
   const getState = (input, output, setup) => {
 

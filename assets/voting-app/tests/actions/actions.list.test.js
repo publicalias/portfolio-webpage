@@ -130,7 +130,7 @@ describe("listToggleFlag", () => {
 
   const { listToggleFlag, metaAddErrors, metaSetState } = actions;
 
-  const lastState = deepCopy(initialState, {
+  const getLastState = () => deepCopy(initialState, {
     user: { id: "id-a" },
     list: { loaded: [{ id: "id-b" }] }
   });
@@ -148,7 +148,7 @@ describe("listToggleFlag", () => {
 
     const res = { polls: [{ users: { flagged: ["id-a"] } }] };
 
-    const store = mockStore(lastState);
+    const store = mockStore(getLastState());
     const actionList = [metaSetState(res)];
 
     const fetch = () => Promise.resolve({
@@ -171,7 +171,7 @@ describe("listToggleFlag", () => {
     const status = 500;
     const statusText = "Internal Server Error";
 
-    const store = mockStore(lastState);
+    const store = mockStore(getLastState());
     const actionList = [metaAddErrors([`${status} ${statusText}`])];
 
     const fetch = () => Promise.resolve({
@@ -196,7 +196,7 @@ describe("listToggleHide", () => {
 
   const { listToggleHide, metaAddErrors, metaSetState } = actions;
 
-  const lastState = deepCopy(initialState, {
+  const getLastState = () => deepCopy(initialState, {
     user: { id: "id-a" },
     list: { loaded: [{ id: "id-b" }] }
   });
@@ -214,7 +214,7 @@ describe("listToggleHide", () => {
 
     const res = { polls: [{ users: { hidden: ["id-a"] } }] };
 
-    const store = mockStore(lastState);
+    const store = mockStore(getLastState());
     const actionList = [metaSetState(res)];
 
     const fetch = () => Promise.resolve({
@@ -237,7 +237,7 @@ describe("listToggleHide", () => {
     const status = 500;
     const statusText = "Internal Server Error";
 
-    const store = mockStore(lastState);
+    const store = mockStore(getLastState());
     const actionList = [metaAddErrors([`${status} ${statusText}`])];
 
     const fetch = () => Promise.resolve({
