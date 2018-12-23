@@ -19,16 +19,7 @@ test("reducer accepts FORM_DISCARD_POLL actions", () => {
 
   const { formDiscardPoll } = actions;
 
-  const lastState = deepCopy(initialState, {
-    form: {
-      title: "Title",
-      options: [{
-        text: "Option A",
-        voted: []
-      }],
-      add: "Option B"
-    }
-  });
+  const lastState = deepCopy(initialState, { form: { title: "Title A" } });
   const nextState = deepCopy(lastState, initialState.form);
 
   expect(reducer(lastState, formDiscardPoll())).toEqual(nextState);
@@ -39,15 +30,8 @@ test("reducer accepts FORM_REMOVE_OPTION actions", () => {
 
   const { formRemoveOption } = actions;
 
-  const lastState = deepCopy(initialState, {
-    form: {
-      options: [{
-        text: "Option A",
-        voted: []
-      }]
-    }
-  });
-  const nextState = deepCopy(initialState, { form: { options: [] } });
+  const lastState = deepCopy(initialState, { form: { options: [{ text: "Option A" }] } });
+  const nextState = deepCopy(lastState, { form: { options: [] } });
 
   expect(reducer(lastState, formRemoveOption(0))).toEqual(nextState);
 
@@ -69,7 +53,7 @@ test("reducer accepts FORM_SET_TITLE_TEXT actions", () => {
 
   const { formSetTitleText } = actions;
 
-  const title = "Title";
+  const title = "Title A";
 
   const nextState = deepCopy(initialState, { form: { title } });
 
@@ -81,7 +65,7 @@ test("reducer accepts FORM_TOGGLE_CONFIRM actions", () => {
 
   const { formToggleConfirm } = actions;
 
-  const nextState = deepCopy(initialState, { form: { confirmed: true } });
+  const nextState = deepCopy(initialState, { form: { confirm: true } });
 
   expect(reducer(initialState, formToggleConfirm())).toEqual(nextState);
 

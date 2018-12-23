@@ -30,15 +30,9 @@ describe("formAddOption", () => {
   const { formAddOption, metaAddErrors, metaSetState } = actions;
 
   const getLastState = (add) => deepCopy(initialState, {
-    user: { id: "" },
+    user: { id: "id-a" },
     form: {
-      options: [{
-        text: "Option A",
-        voted: []
-      }, {
-        text: "Option B",
-        voted: []
-      }],
+      options: [{ text: "Option A" }, { text: "Option B" }],
       add
     }
   });
@@ -78,7 +72,7 @@ describe("formAddOption", () => {
       form: {
         options: lastState.form.options.concat([{
           text: lastState.form.add,
-          created: "",
+          created: "id-a",
           voted: []
         }]),
         add: ""
@@ -110,7 +104,7 @@ describe("formCreatePoll", () => {
 
   it("dispatches META_SET_STATE actions on success", () => {
 
-    const poll = { title: "" };
+    const poll = { id: "id-a" };
     const polls = [poll];
 
     const store = mockStore(initialState);

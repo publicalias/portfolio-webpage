@@ -19,18 +19,19 @@ test("reducer accepts META_ADD_ERRORS actions", () => {
 
   const { metaAddErrors } = actions;
 
+  const text = "Error B";
+
   const errorA = {
-    text: "Error Type A",
+    text: "Error A",
     timer: 100
   };
-  const text = "Error Type B";
   const errorB = {
     text,
     timer: 1000
   };
 
   const lastState = deepCopy(initialState, { errors: [errorA] });
-  const nextState = deepCopy(initialState, { errors: [errorA, errorB] });
+  const nextState = deepCopy(lastState, { errors: [errorA, errorB] });
 
   expect(reducer(lastState, metaAddErrors([text]))).toEqual(nextState);
 
@@ -40,17 +41,11 @@ test("reducer accepts META_CLOSE_ERROR actions", () => {
 
   const { metaCloseError } = actions;
 
-  const errorA = {
-    text: "Error Type A",
-    timer: 100
-  };
-  const errorB = {
-    text: "Error Type B",
-    timer: 1000
-  };
+  const errorA = { text: "Error A" };
+  const errorB = { text: "Error B" };
 
   const lastState = deepCopy(initialState, { errors: [errorA, errorB] });
-  const nextState = deepCopy(initialState, { errors: [errorA] });
+  const nextState = deepCopy(lastState, { errors: [errorA] });
 
   expect(reducer(lastState, metaCloseError(1))).toEqual(nextState);
 
@@ -62,7 +57,7 @@ describe("reducer", () => {
 
   it("accepts META_SET_STATE actions", () => {
 
-    const merge = { user: { name: "" } };
+    const merge = { user: { id: "id-a" } };
 
     const nextState = deepCopy(initialState, merge);
 
@@ -74,10 +69,10 @@ describe("reducer", () => {
 
     const merge = { user: {} };
 
-    const lastState = deepCopy(initialState, { user: { name: "" } });
-    const nextState = deepCopy(initialState, merge);
+    const lastState = deepCopy(initialState, { user: { id: "id-a" } });
+    const nextState = Object.assign(lastState, merge);
 
-    expect(reducer(lastState, metaSetState(merge, { obj: true }))).toEqual(nextState);
+    expect(reducer(lastState, metaSetState(merge, { object: true }))).toEqual(nextState);
 
   });
 
@@ -87,24 +82,12 @@ test("reducer accepts META_TIMEOUT_ERROR actions", () => {
 
   const { metaTimeoutError } = actions;
 
-  const errorA = {
-    text: "Error Type A",
-    timer: 100
-  };
-
-  const text = "Error Type B";
-
-  const errorB = {
-    text,
-    timer: 1000
-  };
-  const errorC = {
-    text,
-    timer: 900
-  };
+  const errorA = { timer: 100 };
+  const errorB = { timer: 1000 };
+  const errorC = { timer: 900 };
 
   const lastState = deepCopy(initialState, { errors: [errorA, errorB] });
-  const nextState = deepCopy(initialState, { errors: [errorC] });
+  const nextState = deepCopy(lastState, { errors: [errorC] });
 
   expect(reducer(lastState, metaTimeoutError())).toEqual(nextState);
 

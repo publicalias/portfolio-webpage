@@ -57,7 +57,7 @@ describe("metaGetPolls", () => {
 
   it("dispatches META_SET_STATE actions on success", () => {
 
-    const res = { polls: [{ title: "" }] };
+    const res = { polls: [{ id: "id-a" }] };
 
     const store = mockStore(initialState);
     const actionList = [metaSetState(res)];
@@ -109,7 +109,7 @@ describe("metaSetState", () => {
 
   it("creates META_SET_STATE actions", () => {
 
-    const merge = { user: { name: "" } };
+    const merge = { user: { id: "id-a" } };
 
     expect(metaSetState(merge)).toEqual({
       type: "META_SET_STATE",
@@ -122,10 +122,10 @@ describe("metaSetState", () => {
 
     const merge = { user: {} };
 
-    expect(metaSetState(merge, { obj: true })).toEqual({
+    expect(metaSetState(merge, { object: true })).toEqual({
       type: "META_SET_STATE",
       merge,
-      config: { obj: true }
+      config: { object: true }
     });
 
   });

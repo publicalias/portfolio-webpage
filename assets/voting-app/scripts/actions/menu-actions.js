@@ -28,7 +28,7 @@ const menuAuthUser = (type, auth) => (dispatch) => {
     delete merge.polls;
     delete merge.errors;
 
-    dispatch(metaSetState(merge, { obj: true }));
+    dispatch(metaSetState(merge, { object: true }));
 
   };
 

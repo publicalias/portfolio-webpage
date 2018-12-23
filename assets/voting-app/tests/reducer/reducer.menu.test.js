@@ -27,8 +27,10 @@ test("reducer accepts MENU_SET_FILTER actions", () => {
 
   const { menuSetFilter } = actions;
 
-  const nextState = deepCopy(initialState, { list: { filter: "voted" } });
+  const filter = "created";
 
-  expect(reducer(initialState, menuSetFilter("voted"))).toEqual(nextState);
+  const nextState = deepCopy(initialState, { list: { filter } });
+
+  expect(reducer(initialState, menuSetFilter(filter))).toEqual(nextState);
 
 });

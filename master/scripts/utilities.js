@@ -47,8 +47,8 @@ const getJSON = (url, body) => fetch(url, body).then((res) => {
 const initDeepCopy = (config) => (...args) => {
 
   const defaults = {
-    arr: true,
-    obj: false
+    array: true,
+    object: false
   };
 
   const init = Object.assign(defaults, config);
@@ -58,7 +58,7 @@ const initDeepCopy = (config) => (...args) => {
     for (const p in from) {
 
       const prop = from[p];
-      const overwrite = Array.isArray(to[p]) ? init.arr : init.obj;
+      const overwrite = Array.isArray(to[p]) ? init.array : init.object;
 
       if (!prop || typeof prop !== "object") {
 

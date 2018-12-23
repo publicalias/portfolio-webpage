@@ -36,7 +36,7 @@ describe("menuAuthUser", () => {
     delete merge.polls;
     delete merge.errors;
 
-    return [metaSetState(merge, { obj: true })];
+    return [metaSetState(merge, { object: true })];
 
   };
 
@@ -51,7 +51,7 @@ describe("menuAuthUser", () => {
 
   it("dispatches META_SET_STATE actions on success", () => {
 
-    const res = { user: { name: "" } };
+    const res = { user: { id: "id-a" } };
     const auth = {}; //oauth token
 
     const store = mockStore(initialState);
@@ -112,7 +112,7 @@ test("menuSetFilter creates MENU_SET_FILTER actions", () => {
 
   const { menuSetFilter } = actions;
 
-  const filter = "voted";
+  const filter = "created";
 
   expect(menuSetFilter(filter)).toEqual({
     type: "MENU_SET_FILTER",
