@@ -46,25 +46,21 @@ const formCreatePoll = (form) => (dispatch) => {
   const body = {
     method: "POST",
     body: form,
-    headers: new Headers({
-      "Content-Type": "application/json"
-    })
+    headers: new Headers({ "Content-Type": "application/json" })
   };
 
-  const success = ({
-    polls,
-    poll,
-    errors
-  }) => {
+  const success = (res) => {
+
+    const { polls, poll, errors } = res;
+
     dispatch(errors ? metaAddErrors(errors) : metaSetState({
       page: "view",
       polls,
-      list: deepCopy(initialState.list, {
-        filter: "created"
-      }),
+      list: deepCopy(initialState.list, { filter: "created" }),
       form: deepCopy(initialState.form),
       view: { poll }
     }));
+
   };
 
   const failure = (err) => {

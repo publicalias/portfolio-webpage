@@ -37,7 +37,7 @@ describe("formAddOption", () => {
     }
   });
 
-  it("creates META_ADD_ERRORS actions with empty input", () => {
+  it("dispatches META_ADD_ERRORS actions with empty input", () => {
 
     const lastState = getLastState("");
 
@@ -50,7 +50,7 @@ describe("formAddOption", () => {
 
   });
 
-  it("creates META_ADD_ERRORS actions with duplicate input", () => {
+  it("dispatches META_ADD_ERRORS actions with duplicate input", () => {
 
     const lastState = getLastState("Option A");
 
@@ -63,7 +63,7 @@ describe("formAddOption", () => {
 
   });
 
-  it("creates META_SET_STATE actions with valid input", () => {
+  it("dispatches META_SET_STATE actions with valid input", () => {
 
     const lastState = getLastState("Option C");
 

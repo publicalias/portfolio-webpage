@@ -70,7 +70,7 @@ describe("reducer", () => {
     const merge = { user: {} };
 
     const lastState = deepCopy(initialState, { user: { id: "id-a" } });
-    const nextState = Object.assign(lastState, merge);
+    const nextState = initDeepCopy({ object: true })(lastState, merge);
 
     expect(reducer(lastState, metaSetState(merge, { object: true }))).toEqual(nextState);
 
