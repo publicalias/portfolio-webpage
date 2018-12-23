@@ -2,8 +2,8 @@
 
 //local imports
 
-const { metaAddErrors, metaSetState } = require("./meta-actions");
-const { initialState } = require("../reducer/reducer");
+const { metaAddErrors, metaSetState } = require("../factories/meta-factories");
+const { initialState } = require("../../reducer/reducer");
 
 //global imports
 
@@ -17,7 +17,10 @@ const menuAuthUser = (type, auth) => (dispatch) => {
 
   const body = {
     method: "POST",
-    body: auth,
+    body: {
+      type,
+      auth
+    },
     headers: new Headers({ "Content-Type": "application/json" })
   };
 
@@ -36,27 +39,12 @@ const menuAuthUser = (type, auth) => (dispatch) => {
     dispatch(metaAddErrors([err.message]));
   };
 
-  return getJSON(`/api/auth-user?type=${type}`, body)
+  return getJSON("/api/auth-user", body)
     .then(success)
     .catch(failure);
 
 };
 
-//menu open form
-
-const menuOpenForm = () => ({ type: "MENU_OPEN_FORM" });
-
-//menu set filter
-
-const menuSetFilter = (filter) => ({
-  type: "MENU_SET_FILTER",
-  filter
-});
-
 //exports
 
-module.exports = {
-  menuAuthUser,
-  menuOpenForm,
-  menuSetFilter
-};
+module.exports = { menuAuthUser };

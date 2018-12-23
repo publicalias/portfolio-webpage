@@ -2,43 +2,11 @@
 
 //local imports
 
-const { metaAddErrors, metaSetState } = require("./meta-actions");
+const { metaAddErrors, metaSetState } = require("../factories/meta-factories");
 
 //global imports
 
 const { getJSON } = require("utilities");
-
-//list get results
-
-const listGetResults = () => ({ type: "LIST_GET_RESULTS" });
-
-//list load polls
-
-const listLoadPolls = (load) => ({
-  type: "LIST_LOAD_POLLS",
-  load
-});
-
-//list open view
-
-const listOpenView = (index) => ({
-  type: "LIST_OPEN_VIEW",
-  index
-});
-
-//list set search text
-
-const listSetSearchText = (search) => ({
-  type: "LIST_SET_SEARCH_TEXT",
-  search
-});
-
-//list set sort
-
-const listSetSort = (sort) => ({
-  type: "LIST_SET_SORT",
-  sort
-});
 
 //list submit search
 
@@ -65,14 +33,11 @@ const listSubmitSearch = () => (dispatch, getState) => {
 
 const listToggleFlag = (index) => (dispatch, getState) => {
 
-  const { list, user } = getState();
+  const { list } = getState();
 
   const body = {
     method: "POST",
-    body: {
-      userID: user.id,
-      pollID: list.loaded[index].id
-    },
+    body: { pollID: list.loaded[index].id },
     headers: new Headers({ "Content-Type": "application/json" })
   };
 
@@ -94,14 +59,11 @@ const listToggleFlag = (index) => (dispatch, getState) => {
 
 const listToggleHide = (index) => (dispatch, getState) => {
 
-  const { list, user } = getState();
+  const { list } = getState();
 
   const body = {
     method: "POST",
-    body: {
-      userID: user.id,
-      pollID: list.loaded[index].id
-    },
+    body: { pollID: list.loaded[index].id },
     headers: new Headers({ "Content-Type": "application/json" })
   };
 
@@ -122,11 +84,6 @@ const listToggleHide = (index) => (dispatch, getState) => {
 //exports
 
 module.exports = {
-  listGetResults,
-  listLoadPolls,
-  listOpenView,
-  listSetSearchText,
-  listSetSort,
   listSubmitSearch,
   listToggleFlag,
   listToggleHide

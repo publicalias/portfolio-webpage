@@ -1,9 +1,5 @@
 "use strict";
 
-//global imports
-
-const { getJSON } = require("utilities");
-
 //meta add errors
 
 const metaAddErrors = (errors) => ({
@@ -26,24 +22,6 @@ const metaSetState = (merge, config) => ({
   config
 });
 
-//meta get polls
-
-const metaGetPolls = () => (dispatch) => {
-
-  const success = (res) => {
-    dispatch(metaSetState(res));
-  };
-
-  const failure = (err) => {
-    dispatch(metaAddErrors([err.message]));
-  };
-
-  return getJSON("/api/get-polls")
-    .then(success)
-    .catch(failure);
-
-};
-
 //meta timeout error
 
 const metaTimeoutError = () => ({ type: "META_TIMEOUT_ERROR" });
@@ -53,7 +31,6 @@ const metaTimeoutError = () => ({ type: "META_TIMEOUT_ERROR" });
 module.exports = {
   metaAddErrors,
   metaCloseError,
-  metaGetPolls,
   metaSetState,
   metaTimeoutError
 };

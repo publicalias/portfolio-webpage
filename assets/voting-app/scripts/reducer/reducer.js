@@ -2,11 +2,12 @@
 
 //local imports
 
-const formHandlers = require("./form-handlers");
+const formHandlers = require("./handlers/form-handlers");
+const listHandlers = require("./handlers/list-handlers");
+const menuHandlers = require("./handlers/menu-handlers");
+const metaHandlers = require("./handlers/meta-handlers");
+
 const { initialState } = require("./initial-state");
-const listHandlers = require("./list-handlers");
-const menuHandlers = require("./menu-handlers");
-const metaHandlers = require("./meta-handlers");
 
 //reducer
 

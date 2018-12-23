@@ -4,8 +4,8 @@
 
 //local imports
 
-const { actions } = require("../../scripts/actions/actions");
-const { initialState } = require("../../scripts/reducer/reducer");
+const { actions } = require("../../../scripts/actions/actions");
+const { initialState } = require("../../../scripts/reducer/reducer");
 
 //global imports
 
@@ -28,6 +28,8 @@ const mockStore = configureStore(middleware);
 describe("menuAuthUser", () => {
 
   const { menuAuthUser, metaAddErrors, metaSetState } = actions;
+
+  const getAuth = () => ({}); //oauth token
 
   const getActionList = (res) => {
 
@@ -52,7 +54,6 @@ describe("menuAuthUser", () => {
   it("dispatches META_SET_STATE actions on success", () => {
 
     const res = { user: { id: "id-a" } };
-    const auth = {}; //oauth token
 
     const store = mockStore(initialState);
     const actionList = getActionList(res);
@@ -66,7 +67,7 @@ describe("menuAuthUser", () => {
 
     global.fetch = jest.fn(fetch);
 
-    return store.dispatch(menuAuthUser("auth", auth)).then(() => {
+    return store.dispatch(menuAuthUser("auth", getAuth())).then(() => {
       expect(store.getActions()).toEqual(actionList);
     });
 
@@ -88,35 +89,10 @@ describe("menuAuthUser", () => {
 
     global.fetch = jest.fn(fetch);
 
-    return store.dispatch(menuAuthUser("ip")).then(() => {
+    return store.dispatch(menuAuthUser("auth", getAuth())).then(() => {
       expect(store.getActions()).toEqual(actionList);
     });
 
-  });
-
-});
-
-//menu open form
-
-test("menuOpenForm creates MENU_OPEN_FORM actions", () => {
-
-  const { menuOpenForm } = actions;
-
-  expect(menuOpenForm()).toEqual({ type: "MENU_OPEN_FORM" });
-
-});
-
-//menu set filter
-
-test("menuSetFilter creates MENU_SET_FILTER actions", () => {
-
-  const { menuSetFilter } = actions;
-
-  const filter = "created";
-
-  expect(menuSetFilter(filter)).toEqual({
-    type: "MENU_SET_FILTER",
-    filter
   });
 
 });
