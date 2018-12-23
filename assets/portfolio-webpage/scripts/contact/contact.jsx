@@ -64,15 +64,9 @@ class Contact extends React.Component {
 
   handleChange(event) {
 
-    const maxLength = {
-      email: 50,
-      subject: 50,
-      body: 1000
-    };
-
     const { name, value } = event.target;
 
-    if (this.state.btnIndex !== 1 && value.length < maxLength[name]) {
+    if (this.state.btnIndex !== 1) {
       this.setState({
         [name]: value,
         btnIndex: 0

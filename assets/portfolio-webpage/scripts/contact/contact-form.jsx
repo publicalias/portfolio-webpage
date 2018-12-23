@@ -14,6 +14,7 @@ const ContactForm = (props) => {
     <form className="u-margin-full" onSubmit={props.handleSubmit}>
       <input
         className="u-margin-half"
+        maxLength="100"
         name="email"
         onChange={props.handleChange}
         placeholder="Email"
@@ -23,6 +24,7 @@ const ContactForm = (props) => {
       />
       <input
         className="u-margin-half"
+        maxLength="100"
         name="subject"
         onChange={props.handleChange}
         placeholder="Subject"
@@ -30,6 +32,7 @@ const ContactForm = (props) => {
       />
       <textarea
         className="c-field--lg u-margin-half"
+        maxLength="3000"
         name="body"
         onChange={props.handleChange}
         placeholder="Body"

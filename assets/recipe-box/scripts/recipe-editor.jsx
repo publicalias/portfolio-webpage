@@ -75,6 +75,7 @@ class RecipeEditor extends React.Component {
             <hr />
             <input
               className="u-margin-full"
+              maxLength="100"
               name="name"
               onChange={this.handleChange}
               placeholder="Recipe"
@@ -82,6 +83,7 @@ class RecipeEditor extends React.Component {
             />
             <textarea
               className="c-field--xs u-margin-full"
+              maxLength="3000"
               name="com"
               onChange={this.handleChange}
               placeholder="Comments"
@@ -89,6 +91,7 @@ class RecipeEditor extends React.Component {
             />
             <textarea
               className="c-field--sm u-margin-full"
+              maxLength="3000"
               name="ingr"
               onChange={this.handleChange}
               placeholder="Ingedients"
@@ -96,6 +99,7 @@ class RecipeEditor extends React.Component {
             />
             <textarea
               className="c-field--sm"
+              maxLength="3000"
               name="inst"
               onChange={this.handleChange}
               placeholder="Instructions"

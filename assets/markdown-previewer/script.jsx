@@ -45,6 +45,7 @@ class App extends React.Component {
           <div className="c-row__col--6">
             <textarea
               className="c-md-preview"
+              maxLength="3000"
               onChange={this.handleChange}
               value={this.state.text}
             />

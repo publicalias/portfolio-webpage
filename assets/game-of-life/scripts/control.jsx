@@ -42,6 +42,7 @@ const Control = (props) => {
               <div className="c-control__btn-set" key={keyGen(a.text)}>
                 <input
                   className={`c-control__input--first js-submit-input-${jsID} u-align-center ${flex(a)}`}
+                  maxLength="100"
                   onChange={a.fn}
                   placeholder={a.text}
                   value={a.val}
