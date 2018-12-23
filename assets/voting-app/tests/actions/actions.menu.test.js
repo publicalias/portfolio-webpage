@@ -27,9 +27,9 @@ const mockStore = configureStore(middleware);
 
 describe("menuAuthUser", () => {
 
-  const getActionList = (res) => {
+  const { menuAuthUser, metaAddErrors, metaSetState } = actions;
 
-    const { metaSetState } = actions;
+  const getActionList = (res) => {
 
     const merge = deepCopy(initialState, res);
 
@@ -50,8 +50,6 @@ describe("menuAuthUser", () => {
   });
 
   it("dispatches META_SET_STATE actions on success", () => {
-
-    const { menuAuthUser } = actions;
 
     const res = { user: { name: "" } };
     const auth = {}; //oauth token
@@ -75,8 +73,6 @@ describe("menuAuthUser", () => {
   });
 
   it("dispatches META_ADD_ERRORS actions on failure", () => {
-
-    const { menuAuthUser, metaAddErrors } = actions;
 
     const status = 500;
     const statusText = "Internal Server Error";

@@ -27,7 +27,10 @@ const mockStore = configureStore(middleware);
 
 describe("formAddOption", () => {
 
+  const { formAddOption, metaAddErrors, metaSetState } = actions;
+
   const getLastState = (add) => deepCopy(initialState, {
+    user: { id: "" },
     form: {
       options: [{
         text: "Option A",
@@ -42,8 +45,6 @@ describe("formAddOption", () => {
 
   it("creates META_ADD_ERRORS actions with empty input", () => {
 
-    const { formAddOption, metaAddErrors } = actions;
-
     const lastState = getLastState("");
 
     const store = mockStore(lastState);
@@ -56,8 +57,6 @@ describe("formAddOption", () => {
   });
 
   it("creates META_ADD_ERRORS actions with duplicate input", () => {
-
-    const { formAddOption, metaAddErrors } = actions;
 
     const lastState = getLastState("Option A");
 
@@ -72,8 +71,6 @@ describe("formAddOption", () => {
 
   it("creates META_SET_STATE actions with valid input", () => {
 
-    const { formAddOption, metaSetState } = actions;
-
     const lastState = getLastState("Option C");
 
     const store = mockStore(lastState);
@@ -81,6 +78,7 @@ describe("formAddOption", () => {
       form: {
         options: lastState.form.options.concat([{
           text: lastState.form.add,
+          created: "",
           voted: []
         }]),
         add: ""
@@ -99,6 +97,8 @@ describe("formAddOption", () => {
 
 describe("formCreatePoll", () => {
 
+  const { formCreatePoll, metaAddErrors, metaSetState } = actions;
+
   beforeAll(() => {
     global.Headers = jest.fn((init) => init);
   });
@@ -109,8 +109,6 @@ describe("formCreatePoll", () => {
   });
 
   it("dispatches META_SET_STATE actions on success", () => {
-
-    const { formCreatePoll, metaSetState } = actions;
 
     const poll = { title: "" };
     const polls = [poll];
@@ -144,8 +142,6 @@ describe("formCreatePoll", () => {
 
   it("dispatches META_ADD_ERRORS actions on success (not created)", () => {
 
-    const { formCreatePoll, metaAddErrors } = actions;
-
     const errors = [
       "Poll must have a unique title",
       "Poll must have at least two options",
@@ -171,8 +167,6 @@ describe("formCreatePoll", () => {
   });
 
   it("dispatches META_ADD_ERRORS actions on failure", () => {
-
-    const { formCreatePoll, metaAddErrors } = actions;
 
     const status = 500;
     const statusText = "Internal Server Error";

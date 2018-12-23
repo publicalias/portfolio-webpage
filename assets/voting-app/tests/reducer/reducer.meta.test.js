@@ -58,9 +58,9 @@ test("reducer accepts META_CLOSE_ERROR actions", () => {
 
 describe("reducer", () => {
 
-  it("accepts META_SET_STATE actions", () => {
+  const { metaSetState } = actions;
 
-    const { metaSetState } = actions;
+  it("accepts META_SET_STATE actions", () => {
 
     const merge = { user: { name: "" } };
 
@@ -71,8 +71,6 @@ describe("reducer", () => {
   });
 
   it("accepts META_SET_STATE actions with config", () => {
-
-    const { metaSetState } = actions;
 
     const merge = { user: {} };
 

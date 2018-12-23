@@ -49,13 +49,13 @@ test("metaCloseError creates META_CLOSE_ERROR actions", () => {
 
 describe("metaGetPolls", () => {
 
+  const { metaGetPolls, metaAddErrors, metaSetState } = actions;
+
   afterAll(() => {
     global.fetch = undefined;
   });
 
   it("dispatches META_SET_STATE actions on success", () => {
-
-    const { metaGetPolls, metaSetState } = actions;
 
     const res = { polls: [{ title: "" }] };
 
@@ -78,8 +78,6 @@ describe("metaGetPolls", () => {
   });
 
   it("dispatches META_ADD_ERRORS actions on failure", () => {
-
-    const { metaAddErrors, metaGetPolls } = actions;
 
     const status = 500;
     const statusText = "Internal Server Error";
@@ -107,9 +105,9 @@ describe("metaGetPolls", () => {
 
 describe("metaSetState", () => {
 
-  it("creates META_SET_STATE actions", () => {
+  const { metaSetState } = actions;
 
-    const { metaSetState } = actions;
+  it("creates META_SET_STATE actions", () => {
 
     const merge = { user: { name: "" } };
 
@@ -121,8 +119,6 @@ describe("metaSetState", () => {
   });
 
   it("creates META_SET_STATE actions with config", () => {
-
-    const { metaSetState } = actions;
 
     const merge = { user: {} };
 

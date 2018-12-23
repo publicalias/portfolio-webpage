@@ -15,7 +15,7 @@ const deepCopy = initDeepCopy();
 
 const formAddOption = () => (dispatch, getState) => {
 
-  const { form } = getState();
+  const { form, user } = getState();
 
   const empty = !form.add.trim();
   const duplicate = form.options.filter((e) => e.text === form.add).length;
@@ -29,6 +29,7 @@ const formAddOption = () => (dispatch, getState) => {
       form: {
         options: form.options.concat([{
           text: form.add,
+          created: user.id,
           voted: []
         }]),
         add: ""
