@@ -28,7 +28,16 @@ const chance = (val) => Math.random() >= (100 - val) / 100;
 
 //cycle items
 
-const cycleItems = (arr, val) => arr[(arr.indexOf(val) + 1) % arr.length];
+const cycleItems = (arr, val, delta = 1) => {
+
+  const i = arr.indexOf(val);
+  const l = arr.length;
+
+  const next = (i + delta) % l;
+
+  return arr[next >= 0 ? next : l + next];
+
+};
 
 //get json
 

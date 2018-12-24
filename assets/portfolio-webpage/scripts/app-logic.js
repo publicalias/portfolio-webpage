@@ -4,24 +4,6 @@
 
 const { select } = require("dom-api");
 
-//get next view
-
-const getNextView = (right, showcase, last) => {
-
-  const length = showcase.projects.length;
-
-  let next = last + (right ? 1 : -1);
-
-  if (next === -1) {
-    next = length - 1;
-  } else if (next === length) {
-    next = 0;
-  }
-
-  return next;
-
-};
-
 //item is in view
 
 const itemIsInView = (id, addTop = 0, addBottom = 0) => {
@@ -107,7 +89,6 @@ const voidLink = (link) => link || "javascript:void(0)";
 //exports
 
 module.exports = {
-  getNextView,
   itemIsInView,
   loadReCaptcha,
   positionMenu,

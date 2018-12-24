@@ -4,12 +4,13 @@
 
 const Carousel = require("./carousel");
 
-const { getNextView, itemIsInView } = require("../app-logic");
+const { itemIsInView } = require("../app-logic");
 
 //global imports
 
 const { select } = require("dom-api");
 const { bindReactClass } = require("react-utils");
+const { cycleItems } = require("utilities");
 
 //node modules
 
@@ -24,7 +25,7 @@ class Showcase extends React.Component {
     super(props);
 
     this.state = {
-      view: 0,
+      view: this.props.showcase.projects[0],
       next: null,
       paused: false
     };
@@ -57,7 +58,7 @@ class Showcase extends React.Component {
 
       const DOMShowcase = select(".js-toggle-showcase");
 
-      const view = getNextView(right, this.props.showcase, this.state.view);
+      const view = cycleItems(this.props.showcase.projects, this.state.view, right ? 1 : -1);
 
       DOMShowcase.animate({ opacity: 0 }, () => {
         this.setState({ view }, () => {
@@ -99,7 +100,7 @@ class Showcase extends React.Component {
 
   render() {
 
-    const project = this.props.showcase.projects[this.state.view];
+    const project = this.state.view;
 
     return (
       <div className="c-content--xl js-scroll-showcase">
