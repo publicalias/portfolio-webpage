@@ -19,21 +19,15 @@ test("reducer accepts META_ADD_ERRORS actions", () => {
 
   const { metaAddErrors } = actions;
 
-  const text = "Error B";
-
-  const errorA = {
-    text: "Error A",
-    timer: 100
-  };
-  const errorB = {
-    text,
+  const error = {
+    text: "",
     timer: 1000
   };
 
-  const lastState = deepCopy(initialState, { errors: [errorA] });
-  const nextState = deepCopy(lastState, { errors: [errorA, errorB] });
+  const lastState = deepCopy(initialState, { errors: [error] });
+  const nextState = deepCopy(lastState, { errors: [error, error] });
 
-  expect(reducer(lastState, metaAddErrors([text]))).toEqual(nextState);
+  expect(reducer(lastState, metaAddErrors([""]))).toEqual(nextState);
 
 });
 
@@ -41,11 +35,8 @@ test("reducer accepts META_CLOSE_ERROR actions", () => {
 
   const { metaCloseError } = actions;
 
-  const errorA = { text: "Error A" };
-  const errorB = { text: "Error B" };
-
-  const lastState = deepCopy(initialState, { errors: [errorA, errorB] });
-  const nextState = deepCopy(lastState, { errors: [errorA] });
+  const lastState = deepCopy(initialState, { errors: [{}, {}] });
+  const nextState = deepCopy(lastState, { errors: [{}] });
 
   expect(reducer(lastState, metaCloseError(1))).toEqual(nextState);
 

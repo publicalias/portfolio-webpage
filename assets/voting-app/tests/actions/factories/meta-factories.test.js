@@ -12,11 +12,9 @@ test("metaAddErrors creates META_ADD_ERRORS actions", () => {
 
   const { metaAddErrors } = actions;
 
-  const errors = ["500 Internal Server Error"];
-
-  expect(metaAddErrors(errors)).toEqual({
+  expect(metaAddErrors([])).toEqual({
     type: "META_ADD_ERRORS",
-    errors
+    errors: []
   });
 
 });
@@ -41,24 +39,20 @@ describe("metaSetState", () => {
   const { metaSetState } = actions;
 
   it("creates META_SET_STATE actions", () => {
-
-    const merge = { user: { id: "id-a" } };
-
-    expect(metaSetState(merge)).toEqual({
+    expect(metaSetState({})).toEqual({
       type: "META_SET_STATE",
-      merge
+      merge: {}
     });
-
   });
 
   it("creates META_SET_STATE actions with config", () => {
 
-    const merge = { user: {} };
+    const config = { object: true };
 
-    expect(metaSetState(merge, { object: true })).toEqual({
+    expect(metaSetState({}, config)).toEqual({
       type: "META_SET_STATE",
-      merge,
-      config: { object: true }
+      merge: {},
+      config
     });
 
   });

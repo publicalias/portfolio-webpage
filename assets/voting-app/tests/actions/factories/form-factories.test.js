@@ -33,9 +33,9 @@ test("formSetAddText creates FORM_SET_ADD_TEXT actions", () => {
 
   const { formSetAddText } = actions;
 
-  expect(formSetAddText("Option A")).toEqual({
+  expect(formSetAddText("")).toEqual({
     type: "FORM_SET_ADD_TEXT",
-    add: "Option A"
+    add: ""
   });
 
 });
@@ -46,9 +46,9 @@ test("formSetTitleText creates FORM_SET_TITLE_TEXT actions", () => {
 
   const { formSetTitleText } = actions;
 
-  expect(formSetTitleText("Title")).toEqual({
+  expect(formSetTitleText("")).toEqual({
     type: "FORM_SET_TITLE_TEXT",
-    title: "Title"
+    title: ""
   });
 
 });

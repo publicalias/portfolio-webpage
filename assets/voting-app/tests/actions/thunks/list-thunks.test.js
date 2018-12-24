@@ -6,6 +6,7 @@
 
 const { actions } = require("../../../scripts/actions/actions");
 const { initialState } = require("../../../scripts/reducer/reducer");
+const { testAPIFailure, testAPISuccess } = require("../../test-helpers");
 
 //global imports
 
@@ -66,12 +67,10 @@ describe("listSubmitSearch", () => {
 
 describe("listToggleFlag", () => {
 
-  const { listToggleFlag, metaAddErrors, metaSetState } = actions;
+  const { listToggleFlag, metaSetState } = actions;
 
-  const getLastState = () => deepCopy(initialState, {
-    user: { id: "id-a" },
-    list: { loaded: [{ id: "id-b" }] }
-  });
+  const action = listToggleFlag(0);
+  const state = deepCopy(initialState, { list: { loaded: [{}] } });
 
   beforeAll(() => {
     global.Headers = jest.fn((init) => init);
@@ -84,47 +83,13 @@ describe("listToggleFlag", () => {
 
   it("dispatches META_SET_STATE actions on success", () => {
 
-    const res = { polls: [{ users: { flagged: ["id-a"] } }] };
+    const actionList = [metaSetState({})];
 
-    const store = mockStore(getLastState());
-    const actionList = [metaSetState(res)];
-
-    const fetch = () => Promise.resolve({
-      ok: true,
-      json() {
-        return res;
-      }
-    });
-
-    global.fetch = jest.fn(fetch);
-
-    return store.dispatch(listToggleFlag(0)).then(() => {
-      expect(store.getActions()).toEqual(actionList);
-    });
+    return testAPISuccess(action, {}, actionList, state);
 
   });
 
-  it("dispatches META_ADD_ERRORS actions on failure", () => {
-
-    const status = 500;
-    const statusText = "Internal Server Error";
-
-    const store = mockStore(getLastState());
-    const actionList = [metaAddErrors([`${status} ${statusText}`])];
-
-    const fetch = () => Promise.resolve({
-      status,
-      statusText,
-      ok: false
-    });
-
-    global.fetch = jest.fn(fetch);
-
-    return store.dispatch(listToggleFlag(0)).then(() => {
-      expect(store.getActions()).toEqual(actionList);
-    });
-
-  });
+  it("dispatches META_ADD_ERRORS actions on failure", () => testAPIFailure(action, state));
 
 });
 
@@ -132,12 +97,10 @@ describe("listToggleFlag", () => {
 
 describe("listToggleHide", () => {
 
-  const { listToggleHide, metaAddErrors, metaSetState } = actions;
+  const { listToggleHide, metaSetState } = actions;
 
-  const getLastState = () => deepCopy(initialState, {
-    user: { id: "id-a" },
-    list: { loaded: [{ id: "id-b" }] }
-  });
+  const action = listToggleHide(0);
+  const state = deepCopy(initialState, { list: { loaded: [{}] } });
 
   beforeAll(() => {
     global.Headers = jest.fn((init) => init);
@@ -150,46 +113,12 @@ describe("listToggleHide", () => {
 
   it("dispatches META_SET_STATE actions on success", () => {
 
-    const res = { polls: [{ users: { hidden: ["id-a"] } }] };
+    const actionList = [metaSetState({})];
 
-    const store = mockStore(getLastState());
-    const actionList = [metaSetState(res)];
-
-    const fetch = () => Promise.resolve({
-      ok: true,
-      json() {
-        return res;
-      }
-    });
-
-    global.fetch = jest.fn(fetch);
-
-    return store.dispatch(listToggleHide(0)).then(() => {
-      expect(store.getActions()).toEqual(actionList);
-    });
+    return testAPISuccess(action, {}, actionList, state);
 
   });
 
-  it("dispatches META_ADD_ERRORS actions on failure", () => {
-
-    const status = 500;
-    const statusText = "Internal Server Error";
-
-    const store = mockStore(getLastState());
-    const actionList = [metaAddErrors([`${status} ${statusText}`])];
-
-    const fetch = () => Promise.resolve({
-      status,
-      statusText,
-      ok: false
-    });
-
-    global.fetch = jest.fn(fetch);
-
-    return store.dispatch(listToggleHide(0)).then(() => {
-      expect(store.getActions()).toEqual(actionList);
-    });
-
-  });
+  it("dispatches META_ADD_ERRORS actions on failure", () => testAPIFailure(action, state));
 
 });

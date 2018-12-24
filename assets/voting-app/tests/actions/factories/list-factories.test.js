@@ -20,9 +20,9 @@ test("listLoadPolls creates LIST_LOAD_POLLS actions", () => {
 
   const { listLoadPolls } = actions;
 
-  expect(listLoadPolls(1)).toEqual({
+  expect(listLoadPolls(0)).toEqual({
     type: "LIST_LOAD_POLLS",
-    load: 1
+    load: 0
   });
 
 });
@@ -46,9 +46,9 @@ test("listSetSearchText creates LIST_SET_SEARCH_TEXT actions", () => {
 
   const { listSetSearchText } = actions;
 
-  expect(listSetSearchText("a")).toEqual({
+  expect(listSetSearchText("")).toEqual({
     type: "LIST_SET_SEARCH_TEXT",
-    search: "a"
+    search: ""
   });
 
 });
@@ -59,9 +59,9 @@ test("listSetSort creates LIST_SET_SORT actions", () => {
 
   const { listSetSort } = actions;
 
-  expect(listSetSort("popular")).toEqual({
+  expect(listSetSort("")).toEqual({
     type: "LIST_SET_SORT",
-    sort: "popular"
+    sort: ""
   });
 
 });

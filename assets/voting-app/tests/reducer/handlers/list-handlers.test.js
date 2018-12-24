@@ -34,10 +34,7 @@ describe("reducer", () => {
       options: []
     };
 
-    const options = e.options && e.options.map((f) => deepCopy({
-      text: "",
-      created: ""
-    }, f));
+    const options = e.options && e.options.map((f) => deepCopy({ created: "" }, f));
 
     return deepCopy(poll, e, options);
 
@@ -60,7 +57,7 @@ describe("reducer", () => {
 
   it("accepts LIST_GET_RESULTS actions with filter all (default)", () => {
 
-    const pollA = { private: false };
+    const pollA = {};
     const pollB = { private: true };
     const pollC = { users: { hidden: ["id-a"] } };
 
@@ -73,10 +70,10 @@ describe("reducer", () => {
   it("accepts LIST_GET_RESULTS actions with filter created", () => {
 
     const pollA = { users: { created: "id-a" } };
-    const pollB = { users: { created: "id-b" } };
-    const pollC = { options: [{ created: "id-a" }] };
+    const pollB = { options: [{ created: "id-a" }] };
+    const pollC = {};
 
-    const { lastState, nextState } = getState([pollA, pollB, pollC], [pollA, pollC], {
+    const { lastState, nextState } = getState([pollA, pollB, pollC], [pollA, pollB], {
       user: { id: "id-a" },
       list: { filter: "created" }
     });
@@ -88,7 +85,7 @@ describe("reducer", () => {
   it("accepts LIST_GET_RESULTS actions with filter voted", () => {
 
     const pollA = { users: { voted: ["id-a"] } };
-    const pollB = { users: { voted: ["id-b"] } };
+    const pollB = {};
 
     const { lastState, nextState } = getState([pollA, pollB], [pollA], {
       user: { id: "id-a" },
@@ -102,7 +99,7 @@ describe("reducer", () => {
   it("accepts LIST_GET_RESULTS actions with filter hidden", () => {
 
     const pollA = { users: { hidden: ["id-a"] } };
-    const pollB = { users: { hidden: ["id-b"] } };
+    const pollB = {};
 
     const { lastState, nextState } = getState([pollA, pollB], [pollA], {
       user: { id: "id-a" },
@@ -116,10 +113,10 @@ describe("reducer", () => {
   it("accepts LIST_GET_RESULTS actions with searched", () => {
 
     const pollA = { title: "Title A" };
-    const pollB = { title: "Title B" };
-    const pollC = { author: "Author A" };
+    const pollB = { author: "Author A" };
+    const pollC = {};
 
-    const { lastState, nextState } = getState([pollA, pollB, pollC], [pollA, pollC], { list: { searched: "a" } });
+    const { lastState, nextState } = getState([pollA, pollB, pollC], [pollA, pollB], { list: { searched: "a" } });
 
     expect(reducer(lastState, listGetResults())).toEqual(nextState);
 
@@ -138,8 +135,8 @@ describe("reducer", () => {
 
   it("accepts LIST_GET_RESULTS actions with sort popular", () => {
 
-    const pollA = { users: { voted: ["id-a"] } };
-    const pollB = { users: { voted: ["id-a", "id-b"] } };
+    const pollA = { users: { voted: [""] } };
+    const pollB = { users: { voted: ["", ""] } };
 
     const { lastState, nextState } = getState([pollA, pollB], [pollB, pollA], { list: { sort: "popular" } });
 
@@ -153,15 +150,12 @@ test("reducer accepts LIST_LOAD_POLLS actions", () => {
 
   const { listLoadPolls } = actions;
 
-  const pollA = { id: "id-a" };
-  const pollB = { id: "id-b" };
-
-  const results = [pollA, pollB];
+  const results = [{}, {}];
 
   const lastState = deepCopy(initialState, {
     list: {
       results,
-      loaded: [pollA]
+      loaded: [{}]
     }
   });
   const nextState = deepCopy(lastState, {
@@ -205,8 +199,10 @@ test("reducer accepts LIST_SET_SORT actions", () => {
 
   const { listSetSort } = actions;
 
-  const nextState = deepCopy(initialState, { list: { sort: "popular" } });
+  const sort = "popular";
 
-  expect(reducer(initialState, listSetSort("popular"))).toEqual(nextState);
+  const nextState = deepCopy(initialState, { list: { sort } });
+
+  expect(reducer(initialState, listSetSort(sort))).toEqual(nextState);
 
 });

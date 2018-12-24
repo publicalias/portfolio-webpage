@@ -6,6 +6,7 @@
 
 const { actions } = require("../../../scripts/actions/actions");
 const { initialState } = require("../../../scripts/reducer/reducer");
+const { testAPIFailure, testAPISuccess } = require("../../test-helpers");
 
 //global imports
 
@@ -93,6 +94,8 @@ describe("formCreatePoll", () => {
 
   const { formCreatePoll, metaAddErrors, metaSetState } = actions;
 
+  const action = formCreatePoll();
+
   beforeAll(() => {
     global.Headers = jest.fn((init) => init);
   });
@@ -104,78 +107,31 @@ describe("formCreatePoll", () => {
 
   it("dispatches META_SET_STATE actions on success", () => {
 
-    const poll = { id: "id-a" };
-    const polls = [poll];
+    const res = {
+      polls: [],
+      poll: {}
+    };
 
-    const store = mockStore(initialState);
     const actionList = [metaSetState({
       page: "view",
-      polls,
+      polls: [],
       list: deepCopy(initialState.list, { filter: "created" }),
       form: deepCopy(initialState.form),
-      view: { poll }
+      view: { poll: {} }
     })];
 
-    const fetch = () => Promise.resolve({
-      ok: true,
-      json() {
-        return {
-          polls,
-          poll
-        };
-      }
-    });
-
-    global.fetch = jest.fn(fetch);
-
-    return store.dispatch(formCreatePoll()).then(() => {
-      expect(store.getActions()).toEqual(actionList);
-    });
+    return testAPISuccess(action, res, actionList);
 
   });
 
-  it("dispatches META_ADD_ERRORS actions on success (not created)", () => {
+  it("dispatches META_ADD_ERRORS actions on success (errors)", () => {
 
-    const errors = ["Error A"];
+    const actionList = [metaAddErrors([])];
 
-    const store = mockStore(initialState);
-    const actionList = [metaAddErrors(errors)];
-
-    const fetch = () => Promise.resolve({
-      ok: true,
-      json() {
-        return { errors };
-      }
-    });
-
-    global.fetch = jest.fn(fetch);
-
-    return store.dispatch(formCreatePoll()).then(() => {
-      expect(store.getActions()).toEqual(actionList);
-    });
+    return testAPISuccess(action, { errors: [] }, actionList);
 
   });
 
-  it("dispatches META_ADD_ERRORS actions on failure", () => {
-
-    const status = 500;
-    const statusText = "Internal Server Error";
-
-    const store = mockStore(initialState);
-    const actionList = [metaAddErrors([`${status} ${statusText}`])];
-
-    const fetch = () => Promise.resolve({
-      status,
-      statusText,
-      ok: false
-    });
-
-    global.fetch = jest.fn(fetch);
-
-    return store.dispatch(formCreatePoll()).then(() => {
-      expect(store.getActions()).toEqual(actionList);
-    });
-
-  });
+  it("dispatches META_ADD_ERRORS actions on failure", () => testAPIFailure(action));
 
 });

@@ -20,11 +20,9 @@ test("menuSetFilter creates MENU_SET_FILTER actions", () => {
 
   const { menuSetFilter } = actions;
 
-  const filter = "created";
-
-  expect(menuSetFilter(filter)).toEqual({
+  expect(menuSetFilter("")).toEqual({
     type: "MENU_SET_FILTER",
-    filter
+    filter: ""
   });
 
 });

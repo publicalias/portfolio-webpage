@@ -6,6 +6,7 @@
 
 const { actions } = require("../../../scripts/actions/actions");
 const { initialState } = require("../../../scripts/reducer/reducer");
+const { testAPIFailure, testAPISuccess } = require("../../test-helpers");
 
 //global imports
 
@@ -13,34 +14,13 @@ const { initDeepCopy } = require("utilities");
 
 const deepCopy = initDeepCopy();
 
-//node modules
-
-const configureStore = require("redux-mock-store").default;
-const ReduxThunk = require("redux-thunk").default;
-
-//setup
-
-const middleware = [ReduxThunk];
-const mockStore = configureStore(middleware);
-
 //menu auth user
 
 describe("menuAuthUser", () => {
 
-  const { menuAuthUser, metaAddErrors, metaSetState } = actions;
+  const { menuAuthUser, metaSetState } = actions;
 
-  const getAuth = () => ({}); //oauth token
-
-  const getActionList = (res) => {
-
-    const merge = deepCopy(initialState, res);
-
-    delete merge.polls;
-    delete merge.errors;
-
-    return [metaSetState(merge, { object: true })];
-
-  };
+  const action = menuAuthUser("auth", {});
 
   beforeAll(() => {
     global.Headers = jest.fn((init) => init);
@@ -55,44 +35,17 @@ describe("menuAuthUser", () => {
 
     const res = { user: { id: "id-a" } };
 
-    const store = mockStore(initialState);
-    const actionList = getActionList(res);
+    const merge = deepCopy(initialState, res);
 
-    const fetch = () => Promise.resolve({
-      ok: true,
-      json() {
-        return res;
-      }
-    });
+    delete merge.polls;
+    delete merge.errors;
 
-    global.fetch = jest.fn(fetch);
+    const actionList = [metaSetState(merge, { object: true })];
 
-    return store.dispatch(menuAuthUser("auth", getAuth())).then(() => {
-      expect(store.getActions()).toEqual(actionList);
-    });
+    return testAPISuccess(action, res, actionList);
 
   });
 
-  it("dispatches META_ADD_ERRORS actions on failure", () => {
-
-    const status = 500;
-    const statusText = "Internal Server Error";
-
-    const store = mockStore(initialState);
-    const actionList = [metaAddErrors([`${status} ${statusText}`])];
-
-    const fetch = () => Promise.resolve({
-      status,
-      statusText,
-      ok: false
-    });
-
-    global.fetch = jest.fn(fetch);
-
-    return store.dispatch(menuAuthUser("auth", getAuth())).then(() => {
-      expect(store.getActions()).toEqual(actionList);
-    });
-
-  });
+  it("dispatches META_ADD_ERRORS actions on failure", () => testAPIFailure(action));
 
 });

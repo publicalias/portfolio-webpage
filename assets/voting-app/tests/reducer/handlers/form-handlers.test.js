@@ -30,7 +30,7 @@ test("reducer accepts FORM_REMOVE_OPTION actions", () => {
 
   const { formRemoveOption } = actions;
 
-  const lastState = deepCopy(initialState, { form: { options: [{ text: "Option A" }] } });
+  const lastState = deepCopy(initialState, { form: { options: [{}] } });
   const nextState = deepCopy(lastState, { form: { options: [] } });
 
   expect(reducer(lastState, formRemoveOption(0))).toEqual(nextState);

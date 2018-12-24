@@ -18,14 +18,14 @@ const initialState = {
     title: "",
     options: [],
     add: "",
-    confirm: false,
-    private: false
+    private: false,
+    confirm: false
   },
   view: {
     poll: {},
     add: "",
-    confirm: false,
-    settings: false
+    settings: false,
+    confirm: false
   },
   errors: []
 };
