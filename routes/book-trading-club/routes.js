@@ -13,7 +13,7 @@ router.use(express.static("build"));
 //home page
 
 router.get("/", (req, res) => {
-  res.sendFile(`${__dirname.replace("routes", "build")}/view.html`);
+  res.sendFile(`${__rootdir}/build/book-trading-club/view.html`);
 });
 
 //exports

@@ -34,7 +34,7 @@ const handleUpload = (req, res) => (err) => {
 //home page
 
 router.get("/", (req, res) => {
-  res.sendFile(`${__dirname.replace("routes", "build")}/view.html`);
+  res.sendFile(`${__rootdir}/build/file-metadata-api/view.html`);
 });
 
 //parse upload

@@ -24,7 +24,7 @@ const parseHeader = (req) => {
 //home page
 
 router.get("/", (req, res) => {
-  res.sendFile(`${__dirname.replace("routes", "build")}/view.html`);
+  res.sendFile(`${__rootdir}/build/header-parser-api/view.html`);
 });
 
 //parse header
