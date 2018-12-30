@@ -4,38 +4,15 @@
 
 const { actions } = require("../../../scripts/actions/actions");
 
-//list get results
-
-test("listGetResults creates LIST_GET_RESULTS actions", () => {
-
-  const { listGetResults } = actions;
-
-  expect(listGetResults()).toEqual({ type: "LIST_GET_RESULTS" });
-
-});
-
-//list load polls
-
-test("listLoadPolls creates LIST_LOAD_POLLS actions", () => {
-
-  const { listLoadPolls } = actions;
-
-  expect(listLoadPolls(0)).toEqual({
-    type: "LIST_LOAD_POLLS",
-    load: 0
-  });
-
-});
-
 //list open view
 
 test("listOpenView creates LIST_OPEN_VIEW actions", () => {
 
   const { listOpenView } = actions;
 
-  expect(listOpenView(0)).toEqual({
+  expect(listOpenView("")).toEqual({
     type: "LIST_OPEN_VIEW",
-    index: 0
+    id: ""
   });
 
 });

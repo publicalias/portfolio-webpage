@@ -59,11 +59,12 @@ describe("reducer", () => {
   it("accepts META_SET_STATE actions with config", () => {
 
     const merge = { user: {} };
+    const config = { object: true };
 
     const lastState = deepCopy(initialState, { user: { id: "id-a" } });
-    const nextState = initDeepCopy({ object: true })(lastState, merge);
+    const nextState = initDeepCopy(config)(lastState, merge);
 
-    expect(reducer(lastState, metaSetState(merge, { object: true }))).toEqual(nextState);
+    expect(reducer(lastState, metaSetState(merge, config))).toEqual(nextState);
 
   });
 

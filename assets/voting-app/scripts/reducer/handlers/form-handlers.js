@@ -16,11 +16,14 @@ const FORM_DISCARD_POLL = (state) => deepCopy(state, initialState.form);
 
 //form remove option
 
-const FORM_REMOVE_OPTION = (state, { index }) => {
+const FORM_REMOVE_OPTION = (state, { text }) => {
 
   const nextState = deepCopy(state);
+  const options = nextState.form.options;
 
-  nextState.form.options.splice(index, 1);
+  const index = options.findIndex((e) => e.text === text);
+
+  options.splice(index, 1);
 
   return nextState;
 

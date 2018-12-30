@@ -5,6 +5,12 @@
 const { actions } = require("../scripts/actions/actions");
 const { initialState } = require("../scripts/reducer/reducer");
 
+//global imports
+
+const { initDeepCopy } = require("utilities");
+
+const deepCopy = initDeepCopy();
+
 //node modules
 
 const configureStore = require("redux-mock-store").default;
@@ -14,6 +20,37 @@ const ReduxThunk = require("redux-thunk").default;
 
 const middleware = [ReduxThunk];
 const mockStore = configureStore(middleware);
+
+//mock poll
+
+const mockPoll = (poll) => {
+
+  const defaults = {
+    title: "",
+    author: "",
+    id: "",
+    date: 0,
+    private: false,
+    users: {
+      created: "",
+      voted: [],
+      hidden: [],
+      flagged: []
+    },
+    options: []
+  };
+
+  const option = {
+    text: "",
+    created: "",
+    voted: []
+  };
+
+  poll.options = poll.options ? poll.options.map((e) => deepCopy(option, e)) : [];
+
+  return deepCopy(defaults, poll);
+
+};
 
 //test api failure
 
@@ -65,6 +102,7 @@ const testAPISuccess = (action, res, actionList, state = initialState) => {
 //exports
 
 module.exports = {
+  mockPoll,
   testAPIFailure,
   testAPISuccess
 };

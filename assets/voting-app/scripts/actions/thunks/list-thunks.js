@@ -31,13 +31,11 @@ const listSubmitSearch = () => (dispatch, getState) => {
 
 //list toggle flag
 
-const listToggleFlag = (index) => (dispatch, getState) => {
-
-  const { list } = getState();
+const listToggleFlag = (id) => (dispatch) => {
 
   const body = {
     method: "POST",
-    body: { poll: list.loaded[index] },
+    body: { poll: id },
     headers: new Headers({ "Content-Type": "application/json" })
   };
 
@@ -57,13 +55,11 @@ const listToggleFlag = (index) => (dispatch, getState) => {
 
 //list toggle hide
 
-const listToggleHide = (index) => (dispatch, getState) => {
-
-  const { list } = getState();
+const listToggleHide = (id) => (dispatch) => {
 
   const body = {
     method: "POST",
-    body: { poll: list.loaded[index] },
+    body: { poll: id },
     headers: new Headers({ "Content-Type": "application/json" })
   };
 

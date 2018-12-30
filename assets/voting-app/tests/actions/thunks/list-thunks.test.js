@@ -69,8 +69,7 @@ describe("listToggleFlag", () => {
 
   const { listToggleFlag, metaSetState } = actions;
 
-  const action = listToggleFlag(0);
-  const state = deepCopy(initialState, { list: { loaded: [{}] } });
+  const action = listToggleFlag("");
 
   beforeAll(() => {
     global.Headers = jest.fn((init) => init);
@@ -85,11 +84,11 @@ describe("listToggleFlag", () => {
 
     const actionList = [metaSetState({})];
 
-    return testAPISuccess(action, {}, actionList, state);
+    return testAPISuccess(action, {}, actionList);
 
   });
 
-  it("dispatches META_ADD_ERRORS actions on failure", () => testAPIFailure(action, state));
+  it("dispatches META_ADD_ERRORS actions on failure", () => testAPIFailure(action));
 
 });
 
@@ -99,8 +98,7 @@ describe("listToggleHide", () => {
 
   const { listToggleHide, metaSetState } = actions;
 
-  const action = listToggleHide(0);
-  const state = deepCopy(initialState, { list: { loaded: [{}] } });
+  const action = listToggleHide("");
 
   beforeAll(() => {
     global.Headers = jest.fn((init) => init);
@@ -115,10 +113,10 @@ describe("listToggleHide", () => {
 
     const actionList = [metaSetState({})];
 
-    return testAPISuccess(action, {}, actionList, state);
+    return testAPISuccess(action, {}, actionList);
 
   });
 
-  it("dispatches META_ADD_ERRORS actions on failure", () => testAPIFailure(action, state));
+  it("dispatches META_ADD_ERRORS actions on failure", () => testAPIFailure(action));
 
 });

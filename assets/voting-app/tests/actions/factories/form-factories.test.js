@@ -20,9 +20,9 @@ test("formRemoveOption creates FORM_REMOVE_OPTION actions", () => {
 
   const { formRemoveOption } = actions;
 
-  expect(formRemoveOption(0)).toEqual({
+  expect(formRemoveOption("")).toEqual({
     type: "FORM_REMOVE_OPTION",
-    index: 0
+    text: ""
   });
 
 });

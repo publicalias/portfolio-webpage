@@ -6,9 +6,9 @@ const formDiscardPoll = () => ({ type: "FORM_DISCARD_POLL" });
 
 //form remove option
 
-const formRemoveOption = (index) => ({
+const formRemoveOption = (text) => ({
   type: "FORM_REMOVE_OPTION",
-  index
+  text
 });
 
 //form set add text

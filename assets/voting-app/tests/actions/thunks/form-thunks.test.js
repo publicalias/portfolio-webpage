@@ -107,17 +107,13 @@ describe("formCreatePoll", () => {
 
   it("dispatches META_SET_STATE actions on success", () => {
 
-    const res = {
-      polls: [],
-      poll: {}
-    };
+    const res = { polls: [] };
 
     const actionList = [metaSetState({
       page: "view",
       polls: [],
       list: deepCopy(initialState.list, { filter: "created" }),
-      form: deepCopy(initialState.form),
-      view: { poll: {} }
+      form: deepCopy(initialState.form)
     })];
 
     return testAPISuccess(action, res, actionList);

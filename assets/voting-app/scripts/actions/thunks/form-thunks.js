@@ -51,14 +51,13 @@ const formCreatePoll = (form) => (dispatch) => {
 
   const success = (res) => {
 
-    const { polls, poll, errors } = res;
+    const { polls, errors } = res;
 
     dispatch(errors ? metaAddErrors(errors) : metaSetState({
       page: "view",
       polls,
       list: deepCopy(initialState.list, { filter: "created" }),
-      form: deepCopy(initialState.form),
-      view: { poll }
+      form: deepCopy(initialState.form)
     }));
 
   };
