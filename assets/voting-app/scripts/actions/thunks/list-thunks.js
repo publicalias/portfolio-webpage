@@ -37,7 +37,7 @@ const listToggleFlag = (index) => (dispatch, getState) => {
 
   const body = {
     method: "POST",
-    body: { pollID: list.loaded[index].id },
+    body: { poll: list.loaded[index] },
     headers: new Headers({ "Content-Type": "application/json" })
   };
 
@@ -63,7 +63,7 @@ const listToggleHide = (index) => (dispatch, getState) => {
 
   const body = {
     method: "POST",
-    body: { pollID: list.loaded[index].id },
+    body: { poll: list.loaded[index] },
     headers: new Headers({ "Content-Type": "application/json" })
   };
 

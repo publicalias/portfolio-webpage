@@ -22,7 +22,7 @@ const initialState = {
     confirm: false
   },
   view: {
-    poll: {},
+    poll: "",
     add: "",
     settings: false,
     confirm: false

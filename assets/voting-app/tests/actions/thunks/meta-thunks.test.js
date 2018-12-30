@@ -13,6 +13,10 @@ describe("metaGetPolls", () => {
 
   const action = metaGetPolls();
 
+  afterAll(() => {
+    global.fetch = undefined;
+  });
+
   it("dispatches META_SET_STATE actions on success", () => {
 
     const actionList = [metaSetState({})];

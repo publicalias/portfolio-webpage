@@ -18,12 +18,10 @@ const LIST_GET_RESULTS = (state) => {
 
   const applyFilter = (polls) => {
 
-    const { filter } = list;
-
     const hidden = (e) => e.users.hidden.includes(user.id);
     const created = (obj) => obj.created === user.id;
 
-    switch (filter) {
+    switch (list.filter) {
       case "all":
         return polls.filter((e) => !e.private && !hidden(e));
       case "created":
@@ -38,9 +36,7 @@ const LIST_GET_RESULTS = (state) => {
 
   const applySearched = (polls) => {
 
-    const { searched } = list;
-
-    const includes = (str) => str.toLowerCase().includes(searched.toLowerCase());
+    const includes = (str) => str.toLowerCase().includes(list.searched.toLowerCase());
 
     return polls.filter((e) => includes(e.title) || includes(e.author));
 
@@ -48,9 +44,7 @@ const LIST_GET_RESULTS = (state) => {
 
   const applySort = (polls) => {
 
-    const { sort } = list;
-
-    switch (sort) {
+    switch (list.sort) {
       case "new":
         return polls.sort((a, b) => b.date - a.date);
       case "popular":
@@ -67,7 +61,7 @@ const LIST_GET_RESULTS = (state) => {
 
   return deepCopy(state, {
     list: {
-      results: filters.reduce((acc, fn) => fn(acc), polls),
+      results: filters.reduce((acc, fn) => fn(acc), polls).map((e) => e.id),
       loaded: []
     }
   });
@@ -81,9 +75,9 @@ const LIST_LOAD_POLLS = (state, { load }) => {
   const { list: { results, loaded } } = state;
 
   const length = loaded.length;
-  const update = loaded.concat(results.slice(length, length + load));
+  const updated = loaded.concat(results.slice(length, length + load));
 
-  return deepCopy(state, { list: { loaded: update } });
+  return deepCopy(state, { list: { loaded: updated } });
 
 };
 
