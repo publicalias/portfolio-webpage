@@ -66,7 +66,7 @@ const formCreatePoll = (form) => (dispatch) => {
     dispatch(metaAddErrors([err.message]));
   };
 
-  return getJSON("/api/create-poll", body)
+  return getJSON("/api/form/create-poll", body)
     .then(success)
     .catch(failure);
 

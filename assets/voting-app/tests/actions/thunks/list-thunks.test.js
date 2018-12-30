@@ -28,6 +28,8 @@ describe("listSubmitSearch", () => {
 
   const { listSubmitSearch, metaAddErrors, metaSetState } = actions;
 
+  const action = listSubmitSearch();
+
   const getLastState = (search) => deepCopy(initialState, { list: { search } });
 
   it("dispatches META_ADD_ERRORS actions with empty input", () => {
@@ -37,7 +39,7 @@ describe("listSubmitSearch", () => {
     const store = mockStore(lastState);
     const actionList = [metaAddErrors(["Nothing will come of nothing"])];
 
-    store.dispatch(listSubmitSearch());
+    store.dispatch(action);
 
     expect(store.getActions()).toEqual(actionList);
 
@@ -55,7 +57,7 @@ describe("listSubmitSearch", () => {
       }
     })];
 
-    store.dispatch(listSubmitSearch());
+    store.dispatch(action);
 
     expect(store.getActions()).toEqual(actionList);
 

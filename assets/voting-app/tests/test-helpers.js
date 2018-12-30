@@ -80,9 +80,9 @@ const testAPIFailure = (action, state = initialState) => {
 
 //test api success
 
-const testAPISuccess = (action, res, actionList, state = initialState) => {
+const testAPISuccess = (action, res, actionList) => {
 
-  const store = mockStore(state);
+  const store = mockStore(initialState);
 
   const fetch = () => Promise.resolve({
     ok: true,

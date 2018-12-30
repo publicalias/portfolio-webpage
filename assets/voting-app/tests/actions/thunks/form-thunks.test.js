@@ -30,6 +30,8 @@ describe("formAddOption", () => {
 
   const { formAddOption, metaAddErrors, metaSetState } = actions;
 
+  const action = formAddOption();
+
   const getLastState = (add) => deepCopy(initialState, {
     user: { id: "id-a" },
     form: {
@@ -45,7 +47,7 @@ describe("formAddOption", () => {
     const store = mockStore(lastState);
     const actionList = [metaAddErrors(["Option must be valid"])];
 
-    store.dispatch(formAddOption());
+    store.dispatch(action);
 
     expect(store.getActions()).toEqual(actionList);
 
@@ -58,7 +60,7 @@ describe("formAddOption", () => {
     const store = mockStore(lastState);
     const actionList = [metaAddErrors(["Option must be unique"])];
 
-    store.dispatch(formAddOption());
+    store.dispatch(action);
 
     expect(store.getActions()).toEqual(actionList);
 
@@ -80,7 +82,7 @@ describe("formAddOption", () => {
       }
     })];
 
-    store.dispatch(formAddOption());
+    store.dispatch(action);
 
     expect(store.getActions()).toEqual(actionList);
 

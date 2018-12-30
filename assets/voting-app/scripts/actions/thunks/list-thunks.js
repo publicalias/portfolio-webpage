@@ -47,7 +47,7 @@ const listToggleFlag = (id) => (dispatch) => {
     dispatch(metaAddErrors([err.message]));
   };
 
-  return getJSON("/api/flag-poll", body)
+  return getJSON("/api/list/toggle-flag", body)
     .then(success)
     .catch(failure);
 
@@ -71,7 +71,7 @@ const listToggleHide = (id) => (dispatch) => {
     dispatch(metaAddErrors([err.message]));
   };
 
-  return getJSON("/api/hide-poll", body)
+  return getJSON("/api/list/toggle-hide", body)
     .then(success)
     .catch(failure);
 

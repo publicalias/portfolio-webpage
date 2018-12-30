@@ -39,7 +39,7 @@ const menuAuthUser = (type, auth) => (dispatch) => {
     dispatch(metaAddErrors([err.message]));
   };
 
-  return getJSON("/api/auth-user", body)
+  return getJSON("/api/menu/auth-user", body)
     .then(success)
     .catch(failure);
 

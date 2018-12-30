@@ -20,7 +20,7 @@ const metaGetPolls = () => (dispatch) => {
     dispatch(metaAddErrors([err.message]));
   };
 
-  return getJSON("/api/get-polls")
+  return getJSON("/api/meta/get-polls")
     .then(success)
     .catch(failure);
 
