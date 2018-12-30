@@ -26,7 +26,7 @@ const getOutput = (id, name) => {
 
 //get stream
 
-const getStream = (id) => () => getJSON(`/twitch-viewer/streams?stream=${id}`);
+const getStream = (id) => () => getJSON(`/twitch-viewer/streams?streams=${id}`);
 
 //parse channel
 

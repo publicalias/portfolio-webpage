@@ -27,7 +27,7 @@ router.get("/", (req, res) => {
 
 router.post("/contact", (req, res) => {
 
-  const recaptchaAPI = `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.SECRET}&response=${req.body.verify}&remoteip=${req.ip}`;
+  const recaptchaAPI = `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.API_RC_KEY}&response=${req.body.verify}&remoteip=${req.ip}`;
 
   request.post(recaptchaAPI, sendEmail(req, res));
 

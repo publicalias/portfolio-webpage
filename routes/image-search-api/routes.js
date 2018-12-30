@@ -22,11 +22,11 @@ router.get("/", (req, res) => {
 
 router.get("/search/:term", (req, res) => {
 
-  const api = `https://www.googleapis.com/customsearch/v1?cx=${encodeURIComponent(process.env.GCSID)}&key=${process.env.GCSKEY}&searchType=image&fields=items(title%2Clink%2Cimage%2FcontextLink)&q=${encodeURIComponent(req.params.term)}${startParam(req.query.offset)}`;
+  const api = `https://www.googleapis.com/customsearch/v1?cx=${encodeURIComponent(process.env.API_CS_ID)}&key=${process.env.API_CS_KEY}&searchType=image&fields=items(title%2Clink%2Cimage%2FcontextLink)&q=${encodeURIComponent(req.params.term)}${startParam(req.query.offset)}`;
 
   const options = { useNewUrlParser: true };
 
-  MongoClient.connect(process.env.MONGODB, options, upsertLog(req));
+  MongoClient.connect(process.env.DB_URL, options, upsertLog(req));
 
   request(api, apiHandler(req, res));
 
@@ -38,7 +38,7 @@ router.get("/recent", (req, res) => {
 
   const options = { useNewUrlParser: true };
 
-  MongoClient.connect(process.env.MONGODB, options, readLogs(res));
+  MongoClient.connect(process.env.DB_URL, options, readLogs(res));
 
 });
 

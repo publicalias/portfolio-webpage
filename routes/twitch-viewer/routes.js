@@ -25,12 +25,9 @@ router.get("/", (req, res) => {
 
 router.get("/:type", (req, res) => {
 
-  const twitchAPI = {
-    channels: `https://api.twitch.tv/kraken/channels/${req.query.channel}?client_id=${process.env.TWITCH}`,
-    streams: `https://api.twitch.tv/kraken/streams/${req.query.stream}?client_id=${process.env.TWITCH}`
-  };
+  const twitchAPI = (type) => `https://api.twitch.tv/kraken/${type}/${req.query[type]}?client_id=${process.env.API_TW_ID}`;
 
-  request(twitchAPI[req.params.type], sendData(res));
+  request(twitchAPI(req.params.type), sendData(res));
 
 });
 

@@ -26,7 +26,7 @@ const search = (channels = "ESL_SC2, OgamingSC2, RobotCaleb, brunofin, comster40
 
     getOutput(id, e);
 
-    getJSON(`/twitch-viewer/channels?channel=${e}`)
+    getJSON(`/twitch-viewer/channels?channels=${e}`)
       .then(parseChannel(id))
       .then(getStream(id))
       .then(parseStream(id));

@@ -8,7 +8,7 @@ const nodemailer = require("nodemailer");
 
 const sendEmail = (req, res) => (err, status, body) => {
 
-  const contact = process.env.USER;
+  const contact = process.env.EMAIL_USER;
   const success = JSON.parse(body).success;
 
   const transport = {
@@ -17,7 +17,7 @@ const sendEmail = (req, res) => (err, status, body) => {
     secure: true,
     auth: {
       user: contact,
-      pass: process.env.PASS
+      pass: process.env.EMAIL_PASS
     },
     connectionTimeout: 3000
   };
