@@ -2,12 +2,13 @@
 
 //local imports
 
+const { reduxAPICall } = require("../../app-logic");
 const { metaAddErrors, metaSetState } = require("../factories/meta-factories");
 const { initialState } = require("../../reducer/reducer");
 
 //global imports
 
-const { getJSON, initDeepCopy } = require("utilities");
+const { initDeepCopy } = require("utilities");
 
 const deepCopy = initDeepCopy();
 
@@ -18,12 +19,8 @@ const viewAddOption = (id) => (dispatch, getState) => {
   const { view } = getState();
 
   const body = {
-    method: "POST",
-    body: {
-      poll: id,
-      text: view.add
-    },
-    headers: new Headers({ "Content-Type": "application/json" })
+    poll: id,
+    text: view.add
   };
 
   const success = (res) => {
@@ -34,13 +31,7 @@ const viewAddOption = (id) => (dispatch, getState) => {
 
   };
 
-  const failure = (err) => {
-    dispatch(metaAddErrors([err.message]));
-  };
-
-  return getJSON("/api/view/add-option", body)
-    .then(success)
-    .catch(failure);
+  return reduxAPICall(dispatch, "/api/view/add-option", body, success);
 
 };
 
@@ -49,25 +40,11 @@ const viewAddOption = (id) => (dispatch, getState) => {
 const viewCastVote = (id, text) => (dispatch) => {
 
   const body = {
-    method: "POST",
-    body: {
-      poll: id,
-      text
-    },
-    headers: new Headers({ "Content-Type": "application/json" })
+    poll: id,
+    text
   };
 
-  const success = (res) => {
-    dispatch(metaSetState(res));
-  };
-
-  const failure = (err) => {
-    dispatch(metaAddErrors([err.message]));
-  };
-
-  return getJSON("/api/view/cast-vote", body)
-    .then(success)
-    .catch(failure);
+  return reduxAPICall(dispatch, "/api/view/cast-vote", body);
 
 };
 
@@ -78,12 +55,6 @@ const viewDeletePoll = (id) => (dispatch, getState) => {
   const { polls } = getState();
 
   const index = polls.indexOf(id);
-
-  const body = {
-    method: "POST",
-    body: { poll: id },
-    headers: new Headers({ "Content-Type": "application/json" })
-  };
 
   const success = (res) => {
 
@@ -99,13 +70,7 @@ const viewDeletePoll = (id) => (dispatch, getState) => {
 
   };
 
-  const failure = (err) => {
-    dispatch(metaAddErrors([err.message]));
-  };
-
-  return getJSON("/api/view/delete-poll", body)
-    .then(success)
-    .catch(failure);
+  return reduxAPICall(dispatch, "/api/view/delete-poll", { poll: id }, success);
 
 };
 
@@ -114,51 +79,17 @@ const viewDeletePoll = (id) => (dispatch, getState) => {
 const viewRemoveOption = (id, text) => (dispatch) => {
 
   const body = {
-    method: "POST",
-    body: {
-      poll: id,
-      text
-    },
-    headers: new Headers({ "Content-Type": "application/json" })
+    poll: id,
+    text
   };
 
-  const success = (res) => {
-    dispatch(metaSetState(res));
-  };
-
-  const failure = (err) => {
-    dispatch(metaAddErrors([err.message]));
-  };
-
-  return getJSON("/api/view/remove-option", body)
-    .then(success)
-    .catch(failure);
+  return reduxAPICall(dispatch, "/api/view/remove-option", body);
 
 };
 
 //view toggle private
 
-const viewTogglePrivate = (id) => (dispatch) => {
-
-  const body = {
-    method: "POST",
-    body: { poll: id },
-    headers: new Headers({ "Content-Type": "application/json" })
-  };
-
-  const success = (res) => {
-    dispatch(metaSetState(res));
-  };
-
-  const failure = (err) => {
-    dispatch(metaAddErrors([err.message]));
-  };
-
-  return getJSON("/api/view/toggle-private", body)
-    .then(success)
-    .catch(failure);
-
-};
+const viewTogglePrivate = (id) => (dispatch) => reduxAPICall(dispatch, "/api/view/toggle-private", { poll: id });
 
 //exports
 

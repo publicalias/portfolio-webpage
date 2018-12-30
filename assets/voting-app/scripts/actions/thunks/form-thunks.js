@@ -2,12 +2,13 @@
 
 //local imports
 
+const { reduxAPICall } = require("../../app-logic");
 const { metaAddErrors, metaSetState } = require("../factories/meta-factories");
 const { initialState } = require("../../reducer/reducer");
 
 //global imports
 
-const { initDeepCopy, getJSON } = require("utilities");
+const { initDeepCopy } = require("utilities");
 
 const deepCopy = initDeepCopy();
 
@@ -43,12 +44,6 @@ const formAddOption = () => (dispatch, getState) => {
 
 const formCreatePoll = (form) => (dispatch) => {
 
-  const body = {
-    method: "POST",
-    body: { form },
-    headers: new Headers({ "Content-Type": "application/json" })
-  };
-
   const success = (res) => {
 
     const { polls, errors } = res;
@@ -62,13 +57,7 @@ const formCreatePoll = (form) => (dispatch) => {
 
   };
 
-  const failure = (err) => {
-    dispatch(metaAddErrors([err.message]));
-  };
-
-  return getJSON("/api/form/create-poll", body)
-    .then(success)
-    .catch(failure);
+  return reduxAPICall(dispatch, "/api/form/create-poll", { form }, success);
 
 };
 

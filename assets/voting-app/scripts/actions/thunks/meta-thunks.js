@@ -2,29 +2,11 @@
 
 //local imports
 
-const { metaAddErrors, metaSetState } = require("../factories/meta-factories");
-
-//global imports
-
-const { getJSON } = require("utilities");
+const { reduxAPICall } = require("../../app-logic");
 
 //meta get polls
 
-const metaGetPolls = () => (dispatch) => {
-
-  const success = (res) => {
-    dispatch(metaSetState(res));
-  };
-
-  const failure = (err) => {
-    dispatch(metaAddErrors([err.message]));
-  };
-
-  return getJSON("/api/meta/get-polls")
-    .then(success)
-    .catch(failure);
-
-};
+const metaGetPolls = () => (dispatch) => reduxAPICall(dispatch, "/api/meta/get-polls");
 
 //exports
 

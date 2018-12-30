@@ -2,12 +2,13 @@
 
 //local imports
 
-const { metaAddErrors, metaSetState } = require("../factories/meta-factories");
+const { reduxAPICall } = require("../../app-logic");
+const { metaSetState } = require("../factories/meta-factories");
 const { initialState } = require("../../reducer/reducer");
 
 //global imports
 
-const { initDeepCopy, getJSON } = require("utilities");
+const { initDeepCopy } = require("utilities");
 
 const deepCopy = initDeepCopy();
 
@@ -16,12 +17,8 @@ const deepCopy = initDeepCopy();
 const menuAuthUser = (type, auth) => (dispatch) => {
 
   const body = {
-    method: "POST",
-    body: {
-      type,
-      auth
-    },
-    headers: new Headers({ "Content-Type": "application/json" })
+    type,
+    auth
   };
 
   const success = (res) => {
@@ -35,13 +32,7 @@ const menuAuthUser = (type, auth) => (dispatch) => {
 
   };
 
-  const failure = (err) => {
-    dispatch(metaAddErrors([err.message]));
-  };
-
-  return getJSON("/api/menu/auth-user", body)
-    .then(success)
-    .catch(failure);
+  return reduxAPICall(dispatch, "/api/menu/auth-user", body, success);
 
 };
 

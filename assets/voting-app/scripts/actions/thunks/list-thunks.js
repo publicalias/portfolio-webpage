@@ -2,11 +2,8 @@
 
 //local imports
 
+const { reduxAPICall } = require("../../app-logic");
 const { metaAddErrors, metaSetState } = require("../factories/meta-factories");
-
-//global imports
-
-const { getJSON } = require("utilities");
 
 //list submit search
 
@@ -31,51 +28,11 @@ const listSubmitSearch = () => (dispatch, getState) => {
 
 //list toggle flag
 
-const listToggleFlag = (id) => (dispatch) => {
-
-  const body = {
-    method: "POST",
-    body: { poll: id },
-    headers: new Headers({ "Content-Type": "application/json" })
-  };
-
-  const success = (res) => {
-    dispatch(metaSetState(res));
-  };
-
-  const failure = (err) => {
-    dispatch(metaAddErrors([err.message]));
-  };
-
-  return getJSON("/api/list/toggle-flag", body)
-    .then(success)
-    .catch(failure);
-
-};
+const listToggleFlag = (id) => (dispatch) => reduxAPICall(dispatch, "/api/list/toggle-flag", { poll: id });
 
 //list toggle hide
 
-const listToggleHide = (id) => (dispatch) => {
-
-  const body = {
-    method: "POST",
-    body: { poll: id },
-    headers: new Headers({ "Content-Type": "application/json" })
-  };
-
-  const success = (res) => {
-    dispatch(metaSetState(res));
-  };
-
-  const failure = (err) => {
-    dispatch(metaAddErrors([err.message]));
-  };
-
-  return getJSON("/api/list/toggle-hide", body)
-    .then(success)
-    .catch(failure);
-
-};
+const listToggleHide = (id) => (dispatch) => reduxAPICall(dispatch, "/api/list/toggle-hide", { poll: id });
 
 //exports
 
