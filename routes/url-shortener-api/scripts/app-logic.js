@@ -42,7 +42,7 @@ const parseCode = (input, client) => (status) => new Promise((resolve, reject) =
 
   if (isValid) {
     client.db()
-      .collection("url-shortener-api")
+      .collection("url-shortener-api/urls")
       .findOne({ code: input }, (err, doc) => {
         if (err) {
           reject(statusObj(500));
@@ -81,7 +81,7 @@ const codifyURL = (input, client, tries) => new Promise((resolve, reject) => {
   const code = createCode();
 
   client.db()
-    .collection("url-shortener-api")
+    .collection("url-shortener-api/urls")
     .findOne({ code }, (err, doc) => {
       if (err) {
         reject(statusObj(500));
@@ -94,7 +94,7 @@ const codifyURL = (input, client, tries) => new Promise((resolve, reject) => {
       } else {
 
         client.db()
-          .collection("url-shortener-api")
+          .collection("url-shortener-api/urls")
           .insertOne(createRes(input, code)); //mutates object
 
         resolve(statusObj(201, createRes(input, code)));
@@ -110,7 +110,7 @@ const parseURL = (input, client) => (status) => new Promise((resolve, reject) =>
 
   if (isValid) {
     client.db()
-      .collection("url-shortener-api")
+      .collection("url-shortener-api/urls")
       .findOne({ url: input }, (err, doc) => {
         if (err) {
           reject(statusObj(500));
