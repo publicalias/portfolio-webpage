@@ -3,7 +3,7 @@
 //front end
 
 const frontEnd = {
-  name: "Front end",
+  name: "Front-end",
   id: "front-end",
   subgroups: [{
     name: "Basic Projects",

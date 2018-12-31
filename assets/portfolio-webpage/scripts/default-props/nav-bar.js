@@ -18,7 +18,7 @@ const navBar = [{
   }, {
     type: "rule"
   }, {
-    name: "Front end",
+    name: "Front-end",
     type: "item",
     link: ".js-scroll-front-end"
   }, {
@@ -26,7 +26,7 @@ const navBar = [{
     type: "item",
     link: ".js-scroll-data-vis"
   }, {
-    name: "Back end",
+    name: "Back-end",
     type: "item",
     link: ".js-scroll-back-end"
   }]
