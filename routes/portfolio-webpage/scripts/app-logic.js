@@ -24,8 +24,8 @@ const sendEmail = (req, res) => (err, status, body) => {
 
   const message = {
     from: `Ethan Frost <${contact}>`,
-    to: contact,
-    cc: req.body.email,
+    to: req.body.email,
+    cc: contact,
     subject: req.body.subject,
     text: `Your message to ${contact}:\n\n${req.body.body}`
   };
