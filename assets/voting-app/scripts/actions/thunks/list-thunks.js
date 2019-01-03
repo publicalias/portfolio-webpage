@@ -28,11 +28,11 @@ const listSubmitSearch = () => (dispatch, getState) => {
 
 //list toggle flag
 
-const listToggleFlag = (id) => (dispatch) => reduxAPICall(dispatch, "/api/list/toggle-flag", { poll: id });
+const listToggleFlag = (id) => (dispatch) => reduxAPICall(dispatch, "/api/list-toggle-flag", { poll: id });
 
 //list toggle hide
 
-const listToggleHide = (id) => (dispatch) => reduxAPICall(dispatch, "/api/list/toggle-hide", { poll: id });
+const listToggleHide = (id) => (dispatch) => reduxAPICall(dispatch, "/api/list-toggle-hide", { poll: id });
 
 //exports
 

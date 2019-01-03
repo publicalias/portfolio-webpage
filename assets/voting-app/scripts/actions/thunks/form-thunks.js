@@ -57,7 +57,7 @@ const formCreatePoll = (form) => (dispatch) => {
 
   };
 
-  return reduxAPICall(dispatch, "/api/form/create-poll", { form }, success);
+  return reduxAPICall(dispatch, "/api/form-create-poll", { form }, success);
 
 };
 

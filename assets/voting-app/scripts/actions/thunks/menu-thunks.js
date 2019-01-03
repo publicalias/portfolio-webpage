@@ -32,7 +32,7 @@ const menuAuthUser = (type, auth) => (dispatch) => {
 
   };
 
-  return reduxAPICall(dispatch, "/api/menu/auth-user", body, success);
+  return reduxAPICall(dispatch, "/api/menu-auth-user", body, success);
 
 };
 

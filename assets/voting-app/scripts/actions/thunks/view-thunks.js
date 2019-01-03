@@ -31,7 +31,7 @@ const viewAddOption = (id) => (dispatch, getState) => {
 
   };
 
-  return reduxAPICall(dispatch, "/api/view/add-option", body, success);
+  return reduxAPICall(dispatch, "/api/view-add-option", body, success);
 
 };
 
@@ -44,7 +44,7 @@ const viewCastVote = (id, text) => (dispatch) => {
     text
   };
 
-  return reduxAPICall(dispatch, "/api/view/cast-vote", body);
+  return reduxAPICall(dispatch, "/api/view-cast-vote", body);
 
 };
 
@@ -70,7 +70,7 @@ const viewDeletePoll = (id) => (dispatch, getState) => {
 
   };
 
-  return reduxAPICall(dispatch, "/api/view/delete-poll", { poll: id }, success);
+  return reduxAPICall(dispatch, "/api/view-delete-poll", { poll: id }, success);
 
 };
 
@@ -83,13 +83,13 @@ const viewRemoveOption = (id, text) => (dispatch) => {
     text
   };
 
-  return reduxAPICall(dispatch, "/api/view/remove-option", body);
+  return reduxAPICall(dispatch, "/api/view-remove-option", body);
 
 };
 
 //view toggle private
 
-const viewTogglePrivate = (id) => (dispatch) => reduxAPICall(dispatch, "/api/view/toggle-private", { poll: id });
+const viewTogglePrivate = (id) => (dispatch) => reduxAPICall(dispatch, "/api/view-toggle-private", { poll: id });
 
 //exports
 
