@@ -22,15 +22,3 @@ test("reducer accepts MENU_OPEN_FORM actions", () => {
   expect(reducer(initialState, menuOpenForm())).toEqual(nextState);
 
 });
-
-test("reducer accepts MENU_SET_FILTER actions", () => {
-
-  const { menuSetFilter } = actions;
-
-  const filter = "created";
-
-  const nextState = deepCopy(initialState, { list: { filter } });
-
-  expect(reducer(initialState, menuSetFilter(filter))).toEqual(nextState);
-
-});

@@ -17,6 +17,19 @@ test("listOpenView creates LIST_OPEN_VIEW actions", () => {
 
 });
 
+//list set index
+
+test("listSetIndex creates LIST_SET_INDEX actions", () => {
+
+  const { listSetIndex } = actions;
+
+  expect(listSetIndex(0)).toEqual({
+    type: "LIST_SET_INDEX",
+    index: 0
+  });
+
+});
+
 //list set search text
 
 test("listSetSearchText creates LIST_SET_SEARCH_TEXT actions", () => {
@@ -26,19 +39,6 @@ test("listSetSearchText creates LIST_SET_SEARCH_TEXT actions", () => {
   expect(listSetSearchText("")).toEqual({
     type: "LIST_SET_SEARCH_TEXT",
     search: ""
-  });
-
-});
-
-//list set sort
-
-test("listSetSort creates LIST_SET_SORT actions", () => {
-
-  const { listSetSort } = actions;
-
-  expect(listSetSort("")).toEqual({
-    type: "LIST_SET_SORT",
-    sort: ""
   });
 
 });

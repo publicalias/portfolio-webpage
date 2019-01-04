@@ -7,6 +7,13 @@ const listOpenView = (id) => ({
   id
 });
 
+//list set index
+
+const listSetIndex = (index) => ({
+  type: "LIST_SET_INDEX",
+  index
+});
+
 //list set search text
 
 const listSetSearchText = (search) => ({
@@ -14,17 +21,10 @@ const listSetSearchText = (search) => ({
   search
 });
 
-//list set sort
-
-const listSetSort = (sort) => ({
-  type: "LIST_SET_SORT",
-  sort
-});
-
 //exports
 
 module.exports = {
   listOpenView,
-  listSetSearchText,
-  listSetSort
+  listSetIndex,
+  listSetSearchText
 };

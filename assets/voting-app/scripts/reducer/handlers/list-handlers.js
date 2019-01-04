@@ -17,18 +17,18 @@ const LIST_OPEN_VIEW = (state, { id }) => deepCopy(state, {
   view: deepCopy(initialState.view, { poll: id })
 });
 
+//list set index
+
+const LIST_SET_INDEX = (state, { index }) => deepCopy(state, { list: { index } });
+
 //list set search text
 
 const LIST_SET_SEARCH_TEXT = (state, { search }) => deepCopy(state, { list: { search } });
-
-//list set sort
-
-const LIST_SET_SORT = (state, { sort }) => deepCopy(state, { list: { sort } });
 
 //exports
 
 module.exports = {
   LIST_OPEN_VIEW,
-  LIST_SET_SEARCH_TEXT,
-  LIST_SET_SORT
+  LIST_SET_INDEX,
+  LIST_SET_SEARCH_TEXT
 };

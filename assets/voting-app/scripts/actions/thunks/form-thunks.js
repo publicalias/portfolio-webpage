@@ -42,7 +42,14 @@ const formAddOption = () => (dispatch, getState) => {
 
 //form create poll
 
-const formCreatePoll = (form) => (dispatch) => {
+const formCreatePoll = (form) => (dispatch, getState) => {
+
+  const { list } = getState();
+
+  const body = {
+    form,
+    list
+  };
 
   const success = (res) => {
 
@@ -58,7 +65,7 @@ const formCreatePoll = (form) => (dispatch) => {
 
   };
 
-  return reduxAPICall(dispatch, "/api/form-create-poll", { form }, success);
+  return reduxAPICall(dispatch, "/api/form-create-poll", body, success);
 
 };
 

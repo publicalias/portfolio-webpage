@@ -14,15 +14,42 @@ const { initDeepCopy } = require("utilities");
 
 const deepCopy = initDeepCopy();
 
-//node modules
+//list set sort
 
-const configureStore = require("redux-mock-store").default;
-const ReduxThunk = require("redux-thunk").default;
+describe("listSetSort", () => {
 
-//setup
+  const { listSetSort, metaSetState } = actions;
 
-const middleware = [ReduxThunk];
-const mockStore = configureStore(middleware);
+  const action = listSetSort("popular");
+
+  beforeAll(() => {
+    global.Headers = jest.fn((init) => init);
+  });
+
+  afterAll(() => {
+    global.fetch = undefined;
+    global.Headers = undefined;
+  });
+
+  it("dispatches META_SET_STATE actions on success", () => {
+
+    const actionList = [metaSetState({
+      polls: {},
+      list: {
+        sort: "popular",
+        index: 0
+      }
+    })];
+
+    return testAPISuccess(action, { polls: {} }, actionList);
+
+  });
+
+  it("dispatches META_ADD_ERRORS actions on failure", () => testAPIFailure(action));
+
+});
+
+//list submit search
 
 describe("listSubmitSearch", () => {
 
@@ -30,38 +57,41 @@ describe("listSubmitSearch", () => {
 
   const action = listSubmitSearch();
 
-  const getLastState = (search) => deepCopy(initialState, { list: { search } });
-
-  it("dispatches META_ADD_ERRORS actions with empty input", () => {
-
-    const lastState = getLastState("");
-
-    const store = mockStore(lastState);
-    const actionList = [metaAddErrors(["Nothing will come of nothing"])];
-
-    store.dispatch(action);
-
-    expect(store.getActions()).toEqual(actionList);
-
+  beforeAll(() => {
+    global.Headers = jest.fn((init) => init);
   });
 
-  it("dispatches META_SET_STATE actions with valid input", () => {
+  afterAll(() => {
+    global.fetch = undefined;
+    global.Headers = undefined;
+  });
 
-    const lastState = getLastState("a");
+  it("dispatches META_SET_STATE actions on success", () => {
 
-    const store = mockStore(lastState);
     const actionList = [metaSetState({
+      polls: {},
       list: {
         search: "",
-        searched: "a"
+        searched: "a",
+        index: 0
       }
     })];
 
-    store.dispatch(action);
+    const lastState = deepCopy(initialState, { list: { search: "a" } });
 
-    expect(store.getActions()).toEqual(actionList);
+    return testAPISuccess(action, { polls: {} }, actionList, lastState);
 
   });
+
+  it("dispatches META_ADD_ERRORS actions on success (errors)", () => {
+
+    const actionList = [metaAddErrors([])];
+
+    return testAPISuccess(action, { errors: [] }, actionList);
+
+  });
+
+  it("dispatches META_ADD_ERRORS actions on failure", () => testAPIFailure(action));
 
 });
 

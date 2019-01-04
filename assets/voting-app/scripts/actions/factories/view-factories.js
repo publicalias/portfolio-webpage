@@ -1,11 +1,8 @@
 "use strict";
 
-//view change poll
+//view open list
 
-const viewChangePoll = (delta) => ({
-  type: "VIEW_CHANGE_POLL",
-  delta
-});
+const viewOpenList = () => ({ type: "VIEW_OPEN_LIST" });
 
 //view set add text
 
@@ -25,7 +22,7 @@ const viewToggleSettings = () => ({ type: "VIEW_TOGGLE_SETTINGS" });
 //exports
 
 module.exports = {
-  viewChangePoll,
+  viewOpenList,
   viewSetAddText,
   viewToggleConfirm,
   viewToggleSettings

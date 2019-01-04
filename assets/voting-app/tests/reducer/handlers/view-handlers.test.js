@@ -6,7 +6,6 @@
 
 const { actions } = require("../../../scripts/actions/actions");
 const { initialState, reducer } = require("../../../scripts/reducer/reducer");
-const { mockPoll } = require("../../test-helpers");
 
 //global imports
 
@@ -16,55 +15,14 @@ const deepCopy = initDeepCopy();
 
 //reducer
 
-describe("reducer", () => {
+test("reducer accepts VIEW_OPEN_LIST actions", () => {
 
-  const { viewChangePoll } = actions;
+  const { viewOpenList } = actions;
 
-  const action = viewChangePoll(1);
+  const lastState = deepCopy(initialState, { page: "view" });
+  const nextState = deepCopy(lastState, { page: "list" });
 
-  const getState = (polls, last, next) => {
-
-    const lastState = deepCopy(initialState, {
-      polls: polls.map(mockPoll),
-      view: { poll: last }
-    });
-    const nextState = deepCopy(lastState, { view: deepCopy(initialState.view, { poll: next }) });
-
-    return {
-      lastState,
-      nextState
-    };
-
-  };
-
-  it("accepts VIEW_CHANGE_POLL actions with no polls", () => {
-
-    const { lastState, nextState } = getState([], "id-a", "");
-
-    expect(reducer(lastState, action)).toEqual(nextState);
-
-  });
-
-  it("accepts VIEW_CHANGE_POLL actions with invalid poll", () => {
-
-    const pollA = "id-a";
-
-    const { lastState, nextState } = getState([{ id: pollA }], "id-b", pollA);
-
-    expect(reducer(lastState, action)).toEqual(nextState);
-
-  });
-
-  it("accepts VIEW_CHANGE_POLL actions with valid poll", () => {
-
-    const pollA = "id-a";
-    const pollB = "id-b";
-
-    const { lastState, nextState } = getState([{ id: pollA }, { id: pollB }], pollA, pollB);
-
-    expect(reducer(lastState, action)).toEqual(nextState);
-
-  });
+  expect(reducer(initialState, viewOpenList())).toEqual(nextState);
 
 });
 

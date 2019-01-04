@@ -31,6 +31,37 @@ const menuGetUser = (type) => (dispatch) => {
 
 };
 
+//menu set filter
+
+const menuSetFilter = (filter) => (dispatch, getState) => {
+
+  const { list } = getState();
+
+  const merge = {
+    filter,
+    index: 0
+  };
+
+  const body = { list: deepCopy(list, merge) };
+
+  const success = (res) => {
+
+    const { polls } = res;
+
+    dispatch(metaSetState({
+      polls,
+      list: merge
+    }));
+
+  };
+
+  return reduxAPICall(dispatch, "/api/menu-set-filter", body, success);
+
+};
+
 //exports
 
-module.exports = { menuGetUser };
+module.exports = {
+  menuGetUser,
+  menuSetFilter
+};

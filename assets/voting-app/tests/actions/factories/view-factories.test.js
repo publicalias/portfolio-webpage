@@ -4,16 +4,11 @@
 
 const { actions } = require("../../../scripts/actions/actions");
 
-//view change poll
+test("viewOpenList creates VIEW_OPEN_LIST actions", () => {
 
-test("viewChangePoll creates VIEW_CHANGE_POLL actions", () => {
+  const { viewOpenList } = actions;
 
-  const { viewChangePoll } = actions;
-
-  expect(viewChangePoll(0)).toEqual({
-    type: "VIEW_CHANGE_POLL",
-    delta: 0
-  });
+  expect(viewOpenList()).toEqual({ type: "VIEW_OPEN_LIST" });
 
 });
 

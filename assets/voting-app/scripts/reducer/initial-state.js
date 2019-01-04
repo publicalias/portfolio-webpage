@@ -10,7 +10,8 @@ const initialState = {
     filter: "all",
     search: "",
     searched: "",
-    sort: "new"
+    sort: "new",
+    index: 0
   },
   form: {
     title: "",

@@ -49,3 +49,36 @@ describe("menuGetUser", () => {
   it("dispatches META_ADD_ERRORS actions on failure", () => testAPIFailure(action));
 
 });
+
+describe("menuSetFilter", () => {
+
+  const { menuSetFilter, metaSetState } = actions;
+
+  const action = menuSetFilter("created");
+
+  beforeAll(() => {
+    global.Headers = jest.fn((init) => init);
+  });
+
+  afterAll(() => {
+    global.fetch = undefined;
+    global.Headers = undefined;
+  });
+
+  it("dispatches META_SET_STATE actions on success", () => {
+
+    const actionList = [metaSetState({
+      polls: {},
+      list: {
+        filter: "created",
+        index: 0
+      }
+    })];
+
+    return testAPISuccess(action, { polls: {} }, actionList);
+
+  });
+
+  it("dispatches META_ADD_ERRORS actions on failure", () => testAPIFailure(action));
+
+});

@@ -16,11 +16,12 @@ const deepCopy = initDeepCopy();
 
 const viewAddOption = (id) => (dispatch, getState) => {
 
-  const { view } = getState();
+  const { list, view } = getState();
 
   const body = {
     poll: id,
-    text: view.add
+    text: view.add,
+    list
   };
 
   const success = (res) => {
@@ -37,11 +38,14 @@ const viewAddOption = (id) => (dispatch, getState) => {
 
 //view cast vote
 
-const viewCastVote = (id, text) => (dispatch) => {
+const viewCastVote = (id, text) => (dispatch, getState) => {
+
+  const { list } = getState();
 
   const body = {
     poll: id,
-    text
+    text,
+    list
   };
 
   return reduxAPICall(dispatch, "/api/view-cast-vote", body);
@@ -52,7 +56,12 @@ const viewCastVote = (id, text) => (dispatch) => {
 
 const viewDeletePoll = (id) => (dispatch, getState) => {
 
-  const { polls } = getState();
+  const { polls, list } = getState();
+
+  const body = {
+    poll: id,
+    list
+  };
 
   const index = polls.indexOf(id);
 
@@ -70,17 +79,20 @@ const viewDeletePoll = (id) => (dispatch, getState) => {
 
   };
 
-  return reduxAPICall(dispatch, "/api/view-delete-poll", { poll: id }, success);
+  return reduxAPICall(dispatch, "/api/view-delete-poll", body, success);
 
 };
 
 //view remove option
 
-const viewRemoveOption = (id, text) => (dispatch) => {
+const viewRemoveOption = (id, text) => (dispatch, getState) => {
+
+  const { list } = getState();
 
   const body = {
     poll: id,
-    text
+    text,
+    list
   };
 
   return reduxAPICall(dispatch, "/api/view-remove-option", body);
@@ -89,7 +101,18 @@ const viewRemoveOption = (id, text) => (dispatch) => {
 
 //view toggle private
 
-const viewTogglePrivate = (id) => (dispatch) => reduxAPICall(dispatch, "/api/view-toggle-private", { poll: id });
+const viewTogglePrivate = (id) => (dispatch, getState) => {
+
+  const { list } = getState();
+
+  const body = {
+    poll: id,
+    list
+  };
+
+  return reduxAPICall(dispatch, "/api/view-toggle-private", body);
+
+};
 
 //exports
 

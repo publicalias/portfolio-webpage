@@ -1,34 +1,14 @@
 "use strict";
 
-//local imports
-
-const { filterPolls } = require("../../app-logic");
-const { initialState } = require("../initial-state");
-
 //global imports
 
-const { cycleItems, initDeepCopy } = require("utilities");
+const { initDeepCopy } = require("utilities");
 
 const deepCopy = initDeepCopy();
 
-//view change poll
+//view open list
 
-const VIEW_CHANGE_POLL = (state, { delta }) => {
-
-  const polls = filterPolls(state);
-  const last = state.view.poll;
-
-  let next = "";
-
-  if (polls.includes(last)) {
-    next = cycleItems(polls, last, delta);
-  } else if (polls.length) {
-    next = polls[0];
-  }
-
-  return deepCopy(state, { view: deepCopy(initialState.view, { poll: next }) });
-
-};
+const VIEW_OPEN_LIST = (state) => deepCopy(state, { page: "list" });
 
 //view set add text
 
@@ -45,7 +25,7 @@ const VIEW_TOGGLE_SETTINGS = (state) => deepCopy(state, { view: { settings: !sta
 //exports
 
 module.exports = {
-  VIEW_CHANGE_POLL,
+  VIEW_OPEN_LIST,
   VIEW_SET_ADD_TEXT,
   VIEW_TOGGLE_CONFIRM,
   VIEW_TOGGLE_SETTINGS

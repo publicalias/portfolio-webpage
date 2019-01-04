@@ -30,6 +30,18 @@ test("reducer accepts LIST_OPEN_VIEW actions", () => {
 
 });
 
+test("reducer accepts LIST_SET_INDEX actions", () => {
+
+  const { listSetIndex } = actions;
+
+  const index = 1;
+
+  const nextState = deepCopy(initialState, { list: { index } });
+
+  expect(reducer(initialState, listSetIndex(index))).toEqual(nextState);
+
+});
+
 test("reducer accepts LIST_SET_SEARCH_TEXT actions", () => {
 
   const { listSetSearchText } = actions;
@@ -39,17 +51,5 @@ test("reducer accepts LIST_SET_SEARCH_TEXT actions", () => {
   const nextState = deepCopy(initialState, { list: { search } });
 
   expect(reducer(initialState, listSetSearchText(search))).toEqual(nextState);
-
-});
-
-test("reducer accepts LIST_SET_SORT actions", () => {
-
-  const { listSetSort } = actions;
-
-  const sort = "popular";
-
-  const nextState = deepCopy(initialState, { list: { sort } });
-
-  expect(reducer(initialState, listSetSort(sort))).toEqual(nextState);
 
 });

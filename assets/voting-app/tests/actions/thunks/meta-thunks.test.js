@@ -13,8 +13,13 @@ describe("metaGetPolls", () => {
 
   const action = metaGetPolls();
 
+  beforeAll(() => {
+    global.Headers = jest.fn((init) => init);
+  });
+
   afterAll(() => {
     global.fetch = undefined;
+    global.Headers = undefined;
   });
 
   it("dispatches META_SET_STATE actions on success", () => {
