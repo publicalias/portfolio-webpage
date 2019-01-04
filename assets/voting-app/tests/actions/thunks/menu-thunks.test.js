@@ -14,13 +14,13 @@ const { initDeepCopy } = require("utilities");
 
 const deepCopy = initDeepCopy();
 
-//menu auth user
+//menu get user
 
-describe("menuAuthUser", () => {
+describe("menuGetUser", () => {
 
-  const { menuAuthUser, metaSetState } = actions;
+  const { menuGetUser, metaSetState } = actions;
 
-  const action = menuAuthUser("auth", {});
+  const action = menuGetUser("auth");
 
   beforeAll(() => {
     global.Headers = jest.fn((init) => init);

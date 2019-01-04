@@ -12,14 +12,9 @@ const { initDeepCopy } = require("utilities");
 
 const deepCopy = initDeepCopy();
 
-//menu auth user
+//menu get user
 
-const menuAuthUser = (type, auth) => (dispatch) => {
-
-  const body = {
-    type,
-    auth
-  };
+const menuGetUser = (type) => (dispatch) => {
 
   const success = (res) => {
 
@@ -32,10 +27,10 @@ const menuAuthUser = (type, auth) => (dispatch) => {
 
   };
 
-  return reduxAPICall(dispatch, "/api/menu-auth-user", body, success);
+  return reduxAPICall(dispatch, "/api/menu-get-user", { type }, success);
 
 };
 
 //exports
 
-module.exports = { menuAuthUser };
+module.exports = { menuGetUser };
