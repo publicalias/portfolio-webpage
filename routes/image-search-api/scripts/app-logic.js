@@ -2,6 +2,8 @@
 
 //utilities
 
+const termsCol = () => db.collection("image-search-api/terms");
+
 const createRes = (request, term = null, page = null, results = []) => ({
   request,
   term,
@@ -61,25 +63,12 @@ const logHandler = (res) => (err, docs) => {
 
 };
 
-const readLogs = (res) => (err, client) => {
-
-  if (err) {
-
-    res.sendStatus(500);
-
-    return;
-
-  }
-
-  client.db()
-    .collection("image-search-api/terms")
+const readLogs = (req, res) => {
+  termsCol()
     .find({}, { projection: { _id: false } })
     .sort({ unix: -1 })
     .limit(10)
     .toArray(logHandler(res));
-
-  client.close();
-
 };
 
 //start param
@@ -94,21 +83,13 @@ const startParam = (offset) => {
 
 //upsert log
 
-const upsertLog = (req) => (err, client) => {
-
-  if (err) {
-    return; //oh well
-  }
+const upsertLog = (req) => {
 
   const term = req.params.term;
 
   const log = { $set: { unix: Date.now() } };
 
-  client.db()
-    .collection("image-search-api/terms")
-    .updateOne({ term }, log, { upsert: true });
-
-  client.close();
+  termsCol().updateOne({ term }, log, { upsert: true });
 
 };
 

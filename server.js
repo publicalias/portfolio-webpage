@@ -7,6 +7,7 @@ global.__rootdir = __dirname;
 const compression = require("compression");
 const express = require("express");
 const fs = require("fs");
+const MongoClient = require("mongodb").MongoClient;
 
 const app = express();
 
@@ -41,4 +42,14 @@ app.get("/:name", (req, res) => {
 
 //initialize server
 
-app.listen(process.env.PORT || 3000);
+MongoClient.connect(process.env.DB_URL, { useNewUrlParser: true }, (err, client) => {
+
+  if (err) {
+    throw err;
+  }
+
+  global.db = client.db();
+
+  app.listen(process.env.PORT || 3000);
+
+});

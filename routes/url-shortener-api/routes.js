@@ -7,7 +7,6 @@ const { parseInput } = require("./scripts/app-logic");
 //node modules
 
 const express = require("express");
-const MongoClient = require("mongodb").MongoClient;
 
 const router = express.Router();
 
@@ -19,13 +18,7 @@ router.get("/", (req, res) => {
 
 //parse url or code
 
-router.get("/*", (req, res) => {
-
-  const options = { useNewUrlParser: true };
-
-  MongoClient.connect(process.env.DB_URL, options, parseInput(req, res));
-
-});
+router.get("/*", parseInput);
 
 //exports
 

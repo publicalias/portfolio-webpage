@@ -10,6 +10,8 @@ const valid = require("valid-url");
 
 //utilities
 
+const urlsCol = () => db.collection("url-shortener-api/urls");
+
 const statusObj = (http, data = null) => ({
   http,
   data
@@ -22,8 +24,7 @@ const createRes = (url, code) => ({
 
 //parse input
 
-const respondWith = (res, client) => (status) => {
-
+const respondWith = (res) => (status) => {
   if (status.http >= 400) {
     res.sendStatus(status.http);
   } else if (status.http >= 300) {
@@ -31,27 +32,22 @@ const respondWith = (res, client) => (status) => {
   } else {
     res.header("Content-Type", "application/json").send(JSON.stringify(status.data, null, 2));
   }
-
-  client.close();
-
 };
 
-const parseCode = (input, client) => (status) => new Promise((resolve, reject) => {
+const parseCode = (input) => (status) => new Promise((resolve, reject) => {
 
   const isValid = /^[a-z]{3}$/iu.test(input);
 
   if (isValid) {
-    client.db()
-      .collection("url-shortener-api/urls")
-      .findOne({ code: input }, (err, doc) => {
-        if (err) {
-          reject(statusObj(500));
-        } else if (doc) {
-          resolve(statusObj(303, doc.url));
-        } else {
-          reject(statusObj(404));
-        }
-      });
+    urlsCol().findOne({ code: input }, (err, doc) => {
+      if (err) {
+        reject(statusObj(500));
+      } else if (doc) {
+        resolve(statusObj(303, doc.url));
+      } else {
+        reject(statusObj(404));
+      }
+    });
   } else {
     resolve(status);
   }
@@ -76,73 +72,65 @@ const createCode = () => {
 
 };
 
-const codifyURL = (input, client, tries) => new Promise((resolve, reject) => {
+const insertObj = (input, code) => new Promise((resolve, reject) => {
+  urlsCol().insertOne(createRes(input, code), (err) => { //mutates object
+    if (err) {
+      reject(statusObj(500));
+    } else {
+      resolve(statusObj(201, createRes(input, code)));
+    }
+  });
+});
+
+const codifyURL = (input, tries) => new Promise((resolve, reject) => {
 
   const code = createCode();
 
-  client.db()
-    .collection("url-shortener-api/urls")
-    .findOne({ code }, (err, doc) => {
-      if (err) {
-        reject(statusObj(500));
-      } else if (doc) {
-        if (tries) {
-          resolve(codifyURL(input, client, tries - 1));
-        } else {
-          reject(statusObj(500));
-        }
+  urlsCol().findOne({ code }, (err, doc) => {
+    if (err) {
+      reject(statusObj(500));
+    } else if (doc) {
+      if (tries) {
+        resolve(codifyURL(input, tries - 1));
       } else {
-
-        client.db()
-          .collection("url-shortener-api/urls")
-          .insertOne(createRes(input, code)); //mutates object
-
-        resolve(statusObj(201, createRes(input, code)));
-
+        reject(statusObj(500));
       }
-    });
+    } else {
+      resolve(insertObj(input, code));
+    }
+  });
 
 });
 
-const parseURL = (input, client) => (status) => new Promise((resolve, reject) => {
+const parseURL = (input) => (status) => new Promise((resolve, reject) => {
 
   const isValid = valid.isWebUri(input);
 
   if (isValid) {
-    client.db()
-      .collection("url-shortener-api/urls")
-      .findOne({ url: input }, (err, doc) => {
-        if (err) {
-          reject(statusObj(500));
-        } else if (doc) {
-          resolve(statusObj(200, createRes(input, doc.code)));
-        } else {
-          resolve(codifyURL(input, client, 5));
-        }
-      });
+    urlsCol().findOne({ url: input }, (err, doc) => {
+      if (err) {
+        reject(statusObj(500));
+      } else if (doc) {
+        resolve(statusObj(200, createRes(input, doc.code)));
+      } else {
+        resolve(codifyURL(input, 5));
+      }
+    });
   } else {
     resolve(status);
   }
 
 });
 
-const parseInput = (req, res) => (err, client) => {
-
-  if (err) {
-
-    res.sendStatus(500);
-
-    return;
-
-  }
+const parseInput = (req, res) => {
 
   const query = req._parsedUrl.search;
   const input = req.params[0] + (query ? query : "");
 
-  const respond = respondWith(res, client);
+  const respond = respondWith(res);
 
-  parseCode(input, client)(statusObj(422))
-    .then(parseURL(input, client))
+  parseCode(input)(statusObj(422))
+    .then(parseURL(input))
     .then(respond)
     .catch(respond);
 

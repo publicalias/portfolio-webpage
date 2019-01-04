@@ -13,7 +13,8 @@
 
   "globals": {
     "__rootdir": false,
-    "d3": false
+    "d3": false,
+    "db": false
   },
 
   "parser": "babel-eslint",
