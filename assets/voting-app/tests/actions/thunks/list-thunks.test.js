@@ -70,8 +70,7 @@ describe("listSubmitSearch", () => {
     path: "/api/list-submit-search",
     body: { list: deepCopy(initialState.list, merge) }
   };
-
-  const getLastState = () => deepCopy(initialState, { list: { search: searched } });
+  const lastState = deepCopy(initialState, { list: { search: searched } });
 
   afterAll(() => {
     global.fetch = undefined;
@@ -84,7 +83,6 @@ describe("listSubmitSearch", () => {
       polls: {},
       list: merge
     })];
-    const lastState = getLastState();
 
     return testAPISuccess(action, args, { polls: {} }, actionList, lastState);
 
@@ -93,19 +91,12 @@ describe("listSubmitSearch", () => {
   it("dispatches META_ADD_ERRORS actions on success (errors)", () => {
 
     const actionList = [metaAddErrors([])];
-    const lastState = getLastState();
 
     return testAPISuccess(action, args, { errors: [] }, actionList, lastState);
 
   });
 
-  it("dispatches META_ADD_ERRORS actions on failure", () => {
-
-    const lastState = getLastState();
-
-    return testAPIFailure(action, args, lastState);
-
-  });
+  it("dispatches META_ADD_ERRORS actions on failure", () => testAPIFailure(action, args, lastState));
 
 });
 

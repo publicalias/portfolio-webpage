@@ -17,6 +17,11 @@ const mockStore = configureStore(middleware);
 
 //utilities
 
+const testAPIGlobals = (fetch) => {
+  global.fetch = jest.fn(fetch);
+  global.Headers = jest.fn((init) => init);
+};
+
 const testAPICall = ({ path, body }) => {
 
   const calls = fetch.mock.calls;
@@ -49,8 +54,7 @@ const testAPIFailure = (action, args, lastState = initialState) => {
     ok: false
   });
 
-  global.fetch = jest.fn(fetch);
-  global.Headers = jest.fn((init) => init);
+  testAPIGlobals(fetch);
 
   return store.dispatch(action).then(() => {
     testAPICall(args);
@@ -72,8 +76,7 @@ const testAPISuccess = (action, args, res, actionList, lastState = initialState)
     }
   });
 
-  global.fetch = jest.fn(fetch);
-  global.Headers = jest.fn((init) => init);
+  testAPIGlobals(fetch);
 
   return store.dispatch(action).then(() => {
     testAPICall(args);

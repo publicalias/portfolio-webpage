@@ -22,7 +22,7 @@ test("reducer accepts VIEW_OPEN_LIST actions", () => {
   const lastState = deepCopy(initialState, { page: "view" });
   const nextState = deepCopy(lastState, { page: "list" });
 
-  expect(reducer(initialState, viewOpenList())).toEqual(nextState);
+  expect(reducer(lastState, viewOpenList())).toEqual(nextState);
 
 });
 

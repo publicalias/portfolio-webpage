@@ -4,6 +4,8 @@
 
 const { actions } = require("../../../scripts/actions/actions");
 
+//view open list
+
 test("viewOpenList creates VIEW_OPEN_LIST actions", () => {
 
   const { viewOpenList } = actions;
