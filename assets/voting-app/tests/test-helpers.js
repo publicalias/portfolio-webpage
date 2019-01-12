@@ -15,16 +15,32 @@ const ReduxThunk = require("redux-thunk").default;
 const middleware = [ReduxThunk];
 const mockStore = configureStore(middleware);
 
+//utilities
+
+const testAPICall = ({ path, body }) => {
+
+  const calls = fetch.mock.calls;
+
+  expect(calls.length).toEqual(1);
+  expect(calls[0][0]).toEqual(path);
+  expect(calls[0][1]).toEqual({
+    method: "POST",
+    body,
+    headers: new Headers({ "Content-Type": "application/json" })
+  });
+
+};
+
 //test api failure
 
-const testAPIFailure = (action) => {
+const testAPIFailure = (action, args, lastState = initialState) => {
 
   const { metaAddErrors } = actions;
 
   const status = 500;
   const statusText = "Internal Server Error";
 
-  const store = mockStore(initialState);
+  const store = mockStore(lastState);
   const actionList = [metaAddErrors([`${status} ${statusText}`])];
 
   const fetch = () => Promise.resolve({
@@ -34,8 +50,10 @@ const testAPIFailure = (action) => {
   });
 
   global.fetch = jest.fn(fetch);
+  global.Headers = jest.fn((init) => init);
 
   return store.dispatch(action).then(() => {
+    testAPICall(args);
     expect(store.getActions()).toEqual(actionList);
   });
 
@@ -43,7 +61,7 @@ const testAPIFailure = (action) => {
 
 //test api success
 
-const testAPISuccess = (action, res, actionList, lastState = initialState) => {
+const testAPISuccess = (action, args, res, actionList, lastState = initialState) => {
 
   const store = mockStore(lastState);
 
@@ -55,8 +73,10 @@ const testAPISuccess = (action, res, actionList, lastState = initialState) => {
   });
 
   global.fetch = jest.fn(fetch);
+  global.Headers = jest.fn((init) => init);
 
   return store.dispatch(action).then(() => {
+    testAPICall(args);
     expect(store.getActions()).toEqual(actionList);
   });
 

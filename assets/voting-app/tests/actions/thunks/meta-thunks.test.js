@@ -5,17 +5,21 @@
 //local imports
 
 const { actions } = require("../../../scripts/actions/actions");
+const { initialState } = require("../../../scripts/reducer/reducer");
 const { testAPIFailure, testAPISuccess } = require("../../test-helpers");
 
 describe("metaGetPolls", () => {
 
   const { metaGetPolls, metaSetState } = actions;
 
-  const action = metaGetPolls();
-
-  beforeAll(() => {
-    global.Headers = jest.fn((init) => init);
-  });
+  const action = metaGetPolls(0);
+  const args = {
+    path: "/api/meta-get-polls",
+    body: {
+      limit: 0,
+      list: initialState.list
+    }
+  };
 
   afterAll(() => {
     global.fetch = undefined;
@@ -26,10 +30,10 @@ describe("metaGetPolls", () => {
 
     const actionList = [metaSetState({})];
 
-    return testAPISuccess(action, {}, actionList);
+    return testAPISuccess(action, args, {}, actionList);
 
   });
 
-  it("dispatches META_ADD_ERRORS actions on failure", () => testAPIFailure(action));
+  it("dispatches META_ADD_ERRORS actions on failure", () => testAPIFailure(action, args));
 
 });

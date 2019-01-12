@@ -20,11 +20,13 @@ describe("menuGetUser", () => {
 
   const { menuGetUser, metaSetState } = actions;
 
-  const action = menuGetUser("auth");
+  const type = "auth";
 
-  beforeAll(() => {
-    global.Headers = jest.fn((init) => init);
-  });
+  const action = menuGetUser(type);
+  const args = {
+    path: "/api/menu-get-user",
+    body: { type }
+  };
 
   afterAll(() => {
     global.fetch = undefined;
@@ -42,11 +44,11 @@ describe("menuGetUser", () => {
 
     const actionList = [metaSetState(merge, { object: true })];
 
-    return testAPISuccess(action, res, actionList);
+    return testAPISuccess(action, args, res, actionList);
 
   });
 
-  it("dispatches META_ADD_ERRORS actions on failure", () => testAPIFailure(action));
+  it("dispatches META_ADD_ERRORS actions on failure", () => testAPIFailure(action, args));
 
 });
 
@@ -54,11 +56,17 @@ describe("menuSetFilter", () => {
 
   const { menuSetFilter, metaSetState } = actions;
 
-  const action = menuSetFilter("created");
+  const filter = "created";
+  const merge = {
+    filter,
+    index: 0
+  };
 
-  beforeAll(() => {
-    global.Headers = jest.fn((init) => init);
-  });
+  const action = menuSetFilter(filter);
+  const args = {
+    path: "/api/menu-set-filter",
+    body: { list: deepCopy(initialState.list, merge) }
+  };
 
   afterAll(() => {
     global.fetch = undefined;
@@ -69,16 +77,13 @@ describe("menuSetFilter", () => {
 
     const actionList = [metaSetState({
       polls: {},
-      list: {
-        filter: "created",
-        index: 0
-      }
+      list: merge
     })];
 
-    return testAPISuccess(action, { polls: {} }, actionList);
+    return testAPISuccess(action, args, { polls: {} }, actionList);
 
   });
 
-  it("dispatches META_ADD_ERRORS actions on failure", () => testAPIFailure(action));
+  it("dispatches META_ADD_ERRORS actions on failure", () => testAPIFailure(action, args));
 
 });

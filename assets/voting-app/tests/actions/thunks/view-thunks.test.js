@@ -21,10 +21,14 @@ describe("viewAddOption", () => {
   const { metaAddErrors, metaSetState, viewAddOption } = actions;
 
   const action = viewAddOption("");
-
-  beforeAll(() => {
-    global.Headers = jest.fn((init) => init);
-  });
+  const args = {
+    path: "/api/view-add-option",
+    body: {
+      poll: "",
+      text: "",
+      list: initialState.list
+    }
+  };
 
   afterAll(() => {
     global.fetch = undefined;
@@ -35,7 +39,7 @@ describe("viewAddOption", () => {
 
     const actionList = [metaSetState({})];
 
-    return testAPISuccess(action, {}, actionList);
+    return testAPISuccess(action, args, {}, actionList);
 
   });
 
@@ -43,11 +47,11 @@ describe("viewAddOption", () => {
 
     const actionList = [metaAddErrors([])];
 
-    return testAPISuccess(action, { errors: [] }, actionList);
+    return testAPISuccess(action, args, { errors: [] }, actionList);
 
   });
 
-  it("dispatches META_ADD_ERRORS actions on failure", () => testAPIFailure(action));
+  it("dispatches META_ADD_ERRORS actions on failure", () => testAPIFailure(action, args));
 
 });
 
@@ -58,10 +62,14 @@ describe("viewCastVote", () => {
   const { metaSetState, viewCastVote } = actions;
 
   const action = viewCastVote("", "");
-
-  beforeAll(() => {
-    global.Headers = jest.fn((init) => init);
-  });
+  const args = {
+    path: "/api/view-cast-vote",
+    body: {
+      poll: "",
+      text: "",
+      list: initialState.list
+    }
+  };
 
   afterAll(() => {
     global.fetch = undefined;
@@ -72,11 +80,11 @@ describe("viewCastVote", () => {
 
     const actionList = [metaSetState({})];
 
-    return testAPISuccess(action, {}, actionList);
+    return testAPISuccess(action, args, {}, actionList);
 
   });
 
-  it("dispatches META_ADD_ERRORS actions on failure", () => testAPIFailure(action));
+  it("dispatches META_ADD_ERRORS actions on failure", () => testAPIFailure(action, args));
 
 });
 
@@ -87,10 +95,13 @@ describe("viewDeletePoll", () => {
   const { metaSetState, viewDeletePoll } = actions;
 
   const action = viewDeletePoll("id-a");
-
-  beforeAll(() => {
-    global.Headers = jest.fn((init) => init);
-  });
+  const args = {
+    path: "/api/view-delete-poll",
+    body: {
+      poll: "id-a",
+      list: initialState.list
+    }
+  };
 
   afterAll(() => {
     global.fetch = undefined;
@@ -107,7 +118,7 @@ describe("viewDeletePoll", () => {
       view: deepCopy(initialState.view, { poll })
     })];
 
-    return testAPISuccess(action, { polls }, actionList);
+    return testAPISuccess(action, args, { polls }, actionList);
 
   });
 
@@ -120,11 +131,11 @@ describe("viewDeletePoll", () => {
       page: "list"
     })];
 
-    return testAPISuccess(action, res, actionList);
+    return testAPISuccess(action, args, res, actionList);
 
   });
 
-  it("dispatches META_ADD_ERRORS actions on failure", () => testAPIFailure(action));
+  it("dispatches META_ADD_ERRORS actions on failure", () => testAPIFailure(action, args));
 
 });
 
@@ -135,10 +146,14 @@ describe("viewRemoveOption", () => {
   const { metaSetState, viewRemoveOption } = actions;
 
   const action = viewRemoveOption("", "");
-
-  beforeAll(() => {
-    global.Headers = jest.fn((init) => init);
-  });
+  const args = {
+    path: "/api/view-remove-option",
+    body: {
+      poll: "",
+      text: "",
+      list: initialState.list
+    }
+  };
 
   afterAll(() => {
     global.fetch = undefined;
@@ -149,11 +164,11 @@ describe("viewRemoveOption", () => {
 
     const actionList = [metaSetState({})];
 
-    return testAPISuccess(action, {}, actionList);
+    return testAPISuccess(action, args, {}, actionList);
 
   });
 
-  it("dispatches META_ADD_ERRORS actions on failure", () => testAPIFailure(action));
+  it("dispatches META_ADD_ERRORS actions on failure", () => testAPIFailure(action, args));
 
 });
 
@@ -164,10 +179,13 @@ describe("viewTogglePrivate", () => {
   const { metaSetState, viewTogglePrivate } = actions;
 
   const action = viewTogglePrivate("");
-
-  beforeAll(() => {
-    global.Headers = jest.fn((init) => init);
-  });
+  const args = {
+    path: "/api/view-toggle-private",
+    body: {
+      poll: "",
+      list: initialState.list
+    }
+  };
 
   afterAll(() => {
     global.fetch = undefined;
@@ -178,10 +196,10 @@ describe("viewTogglePrivate", () => {
 
     const actionList = [metaSetState({})];
 
-    return testAPISuccess(action, {}, actionList);
+    return testAPISuccess(action, args, {}, actionList);
 
   });
 
-  it("dispatches META_ADD_ERRORS actions on failure", () => testAPIFailure(action));
+  it("dispatches META_ADD_ERRORS actions on failure", () => testAPIFailure(action, args));
 
 });

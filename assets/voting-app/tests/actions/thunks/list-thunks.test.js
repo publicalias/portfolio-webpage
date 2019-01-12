@@ -20,11 +20,17 @@ describe("listSetSort", () => {
 
   const { listSetSort, metaSetState } = actions;
 
-  const action = listSetSort("popular");
+  const sort = "popular";
+  const merge = {
+    sort,
+    index: 0
+  };
 
-  beforeAll(() => {
-    global.Headers = jest.fn((init) => init);
-  });
+  const action = listSetSort(sort);
+  const args = {
+    path: "/api/list-set-sort",
+    body: { list: deepCopy(initialState.list, merge) }
+  };
 
   afterAll(() => {
     global.fetch = undefined;
@@ -35,17 +41,14 @@ describe("listSetSort", () => {
 
     const actionList = [metaSetState({
       polls: {},
-      list: {
-        sort: "popular",
-        index: 0
-      }
+      list: merge
     })];
 
-    return testAPISuccess(action, { polls: {} }, actionList);
+    return testAPISuccess(action, args, { polls: {} }, actionList);
 
   });
 
-  it("dispatches META_ADD_ERRORS actions on failure", () => testAPIFailure(action));
+  it("dispatches META_ADD_ERRORS actions on failure", () => testAPIFailure(action, args));
 
 });
 
@@ -55,11 +58,20 @@ describe("listSubmitSearch", () => {
 
   const { listSubmitSearch, metaAddErrors, metaSetState } = actions;
 
-  const action = listSubmitSearch();
+  const searched = "a";
+  const merge = {
+    search: "",
+    searched,
+    index: 0
+  };
 
-  beforeAll(() => {
-    global.Headers = jest.fn((init) => init);
-  });
+  const action = listSubmitSearch();
+  const args = {
+    path: "/api/list-submit-search",
+    body: { list: deepCopy(initialState.list, merge) }
+  };
+
+  const getLastState = () => deepCopy(initialState, { list: { search: searched } });
 
   afterAll(() => {
     global.fetch = undefined;
@@ -70,28 +82,30 @@ describe("listSubmitSearch", () => {
 
     const actionList = [metaSetState({
       polls: {},
-      list: {
-        search: "",
-        searched: "a",
-        index: 0
-      }
+      list: merge
     })];
+    const lastState = getLastState();
 
-    const lastState = deepCopy(initialState, { list: { search: "a" } });
-
-    return testAPISuccess(action, { polls: {} }, actionList, lastState);
+    return testAPISuccess(action, args, { polls: {} }, actionList, lastState);
 
   });
 
   it("dispatches META_ADD_ERRORS actions on success (errors)", () => {
 
     const actionList = [metaAddErrors([])];
+    const lastState = getLastState();
 
-    return testAPISuccess(action, { errors: [] }, actionList);
+    return testAPISuccess(action, args, { errors: [] }, actionList, lastState);
 
   });
 
-  it("dispatches META_ADD_ERRORS actions on failure", () => testAPIFailure(action));
+  it("dispatches META_ADD_ERRORS actions on failure", () => {
+
+    const lastState = getLastState();
+
+    return testAPIFailure(action, args, lastState);
+
+  });
 
 });
 
@@ -102,10 +116,13 @@ describe("listToggleFlag", () => {
   const { listToggleFlag, metaSetState } = actions;
 
   const action = listToggleFlag("");
-
-  beforeAll(() => {
-    global.Headers = jest.fn((init) => init);
-  });
+  const args = {
+    path: "/api/list-toggle-flag",
+    body: {
+      poll: "",
+      list: initialState.list
+    }
+  };
 
   afterAll(() => {
     global.fetch = undefined;
@@ -116,11 +133,11 @@ describe("listToggleFlag", () => {
 
     const actionList = [metaSetState({})];
 
-    return testAPISuccess(action, {}, actionList);
+    return testAPISuccess(action, args, {}, actionList);
 
   });
 
-  it("dispatches META_ADD_ERRORS actions on failure", () => testAPIFailure(action));
+  it("dispatches META_ADD_ERRORS actions on failure", () => testAPIFailure(action, args));
 
 });
 
@@ -131,10 +148,13 @@ describe("listToggleHide", () => {
   const { listToggleHide, metaSetState } = actions;
 
   const action = listToggleHide("");
-
-  beforeAll(() => {
-    global.Headers = jest.fn((init) => init);
-  });
+  const args = {
+    path: "/api/list-toggle-hide",
+    body: {
+      poll: "",
+      list: initialState.list
+    }
+  };
 
   afterAll(() => {
     global.fetch = undefined;
@@ -145,10 +165,10 @@ describe("listToggleHide", () => {
 
     const actionList = [metaSetState({})];
 
-    return testAPISuccess(action, {}, actionList);
+    return testAPISuccess(action, args, {}, actionList);
 
   });
 
-  it("dispatches META_ADD_ERRORS actions on failure", () => testAPIFailure(action));
+  it("dispatches META_ADD_ERRORS actions on failure", () => testAPIFailure(action, args));
 
 });

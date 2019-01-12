@@ -97,10 +97,13 @@ describe("formCreatePoll", () => {
   const { formCreatePoll, metaAddErrors, metaSetState } = actions;
 
   const action = formCreatePoll();
-
-  beforeAll(() => {
-    global.Headers = jest.fn((init) => init);
-  });
+  const args = {
+    path: "/api/form-create-poll",
+    body: {
+      list: initialState.list,
+      form: initialState.form
+    }
+  };
 
   afterAll(() => {
     global.fetch = undefined;
@@ -125,7 +128,7 @@ describe("formCreatePoll", () => {
       view: deepCopy(initialState.view, { poll })
     })];
 
-    return testAPISuccess(action, res, actionList);
+    return testAPISuccess(action, args, res, actionList);
 
   });
 
@@ -133,10 +136,10 @@ describe("formCreatePoll", () => {
 
     const actionList = [metaAddErrors([])];
 
-    return testAPISuccess(action, { errors: [] }, actionList);
+    return testAPISuccess(action, args, { errors: [] }, actionList);
 
   });
 
-  it("dispatches META_ADD_ERRORS actions on failure", () => testAPIFailure(action));
+  it("dispatches META_ADD_ERRORS actions on failure", () => testAPIFailure(action, args));
 
 });

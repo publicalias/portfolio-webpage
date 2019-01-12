@@ -16,7 +16,7 @@ const deepCopy = initDeepCopy();
 
 const formAddOption = () => (dispatch, getState) => {
 
-  const { form, user } = getState();
+  const { user, form } = getState();
 
   const empty = !form.add.trim();
   const duplicate = form.options.filter((e) => e.text === form.add).length;
@@ -42,13 +42,13 @@ const formAddOption = () => (dispatch, getState) => {
 
 //form create poll
 
-const formCreatePoll = (form) => (dispatch, getState) => {
+const formCreatePoll = () => (dispatch, getState) => {
 
-  const { list } = getState();
+  const { list, form } = getState();
 
   const body = {
-    form,
-    list
+    list,
+    form
   };
 
   const success = (res) => {
