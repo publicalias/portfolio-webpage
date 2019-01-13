@@ -6,17 +6,13 @@ const { metaSetState, metaAddErrors } = require("./actions/factories/meta-factor
 
 //global imports
 
-const { getJSON } = require("utilities");
+const { encodeAPICall, getJSON } = require("utilities");
 
 //redux api call
 
-const reduxAPICall = (dispatch, path, body, success, failure) => {
+const reduxAPICall = (dispatch, args, success, failure) => {
 
-  const bodyObj = {
-    method: "POST",
-    body,
-    headers: new Headers({ "Content-Type": "application/json" })
-  };
+  const { path, init } = encodeAPICall(args);
 
   const successFn = success || ((res) => {
     dispatch(metaSetState(res));
@@ -26,7 +22,7 @@ const reduxAPICall = (dispatch, path, body, success, failure) => {
     dispatch(metaAddErrors([err.message]));
   });
 
-  return getJSON(path, bodyObj)
+  return getJSON(path, init)
     .then(successFn)
     .catch(failureFn);
 

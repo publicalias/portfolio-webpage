@@ -18,10 +18,14 @@ const viewAddOption = (id) => (dispatch, getState) => {
 
   const { list, view } = getState();
 
-  const body = {
-    poll: id,
-    text: view.add,
-    list
+  const args = {
+    path: "/api/view-add-option",
+    method: "PATCH",
+    data: {
+      poll: id,
+      text: view.add,
+      list
+    }
   };
 
   const success = (res) => {
@@ -32,7 +36,7 @@ const viewAddOption = (id) => (dispatch, getState) => {
 
   };
 
-  return reduxAPICall(dispatch, "/api/view-add-option", body, success);
+  return reduxAPICall(dispatch, args, success);
 
 };
 
@@ -42,13 +46,17 @@ const viewCastVote = (id, text) => (dispatch, getState) => {
 
   const { list } = getState();
 
-  const body = {
-    poll: id,
-    text,
-    list
+  const args = {
+    path: "/api/view-cast-vote",
+    method: "PATCH",
+    data: {
+      poll: id,
+      text,
+      list
+    }
   };
 
-  return reduxAPICall(dispatch, "/api/view-cast-vote", body);
+  return reduxAPICall(dispatch, args);
 
 };
 
@@ -58,9 +66,13 @@ const viewDeletePoll = (id) => (dispatch, getState) => {
 
   const { polls, list } = getState();
 
-  const body = {
-    poll: id,
-    list
+  const args = {
+    path: "/api/view-delete-poll",
+    method: "DELETE",
+    data: {
+      poll: id,
+      list
+    }
   };
 
   const index = polls.indexOf(id);
@@ -79,7 +91,7 @@ const viewDeletePoll = (id) => (dispatch, getState) => {
 
   };
 
-  return reduxAPICall(dispatch, "/api/view-delete-poll", body, success);
+  return reduxAPICall(dispatch, args, success);
 
 };
 
@@ -89,13 +101,17 @@ const viewRemoveOption = (id, text) => (dispatch, getState) => {
 
   const { list } = getState();
 
-  const body = {
-    poll: id,
-    text,
-    list
+  const args = {
+    path: "/api/view-remove-option",
+    method: "PATCH",
+    data: {
+      poll: id,
+      text,
+      list
+    }
   };
 
-  return reduxAPICall(dispatch, "/api/view-remove-option", body);
+  return reduxAPICall(dispatch, args);
 
 };
 
@@ -105,12 +121,16 @@ const viewTogglePrivate = (id) => (dispatch, getState) => {
 
   const { list } = getState();
 
-  const body = {
-    poll: id,
-    list
+  const args = {
+    path: "/api/view-toggle-private",
+    method: "PATCH",
+    data: {
+      poll: id,
+      list
+    }
   };
 
-  return reduxAPICall(dispatch, "/api/view-toggle-private", body);
+  return reduxAPICall(dispatch, args);
 
 };
 

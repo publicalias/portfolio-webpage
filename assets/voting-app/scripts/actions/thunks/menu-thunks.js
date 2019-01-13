@@ -16,6 +16,12 @@ const deepCopy = initDeepCopy();
 
 const menuGetUser = (type) => (dispatch) => {
 
+  const args = {
+    path: "/api/menu-get-user",
+    method: "GET",
+    data: { type }
+  };
+
   const success = (res) => {
 
     const merge = deepCopy(initialState, res);
@@ -27,7 +33,7 @@ const menuGetUser = (type) => (dispatch) => {
 
   };
 
-  return reduxAPICall(dispatch, "/api/menu-get-user", { type }, success);
+  return reduxAPICall(dispatch, args, success);
 
 };
 
@@ -42,7 +48,11 @@ const menuSetFilter = (filter) => (dispatch, getState) => {
     index: 0
   };
 
-  const body = { list: deepCopy(list, merge) };
+  const args = {
+    path: "/api/menu-set-filter",
+    method: "GET",
+    data: { list: deepCopy(list, merge) }
+  };
 
   const success = (res) => {
 
@@ -55,7 +65,7 @@ const menuSetFilter = (filter) => (dispatch, getState) => {
 
   };
 
-  return reduxAPICall(dispatch, "/api/menu-set-filter", body, success);
+  return reduxAPICall(dispatch, args, success);
 
 };
 

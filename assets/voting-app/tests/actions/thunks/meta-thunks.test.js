@@ -15,7 +15,8 @@ describe("metaGetPolls", () => {
   const action = metaGetPolls(0);
   const args = {
     path: "/api/meta-get-polls",
-    body: {
+    method: "GET",
+    data: {
       limit: 0,
       list: initialState.list
     }

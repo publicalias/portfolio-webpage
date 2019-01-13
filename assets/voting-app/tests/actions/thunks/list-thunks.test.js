@@ -29,7 +29,8 @@ describe("listSetSort", () => {
   const action = listSetSort(sort);
   const args = {
     path: "/api/list-set-sort",
-    body: { list: deepCopy(initialState.list, merge) }
+    method: "GET",
+    data: { list: deepCopy(initialState.list, merge) }
   };
 
   afterAll(() => {
@@ -68,7 +69,8 @@ describe("listSubmitSearch", () => {
   const action = listSubmitSearch();
   const args = {
     path: "/api/list-submit-search",
-    body: { list: deepCopy(initialState.list, merge) }
+    method: "GET",
+    data: { list: deepCopy(initialState.list, merge) }
   };
   const lastState = deepCopy(initialState, { list: { search: searched } });
 
@@ -109,7 +111,8 @@ describe("listToggleFlag", () => {
   const action = listToggleFlag("");
   const args = {
     path: "/api/list-toggle-flag",
-    body: {
+    method: "PATCH",
+    data: {
       poll: "",
       list: initialState.list
     }
@@ -141,7 +144,8 @@ describe("listToggleHide", () => {
   const action = listToggleHide("");
   const args = {
     path: "/api/list-toggle-hide",
-    body: {
+    method: "PATCH",
+    data: {
       poll: "",
       list: initialState.list
     }

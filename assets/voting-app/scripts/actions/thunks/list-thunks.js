@@ -22,7 +22,11 @@ const listSetSort = (sort) => (dispatch, getState) => {
     index: 0
   };
 
-  const body = { list: deepCopy(list, merge) };
+  const args = {
+    path: "/api/list-set-sort",
+    method: "GET",
+    data: { list: deepCopy(list, merge) }
+  };
 
   const success = (res) => {
 
@@ -35,7 +39,7 @@ const listSetSort = (sort) => (dispatch, getState) => {
 
   };
 
-  return reduxAPICall(dispatch, "/api/list-set-sort", body, success);
+  return reduxAPICall(dispatch, args, success);
 
 };
 
@@ -51,7 +55,11 @@ const listSubmitSearch = () => (dispatch, getState) => {
     index: 0
   };
 
-  const body = { list: deepCopy(list, merge) };
+  const args = {
+    path: "/api/list-submit-search",
+    method: "GET",
+    data: { list: deepCopy(list, merge) }
+  };
 
   const success = (res) => {
 
@@ -64,7 +72,7 @@ const listSubmitSearch = () => (dispatch, getState) => {
 
   };
 
-  return reduxAPICall(dispatch, "/api/list-submit-search", body, success);
+  return reduxAPICall(dispatch, args, success);
 
 };
 
@@ -74,12 +82,16 @@ const listToggleFlag = (id) => (dispatch, getState) => {
 
   const { list } = getState();
 
-  const body = {
-    poll: id,
-    list
+  const args = {
+    path: "/api/list-toggle-flag",
+    method: "PATCH",
+    data: {
+      poll: id,
+      list
+    }
   };
 
-  return reduxAPICall(dispatch, "/api/list-toggle-flag", body);
+  return reduxAPICall(dispatch, args);
 
 };
 
@@ -89,12 +101,16 @@ const listToggleHide = (id) => (dispatch, getState) => {
 
   const { list } = getState();
 
-  const body = {
-    poll: id,
-    list
+  const args = {
+    path: "/api/list-toggle-hide",
+    method: "PATCH",
+    data: {
+      poll: id,
+      list
+    }
   };
 
-  return reduxAPICall(dispatch, "/api/list-toggle-hide", body);
+  return reduxAPICall(dispatch, args);
 
 };
 

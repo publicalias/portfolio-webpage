@@ -39,9 +39,23 @@ const cycleItems = (arr, val, delta = 1) => {
 
 };
 
+//encode api call
+
+const encodeAPICall = ({ path, method, data }) => method === "GET" || method === "DELETE" ? {
+  path: `${path}?data=${encodeURIComponent(JSON.stringify(data))}`,
+  init: { method }
+} : {
+  path,
+  init: {
+    method,
+    body: JSON.stringify(data),
+    headers: new Headers({ "Content-Type": "application/json" })
+  }
+};
+
 //get json
 
-const getJSON = (url, body) => fetch(url, body).then((res) => {
+const getJSON = (path, init) => fetch(path, init).then((res) => {
 
   if (!res.ok) {
     throw Error(`${res.status} ${res.statusText}`);
@@ -164,6 +178,7 @@ module.exports = {
   bindObject,
   chance,
   cycleItems,
+  encodeAPICall,
   getJSON,
   initDeepCopy,
   rngInt,

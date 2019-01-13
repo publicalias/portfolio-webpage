@@ -5,6 +5,10 @@
 const { actions } = require("../scripts/actions/actions");
 const { initialState } = require("../scripts/reducer/reducer");
 
+//global imports
+
+const { encodeAPICall } = require("utilities");
+
 //node modules
 
 const configureStore = require("redux-mock-store").default;
@@ -22,17 +26,15 @@ const testAPIGlobals = (fetch) => {
   global.Headers = jest.fn((init) => init);
 };
 
-const testAPICall = ({ path, body }) => {
+const testAPICall = (args) => {
+
+  const { path, init } = encodeAPICall(args);
 
   const calls = fetch.mock.calls;
 
   expect(calls.length).toEqual(1);
   expect(calls[0][0]).toEqual(path);
-  expect(calls[0][1]).toEqual({
-    method: "POST",
-    body,
-    headers: new Headers({ "Content-Type": "application/json" })
-  });
+  expect(calls[0][1]).toEqual(init);
 
 };
 

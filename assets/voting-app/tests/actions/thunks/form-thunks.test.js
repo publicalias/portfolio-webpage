@@ -99,7 +99,8 @@ describe("formCreatePoll", () => {
   const action = formCreatePoll();
   const args = {
     path: "/api/form-create-poll",
-    body: {
+    method: "POST",
+    data: {
       list: initialState.list,
       form: initialState.form
     }

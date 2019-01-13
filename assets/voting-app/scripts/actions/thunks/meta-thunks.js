@@ -10,12 +10,16 @@ const metaGetPolls = (limit) => (dispatch, getState) => {
 
   const { list } = getState();
 
-  const body = {
-    limit,
-    list
+  const args = {
+    path: "/api/meta-get-polls",
+    method: "GET",
+    data: {
+      limit,
+      list
+    }
   };
 
-  return reduxAPICall(dispatch, "/api/meta-get-polls", body);
+  return reduxAPICall(dispatch, args);
 
 };
 

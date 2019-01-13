@@ -25,7 +25,8 @@ describe("menuGetUser", () => {
   const action = menuGetUser(type);
   const args = {
     path: "/api/menu-get-user",
-    body: { type }
+    method: "GET",
+    data: { type }
   };
 
   afterAll(() => {
@@ -65,7 +66,8 @@ describe("menuSetFilter", () => {
   const action = menuSetFilter(filter);
   const args = {
     path: "/api/menu-set-filter",
-    body: { list: deepCopy(initialState.list, merge) }
+    method: "GET",
+    data: { list: deepCopy(initialState.list, merge) }
   };
 
   afterAll(() => {
