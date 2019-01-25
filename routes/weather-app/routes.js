@@ -2,12 +2,11 @@
 
 //global imports
 
-const { sendData } = require(`${__rootdir}/master/scripts/utilities`);
+const { sendData } = require(`${__rootdir}/master/scripts/server-utils`);
 
 //node modules
 
 const express = require("express");
-const request = require("request");
 
 const router = express.Router();
 
@@ -25,9 +24,9 @@ router.get("/", (req, res) => {
 
 router.get("/weather", (req, res) => {
 
-  const weatherAPI = `http://api.openweathermap.org/data/2.5/weather?lat=${req.query.lat}&lon=${req.query.lon}&APPID=${process.env.API_OW_ID}`;
+  const api = `http://api.openweathermap.org/data/2.5/weather?lat=${req.query.lat}&lon=${req.query.lon}&APPID=${process.env.API_OW_ID}`;
 
-  request(weatherAPI, sendData(res));
+  sendData(api, res);
 
 });
 

@@ -4,10 +4,14 @@
 
 const { apiHandler, readLogs, startParam, upsertLog } = require("./scripts/app-logic");
 
+//global imports
+
+const { badRequest } = require(`${__rootdir}/master/scripts/server-utils`);
+
 //node modules
 
 const express = require("express");
-const request = require("request");
+const request = require("request-promise-native");
 
 const router = express.Router();
 
@@ -21,11 +25,13 @@ router.get("/", (req, res) => {
 
 router.get("/search/:term", (req, res) => {
 
-  const api = `https://www.googleapis.com/customsearch/v1?cx=${encodeURIComponent(process.env.API_CS_ID)}&key=${process.env.API_CS_KEY}&searchType=image&fields=items(title%2Clink%2Cimage%2FcontextLink)&q=${encodeURIComponent(req.params.term)}${startParam(req.query.offset)}`;
+  const api = `https://www.googleapis.com/customsearch/v1?cx=${process.env.API_CS_ID}&key=${process.env.API_CS_KEY}&searchType=image&fields=items(title%2Clink%2Cimage%2FcontextLink)&q=${encodeURIComponent(req.params.term)}${startParam(req.query.offset)}`;
+
+  request(api)
+    .then(apiHandler(req, res))
+    .catch(badRequest(res, 502));
 
   upsertLog(req);
-
-  request(api, apiHandler(req, res));
 
 });
 

@@ -1,5 +1,9 @@
 "use strict";
 
+//global imports
+
+const { badRequest, toPromise } = require(`${__rootdir}/master/scripts/server-utils`);
+
 //node modules
 
 const express = require("express");
@@ -10,14 +14,10 @@ const upload = multer({ limits: { fileSize: Math.pow(2, 20) } }).single("input")
 
 //utilities
 
-const handleUpload = (req, res) => (err) => {
+const handleUpload = (req, res) => () => {
 
-  if (err || !req.file) {
-
-    res.sendStatus(err ? 422 : 400);
-
-    return;
-
+  if (!req.file) {
+    throw Error("400 Bad Request");
   }
 
   const json = {
@@ -40,7 +40,9 @@ router.get("/", (req, res) => {
 //parse upload
 
 router.post("/output", (req, res) => {
-  upload(req, res, handleUpload(req, res));
+  toPromise(upload, req, res)
+    .then(handleUpload(req, res))
+    .catch(badRequest(res, 422));
 });
 
 //exports

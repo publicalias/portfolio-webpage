@@ -2,6 +2,10 @@
 
 global.__rootdir = __dirname;
 
+//global imports
+
+const { toPromise } = require(`${__rootdir}/master/scripts/server-utils`);
+
 //node modules
 
 const compression = require("compression");
@@ -16,17 +20,15 @@ const app = express();
 app.use(compression());
 app.use(express.static("build"));
 
-fs.readdir("./routes", (err, files) => {
-
-  if (err) {
-    throw err;
-  }
-
-  for (const e of files) {
-    app.use(`/${e}`, require(`./routes/${e}/routes`));
-  }
-
-});
+toPromise(fs, "readdir", "./routes")
+  .then((files) => {
+    for (const e of files) {
+      app.use(`/${e}`, require(`./routes/${e}/routes`));
+    }
+  })
+  .catch(() => {
+    process.exit(1);
+  });
 
 //home page
 
@@ -42,14 +44,11 @@ app.get("/:name", (req, res) => {
 
 //initialize server
 
-MongoClient.connect(process.env.DB_URL, { useNewUrlParser: true }, (err, client) => {
-
-  if (err) {
-    throw err;
-  }
-
-  global.db = client.db();
-
-  app.listen(process.env.PORT || 3000);
-
-});
+MongoClient.connect(process.env.DB_URL, { useNewUrlParser: true })
+  .then((client) => {
+    global.db = client.db();
+    app.listen(process.env.PORT || 3000);
+  })
+  .catch(() => {
+    process.exit(1);
+  });

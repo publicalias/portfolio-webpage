@@ -2,12 +2,11 @@
 
 //global imports
 
-const { sendData } = require(`${__rootdir}/master/scripts/utilities`);
+const { sendData } = require(`${__rootdir}/master/scripts/server-utils`);
 
 //node modules
 
 const express = require("express");
-const request = require("request");
 
 const router = express.Router();
 
@@ -27,7 +26,7 @@ router.get("/:type", (req, res) => {
 
   const twitchAPI = (type) => `https://api.twitch.tv/kraken/${type}/${req.query[type]}?client_id=${process.env.API_TW_ID}`;
 
-  request(twitchAPI(req.params.type), sendData(res));
+  sendData(twitchAPI(req.params.type), res);
 
 });
 

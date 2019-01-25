@@ -107,14 +107,6 @@ const initDeepCopy = (config) => (...args) => {
 
 };
 
-//rng int
-
-const rngInt = (min, max, inclusive = false) => Math.floor(Math.random() * (max - min + (inclusive ? 1 : 0))) + min;
-
-//round to
-
-const roundTo = (val, dec) => Math.round(val * Math.pow(10, dec)) / Math.pow(10, dec);
-
 //lead zero
 
 const leadZero = (val) => `${val < 10 ? "0" : ""}${val}`;
@@ -136,15 +128,13 @@ const months = [
   "December"
 ];
 
-//send data
+//rng int
 
-const sendData = (res) => (err, status, body) => {
-  if (err) {
-    res.sendStatus(502);
-  } else {
-    res.send(body);
-  }
-};
+const rngInt = (min, max, inclusive = false) => Math.floor(Math.random() * (max - min + (inclusive ? 1 : 0))) + min;
+
+//round to
+
+const roundTo = (val, dec) => Math.round(val * Math.pow(10, dec)) / Math.pow(10, dec);
 
 //storage key
 
@@ -181,11 +171,10 @@ module.exports = {
   encodeAPICall,
   getJSON,
   initDeepCopy,
-  rngInt,
-  roundTo,
   leadZero,
   months,
-  sendData,
+  rngInt,
+  roundTo,
   storageKey,
   wrapFn
 };

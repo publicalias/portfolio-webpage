@@ -2,13 +2,17 @@
 
 //local imports
 
-const { sendEmail } = require("./scripts/app-logic");
+const { sendEmail, sendRes, validateUser } = require("./scripts/app-logic");
+
+//global imports
+
+const { badRequest } = require(`${__rootdir}/master/scripts/server-utils`);
 
 //node modules
 
 const bodyParser = require("body-parser");
 const express = require("express");
-const request = require("request");
+const request = require("request-promise-native");
 
 const router = express.Router();
 
@@ -27,9 +31,16 @@ router.get("/", (req, res) => {
 
 router.post("/contact", (req, res) => {
 
-  const recaptchaAPI = `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.API_RC_KEY}&response=${req.body.verify}&remoteip=${req.ip}`;
+  const options = {
+    method: "POST",
+    uri: `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.API_RC_KEY}&response=${req.body.verify}&remoteip=${req.ip}`
+  };
 
-  request.post(recaptchaAPI, sendEmail(req, res));
+  request(options)
+    .then(validateUser)
+    .then(sendEmail(req))
+    .then(sendRes(res))
+    .catch(badRequest(res, 502));
 
 });
 

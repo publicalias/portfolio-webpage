@@ -1,15 +1,18 @@
 "use strict";
 
+//global imports
+
+const { toPromise } = require(`${__rootdir}/master/scripts/server-utils`);
+
 //node modules
 
 const nodemailer = require("nodemailer");
 
 //send email
 
-const sendEmail = (req, res) => (err, status, body) => {
+const sendEmail = (req) => () => {
 
   const contact = process.env.EMAIL_USER;
-  const success = JSON.parse(body).success;
 
   const transport = {
     host: "mail.privateemail.com",
@@ -30,18 +33,34 @@ const sendEmail = (req, res) => (err, status, body) => {
     text: `Your message to ${contact}:\n\n${req.body.body}`
   };
 
-  if (err) {
-    res.sendStatus(502);
-  } else if (success === false) {
-    res.sendStatus(403);
-  } else {
-    nodemailer.createTransport(transport).sendMail(message, (err) => {
-      res.sendStatus(err ? 500 : 202);
-    });
+  const sender = nodemailer.createTransport(transport);
+
+  return toPromise(sender, "sendMail", message);
+
+};
+
+//send res
+
+const sendRes = (res) => () => {
+  res.sendStatus(202);
+};
+
+//validate user
+
+const validateUser = (body) => {
+
+  const { success } = JSON.parse(body);
+
+  if (!success) {
+    throw Error("401 Unauthorized");
   }
 
 };
 
 //exports
 
-module.exports = { sendEmail };
+module.exports = {
+  sendEmail,
+  sendRes,
+  validateUser
+};

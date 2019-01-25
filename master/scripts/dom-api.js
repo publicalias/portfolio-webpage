@@ -58,21 +58,13 @@ const animateUtil = (api) => (props, fn) => {
 
 };
 
-const defineArgs = (args) => {
-
-  if (typeof args[0] === "function") {
-    return {
-      fn: args[0],
-      options: args[1]
-    };
-  }
-
-  return {
-    child: args[0],
-    fn: args[1],
-    options: args[2]
-  };
-
+const defineArgs = (args) => typeof args[0] === "function" ? {
+  fn: args[0],
+  options: args[1]
+} : {
+  child: args[0],
+  fn: args[1],
+  options: args[2]
 };
 
 const delegate = (fn, parent, child) => (event) => {

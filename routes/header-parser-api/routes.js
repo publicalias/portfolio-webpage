@@ -9,7 +9,7 @@ const router = express.Router();
 
 //utilities
 
-const parseHeader = (req) => {
+const parseHeaders = (req) => {
 
   const ua = parser(req.headers["user-agent"]);
 
@@ -30,7 +30,7 @@ router.get("/", (req, res) => {
 //parse header
 
 router.get("/header", (req, res) => {
-  res.header("Content-Type", "application/json").send(JSON.stringify(parseHeader(req), null, 2));
+  res.header("Content-Type", "application/json").send(JSON.stringify(parseHeaders(req), null, 2));
 });
 
 //exports
