@@ -1,6 +1,6 @@
 "use strict";
 
-/*global TweenMax, Linear*/
+/*global TweenMax*/
 
 //utilities
 
@@ -49,10 +49,7 @@ const animateUtil = (api) => (props, fn) => {
 
   const { all } = api;
 
-  TweenMax.to(all, 0.5, Object.assign(props, {
-    ease: Linear.easeNone,
-    onComplete: fn
-  }));
+  TweenMax.to(all, 0.5, Object.assign(props, { onComplete: fn }));
 
   return api;
 
