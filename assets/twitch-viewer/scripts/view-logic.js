@@ -7,7 +7,7 @@ const { getJSON } = require("utilities");
 
 //get output
 
-const getOutput = (id, name) => {
+const getListing = (id, name) => {
 
   const html = `
     <div class="is-closed js-edit-state-${id} js-filter-output">
@@ -24,13 +24,7 @@ const getOutput = (id, name) => {
 
 };
 
-//get stream
-
-const getStream = (id) => () => getJSON(`/twitch-viewer/streams?streams=${id}`);
-
-//parse channel
-
-const parseChannel = (id) => (res) => {
+const parseChannel = (id, res) => {
 
   if (!res.name) {
     return;
@@ -45,9 +39,7 @@ const parseChannel = (id) => (res) => {
 
 };
 
-//parse stream
-
-const parseStream = (id) => (res) => {
+const parseStream = (id, res) => {
 
   if (!res.stream) {
     return;
@@ -61,11 +53,22 @@ const parseStream = (id) => (res) => {
 
 };
 
+const getOutput = async (name) => {
+
+  const id = name.toLowerCase();
+
+  getListing(id, name);
+
+  const [channel, stream] = await Promise.all([
+    getJSON(`/twitch-viewer/channels?channels=${name}`),
+    getJSON(`/twitch-viewer/streams?streams=${id}`)
+  ]);
+
+  parseChannel(id, channel);
+  parseStream(id, stream);
+
+};
+
 //exports
 
-module.exports = {
-  getOutput,
-  getStream,
-  parseChannel,
-  parseStream
-};
+module.exports = { getOutput };

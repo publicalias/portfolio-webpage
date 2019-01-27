@@ -2,15 +2,16 @@
 
 //global imports
 
-const { toPromise } = require(`${__rootdir}/master/scripts/server-utils`);
+const { badRequest, toPromise } = require(`${__rootdir}/master/scripts/server-utils`);
 
 //node modules
 
 const nodemailer = require("nodemailer");
+const request = require("request-promise-native");
 
-//send email
+//handle form
 
-const sendEmail = (req) => () => {
+const sendEmail = ({ email, subject, body }) => {
 
   const contact = process.env.EMAIL_USER;
 
@@ -27,10 +28,10 @@ const sendEmail = (req) => () => {
 
   const message = {
     from: `Ethan Frost <${contact}>`,
-    to: req.body.email,
+    to: email,
     cc: contact,
-    subject: req.body.subject,
-    text: `Your message to ${contact}:\n\n${req.body.body}`
+    subject,
+    text: `Your message to ${contact}:\n\n${body}`
   };
 
   const sender = nodemailer.createTransport(transport);
@@ -39,28 +40,29 @@ const sendEmail = (req) => () => {
 
 };
 
-//send res
+const handleForm = async (req, res) => {
+  try {
 
-const sendRes = (res) => () => {
-  res.sendStatus(202);
-};
+    const data = await request({
+      method: "POST",
+      uri: `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.API_RC_KEY}&response=${req.body.verify}&remoteip=${req.ip}`
+    });
 
-//validate user
+    const { success } = JSON.parse(data);
 
-const validateUser = (body) => {
+    if (!success) {
+      throw Error("401 Unauthorized");
+    }
 
-  const { success } = JSON.parse(body);
+    await sendEmail(req.body);
 
-  if (!success) {
-    throw Error("401 Unauthorized");
+    res.sendStatus(202);
+
+  } catch (err) {
+    badRequest(res, err, 502);
   }
-
 };
 
 //exports
 
-module.exports = {
-  sendEmail,
-  sendRes,
-  validateUser
-};
+module.exports = { handleForm };

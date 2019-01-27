@@ -55,7 +55,9 @@ const encodeAPICall = ({ path, method, data }) => method === "GET" || method ===
 
 //get json
 
-const getJSON = (path, init) => fetch(path, init).then((res) => {
+const getJSON = async (path, init) => {
+
+  const res = await fetch(path, init);
 
   if (!res.ok) {
     throw Error(`${res.status} ${res.statusText}`);
@@ -63,7 +65,7 @@ const getJSON = (path, init) => fetch(path, init).then((res) => {
 
   return res.json();
 
-});
+};
 
 //init deep copy
 

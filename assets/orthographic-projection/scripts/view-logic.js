@@ -6,7 +6,7 @@ const { select } = require("dom-api");
 
 //tooltip address
 
-const tooltipAddress = (d) => (res) => {
+const tooltipAddress = (d, res) => {
 
   const { year } = d.properties;
 
@@ -32,7 +32,7 @@ const tooltipMass = (mass) => {
 
 };
 
-const tooltipHandler = (d, node, tooltip) => () => {
+const tooltipHandler = (d, node, tooltip) => {
 
   //check current node
 

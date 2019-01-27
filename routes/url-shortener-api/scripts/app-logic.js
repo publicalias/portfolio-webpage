@@ -36,68 +36,62 @@ const createCode = () => {
 
 };
 
-const insertObj = (res, input, code) => {
-  urlsCol()
-    .insertOne(createRes(input, code)) //mutates object
-    .then(() => {
-      res.header("Content-Type", "application/json").send(JSON.stringify(createRes(input, code), null, 2));
-    })
-    .catch(() => {
-      res.sendStatus(500);
-    });
+const insertObj = async (res, input, code) => {
+
+  await urlsCol().insertOne(createRes(input, code)); //mutates object
+
+  res.header("Content-Type", "application/json").send(JSON.stringify(createRes(input, code), null, 2));
+
 };
 
-const codifyURL = (res, input, tries = 3) => {
+const codifyURL = async (res, input, tries = 3) => {
 
   const code = createCode();
 
-  urlsCol()
-    .findOne({ code })
-    .then((doc) => {
-      if (doc) {
-        if (tries) {
-          codifyURL(res, input, tries - 1);
-        } else {
-          res.sendStatus(500);
-        }
-      } else {
-        insertObj(res, input, code);
-      }
-    })
-    .catch(() => {
+  const doc = await urlsCol().findOne({ code });
+
+  if (doc) {
+    if (tries) {
+      codifyURL(res, input, tries - 1);
+    } else {
       res.sendStatus(500);
-    });
+    }
+  } else {
+    insertObj(res, input, code);
+  }
 
 };
 
-const parseURL = (res, input) => {
-  urlsCol()
-    .findOne({ url: input }, { projection: { _id: false } })
-    .then((doc) => {
-      if (doc) {
-        res.header("Content-Type", "application/json").send(JSON.stringify(doc, null, 2));
-      } else {
-        codifyURL(res, input);
-      }
-    })
-    .catch(() => {
-      res.sendStatus(500);
-    });
+const parseURL = async (res, input) => {
+  try {
+
+    const doc = await urlsCol().findOne({ url: input }, { projection: { _id: false } });
+
+    if (doc) {
+      res.header("Content-Type", "application/json").send(JSON.stringify(doc, null, 2));
+    } else {
+      codifyURL(res, input);
+    }
+
+  } catch (err) {
+    res.sendStatus(500);
+  }
 };
 
-const parseCode = (res, input) => {
-  urlsCol()
-    .findOne({ code: input })
-    .then((doc) => {
-      if (doc) {
-        res.redirect(doc.url);
-      } else {
-        res.sendStatus(404);
-      }
-    })
-    .catch(() => {
-      res.sendStatus(500);
-    });
+const parseCode = async (res, input) => {
+  try {
+
+    const doc = await urlsCol().findOne({ code: input });
+
+    if (doc) {
+      res.redirect(doc.url);
+    } else {
+      res.sendStatus(404);
+    }
+
+  } catch (err) {
+    res.sendStatus(500);
+  }
 };
 
 const parseInput = (req, res) => {

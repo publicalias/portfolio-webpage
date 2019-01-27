@@ -32,18 +32,21 @@ const app = {
 
   tooltip,
 
-  handleMouseEnter(d) {
+  async handleMouseEnter(d) {
 
     const { address, reclat, reclong } = d.properties;
 
     const node = d3.event.target;
 
     if (address) {
-      tooltipHandler(d, node, this.tooltip)();
+      tooltipHandler(d, node, this.tooltip);
     } else {
-      getJSON(`/orthographic-projection/address?lat=${reclat}&lon=${reclong}`)
-        .then(tooltipAddress(d))
-        .then(tooltipHandler(d, node, this.tooltip));
+
+      const res = await getJSON(`/orthographic-projection/address?lat=${reclat}&lon=${reclong}`);
+
+      tooltipAddress(d, res);
+      tooltipHandler(d, node, this.tooltip);
+
     }
 
   },

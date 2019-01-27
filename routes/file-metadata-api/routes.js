@@ -14,7 +14,7 @@ const upload = multer({ limits: { fileSize: Math.pow(2, 20) } }).single("input")
 
 //utilities
 
-const handleUpload = (req, res) => () => {
+const handleUpload = (req, res) => {
 
   if (!req.file) {
     throw Error("400 Bad Request");
@@ -39,10 +39,16 @@ router.get("/", (req, res) => {
 
 //parse upload
 
-router.post("/output", (req, res) => {
-  toPromise(upload, req, res)
-    .then(handleUpload(req, res))
-    .catch(badRequest(res, 422));
+router.post("/output", async (req, res) => {
+  try {
+
+    await toPromise(upload, req, res);
+
+    handleUpload(req, res);
+
+  } catch (err) {
+    badRequest(res, err, 422);
+  }
 });
 
 //exports

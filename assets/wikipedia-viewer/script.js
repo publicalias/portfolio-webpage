@@ -14,7 +14,7 @@ const { getJSON, wrapFn } = require("utilities");
 
 //app logic
 
-const search = () => {
+const search = async () => {
 
   const DOMInput = select(".js-submit-input");
 
@@ -24,11 +24,11 @@ const search = () => {
     return;
   }
 
-  const url = `https://en.wikipedia.org/w/api.php?origin=*&action=opensearch&search=${encodeURIComponent(term)}`;
-
   DOMInput.value = "";
 
-  getJSON(url).then(renderResults);
+  const res = await getJSON(`https://en.wikipedia.org/w/api.php?origin=*&action=opensearch&search=${encodeURIComponent(term)}`);
+
+  renderResults(res);
 
 };
 

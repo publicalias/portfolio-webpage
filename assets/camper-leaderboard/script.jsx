@@ -45,19 +45,16 @@ class App extends React.Component {
 
   //lifecycle
 
-  componentDidMount() {
+  async componentDidMount() {
 
-    const url = {
-      recent: "https://fcctop100.herokuapp.com/api/fccusers/top/recent",
-      total: "https://fcctop100.herokuapp.com/api/fccusers/top/alltime"
-    };
+    const [recent, total] = await Promise.all([
+      getJSON("https://fcctop100.herokuapp.com/api/fccusers/top/recent"),
+      getJSON("https://fcctop100.herokuapp.com/api/fccusers/top/alltime")
+    ]);
 
-    getJSON(url.recent).then((res) => {
-      this.setState({ recent: res });
-    });
-
-    getJSON(url.total).then((res) => {
-      this.setState({ total: res });
+    this.setState({
+      recent,
+      total
     });
 
   }

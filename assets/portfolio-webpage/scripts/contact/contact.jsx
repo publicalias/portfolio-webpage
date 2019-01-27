@@ -33,7 +33,7 @@ class Contact extends React.Component {
 
   //recaptcha
 
-  getReCaptcha(data) {
+  async getReCaptcha(data) {
 
     const body = {
       method: "POST",
@@ -43,18 +43,19 @@ class Contact extends React.Component {
 
     this.setState({ btnIndex: 1 });
 
-    fetch("/portfolio-webpage/contact", body)
-      .then((res) => {
-        if (!res.ok) {
-          throw Error(`${res.status} ${res.statusText}`);
-        }
-      })
-      .then(() => {
-        this.setState(resetForm(2));
-      })
-      .catch(() => {
-        this.setState({ btnIndex: 3 });
-      });
+    try {
+
+      const res = await fetch("/portfolio-webpage/contact", body);
+
+      if (!res.ok) {
+        throw Error(`${res.status} ${res.statusText}`);
+      }
+
+      this.setState(resetForm(2));
+
+    } catch (err) {
+      this.setState({ btnIndex: 3 });
+    }
 
     grecaptcha.reset();
 

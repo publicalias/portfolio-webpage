@@ -23,16 +23,17 @@ router.get("/", (req, res) => {
 
 //get search results
 
-router.get("/search/:term", (req, res) => {
+router.get("/search/:term", async (req, res) => {
+  try {
 
-  const api = `https://www.googleapis.com/customsearch/v1?cx=${process.env.API_CS_ID}&key=${process.env.API_CS_KEY}&searchType=image&fields=items(title%2Clink%2Cimage%2FcontextLink)&q=${encodeURIComponent(req.params.term)}${startParam(req.query.offset)}`;
+    const data = await request(`https://www.googleapis.com/customsearch/v1?cx=${process.env.API_CS_ID}&key=${process.env.API_CS_KEY}&searchType=image&fields=items(title%2Clink%2Cimage%2FcontextLink)&q=${encodeURIComponent(req.params.term)}${startParam(req.query.offset)}`);
 
-  request(api)
-    .then(apiHandler(req, res))
-    .catch(badRequest(res, 502));
+    apiHandler(req, res, data);
+    upsertLog(req);
 
-  upsertLog(req);
-
+  } catch (err) {
+    badRequest(res, err, 502);
+  }
 });
 
 //get recent searches

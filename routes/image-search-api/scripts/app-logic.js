@@ -21,9 +21,9 @@ const parseOffset = (offset) => {
 
 //api handler
 
-const apiHandler = (req, res) => (body) => {
+const apiHandler = (req, res, data) => {
 
-  const { items = [] } = JSON.parse(body);
+  const { items = [] } = JSON.parse(data);
 
   const results = items.map((e) => ({
     image: e.link,
@@ -39,7 +39,7 @@ const apiHandler = (req, res) => (body) => {
 
 //read logs
 
-const logHandler = (res) => (docs) => {
+const logHandler = (res, docs) => {
 
   const json = createRes("recent", null, null, docs);
 
@@ -47,16 +47,20 @@ const logHandler = (res) => (docs) => {
 
 };
 
-const readLogs = (req, res) => {
-  termsCol()
-    .find({}, { projection: { _id: false } })
-    .sort({ unix: -1 })
-    .limit(10)
-    .toArray()
-    .then(logHandler(res))
-    .catch(() => {
-      res.sendStatus(500);
-    });
+const readLogs = async (req, res) => {
+  try {
+
+    const docs = await termsCol()
+      .find({}, { projection: { _id: false } })
+      .sort({ unix: -1 })
+      .limit(10)
+      .toArray();
+
+    logHandler(res, docs);
+
+  } catch (err) {
+    res.sendStatus(500);
+  }
 };
 
 //start param

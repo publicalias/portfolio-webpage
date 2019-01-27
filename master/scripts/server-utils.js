@@ -6,7 +6,7 @@ const request = require("request-promise-native");
 
 //bad request
 
-const badRequest = (res, def) => (err) => {
+const badRequest = (res, err, def) => {
 
   const code = err && parseInt(err.message, 10);
 
@@ -16,14 +16,16 @@ const badRequest = (res, def) => (err) => {
 
 //send data
 
-const sendData = (api, res) => {
-  request(api)
-    .then((data) => {
-      res.send(data);
-    })
-    .catch(() => {
-      res.sendStatus(502);
-    });
+const sendData = async (api, res) => {
+  try {
+
+    const data = await request(api);
+
+    res.send(data);
+
+  } catch (err) {
+    res.sendStatus(502);
+  }
 };
 
 //to promise
