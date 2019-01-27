@@ -5,15 +5,21 @@
 const gulp = require("gulp");
 const cleanCSS = require("gulp-clean-css");
 const sass = require("gulp-sass");
+const merge = require("merge-stream");
 const named = require("vinyl-named-with-path");
 const wpVersion = require("webpack");
 const webpack = require("webpack-stream");
 
 //media
 
-gulp.task("media", () => gulp.src("assets/**/media/**").pipe(gulp.dest("build")));
+const media = () => {
 
-gulp.task("media:master", () => gulp.src("master/media/**").pipe(gulp.dest("build/master/media")));
+  const assets = gulp.src("assets/**/media/**").pipe(gulp.dest("build"));
+  const master = gulp.src("master/media/**").pipe(gulp.dest("build/master/media"));
+
+  return merge(assets, master);
+
+};
 
 //script
 
@@ -34,26 +40,31 @@ const wpOptions = {
   }
 };
 
-gulp.task("script", () => gulp.src("assets/**/script.*")
+const script = () => gulp.src("assets/**/script.*")
   .pipe(named())
   .pipe(webpack(wpOptions, wpVersion))
-  .pipe(gulp.dest("build")));
+  .pipe(gulp.dest("build"));
 
 //styles
 
-gulp.task("styles", () => gulp.src("assets/**/styles.scss")
+const styles = () => gulp.src("assets/**/styles.scss")
   .pipe(sass({ includePaths: ["master/styles"] }))
   .pipe(cleanCSS({ rebase: false }))
-  .pipe(gulp.dest("build")));
+  .pipe(gulp.dest("build"));
 
 //view
 
-gulp.task("view", () => gulp.src("assets/**/view.html").pipe(gulp.dest("build")));
+const view = () => gulp.src("assets/**/view.html").pipe(gulp.dest("build"));
 
 //build
 
-gulp.task("build", ["media", "media:master", "script", "styles", "view"]);
+const build = gulp.parallel(media, script, styles, view);
 
 //watch
 
-gulp.task("watch", () => gulp.watch(["assets/**", "master/**"], ["build"]));
+const watch = () => gulp.watch(["assets/**", "master/**"], build);
+
+module.exports = {
+  build,
+  watch
+};
