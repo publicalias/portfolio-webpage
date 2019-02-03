@@ -2,7 +2,7 @@
 
 //global imports
 
-const { badRequest, toPromise } = require(`${__rootdir}/master/scripts/server-utils`);
+const { toPromise } = require(`${__rootdir}/master/scripts/server-utils`);
 
 //node modules
 
@@ -50,16 +50,18 @@ const handleForm = async (req, res) => {
 
     const { success } = JSON.parse(data);
 
-    if (!success) {
-      throw Error("401 Unauthorized");
+    if (success) {
+
+      await sendEmail(req.body);
+
+      res.sendStatus(202);
+
+    } else {
+      res.sendStatus(403);
     }
 
-    await sendEmail(req.body);
-
-    res.sendStatus(202);
-
   } catch (err) {
-    badRequest(res, err, 502);
+    res.sendStatus(502);
   }
 };
 

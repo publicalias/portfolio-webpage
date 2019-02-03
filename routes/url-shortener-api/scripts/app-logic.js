@@ -52,12 +52,12 @@ const codifyURL = async (res, input, tries = 3) => {
 
   if (doc) {
     if (tries) {
-      codifyURL(res, input, tries - 1);
+      await codifyURL(res, input, tries - 1);
     } else {
       res.sendStatus(500);
     }
   } else {
-    insertObj(res, input, code);
+    await insertObj(res, input, code);
   }
 
 };
@@ -70,11 +70,11 @@ const parseURL = async (res, input) => {
     if (doc) {
       res.header("Content-Type", "application/json").send(JSON.stringify(doc, null, 2));
     } else {
-      codifyURL(res, input);
+      await codifyURL(res, input);
     }
 
   } catch (err) {
-    res.sendStatus(500);
+    res.sendStatus(502);
   }
 };
 
@@ -90,7 +90,7 @@ const parseCode = async (res, input) => {
     }
 
   } catch (err) {
-    res.sendStatus(500);
+    res.sendStatus(502);
   }
 };
 
@@ -104,7 +104,7 @@ const parseInput = (req, res) => {
   } else if (/^[a-z]{3}$/iu.test(input)) {
     parseCode(res, input);
   } else {
-    res.sendStatus(422);
+    res.sendStatus(400);
   }
 
 };

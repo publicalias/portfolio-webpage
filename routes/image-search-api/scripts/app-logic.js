@@ -59,7 +59,7 @@ const readLogs = async (req, res) => {
     logHandler(res, docs);
 
   } catch (err) {
-    res.sendStatus(500);
+    res.sendStatus(502);
   }
 };
 
@@ -75,13 +75,13 @@ const startParam = (offset) => {
 
 //upsert log
 
-const upsertLog = (req) => {
+const upsertLog = async (req) => {
 
   const term = req.params.term;
 
   const log = { $set: { unix: Date.now() } };
 
-  termsCol().updateOne({ term }, log, { upsert: true });
+  await termsCol().updateOne({ term }, log, { upsert: true });
 
 };
 

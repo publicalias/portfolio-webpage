@@ -2,7 +2,7 @@
 
 //global imports
 
-const { badRequest, toPromise } = require(`${__rootdir}/master/scripts/server-utils`);
+const { toPromise } = require(`${__rootdir}/master/scripts/server-utils`);
 
 //node modules
 
@@ -17,7 +17,11 @@ const upload = multer({ limits: { fileSize: Math.pow(2, 20) } }).single("input")
 const handleUpload = (req, res) => {
 
   if (!req.file) {
-    throw Error("400 Bad Request");
+
+    res.sendStatus(400);
+
+    return;
+
   }
 
   const json = {
@@ -47,7 +51,7 @@ router.post("/output", async (req, res) => {
     handleUpload(req, res);
 
   } catch (err) {
-    badRequest(res, err, 422);
+    res.sendStatus(413);
   }
 });
 

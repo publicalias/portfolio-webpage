@@ -4,16 +4,6 @@
 
 const request = require("request-promise-native");
 
-//bad request
-
-const badRequest = (res, err, def) => {
-
-  const code = err && parseInt(err.message, 10);
-
-  res.sendStatus(code || def);
-
-};
-
 //send data
 
 const sendData = async (api, res) => {
@@ -62,7 +52,6 @@ const toPromise = (...args) => new Promise((resolve, reject) => {
 //exports
 
 module.exports = {
-  badRequest,
   sendData,
   toPromise
 };
