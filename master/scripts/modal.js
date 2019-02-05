@@ -38,7 +38,7 @@ const toggleModal = (bool) => {
   DOMShow.animate({ top: bool ? 0 : "100vh" }, () => {
     if (bool) {
       toggleState(bool, DOMHide, DOMShow);
-      DOMShow.scrollTop = 0; //debug
+      DOMShow.scrollTop = 0;
     }
   });
 

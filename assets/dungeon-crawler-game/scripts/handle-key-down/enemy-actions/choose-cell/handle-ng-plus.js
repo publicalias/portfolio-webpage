@@ -10,7 +10,7 @@ const hasNgEffect = (actors, type, min) => {
 
   const { self } = actors;
 
-  const count = storageKey("ngPlus");
+  const count = storageKey("ng-plus");
 
   const match = self.stats.type === type && count >= min;
   const armed = !self.debuff.disarm;

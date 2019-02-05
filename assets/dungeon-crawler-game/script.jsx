@@ -39,9 +39,9 @@ class App extends React.Component {
     bindReactClass(this);
 
     storageKey("deaths", storageKey("deaths") || 0);
-    storageKey("ngPlus", storageKey("ngPlus") || 0);
+    storageKey("ng-plus", storageKey("ng-plus") || 0);
 
-    storageKey("bestTime", storageKey("bestTime") || 0);
+    storageKey("best-time", storageKey("best-time") || 0);
 
   }
 

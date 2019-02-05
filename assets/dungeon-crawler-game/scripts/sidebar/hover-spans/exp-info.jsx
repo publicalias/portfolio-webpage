@@ -27,7 +27,7 @@ const ExpInfo = (props) => {
         info={[`${roundTo(char.stats.exp, 1)} / ${expCap} EXP`]}
         text={`EXP: ${roundTo(char.stats.exp / expCap * 100, 1)}%`}
       />
-      <span className="c-sidebar__span--right">NG+: {storageKey("ngPlus")}</span>
+      <span className="c-sidebar__span--right">NG+: {storageKey("ng-plus")}</span>
     </p>
   );
 

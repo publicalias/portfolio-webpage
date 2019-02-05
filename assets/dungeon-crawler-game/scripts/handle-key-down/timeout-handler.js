@@ -35,14 +35,14 @@ const winTimeout = (params) => {
   const { state } = params;
 
   const time = state.time;
-  const bestTime = storageKey("bestTime");
+  const bestTime = storageKey("best-time");
 
   state.win = true;
 
   storageKey("deaths", 0);
-  storageKey("ngPlus", storageKey("ngPlus") + 1);
+  storageKey("ng-plus", storageKey("ng-plus") + 1);
 
-  storageKey("bestTime", bestTime ? Math.min(time, bestTime) : time);
+  storageKey("best-time", bestTime ? Math.min(time, bestTime) : time);
 
 };
 

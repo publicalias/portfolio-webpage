@@ -40,7 +40,7 @@ const CharInfo = (props) => {
       </p>
       <p className="c-sidebar__text">
         <span className="c-sidebar__span">RES: {char.stats.res}</span>
-        <span className="c-sidebar__span--right">Best time: {storageKey("bestTime") || "null"}</span>
+        <span className="c-sidebar__span--right">Best time: {storageKey("best-time") || "null"}</span>
       </p>
       <p className="c-sidebar__text">DMG: {dmgVal}</p>
       <WeaponInfo params={params} />

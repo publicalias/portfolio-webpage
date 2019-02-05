@@ -97,7 +97,7 @@ const handleDeath = (params) => {
   char.stats.hp = 0;
 
   storageKey("deaths", storageKey("deaths") + 1);
-  storageKey("ngPlus", 0);
+  storageKey("ng-plus", 0);
 
   updateLog(events.died);
 
