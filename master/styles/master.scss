@@ -95,7 +95,10 @@ body {
   text-align: justify;
 }
 
-button { @include input; }
+button {
+  @include input;
+  transition: 0.5s;
+}
 
 h1 { @include heading(3.6vw); }
 h2 { @include heading(3.2vw); }
