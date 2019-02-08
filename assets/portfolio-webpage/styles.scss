@@ -8,12 +8,12 @@
 }
 
 @mixin nav-item {
+  @include btn-trans;
   @include heading(2.8vw);
   cursor: pointer;
   display: block;
   padding: 1.5vw 0;
   text-align: center;
-  transition: 0.5s;
 }
 
 @mixin swipe-btn($x, $y) {

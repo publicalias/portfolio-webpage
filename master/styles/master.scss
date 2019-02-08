@@ -12,6 +12,11 @@ $bg-input: rgba(64, 64, 64, 0.75);
   grid-template-rows: repeat($y, 1fr);
 }
 
+@mixin btn-trans {
+  transition-duration: 0.5s;
+  transition-property: background-color, color;
+}
+
 @mixin centered {
   align-items: center;
   display: flex;
@@ -96,8 +101,8 @@ body {
 }
 
 button {
+  @include btn-trans;
   @include input;
-  transition: 0.5s;
 }
 
 h1 { @include heading(3.6vw); }
