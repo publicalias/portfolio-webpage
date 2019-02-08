@@ -22,3 +22,13 @@ test("reducer accepts MENU_OPEN_FORM actions", () => {
   expect(reducer(initialState, menuOpenForm())).toEqual(nextState);
 
 });
+
+test("reducer accepts MENU_TOGGLE_CONFIRM actions", () => {
+
+  const { menuToggleConfirm } = actions;
+
+  const nextState = deepCopy(initialState, { menu: { confirm: true } });
+
+  expect(reducer(initialState, menuToggleConfirm())).toEqual(nextState);
+
+});

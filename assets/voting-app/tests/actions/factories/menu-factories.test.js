@@ -13,3 +13,13 @@ test("menuOpenForm creates MENU_OPEN_FORM actions", () => {
   expect(menuOpenForm()).toEqual({ type: "MENU_OPEN_FORM" });
 
 });
+
+//menu toggle confirm
+
+test("menuToggleConfirm creates MENU_TOGGLE_CONFIRM actions", () => {
+
+  const { menuToggleConfirm } = actions;
+
+  expect(menuToggleConfirm()).toEqual({ type: "MENU_TOGGLE_CONFIRM" });
+
+});

@@ -6,6 +6,7 @@ const initialState = {
   user: {},
   polls: [],
   page: "list",
+  menu: { confirm: false },
   list: {
     filter: "all",
     search: "",
