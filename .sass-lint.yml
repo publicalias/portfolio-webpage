@@ -85,6 +85,7 @@ rules:
   #nest elements and modifiers
   #pad blocks that contain padding
   #prefer inline declarations
+  #sort rulesets
 
   #off
 

@@ -52,8 +52,6 @@
 
 .c-footer { &__link { display: inline-block; } }
 
-.c-wide-btn { @include wide-btn; }
-
 .c-media-icons {
   &__icon {
     float: right;
@@ -135,6 +133,8 @@
   }
 
 }
+
+.c-wide-btn { @include wide-btn; }
 
 //states
 

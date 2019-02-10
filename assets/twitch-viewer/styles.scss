@@ -4,11 +4,6 @@ $margin: (6vw - 1.6vw * 1.4) / 2;
 
 //components
 
-.c-right-btn {
-  text-align: right;
-  width: 100%;
-}
-
 .c-channel {
 
   @include clearfix;
@@ -28,6 +23,11 @@ $margin: (6vw - 1.6vw * 1.4) / 2;
     margin-top: $margin;
   }
 
+}
+
+.c-right-btn {
+  text-align: right;
+  width: 100%;
 }
 
 //states

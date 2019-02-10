@@ -90,6 +90,8 @@
     "react/no-danger": 1,
     "react/no-unused-state": 1,
 
+    //unenforced
+
     /*
       pad separate concerns
       pad blocks that contain padding
