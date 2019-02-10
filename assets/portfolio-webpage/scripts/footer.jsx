@@ -6,11 +6,28 @@ const React = require("react");
 
 //footer
 
-const Footer = (props) => (
-  <div className="c-content--xl c-footer">
-    <h3 className="c-footer__text u-align-center">{props.footer.text}</h3>
-  </div>
-);
+const Footer = (props) => {
+
+  const { terms, privacy } = props.footer;
+
+  return (
+    <div className="c-content--xl c-footer">
+      <div className="c-row">
+        <div className="c-row__col--4">
+          <a className="c-footer__link" href={terms.link}>
+            <h3>{terms.text}</h3>
+          </a>
+        </div>
+        <div className="c-row__col--8">
+          <a className="c-footer__link" href={privacy.link}>
+            <h3>{privacy.text}</h3>
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+
+};
 
 //exports
 

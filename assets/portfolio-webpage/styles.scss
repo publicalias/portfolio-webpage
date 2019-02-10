@@ -50,12 +50,9 @@
 
 }
 
-.c-wide-btn { @include wide-btn; }
+.c-footer { &__link { display: inline-block; } }
 
-.c-footer {
-  padding: 0 4.5vw;
-  &__text { padding: 1.5vw 0; }
-}
+.c-wide-btn { @include wide-btn; }
 
 .c-media-icons {
   &__icon {

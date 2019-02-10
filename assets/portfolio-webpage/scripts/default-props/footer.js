@@ -2,7 +2,16 @@
 
 //footer
 
-const footer = { text: "Thanks for visiting!" };
+const footer = {
+  terms: {
+    text: "Terms and Conditions",
+    link: "/terms-and-conditions"
+  },
+  privacy: {
+    text: "Privacy Policy",
+    link: "/privacy-policy"
+  }
+};
 
 //exports
 

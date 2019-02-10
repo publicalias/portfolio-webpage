@@ -52,6 +52,9 @@ const frontEnd = {
         text: "Icons",
         link: "http://fontawesome.io/"
       }, {
+        text: "Legal Stuff",
+        link: "https://www.rocketlawyer.com/"
+      }, {
         text: "Placeholders",
         link: "https://placeholder.com/"
       }, {
