@@ -7,7 +7,7 @@
 const ContactForm = require("./contact-form");
 const MediaIcons = require("./media-icons");
 
-const { loadReCaptcha, resetForm } = require("../app-logic");
+const { loadReCaptcha, resetForm } = require("../../app-logic");
 
 //global imports
 

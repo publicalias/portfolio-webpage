@@ -1,8 +1,8 @@
 "use strict";
 
-//global imports
+//local imports
 
-const { voidLink } = require("../../app-logic");
+const { voidLink } = require("../../../app-logic");
 
 //node modules
 

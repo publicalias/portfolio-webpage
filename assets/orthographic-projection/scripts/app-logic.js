@@ -1,26 +1,5 @@
 "use strict";
 
-//point radius
-
-const pointRadius = (w, mean) => (d) => {
-
-  if (!d.properties) {
-    return;
-  }
-
-  const mass = d.properties.mass;
-
-  const min = mean * 0.5;
-  const max = mean * 1.5;
-
-  let scale = (mass - min) / max + 0.5;
-
-  scale = Math.min(Math.max(scale, 0.5), 1.5);
-
-  return w * scale / 100;
-
-};
-
 //scrub data
 
 const scrubData = (res, data, mean) => {
@@ -43,7 +22,4 @@ const scrubData = (res, data, mean) => {
 
 //exports
 
-module.exports = {
-  pointRadius,
-  scrubData
-};
+module.exports = { scrubData };

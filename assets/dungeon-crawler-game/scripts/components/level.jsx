@@ -2,8 +2,8 @@
 
 //local imports
 
-const { checkIndex, findEnemy } = require("./app-logic");
-const { paintCanvas } = require("./view-logic/paint-canvas");
+const { checkIndex, findEnemy } = require("../app-logic");
+const { paintCanvas } = require("../view-logic");
 
 //global imports
 

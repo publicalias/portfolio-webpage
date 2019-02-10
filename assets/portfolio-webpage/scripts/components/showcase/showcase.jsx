@@ -4,7 +4,7 @@
 
 const Carousel = require("./carousel");
 
-const { itemIsInView } = require("../app-logic");
+const { itemIsInView } = require("../../view-logic");
 
 //global imports
 

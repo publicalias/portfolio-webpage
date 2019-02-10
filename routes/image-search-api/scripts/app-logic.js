@@ -77,11 +77,9 @@ const startParam = (offset) => {
 
 const upsertLog = async (req) => {
 
-  const term = req.params.term;
-
   const log = { $set: { unix: Date.now() } };
 
-  await termsCol().updateOne({ term }, log, { upsert: true });
+  await termsCol().updateOne({ term: req.params.term }, log, { upsert: true });
 
 };
 

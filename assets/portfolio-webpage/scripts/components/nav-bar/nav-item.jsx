@@ -2,7 +2,7 @@
 
 //local imports
 
-const { scrollToItem } = require("../app-logic");
+const { scrollToItem } = require("../../event-handlers");
 
 //node modules
 

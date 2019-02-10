@@ -1,5 +1,9 @@
 "use strict";
 
+//local imports
+
+const { handleUpload } = require("./scripts/app-logic");
+
 //global imports
 
 const { toPromise } = require(`${__rootdir}/master/scripts/server-utils`);
@@ -11,29 +15,6 @@ const multer = require("multer");
 
 const router = express.Router();
 const upload = multer({ limits: { fileSize: Math.pow(2, 20) } }).single("input");
-
-//utilities
-
-const handleUpload = (req, res) => {
-
-  if (!req.file) {
-
-    res.sendStatus(400);
-
-    return;
-
-  }
-
-  const json = {
-    name: req.file.originalname,
-    size: req.file.size,
-    mimeType: req.file.mimetype,
-    encoding: req.file.encoding
-  };
-
-  res.header("Content-Type", "application/json").send(JSON.stringify(json, null, 2));
-
-};
 
 //home page
 

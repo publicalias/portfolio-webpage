@@ -2,7 +2,7 @@
 
 //local imports
 
-const { cancelSubmit, populateModal } = require("./app-logic");
+const { cancelSubmit, populateModal } = require("../app-logic");
 
 //global imports
 

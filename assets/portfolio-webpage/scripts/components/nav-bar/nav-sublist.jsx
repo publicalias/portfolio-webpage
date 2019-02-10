@@ -4,7 +4,7 @@
 
 const NavItem = require("./nav-item");
 
-const { positionMenu } = require("../app-logic");
+const { positionMenu } = require("../../event-handlers");
 
 //global imports
 

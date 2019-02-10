@@ -2,8 +2,8 @@
 
 //local imports
 
-const Control = require("./scripts/control");
-const Culture = require("./scripts/culture");
+const Control = require("./scripts/components/control");
+const Culture = require("./scripts/components/culture");
 
 const { createCulture, getNextGen, loadCulture, createCell, validRules } = require("./scripts/app-logic");
 const { childProps } = require("./scripts/view-logic");

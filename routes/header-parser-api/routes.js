@@ -7,20 +7,6 @@ const parser = require("ua-parser-js");
 
 const router = express.Router();
 
-//utilities
-
-const parseHeaders = (req) => {
-
-  const ua = parser(req.headers["user-agent"]);
-
-  return {
-    ip: req.ip,
-    language: req.headers["accept-language"].split(",")[0],
-    os: `${ua.os.name} ${ua.os.version}`
-  };
-
-};
-
 //home page
 
 router.get("/", (req, res) => {
@@ -30,7 +16,17 @@ router.get("/", (req, res) => {
 //parse header
 
 router.get("/header", (req, res) => {
-  res.header("Content-Type", "application/json").send(JSON.stringify(parseHeaders(req), null, 2));
+
+  const ua = parser(req.headers["user-agent"]);
+
+  const json = {
+    ip: req.ip,
+    language: req.headers["accept-language"].split(",")[0],
+    os: `${ua.os.name} ${ua.os.version}`
+  };
+
+  res.header("Content-Type", "application/json").send(JSON.stringify(json, null, 2));
+
 });
 
 //exports

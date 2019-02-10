@@ -2,7 +2,7 @@
 
 //local imports
 
-const CamperTable = require("./scripts/camper-table");
+const CamperTable = require("./scripts/components/camper-table");
 
 //global imports
 

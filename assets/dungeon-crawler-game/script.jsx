@@ -2,15 +2,15 @@
 
 //local imports
 
-const EventLog = require("./scripts/event-log");
-const Level = require("./scripts/level");
-const Sidebar = require("./scripts/sidebar/sidebar");
+const EventLog = require("./scripts/components/event-log");
+const Level = require("./scripts/components/level");
+const Sidebar = require("./scripts/components/sidebar/sidebar");
 
 const { defaultProps } = require("./scripts/default-props/default-props");
 const { handleGameplay, keyDownParams } = require("./scripts/handle-key-down/handle-key-down");
 const { genLevel, newGameParams, newGameState } = require("./scripts/new-game/new-game");
-const { childProps } = require("./scripts/view-logic/child-props");
-const { cycleHints, cycleWeapons } = require("./scripts/view-logic/event-handlers");
+const { childProps } = require("./scripts/view-logic");
+const { cycleHints, cycleWeapons } = require("./scripts/event-handlers");
 
 //global imports
 

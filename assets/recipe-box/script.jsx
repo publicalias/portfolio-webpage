@@ -2,8 +2,8 @@
 
 //local imports
 
-const RecipeBox = require("./scripts/recipe-box");
-const RecipeEditor = require("./scripts/recipe-editor");
+const RecipeBox = require("./scripts/components/recipe-box");
+const RecipeEditor = require("./scripts/components/recipe-editor");
 
 //global imports
 

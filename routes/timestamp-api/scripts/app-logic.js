@@ -8,7 +8,7 @@ const { months } = require(`${__rootdir}/master/scripts/utilities`);
 
 const chrono = require("chrono-node");
 
-//parse date
+//utilities
 
 const createRes = (input, type, results) => ({
   input,
@@ -17,6 +17,8 @@ const createRes = (input, type, results) => ({
 });
 
 const formalDate = (d, m, y) => `${d} ${months[m - 1]} ${y}`;
+
+//parse date
 
 const parseNatural = (date, natural) => {
 

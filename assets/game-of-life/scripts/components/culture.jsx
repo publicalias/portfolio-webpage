@@ -2,7 +2,7 @@
 
 //local imports
 
-const { clearCanvas, paintCanvas } = require("./view-logic");
+const { clearCanvas, paintCanvas } = require("../view-logic");
 
 //global imports
 

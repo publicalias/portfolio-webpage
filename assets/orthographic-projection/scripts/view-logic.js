@@ -1,8 +1,25 @@
 "use strict";
 
-//global imports
+//point radius
 
-const { select } = require("dom-api");
+const pointRadius = (w, mean) => (d) => {
+
+  if (!d.properties) {
+    return;
+  }
+
+  const mass = d.properties.mass;
+
+  const min = mean * 0.5;
+  const max = mean * 1.5;
+
+  let scale = (mass - min) / max + 0.5;
+
+  scale = Math.min(Math.max(scale, 0.5), 1.5);
+
+  return w * scale / 100;
+
+};
 
 //tooltip address
 
@@ -18,48 +35,9 @@ const tooltipAddress = (d, res) => {
 
 };
 
-//tooltip handler
-
-const tooltipMass = (mass) => {
-
-  if (mass >= 1000) {
-    return `${mass / 1000}t`;
-  } else if (mass < 1) {
-    return `${mass * 1000}g`;
-  }
-
-  return `${mass}kg`;
-
-};
-
-const tooltipHandler = (d, node, tooltip) => {
-
-  //check current node
-
-  const DOMHover = select(":hover");
-
-  if (DOMHover.all[DOMHover.all.length - 1] !== node) {
-    return;
-  }
-
-  //display tooltip
-
-  const { address, mass, name, recclass } = d.properties;
-
-  select(".js-edit-name").text(name);
-  select(".js-edit-mass").text(tooltipMass(mass));
-  select(".js-edit-class").text(`${recclass} class`);
-  select(".js-edit-address").text(address);
-
-  select(node).class("is-active", true, true);
-
-  tooltip(true, node);
-
-};
-
 //exports
 
 module.exports = {
-  tooltipAddress,
-  tooltipHandler
+  pointRadius,
+  tooltipAddress
 };
