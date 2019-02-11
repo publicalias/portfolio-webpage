@@ -1,5 +1,9 @@
 "use strict";
 
+//global imports
+
+const { handleSession } = require(`${__rootdir}/master/scripts/server-utils`);
+
 //node modules
 
 const express = require("express");
@@ -10,9 +14,12 @@ const router = express.Router();
 
 router.use(express.static("build"));
 
-//home page
+handleSession(router);
 
-router.get("/", (req, res) => {
+//react router
+
+router.get("/*", (req, res) => {
+  req.session.redirect = "/voting-app";
   res.sendFile(`${__rootdir}/build/voting-app/view.html`);
 });
 

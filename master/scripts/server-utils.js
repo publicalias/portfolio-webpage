@@ -2,7 +2,42 @@
 
 //node modules
 
+const session = require("express-session");
+const MongoDBStore = require("connect-mongodb-session")(session);
+const passport = require("passport");
 const request = require("request-promise-native");
+
+//handle session
+
+const sessionConfig = session({
+  resave: true,
+  saveUninitialized: true,
+  secret: process.env.OA_ES_SECRET,
+  store: new MongoDBStore({
+    uri: process.env.DB_URL,
+    collection: "auth/sessions"
+  }, (err) => {
+    if (err) {
+      process.exit(1);
+    }
+  })
+});
+
+const handleSession = (router) => {
+  router.use(sessionConfig);
+  router.use(passport.initialize());
+  router.use(passport.session());
+};
+
+//is auth
+
+const isAuth = (req, res, next) => {
+  if (req.user) {
+    next();
+  } else {
+    res.sendStatus(401);
+  }
+};
 
 //send data
 
@@ -52,6 +87,8 @@ const toPromise = (...args) => new Promise((resolve, reject) => {
 //exports
 
 module.exports = {
+  handleSession,
+  isAuth,
   sendData,
   toPromise
 };

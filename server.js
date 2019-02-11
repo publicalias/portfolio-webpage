@@ -20,15 +20,13 @@ const app = express();
 app.use(compression());
 app.use(express.static("build"));
 
-toPromise(fs, "readdir", "./routes")
-  .then((files) => {
-    for (const e of files) {
-      app.use(`/${e}`, require(`./routes/${e}/routes`));
-    }
-  })
-  .catch(() => {
-    process.exit(1);
-  });
+//utilities
+
+const serverless = (files) => (req, res) => {
+  if (!files.includes(req.params.name)) {
+    res.sendFile(`${__dirname}/build/${req.params.name}/view.html`);
+  }
+};
 
 //home page
 
@@ -38,9 +36,19 @@ app.get("/", (req, res) => {
 
 //projects
 
-app.get("/:name", (req, res) => {
-  res.sendFile(`${__dirname}/build/${req.params.name}/view.html`);
-});
+toPromise(fs, "readdir", "./routes")
+  .then((files) => {
+
+    for (const e of files) {
+      app.use(`/${e}`, require(`./routes/${e}/routes`));
+    }
+
+    app.get("/:name", serverless(files));
+
+  })
+  .catch(() => {
+    process.exit(1);
+  });
 
 //initialize server
 

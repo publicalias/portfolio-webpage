@@ -1,0 +1,53 @@
+"use strict";
+
+//local imports
+
+const { handleDelete } = require("./scripts/app-logic");
+const { passport, providers } = require("./scripts/passport/passport-config");
+
+//global imports
+
+const { handleSession, isAuth } = require(`${__rootdir}/master/scripts/server-utils`);
+
+//node modules
+
+const express = require("express");
+
+const router = express.Router();
+
+//middleware
+
+handleSession(router);
+
+router.use("/delete", isAuth);
+
+//handle login
+
+for (const e of providers) {
+  router.get(`/${e}`, passport.authenticate(e));
+  router.get(`/${e}/callback`, passport.authenticate(e, {
+    successRedirect: "/auth/redirect",
+    failureRedirect: "/auth/redirect"
+  }));
+}
+
+//handle logout
+
+router.get("/logout", (req, res) => {
+  req.logout();
+  res.redirect("/auth/redirect");
+});
+
+//redirect
+
+router.get("/redirect", (req, res) => {
+  res.redirect(req.session.redirect);
+});
+
+//delete user
+
+router.delete("/delete", handleDelete);
+
+//exports
+
+module.exports = router;
