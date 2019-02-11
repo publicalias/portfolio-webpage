@@ -74,7 +74,7 @@ const parseURL = async (res, input) => {
     }
 
   } catch (err) {
-    res.sendStatus(502);
+    res.sendStatus(500);
   }
 };
 
@@ -90,7 +90,7 @@ const parseCode = async (res, input) => {
     }
 
   } catch (err) {
-    res.sendStatus(502);
+    res.sendStatus(500);
   }
 };
 

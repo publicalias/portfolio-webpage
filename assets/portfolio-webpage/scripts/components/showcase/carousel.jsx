@@ -4,8 +4,6 @@
 
 const SwipeBtn = require("./swipe-btn");
 
-//global imports
-
 const { voidLink } = require("../../app-logic");
 
 //node modules

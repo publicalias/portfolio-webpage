@@ -59,7 +59,7 @@ const readLogs = async (req, res) => {
     logHandler(res, docs);
 
   } catch (err) {
-    res.sendStatus(502);
+    res.sendStatus(500);
   }
 };
 

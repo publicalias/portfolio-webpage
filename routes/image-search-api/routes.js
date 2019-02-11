@@ -30,7 +30,7 @@ router.get("/search/:term", async (req, res) => {
     apiHandler(req, res, data);
 
   } catch (err) {
-    res.sendStatus(502);
+    res.sendStatus(500);
   }
 });
 
