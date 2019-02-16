@@ -1,6 +1,6 @@
 @import "accordion";
-@import "master";
 @import "components/cookie-banner";
+@import "master";
 
 @mixin layer {
   @include square(100%);
