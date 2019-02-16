@@ -12,14 +12,11 @@ describe("metaGetPolls", () => {
 
   const { metaGetPolls, metaSetState } = actions;
 
-  const action = metaGetPolls(0);
+  const action = metaGetPolls();
   const args = {
     path: "/api/meta-get-polls",
     method: "GET",
-    data: {
-      limit: 0,
-      list: initialState.list
-    }
+    data: { list: initialState.list }
   };
 
   afterAll(() => {

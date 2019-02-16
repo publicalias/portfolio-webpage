@@ -30,6 +30,19 @@ test("listSetIndex creates LIST_SET_INDEX actions", () => {
 
 });
 
+//list set length
+
+test("listSetLength creates LIST_SET_LENGTH actions", () => {
+
+  const { listSetLength } = actions;
+
+  expect(listSetLength(0)).toEqual({
+    type: "LIST_SET_LENGTH",
+    length: 0
+  });
+
+});
+
 //list set search text
 
 test("listSetSearchText creates LIST_SET_SEARCH_TEXT actions", () => {

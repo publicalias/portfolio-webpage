@@ -14,6 +14,13 @@ const listSetIndex = (index) => ({
   index
 });
 
+//list set length
+
+const listSetLength = (length) => ({
+  type: "LIST_SET_LENGTH",
+  length
+});
+
 //list set search text
 
 const listSetSearchText = (search) => ({
@@ -26,5 +33,6 @@ const listSetSearchText = (search) => ({
 module.exports = {
   listOpenView,
   listSetIndex,
+  listSetLength,
   listSetSearchText
 };
