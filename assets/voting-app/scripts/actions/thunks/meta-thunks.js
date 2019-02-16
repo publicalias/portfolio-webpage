@@ -8,9 +8,7 @@ const { initialState } = require("../../reducer/reducer");
 
 //global imports
 
-const { initDeepCopy } = require("utilities");
-
-const deepCopy = initDeepCopy();
+const { deepCopy } = require("utilities");
 
 //meta get polls
 

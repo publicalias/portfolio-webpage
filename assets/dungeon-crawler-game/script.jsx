@@ -17,9 +17,7 @@ const { cycleHints, cycleWeapons } = require("./scripts/event-handlers");
 const { checkInput } = require("check-input");
 const { select } = require("dom-api");
 const { bindReactClass } = require("react-utils");
-const { initDeepCopy, storageKey } = require("utilities");
-
-const deepCopy = initDeepCopy();
+const { deepCopy, storageKey } = require("utilities");
 
 //node modules
 

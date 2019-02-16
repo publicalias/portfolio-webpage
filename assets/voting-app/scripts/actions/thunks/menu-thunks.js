@@ -7,9 +7,7 @@ const { metaSetState } = require("../factories/meta-factories");
 
 //global imports
 
-const { initDeepCopy } = require("utilities");
-
-const deepCopy = initDeepCopy();
+const { deepCopy } = require("utilities");
 
 //menu set filter
 

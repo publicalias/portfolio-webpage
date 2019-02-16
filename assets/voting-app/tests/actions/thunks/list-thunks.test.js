@@ -10,9 +10,7 @@ const { testAPIFailure, testAPISuccess } = require("../../test-helpers");
 
 //global imports
 
-const { initDeepCopy } = require("utilities");
-
-const deepCopy = initDeepCopy();
+const { deepCopy } = require("utilities");
 
 //list set sort
 

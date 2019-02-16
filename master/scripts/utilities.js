@@ -170,6 +170,7 @@ module.exports = {
   bindObject,
   chance,
   cycleItems,
+  deepCopy: initDeepCopy(),
   encodeAPICall,
   getJSON,
   initDeepCopy,

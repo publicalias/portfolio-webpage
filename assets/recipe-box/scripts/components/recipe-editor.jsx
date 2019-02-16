@@ -8,9 +8,7 @@ const { cancelSubmit, populateModal } = require("../app-logic");
 
 const { toggleModal } = require("modal");
 const { bindReactClass } = require("react-utils");
-const { initDeepCopy } = require("utilities");
-
-const deepCopy = initDeepCopy();
+const { deepCopy } = require("utilities");
 
 //node modules
 

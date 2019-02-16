@@ -12,9 +12,7 @@ const { checkInput } = require("check-input");
 const { select } = require("dom-api");
 const { modalEvents, toggleModal } = require("modal");
 const { bindReactClass, initKeyGen } = require("react-utils");
-const { initDeepCopy, storageKey, wrapFn } = require("utilities");
-
-const deepCopy = initDeepCopy();
+const { deepCopy, storageKey, wrapFn } = require("utilities");
 
 //node modules
 

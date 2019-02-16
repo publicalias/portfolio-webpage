@@ -6,9 +6,7 @@ const { initialState } = require("../initial-state");
 
 //global imports
 
-const { initDeepCopy } = require("utilities");
-
-const deepCopy = initDeepCopy();
+const { deepCopy } = require("utilities");
 
 //list open view
 

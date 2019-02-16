@@ -15,9 +15,7 @@ const { checkInput } = require("check-input");
 const { select } = require("dom-api");
 const { bindReactClass } = require("react-utils");
 const { submitKeys } = require("submit-keys");
-const { cycleItems, initDeepCopy, storageKey } = require("utilities");
-
-const deepCopy = initDeepCopy();
+const { cycleItems, deepCopy, storageKey } = require("utilities");
 
 //node modules
 

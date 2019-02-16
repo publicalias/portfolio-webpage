@@ -9,9 +9,7 @@ const { initialState, reducer } = require("../../../scripts/reducer/reducer");
 
 //global imports
 
-const { initDeepCopy } = require("utilities");
-
-const deepCopy = initDeepCopy();
+const { deepCopy } = require("utilities");
 
 //reducer
 

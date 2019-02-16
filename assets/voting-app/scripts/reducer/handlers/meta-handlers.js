@@ -2,9 +2,7 @@
 
 //global imports
 
-const { initDeepCopy } = require("utilities");
-
-const deepCopy = initDeepCopy();
+const { deepCopy, initDeepCopy } = require("utilities");
 
 //meta add errors
 
