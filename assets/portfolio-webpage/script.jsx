@@ -13,6 +13,8 @@ const { defaultProps } = require("./scripts/default-props/default-props");
 
 //global imports
 
+const CookieBanner = require("components/cookie-banner");
+
 const { initPanel } = require("accordion");
 const { checkInput } = require("check-input");
 const { select } = require("dom-api");
@@ -39,10 +41,11 @@ class App extends React.Component {
     return [
       <NavBar key={keyGen("nav-bar")} navBar={this.props.navBar} />,
       <Bio bio={this.props.bio} key={keyGen("bio")} />,
-      <Showcase key={keyGen("featured")} showcase={this.props.showcase} />,
+      <Showcase key={keyGen("showcase")} showcase={this.props.showcase} />,
       this.props.groups.map((e) => <Group group={e} key={keyGen(e.id)} />),
       <Contact contact={this.props.contact} key={keyGen("contact")} />,
-      <Footer footer={this.props.footer} key={keyGen("footer")} />
+      <Footer footer={this.props.footer} key={keyGen("footer")} />,
+      <CookieBanner key={keyGen("cookie-banner")} />
     ];
 
   }

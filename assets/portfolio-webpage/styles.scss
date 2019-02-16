@@ -1,5 +1,6 @@
-@import "master";
 @import "accordion";
+@import "master";
+@import "components/cookie-banner";
 
 @mixin layer {
   @include square(100%);
@@ -50,7 +51,16 @@
 
 }
 
-.c-footer { &__link { display: inline-block; } }
+.c-footer {
+
+  padding: 0 4.5vw;
+
+  &__link {
+    display: inline-block;
+    margin: 1.5vw 0;
+  }
+
+}
 
 .c-media-icons {
   &__icon {

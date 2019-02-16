@@ -109,6 +109,27 @@ const initDeepCopy = (config) => (...args) => {
 
 };
 
+//init storage key
+
+const initStorageKey = (path) => (key, val, session) => {
+
+  const store = session ? sessionStorage : localStorage;
+
+  const namespace = path || location.pathname.split("/")
+    .filter((e) => e)
+    .join("-");
+
+  const innerKey = `${namespace}-${key}`;
+  const innerVal = JSON.stringify({ val });
+
+  if (val === null || val === undefined) {
+    return store[innerKey] && JSON.parse(store[innerKey]).val;
+  }
+
+  store[innerKey] = innerVal;
+
+};
+
 //lead zero
 
 const leadZero = (val) => `${val < 10 ? "0" : ""}${val}`;
@@ -138,27 +159,6 @@ const rngInt = (min, max, inclusive = false) => Math.floor(Math.random() * (max 
 
 const roundTo = (val, dec) => Math.round(val * Math.pow(10, dec)) / Math.pow(10, dec);
 
-//storage key
-
-const storageKey = (key, val, session) => {
-
-  const store = session ? sessionStorage : localStorage;
-
-  const namespace = location.pathname.split("/")
-    .filter((e) => e)
-    .join("-");
-
-  const innerKey = `${namespace}-${key}`;
-  const innerVal = JSON.stringify({ val });
-
-  if (val === null || val === undefined) {
-    return store[innerKey] && JSON.parse(store[innerKey]).val;
-  }
-
-  store[innerKey] = innerVal;
-
-};
-
 //wrap fn
 
 const wrapFn = (fn, ...args) => () => fn(...args);
@@ -173,10 +173,11 @@ module.exports = {
   encodeAPICall,
   getJSON,
   initDeepCopy,
+  initStorageKey,
   leadZero,
   months,
   rngInt,
   roundTo,
-  storageKey,
+  storageKey: initStorageKey(),
   wrapFn
 };

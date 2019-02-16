@@ -1,0 +1,15 @@
+//components
+
+.c-cookie-banner {
+  bottom: 0;
+  display: flex;
+  position: -webkit-sticky;
+  position: sticky;
+  z-index: 999;
+  &__text { margin: 0 3vw 0 0; }
+  &__btn { width: 100% * 1 / 3; }
+}
+
+//states
+
+.js-hide-banner { &.is-hidden { display: none; } }
