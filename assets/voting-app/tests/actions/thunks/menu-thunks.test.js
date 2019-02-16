@@ -14,44 +14,7 @@ const { initDeepCopy } = require("utilities");
 
 const deepCopy = initDeepCopy();
 
-//menu get user
-
-describe("menuGetUser", () => {
-
-  const { menuGetUser, metaSetState } = actions;
-
-  const type = "auth";
-
-  const action = menuGetUser(type);
-  const args = {
-    path: "/api/menu-get-user",
-    method: "GET",
-    data: { type }
-  };
-
-  afterAll(() => {
-    global.fetch = undefined;
-    global.Headers = undefined;
-  });
-
-  it("dispatches META_SET_STATE actions on success", () => {
-
-    const res = { user: { id: "id-a" } };
-
-    const merge = deepCopy(initialState, res);
-
-    delete merge.polls;
-    delete merge.errors;
-
-    const actionList = [metaSetState(merge, { object: true })];
-
-    return testAPISuccess(action, args, res, actionList);
-
-  });
-
-  it("dispatches META_ADD_ERRORS actions on failure", () => testAPIFailure(action, args));
-
-});
+//menu set filter
 
 describe("menuSetFilter", () => {
 

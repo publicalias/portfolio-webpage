@@ -18,13 +18,11 @@ const formAddOption = () => (dispatch, getState) => {
 
   const { user, form } = getState();
 
-  const empty = !form.add.trim();
   const duplicate = form.options.filter((e) => e.text === form.add).length;
+  const empty = !form.add.trim();
 
-  if (empty) {
-    dispatch(metaAddErrors(["Option must be valid"]));
-  } else if (duplicate) {
-    dispatch(metaAddErrors(["Option must be unique"]));
+  if (duplicate || empty) {
+    dispatch(metaAddErrors(["Option must be unique and non-empty"]));
   } else {
     dispatch(metaSetState({
       form: {

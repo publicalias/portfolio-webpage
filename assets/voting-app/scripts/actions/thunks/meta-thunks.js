@@ -3,6 +3,14 @@
 //local imports
 
 const { reduxAPICall } = require("../../app-logic");
+const { metaSetState } = require("../factories/meta-factories");
+const { initialState } = require("../../reducer/reducer");
+
+//global imports
+
+const { initDeepCopy } = require("utilities");
+
+const deepCopy = initDeepCopy();
 
 //meta get polls
 
@@ -20,6 +28,33 @@ const metaGetPolls = () => (dispatch, getState) => {
 
 };
 
+//meta get user
+
+const metaGetUser = () => (dispatch) => {
+
+  const args = {
+    path: "/api/meta-get-user",
+    method: "GET"
+  };
+
+  const success = (res) => {
+
+    const merge = deepCopy(initialState, res);
+
+    delete merge.polls;
+    delete merge.errors;
+
+    dispatch(metaSetState(merge, { object: true }));
+
+  };
+
+  return reduxAPICall(dispatch, args, success);
+
+};
+
 //exports
 
-module.exports = { metaGetPolls };
+module.exports = {
+  metaGetPolls,
+  metaGetUser
+};

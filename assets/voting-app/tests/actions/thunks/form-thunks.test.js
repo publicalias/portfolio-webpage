@@ -45,7 +45,7 @@ describe("formAddOption", () => {
     const lastState = getLastState("");
 
     const store = mockStore(lastState);
-    const actionList = [metaAddErrors(["Option must be valid"])];
+    const actionList = [metaAddErrors(["Option must be unique and non-empty"])];
 
     store.dispatch(action);
 
@@ -58,7 +58,7 @@ describe("formAddOption", () => {
     const lastState = getLastState("Option A");
 
     const store = mockStore(lastState);
-    const actionList = [metaAddErrors(["Option must be unique"])];
+    const actionList = [metaAddErrors(["Option must be unique and non-empty"])];
 
     store.dispatch(action);
 
