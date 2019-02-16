@@ -7,7 +7,7 @@ const usersCol = () => db.collection("auth/users");
 
 //handle delete
 
-const votingAppData = async (id) => {
+const deleteVotingApp = async (id) => {
   await Promise.all([
     pollsCol().deleteMany({ "users.created": id }),
     pollsCol().updateMany({ "options.created": id }, { $pull: { options: { created: id } } }),
@@ -25,7 +25,7 @@ const handleDelete = async (req, res) => {
 
     const { id } = req.user;
 
-    await Promise.all([votingAppData(id)]);
+    await Promise.all([deleteVotingApp(id)]);
     await usersCol().deleteOne({ id });
 
     req.logout();
@@ -36,6 +36,19 @@ const handleDelete = async (req, res) => {
   }
 };
 
+//handle update
+
+const updateVotingApp = async (user) => {
+  await pollsCol().updateMany({ "users.created": user.id }, { $set: { author: user.name } });
+};
+
+const handleUpdate = async (user) => {
+  await Promise.all([updateVotingApp(user)]);
+};
+
 //exports
 
-module.exports = { handleDelete };
+module.exports = {
+  handleDelete,
+  handleUpdate
+};

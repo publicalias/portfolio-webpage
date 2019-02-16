@@ -29,16 +29,6 @@ const handleSession = (router) => {
   router.use(passport.session());
 };
 
-//is auth
-
-const isAuth = (req, res, next) => {
-  if (req.user) {
-    next();
-  } else {
-    res.sendStatus(401);
-  }
-};
-
 //send data
 
 const sendData = async (api, res) => {
@@ -88,7 +78,6 @@ const toPromise = (...args) => new Promise((resolve, reject) => {
 
 module.exports = {
   handleSession,
-  isAuth,
   sendData,
   toPromise
 };

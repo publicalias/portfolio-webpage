@@ -1,5 +1,9 @@
 "use strict";
 
+//local imports
+
+const { handleUpdate } = require("../app-logic");
+
 //node modules
 
 const uuid = require("uuid/v1");
@@ -8,29 +12,41 @@ const uuid = require("uuid/v1");
 
 const usersCol = () => db.collection("auth/users");
 
-//find by id
+//find user
 
-const createUser = (profile) => {
+const updateUser = async (profile, fn, user) => {
 
-  const { provider, id, displayName, emails } = profile;
+  const { provider, id, displayName } = profile;
 
-  return {
-    name: displayName,
-    id: uuid(),
-    type: "auth",
-    auth: [{
-      provider,
-      id,
-      emails: emails.map((e) => e.value)
-    }],
-    data: { restricted: false }
+  user.name = displayName || "";
+  user.auth = {
+    provider,
+    id
   };
+
+  await Promise.all([
+    usersCol().updateOne({ id: user.id }, { $set: user }),
+    handleUpdate(user)
+  ]);
+
+  fn(null, user);
 
 };
 
-const newUser = async (profile, fn) => {
+const createUser = async (profile, fn) => {
 
-  const user = createUser(profile);
+  const { provider, id, displayName } = profile;
+
+  const user = {
+    name: displayName || "",
+    id: uuid(),
+    type: "auth",
+    auth: {
+      provider,
+      id
+    },
+    data: { restricted: false }
+  };
 
   await usersCol().insertOne(user);
 
@@ -38,59 +54,7 @@ const newUser = async (profile, fn) => {
 
 };
 
-const updateName = async (profile, fn, user) => {
-
-  const { displayName } = profile;
-
-  const data = { name: displayName };
-
-  if (displayName === user.name) {
-
-    fn(null, user);
-
-    return;
-
-  }
-
-  Object.assign(user, data);
-
-  await usersCol().updateOne({ id: user.id }, { $set: data });
-
-  fn(null, user);
-
-};
-
-const updateAuth = async (profile, fn, user) => {
-
-  const { provider, id, emails } = profile;
-
-  user.auth.push({
-    provider,
-    id,
-    emails: emails.map((e) => e.value)
-  });
-
-  await usersCol().updateOne({ id: user.id }, { $set: { auth: user.auth } });
-
-  await updateName(profile, fn, user);
-
-};
-
-const findByEmail = async (profile, fn) => {
-
-  const { emails } = profile;
-
-  const doc = await usersCol().findOne({ "auth.emails": { $in: emails.map((e) => e.value) } });
-
-  if (doc) {
-    await updateAuth(profile, fn, doc);
-  } else {
-    await newUser(profile, fn);
-  }
-
-};
-
-const findByID = async (accessToken, refreshToken, profile, fn) => {
+const findUser = async (accessToken, refreshToken, profile, fn) => {
 
   const { provider, id } = profile;
 
@@ -98,17 +62,15 @@ const findByID = async (accessToken, refreshToken, profile, fn) => {
 
     const doc = await usersCol().findOne({
       auth: {
-        $elemMatch: {
-          provider,
-          id
-        }
+        provider,
+        id
       }
     });
 
     if (doc) {
-      await updateName(profile, fn, doc);
+      await updateUser(profile, fn, doc);
     } else {
-      await findByEmail(profile, fn);
+      await createUser(profile, fn);
     }
 
   } catch (err) {
@@ -119,4 +81,4 @@ const findByID = async (accessToken, refreshToken, profile, fn) => {
 
 //exports
 
-module.exports = { findByID };
+module.exports = { findUser };

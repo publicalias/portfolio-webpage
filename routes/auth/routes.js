@@ -7,7 +7,7 @@ const { passport, providers } = require("./scripts/passport/passport-config");
 
 //global imports
 
-const { handleSession, isAuth } = require(`${__rootdir}/master/scripts/server-utils`);
+const { handleSession } = require(`${__rootdir}/master/scripts/server-utils`);
 
 //node modules
 
@@ -19,7 +19,13 @@ const router = express.Router();
 
 handleSession(router);
 
-router.use("/delete", isAuth);
+router.use("/delete", (req, res, next) => {
+  if (req.user) {
+    next();
+  } else {
+    res.sendStatus(401);
+  }
+});
 
 //handle login
 
