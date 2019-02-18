@@ -8,7 +8,11 @@ const { initialState } = require("../../reducer/reducer");
 
 //global imports
 
-const { deepCopy } = require("utilities");
+const { checkErrors, deepCopy } = require("utilities");
+
+//node modules
+
+const { regex: obscenities } = require("badwords-list");
 
 //form add option
 
@@ -16,11 +20,19 @@ const formAddOption = () => (dispatch, getState) => {
 
   const { user, form } = getState();
 
-  const duplicate = form.options.filter((e) => e.text === form.add).length;
-  const empty = !form.add.trim();
+  const errors = checkErrors([{
+    bool: !form.add.trim(),
+    text: "Option must not be empty"
+  }, {
+    bool: form.options.filter((e) => e.text === form.add).length,
+    text: "Option must be unique"
+  }, {
+    bool: obscenities.test(form.add),
+    text: "Option must not be obscene"
+  }]);
 
-  if (duplicate || empty) {
-    dispatch(metaAddErrors(["Option must be unique and non-empty"]));
+  if (errors.length) {
+    dispatch(metaAddErrors(errors)); //not foolproof
   } else {
     dispatch(metaSetState({
       form: {

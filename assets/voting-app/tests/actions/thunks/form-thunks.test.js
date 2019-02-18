@@ -43,7 +43,7 @@ describe("formAddOption", () => {
     const lastState = getLastState("");
 
     const store = mockStore(lastState);
-    const actionList = [metaAddErrors(["Option must be unique and non-empty"])];
+    const actionList = [metaAddErrors(["Option must not be empty"])];
 
     store.dispatch(action);
 
@@ -56,7 +56,20 @@ describe("formAddOption", () => {
     const lastState = getLastState("Option A");
 
     const store = mockStore(lastState);
-    const actionList = [metaAddErrors(["Option must be unique and non-empty"])];
+    const actionList = [metaAddErrors(["Option must be unique"])];
+
+    store.dispatch(action);
+
+    expect(store.getActions()).toEqual(actionList);
+
+  });
+
+  it("dispatches META_ADD_ERRORS actions with obscene input", () => {
+
+    const lastState = getLastState("Fuck");
+
+    const store = mockStore(lastState);
+    const actionList = [metaAddErrors(["Option must not be obscene"])];
 
     store.dispatch(action);
 

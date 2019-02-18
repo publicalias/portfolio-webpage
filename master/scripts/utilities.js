@@ -26,6 +26,10 @@ const bindObject = (to, from = to) => {
 
 const chance = (val) => Math.random() >= (100 - val) / 100;
 
+//check errors
+
+const checkErrors = (errors) => errors.filter((e) => e.bool).map((e) => e.text);
+
 //cycle items
 
 const cycleItems = (arr, val, delta = 1) => {
@@ -169,6 +173,7 @@ module.exports = {
   arrEqual,
   bindObject,
   chance,
+  checkErrors,
   cycleItems,
   deepCopy: initDeepCopy(),
   encodeAPICall,
