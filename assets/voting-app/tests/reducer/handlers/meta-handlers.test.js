@@ -11,7 +11,7 @@ const { initialState, reducer } = require("../../../scripts/reducer/reducer");
 
 const { deepCopy, initDeepCopy } = require("utilities");
 
-//reducer
+//meta add errors
 
 test("reducer accepts META_ADD_ERRORS actions", () => {
 
@@ -29,6 +29,8 @@ test("reducer accepts META_ADD_ERRORS actions", () => {
 
 });
 
+//meta close error
+
 test("reducer accepts META_CLOSE_ERROR actions", () => {
 
   const { metaCloseError } = actions;
@@ -39,6 +41,8 @@ test("reducer accepts META_CLOSE_ERROR actions", () => {
   expect(reducer(lastState, metaCloseError(1))).toEqual(nextState);
 
 });
+
+//meta set state
 
 describe("reducer", () => {
 
@@ -54,7 +58,7 @@ describe("reducer", () => {
 
   });
 
-  it("accepts META_SET_STATE actions with config", () => {
+  it("accepts META_SET_STATE actions with config option", () => {
 
     const merge = { user: {} };
     const config = { object: true };
@@ -67,6 +71,8 @@ describe("reducer", () => {
   });
 
 });
+
+//meta timeout error
 
 test("reducer accepts META_TIMEOUT_ERROR actions", () => {
 

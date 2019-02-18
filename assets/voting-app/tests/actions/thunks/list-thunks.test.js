@@ -36,7 +36,7 @@ describe("listSetSort", () => {
     global.Headers = undefined;
   });
 
-  it("dispatches META_SET_STATE actions on success", () => {
+  it("dispatches META_SET_STATE action on success", () => {
 
     const actionList = [metaSetState({
       polls: {},
@@ -47,7 +47,7 @@ describe("listSetSort", () => {
 
   });
 
-  it("dispatches META_ADD_ERRORS actions on failure", () => testAPIFailure(action, args));
+  it("dispatches META_ADD_ERRORS action on failure", () => testAPIFailure(action, args));
 
 });
 
@@ -77,7 +77,7 @@ describe("listSubmitSearch", () => {
     global.Headers = undefined;
   });
 
-  it("dispatches META_SET_STATE actions on success", () => {
+  it("dispatches META_SET_STATE action on success", () => {
 
     const actionList = [metaSetState({
       polls: {},
@@ -88,7 +88,7 @@ describe("listSubmitSearch", () => {
 
   });
 
-  it("dispatches META_ADD_ERRORS actions on success (errors)", () => {
+  it("dispatches META_ADD_ERRORS action on success (errors)", () => {
 
     const actionList = [metaAddErrors([])];
 
@@ -96,7 +96,7 @@ describe("listSubmitSearch", () => {
 
   });
 
-  it("dispatches META_ADD_ERRORS actions on failure", () => testAPIFailure(action, args, lastState));
+  it("dispatches META_ADD_ERRORS action on failure", () => testAPIFailure(action, args, lastState));
 
 });
 
@@ -121,7 +121,7 @@ describe("listToggleFlag", () => {
     global.Headers = undefined;
   });
 
-  it("dispatches META_SET_STATE actions on success", () => {
+  it("dispatches META_SET_STATE action on success", () => {
 
     const actionList = [metaSetState({})];
 
@@ -129,7 +129,7 @@ describe("listToggleFlag", () => {
 
   });
 
-  it("dispatches META_ADD_ERRORS actions on failure", () => testAPIFailure(action, args));
+  it("dispatches META_ADD_ERRORS action on failure", () => testAPIFailure(action, args));
 
 });
 
@@ -154,7 +154,7 @@ describe("listToggleHide", () => {
     global.Headers = undefined;
   });
 
-  it("dispatches META_SET_STATE actions on success", () => {
+  it("dispatches META_SET_STATE action on success", () => {
 
     const actionList = [metaSetState({})];
 
@@ -162,6 +162,6 @@ describe("listToggleHide", () => {
 
   });
 
-  it("dispatches META_ADD_ERRORS actions on failure", () => testAPIFailure(action, args));
+  it("dispatches META_ADD_ERRORS action on failure", () => testAPIFailure(action, args));
 
 });

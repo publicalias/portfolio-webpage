@@ -45,7 +45,7 @@ describe("metaSetState", () => {
     });
   });
 
-  it("creates META_SET_STATE actions with config", () => {
+  it("creates META_SET_STATE actions with config option", () => {
 
     const config = { object: true };
 

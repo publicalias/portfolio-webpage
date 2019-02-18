@@ -1,7 +1,5 @@
 "use strict";
 
-/*eslint max-nested-callbacks:0*/
-
 //local imports
 
 const { actions } = require("../../../scripts/actions/actions");
@@ -11,7 +9,7 @@ const { initialState, reducer } = require("../../../scripts/reducer/reducer");
 
 const { deepCopy } = require("utilities");
 
-//reducer
+//list open view
 
 test("reducer accepts LIST_OPEN_VIEW actions", () => {
 
@@ -28,6 +26,8 @@ test("reducer accepts LIST_OPEN_VIEW actions", () => {
 
 });
 
+//list set index
+
 test("reducer accepts LIST_SET_INDEX actions", () => {
 
   const { listSetIndex } = actions;
@@ -40,6 +40,8 @@ test("reducer accepts LIST_SET_INDEX actions", () => {
 
 });
 
+//list set length
+
 test("reducer accepts LIST_SET_LENGTH actions", () => {
 
   const { listSetLength } = actions;
@@ -51,6 +53,8 @@ test("reducer accepts LIST_SET_LENGTH actions", () => {
   expect(reducer(initialState, listSetLength(length))).toEqual(nextState);
 
 });
+
+//list set search
 
 test("reducer accepts LIST_SET_SEARCH_TEXT actions", () => {
 

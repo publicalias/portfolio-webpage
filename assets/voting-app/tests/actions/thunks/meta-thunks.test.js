@@ -30,7 +30,7 @@ describe("metaGetPolls", () => {
     global.Headers = undefined;
   });
 
-  it("dispatches META_SET_STATE actions on success", () => {
+  it("dispatches META_SET_STATE action on success", () => {
 
     const actionList = [metaSetState({})];
 
@@ -38,7 +38,7 @@ describe("metaGetPolls", () => {
 
   });
 
-  it("dispatches META_ADD_ERRORS actions on failure", () => testAPIFailure(action, args));
+  it("dispatches META_ADD_ERRORS action on failure", () => testAPIFailure(action, args));
 
 });
 
@@ -59,7 +59,7 @@ describe("metaGetUser", () => {
     global.Headers = undefined;
   });
 
-  it("dispatches META_SET_STATE actions on success", () => {
+  it("dispatches META_SET_STATE action on success", () => {
 
     const res = { user: { id: "id-a" } };
 
@@ -74,6 +74,6 @@ describe("metaGetUser", () => {
 
   });
 
-  it("dispatches META_ADD_ERRORS actions on failure", () => testAPIFailure(action, args));
+  it("dispatches META_ADD_ERRORS action on failure", () => testAPIFailure(action, args));
 
 });

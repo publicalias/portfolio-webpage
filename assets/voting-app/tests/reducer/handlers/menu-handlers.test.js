@@ -9,7 +9,7 @@ const { initialState, reducer } = require("../../../scripts/reducer/reducer");
 
 const { deepCopy } = require("utilities");
 
-//reducer
+//menu open form
 
 test("reducer accepts MENU_OPEN_FORM actions", () => {
 
@@ -20,6 +20,8 @@ test("reducer accepts MENU_OPEN_FORM actions", () => {
   expect(reducer(initialState, menuOpenForm())).toEqual(nextState);
 
 });
+
+//menu toggle confirm
 
 test("reducer accepts MENU_TOGGLE_CONFIRM actions", () => {
 

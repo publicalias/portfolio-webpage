@@ -34,7 +34,7 @@ describe("viewAddOption", () => {
     global.Headers = undefined;
   });
 
-  it("dispatches META_SET_STATE actions on success", () => {
+  it("dispatches META_SET_STATE action on success", () => {
 
     const actionList = [metaSetState({})];
 
@@ -42,7 +42,7 @@ describe("viewAddOption", () => {
 
   });
 
-  it("dispatches META_ADD_ERRORS actions on success (errors)", () => {
+  it("dispatches META_ADD_ERRORS action on success (errors)", () => {
 
     const actionList = [metaAddErrors([])];
 
@@ -50,7 +50,7 @@ describe("viewAddOption", () => {
 
   });
 
-  it("dispatches META_ADD_ERRORS actions on failure", () => testAPIFailure(action, args));
+  it("dispatches META_ADD_ERRORS action on failure", () => testAPIFailure(action, args));
 
 });
 
@@ -76,7 +76,7 @@ describe("viewCastVote", () => {
     global.Headers = undefined;
   });
 
-  it("dispatches META_SET_STATE actions on success", () => {
+  it("dispatches META_SET_STATE action on success", () => {
 
     const actionList = [metaSetState({})];
 
@@ -84,7 +84,7 @@ describe("viewCastVote", () => {
 
   });
 
-  it("dispatches META_ADD_ERRORS actions on failure", () => testAPIFailure(action, args));
+  it("dispatches META_ADD_ERRORS action on failure", () => testAPIFailure(action, args));
 
 });
 
@@ -109,7 +109,7 @@ describe("viewDeletePoll", () => {
     global.Headers = undefined;
   });
 
-  it("dispatches META_SET_STATE actions on success (next poll)", () => {
+  it("dispatches META_SET_STATE action on success (next poll)", () => {
 
     const poll = "id-b";
     const polls = [{ id: poll }];
@@ -123,7 +123,7 @@ describe("viewDeletePoll", () => {
 
   });
 
-  it("dispatches META_SET_STATE actions on success (no next poll)", () => {
+  it("dispatches META_SET_STATE action on success (no next poll)", () => {
 
     const res = { polls: [] };
 
@@ -136,7 +136,7 @@ describe("viewDeletePoll", () => {
 
   });
 
-  it("dispatches META_ADD_ERRORS actions on failure", () => testAPIFailure(action, args));
+  it("dispatches META_ADD_ERRORS action on failure", () => testAPIFailure(action, args));
 
 });
 
@@ -162,7 +162,7 @@ describe("viewRemoveOption", () => {
     global.Headers = undefined;
   });
 
-  it("dispatches META_SET_STATE actions on success", () => {
+  it("dispatches META_SET_STATE action on success", () => {
 
     const actionList = [metaSetState({})];
 
@@ -170,7 +170,7 @@ describe("viewRemoveOption", () => {
 
   });
 
-  it("dispatches META_ADD_ERRORS actions on failure", () => testAPIFailure(action, args));
+  it("dispatches META_ADD_ERRORS action on failure", () => testAPIFailure(action, args));
 
 });
 
@@ -195,7 +195,7 @@ describe("viewTogglePrivate", () => {
     global.Headers = undefined;
   });
 
-  it("dispatches META_SET_STATE actions on success", () => {
+  it("dispatches META_SET_STATE action on success", () => {
 
     const actionList = [metaSetState({})];
 
@@ -203,6 +203,6 @@ describe("viewTogglePrivate", () => {
 
   });
 
-  it("dispatches META_ADD_ERRORS actions on failure", () => testAPIFailure(action, args));
+  it("dispatches META_ADD_ERRORS action on failure", () => testAPIFailure(action, args));
 
 });

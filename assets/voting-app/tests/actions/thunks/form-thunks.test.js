@@ -38,7 +38,7 @@ describe("formAddOption", () => {
     }
   });
 
-  it("dispatches META_ADD_ERRORS actions with empty input", () => {
+  it("dispatches META_ADD_ERRORS action if option is empty", () => {
 
     const lastState = getLastState("");
 
@@ -51,7 +51,7 @@ describe("formAddOption", () => {
 
   });
 
-  it("dispatches META_ADD_ERRORS actions with duplicate input", () => {
+  it("dispatches META_ADD_ERRORS action if option is duplicate", () => {
 
     const lastState = getLastState("Option A");
 
@@ -64,7 +64,7 @@ describe("formAddOption", () => {
 
   });
 
-  it("dispatches META_ADD_ERRORS actions with obscene input", () => {
+  it("dispatches META_ADD_ERRORS action if option is obscene", () => {
 
     const lastState = getLastState("Fuck");
 
@@ -77,7 +77,7 @@ describe("formAddOption", () => {
 
   });
 
-  it("dispatches META_SET_STATE actions with valid input", () => {
+  it("dispatches META_SET_STATE action if option is valid", () => {
 
     const lastState = getLastState("Option C");
 
@@ -122,7 +122,7 @@ describe("formCreatePoll", () => {
     global.Headers = undefined;
   });
 
-  it("dispatches META_SET_STATE actions on success", () => {
+  it("dispatches META_SET_STATE action on success", () => {
 
     const poll = "id-a";
     const polls = [{ id: poll }];
@@ -144,7 +144,7 @@ describe("formCreatePoll", () => {
 
   });
 
-  it("dispatches META_ADD_ERRORS actions on success (errors)", () => {
+  it("dispatches META_ADD_ERRORS action on success (errors)", () => {
 
     const actionList = [metaAddErrors([])];
 
@@ -152,6 +152,6 @@ describe("formCreatePoll", () => {
 
   });
 
-  it("dispatches META_ADD_ERRORS actions on failure", () => testAPIFailure(action, args));
+  it("dispatches META_ADD_ERRORS action on failure", () => testAPIFailure(action, args));
 
 });

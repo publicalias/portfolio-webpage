@@ -1,7 +1,5 @@
 "use strict";
 
-/*eslint max-nested-callbacks: 0*/
-
 //local imports
 
 const { actions } = require("../../../scripts/actions/actions");
@@ -11,7 +9,7 @@ const { initialState, reducer } = require("../../../scripts/reducer/reducer");
 
 const { deepCopy } = require("utilities");
 
-//reducer
+//view open list
 
 test("reducer accepts VIEW_OPEN_LIST actions", () => {
 
@@ -23,6 +21,8 @@ test("reducer accepts VIEW_OPEN_LIST actions", () => {
   expect(reducer(lastState, viewOpenList())).toEqual(nextState);
 
 });
+
+//view set add text
 
 test("reducer accepts VIEW_SET_ADD_TEXT actions", () => {
 
@@ -36,6 +36,8 @@ test("reducer accepts VIEW_SET_ADD_TEXT actions", () => {
 
 });
 
+//view toggle confirm
+
 test("reducer accepts VIEW_TOGGLE_CONFIRM actions", () => {
 
   const { viewToggleConfirm } = actions;
@@ -45,6 +47,8 @@ test("reducer accepts VIEW_TOGGLE_CONFIRM actions", () => {
   expect(reducer(initialState, viewToggleConfirm())).toEqual(nextState);
 
 });
+
+//view toggle settings
 
 test("reducer accepts VIEW_TOGGLE_SETTINGS actions", () => {
 

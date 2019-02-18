@@ -1,7 +1,5 @@
 "use strict";
 
-/*eslint max-nested-callbacks: 0*/
-
 //local imports
 
 const { actions } = require("../../../scripts/actions/actions");
@@ -11,7 +9,7 @@ const { initialState, reducer } = require("../../../scripts/reducer/reducer");
 
 const { deepCopy } = require("utilities");
 
-//reducer
+//form discard poll
 
 test("reducer accepts FORM_DISCARD_POLL actions", () => {
 
@@ -24,6 +22,8 @@ test("reducer accepts FORM_DISCARD_POLL actions", () => {
 
 });
 
+//form remove option
+
 test("reducer accepts FORM_REMOVE_OPTION actions", () => {
 
   const { formRemoveOption } = actions;
@@ -34,6 +34,8 @@ test("reducer accepts FORM_REMOVE_OPTION actions", () => {
   expect(reducer(lastState, formRemoveOption(""))).toEqual(nextState);
 
 });
+
+//form set add text
 
 test("reducer accepts FORM_SET_ADD_TEXT actions", () => {
 
@@ -47,6 +49,8 @@ test("reducer accepts FORM_SET_ADD_TEXT actions", () => {
 
 });
 
+//form set title text
+
 test("reducer accepts FORM_SET_TITLE_TEXT actions", () => {
 
   const { formSetTitleText } = actions;
@@ -59,6 +63,8 @@ test("reducer accepts FORM_SET_TITLE_TEXT actions", () => {
 
 });
 
+//form toggle confirm
+
 test("reducer accepts FORM_TOGGLE_CONFIRM actions", () => {
 
   const { formToggleConfirm } = actions;
@@ -68,6 +74,8 @@ test("reducer accepts FORM_TOGGLE_CONFIRM actions", () => {
   expect(reducer(initialState, formToggleConfirm())).toEqual(nextState);
 
 });
+
+//form toggle private
 
 test("reducer accepts FORM_TOGGLE_PRIVATE actions", () => {
 
