@@ -11,11 +11,9 @@ const deleteVotingApp = async (id) => {
   await Promise.all([
     pollsCol().deleteMany({ "users.created": id }),
     pollsCol().updateMany({ "options.created": id }, { $pull: { options: { created: id } } }),
-    pollsCol().updateMany({ "users.voted": id }, {
-      $pull: {
-        "users.voted": id,
-        "options.$[].voted": id
-      }
+    pollsCol().updateMany({ "options.voted": id }, {
+      $inc: { "users.voted": -1 },
+      $pull: { "options.$[].voted": id }
     })
   ]);
 };

@@ -12,13 +12,13 @@ const { checkErrors, deepCopy } = require("utilities");
 
 //node modules
 
-const { regex: obscenities } = require("badwords-list");
+const obscene = require("badwords-list").regex;
 
 //form add option
 
 const formAddOption = () => (dispatch, getState) => {
 
-  const { user, form } = getState();
+  const { form } = getState();
 
   const errors = checkErrors([{
     bool: !form.add.trim(),
@@ -27,20 +27,16 @@ const formAddOption = () => (dispatch, getState) => {
     bool: form.options.filter((e) => e.text === form.add).length,
     text: "Option must be unique"
   }, {
-    bool: obscenities.test(form.add),
+    bool: obscene.test(form.add),
     text: "Option must not be obscene"
   }]);
 
   if (errors.length) {
-    dispatch(metaAddErrors(errors)); //not foolproof
+    dispatch(metaAddErrors(errors));
   } else {
     dispatch(metaSetState({
       form: {
-        options: form.options.concat([{
-          text: form.add,
-          created: user.id,
-          voted: []
-        }]),
+        options: form.options.concat(form.add),
         add: ""
       }
     }));

@@ -20,7 +20,7 @@ const router = express.Router();
 handleSession(router);
 
 router.use("/delete", (req, res, next) => {
-  if (req.user) {
+  if (req.user && !req.user.data.restricted) {
     next();
   } else {
     res.sendStatus(401);

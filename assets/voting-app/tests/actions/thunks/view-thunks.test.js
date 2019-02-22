@@ -8,10 +8,6 @@ const { actions } = require("../../../scripts/actions/actions");
 const { initialState } = require("../../../scripts/reducer/reducer");
 const { testAPIFailure, testAPISuccess } = require("../../test-helpers");
 
-//global imports
-
-const { deepCopy } = require("utilities");
-
 //view add option
 
 describe("viewAddOption", () => {
@@ -109,21 +105,7 @@ describe("viewDeletePoll", () => {
     global.Headers = undefined;
   });
 
-  it("dispatches META_SET_STATE action on success (next poll)", () => {
-
-    const poll = "id-b";
-    const polls = [{ id: poll }];
-
-    const actionList = [metaSetState({
-      polls,
-      view: deepCopy(initialState.view, { poll })
-    })];
-
-    return testAPISuccess(action, args, { polls }, actionList);
-
-  });
-
-  it("dispatches META_SET_STATE action on success (no next poll)", () => {
+  it("dispatches META_SET_STATE action on success", () => {
 
     const res = { polls: [] };
 

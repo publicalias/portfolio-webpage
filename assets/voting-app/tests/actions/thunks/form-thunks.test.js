@@ -84,11 +84,7 @@ describe("formAddOption", () => {
     const store = mockStore(lastState);
     const actionList = [metaSetState({
       form: {
-        options: lastState.form.options.concat([{
-          text: lastState.form.add,
-          created: "id-a",
-          voted: []
-        }]),
+        options: lastState.form.options.concat([lastState.form.add]),
         add: ""
       }
     })];

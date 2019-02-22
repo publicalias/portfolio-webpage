@@ -4,11 +4,6 @@
 
 const { reduxAPICall } = require("../../app-logic");
 const { metaAddErrors, metaSetState } = require("../factories/meta-factories");
-const { initialState } = require("../../reducer/reducer");
-
-//global imports
-
-const { deepCopy } = require("utilities");
 
 //view add option
 
@@ -62,7 +57,7 @@ const viewCastVote = (id, text) => (dispatch, getState) => {
 
 const viewDeletePoll = (id) => (dispatch, getState) => {
 
-  const { polls, list } = getState();
+  const { list } = getState();
 
   const args = {
     path: "/api/view-delete-poll",
@@ -73,16 +68,11 @@ const viewDeletePoll = (id) => (dispatch, getState) => {
     }
   };
 
-  const index = polls.indexOf(id);
-
   const success = (res) => {
 
     const { polls } = res;
 
-    dispatch(metaSetState(polls.length ? {
-      polls,
-      view: deepCopy(initialState.view, { poll: (polls[index] || polls[0]).id })
-    } : {
+    dispatch(metaSetState({
       polls,
       page: "list"
     }));
