@@ -1,12 +1,8 @@
 "use strict";
 
-//config
+//exports
 
-const config = {
+module.exports = {
   moduleDirectories: ["master/scripts", "node_modules"],
   moduleFileExtensions: ["js", "jsx"]
 };
-
-//exports
-
-module.exports = config;

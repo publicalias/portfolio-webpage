@@ -14,8 +14,8 @@ const { deepCopy } = require("utilities");
 
 //node modules
 
-const configureStore = require("redux-mock-store").default;
-const ReduxThunk = require("redux-thunk").default;
+const { default: configureStore } = require("redux-mock-store");
+const { default: ReduxThunk } = require("redux-thunk");
 
 //setup
 

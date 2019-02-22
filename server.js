@@ -11,7 +11,8 @@ const { toPromise } = require(`${__rootdir}/master/scripts/server-utils`);
 const compression = require("compression");
 const express = require("express");
 const fs = require("fs");
-const MongoClient = require("mongodb").MongoClient;
+
+const { MongoClient } = require("mongodb");
 
 const app = express();
 

@@ -12,7 +12,7 @@ const { checkErrors, deepCopy } = require("utilities");
 
 //node modules
 
-const obscene = require("badwords-list").regex;
+const { regex: obscene } = require("badwords-list");
 
 //form add option
 

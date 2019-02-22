@@ -7,9 +7,10 @@ const { findUser } = require("./passport-callback");
 //node modules
 
 const passport = require("passport");
-const FacebookStrategy = require("passport-facebook").Strategy;
-const GitHubStrategy = require("passport-github").Strategy;
-const TwitterStrategy = require("passport-twitter").Strategy;
+
+const { Strategy: FacebookStrategy } = require("passport-facebook");
+const { Strategy: GitHubStrategy } = require("passport-github");
+const { Strategy: TwitterStrategy } = require("passport-twitter");
 
 //utilities
 
