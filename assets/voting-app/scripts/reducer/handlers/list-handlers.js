@@ -19,10 +19,6 @@ const LIST_OPEN_VIEW = (state, { id }) => deepCopy(state, {
 
 const LIST_SET_INDEX = (state, { index }) => deepCopy(state, { list: { index } });
 
-//list set length
-
-const LIST_SET_LENGTH = (state, { length }) => deepCopy(state, { list: { length } });
-
 //list set search text
 
 const LIST_SET_SEARCH_TEXT = (state, { search }) => deepCopy(state, { list: { search } });
@@ -32,6 +28,5 @@ const LIST_SET_SEARCH_TEXT = (state, { search }) => deepCopy(state, { list: { se
 module.exports = {
   LIST_OPEN_VIEW,
   LIST_SET_INDEX,
-  LIST_SET_LENGTH,
   LIST_SET_SEARCH_TEXT
 };

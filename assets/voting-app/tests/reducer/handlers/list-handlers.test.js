@@ -40,20 +40,6 @@ test("reducer accepts LIST_SET_INDEX actions", () => {
 
 });
 
-//list set length
-
-test("reducer accepts LIST_SET_LENGTH actions", () => {
-
-  const { listSetLength } = actions;
-
-  const length = 1;
-
-  const nextState = deepCopy(initialState, { list: { length } });
-
-  expect(reducer(initialState, listSetLength(length))).toEqual(nextState);
-
-});
-
 //list set search
 
 test("reducer accepts LIST_SET_SEARCH_TEXT actions", () => {

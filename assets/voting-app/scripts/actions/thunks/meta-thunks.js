@@ -12,14 +12,17 @@ const { deepCopy } = require("utilities");
 
 //meta get polls
 
-const metaGetPolls = () => (dispatch, getState) => {
+const metaGetPolls = (skip = false) => (dispatch, getState) => {
 
   const { list } = getState();
 
   const args = {
     path: "/api/meta-get-polls",
     method: "GET",
-    data: { list }
+    data: {
+      skip,
+      list
+    }
   };
 
   return reduxAPICall(dispatch, args);

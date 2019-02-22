@@ -12,8 +12,7 @@ const initialState = {
     search: "",
     searched: "",
     sort: "new",
-    index: 0,
-    length: 0
+    index: 0
   },
   form: {
     title: "",

@@ -22,7 +22,10 @@ describe("metaGetPolls", () => {
   const args = {
     path: "/api/meta-get-polls",
     method: "GET",
-    data: { list: initialState.list }
+    data: {
+      skip: false,
+      list: initialState.list
+    }
   };
 
   afterAll(() => {
