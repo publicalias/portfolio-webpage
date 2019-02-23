@@ -14,14 +14,14 @@
 .c-modal-show {
 
   &__shadow {
-    @include modal(10);
+    @include modal(100);
     background-color: rgba(0, 0, 0, 0.75);
     display: none;
     opacity: 0;
   }
 
   &__window {
-    @include modal(11);
+    @include modal(101);
     top: 100vh;
   }
 
