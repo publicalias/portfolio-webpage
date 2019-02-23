@@ -2,8 +2,8 @@
 
 //global imports
 
+const { bindObject } = require("client-utils");
 const { select } = require("dom-api");
-const { bindObject } = require("utilities");
 
 //utilities
 

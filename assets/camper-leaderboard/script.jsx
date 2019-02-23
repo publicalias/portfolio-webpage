@@ -6,9 +6,9 @@ const CamperTable = require("./scripts/components/camper-table");
 
 //global imports
 
+const { getJSON } = require("client-utils");
 const { select } = require("dom-api");
 const { bindReactClass } = require("react-utils");
-const { getJSON } = require("utilities");
 
 //node modules
 

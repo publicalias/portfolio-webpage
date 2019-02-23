@@ -15,8 +15,8 @@ const { defaultProps } = require("./scripts/default-props/default-props");
 
 const CookieBanner = require("components/cookie-banner");
 
-const { initPanel } = require("accordion");
-const { checkInput } = require("check-input");
+const { checkInput } = require("client-utils");
+const { initPanel } = require("components/accordion");
 const { select } = require("dom-api");
 const { initKeyGen } = require("react-utils");
 

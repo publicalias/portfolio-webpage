@@ -3,9 +3,10 @@
 $offset: calc(50% + 1.5vw);
 
 @mixin btn-path($quad) {
-  @include btn-trans;
   fill: rgba($quad * 85, $quad * 85, $quad * 85, 0.75);
   stroke: none;
+  transition-duration: 0.5s;
+  transition-property: fill;
 }
 
 @mixin circle($outer, $inner) {

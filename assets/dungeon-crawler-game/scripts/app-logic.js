@@ -2,7 +2,8 @@
 
 //global imports
 
-const { arrEqual, rngInt, storageKey } = require("utilities");
+const { storageKey } = require("client-utils");
+const { arrEqual, rngInt } = require("utilities");
 
 //add hostile
 

@@ -6,7 +6,8 @@ const HoverSpan = require("./hover-span");
 
 //global imports
 
-const { roundTo, storageKey } = require("utilities");
+const { storageKey } = require("client-utils");
+const { roundTo } = require("utilities");
 
 //node modules
 

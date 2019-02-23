@@ -6,9 +6,8 @@ const { initDisplay, toggleMetric } = require("./scripts/view-logic");
 
 //global imports
 
-const { checkInput } = require("check-input");
+const { bindObject, checkInput, getJSON } = require("client-utils");
 const { select } = require("dom-api");
-const { bindObject, getJSON } = require("utilities");
 
 //app logic
 

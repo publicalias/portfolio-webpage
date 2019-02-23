@@ -6,7 +6,7 @@ const { metaSetState, metaAddErrors } = require("./actions/factories/meta-factor
 
 //global imports
 
-const { encodeAPICall, getJSON } = require("utilities");
+const { encodeAPICall, getJSON } = require("client-utils");
 
 //redux api call
 

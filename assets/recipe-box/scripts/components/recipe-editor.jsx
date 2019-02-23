@@ -6,7 +6,7 @@ const { cancelSubmit, populateModal } = require("../app-logic");
 
 //global imports
 
-const { toggleModal } = require("modal");
+const { toggleModal } = require("components/modal");
 const { bindReactClass } = require("react-utils");
 const { deepCopy } = require("utilities");
 

@@ -6,11 +6,10 @@ const { renderResults, toggleOutline } = require("./scripts/view-logic");
 
 //global imports
 
-const { checkInput } = require("check-input");
+const { checkInput, getJSON, submitKeys } = require("client-utils");
+const { modalEvents, toggleModal } = require("components/modal");
 const { select } = require("dom-api");
-const { modalEvents, toggleModal } = require("modal");
-const { submitKeys } = require("submit-keys");
-const { getJSON, wrapFn } = require("utilities");
+const { wrapFn } = require("utilities");
 
 //app logic
 

@@ -2,8 +2,8 @@
 
 //global imports
 
+const { submitKeys } = require("client-utils");
 const { select } = require("dom-api");
-const { submitKeys } = require("submit-keys");
 
 //filter events
 

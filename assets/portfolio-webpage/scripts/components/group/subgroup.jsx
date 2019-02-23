@@ -6,10 +6,10 @@ const Project = require("./project/project");
 
 //global imports
 
-const { togglePanel } = require("accordion");
+const { storageKey } = require("client-utils");
+const { togglePanel } = require("components/accordion");
 const { select } = require("dom-api");
 const { bindReactClass, initKeyGen } = require("react-utils");
-const { storageKey } = require("utilities");
 
 //node modules
 

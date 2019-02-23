@@ -2,9 +2,9 @@
 
 //global imports
 
+const { bindObject } = require("client-utils");
+const { toggleModal } = require("components/modal");
 const { select } = require("dom-api");
-const { toggleModal } = require("modal");
-const { bindObject } = require("utilities");
 
 //utilities
 

@@ -7,9 +7,8 @@ const { getOutput } = require("./scripts/view-logic");
 
 //global imports
 
-const { checkInput } = require("check-input");
+const { checkInput, storageKey } = require("client-utils");
 const { select } = require("dom-api");
-const { storageKey } = require("utilities");
 
 //app logic
 

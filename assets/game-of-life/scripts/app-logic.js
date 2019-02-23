@@ -2,8 +2,9 @@
 
 //global imports
 
-const { array2D } = require("canvas-games");
-const { chance, rngInt, storageKey } = require("utilities");
+const { array2D } = require("react-projects/app-logic");
+const { storageKey } = require("client-utils");
+const { chance, rngInt } = require("utilities");
 
 //create cell
 

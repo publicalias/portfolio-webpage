@@ -2,8 +2,8 @@
 
 //global imports
 
+const { storageKey } = require("client-utils");
 const { select } = require("dom-api");
-const { storageKey } = require("utilities");
 
 //close panel
 

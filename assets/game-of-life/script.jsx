@@ -10,12 +10,11 @@ const { childProps } = require("./scripts/view-logic");
 
 //global imports
 
-const { array2D, array2DEach, mouseYX } = require("canvas-games");
-const { checkInput } = require("check-input");
+const { checkInput, storageKey, submitKeys } = require("client-utils");
 const { select } = require("dom-api");
+const { array2D, array2DEach, mouseYX } = require("react-projects/app-logic");
 const { bindReactClass } = require("react-utils");
-const { submitKeys } = require("submit-keys");
-const { cycleItems, deepCopy, storageKey } = require("utilities");
+const { cycleItems, deepCopy } = require("utilities");
 
 //node modules
 

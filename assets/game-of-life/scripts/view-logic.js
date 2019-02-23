@@ -2,7 +2,7 @@
 
 //global imports
 
-const { array2DEach } = require("canvas-games");
+const { array2DEach } = require("react-projects/app-logic");
 
 //child props
 

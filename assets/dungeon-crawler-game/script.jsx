@@ -14,10 +14,10 @@ const { cycleHints, cycleWeapons } = require("./scripts/event-handlers");
 
 //global imports
 
-const { checkInput } = require("check-input");
+const { checkInput, storageKey } = require("client-utils");
 const { select } = require("dom-api");
 const { bindReactClass } = require("react-utils");
-const { deepCopy, storageKey } = require("utilities");
+const { deepCopy } = require("utilities");
 
 //node modules
 

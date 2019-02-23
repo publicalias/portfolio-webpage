@@ -6,7 +6,7 @@ const { checkIndex, findEnemy, findRange } = require("./app-logic");
 
 //global imports
 
-const { array2D, array2DEach } = require("canvas-games");
+const { array2D, array2DEach } = require("react-projects/app-logic");
 
 //child props
 

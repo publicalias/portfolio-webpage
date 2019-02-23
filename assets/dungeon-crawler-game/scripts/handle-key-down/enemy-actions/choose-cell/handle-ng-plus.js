@@ -2,7 +2,8 @@
 
 //global imports
 
-const { chance, storageKey } = require("utilities");
+const { storageKey } = require("client-utils");
+const { chance } = require("utilities");
 
 //handle ng plus
 

@@ -2,8 +2,8 @@
 
 //global imports
 
+const { initStorageKey } = require("client-utils");
 const { select } = require("dom-api");
-const { initStorageKey } = require("utilities");
 
 const storageKey = initStorageKey("cookie-banner");
 

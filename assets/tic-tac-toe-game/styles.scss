@@ -1,5 +1,6 @@
 @import "master";
-@import "modal";
+
+@import "components/modal";
 
 @mixin option {
   cursor: pointer;

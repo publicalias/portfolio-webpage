@@ -2,8 +2,8 @@
 
 //global imports
 
+const { toggleModal } = require("components/modal");
 const { select } = require("dom-api");
-const { toggleModal } = require("modal");
 
 //render results
 

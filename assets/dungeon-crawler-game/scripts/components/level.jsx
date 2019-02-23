@@ -7,8 +7,8 @@ const { paintCanvas } = require("../view-logic");
 
 //global imports
 
-const { mouseYX } = require("canvas-games");
 const { select } = require("dom-api");
+const { mouseYX } = require("react-projects/app-logic");
 const { bindReactClass } = require("react-utils");
 const { arrEqual } = require("utilities");
 

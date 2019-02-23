@@ -7,7 +7,7 @@ const List = require("./list");
 
 //global imports
 
-const { togglePanel } = require("accordion");
+const { togglePanel } = require("components/accordion");
 const { select } = require("dom-api");
 const { bindReactClass } = require("react-utils");
 

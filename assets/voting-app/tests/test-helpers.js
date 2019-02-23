@@ -7,7 +7,7 @@ const { initialState } = require("../scripts/reducer/reducer");
 
 //global imports
 
-const { encodeAPICall } = require("utilities");
+const { encodeAPICall } = require("client-utils");
 
 //node modules
 
