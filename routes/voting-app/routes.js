@@ -1,20 +1,28 @@
 "use strict";
 
+//local imports
+
+const apiRouter = require("./scripts/api/api");
+
 //global imports
 
 const { handleSession } = require(`${__rootdir}/master/scripts/server-utils`);
 
 //node modules
 
+const bodyParser = require("body-parser");
 const express = require("express");
 
 const router = express.Router();
 
 //middleware
 
+router.use(bodyParser.json());
 router.use(express.static("build"));
 
 handleSession(router);
+
+router.use("/api", apiRouter);
 
 //react router
 

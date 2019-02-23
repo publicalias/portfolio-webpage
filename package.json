@@ -44,7 +44,7 @@
     "start": "node server.js",
     "start:local": "node -r dotenv/config server.js",
     "test:eslint": "eslint \"!(build|node_modules)/**/@(*.js|*.jsx)\" \"@(*.js|*.jsx)\"",
-    "test:jest": "jest -i",
+    "test:jest": "jest",
     "test:sass-lint": "sass-lint \"!(build|node_modules)/**/*.scss\" -v -q",
     "watch": "gulp watch"
   },
@@ -66,7 +66,6 @@
     "jest": "^24.1.0",
     "mongodb-memory-server": "^3.0.0",
     "redux-mock-store": "^1.5.3",
-    "sass-lint": "^1.12.1",
-    "supertest": "^3.4.2"
+    "sass-lint": "^1.12.1"
   }
 }
