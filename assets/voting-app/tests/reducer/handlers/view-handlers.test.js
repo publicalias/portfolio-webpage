@@ -28,11 +28,9 @@ test("reducer accepts VIEW_SET_ADD_TEXT actions", () => {
 
   const { viewSetAddText } = actions;
 
-  const add = "Option A";
+  const nextState = deepCopy(initialState, { view: { add: "Option A" } });
 
-  const nextState = deepCopy(initialState, { view: { add } });
-
-  expect(reducer(initialState, viewSetAddText(add))).toEqual(nextState);
+  expect(reducer(initialState, viewSetAddText("Option A"))).toEqual(nextState);
 
 });
 

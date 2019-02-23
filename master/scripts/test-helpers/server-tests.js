@@ -11,14 +11,14 @@ const mongoServer = new MongoMemoryServer();
 
 //mock api call
 
-const mockAPICall = (fn, method) => async (data, user, type, assert) => {
+const mockAPICall = (fn, method) => async (user, data, type) => {
 
   const req = Object.assign({
-    user: user || undefined
+    user
   }, method === "GET" || method === "DELETE" ? {
-    query: data ? JSON.stringify(data) : undefined
+    query: data && JSON.stringify(data)
   } : {
-    body: data || undefined
+    body: data
   });
 
   const res = {
@@ -26,29 +26,26 @@ const mockAPICall = (fn, method) => async (data, user, type, assert) => {
     sendStatus: jest.fn((num) => num)
   };
 
-  const jsonCalls = res.json.mock.calls;
-  const sendStatusCalls = res.sendStatus.mock.calls;
+  const json = res.json.mock.calls;
+  const sendStatus = res.sendStatus.mock.calls;
 
   await fn(req, res);
 
-  let output;
-
   switch (type) {
     case "json":
-      expect(jsonCalls.length).toEqual(1);
-      expect(sendStatusCalls.length).toEqual(0);
-      output = jsonCalls[0][0];
-      break;
-    case "sendStatus":
-      expect(jsonCalls.length).toEqual(0);
-      expect(sendStatusCalls.length).toEqual(1);
-      output = sendStatusCalls[0][0];
-  }
 
-  if (typeof assert === "function") {
-    assert(output);
-  } else {
-    expect(output).toEqual(assert);
+      expect(json.length).toEqual(1);
+      expect(sendStatus.length).toEqual(0);
+
+      return json[0][0];
+
+    case "sendStatus":
+
+      expect(json.length).toEqual(0);
+      expect(sendStatus.length).toEqual(1);
+
+      return sendStatus[0][0];
+
   }
 
 };

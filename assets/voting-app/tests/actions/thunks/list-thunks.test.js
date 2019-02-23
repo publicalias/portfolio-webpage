@@ -18,13 +18,12 @@ describe("listSetSort", () => {
 
   const { listSetSort, metaSetState } = actions;
 
-  const sort = "popular";
   const merge = {
-    sort,
+    sort: "popular",
     index: 0
   };
 
-  const action = listSetSort(sort);
+  const action = listSetSort("popular");
   const args = {
     path: "/api/list-set-sort",
     method: "GET",
@@ -57,10 +56,9 @@ describe("listSubmitSearch", () => {
 
   const { listSubmitSearch, metaAddErrors, metaSetState } = actions;
 
-  const searched = "a";
   const merge = {
     search: "",
-    searched,
+    searched: "a",
     index: 0
   };
 
@@ -70,7 +68,7 @@ describe("listSubmitSearch", () => {
     method: "GET",
     data: { list: deepCopy(initialState.list, merge) }
   };
-  const lastState = deepCopy(initialState, { list: { search: searched } });
+  const lastState = deepCopy(initialState, { list: { search: "a" } });
 
   afterAll(() => {
     global.fetch = undefined;

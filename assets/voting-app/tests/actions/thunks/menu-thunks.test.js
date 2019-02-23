@@ -18,13 +18,12 @@ describe("menuSetFilter", () => {
 
   const { menuSetFilter, metaSetState } = actions;
 
-  const filter = "created";
   const merge = {
-    filter,
+    filter: "created",
     index: 0
   };
 
-  const action = menuSetFilter(filter);
+  const action = menuSetFilter("created");
   const args = {
     path: "/api/menu-set-filter",
     method: "GET",

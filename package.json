@@ -44,7 +44,7 @@
     "start": "node server.js",
     "start:local": "node -r dotenv/config server.js",
     "test:eslint": "eslint \"!(build|node_modules)/**/@(*.js|*.jsx)\" \"@(*.js|*.jsx)\"",
-    "test:jest": "jest",
+    "test:jest": "jest -i",
     "test:sass-lint": "sass-lint \"!(build|node_modules)/**/*.scss\" -v -q",
     "watch": "gulp watch"
   },

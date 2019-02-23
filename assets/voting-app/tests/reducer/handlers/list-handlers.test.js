@@ -15,14 +15,12 @@ test("reducer accepts LIST_OPEN_VIEW actions", () => {
 
   const { listOpenView } = actions;
 
-  const poll = "id-a";
-
   const nextState = deepCopy(initialState, {
     page: "view",
-    view: deepCopy(initialState.view, { poll })
+    view: deepCopy(initialState.view, { poll: "id-a" })
   });
 
-  expect(reducer(initialState, listOpenView(poll))).toEqual(nextState);
+  expect(reducer(initialState, listOpenView("id-a"))).toEqual(nextState);
 
 });
 
@@ -32,11 +30,9 @@ test("reducer accepts LIST_SET_INDEX actions", () => {
 
   const { listSetIndex } = actions;
 
-  const index = 1;
+  const nextState = deepCopy(initialState, { list: { index: 1 } });
 
-  const nextState = deepCopy(initialState, { list: { index } });
-
-  expect(reducer(initialState, listSetIndex(index))).toEqual(nextState);
+  expect(reducer(initialState, listSetIndex(1))).toEqual(nextState);
 
 });
 
@@ -46,10 +42,8 @@ test("reducer accepts LIST_SET_SEARCH_TEXT actions", () => {
 
   const { listSetSearchText } = actions;
 
-  const search = "a";
+  const nextState = deepCopy(initialState, { list: { search: "a" } });
 
-  const nextState = deepCopy(initialState, { list: { search } });
-
-  expect(reducer(initialState, listSetSearchText(search))).toEqual(nextState);
+  expect(reducer(initialState, listSetSearchText("a"))).toEqual(nextState);
 
 });

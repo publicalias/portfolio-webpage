@@ -41,11 +41,9 @@ test("reducer accepts FORM_SET_ADD_TEXT actions", () => {
 
   const { formSetAddText } = actions;
 
-  const add = "Option A";
+  const nextState = deepCopy(initialState, { form: { add: "Option A" } });
 
-  const nextState = deepCopy(initialState, { form: { add } });
-
-  expect(reducer(initialState, formSetAddText(add))).toEqual(nextState);
+  expect(reducer(initialState, formSetAddText("Option A"))).toEqual(nextState);
 
 });
 
@@ -55,11 +53,9 @@ test("reducer accepts FORM_SET_TITLE_TEXT actions", () => {
 
   const { formSetTitleText } = actions;
 
-  const title = "Title A";
+  const nextState = deepCopy(initialState, { form: { title: "Title A" } });
 
-  const nextState = deepCopy(initialState, { form: { title } });
-
-  expect(reducer(initialState, formSetTitleText(title))).toEqual(nextState);
+  expect(reducer(initialState, formSetTitleText("Title A"))).toEqual(nextState);
 
 });
 

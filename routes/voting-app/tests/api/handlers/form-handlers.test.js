@@ -49,7 +49,7 @@ describe("formCreatePoll", () => {
 
   it("sends 401 if user is unauthenticated", async () => {
 
-    await handler(getData(), null, "sendStatus", 401);
+    expect(await handler(null, getData(), "sendStatus")).toEqual(401);
 
     expect(await pollsCol().countDocuments()).toEqual(0);
 
@@ -59,7 +59,7 @@ describe("formCreatePoll", () => {
 
     const user = mockUser({ data: { restricted: true } });
 
-    await handler(getData(), user, "sendStatus", 401);
+    expect(await handler(user, getData(), "sendStatus")).toEqual(401);
 
     expect(await pollsCol().countDocuments()).toEqual(0);
 
@@ -69,7 +69,7 @@ describe("formCreatePoll", () => {
 
     const json = { errors: ["Title must not be empty"] };
 
-    await handler(getData(), mockUser(), "json", json);
+    expect(await handler(mockUser(), getData(), "json")).toEqual(json);
 
     expect(await pollsCol().countDocuments()).toEqual(0);
 
@@ -82,7 +82,7 @@ describe("formCreatePoll", () => {
     const data = getData({ title: "Title A" });
     const json = { errors: ["Title must be unique"] };
 
-    await handler(data, mockUser(), "json", json);
+    expect(await handler(mockUser(), data, "json")).toEqual(json);
 
     expect(await pollsCol().countDocuments()).toEqual(1);
 
@@ -93,7 +93,7 @@ describe("formCreatePoll", () => {
     const data = getData({ title: "Fuck" });
     const json = { errors: ["Title must not be obscene"] };
 
-    await handler(data, mockUser(), "json", json);
+    expect(await handler(mockUser(), data, "json")).toEqual(json);
 
     expect(await pollsCol().countDocuments()).toEqual(0);
 
@@ -107,7 +107,7 @@ describe("formCreatePoll", () => {
     });
     const json = { errors: ["Option must not be empty"] };
 
-    await handler(data, mockUser(), "json", json);
+    expect(await handler(mockUser(), data, "json")).toEqual(json);
 
     expect(await pollsCol().countDocuments()).toEqual(0);
 
@@ -121,7 +121,7 @@ describe("formCreatePoll", () => {
     });
     const json = { errors: ["Option must be unique"] };
 
-    await handler(data, mockUser(), "json", json);
+    expect(await handler(mockUser(), data, "json")).toEqual(json);
 
     expect(await pollsCol().countDocuments()).toEqual(0);
 
@@ -135,7 +135,7 @@ describe("formCreatePoll", () => {
     });
     const json = { errors: ["Option must not be obscene"] };
 
-    await handler(data, mockUser(), "json", json);
+    expect(await handler(mockUser(), data, "json")).toEqual(json);
 
     expect(await pollsCol().countDocuments()).toEqual(0);
 
@@ -143,24 +143,24 @@ describe("formCreatePoll", () => {
 
   it("sends polls and id if poll is valid", async () => {
 
-    const data = getData({ title: "Title A" });
+    const data = getData({
+      title: "Title A",
+      options: ["Option A"]
+    });
 
-    const assert = (output) => {
+    const output = await handler(mockUser(), data, "json");
 
-      const { polls: [{ id, date }] } = output;
+    const { polls: [{ id, date }] } = output;
 
-      expect(output).toEqual({
-        polls: [mockPoll({
-          title: "Title A",
-          id,
-          date
-        })],
-        poll: id
-      });
-
-    };
-
-    await handler(data, mockUser(), "json", assert);
+    expect(output).toEqual({
+      polls: [mockPoll({
+        title: data.form.title,
+        id,
+        date,
+        options: data.form.options.map((e) => ({ text: e }))
+      })],
+      poll: id
+    });
 
     expect(await pollsCol().countDocuments()).toEqual(1);
 
