@@ -1,5 +1,10 @@
 "use strict";
 
+//global imports
+
+const { getIPUser } = require(`${__rootdir}/master/scripts/server-utils`);
+const { deepCopy } = require(`${__rootdir}/master/scripts/utilities`);
+
 //utilities
 
 const pollsCol = () => db.collection("voting-app/polls");
@@ -30,24 +35,30 @@ const getSort = (list) => {
 
 };
 
-const findPolls = (user, list, skip) => {
+const findPolls = async (req, list, skip) => {
 
-  const query = getQuery(user, list);
-  const projection = { _id: false };
-  const sort = getSort(list);
+  const user = req.user || await getIPUser(req.ip) || {};
 
   const text = { $text: { $search: list.searched } }; //expects text index
   const meta = { score: { $meta: "textScore" } };
 
+  let args = {
+    query: getQuery(user, list),
+    projection: {},
+    sort: getSort(list)
+  };
+
   if (list.searched) {
-    Object.assign(query, text);
-    Object.assign(projection, meta);
-    Object.assign(sort, meta);
+    args = deepCopy(args, {
+      query: text,
+      projection: meta,
+      sort: meta
+    });
   }
 
   return pollsCol()
-    .find(query, { projection })
-    .sort(sort)
+    .find(args.query, { projection: args.projection })
+    .sort(args.sort)
     .skip(skip ? list.index + 1 : 0)
     .limit((skip ? 0 : list.index) + 50)
     .toArray();

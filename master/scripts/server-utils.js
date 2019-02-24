@@ -6,10 +6,19 @@ const session = require("express-session");
 const MongoDBStore = require("connect-mongodb-session")(session);
 const passport = require("passport");
 const request = require("request-promise-native");
+const uuid = require("uuid/v1");
+
+//utilities
+
+const usersCol = () => db.collection("auth/users");
+
+//get ip user
+
+const getIPUser = (ip) => usersCol().findOne({ ip });
 
 //handle session
 
-const sessionConfig = session({
+const sessionConfig = () => session({
   resave: true,
   saveUninitialized: true,
   secret: process.env.OA_ES_SECRET,
@@ -24,7 +33,7 @@ const sessionConfig = session({
 });
 
 const handleSession = (router) => {
-  router.use(sessionConfig);
+  router.use(sessionConfig());
   router.use(passport.initialize());
   router.use(passport.session());
 };
@@ -41,6 +50,20 @@ const sendData = async (api, res) => {
   } catch (err) {
     res.sendStatus(502);
   }
+};
+
+//set ip user
+
+const setIPUser = async (ip) => {
+
+  await usersCol().insertOne({
+    id: uuid(),
+    type: "ip",
+    ip
+  });
+
+  return getIPUser(ip);
+
 };
 
 //to promise
@@ -77,7 +100,9 @@ const toPromise = (...args) => new Promise((resolve, reject) => {
 //exports
 
 module.exports = {
+  getIPUser,
   handleSession,
   sendData,
+  setIPUser,
   toPromise
 };

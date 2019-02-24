@@ -20,31 +20,31 @@ const pollsCol = () => db.collection("voting-app/polls");
 
 //form create poll
 
-const handleCreate = async (user, list, form) => {
+const handleCreate = async (req, list, form) => {
 
   const id = uuid();
 
   await pollsCol().insertOne({
     title: form.title,
-    author: user.name,
+    author: req.user.name,
     id,
     date: Date.now(),
     private: form.private,
     users: {
-      created: user.id,
+      created: req.user.id,
       voted: 0,
       hidden: [],
       flagged: []
     },
     options: form.options.map((e) => ({
       text: e,
-      created: user.id,
+      created: req.user.id,
       voted: []
     }))
   });
 
   return {
-    polls: await findPolls(user, list),
+    polls: await findPolls(req, list),
     poll: id
   };
 
@@ -60,7 +60,7 @@ const formCreatePoll = async (req, res) => {
 
   }
 
-  const { list, form } = req.body;
+  const { list, form } = req.body.data;
 
   const doc = await pollsCol().findOne({ title: form.title });
 
@@ -87,7 +87,7 @@ const formCreatePoll = async (req, res) => {
   if (errors.length) {
     res.json({ errors });
   } else {
-    res.json(await handleCreate(req.user, list, form));
+    res.json(await handleCreate(req, list, form));
   }
 
 };

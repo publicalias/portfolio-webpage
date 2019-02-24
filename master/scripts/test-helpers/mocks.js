@@ -18,6 +18,14 @@ const mockData = (schema, arrays = []) => (data = {}) => {
 
 };
 
+//mock ip user
+
+const mockIPUser = mockData({
+  id: "",
+  type: "ip",
+  ip: ""
+});
+
 //mock user
 
 const mockUser = mockData({
@@ -35,5 +43,6 @@ const mockUser = mockData({
 
 module.exports = {
   mockData,
+  mockIPUser,
   mockUser
 };

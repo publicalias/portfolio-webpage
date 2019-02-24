@@ -30,6 +30,10 @@ const mockForm = mockData({
 beforeAll(mongoSetup);
 afterAll(mongoTeardown);
 
+afterEach(async () => {
+  await pollsCol().deleteMany({});
+});
+
 //form create poll
 
 describe("formCreatePoll", () => {
@@ -43,13 +47,9 @@ describe("formCreatePoll", () => {
     form: mockForm(form)
   });
 
-  afterEach(async () => {
-    await pollsCol().deleteMany({});
-  });
-
   it("sends 401 if user is unauthenticated", async () => {
 
-    expect(await handler(null, getData(), "sendStatus")).toEqual(401);
+    expect(await handler({}, getData(), "sendStatus")).toEqual(401);
 
     expect(await pollsCol().countDocuments()).toEqual(0);
 
@@ -150,15 +150,15 @@ describe("formCreatePoll", () => {
 
     const output = await handler(mockUser(), data, "json");
 
-    const { polls: [{ id, date }] } = output;
+    const { polls: [{ _id, id, date }] } = output;
 
     expect(output).toEqual({
-      polls: [mockPoll({
+      polls: [Object.assign({ _id }, mockPoll({
         title: data.form.title,
         id,
         date,
         options: data.form.options.map((e) => ({ text: e }))
-      })],
+      }))],
       poll: id
     });
 

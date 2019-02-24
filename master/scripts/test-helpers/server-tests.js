@@ -13,12 +13,14 @@ const mongoServer = new MongoMemoryServer();
 
 const mockAPICall = (fn, method) => async (user, data, type) => {
 
-  const req = Object.assign({
+  const req = Object.assign(user.auth ? {
     user
-  }, method === "GET" || method === "DELETE" ? {
-    query: data && JSON.stringify(data)
   } : {
-    body: data
+    ip: user.ip
+  }, method === "GET" || method === "DELETE" ? {
+    query: { data: JSON.stringify(data) }
+  } : {
+    body: { data }
   });
 
   const res = {

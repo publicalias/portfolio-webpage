@@ -72,7 +72,7 @@ const encodeAPICall = ({ path, method, data }) => method === "GET" || method ===
   path,
   init: {
     method,
-    body: JSON.stringify(data),
+    body: JSON.stringify({ data }),
     headers: new Headers({ "Content-Type": "application/json" })
   }
 };
