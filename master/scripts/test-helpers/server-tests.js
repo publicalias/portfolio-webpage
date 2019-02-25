@@ -1,13 +1,11 @@
 "use strict";
 
+/*global mongoServer*/
+
 //node modules
 
 const { MongoClient } = require("mongodb");
 const { MongoMemoryServer } = require("mongodb-memory-server");
-
-//utilities
-
-const mongoServer = new MongoMemoryServer();
 
 //mock api call
 
@@ -55,6 +53,8 @@ const mockAPICall = (fn, method) => async (user, data, type) => {
 //mongo setup
 
 const mongoSetup = async () => {
+
+  global.mongoServer = new MongoMemoryServer();
 
   const mongoURI = await mongoServer.getConnectionString();
   const client = await MongoClient.connect(mongoURI, { useNewUrlParser: true });

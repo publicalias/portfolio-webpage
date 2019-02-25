@@ -27,6 +27,7 @@ const sessionConfig = () => session({
     collection: "auth/sessions"
   }, (err) => {
     if (err) {
+      console.log(err);
       process.exit(1);
     }
   })

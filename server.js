@@ -47,7 +47,8 @@ toPromise(fs, "readdir", "./routes")
     app.get("/:name", serverless(files));
 
   })
-  .catch(() => {
+  .catch((err) => {
+    console.log(err);
     process.exit(1);
   });
 
@@ -58,6 +59,7 @@ MongoClient.connect(process.env.DB_URL, { useNewUrlParser: true })
     global.db = client.db();
     app.listen(process.env.PORT || 3000);
   })
-  .catch(() => {
+  .catch((err) => {
+    console.log(err);
     process.exit(1);
   });
