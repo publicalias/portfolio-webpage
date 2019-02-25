@@ -43,6 +43,7 @@
     "postinstall": "npm run build",
     "start": "node server.js",
     "start:local": "node -r dotenv/config server.js",
+    "start:proxy": "ssh -R pa-portfolio-webpage:80:localhost:3000 serveo.net",
     "test:eslint": "eslint \"!(build|node_modules)/**/@(*.js|*.jsx)\" \"@(*.js|*.jsx)\"",
     "test:jest": "jest -i",
     "test:sass-lint": "sass-lint \"!(build|node_modules)/**/*.scss\" -v -q",

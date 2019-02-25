@@ -12,6 +12,13 @@ const { testAPIFailure, testAPISuccess } = require("../../test-helpers");
 
 const { deepCopy } = require("utilities");
 
+//setup
+
+afterEach(() => {
+  global.fetch = undefined;
+  global.Headers = undefined;
+});
+
 //meta get polls
 
 describe("metaGetPolls", () => {
@@ -27,11 +34,6 @@ describe("metaGetPolls", () => {
       list: initialState.list
     }
   };
-
-  afterAll(() => {
-    global.fetch = undefined;
-    global.Headers = undefined;
-  });
 
   it("dispatches META_SET_STATE action on success", () => {
 
@@ -56,11 +58,6 @@ describe("metaGetUser", () => {
     path: "/api/meta-get-user",
     method: "GET"
   };
-
-  afterAll(() => {
-    global.fetch = undefined;
-    global.Headers = undefined;
-  });
 
   it("dispatches META_SET_STATE action on success", () => {
 

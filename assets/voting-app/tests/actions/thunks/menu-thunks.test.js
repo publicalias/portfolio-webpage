@@ -12,6 +12,13 @@ const { testAPIFailure, testAPISuccess } = require("../../test-helpers");
 
 const { deepCopy } = require("utilities");
 
+//setup
+
+afterEach(() => {
+  global.fetch = undefined;
+  global.Headers = undefined;
+});
+
 //menu set filter
 
 describe("menuSetFilter", () => {
@@ -29,11 +36,6 @@ describe("menuSetFilter", () => {
     method: "GET",
     data: { list: deepCopy(initialState.list, merge) }
   };
-
-  afterAll(() => {
-    global.fetch = undefined;
-    global.Headers = undefined;
-  });
 
   it("dispatches META_SET_STATE action on success", () => {
 

@@ -8,6 +8,13 @@ const { actions } = require("../../../scripts/actions/actions");
 const { initialState } = require("../../../scripts/reducer/reducer");
 const { testAPIFailure, testAPISuccess } = require("../../test-helpers");
 
+//setup
+
+afterEach(() => {
+  global.fetch = undefined;
+  global.Headers = undefined;
+});
+
 //view add option
 
 describe("viewAddOption", () => {
@@ -24,11 +31,6 @@ describe("viewAddOption", () => {
       list: initialState.list
     }
   };
-
-  afterAll(() => {
-    global.fetch = undefined;
-    global.Headers = undefined;
-  });
 
   it("dispatches META_SET_STATE action on success", () => {
 
@@ -67,11 +69,6 @@ describe("viewCastVote", () => {
     }
   };
 
-  afterAll(() => {
-    global.fetch = undefined;
-    global.Headers = undefined;
-  });
-
   it("dispatches META_SET_STATE action on success", () => {
 
     const actionList = [metaSetState({})];
@@ -99,11 +96,6 @@ describe("viewDeletePoll", () => {
       list: initialState.list
     }
   };
-
-  afterAll(() => {
-    global.fetch = undefined;
-    global.Headers = undefined;
-  });
 
   it("dispatches META_SET_STATE action on success", () => {
 
@@ -139,11 +131,6 @@ describe("viewRemoveOption", () => {
     }
   };
 
-  afterAll(() => {
-    global.fetch = undefined;
-    global.Headers = undefined;
-  });
-
   it("dispatches META_SET_STATE action on success", () => {
 
     const actionList = [metaSetState({})];
@@ -171,11 +158,6 @@ describe("viewTogglePrivate", () => {
       list: initialState.list
     }
   };
-
-  afterAll(() => {
-    global.fetch = undefined;
-    global.Headers = undefined;
-  });
 
   it("dispatches META_SET_STATE action on success", () => {
 

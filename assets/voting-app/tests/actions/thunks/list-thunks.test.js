@@ -12,6 +12,13 @@ const { testAPIFailure, testAPISuccess } = require("../../test-helpers");
 
 const { deepCopy } = require("utilities");
 
+//setup
+
+afterEach(() => {
+  global.fetch = undefined;
+  global.Headers = undefined;
+});
+
 //list set sort
 
 describe("listSetSort", () => {
@@ -29,11 +36,6 @@ describe("listSetSort", () => {
     method: "GET",
     data: { list: deepCopy(initialState.list, merge) }
   };
-
-  afterAll(() => {
-    global.fetch = undefined;
-    global.Headers = undefined;
-  });
 
   it("dispatches META_SET_STATE action on success", () => {
 
@@ -69,11 +71,6 @@ describe("listSubmitSearch", () => {
     data: { list: deepCopy(initialState.list, merge) }
   };
   const lastState = deepCopy(initialState, { list: { search: "a" } });
-
-  afterAll(() => {
-    global.fetch = undefined;
-    global.Headers = undefined;
-  });
 
   it("dispatches META_SET_STATE action on success", () => {
 
@@ -114,11 +111,6 @@ describe("listToggleFlag", () => {
     }
   };
 
-  afterAll(() => {
-    global.fetch = undefined;
-    global.Headers = undefined;
-  });
-
   it("dispatches META_SET_STATE action on success", () => {
 
     const actionList = [metaSetState({})];
@@ -146,11 +138,6 @@ describe("listToggleHide", () => {
       list: initialState.list
     }
   };
-
-  afterAll(() => {
-    global.fetch = undefined;
-    global.Headers = undefined;
-  });
 
   it("dispatches META_SET_STATE action on success", () => {
 

@@ -22,6 +22,11 @@ const { default: ReduxThunk } = require("redux-thunk");
 const middleware = [ReduxThunk];
 const mockStore = configureStore(middleware);
 
+afterEach(() => {
+  global.fetch = undefined;
+  global.Headers = undefined;
+});
+
 //form add option
 
 describe("formAddOption", () => {
@@ -112,11 +117,6 @@ describe("formCreatePoll", () => {
       form: initialState.form
     }
   };
-
-  afterAll(() => {
-    global.fetch = undefined;
-    global.Headers = undefined;
-  });
 
   it("dispatches META_SET_STATE action on success", () => {
 
