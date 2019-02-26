@@ -3,6 +3,7 @@
 //global imports
 
 const { mockData } = require("test-helpers/mocks");
+const { deepCopy } = require("utilities");
 
 //mock list
 
@@ -30,12 +31,17 @@ const mockPoll = mockData({
   },
   options: []
 }, [{
+
   key: "options",
-  val: {
-    text: "",
-    created: "",
-    voted: []
+
+  fn(val) {
+    return val.map((e) => deepCopy({
+      text: "",
+      created: "",
+      voted: []
+    }, e));
   }
+
 }]);
 
 //exports

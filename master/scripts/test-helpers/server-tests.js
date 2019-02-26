@@ -1,6 +1,9 @@
 "use strict";
 
-/*global mongoServer*/
+//global imports
+
+const { mockUser } = require("test-helpers/mocks");
+const { bindObject } = require("utilities");
 
 //node modules
 
@@ -50,29 +53,57 @@ const mockAPICall = (fn, method) => async (user, data, type) => {
 
 };
 
-//mongo setup
+//mongo tests
 
-const mongoSetup = async () => {
+const mongoTests = {
 
-  global.mongoServer = new MongoMemoryServer();
+  //initialization
 
-  const mongoURI = await mongoServer.getConnectionString();
-  const client = await MongoClient.connect(mongoURI, { useNewUrlParser: true });
+  mongoServer: null,
 
-  global.db = client.db();
+  async setup() {
+
+    this.mongoServer = new MongoMemoryServer();
+
+    const mongoURI = await this.mongoServer.getConnectionString();
+    const client = await MongoClient.connect(mongoURI, { useNewUrlParser: true });
+
+    global.db = client.db();
+
+  },
+
+  teardown() {
+    this.mongoServer.stop();
+  },
+
+  //reset
+
+  reset(...args) {
+    return async () => {
+      await Promise.all(args.map((e) => e().deleteMany({})));
+    };
+  }
 
 };
 
-//mongo teardown
+bindObject(mongoTests);
 
-const mongoTeardown = () => {
-  mongoServer.stop();
+//test auth fail
+
+const testAuthFail = async (handler, data) => {
+
+  const users = [{}, mockUser({ data: { restricted: true } })];
+
+  const output = await Promise.all(users.map((e) => handler(e, data, "sendStatus")));
+
+  expect(output).toEqual([401, 401]);
+
 };
 
 //exports
 
 module.exports = {
   mockAPICall,
-  mongoSetup,
-  mongoTeardown
+  mongoTests,
+  testAuthFail
 };

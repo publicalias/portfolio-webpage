@@ -11,7 +11,7 @@ const { mockList, mockPoll } = require("../../test-helpers");
 //global imports
 
 const { mockData, mockUser } = require("test-helpers/mocks");
-const { mockAPICall, mongoSetup, mongoTeardown } = require("test-helpers/server-tests");
+const { mockAPICall, mongoTests, testAuthFail } = require("test-helpers/server-tests");
 
 //utilities
 
@@ -27,12 +27,10 @@ const mockForm = mockData({
 
 //setup
 
-beforeAll(mongoSetup);
-afterAll(mongoTeardown);
+beforeAll(mongoTests.setup);
+afterAll(mongoTests.teardown);
 
-afterEach(async () => {
-  await pollsCol().deleteMany({});
-});
+afterEach(mongoTests.reset(pollsCol));
 
 //form create poll
 
@@ -47,99 +45,52 @@ describe("formCreatePoll", () => {
     form: mockForm(form)
   });
 
-  it("sends 401 if user is unauthenticated", async () => {
+  const testError = async (text, data, docs = 0) => {
 
-    expect(await handler({}, getData(), "sendStatus")).toEqual(401);
+    const json = { errors: [text] };
 
-    expect(await pollsCol().countDocuments()).toEqual(0);
+    expect(await handler(mockUser(), getData(data), "json")).toEqual(json);
 
-  });
+    expect(await pollsCol().countDocuments()).toEqual(docs);
 
-  it("sends 401 if user is restricted", async () => {
+  };
 
-    const user = mockUser({ data: { restricted: true } });
+  it("sends 401 if user is unauthenticated or restricted", async () => {
 
-    expect(await handler(user, getData(), "sendStatus")).toEqual(401);
-
-    expect(await pollsCol().countDocuments()).toEqual(0);
-
-  });
-
-  it("sends errors if title is empty", async () => {
-
-    const json = { errors: ["Title must not be empty"] };
-
-    expect(await handler(mockUser(), getData(), "json")).toEqual(json);
+    await testAuthFail(handler, getData());
 
     expect(await pollsCol().countDocuments()).toEqual(0);
 
   });
+
+  it("sends errors if title is empty", () => testError("Title must not be empty"));
 
   it("sends errors if title is duplicate", async () => {
 
-    await pollsCol().insertOne(mockPoll({ title: "Title A" }));
+    const data = { title: "Title A" };
 
-    const data = getData({ title: "Title A" });
-    const json = { errors: ["Title must be unique"] };
+    await pollsCol().insertOne(mockPoll(data));
 
-    expect(await handler(mockUser(), data, "json")).toEqual(json);
-
-    expect(await pollsCol().countDocuments()).toEqual(1);
+    return testError("Title must be unique", data, 1);
 
   });
 
-  it("sends errors if title is obscene", async () => {
+  it("sends errors if title is obscene", () => testError("Title must not be obscene", { title: "Fuck" }));
 
-    const data = getData({ title: "Fuck" });
-    const json = { errors: ["Title must not be obscene"] };
+  it("sends errors if option is empty", () => testError("Option must not be empty", {
+    title: "Title A",
+    options: [""]
+  }));
 
-    expect(await handler(mockUser(), data, "json")).toEqual(json);
+  it("sends errors if option is duplicate", () => testError("Option must be unique", {
+    title: "Title A",
+    options: ["Option A", "Option A"]
+  }));
 
-    expect(await pollsCol().countDocuments()).toEqual(0);
-
-  });
-
-  it("sends errors if option is empty", async () => {
-
-    const data = getData({
-      title: "Title A",
-      options: [""]
-    });
-    const json = { errors: ["Option must not be empty"] };
-
-    expect(await handler(mockUser(), data, "json")).toEqual(json);
-
-    expect(await pollsCol().countDocuments()).toEqual(0);
-
-  });
-
-  it("sends errors if option is duplicate", async () => {
-
-    const data = getData({
-      title: "Title A",
-      options: ["Option A", "Option A"]
-    });
-    const json = { errors: ["Option must be unique"] };
-
-    expect(await handler(mockUser(), data, "json")).toEqual(json);
-
-    expect(await pollsCol().countDocuments()).toEqual(0);
-
-  });
-
-  it("sends errors if option is obscene", async () => {
-
-    const data = getData({
-      title: "Title A",
-      options: ["Fuck"]
-    });
-    const json = { errors: ["Option must not be obscene"] };
-
-    expect(await handler(mockUser(), data, "json")).toEqual(json);
-
-    expect(await pollsCol().countDocuments()).toEqual(0);
-
-  });
+  it("sends errors if option is obscene", () => testError("Option must not be obscene", {
+    title: "Title A",
+    options: ["Fuck"]
+  }));
 
   it("sends polls and id if poll is valid", async () => {
 
@@ -154,10 +105,10 @@ describe("formCreatePoll", () => {
 
     expect(output).toEqual({
       polls: [Object.assign({ _id }, mockPoll({
-        title: data.form.title,
+        title: "Title A",
         id,
         date,
-        options: data.form.options.map((e) => ({ text: e }))
+        options: [{ text: "Option A" }]
       }))],
       poll: id
     });

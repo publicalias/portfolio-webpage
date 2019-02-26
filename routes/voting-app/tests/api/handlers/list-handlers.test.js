@@ -11,21 +11,49 @@ const { mockList, mockPoll } = require("../../test-helpers");
 //global imports
 
 const { mockIPUser, mockUser } = require("test-helpers/mocks");
-const { mockAPICall, mongoSetup, mongoTeardown } = require("test-helpers/server-tests");
+const { mockAPICall, mongoTests, testAuthFail } = require("test-helpers/server-tests");
 
 //utilities
 
 const pollsCol = () => db.collection("voting-app/polls");
 const usersCol = () => db.collection("auth/users");
 
+const initTestToggle = (handler, data, prop) => async (user) => {
+
+  const poll = mockPoll({ id: "id-a" });
+
+  await pollsCol().insertOne(poll);
+
+  const toggleBool = async (bool) => {
+
+    const output = await handler(user || {}, data, "json");
+    const update = await pollsCol().findOne();
+    const actual = user || await usersCol().findOne();
+
+    const show = prop === "flagged" || prop === "hidden" && !bool;
+
+    const polls = show ? [update] : [];
+
+    expect(output).toEqual(user || !bool ? { polls } : {
+      polls,
+      user: actual
+    });
+
+    expect(update.users[prop]).toEqual(bool ? [actual.id] : []);
+
+  };
+
+  await toggleBool(true);
+  await toggleBool(false);
+
+};
+
 //setup
 
-beforeAll(mongoSetup);
-afterAll(mongoTeardown);
+beforeAll(mongoTests.setup);
+afterAll(mongoTests.teardown);
 
-afterEach(async () => {
-  await pollsCol().deleteMany({});
-});
+afterEach(mongoTests.reset(pollsCol, usersCol));
 
 //list set sort
 
@@ -35,31 +63,33 @@ describe("listSetSort", () => {
 
   const handler = mockAPICall(listSetSort, "GET");
 
-  const getData = (list) => ({ list: mockList(list) });
+  const getData = (sort) => ({ list: mockList({ sort }) });
 
-  it("sends polls sorted by date", async () => {
+  const testSort = async (pollData, sort) => {
 
-    const pollA = mockPoll();
-    const pollB = mockPoll({ date: 1 });
+    const polls = pollData.map(mockPoll);
 
-    await pollsCol().insertMany([pollA, pollB]);
+    await pollsCol().insertMany(polls);
 
-    const output = await handler({}, getData({ sort: "new" }), "json");
+    const output = await handler({}, getData(sort), "json");
 
-    expect(output).toEqual({ polls: [pollB, pollA] });
+    expect(output).toEqual({ polls: polls.reverse() });
+
+  };
+
+  it("sends polls sorted by date", () => {
+
+    const polls = [{}, { date: 1 }];
+
+    return testSort(polls, "new");
 
   });
 
-  it("sends polls sorted by vote count", async () => {
+  it("sends polls sorted by vote count", () => {
 
-    const pollA = mockPoll();
-    const pollB = mockPoll({ users: { voted: 1 } });
+    const polls = [{}, { users: { voted: 1 } }];
 
-    await pollsCol().insertMany([pollA, pollB]);
-
-    const output = await handler({}, getData({ sort: "popular" }), "json");
-
-    expect(output).toEqual({ polls: [pollB, pollA] });
+    return testSort(polls, "popular");
 
   });
 
@@ -73,37 +103,34 @@ describe("listSubmitSearch", () => {
 
   const handler = mockAPICall(listSubmitSearch, "GET");
 
-  const getData = (list) => ({ list: mockList(list) });
+  const getData = (searched) => ({ list: mockList({ searched }) });
 
   it("sends errors if search is empty", async () => {
 
     const json = { errors: ["Search must not be empty"] };
 
-    expect(await handler({}, getData(), "json")).toEqual(json);
+    expect(await handler({}, getData(""), "json")).toEqual(json);
 
   });
 
   it("sends polls if search is valid", async () => {
 
-    const pollA = mockPoll({ title: "Apple" });
-    const pollB = mockPoll({ author: "Apple" });
-    const pollC = mockPoll({ options: [{ text: "Apple" }] });
-    const pollD = mockPoll();
+    const polls = [{ title: "Apple" }, { author: "Apple" }, { options: [{ text: "Apple" }] }].map(mockPoll);
 
-    await pollsCol().insertMany([pollA, pollB, pollC, pollD]);
+    await pollsCol().insertMany(polls);
     await pollsCol().createIndex({
       "title": "text",
       "author": "text",
       "options.text": "text"
     });
 
-    const output = await handler({}, getData({ searched: "Apple" }), "json");
+    const output = await handler({}, getData("Apple"), "json");
 
     for (const e of output.polls) {
       delete e.score;
     }
 
-    expect(output).toEqual({ polls: [pollA, pollB, pollC] });
+    expect(output).toEqual({ polls: polls.slice(0, 3) });
 
   });
 
@@ -122,30 +149,15 @@ describe("listToggleFlag", () => {
     list: mockList()
   });
 
-  it("sends 401 if user is unauthenticated", async () => {
-    expect(await handler({}, getData(), "sendStatus")).toEqual(401);
-  });
+  const testToggle = initTestToggle(handler, getData("id-a"), "flagged");
 
-  it("sends 401 if user is restricted", async () => {
+  it("sends 401 if user is unauthenticated or restricted", () => testAuthFail(handler, getData()));
 
-    const user = mockUser({ data: { restricted: true } });
+  it("sends polls if user is valid", () => {
 
-    expect(await handler(user, getData(), "sendStatus")).toEqual(401);
-
-  });
-
-  it("sends polls if user is valid", async () => {
-
-    const poll = mockPoll({ id: "id-a" });
     const user = mockUser({ id: "id-b" });
 
-    await pollsCol().insertOne(poll);
-
-    const output = await handler(user, getData("id-a"), "json");
-    const update = await pollsCol().findOne();
-
-    expect(output).toEqual({ polls: [update] });
-    expect(update.users.flagged).toEqual(["id-b"]);
+    return testToggle(user);
 
   });
 
@@ -164,61 +176,26 @@ describe("listToggleHide", () => {
     list: mockList()
   });
 
-  afterEach(async () => {
-    await usersCol().deleteMany({});
-  });
+  const testToggle = initTestToggle(handler, getData("id-a"), "hidden");
 
-  it("sends polls if user is authenticated", async () => {
+  it("sends polls if user is authenticated", () => {
 
-    const poll = mockPoll({ id: "id-a" });
     const user = mockUser({ id: "id-b" });
 
-    await pollsCol().insertOne(poll);
-
-    const output = await handler(user, getData("id-a"), "json");
-    const update = await pollsCol().findOne();
-
-    expect(output).toEqual({ polls: [] });
-    expect(update.users.hidden).toEqual(["id-b"]);
+    return testToggle(user);
 
   });
 
   it("sends polls if ip user exists", async () => {
 
-    const poll = mockPoll({ id: "id-a" });
     const user = mockIPUser({ id: "id-b" });
 
-    await Promise.all([
-      pollsCol().insertOne(poll),
-      usersCol().insertOne(user)
-    ]);
+    await usersCol().insertOne(user);
 
-    const output = await handler(user, getData("id-a"), "json");
-    const update = await pollsCol().findOne();
-
-    expect(output).toEqual({ polls: [] });
-    expect(update.users.hidden).toEqual(["id-b"]);
+    return testToggle(user);
 
   });
 
-  it("sends polls and user if no ip user exists", async () => {
-
-    const poll = mockPoll({ id: "id-a" });
-
-    await pollsCol().insertOne(poll);
-
-    const output = await handler({}, getData("id-a"), "json");
-    const [update, user] = await Promise.all([
-      pollsCol().findOne(),
-      usersCol().findOne()
-    ]);
-
-    expect(output).toEqual({
-      polls: [],
-      user
-    });
-    expect(update.users.hidden).toEqual([user.id]);
-
-  });
+  it("sends polls and user if no ip user exists", () => testToggle());
 
 });

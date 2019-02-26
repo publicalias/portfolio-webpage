@@ -13,6 +13,21 @@ const { checkErrors } = require(`${__rootdir}/master/scripts/utilities`);
 
 const pollsCol = () => db.collection("voting-app/polls");
 
+const handleToggle = async (poll, user, prop) => {
+
+  const bool = Boolean(await pollsCol().findOne({
+    id: poll,
+    [`users.${prop}`]: user.id
+  }));
+
+  await pollsCol().updateOne({ id: poll }, {
+    [bool ? "$pull" : "$push"]: {
+      [`users.${prop}`]: user.id
+    }
+  });
+
+};
+
 //list set sort
 
 const listSetSort = async (req, res) => {
@@ -30,7 +45,7 @@ const listSubmitSearch = async (req, res) => {
   const { list } = JSON.parse(req.query.data);
 
   const errors = checkErrors([{
-    bool: list.searched === "",
+    bool: !list.searched,
     text: "Search must not be empty"
   }]);
 
@@ -56,7 +71,7 @@ const listToggleFlag = async (req, res) => {
 
   const { poll, list } = req.body.data;
 
-  await pollsCol().updateOne({ id: poll }, { $push: { "users.flagged": req.user.id } });
+  await handleToggle(poll, req.user, "flagged");
 
   res.json({ polls: await findPolls(req, list) });
 
@@ -73,14 +88,14 @@ const listToggleHide = async (req, res) => {
 
   if (!user) {
     user = await setIPUser(req.ip);
-    merge = { user };
+    merge = true;
   }
 
-  await pollsCol().updateOne({ id: poll }, { $push: { "users.hidden": user.id } });
+  await handleToggle(poll, user, "hidden");
 
   const polls = await findPolls(req, list);
 
-  res.json(Object.assign({ polls }, merge));
+  res.json(Object.assign({ polls }, merge ? { user } : {}));
 
 };
 

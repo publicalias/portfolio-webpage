@@ -78,12 +78,10 @@ test("reducer accepts META_TIMEOUT_ERROR actions", () => {
 
   const { metaTimeoutError } = actions;
 
-  const errorA = { timer: 100 };
-  const errorB = { timer: 1000 };
-  const errorC = { timer: 900 };
+  const errors = [{ timer: 100 }, { timer: 1000 }, { timer: 900 }];
 
-  const lastState = deepCopy(initialState, { errors: [errorA, errorB] });
-  const nextState = deepCopy(lastState, { errors: [errorC] });
+  const lastState = deepCopy(initialState, { errors: errors.slice(0, 2) });
+  const nextState = deepCopy(lastState, { errors: errors.slice(2) });
 
   expect(reducer(lastState, metaTimeoutError())).toEqual(nextState);
 
