@@ -8,8 +8,9 @@ const { updateView } = require("./scripts/view-logic");
 
 //global imports
 
-const { bindObject, checkInput } = require("client-utils");
+const { checkInput } = require("client-utils");
 const { select } = require("dom-api");
+const { bindObject } = require("utilities");
 
 //app logic
 

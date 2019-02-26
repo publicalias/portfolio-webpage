@@ -3,24 +3,7 @@
 //global imports
 
 const { select } = require("dom-api");
-
-//bind object
-
-const bindObject = (to, from = to) => {
-  for (const p in from) {
-
-    const prop = from[p];
-
-    switch (typeof prop) {
-      case "function":
-        from[p] = prop.bind(to);
-        break;
-      case "object":
-        bindObject(to, prop);
-    }
-
-  }
-};
+const { bindObject } = require("utilities");
 
 //check input
 
@@ -142,7 +125,6 @@ const submitKeys = (id) => {
 //exports
 
 module.exports = {
-  bindObject,
   checkInput,
   encodeAPICall,
   getJSON,

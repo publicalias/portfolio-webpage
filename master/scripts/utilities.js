@@ -4,6 +4,24 @@
 
 const arrEqual = (a, b) => a.toString() === b.toString();
 
+//bind object
+
+const bindObject = (to, from = to) => {
+  for (const p in from) {
+
+    const prop = from[p];
+
+    switch (typeof prop) {
+      case "function":
+        from[p] = prop.bind(to);
+        break;
+      case "object":
+        bindObject(to, prop);
+    }
+
+  }
+};
+
 //chance
 
 const chance = (val) => Math.random() >= (100 - val) / 100;
@@ -104,6 +122,7 @@ const wrapFn = (fn, ...args) => () => fn(...args);
 
 module.exports = {
   arrEqual,
+  bindObject,
   chance,
   checkErrors,
   cycleItems,

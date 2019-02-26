@@ -7,8 +7,9 @@ const { emptyBar, playSound, readTime, toggleSet } = require("./scripts/view-log
 
 //global imports
 
-const { bindObject, checkInput, storageKey } = require("client-utils");
+const { checkInput, storageKey } = require("client-utils");
 const { select } = require("dom-api");
+const { bindObject } = require("utilities");
 
 //app logic
 

@@ -6,10 +6,11 @@ const { tooltipBorders, nodeAttr } = require("./scripts/view-logic");
 
 //global imports
 
-const { bindObject, checkInput, getJSON } = require("client-utils");
+const { checkInput, getJSON } = require("client-utils");
 const { getSVG, tooltip } = require("d3-projects/app-logic");
 const { checkTooltip, globalEvents } = require("d3-projects/event-handlers");
 const { select } = require("dom-api");
+const { bindObject } = require("utilities");
 
 //app logic
 
