@@ -18,20 +18,23 @@ const { mockAPICall, mongoTests, testAuthFail } = require("test-helpers/server-t
 const pollsCol = () => db.collection("voting-app/polls");
 const usersCol = () => db.collection("auth/users");
 
-const initTestToggle = (handler, data, prop) => async (user) => {
+const initTestToggle = (handler, getData, prop) => async (user) => {
 
-  const poll = mockPoll({ id: "id-a" });
-
-  await pollsCol().insertOne(poll);
+  await Promise.all([
+    pollsCol().insertOne(mockPoll({ id: "id-b" })),
+    user && usersCol().insertOne(user)
+  ]);
 
   const toggleBool = async (bool) => {
 
-    const output = await handler(user || {}, data, "json");
-    const update = await pollsCol().findOne();
-    const actual = user || await usersCol().findOne();
+    const output = await handler(user || {}, getData("id-b"), "json");
+
+    const [update, actual] = await Promise.all([
+      pollsCol().findOne(),
+      user || usersCol().findOne()
+    ]);
 
     const show = prop === "flagged" || prop === "hidden" && !bool;
-
     const polls = show ? [update] : [];
 
     expect(output).toEqual(user || !bool ? { polls } : {
@@ -117,18 +120,20 @@ describe("listSubmitSearch", () => {
 
     const polls = [{ title: "Apple" }, { author: "Apple" }, { options: [{ text: "Apple" }] }].map(mockPoll);
 
-    await pollsCol().insertMany(polls);
-    await pollsCol().createIndex({
-      "title": "text",
-      "author": "text",
-      "options.text": "text"
-    });
+    await Promise.all([
+      pollsCol().insertMany(polls),
+      pollsCol().createIndex({
+        "title": "text",
+        "author": "text",
+        "options.text": "text"
+      })
+    ]);
 
     const output = await handler({}, getData("Apple"), "json");
 
-    for (const e of output.polls) {
-      delete e.score;
-    }
+    output.polls.forEach((e, i) => {
+      polls[i].score = e.score;
+    });
 
     expect(output).toEqual({ polls: polls.slice(0, 3) });
 
@@ -149,17 +154,11 @@ describe("listToggleFlag", () => {
     list: mockList()
   });
 
-  const testToggle = initTestToggle(handler, getData("id-a"), "flagged");
+  const testToggle = initTestToggle(handler, getData, "flagged");
 
   it("sends 401 if user is unauthenticated or restricted", () => testAuthFail(handler, getData()));
 
-  it("sends polls if user is valid", () => {
-
-    const user = mockUser({ id: "id-b" });
-
-    return testToggle(user);
-
-  });
+  it("sends polls if user is valid", () => testToggle(mockUser({ id: "id-a" })));
 
 });
 
@@ -176,25 +175,11 @@ describe("listToggleHide", () => {
     list: mockList()
   });
 
-  const testToggle = initTestToggle(handler, getData("id-a"), "hidden");
+  const testToggle = initTestToggle(handler, getData, "hidden");
 
-  it("sends polls if user is authenticated", () => {
+  it("sends polls if user is authenticated", () => testToggle(mockUser({ id: "id-a" })));
 
-    const user = mockUser({ id: "id-b" });
-
-    return testToggle(user);
-
-  });
-
-  it("sends polls if ip user exists", async () => {
-
-    const user = mockIPUser({ id: "id-b" });
-
-    await usersCol().insertOne(user);
-
-    return testToggle(user);
-
-  });
+  it("sends polls if ip user exists", () => testToggle(mockIPUser({ id: "id-a" })));
 
   it("sends polls and user if no ip user exists", () => testToggle());
 
