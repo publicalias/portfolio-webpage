@@ -19,7 +19,7 @@ const FORM_REMOVE_OPTION = (state, { text }) => {
   const nextState = deepCopy(state);
   const options = nextState.form.options;
 
-  const index = options.findIndex((e) => e.text === text);
+  const index = options.findIndex((e) => e === text);
 
   options.splice(index, 1);
 

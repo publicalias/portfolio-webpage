@@ -38,7 +38,7 @@ describe("formAddOption", () => {
   const getLastState = (add) => deepCopy(initialState, {
     user: { id: "id-a" },
     form: {
-      options: [{ text: "Option A" }, { text: "Option B" }],
+      options: ["Option A", "Option B"],
       add
     }
   });

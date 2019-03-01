@@ -24,7 +24,7 @@ const formAddOption = () => (dispatch, getState) => {
     bool: !form.add.trim(),
     text: "Option must not be empty"
   }, {
-    bool: form.options.filter((e) => e.text === form.add).length,
+    bool: form.options.filter((e) => e === form.add).length,
     text: "Option must be unique"
   }, {
     bool: obscene.test(form.add),
