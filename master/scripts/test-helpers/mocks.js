@@ -6,11 +6,11 @@ const { deepCopy } = require("utilities");
 
 //mock data
 
-const mockData = (schema, replace = []) => (data = {}) => {
+const mockData = (schema, replace = {}) => (data = {}) => {
 
-  for (const { key, fn } of replace) {
-    if (data[key] !== undefined) {
-      data[key] = fn(data[key]);
+  for (const p in replace) {
+    if (p in data) {
+      data[p] = replace[p](data[p]);
     }
   }
 

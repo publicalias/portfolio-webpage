@@ -68,7 +68,7 @@ describe("metaGetUser", () => {
 
   const testGetUser = async (user = {}) => {
 
-    if (user.ip !== undefined) {
+    if ("ip" in user) {
       await usersCol().insertOne(user);
     }
 

@@ -69,7 +69,7 @@ const initDeepCopy = (config) => (...args) => {
 
       }
 
-      if (to[p] === undefined || overwrite) {
+      if (!(p in to) || overwrite) {
         to[p] = Array.isArray(prop) ? [] : {};
       }
 

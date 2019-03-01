@@ -190,11 +190,11 @@ const rectUtil = (api) => (rect) => {
 
     const borderBox = window.getComputedStyle(e).boxSizing === "border-box";
 
-    if (height !== undefined) {
+    if ("height" in rect) {
       e.style.height = `${borderBox ? height : Math.max(height - bt - bb - pt - pb, 0)}px`;
     }
 
-    if (width !== undefined) {
+    if ("width" in rect) {
       e.style.width = `${borderBox ? width : Math.max(width - br - bl - pr - pl, 0)}px`;
     }
 

@@ -30,19 +30,15 @@ const mockPoll = mockData({
     flagged: []
   },
   options: []
-}, [{
-
-  key: "options",
-
-  fn(val) {
+}, {
+  options(val) {
     return val.map((e) => deepCopy({
       text: "",
       created: "",
       voted: []
     }, e));
   }
-
-}]);
+});
 
 //exports
 
