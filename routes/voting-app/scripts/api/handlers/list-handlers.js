@@ -6,7 +6,7 @@ const { findPolls } = require("../../app-logic");
 
 //global imports
 
-const { getIPUser, setIPUser } = require(`${__rootdir}/master/scripts/server-utils`);
+const { getOrSetUser } = require(`${__rootdir}/master/scripts/server-utils`);
 const { checkErrors } = require(`${__rootdir}/master/scripts/utilities`);
 
 //utilities
@@ -83,19 +83,13 @@ const listToggleHide = async (req, res) => {
 
   const { poll, list } = req.body.data;
 
-  let user = req.user || await getIPUser(req.ip);
-  let merge;
-
-  if (!user) {
-    user = await setIPUser(req.ip);
-    merge = true;
-  }
+  const { user, created } = await getOrSetUser(req);
 
   await handleToggle(poll, user, "hidden");
 
   const polls = await findPolls(req, list);
 
-  res.json(Object.assign({ polls }, merge ? { user } : {}));
+  res.json(Object.assign({ polls }, created ? { user } : {}));
 
 };
 

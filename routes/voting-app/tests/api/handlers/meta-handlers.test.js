@@ -67,18 +67,20 @@ describe("metaGetUser", () => {
   const getData = () => undefined;
 
   const testGetUser = async (user = {}) => {
-
-    if ("ip" in user) {
-      await usersCol().insertOne(user);
-    }
-
     expect(await handler(user, getData(), "json")).toEqual({ user });
-
   };
 
   it("sends user if user is authenticated", () => testGetUser(mockUser()));
 
-  it("sends user if ip user exists", () => testGetUser(mockIPUser()));
+  it("sends user if ip user exists", async () => {
+
+    const user = mockIPUser();
+
+    await usersCol().insertOne(user);
+
+    return testGetUser(user);
+
+  });
 
   it("sends user if no ip user exists", () => testGetUser());
 

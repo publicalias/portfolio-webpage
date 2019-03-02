@@ -90,13 +90,13 @@ bindObject(mongoTests);
 
 //test auth fail
 
-const testAuthFail = async (handler, data) => {
+const testAuthFail = async (handler, data, more = []) => {
 
-  const users = [{}, mockUser({ data: { restricted: true } })];
+  const users = [{}, mockUser({ data: { restricted: true } })].concat(more);
 
   const output = await Promise.all(users.map((e) => handler(e, data, "sendStatus")));
 
-  expect(output).toEqual([401, 401]);
+  expect(output).toEqual(Array(users.length).fill(401));
 
 };
 

@@ -16,6 +16,31 @@ const usersCol = () => db.collection("auth/users");
 
 const getIPUser = (ip) => usersCol().findOne({ ip });
 
+//get or set user
+
+const setIPUser = async (ip) => {
+
+  await usersCol().insertOne({
+    id: uuid(),
+    type: "ip",
+    ip
+  });
+
+  return getIPUser(ip);
+
+};
+
+const getOrSetUser = async (req) => {
+
+  const user = req.user || await getIPUser(req.ip);
+
+  return {
+    user: user || await setIPUser(req.ip),
+    created: !user
+  };
+
+};
+
 //handle session
 
 const sessionConfig = () => session({
@@ -53,20 +78,6 @@ const sendData = async (api, res) => {
   }
 };
 
-//set ip user
-
-const setIPUser = async (ip) => {
-
-  await usersCol().insertOne({
-    id: uuid(),
-    type: "ip",
-    ip
-  });
-
-  return getIPUser(ip);
-
-};
-
 //to promise
 
 const defineArgs = (args) => typeof args[0] === "function" ? {
@@ -102,8 +113,8 @@ const toPromise = (...args) => new Promise((resolve, reject) => {
 
 module.exports = {
   getIPUser,
+  getOrSetUser,
   handleSession,
   sendData,
-  setIPUser,
   toPromise
 };

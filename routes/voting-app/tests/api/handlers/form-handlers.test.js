@@ -45,9 +45,9 @@ describe("formCreatePoll", () => {
     form: mockForm(form)
   });
 
-  const testError = async (text, data, docs = 0) => {
+  const testError = async (error, data, docs = 0) => {
 
-    const json = { errors: [text] };
+    const json = { errors: [error] };
 
     expect(await handler(mockUser(), getData(data), "json")).toEqual(json);
 

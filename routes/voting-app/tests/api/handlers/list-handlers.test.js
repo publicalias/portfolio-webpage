@@ -20,22 +20,17 @@ const usersCol = () => db.collection("auth/users");
 
 const initTestToggle = (handler, getData, prop) => async (user) => {
 
-  await Promise.all([
-    pollsCol().insertOne(mockPoll({ id: "id-b" })),
-    user && usersCol().insertOne(user)
-  ]);
+  const toggleProp = async (bool) => {
 
-  const toggleBool = async (bool) => {
-
-    const output = await handler(user || {}, getData("id-b"), "json");
+    const output = await handler(user || {}, getData(), "json");
 
     const [update, actual] = await Promise.all([
       pollsCol().findOne(),
       user || usersCol().findOne()
     ]);
 
-    const show = prop === "flagged" || prop === "hidden" && !bool;
-    const polls = show ? [update] : [];
+    const shown = prop === "flagged" || prop === "hidden" && !bool;
+    const polls = shown ? [update] : [];
 
     expect(output).toEqual(user || !bool ? { polls } : {
       polls,
@@ -46,8 +41,13 @@ const initTestToggle = (handler, getData, prop) => async (user) => {
 
   };
 
-  await toggleBool(true);
-  await toggleBool(false);
+  await Promise.all([
+    pollsCol().insertOne(mockPoll({ id: "id-a" })),
+    user && "ip" in user && usersCol().insertOne(user)
+  ]);
+
+  await toggleProp(true);
+  await toggleProp(false);
 
 };
 
@@ -149,8 +149,8 @@ describe("listToggleFlag", () => {
 
   const handler = mockAPICall(listToggleFlag, "PATCH");
 
-  const getData = (poll) => ({
-    poll,
+  const getData = () => ({
+    poll: "id-a",
     list: mockList()
   });
 
@@ -158,7 +158,7 @@ describe("listToggleFlag", () => {
 
   it("sends 401 if user is unauthenticated or restricted", () => testAuthFail(handler, getData()));
 
-  it("sends polls if user is valid", () => testToggle(mockUser({ id: "id-a" })));
+  it("sends polls if user is valid", () => testToggle(mockUser({ id: "id-b" })));
 
 });
 
@@ -170,16 +170,16 @@ describe("listToggleHide", () => {
 
   const handler = mockAPICall(listToggleHide, "PATCH");
 
-  const getData = (poll) => ({
-    poll,
+  const getData = () => ({
+    poll: "id-a",
     list: mockList()
   });
 
   const testToggle = initTestToggle(handler, getData, "hidden");
 
-  it("sends polls if user is authenticated", () => testToggle(mockUser({ id: "id-a" })));
+  it("sends polls if user is authenticated", () => testToggle(mockUser({ id: "id-b" })));
 
-  it("sends polls if ip user exists", () => testToggle(mockIPUser({ id: "id-a" })));
+  it("sends polls if ip user exists", () => testToggle(mockIPUser({ id: "id-b" })));
 
   it("sends polls and user if no ip user exists", () => testToggle());
 
