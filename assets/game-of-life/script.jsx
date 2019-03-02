@@ -41,7 +41,7 @@ class App extends React.Component {
 
       culture,
       start: null,
-      stable: pop === 0,
+      stable: !pop,
 
       history: [],
       reverse: false,

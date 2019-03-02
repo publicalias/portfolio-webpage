@@ -54,6 +54,8 @@ const initDeepCopy = (config) => (...args) => {
 
   const init = Object.assign(defaults, config);
 
+  const initVal = (obj) => Array.isArray(obj) ? [] : {};
+
   const mergeFn = (to, from) => {
 
     for (const p in from) {
@@ -70,7 +72,7 @@ const initDeepCopy = (config) => (...args) => {
       }
 
       if (!(p in to) || overwrite) {
-        to[p] = Array.isArray(prop) ? [] : {};
+        to[p] = initVal(prop);
       }
 
       mergeFn(to[p], prop);
@@ -81,7 +83,7 @@ const initDeepCopy = (config) => (...args) => {
 
   };
 
-  return args.reduce(mergeFn, {});
+  return args.reduce(mergeFn, initVal(args[0]));
 
 };
 

@@ -4,6 +4,8 @@
 
 const parseArith = (that, str) => {
 
+  that.val = Number(that.val);
+
   if (!that.chain) {
     that.chain = `${that.val} ${str}`;
     that.val = "0";

@@ -136,7 +136,7 @@ class App extends React.Component {
       />,
       <RecipeEditor
         entry={entry}
-        key={keyGen(entry ? entry.name : "undefined")}
+        key={keyGen(entry ? entry.name : `${Date.now()}`)}
         modalNum={this.state.modalNum}
         updateList={this.updateList}
         used={this.state.list.map((e) => e.name)}
