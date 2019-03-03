@@ -6,6 +6,7 @@ const formHandlers = require("./handlers/form-handlers");
 const listHandlers = require("./handlers/list-handlers");
 const menuHandlers = require("./handlers/menu-handlers");
 const metaHandlers = require("./handlers/meta-handlers");
+const viewHandlers = require("./handlers/view-handlers");
 
 //node modules
 
@@ -21,7 +22,8 @@ const apiRequest = async (req, res) => {
     formHandlers,
     listHandlers,
     menuHandlers,
-    metaHandlers
+    metaHandlers,
+    viewHandlers
   );
 
   const handler = req.params.action.split("-")
