@@ -120,14 +120,7 @@ describe("listSubmitSearch", () => {
 
     const polls = [{ title: "Apple" }, { author: "Apple" }, { options: [{ text: "Apple" }] }].map(mockPoll);
 
-    await Promise.all([
-      pollsCol().insertMany(polls),
-      pollsCol().createIndex({
-        "title": "text",
-        "author": "text",
-        "options.text": "text"
-      })
-    ]);
+    await pollsCol().insertMany(polls);
 
     const output = await handler({}, getData("Apple"), "json");
 

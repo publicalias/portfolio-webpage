@@ -14,7 +14,9 @@ const metaGetPolls = async (req, res) => {
 
   const { skip, list } = JSON.parse(req.query.data);
 
-  res.json({ polls: await findPolls(req, list, skip) });
+  const polls = await findPolls(req, list, skip);
+
+  res.json({ polls });
 
 };
 

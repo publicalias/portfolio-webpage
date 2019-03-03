@@ -2,31 +2,35 @@
 
 //local imports
 
-const { findPolls } = require("../../app-logic");
+const { findByID, findPolls } = require("../../app-logic");
 
 //global imports
 
-const { getOrSetUser } = require(`${__rootdir}/master/scripts/server-utils`);
+const { getOrSetUser, retryWrite } = require(`${__rootdir}/master/scripts/server-utils`);
 const { checkErrors } = require(`${__rootdir}/master/scripts/utilities`);
 
 //utilities
 
 const pollsCol = () => db.collection("voting-app/polls");
 
-const handleToggle = async (poll, user, prop) => {
+const handleToggle = (poll, user, prop) => retryWrite(async () => {
 
-  const bool = Boolean(await pollsCol().findOne({
+  const { users } = await findByID(poll);
+
+  const bool = users[prop].includes(user.id);
+
+  const { matchedCount } = await pollsCol().updateOne({
     id: poll,
-    [`users.${prop}`]: user.id
-  }));
-
-  await pollsCol().updateOne({ id: poll }, {
+    [`users.${prop}`]: users[prop]
+  }, {
     [bool ? "$pull" : "$push"]: {
       [`users.${prop}`]: user.id
     }
   });
 
-};
+  return matchedCount;
+
+});
 
 //list set sort
 
@@ -34,7 +38,9 @@ const listSetSort = async (req, res) => {
 
   const { list } = JSON.parse(req.query.data);
 
-  res.json({ polls: await findPolls(req, list) });
+  const polls = await findPolls(req, list);
+
+  res.json({ polls });
 
 };
 
@@ -50,10 +56,16 @@ const listSubmitSearch = async (req, res) => {
   }]);
 
   if (errors.length) {
+
     res.json({ errors });
-  } else {
-    res.json({ polls: await findPolls(req, list) });
+
+    return;
+
   }
+
+  const polls = await findPolls(req, list);
+
+  res.json({ polls });
 
 };
 
@@ -73,7 +85,9 @@ const listToggleFlag = async (req, res) => {
 
   await handleToggle(poll, req.user, "flagged");
 
-  res.json({ polls: await findPolls(req, list) });
+  const polls = await findPolls(req, list);
+
+  res.json({ polls });
 
 };
 

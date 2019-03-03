@@ -20,9 +20,13 @@ const pollsCol = () => db.collection("voting-app/polls");
 
 //form create poll
 
-const handleCreate = async (req, list, form) => {
+const handleCreate = async (req, res) => {
+
+  const { list, form } = req.body.data;
 
   const id = uuid();
+
+  await pollsCol().createIndex({ title: 1 }, { unique: true });
 
   await pollsCol().insertOne({
     title: form.title,
@@ -43,10 +47,12 @@ const handleCreate = async (req, list, form) => {
     }))
   });
 
-  return {
-    polls: await findPolls(req, list),
+  const polls = await findPolls(req, list);
+
+  res.json({
+    polls,
     poll: id
-  };
+  });
 
 };
 
@@ -60,15 +66,15 @@ const formCreatePoll = async (req, res) => {
 
   }
 
-  const { list, form } = req.body.data;
+  const { form } = req.body.data;
 
-  const doc = await pollsCol().findOne({ title: form.title });
+  const exists = await pollsCol().findOne({ title: form.title });
 
   const errors = checkErrors([{
     bool: !form.title.trim(),
     text: "Title must not be empty"
   }, {
-    bool: doc,
+    bool: exists,
     text: "Title must be unique"
   }, {
     bool: obscene.test(form.title),
@@ -87,7 +93,7 @@ const formCreatePoll = async (req, res) => {
   if (errors.length) {
     res.json({ errors });
   } else {
-    res.json(await handleCreate(req, list, form));
+    await handleCreate(req, res);
   }
 
 };

@@ -51,7 +51,7 @@ const readLogs = async (req, res) => {
   try {
 
     const docs = await termsCol()
-      .find({}, { projection: { _id: false } })
+      .findMany({}, { projection: { _id: false } })
       .sort({ unix: -1 })
       .limit(10)
       .toArray();

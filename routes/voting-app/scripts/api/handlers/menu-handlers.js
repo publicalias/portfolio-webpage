@@ -11,10 +11,16 @@ const menuSetFilter = async (req, res) => {
   const { list } = JSON.parse(req.query.data);
 
   if ((!req.user || req.user.data.restricted) && list.filter === "created") {
+
     res.sendStatus(401);
-  } else {
-    res.json({ polls: await findPolls(req, list) });
+
+    return;
+
   }
+
+  const polls = await findPolls(req, list);
+
+  res.json({ polls });
 
 };
 

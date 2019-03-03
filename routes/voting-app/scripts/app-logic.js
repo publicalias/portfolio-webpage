@@ -9,7 +9,11 @@ const { deepCopy } = require(`${__rootdir}/master/scripts/utilities`);
 
 const pollsCol = () => db.collection("voting-app/polls");
 
-//filter polls
+//find by id
+
+const findByID = (id) => pollsCol().findOne({ id });
+
+//find polls
 
 const getQuery = (user, list) => {
 
@@ -39,7 +43,7 @@ const findPolls = async (req, list, skip) => {
 
   const user = req.user || await getIPUser(req.ip) || {};
 
-  const text = { $text: { $search: list.searched } }; //expects text index
+  const text = { $text: { $search: list.searched } };
   const meta = { score: { $meta: "textScore" } };
 
   let args = {
@@ -56,6 +60,12 @@ const findPolls = async (req, list, skip) => {
     });
   }
 
+  await pollsCol().createIndex({
+    "title": "text",
+    "author": "text",
+    "options.text": "text"
+  });
+
   return pollsCol()
     .find(args.query, { projection: args.projection })
     .sort(args.sort)
@@ -67,4 +77,7 @@ const findPolls = async (req, list, skip) => {
 
 //exports
 
-module.exports = { findPolls };
+module.exports = {
+  findByID,
+  findPolls
+};

@@ -80,7 +80,7 @@ const mongoTests = {
 
   reset(...args) {
     return async () => {
-      await Promise.all(args.map((e) => e().deleteMany({})));
+      await Promise.all(args.map((e) => e().deleteMany()));
     };
   }
 
