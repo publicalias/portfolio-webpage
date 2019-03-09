@@ -6,7 +6,7 @@
 
 const handlers = require("../../../scripts/api/handlers/view-handlers");
 
-const { mockList, mockPoll } = require("../../test-helpers");
+const { mockPoll } = require("../../test-helpers");
 
 //global imports
 
@@ -33,16 +33,11 @@ const initTestVote = (handler, getData) => async (user) => {
       user || usersCol().findOne()
     ]);
 
-    const polls = [update];
-
     const checkVote = (val) => {
       expect(update.options[val].voted).toEqual(index === val ? [actual.id] : []);
     };
 
-    expect(output).toEqual(user || index === 1 ? { polls } : {
-      polls,
-      user: actual
-    });
+    expect(output).toEqual({});
 
     checkVote(0);
     checkVote(1);
@@ -79,18 +74,18 @@ describe("viewAddOption", () => {
 
   const getData = (text) => ({
     poll: "id-a",
-    text,
-    list: mockList()
+    text
   });
 
   const testError = async (error, text, data) => {
 
     const poll = mockPoll(Object.assign({ id: "id-a" }, data));
-    const json = { errors: [error] };
 
     await pollsCol().insertOne(poll);
 
-    expect(await handler(mockUser(), getData(text), "json")).toEqual(json);
+    const output = await handler(mockUser(), getData(text), "json");
+
+    expect(output).toEqual({ errors: [error] });
 
   };
 
@@ -108,7 +103,7 @@ describe("viewAddOption", () => {
 
   it("sends errors if option is obscene", () => testError("Option must not be obscene", "Fuck"));
 
-  it("sends polls if option is valid", async () => {
+  it("sends object if option is valid", async () => {
 
     const poll = mockPoll({ id: "id-a" });
     const user = mockUser({ id: "id-b" });
@@ -116,15 +111,16 @@ describe("viewAddOption", () => {
     await pollsCol().insertOne(poll);
 
     const output = await handler(user, getData("Option A"), "json");
-    const update = Object.assign(poll, {
+    const update = await pollsCol().findOne();
+
+    expect(output).toEqual({});
+    expect(update).toEqual(Object.assign(poll, {
       options: [{
         text: "Option A",
         created: "id-b",
         voted: []
       }]
-    });
-
-    expect(output).toEqual({ polls: [update] });
+    }));
 
   });
 
@@ -140,17 +136,16 @@ describe("viewCastVote", () => {
 
   const getData = (text) => ({
     poll: "id-a",
-    text,
-    list: mockList()
+    text
   });
 
   const testVote = initTestVote(handler, getData);
 
-  it("sends polls if user is authenticated", () => testVote(mockUser({ id: "id-b" })));
+  it("sends object if user is authenticated", () => testVote(mockUser({ id: "id-b" })));
 
-  it("sends polls if ip user exists", () => testVote(mockIPUser({ id: "id-b" })));
+  it("sends object if ip user exists", () => testVote(mockIPUser({ id: "id-b" })));
 
-  it("sends polls and user if no ip user exists", () => testVote());
+  it("sends object if no ip user exists", () => testVote());
 
 });
 
@@ -162,10 +157,7 @@ describe("viewDeletePoll", () => {
 
   const handler = mockAPICall(viewDeletePoll, "DELETE");
 
-  const getData = () => ({
-    poll: "id-a",
-    list: mockList()
-  });
+  const getData = () => ({ poll: "id-a" });
 
   const getPoll = () => mockPoll({
     id: "id-a",
@@ -178,17 +170,23 @@ describe("viewDeletePoll", () => {
 
     await pollsCol().insertOne(getPoll());
 
-    return testAuthFail(handler, getData(), [user]);
+    await testAuthFail(handler, getData(), [user]);
+
+    expect(await pollsCol().countDocuments()).toEqual(1);
 
   });
 
-  it("sends polls if user is valid", async () => {
+  it("sends object if user is valid", async () => {
 
     const user = mockUser({ id: "id-b" });
 
     await pollsCol().insertOne(getPoll());
 
-    expect(await handler(user, getData(), "json")).toEqual({ polls: [] });
+    const output = await handler(user, getData(), "json")
+
+    expect(output).toEqual({});
+
+    expect(await pollsCol().countDocuments()).toEqual(0);
 
   });
 
@@ -204,8 +202,7 @@ describe("viewRemoveOption", () => {
 
   const getData = (text) => ({
     poll: "id-a",
-    text,
-    list: mockList()
+    text
   });
 
   const getPoll = () => mockPoll({
@@ -225,10 +222,10 @@ describe("viewRemoveOption", () => {
     await pollsCol().insertOne(poll);
 
     const output = await handler(user, getData("Option A"), "json");
+    const update = await pollsCol().findOne();
 
-    poll.options = [];
-
-    expect(output).toEqual({ polls: [poll] });
+    expect(output).toEqual({});
+    expect(update).toEqual(Object.assign(poll, { options: [] }));
 
   };
 
@@ -243,9 +240,9 @@ describe("viewRemoveOption", () => {
 
   });
 
-  it("sends polls if user is valid (poll)", () => testRemove("id-b"));
+  it("sends object if user is valid (poll)", () => testRemove("id-b"));
 
-  it("sends polls if user is valid (option)", () => testRemove("id-c"));
+  it("sends object if user is valid (option)", () => testRemove("id-c"));
 
 });
 
@@ -257,10 +254,7 @@ describe("viewTogglePrivate", () => {
 
   const handler = mockAPICall(viewTogglePrivate, "PATCH");
 
-  const getData = () => ({
-    poll: "id-a",
-    list: mockList()
-  });
+  const getData = () => ({ poll: "id-a" });
 
   const getPoll = () => mockPoll({
     id: "id-a",
@@ -269,14 +263,13 @@ describe("viewTogglePrivate", () => {
 
   const testToggle = async (user) => {
 
-    const poll = await pollsCol().findOne();
-    const bool = !poll.private;
+    const { private: bool } = await pollsCol().findOne();
 
     const output = await handler(user, getData(), "json");
     const update = await pollsCol().findOne();
 
-    expect(output).toEqual({ polls: bool ? [] : [update] });
-    expect(update.private).toEqual(bool);
+    expect(output).toEqual({});
+    expect(update.private).toEqual(!bool);
 
   };
 
@@ -290,7 +283,7 @@ describe("viewTogglePrivate", () => {
 
   });
 
-  it("sends polls if user is valid", async () => {
+  it("sends object if user is valid", async () => {
 
     const user = mockUser({ id: "id-b" });
 

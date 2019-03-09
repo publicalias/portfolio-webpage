@@ -25,6 +25,10 @@ const META_CLOSE_ERROR = (state, { index }) => {
 
 };
 
+//meta no op
+
+const META_NO_OP = (state) => state;
+
 //meta set state
 
 const META_SET_STATE = (state, { merge, config }) => initDeepCopy(config)(state, merge);
@@ -47,6 +51,7 @@ const META_TIMEOUT_ERROR = (state) => {
 module.exports = {
   META_ADD_ERRORS,
   META_CLOSE_ERROR,
+  META_NO_OP,
   META_SET_STATE,
   META_TIMEOUT_ERROR
 };

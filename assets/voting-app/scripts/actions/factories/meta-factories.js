@@ -14,6 +14,10 @@ const metaCloseError = (index) => ({
   index
 });
 
+//meta no op
+
+const metaNoOp = () => ({ type: "META_NO_OP" });
+
 //meta set state
 
 const metaSetState = (merge, config) => ({
@@ -31,6 +35,7 @@ const metaTimeoutError = () => ({ type: "META_TIMEOUT_ERROR" });
 module.exports = {
   metaAddErrors,
   metaCloseError,
+  metaNoOp,
   metaSetState,
   metaTimeoutError
 };

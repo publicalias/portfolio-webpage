@@ -1,9 +1,5 @@
 "use strict";
 
-//local imports
-
-const { findPolls } = require("../../app-logic");
-
 //global imports
 
 const { checkErrors } = require(`${__rootdir}/master/scripts/utilities`);
@@ -22,7 +18,7 @@ const pollsCol = () => db.collection("voting-app/polls");
 
 const handleCreate = async (req, res) => {
 
-  const { list, form } = req.body.data;
+  const { form } = req.body.data;
 
   const id = uuid();
 
@@ -47,12 +43,7 @@ const handleCreate = async (req, res) => {
     }))
   });
 
-  const polls = await findPolls(req, list);
-
-  res.json({
-    polls,
-    poll: id
-  });
+  res.json({ poll: id });
 
 };
 

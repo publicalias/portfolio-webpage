@@ -6,15 +6,23 @@ const { getIPUser } = require(`${__rootdir}/master/scripts/server-utils`);
 
 //local imports
 
-const { findPolls } = require("../../app-logic");
+const { findByID, findPolls } = require("../../app-logic");
 
 //meta get polls
 
 const metaGetPolls = async (req, res) => {
 
-  const { skip, list } = JSON.parse(req.query.data);
+  const { poll, skip, list } = JSON.parse(req.query.data);
 
-  const polls = await findPolls(req, list, skip);
+  if ((!req.user || req.user.data.restricted) && list.filter === "created") {
+
+    res.sendStatus(401);
+
+    return;
+
+  }
+
+  const polls = poll ? [await findByID(poll)] : await findPolls(req, list, skip);
 
   res.json({ polls });
 

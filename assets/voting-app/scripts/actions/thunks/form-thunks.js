@@ -48,24 +48,20 @@ const formAddOption = () => (dispatch, getState) => {
 
 const formCreatePoll = () => (dispatch, getState) => {
 
-  const { list, form } = getState();
+  const { form } = getState();
 
   const args = {
     path: "/api/form-create-poll",
     method: "POST",
-    data: {
-      list,
-      form
-    }
+    data: { form }
   };
 
   const success = (res) => {
 
-    const { polls, poll, errors } = res;
+    const { poll, errors } = res;
 
     dispatch(errors ? metaAddErrors(errors) : metaSetState({
       page: "view",
-      polls,
       list: deepCopy(initialState.list, { filter: "created" }),
       form: deepCopy(initialState.form),
       view: deepCopy(initialState.view, { poll })

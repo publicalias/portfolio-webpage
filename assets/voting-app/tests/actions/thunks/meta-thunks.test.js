@@ -8,10 +8,6 @@ const { actions } = require("../../../scripts/actions/actions");
 const { initialState } = require("../../../scripts/reducer/reducer");
 const { testAPIFailure, testAPISuccess } = require("../../test-helpers");
 
-//global imports
-
-const { deepCopy } = require("utilities");
-
 //setup
 
 afterEach(() => {
@@ -30,6 +26,7 @@ describe("metaGetPolls", () => {
     path: "/api/meta-get-polls",
     method: "GET",
     data: {
+      poll: undefined,
       skip: false,
       list: initialState.list
     }
@@ -37,9 +34,11 @@ describe("metaGetPolls", () => {
 
   it("dispatches META_SET_STATE action on success", () => {
 
-    const actionList = [metaSetState({})];
+    const res = { polls: [] };
 
-    return testAPISuccess(action, args, {}, actionList);
+    const actionList = [metaSetState(res)];
+
+    return testAPISuccess(action, args, res, actionList);
 
   });
 
@@ -63,12 +62,7 @@ describe("metaGetUser", () => {
 
     const res = { user: { id: "id-a" } };
 
-    const merge = deepCopy(initialState, res);
-
-    delete merge.polls;
-    delete merge.errors;
-
-    const actionList = [metaSetState(merge, { object: true })];
+    const actionList = [metaSetState(res)];
 
     return testAPISuccess(action, args, res, actionList);
 

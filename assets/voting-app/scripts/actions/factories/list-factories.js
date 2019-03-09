@@ -21,10 +21,23 @@ const listSetSearchText = (search) => ({
   search
 });
 
+//list set sort
+
+const listSetSort = (sort) => ({
+  type: "LIST_SET_SORT",
+  sort
+});
+
+//list submit search
+
+const listSubmitSearch = () => ({ type: "LIST_SUBMIT_SEARCH" });
+
 //exports
 
 module.exports = {
   listOpenView,
   listSetIndex,
-  listSetSearchText
+  listSetSearchText,
+  listSetSort,
+  listSubmitSearch
 };

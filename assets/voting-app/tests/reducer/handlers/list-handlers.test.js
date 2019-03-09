@@ -42,8 +42,45 @@ test("reducer accepts LIST_SET_SEARCH_TEXT actions", () => {
 
   const { listSetSearchText } = actions;
 
-  const nextState = deepCopy(initialState, { list: { search: "a" } });
+  const nextState = deepCopy(initialState, { list: { search: "Apple" } });
 
-  expect(reducer(initialState, listSetSearchText("a"))).toEqual(nextState);
+  expect(reducer(initialState, listSetSearchText("Apple"))).toEqual(nextState);
+
+});
+
+//list set sort
+
+test("reducer accepts LIST_SET_SORT actions", () => {
+
+  const { listSetSort } = actions;
+
+  const nextState = deepCopy(initialState, { list: { sort: "popular" } });
+
+  expect(reducer(initialState, listSetSort("popular"))).toEqual(nextState);
+
+});
+
+//list submit search
+
+test("reducer accepts LIST_SUBMIT_SEARCH actions", () => {
+
+  const { listSubmitSearch } = actions;
+
+  const lastState = deepCopy(initialState, {
+    list: {
+      search: "Apple",
+      index: 1
+    }
+  });
+
+  const nextState = deepCopy(lastState, {
+    list: {
+      search: "",
+      searched: "Apple",
+      index: 0
+    }
+  });
+
+  expect(reducer(lastState, listSubmitSearch())).toEqual(nextState);
 
 });

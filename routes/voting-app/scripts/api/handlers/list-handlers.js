@@ -2,12 +2,11 @@
 
 //local imports
 
-const { findByID, findPolls } = require("../../app-logic");
+const { findByID } = require("../../app-logic");
 
 //global imports
 
 const { getOrSetUser, retryWrite } = require(`${__rootdir}/master/scripts/server-utils`);
-const { checkErrors } = require(`${__rootdir}/master/scripts/utilities`);
 
 //utilities
 
@@ -32,43 +31,6 @@ const handleToggle = (poll, user, prop) => retryWrite(async () => {
 
 });
 
-//list set sort
-
-const listSetSort = async (req, res) => {
-
-  const { list } = JSON.parse(req.query.data);
-
-  const polls = await findPolls(req, list);
-
-  res.json({ polls });
-
-};
-
-//list submit search
-
-const listSubmitSearch = async (req, res) => {
-
-  const { list } = JSON.parse(req.query.data);
-
-  const errors = checkErrors([{
-    bool: !list.searched,
-    text: "Search must not be empty"
-  }]);
-
-  if (errors.length) {
-
-    res.json({ errors });
-
-    return;
-
-  }
-
-  const polls = await findPolls(req, list);
-
-  res.json({ polls });
-
-};
-
 //list toggle flag
 
 const listToggleFlag = async (req, res) => {
@@ -81,13 +43,11 @@ const listToggleFlag = async (req, res) => {
 
   }
 
-  const { poll, list } = req.body.data;
+  const { poll } = req.body.data;
 
   await handleToggle(poll, req.user, "flagged");
 
-  const polls = await findPolls(req, list);
-
-  res.json({ polls });
+  res.json({});
 
 };
 
@@ -95,23 +55,19 @@ const listToggleFlag = async (req, res) => {
 
 const listToggleHide = async (req, res) => {
 
-  const { poll, list } = req.body.data;
+  const { poll } = req.body.data;
 
-  const { user, created } = await getOrSetUser(req);
+  const user = await getOrSetUser(req);
 
   await handleToggle(poll, user, "hidden");
 
-  const polls = await findPolls(req, list);
-
-  res.json(Object.assign({ polls }, created ? { user } : {}));
+  res.json({});
 
 };
 
 //exports
 
 module.exports = {
-  listSetSort,
-  listSubmitSearch,
   listToggleFlag,
   listToggleHide
 };

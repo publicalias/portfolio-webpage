@@ -5,16 +5,6 @@
 const { mockData } = require("test-helpers/mocks");
 const { deepCopy } = require("utilities");
 
-//mock list
-
-const mockList = mockData({
-  filter: "all",
-  search: "",
-  searched: "",
-  sort: "new",
-  index: 0
-});
-
 //mock poll
 
 const mockPoll = mockData({
@@ -42,7 +32,4 @@ const mockPoll = mockData({
 
 //exports
 
-module.exports = {
-  mockList,
-  mockPoll
-};
+module.exports = { mockPoll };

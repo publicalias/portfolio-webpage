@@ -32,12 +32,9 @@ const setIPUser = async (ip) => {
 
 const getOrSetUser = async (req) => {
 
-  const user = req.user || await getIPUser(req.ip);
+  const user = req.user || await getIPUser(req.ip) || await setIPUser(req.ip);
 
-  return {
-    user: user || await setIPUser(req.ip),
-    created: !user
-  };
+  return user;
 
 };
 

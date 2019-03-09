@@ -86,6 +86,7 @@
     "max-params": [1, 5],
     "max-statements": 1,
     "no-console": 1,
+    "no-empty-function": 1,
     "object-curly-newline": 1, //js-beautify conflict
 
     "react/no-danger": 1,

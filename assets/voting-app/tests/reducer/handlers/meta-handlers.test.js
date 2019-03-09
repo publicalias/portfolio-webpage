@@ -42,6 +42,16 @@ test("reducer accepts META_CLOSE_ERROR actions", () => {
 
 });
 
+//meta no op
+
+test("reducer accepts META_NO_OP actions", () => {
+
+  const { metaNoOp } = actions;
+
+  expect(reducer(initialState, metaNoOp())).toEqual(initialState);
+
+});
+
 //meta set state
 
 describe("reducer", () => {

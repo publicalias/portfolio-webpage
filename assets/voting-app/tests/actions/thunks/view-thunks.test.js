@@ -5,7 +5,6 @@
 //local imports
 
 const { actions } = require("../../../scripts/actions/actions");
-const { initialState } = require("../../../scripts/reducer/reducer");
 const { testAPIFailure, testAPISuccess } = require("../../test-helpers");
 
 //setup
@@ -19,7 +18,7 @@ afterEach(() => {
 
 describe("viewAddOption", () => {
 
-  const { metaAddErrors, metaSetState, viewAddOption } = actions;
+  const { metaAddErrors, metaNoOp, viewAddOption } = actions;
 
   const action = viewAddOption("");
   const args = {
@@ -27,14 +26,13 @@ describe("viewAddOption", () => {
     method: "PATCH",
     data: {
       poll: "",
-      text: "",
-      list: initialState.list
+      text: ""
     }
   };
 
-  it("dispatches META_SET_STATE action on success", () => {
+  it("dispatches META_NO_OP action on success", () => {
 
-    const actionList = [metaSetState({})];
+    const actionList = [metaNoOp()];
 
     return testAPISuccess(action, args, {}, actionList);
 
@@ -56,7 +54,7 @@ describe("viewAddOption", () => {
 
 describe("viewCastVote", () => {
 
-  const { metaSetState, viewCastVote } = actions;
+  const { metaNoOp, viewCastVote } = actions;
 
   const action = viewCastVote("", "");
   const args = {
@@ -64,14 +62,13 @@ describe("viewCastVote", () => {
     method: "PATCH",
     data: {
       poll: "",
-      text: "",
-      list: initialState.list
+      text: ""
     }
   };
 
-  it("dispatches META_SET_STATE action on success", () => {
+  it("dispatches META_NO_OP action on success", () => {
 
-    const actionList = [metaSetState({})];
+    const actionList = [metaNoOp()];
 
     return testAPISuccess(action, args, {}, actionList);
 
@@ -91,22 +88,14 @@ describe("viewDeletePoll", () => {
   const args = {
     path: "/api/view-delete-poll",
     method: "DELETE",
-    data: {
-      poll: "id-a",
-      list: initialState.list
-    }
+    data: { poll: "id-a" }
   };
 
   it("dispatches META_SET_STATE action on success", () => {
 
-    const res = { polls: [] };
+    const actionList = [metaSetState({ page: "list" })];
 
-    const actionList = [metaSetState({
-      polls: [],
-      page: "list"
-    })];
-
-    return testAPISuccess(action, args, res, actionList);
+    return testAPISuccess(action, args, {}, actionList);
 
   });
 
@@ -118,7 +107,7 @@ describe("viewDeletePoll", () => {
 
 describe("viewRemoveOption", () => {
 
-  const { metaSetState, viewRemoveOption } = actions;
+  const { metaNoOp, viewRemoveOption } = actions;
 
   const action = viewRemoveOption("", "");
   const args = {
@@ -126,14 +115,13 @@ describe("viewRemoveOption", () => {
     method: "PATCH",
     data: {
       poll: "",
-      text: "",
-      list: initialState.list
+      text: ""
     }
   };
 
-  it("dispatches META_SET_STATE action on success", () => {
+  it("dispatches META_NO_OP action on success", () => {
 
-    const actionList = [metaSetState({})];
+    const actionList = [metaNoOp()];
 
     return testAPISuccess(action, args, {}, actionList);
 
@@ -147,21 +135,18 @@ describe("viewRemoveOption", () => {
 
 describe("viewTogglePrivate", () => {
 
-  const { metaSetState, viewTogglePrivate } = actions;
+  const { metaNoOp, viewTogglePrivate } = actions;
 
   const action = viewTogglePrivate("");
   const args = {
     path: "/api/view-toggle-private",
     method: "PATCH",
-    data: {
-      poll: "",
-      list: initialState.list
-    }
+    data: { poll: "" }
   };
 
-  it("dispatches META_SET_STATE action on success", () => {
+  it("dispatches META_NO_OP action on success", () => {
 
-    const actionList = [metaSetState({})];
+    const actionList = [metaNoOp()];
 
     return testAPISuccess(action, args, {}, actionList);
 

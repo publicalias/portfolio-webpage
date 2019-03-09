@@ -2,7 +2,7 @@
 
 //local imports
 
-const { metaSetState, metaAddErrors } = require("./actions/factories/meta-factories");
+const { metaAddErrors, metaNoOp, metaSetState } = require("./actions/factories/meta-factories");
 
 //global imports
 
@@ -15,7 +15,18 @@ const reduxAPICall = (dispatch, args, success, failure) => {
   const { path, init } = encodeAPICall(args);
 
   const successFn = success || ((res) => {
-    dispatch(metaSetState(res));
+
+    const { errors } = res;
+    const { length } = Object.keys(res);
+
+    if (errors) {
+      dispatch(metaAddErrors(errors));
+    } else if (length) {
+      dispatch(metaSetState(res));
+    } else {
+      dispatch(metaNoOp());
+    }
+
   });
 
   const failureFn = failure || ((err) => {

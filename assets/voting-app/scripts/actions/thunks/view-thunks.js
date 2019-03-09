@@ -3,49 +3,37 @@
 //local imports
 
 const { reduxAPICall } = require("../../app-logic");
-const { metaAddErrors, metaSetState } = require("../factories/meta-factories");
+const { metaSetState } = require("../factories/meta-factories");
 
 //view add option
 
 const viewAddOption = (id) => (dispatch, getState) => {
 
-  const { list, view } = getState();
+  const { view } = getState();
 
   const args = {
     path: "/api/view-add-option",
     method: "PATCH",
     data: {
       poll: id,
-      text: view.add,
-      list
+      text: view.add
     }
   };
 
-  const success = (res) => {
-
-    const { polls, errors } = res;
-
-    dispatch(errors ? metaAddErrors(errors) : metaSetState({ polls }));
-
-  };
-
-  return reduxAPICall(dispatch, args, success);
+  return reduxAPICall(dispatch, args);
 
 };
 
 //view cast vote
 
-const viewCastVote = (id, text) => (dispatch, getState) => {
-
-  const { list } = getState();
+const viewCastVote = (id, text) => (dispatch) => {
 
   const args = {
     path: "/api/view-cast-vote",
     method: "PATCH",
     data: {
       poll: id,
-      text,
-      list
+      text
     }
   };
 
@@ -55,28 +43,16 @@ const viewCastVote = (id, text) => (dispatch, getState) => {
 
 //view delete poll
 
-const viewDeletePoll = (id) => (dispatch, getState) => {
-
-  const { list } = getState();
+const viewDeletePoll = (id) => (dispatch) => {
 
   const args = {
     path: "/api/view-delete-poll",
     method: "DELETE",
-    data: {
-      poll: id,
-      list
-    }
+    data: { poll: id }
   };
 
-  const success = (res) => {
-
-    const { polls } = res;
-
-    dispatch(metaSetState({
-      polls,
-      page: "list"
-    }));
-
+  const success = () => {
+    dispatch(metaSetState({ page: "list" }));
   };
 
   return reduxAPICall(dispatch, args, success);
@@ -85,17 +61,14 @@ const viewDeletePoll = (id) => (dispatch, getState) => {
 
 //view remove option
 
-const viewRemoveOption = (id, text) => (dispatch, getState) => {
-
-  const { list } = getState();
+const viewRemoveOption = (id, text) => (dispatch) => {
 
   const args = {
     path: "/api/view-remove-option",
     method: "PATCH",
     data: {
       poll: id,
-      text,
-      list
+      text
     }
   };
 
@@ -105,17 +78,12 @@ const viewRemoveOption = (id, text) => (dispatch, getState) => {
 
 //view toggle private
 
-const viewTogglePrivate = (id) => (dispatch, getState) => {
-
-  const { list } = getState();
+const viewTogglePrivate = (id) => (dispatch) => {
 
   const args = {
     path: "/api/view-toggle-private",
     method: "PATCH",
-    data: {
-      poll: id,
-      list
-    }
+    data: { poll: id }
   };
 
   return reduxAPICall(dispatch, args);

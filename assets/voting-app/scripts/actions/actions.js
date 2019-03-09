@@ -10,23 +10,24 @@ const viewFactories = require("./factories/view-factories");
 
 const formThunks = require("./thunks/form-thunks");
 const listThunks = require("./thunks/list-thunks");
-const menuThunks = require("./thunks/menu-thunks");
 const metaThunks = require("./thunks/meta-thunks");
 const viewThunks = require("./thunks/view-thunks");
 
 //actions
 
 const actions = Object.assign(
+
   formFactories,
   listFactories,
   menuFactories,
   metaFactories,
   viewFactories,
+
   formThunks,
   listThunks,
-  menuThunks,
   metaThunks,
   viewThunks
+
 );
 
 //exports

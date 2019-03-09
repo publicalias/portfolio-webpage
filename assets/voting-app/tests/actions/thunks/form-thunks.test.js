@@ -36,7 +36,6 @@ describe("formAddOption", () => {
   const action = formAddOption();
 
   const getLastState = (add) => deepCopy(initialState, {
-    user: { id: "id-a" },
     form: {
       options: ["Option A", "Option B"],
       add
@@ -86,10 +85,12 @@ describe("formAddOption", () => {
 
     const lastState = getLastState("Option C");
 
+    const { form: { options, add } } = lastState;
+
     const store = mockStore(lastState);
     const actionList = [metaSetState({
       form: {
-        options: lastState.form.options.concat([lastState.form.add]),
+        options: options.concat([add]),
         add: ""
       }
     })];
@@ -112,25 +113,18 @@ describe("formCreatePoll", () => {
   const args = {
     path: "/api/form-create-poll",
     method: "POST",
-    data: {
-      list: initialState.list,
-      form: initialState.form
-    }
+    data: { form: initialState.form }
   };
 
   it("dispatches META_SET_STATE action on success", () => {
 
-    const res = {
-      polls: [{ id: "id-a" }],
-      poll: "id-a"
-    };
+    const res = { poll: "id-a" };
 
     const actionList = [metaSetState({
       page: "view",
-      polls: res.polls,
       list: deepCopy(initialState.list, { filter: "created" }),
       form: deepCopy(initialState.form),
-      view: deepCopy(initialState.view, { poll: res.poll })
+      view: deepCopy(initialState.view, { poll: "id-a" })
     })];
 
     return testAPISuccess(action, args, res, actionList);

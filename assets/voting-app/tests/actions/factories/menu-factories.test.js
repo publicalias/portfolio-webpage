@@ -14,6 +14,19 @@ test("menuOpenForm creates MENU_OPEN_FORM actions", () => {
 
 });
 
+//menu set filter
+
+test("menuSetFilter creates MENU_SET_FILTER actions", () => {
+
+  const { menuSetFilter } = actions;
+
+  expect(menuSetFilter("")).toEqual({
+    type: "MENU_SET_FILTER",
+    filter: ""
+  });
+
+});
+
 //menu toggle confirm
 
 test("menuToggleConfirm creates MENU_TOGGLE_CONFIRM actions", () => {

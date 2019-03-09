@@ -6,7 +6,7 @@
 
 const handlers = require("../../../scripts/api/handlers/form-handlers");
 
-const { mockList, mockPoll } = require("../../test-helpers");
+const { mockPoll } = require("../../test-helpers");
 
 //global imports
 
@@ -40,16 +40,13 @@ describe("formCreatePoll", () => {
 
   const handler = mockAPICall(formCreatePoll, "POST");
 
-  const getData = (form) => ({
-    list: mockList(),
-    form: mockForm(form)
-  });
+  const getData = (form) => ({ form: mockForm(form) });
 
   const testError = async (error, data, docs = 0) => {
 
-    const json = { errors: [error] };
+    const output = await handler(mockUser(), getData(data), "json");
 
-    expect(await handler(mockUser(), getData(data), "json")).toEqual(json);
+    expect(output).toEqual({ errors: [error] });
 
     expect(await pollsCol().countDocuments()).toEqual(docs);
 
@@ -92,7 +89,7 @@ describe("formCreatePoll", () => {
     options: ["Fuck"]
   }));
 
-  it("sends polls and id if poll is valid", async () => {
+  it("sends poll if poll is valid", async () => {
 
     const data = getData({
       title: "Title A",
@@ -101,17 +98,9 @@ describe("formCreatePoll", () => {
 
     const output = await handler(mockUser(), data, "json");
 
-    const { polls: [{ _id, id, date }] } = output;
+    const { id } = await pollsCol().findOne();
 
-    expect(output).toEqual({
-      polls: [Object.assign({ _id }, mockPoll({
-        title: "Title A",
-        id,
-        date,
-        options: [{ text: "Option A" }]
-      }))],
-      poll: id
-    });
+    expect(output).toEqual({ poll: id });
 
     expect(await pollsCol().countDocuments()).toEqual(1);
 

@@ -32,6 +32,16 @@ test("metaCloseError creates META_CLOSE_ERROR actions", () => {
 
 });
 
+//meta no op
+
+test("metaNoOp creates META_NO_OP actions", () => {
+
+  const { metaNoOp } = actions;
+
+  expect(metaNoOp()).toEqual({ type: "META_NO_OP" });
+
+});
+
 //meta set state
 
 describe("metaSetState", () => {

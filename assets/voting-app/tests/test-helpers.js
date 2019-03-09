@@ -51,9 +51,9 @@ const testAPIFailure = (action, args, lastState = initialState) => {
   const actionList = [metaAddErrors([`${status} ${statusText}`])];
 
   const fetch = () => Promise.resolve({
+    ok: false,
     status,
-    statusText,
-    ok: false
+    statusText
   });
 
   testAPIGlobals(fetch);

@@ -42,3 +42,26 @@ test("listSetSearchText creates LIST_SET_SEARCH_TEXT actions", () => {
   });
 
 });
+
+//list set sort
+
+test("listSetSort creates LIST_SET_SORT actions", () => {
+
+  const { listSetSort } = actions;
+
+  expect(listSetSort("")).toEqual({
+    type: "LIST_SET_SORT",
+    sort: ""
+  });
+
+});
+
+//list submit search
+
+test("listSubmitSearch creates LIST_SUBMIT_SEARCH actions", () => {
+
+  const { listSubmitSearch } = actions;
+
+  expect(listSubmitSearch()).toEqual({ type: "LIST_SUBMIT_SEARCH" });
+
+});

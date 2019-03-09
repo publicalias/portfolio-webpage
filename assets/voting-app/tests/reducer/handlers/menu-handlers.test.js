@@ -21,6 +21,23 @@ test("reducer accepts MENU_OPEN_FORM actions", () => {
 
 });
 
+//menu set filter
+
+test("reducer accepts MENU_SET_FILTER actions", () => {
+
+  const { menuSetFilter } = actions;
+
+  const nextState = deepCopy(initialState, {
+    list: {
+      filter: "created",
+      index: 0
+    }
+  });
+
+  expect(reducer(initialState, menuSetFilter("created"))).toEqual(nextState);
+
+});
+
 //menu toggle confirm
 
 test("reducer accepts MENU_TOGGLE_CONFIRM actions", () => {

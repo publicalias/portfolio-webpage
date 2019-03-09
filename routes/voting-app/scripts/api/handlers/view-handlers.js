@@ -2,7 +2,7 @@
 
 //local imports
 
-const { findByID, findPolls } = require("../../app-logic");
+const { findByID } = require("../../app-logic");
 
 //global imports
 
@@ -21,7 +21,7 @@ const pollsCol = () => db.collection("voting-app/polls");
 
 const handleOption = async (req, res) => {
 
-  const { poll, text, list } = req.body.data;
+  const { poll, text } = req.body.data;
 
   const { matchedCount } = await pollsCol().updateOne({
     "id": poll,
@@ -36,17 +36,11 @@ const handleOption = async (req, res) => {
     }
   });
 
-  if (!matchedCount) {
-
+  if (matchedCount) {
+    res.json({});
+  } else {
     res.sendStatus(500);
-
-    return;
-
   }
-
-  const polls = await findPolls(req, list);
-
-  res.json({ polls });
 
 };
 
@@ -87,9 +81,9 @@ const viewAddOption = async (req, res) => {
 
 const viewCastVote = async (req, res) => {
 
-  const { poll, text, list } = req.body.data;
+  const { poll, text } = req.body.data;
 
-  const { user, created } = await getOrSetUser(req);
+  const user = await getOrSetUser(req);
 
   await retryWrite(async () => {
 
@@ -116,9 +110,7 @@ const viewCastVote = async (req, res) => {
 
   });
 
-  const polls = await findPolls(req, list);
-
-  res.json(Object.assign({ polls }, created ? { user } : {}));
+  res.json({});
 
 };
 
@@ -126,7 +118,7 @@ const viewCastVote = async (req, res) => {
 
 const viewDeletePoll = async (req, res) => {
 
-  const { poll, list } = JSON.parse(req.query.data);
+  const { poll } = JSON.parse(req.query.data);
 
   const { users } = await findByID(poll);
 
@@ -142,9 +134,7 @@ const viewDeletePoll = async (req, res) => {
 
   await pollsCol().deleteOne({ id: poll });
 
-  const polls = await findPolls(req, list);
-
-  res.json({ polls });
+  res.json({});
 
 };
 
@@ -152,7 +142,7 @@ const viewDeletePoll = async (req, res) => {
 
 const viewRemoveOption = async (req, res) => {
 
-  const { poll, text, list } = req.body.data;
+  const { poll, text } = req.body.data;
 
   const { users, options } = await findByID(poll);
 
@@ -187,9 +177,7 @@ const viewRemoveOption = async (req, res) => {
 
   });
 
-  const polls = await findPolls(req, list);
-
-  res.json({ polls });
+  res.json({});
 
 };
 
@@ -197,7 +185,7 @@ const viewRemoveOption = async (req, res) => {
 
 const viewTogglePrivate = async (req, res) => {
 
-  const { poll, list } = req.body.data;
+  const { poll } = req.body.data;
 
   const { users } = await findByID(poll);
 
@@ -213,22 +201,20 @@ const viewTogglePrivate = async (req, res) => {
 
   await retryWrite(async () => {
 
-    const doc = await findByID(poll);
+    const { private: bool } = await findByID(poll);
 
     const { matchedCount } = await pollsCol().updateOne({
       id: poll,
-      private: doc.private //reserved
+      private: bool
     }, {
-      $set: { private: !doc.private }
+      $set: { private: !bool }
     });
 
     return matchedCount;
 
   });
 
-  const polls = await findPolls(req, list);
-
-  res.json({ polls });
+  res.json({});
 
 };
 
