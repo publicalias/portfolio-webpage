@@ -3,11 +3,8 @@
 //local imports
 
 const { actions } = require("../../../scripts/actions/actions");
-const { initialState, reducer } = require("../../../scripts/reducer/reducer");
-
-//global imports
-
-const { deepCopy } = require("utilities");
+const { initialState } = require("../../../scripts/reducer/reducer");
+const { testReducer } = require("../../test-helpers");
 
 //form discard poll
 
@@ -15,10 +12,7 @@ test("reducer accepts FORM_DISCARD_POLL actions", () => {
 
   const { formDiscardPoll } = actions;
 
-  const lastState = deepCopy(initialState, { form: { title: "Title A" } });
-  const nextState = deepCopy(lastState, initialState.form);
-
-  expect(reducer(lastState, formDiscardPoll())).toEqual(nextState);
+  testReducer(formDiscardPoll(), { form: { title: "Title A" } }, { form: initialState.form });
 
 });
 
@@ -28,10 +22,7 @@ test("reducer accepts FORM_REMOVE_OPTION actions", () => {
 
   const { formRemoveOption } = actions;
 
-  const lastState = deepCopy(initialState, { form: { options: [""] } });
-  const nextState = deepCopy(lastState, { form: { options: [] } });
-
-  expect(reducer(lastState, formRemoveOption(""))).toEqual(nextState);
+  testReducer(formRemoveOption(""), { form: { options: [""] } }, { form: { options: [] } });
 
 });
 
@@ -41,9 +32,7 @@ test("reducer accepts FORM_SET_ADD_TEXT actions", () => {
 
   const { formSetAddText } = actions;
 
-  const nextState = deepCopy(initialState, { form: { add: "Option A" } });
-
-  expect(reducer(initialState, formSetAddText("Option A"))).toEqual(nextState);
+  testReducer(formSetAddText("Option A"), {}, { form: { add: "Option A" } });
 
 });
 
@@ -53,9 +42,7 @@ test("reducer accepts FORM_SET_TITLE_TEXT actions", () => {
 
   const { formSetTitleText } = actions;
 
-  const nextState = deepCopy(initialState, { form: { title: "Title A" } });
-
-  expect(reducer(initialState, formSetTitleText("Title A"))).toEqual(nextState);
+  testReducer(formSetTitleText("Title A"), {}, { form: { title: "Title A" } });
 
 });
 
@@ -65,9 +52,7 @@ test("reducer accepts FORM_TOGGLE_CONFIRM actions", () => {
 
   const { formToggleConfirm } = actions;
 
-  const nextState = deepCopy(initialState, { form: { confirm: true } });
-
-  expect(reducer(initialState, formToggleConfirm())).toEqual(nextState);
+  testReducer(formToggleConfirm(), {}, { form: { confirm: true } });
 
 });
 
@@ -77,8 +62,6 @@ test("reducer accepts FORM_TOGGLE_PRIVATE actions", () => {
 
   const { formTogglePrivate } = actions;
 
-  const nextState = deepCopy(initialState, { form: { private: true } });
-
-  expect(reducer(initialState, formTogglePrivate())).toEqual(nextState);
+  testReducer(formTogglePrivate(), {}, { form: { private: true } });
 
 });

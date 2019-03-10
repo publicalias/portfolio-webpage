@@ -3,7 +3,8 @@
 //local imports
 
 const { actions } = require("../../../scripts/actions/actions");
-const { initialState, reducer } = require("../../../scripts/reducer/reducer");
+const { initialState } = require("../../../scripts/reducer/reducer");
+const { testReducer } = require("../../test-helpers");
 
 //global imports
 
@@ -15,12 +16,10 @@ test("reducer accepts LIST_OPEN_VIEW actions", () => {
 
   const { listOpenView } = actions;
 
-  const nextState = deepCopy(initialState, {
+  testReducer(listOpenView("id-a"), {}, {
     page: "view",
     view: deepCopy(initialState.view, { poll: "id-a" })
   });
-
-  expect(reducer(initialState, listOpenView("id-a"))).toEqual(nextState);
 
 });
 
@@ -30,9 +29,7 @@ test("reducer accepts LIST_SET_INDEX actions", () => {
 
   const { listSetIndex } = actions;
 
-  const nextState = deepCopy(initialState, { list: { index: 1 } });
-
-  expect(reducer(initialState, listSetIndex(1))).toEqual(nextState);
+  testReducer(listSetIndex(1), {}, { list: { index: 1 } });
 
 });
 
@@ -42,9 +39,7 @@ test("reducer accepts LIST_SET_SEARCH_TEXT actions", () => {
 
   const { listSetSearchText } = actions;
 
-  const nextState = deepCopy(initialState, { list: { search: "Apple" } });
-
-  expect(reducer(initialState, listSetSearchText("Apple"))).toEqual(nextState);
+  testReducer(listSetSearchText("Apple"), {}, { list: { search: "Apple" } });
 
 });
 
@@ -54,9 +49,7 @@ test("reducer accepts LIST_SET_SORT actions", () => {
 
   const { listSetSort } = actions;
 
-  const nextState = deepCopy(initialState, { list: { sort: "popular" } });
-
-  expect(reducer(initialState, listSetSort("popular"))).toEqual(nextState);
+  testReducer(listSetSort("popular"), {}, { list: { sort: "popular" } });
 
 });
 
@@ -66,21 +59,17 @@ test("reducer accepts LIST_SUBMIT_SEARCH actions", () => {
 
   const { listSubmitSearch } = actions;
 
-  const lastState = deepCopy(initialState, {
+  testReducer(listSubmitSearch(), {
     list: {
       search: "Apple",
       index: 1
     }
-  });
-
-  const nextState = deepCopy(lastState, {
+  }, {
     list: {
       search: "",
       searched: "Apple",
       index: 0
     }
   });
-
-  expect(reducer(lastState, listSubmitSearch())).toEqual(nextState);
 
 });

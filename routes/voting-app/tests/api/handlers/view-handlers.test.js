@@ -24,9 +24,7 @@ const initTestVote = (handler, getData) => async (user) => {
 
   const castVote = async (index) => {
 
-    const data = getData(options[index].text);
-
-    const output = await handler(user || {}, data, "json");
+    const output = await handler(user || {}, getData(options[index].text), "json");
 
     const [update, actual] = await Promise.all([
       pollsCol().findOne(),
@@ -73,7 +71,7 @@ describe("viewAddOption", () => {
   const handler = mockAPICall(viewAddOption, "PATCH");
 
   const getData = (text) => ({
-    poll: "id-a",
+    id: "id-a",
     text
   });
 
@@ -135,7 +133,7 @@ describe("viewCastVote", () => {
   const handler = mockAPICall(viewCastVote, "PATCH");
 
   const getData = (text) => ({
-    poll: "id-a",
+    id: "id-a",
     text
   });
 
@@ -157,7 +155,7 @@ describe("viewDeletePoll", () => {
 
   const handler = mockAPICall(viewDeletePoll, "DELETE");
 
-  const getData = () => ({ poll: "id-a" });
+  const getData = () => ({ id: "id-a" });
 
   const getPoll = () => mockPoll({
     id: "id-a",
@@ -182,7 +180,7 @@ describe("viewDeletePoll", () => {
 
     await pollsCol().insertOne(getPoll());
 
-    const output = await handler(user, getData(), "json")
+    const output = await handler(user, getData(), "json");
 
     expect(output).toEqual({});
 
@@ -201,7 +199,7 @@ describe("viewRemoveOption", () => {
   const handler = mockAPICall(viewRemoveOption, "PATCH");
 
   const getData = (text) => ({
-    poll: "id-a",
+    id: "id-a",
     text
   });
 
@@ -254,7 +252,7 @@ describe("viewTogglePrivate", () => {
 
   const handler = mockAPICall(viewTogglePrivate, "PATCH");
 
-  const getData = () => ({ poll: "id-a" });
+  const getData = () => ({ id: "id-a" });
 
   const getPoll = () => mockPoll({
     id: "id-a",

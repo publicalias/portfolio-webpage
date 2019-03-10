@@ -35,70 +35,45 @@ describe("formAddOption", () => {
 
   const action = formAddOption();
 
-  const getLastState = (add) => deepCopy(initialState, {
-    form: {
-      options: ["Option A", "Option B"],
-      add
-    }
-  });
+  const testOption = (add, output) => {
 
-  it("dispatches META_ADD_ERRORS action if option is empty", () => {
+    const lastState = deepCopy(initialState, {
+      form: {
+        options: ["Option A", "Option B"],
+        add
+      }
+    });
 
-    const lastState = getLastState("");
+    const error = typeof output === "string";
 
     const store = mockStore(lastState);
-    const actionList = [metaAddErrors(["Option must not be empty"])];
+    const actionList = [error ? metaAddErrors([output]) : metaSetState(output)];
 
     store.dispatch(action);
 
     expect(store.getActions()).toEqual(actionList);
 
+  };
+
+  it("dispatches META_ADD_ERRORS action if option is empty", () => {
+    testOption("", "Option must not be empty");
   });
 
   it("dispatches META_ADD_ERRORS action if option is duplicate", () => {
-
-    const lastState = getLastState("Option A");
-
-    const store = mockStore(lastState);
-    const actionList = [metaAddErrors(["Option must be unique"])];
-
-    store.dispatch(action);
-
-    expect(store.getActions()).toEqual(actionList);
-
+    testOption("Option A", "Option must be unique");
   });
 
   it("dispatches META_ADD_ERRORS action if option is obscene", () => {
-
-    const lastState = getLastState("Fuck");
-
-    const store = mockStore(lastState);
-    const actionList = [metaAddErrors(["Option must not be obscene"])];
-
-    store.dispatch(action);
-
-    expect(store.getActions()).toEqual(actionList);
-
+    testOption("Fuck", "Option must not be obscene");
   });
 
   it("dispatches META_SET_STATE action if option is valid", () => {
-
-    const lastState = getLastState("Option C");
-
-    const { form: { options, add } } = lastState;
-
-    const store = mockStore(lastState);
-    const actionList = [metaSetState({
+    testOption("Option C", {
       form: {
-        options: options.concat([add]),
+        options: ["Option A", "Option B", "Option C"],
         add: ""
       }
-    })];
-
-    store.dispatch(action);
-
-    expect(store.getActions()).toEqual(actionList);
-
+    });
   });
 
 });
@@ -118,7 +93,7 @@ describe("formCreatePoll", () => {
 
   it("dispatches META_SET_STATE action on success", () => {
 
-    const res = { poll: "id-a" };
+    const res = { id: "id-a" };
 
     const actionList = [metaSetState({
       page: "view",

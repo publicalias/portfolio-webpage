@@ -41,31 +41,30 @@ describe("metaGetPolls", () => {
 
   const handler = mockAPICall(metaGetPolls, "GET");
 
-  const getData = (poll, skip) => ({
-    poll,
+  const getData = (id, skip) => ({
+    id,
     skip,
     list: mockList()
   });
 
-  const testGet = async (poll, skip = false) => {
+  const testPolls = async (id, skip = false) => {
 
     const polls = [{}, { id: "id-b" }].map(mockPoll);
-
-    const index = Number(Boolean(poll) || skip);
+    const index = Number(Boolean(id) || skip);
 
     await pollsCol().insertMany(polls);
 
-    const output = await handler({}, getData(poll, skip), "json");
+    const output = await handler({}, getData(id, skip), "json");
 
     expect(output).toEqual({ polls: polls.slice(index) });
 
   };
 
-  it("sends polls if skip is false", () => testGet());
+  it("sends polls if skip is false", () => testPolls());
 
-  it("sends polls if skip is true", () => testGet(null, true));
+  it("sends polls if skip is true", () => testPolls(null, true));
 
-  it("sends polls if poll is valid", () => testGet("id-b"));
+  it("sends polls if poll is valid", () => testPolls("id-b"));
 
 });
 
@@ -77,7 +76,7 @@ describe("metaGetPolls (sort)", () => {
 
   const getData = (sort) => ({ list: mockList({ sort }) });
 
-  const testSort = async (pollData, sort) => {
+  const testPolls = async (pollData, sort) => {
 
     const polls = pollData.map(mockPoll);
 
@@ -93,7 +92,7 @@ describe("metaGetPolls (sort)", () => {
 
     const polls = [{}, { date: 1 }];
 
-    return testSort(polls, "new");
+    return testPolls(polls, "new");
 
   });
 
@@ -101,7 +100,7 @@ describe("metaGetPolls (sort)", () => {
 
     const polls = [{}, { users: { voted: 1 } }];
 
-    return testSort(polls, "popular");
+    return testPolls(polls, "popular");
 
   });
 
@@ -115,7 +114,7 @@ describe("metaGetPolls (search)", () => {
 
   const getData = (searched) => ({ list: mockList({ searched }) });
 
-  const testSearch = async (pollData, search, count) => {
+  const testPolls = async (pollData, search, count) => {
 
     const polls = pollData.map(mockPoll);
 
@@ -133,7 +132,7 @@ describe("metaGetPolls (search)", () => {
 
   };
 
-  it("sends polls if search is empty", () => testSearch([{}], "", 1));
+  it("sends polls if search is empty", () => testPolls([{}], "", 1));
 
   it("sends polls if search is valid", () => {
 
@@ -141,7 +140,7 @@ describe("metaGetPolls (search)", () => {
 
     const polls = [{ title: str }, { author: str }, { options: [{ text: str }] }, {}];
 
-    return testSearch(polls, str, 3);
+    return testPolls(polls, str, 3);
 
   });
 
@@ -155,9 +154,9 @@ describe("metaGetPolls (filter)", () => {
 
   const getData = (filter) => ({ list: mockList({ filter }) });
 
-  const testFilter = async (pollData, types, filter, count) => {
+  const testPolls = async (pollData, filter, counts) => {
 
-    const userData = [mockUser, mockIPUser, {}].slice(0, types);
+    const userData = [mockUser, mockIPUser, () => ({})].slice(0, counts.length);
 
     const polls = pollData.map(mockPoll);
     const users = userData.map((e) => e({ id: "id-a" }));
@@ -169,17 +168,17 @@ describe("metaGetPolls (filter)", () => {
 
     const output = await Promise.all(users.map((e) => handler(e, getData(filter), "json")));
 
-    for (const e of output) {
-      expect(e).toEqual({ polls: polls.slice(0, count) });
-    }
+    output.forEach((e, i) => {
+      expect(e).toEqual({ polls: polls.slice(0, counts[i]) });
+    });
 
   };
 
   it("sends polls if filter is all", () => {
 
-    const polls = [{}, { private: true }, { users: { hidden: ["id-a"] } }];
+    const polls = [{}, { users: { hidden: ["id-a"] } }, { private: true }];
 
-    return testFilter(polls, 2, "all", 1);
+    return testPolls(polls, "all", [1, 1, 2]);
 
   });
 
@@ -195,7 +194,7 @@ describe("metaGetPolls (filter)", () => {
 
     const polls = [{ users: { created: "id-a" } }, { options: [{ created: "id-a" }] }, {}];
 
-    return testFilter(polls, 1, "created", 2);
+    return testPolls(polls, "created", [2]);
 
   });
 
@@ -203,7 +202,7 @@ describe("metaGetPolls (filter)", () => {
 
     const polls = [{ options: [{ voted: ["id-a"] }] }, {}];
 
-    return testFilter(polls, 2, "voted", 1);
+    return testPolls(polls, "voted", [1, 1, 0]);
 
   });
 
@@ -211,7 +210,7 @@ describe("metaGetPolls (filter)", () => {
 
     const polls = [{ users: { hidden: ["id-a"] } }, {}];
 
-    return testFilter(polls, 2, "hidden", 1);
+    return testPolls(polls, "hidden", [1, 1, 0]);
 
   });
 
@@ -227,7 +226,7 @@ describe("metaGetUser", () => {
 
   const getData = () => {};
 
-  const testGet = async (user) => {
+  const testUser = async (user) => {
 
     const output = await handler(user, getData(), "json");
 
@@ -235,7 +234,7 @@ describe("metaGetUser", () => {
 
   };
 
-  it("sends user if user is authenticated", () => testGet(mockUser()));
+  it("sends user if user is authenticated", () => testUser(mockUser()));
 
   it("sends user if ip user exists", async () => {
 
@@ -243,10 +242,10 @@ describe("metaGetUser", () => {
 
     await usersCol().insertOne(user);
 
-    return testGet(user);
+    return testUser(user);
 
   });
 
-  it("sends user if no ip user exists", () => testGet({}));
+  it("sends user if no ip user exists", () => testUser({}));
 
 });

@@ -21,10 +21,10 @@ const pollsCol = () => db.collection("voting-app/polls");
 
 const handleOption = async (req, res) => {
 
-  const { poll, text } = req.body.data;
+  const { id, text } = req.body.data;
 
   const { matchedCount } = await pollsCol().updateOne({
-    "id": poll,
+    id,
     "options.text": { $ne: text }
   }, {
     $push: {
@@ -54,9 +54,9 @@ const viewAddOption = async (req, res) => {
 
   }
 
-  const { poll, text } = req.body.data;
+  const { id, text } = req.body.data;
 
-  const { options } = await findByID(poll);
+  const { options } = await findByID(id);
 
   const errors = checkErrors([{
     bool: !text.trim(),
@@ -81,14 +81,14 @@ const viewAddOption = async (req, res) => {
 
 const viewCastVote = async (req, res) => {
 
-  const { poll, text } = req.body.data;
+  const { id, text } = req.body.data;
 
   const user = await getOrSetUser(req);
 
   await retryWrite(async () => {
 
     const { value: { options } } = await pollsCol().findOneAndUpdate({
-      id: poll
+      id
     }, {
       $inc: { "users.voted": -1 },
       $pull: { "options.$[].voted": user.id }
@@ -97,7 +97,7 @@ const viewCastVote = async (req, res) => {
     });
 
     const { matchedCount } = await pollsCol().updateOne({
-      id: poll,
+      id,
       options
     }, {
       $inc: { "users.voted": 1 },
@@ -118,9 +118,9 @@ const viewCastVote = async (req, res) => {
 
 const viewDeletePoll = async (req, res) => {
 
-  const { poll } = JSON.parse(req.query.data);
+  const { id } = JSON.parse(req.query.data);
 
-  const { users } = await findByID(poll);
+  const { users } = await findByID(id);
 
   const created = (id) => id === users.created;
 
@@ -132,7 +132,7 @@ const viewDeletePoll = async (req, res) => {
 
   }
 
-  await pollsCol().deleteOne({ id: poll });
+  await pollsCol().deleteOne({ id });
 
   res.json({});
 
@@ -142,9 +142,9 @@ const viewDeletePoll = async (req, res) => {
 
 const viewRemoveOption = async (req, res) => {
 
-  const { poll, text } = req.body.data;
+  const { id, text } = req.body.data;
 
-  const { users, options } = await findByID(poll);
+  const { users, options } = await findByID(id);
 
   const index = options.findIndex((e) => e.text === text);
 
@@ -160,13 +160,13 @@ const viewRemoveOption = async (req, res) => {
 
   await retryWrite(async () => {
 
-    const { options } = await findByID(poll);
+    const { options } = await findByID(id);
 
     const index = options.findIndex((e) => e.text === text);
     const votes = options[index].voted.length;
 
     const { matchedCount } = await pollsCol().updateOne({
-      id: poll,
+      id,
       options
     }, {
       $inc: { "users.voted": votes * -1 },
@@ -185,9 +185,9 @@ const viewRemoveOption = async (req, res) => {
 
 const viewTogglePrivate = async (req, res) => {
 
-  const { poll } = req.body.data;
+  const { id } = req.body.data;
 
-  const { users } = await findByID(poll);
+  const { users } = await findByID(id);
 
   const created = (id) => id === users.created;
 
@@ -201,10 +201,10 @@ const viewTogglePrivate = async (req, res) => {
 
   await retryWrite(async () => {
 
-    const { private: bool } = await findByID(poll);
+    const { private: bool } = await findByID(id);
 
     const { matchedCount } = await pollsCol().updateOne({
-      id: poll,
+      id,
       private: bool
     }, {
       $set: { private: !bool }

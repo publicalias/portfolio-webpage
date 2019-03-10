@@ -6,6 +6,7 @@
 
 const { actions } = require("../../../scripts/actions/actions");
 const { initialState, reducer } = require("../../../scripts/reducer/reducer");
+const { testReducer } = require("../../test-helpers");
 
 //global imports
 
@@ -17,15 +18,12 @@ test("reducer accepts META_ADD_ERRORS actions", () => {
 
   const { metaAddErrors } = actions;
 
-  const error = {
-    text: "",
-    timer: 1000
-  };
-
-  const lastState = deepCopy(initialState, { errors: [error] });
-  const nextState = deepCopy(lastState, { errors: [error, error] });
-
-  expect(reducer(lastState, metaAddErrors([""]))).toEqual(nextState);
+  testReducer(metaAddErrors([""]), { errors: [{}] }, {
+    errors: [{}, {
+      text: "",
+      timer: 1000
+    }]
+  });
 
 });
 
@@ -35,20 +33,7 @@ test("reducer accepts META_CLOSE_ERROR actions", () => {
 
   const { metaCloseError } = actions;
 
-  const lastState = deepCopy(initialState, { errors: [{}, {}] });
-  const nextState = deepCopy(lastState, { errors: [{}] });
-
-  expect(reducer(lastState, metaCloseError(1))).toEqual(nextState);
-
-});
-
-//meta no op
-
-test("reducer accepts META_NO_OP actions", () => {
-
-  const { metaNoOp } = actions;
-
-  expect(reducer(initialState, metaNoOp())).toEqual(initialState);
+  testReducer(metaCloseError(1), { errors: [{}, {}] }, { errors: [{}] });
 
 });
 
@@ -58,25 +43,27 @@ describe("reducer", () => {
 
   const { metaSetState } = actions;
 
+  const getUser = (bool) => ({ user: bool ? { id: "id-a" } : {} });
+
   it("accepts META_SET_STATE actions", () => {
 
-    const merge = { user: { id: "id-a" } };
+    const next = getUser(true);
 
-    const nextState = deepCopy(initialState, merge);
-
-    expect(reducer(initialState, metaSetState(merge))).toEqual(nextState);
+    testReducer(metaSetState(next), {}, next);
 
   });
 
-  it("accepts META_SET_STATE actions with config option", () => {
+  it("accepts META_SET_STATE actions with config", () => {
 
-    const merge = { user: {} };
     const config = { object: true };
 
-    const lastState = deepCopy(initialState, { user: { id: "id-a" } });
-    const nextState = initDeepCopy(config)(lastState, merge);
+    const last = getUser(true);
+    const next = getUser();
 
-    expect(reducer(lastState, metaSetState(merge, config))).toEqual(nextState);
+    const lastState = deepCopy(initialState, last);
+    const nextState = initDeepCopy(config)(lastState, next);
+
+    expect(reducer(lastState, metaSetState(next, config))).toEqual(nextState);
 
   });
 
@@ -88,11 +75,9 @@ test("reducer accepts META_TIMEOUT_ERROR actions", () => {
 
   const { metaTimeoutError } = actions;
 
-  const errors = [{ timer: 100 }, { timer: 1000 }, { timer: 900 }];
+  const last = [{ timer: 100 }, { timer: 1000 }];
+  const next = [{ timer: 900 }];
 
-  const lastState = deepCopy(initialState, { errors: errors.slice(0, 2) });
-  const nextState = deepCopy(lastState, { errors: errors.slice(2) });
-
-  expect(reducer(lastState, metaTimeoutError())).toEqual(nextState);
+  testReducer(metaTimeoutError(), { errors: last }, { errors: next });
 
 });

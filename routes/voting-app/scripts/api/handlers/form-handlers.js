@@ -43,7 +43,7 @@ const handleCreate = async (req, res) => {
     }))
   });
 
-  res.json({ poll: id });
+  res.json({ id });
 
 };
 

@@ -2,7 +2,9 @@
 
 //local imports
 
+const { actions } = require("../../scripts/actions/actions");
 const { initialState, reducer } = require("../../scripts/reducer/reducer");
+const { testReducer } = require("../test-helpers");
 
 //reducer
 
@@ -12,8 +14,8 @@ test("reducer initializes the state", () => {
 
 test("reducer defaults to the last state", () => {
 
-  const action = { type: "INVALID" };
+  const { metaNoOp } = actions;
 
-  expect(reducer(initialState, action)).toEqual(initialState);
+  testReducer(metaNoOp(), {}, {});
 
 });

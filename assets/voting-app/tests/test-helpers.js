@@ -3,11 +3,12 @@
 //local imports
 
 const { actions } = require("../scripts/actions/actions");
-const { initialState } = require("../scripts/reducer/reducer");
+const { initialState, reducer } = require("../scripts/reducer/reducer");
 
 //global imports
 
 const { encodeAPICall } = require("client-utils");
+const { deepCopy } = require("utilities");
 
 //node modules
 
@@ -87,9 +88,21 @@ const testAPISuccess = (action, args, res, actionList, lastState = initialState)
 
 };
 
+//test reducer
+
+const testReducer = (action, last, next) => {
+
+  const lastState = deepCopy(initialState, last);
+  const nextState = deepCopy(lastState, next);
+
+  expect(reducer(lastState, action)).toEqual(nextState);
+
+};
+
 //exports
 
 module.exports = {
   testAPIFailure,
-  testAPISuccess
+  testAPISuccess,
+  testReducer
 };

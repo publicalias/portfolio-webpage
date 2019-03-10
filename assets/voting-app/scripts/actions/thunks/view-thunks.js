@@ -15,7 +15,7 @@ const viewAddOption = (id) => (dispatch, getState) => {
     path: "/api/view-add-option",
     method: "PATCH",
     data: {
-      poll: id,
+      id,
       text: view.add
     }
   };
@@ -32,7 +32,7 @@ const viewCastVote = (id, text) => (dispatch) => {
     path: "/api/view-cast-vote",
     method: "PATCH",
     data: {
-      poll: id,
+      id,
       text
     }
   };
@@ -48,7 +48,7 @@ const viewDeletePoll = (id) => (dispatch) => {
   const args = {
     path: "/api/view-delete-poll",
     method: "DELETE",
-    data: { poll: id }
+    data: { id }
   };
 
   const success = () => {
@@ -67,7 +67,7 @@ const viewRemoveOption = (id, text) => (dispatch) => {
     path: "/api/view-remove-option",
     method: "PATCH",
     data: {
-      poll: id,
+      id,
       text
     }
   };
@@ -83,7 +83,7 @@ const viewTogglePrivate = (id) => (dispatch) => {
   const args = {
     path: "/api/view-toggle-private",
     method: "PATCH",
-    data: { poll: id }
+    data: { id }
   };
 
   return reduxAPICall(dispatch, args);

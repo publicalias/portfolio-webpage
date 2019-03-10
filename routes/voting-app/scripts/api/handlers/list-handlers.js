@@ -12,14 +12,14 @@ const { getOrSetUser, retryWrite } = require(`${__rootdir}/master/scripts/server
 
 const pollsCol = () => db.collection("voting-app/polls");
 
-const handleToggle = (poll, user, prop) => retryWrite(async () => {
+const handleToggle = (id, user, prop) => retryWrite(async () => {
 
-  const { users } = await findByID(poll);
+  const { users } = await findByID(id);
 
   const bool = users[prop].includes(user.id);
 
   const { matchedCount } = await pollsCol().updateOne({
-    id: poll,
+    id,
     [`users.${prop}`]: users[prop]
   }, {
     [bool ? "$pull" : "$push"]: {
@@ -43,9 +43,9 @@ const listToggleFlag = async (req, res) => {
 
   }
 
-  const { poll } = req.body.data;
+  const { id } = req.body.data;
 
-  await handleToggle(poll, req.user, "flagged");
+  await handleToggle(id, req.user, "flagged");
 
   res.json({});
 
@@ -55,11 +55,9 @@ const listToggleFlag = async (req, res) => {
 
 const listToggleHide = async (req, res) => {
 
-  const { poll } = req.body.data;
+  const { id } = req.body.data;
 
-  const user = await getOrSetUser(req);
-
-  await handleToggle(poll, user, "hidden");
+  await handleToggle(id, await getOrSetUser(req), "hidden");
 
   res.json({});
 

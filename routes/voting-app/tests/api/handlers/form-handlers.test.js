@@ -89,18 +89,16 @@ describe("formCreatePoll", () => {
     options: ["Fuck"]
   }));
 
-  it("sends poll if poll is valid", async () => {
+  it("sends id if poll is valid", async () => {
 
-    const data = getData({
+    const output = await handler(mockUser(), getData({
       title: "Title A",
       options: ["Option A"]
-    });
-
-    const output = await handler(mockUser(), data, "json");
+    }), "json");
 
     const { id } = await pollsCol().findOne();
 
-    expect(output).toEqual({ poll: id });
+    expect(output).toEqual({ id });
 
     expect(await pollsCol().countDocuments()).toEqual(1);
 

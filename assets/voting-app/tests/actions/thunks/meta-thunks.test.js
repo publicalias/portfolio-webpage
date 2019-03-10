@@ -26,7 +26,7 @@ describe("metaGetPolls", () => {
     path: "/api/meta-get-polls",
     method: "GET",
     data: {
-      poll: undefined,
+      id: undefined,
       skip: false,
       list: initialState.list
     }

@@ -22,7 +22,7 @@ describe("listToggleFlag", () => {
   const args = {
     path: "/api/list-toggle-flag",
     method: "PATCH",
-    data: { poll: "" }
+    data: { id: "" }
   };
 
   it("dispatches META_NO_OP action on success", () => {
@@ -47,7 +47,7 @@ describe("listToggleHide", () => {
   const args = {
     path: "/api/list-toggle-hide",
     method: "PATCH",
-    data: { poll: "" }
+    data: { id: "" }
   };
 
   it("dispatches META_NO_OP action on success", () => {

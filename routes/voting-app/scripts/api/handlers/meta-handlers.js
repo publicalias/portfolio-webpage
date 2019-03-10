@@ -12,7 +12,7 @@ const { findByID, findPolls } = require("../../app-logic");
 
 const metaGetPolls = async (req, res) => {
 
-  const { poll, skip, list } = JSON.parse(req.query.data);
+  const { id, skip, list } = JSON.parse(req.query.data);
 
   if ((!req.user || req.user.data.restricted) && list.filter === "created") {
 
@@ -22,7 +22,7 @@ const metaGetPolls = async (req, res) => {
 
   }
 
-  const polls = poll ? [await findByID(poll)] : await findPolls(req, list, skip);
+  const polls = id ? [await findByID(id)] : await findPolls(req, list, skip);
 
   res.json({ polls });
 

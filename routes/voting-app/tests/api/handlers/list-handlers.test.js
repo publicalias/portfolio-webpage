@@ -59,7 +59,7 @@ describe("listToggleFlag", () => {
 
   const handler = mockAPICall(listToggleFlag, "PATCH");
 
-  const getData = () => ({ poll: "id-a" });
+  const getData = () => ({ id: "id-a" });
 
   const testToggle = initTestToggle(handler, getData, "flagged");
 
@@ -77,7 +77,7 @@ describe("listToggleHide", () => {
 
   const handler = mockAPICall(listToggleHide, "PATCH");
 
-  const getData = () => ({ poll: "id-a" });
+  const getData = () => ({ id: "id-a" });
 
   const testToggle = initTestToggle(handler, getData, "hidden");
 

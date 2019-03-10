@@ -10,20 +10,15 @@ const { deepCopy } = require("utilities");
 
 //form discard poll
 
-const FORM_DISCARD_POLL = (state) => deepCopy(state, initialState.form);
+const FORM_DISCARD_POLL = (state) => deepCopy(state, { form: initialState.form });
 
 //form remove option
 
 const FORM_REMOVE_OPTION = (state, { text }) => {
 
-  const nextState = deepCopy(state);
-  const options = nextState.form.options;
+  const options = state.form.options.filter((e) => e !== text);
 
-  const index = options.findIndex((e) => e === text);
-
-  options.splice(index, 1);
-
-  return nextState;
+  return deepCopy(state, { form: { options } });
 
 };
 

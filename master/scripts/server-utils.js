@@ -14,7 +14,12 @@ const usersCol = () => db.collection("auth/users");
 
 //get ip user
 
-const getIPUser = (ip) => usersCol().findOne({ ip });
+const getIPUser = (ip) => usersCol().findOne({
+  ip: {
+    $exists: true,
+    $eq: ip
+  }
+});
 
 //get or set user
 

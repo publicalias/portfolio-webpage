@@ -25,7 +25,7 @@ describe("viewAddOption", () => {
     path: "/api/view-add-option",
     method: "PATCH",
     data: {
-      poll: "",
+      id: "",
       text: ""
     }
   };
@@ -61,7 +61,7 @@ describe("viewCastVote", () => {
     path: "/api/view-cast-vote",
     method: "PATCH",
     data: {
-      poll: "",
+      id: "",
       text: ""
     }
   };
@@ -88,7 +88,7 @@ describe("viewDeletePoll", () => {
   const args = {
     path: "/api/view-delete-poll",
     method: "DELETE",
-    data: { poll: "id-a" }
+    data: { id: "id-a" }
   };
 
   it("dispatches META_SET_STATE action on success", () => {
@@ -114,7 +114,7 @@ describe("viewRemoveOption", () => {
     path: "/api/view-remove-option",
     method: "PATCH",
     data: {
-      poll: "",
+      id: "",
       text: ""
     }
   };
@@ -141,7 +141,7 @@ describe("viewTogglePrivate", () => {
   const args = {
     path: "/api/view-toggle-private",
     method: "PATCH",
-    data: { poll: "" }
+    data: { id: "" }
   };
 
   it("dispatches META_NO_OP action on success", () => {

@@ -17,17 +17,11 @@ const META_ADD_ERRORS = (state, { errors }) => deepCopy(state, {
 
 const META_CLOSE_ERROR = (state, { index }) => {
 
-  const nextState = deepCopy(state);
+  const errors = state.errors.filter((e, i) => i !== index);
 
-  nextState.errors.splice(index, 1);
-
-  return nextState;
+  return deepCopy(state, { errors });
 
 };
-
-//meta no op
-
-const META_NO_OP = (state) => state;
 
 //meta set state
 
@@ -37,10 +31,13 @@ const META_SET_STATE = (state, { merge, config }) => initDeepCopy(config)(state,
 
 const META_TIMEOUT_ERROR = (state) => {
 
-  const errors = state.errors.map((e) => ({
-    text: e.text,
-    timer: e.timer - 100
-  })).filter((e) => e.timer > 0);
+  const errors = deepCopy(state.errors).filter((e) => {
+
+    e.timer -= 100;
+
+    return e.timer;
+
+  });
 
   return deepCopy(state, { errors });
 
@@ -51,7 +48,6 @@ const META_TIMEOUT_ERROR = (state) => {
 module.exports = {
   META_ADD_ERRORS,
   META_CLOSE_ERROR,
-  META_NO_OP,
   META_SET_STATE,
   META_TIMEOUT_ERROR
 };

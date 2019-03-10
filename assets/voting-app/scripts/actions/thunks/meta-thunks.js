@@ -6,7 +6,7 @@ const { reduxAPICall } = require("../../app-logic");
 
 //meta get polls
 
-const metaGetPolls = (poll, skip = false) => (dispatch, getState) => {
+const metaGetPolls = (id, skip = false) => (dispatch, getState) => {
 
   const { list } = getState();
 
@@ -14,7 +14,7 @@ const metaGetPolls = (poll, skip = false) => (dispatch, getState) => {
     path: "/api/meta-get-polls",
     method: "GET",
     data: {
-      poll,
+      id,
       skip,
       list
     }
