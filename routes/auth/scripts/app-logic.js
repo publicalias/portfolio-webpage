@@ -29,7 +29,7 @@ const handleDelete = async (req, res) => {
     req.logout();
     res.sendStatus(200);
 
-  } catch (err) {
+  } catch {
     res.sendStatus(500);
   }
 };

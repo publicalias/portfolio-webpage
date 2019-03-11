@@ -31,7 +31,7 @@ router.post("/output", async (req, res) => {
 
     handleUpload(req, res);
 
-  } catch (err) {
+  } catch {
     res.sendStatus(413);
   }
 });

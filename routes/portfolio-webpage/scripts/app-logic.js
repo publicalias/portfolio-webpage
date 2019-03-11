@@ -60,7 +60,7 @@ const handleForm = async (req, res) => {
       res.sendStatus(403);
     }
 
-  } catch (err) {
+  } catch {
     res.sendStatus(502);
   }
 };

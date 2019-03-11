@@ -73,7 +73,7 @@ const parseURL = async (res, input) => {
       await codifyURL(res, input);
     }
 
-  } catch (err) {
+  } catch {
     res.sendStatus(500);
   }
 };
@@ -89,7 +89,7 @@ const parseCode = async (res, input) => {
       res.sendStatus(404);
     }
 
-  } catch (err) {
+  } catch {
     res.sendStatus(500);
   }
 };

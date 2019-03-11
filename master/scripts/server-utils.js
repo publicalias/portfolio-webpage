@@ -99,7 +99,7 @@ const sendData = async (api, res) => {
 
     res.send(data);
 
-  } catch (err) {
+  } catch {
     res.sendStatus(502);
   }
 };

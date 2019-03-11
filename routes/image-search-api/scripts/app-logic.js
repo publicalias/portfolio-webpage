@@ -58,7 +58,7 @@ const readLogs = async (req, res) => {
 
     logHandler(res, docs);
 
-  } catch (err) {
+  } catch {
     res.sendStatus(500);
   }
 };

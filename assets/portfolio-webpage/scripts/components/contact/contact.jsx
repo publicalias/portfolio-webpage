@@ -53,7 +53,7 @@ class Contact extends React.Component {
 
       this.setState(resetForm(2));
 
-    } catch (err) {
+    } catch {
       this.setState({ btnIndex: 3 });
     }
 

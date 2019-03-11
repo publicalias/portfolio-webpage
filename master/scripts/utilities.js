@@ -7,18 +7,16 @@ const arrEqual = (a, b) => a.toString() === b.toString();
 //bind object
 
 const bindObject = (to, from = to) => {
-  for (const p in from) {
-
-    const prop = from[p];
-
-    switch (typeof prop) {
+  for (const [key, val] of Object.entries(from)) {
+    switch (typeof val) {
       case "function":
-        from[p] = prop.bind(to);
+        from[key] = val.bind(to);
         break;
       case "object":
-        bindObject(to, prop);
+        if (val !== null) {
+          bindObject(to, val);
+        }
     }
-
   }
 };
 
@@ -47,35 +45,36 @@ const cycleItems = (arr, val, delta = 1) => {
 
 const initDeepCopy = (config) => (...args) => {
 
-  const defaults = {
-    array: true,
-    object: false
+  const overwrite = (val) => {
+
+    const { array, object } = Object.assign({
+      array: true,
+      object: false
+    }, config);
+
+    return Array.isArray(val) ? array : object;
+
   };
 
-  const init = Object.assign(defaults, config);
-
-  const initVal = (obj) => Array.isArray(obj) ? [] : {};
+  const newObj = (val) => Array.isArray(val) ? [] : {};
 
   const mergeFn = (to, from) => {
 
-    for (const p in from) {
+    for (const [key, val] of Object.entries(from)) {
 
-      const prop = from[p];
-      const overwrite = Array.isArray(to[p]) ? init.array : init.object;
+      if (typeof val !== "object" || val === null) {
 
-      if (!prop || typeof prop !== "object") {
-
-        to[p] = prop;
+        to[key] = val;
 
         continue;
 
       }
 
-      if (!(p in to) || overwrite) {
-        to[p] = initVal(prop);
+      if (!(key in to) || overwrite(val)) {
+        to[key] = newObj(val);
       }
 
-      mergeFn(to[p], prop);
+      mergeFn(to[key], val);
 
     }
 
@@ -83,7 +82,7 @@ const initDeepCopy = (config) => (...args) => {
 
   };
 
-  return args.reduce(mergeFn, initVal(args[0]));
+  return args.reduce(mergeFn, newObj(args[0]));
 
 };
 
@@ -110,7 +109,7 @@ const months = [
 
 //rng int
 
-const rngInt = (min, max, inclusive = false) => Math.floor(Math.random() * (max - min + (inclusive ? 1 : 0))) + min;
+const rngInt = (min, max, inc = false) => Math.floor(Math.random() * (max - min + Number(inc))) + min;
 
 //round to
 

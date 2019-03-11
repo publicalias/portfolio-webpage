@@ -30,7 +30,7 @@ const apiRequest = async (req, res) => {
 
   try {
     await handlers[handler](req, res);
-  } catch (err) {
+  } catch {
     res.sendStatus(500);
   }
 
