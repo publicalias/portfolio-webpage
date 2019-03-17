@@ -6,9 +6,9 @@ const { array2DEach } = require("react-projects/app-logic");
 
 //child props
 
-const childProps = (that) => {
+const childProps = (state, handlers) => {
 
-  const { start, reverse, rules, scale, gen, pop, rulesText, scaleText } = that.state;
+  const { start, reverse, rules, scale, gen, pop, rulesText, scaleText } = state;
 
   const display = [
     `Generation: ${gen}`,
@@ -19,90 +19,71 @@ const childProps = (that) => {
 
   const control = [{
     setType: "button set",
-    content: {
-      a: {
-        flex: "u-flex-2",
-        fn: start ? that.handleStop : that.handleStart,
-        text: start ? "Stop" : "Start"
-      },
-      b: {
-        flex: "u-flex-3",
-        fn: that.handleReverse,
-        text: reverse ? "Forward" : "Reverse"
-      }
-    }
+    content: [{
+      flex: "u-flex-2",
+      fn: start ? handlers.stop : handlers.start,
+      text: start ? "Stop" : "Start"
+    }, {
+      flex: "u-flex-3",
+      fn: handlers.reverse,
+      text: reverse ? "Forward" : "Reverse"
+    }]
   }, {
     setType: "button",
-    content: {
-      a: {
-        fn: that.handleIterate,
-        text: "Iterate"
-      }
-    }
+    content: [{
+      fn: handlers.iterate,
+      text: "Iterate"
+    }]
   }, {
     setType: "button set",
-    content: {
-      a: {
-        flex: "u-flex-3",
-        fn: that.handleSpeed,
-        text: "Speed"
-      },
-      b: {
-        flex: "u-flex-2",
-        fn: that.handleColor,
-        text: "Color"
-      }
-    }
+    content: [{
+      flex: "u-flex-3",
+      fn: handlers.speed,
+      text: "Speed"
+    }, {
+      flex: "u-flex-2",
+      fn: handlers.color,
+      text: "Color"
+    }]
   }, {
     setType: "button",
-    content: {
-      a: {
-        fn: pop ? that.handleClear : that.handleRandom,
-        text: pop ? "Clear" : "Random"
-      }
-    }
+    content: [{
+      fn: pop ? handlers.clear : handlers.random,
+      text: pop ? "Clear" : "Random"
+    }]
   }, {
     setType: "input",
     jsID: "rules",
-    content: {
-      a: {
-        flex: "u-flex-2",
-        fn: that.handleInput("rulesText"),
-        text: "B3/S23",
-        val: rulesText
-      },
-      b: {
-        fn: that.handleRules,
-        text: "Set"
-      }
-    }
+    content: [{
+      flex: "u-flex-2",
+      fn: handlers.input("rulesText"),
+      text: "B3/S23",
+      val: rulesText
+    }, {
+      fn: handlers.rules,
+      text: "Set"
+    }]
   }, {
     setType: "button set",
-    content: {
-      a: {
-        fn: that.handleSave,
-        text: "Save"
-      },
-      b: {
-        fn: that.handleLoad,
-        text: "Load"
-      }
-    }
+    content: [{
+      fn: handlers.save,
+      text: "Save"
+    }, {
+      fn: handlers.load,
+      text: "Load"
+    }]
   }, {
     setType: "input",
     jsID: "scale",
-    content: {
-      a: {
-        flex: "u-flex-2",
-        fn: that.handleInput("scaleText"),
-        text: "12 to 144",
-        val: scaleText
-      },
-      b: {
-        fn: that.handleScale,
-        text: "Set"
-      }
-    }
+    content: [{
+      flex: "u-flex-2",
+      fn: handlers.input("scaleText"),
+      text: "12 to 144",
+      val: scaleText
+    }, {
+      fn: handlers.scale,
+      text: "Set"
+    }]
   }];
 
   return {

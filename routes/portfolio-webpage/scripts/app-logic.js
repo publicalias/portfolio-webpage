@@ -50,15 +50,17 @@ const handleForm = async (req, res) => {
 
     const { success } = JSON.parse(data);
 
-    if (success) {
+    if (!success) {
 
-      await sendEmail(req.body);
-
-      res.sendStatus(202);
-
-    } else {
       res.sendStatus(403);
+
+      return;
+
     }
+
+    await sendEmail(req.body.data);
+
+    res.sendStatus(202);
 
   } catch {
     res.sendStatus(502);

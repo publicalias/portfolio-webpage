@@ -25,7 +25,7 @@ const globalEvents = (app) => () => {
   app.ready++;
   app.getSVG();
 
-  select(window).on("scroll", wrapFn(app.handleMouseLeave));
+  select(window).on("resize scroll", wrapFn(app.handleMouseLeave));
 
   select(".js-ref-svg").on("touchstart", app.handleMouseLeave, { passive: true }); //ensures mobile support
 

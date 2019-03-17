@@ -11,7 +11,7 @@ const { checkInput, storageKey } = require("client-utils");
 const { closePanel, initPanel } = require("components/accordion");
 const { modalEvents, toggleModal } = require("components/modal");
 const { select } = require("dom-api");
-const { bindReactClass, initKeyGen } = require("react-utils");
+const { initKeyGen, useSetState } = require("react-utils");
 const { deepCopy, wrapFn } = require("utilities");
 
 //node modules
@@ -19,15 +19,16 @@ const { deepCopy, wrapFn } = require("utilities");
 const React = require("react");
 const ReactDOM = require("react-dom");
 
+const { useEffect, useLayoutEffect } = React;
+
 //app logic
 
-class App extends React.Component {
+const App = () => {
 
-  constructor(props) {
+  //state
 
-    super(props);
-
-    const list = storageKey("recipes") || [{
+  const [state, setState] = useSetState({
+    list: storageKey("recipes") || [{
       num: 0,
       name: "Fluffy Pancakes",
       com: "Tall and fluffy. These pancakes are just right. Topped with strawberries and whipped cream, they are impossible to resist.",
@@ -45,26 +46,19 @@ class App extends React.Component {
       com: "Moist chocolate brownies with frosting!",
       ingr: "1/2 cup vegetable oil\n1 1/2 cups white sugar\n2 teaspoons vanilla extract\n2 cups all-purpose flour\n1/2 cup unsweetened cocoa powder\n1 1/2 teaspoons baking soda\n1 teaspoon salt\n2 cups shredded zucchini\n1/2 cup chopped walnuts\n6 tablespoons unsweetened cocoa powder\n1/4 cup margarine\n2 cups confectioners' sugar\n1/4 cup milk\n1/2 teaspoon vanilla extract",
       inst: "Preheat oven to 350 degrees F (175 degrees C). Grease and flour a 9x13 inch baking pan.\nIn a large bowl, mix together the oil, sugar and 2 teaspoons vanilla until well blended. Combine the flour, 1/2 cup cocoa, baking soda and salt and stir into the sugar mixture. Fold in the zucchini and walnuts. Spread evenly into the prepared pan.\nBake for 25 to 30 minutes in the preheated oven, until brownies spring back when gently touched. To make the frosting, melt together the 6 tablespoons of cocoa and margarine and set aside to cool. In a medium bowl, blend together the confectioners' sugar, milk and 1/2 teaspoon vanilla. Stir in the cocoa mixture. Spread over cooled brownies before cutting into squares."
-    }];
+    }],
+    modalNum: null
+  });
 
-    this.state = {
-      list,
-      modalNum: null
-    };
+  //utilities
 
-    bindReactClass(this);
+  const updateList = (entry, type) => {
 
-  }
-
-  //update list
-
-  updateList(entry, type) {
-
-    const list = deepCopy(this.state.list);
+    const list = deepCopy(state.list);
 
     const save = () => {
-      this.setState({ list }, () => {
-        storageKey("recipes", this.state.list);
+      setState({ list }, (state) => {
+        storageKey("recipes", state.list);
       });
     };
 
@@ -86,66 +80,59 @@ class App extends React.Component {
         save();
     }
 
-  }
+  };
 
-  //open editor
-
-  displayModal(num) {
-    if (this.state.modalNum === num) {
+  const displayModal = (num) => {
+    if (state.modalNum === num) {
       toggleModal(true);
     } else {
-      this.setState({ modalNum: num }, wrapFn(toggleModal, true));
+      setState({ modalNum: num }, wrapFn(toggleModal, true));
     }
-  }
+  };
 
-  //add recipe
+  //events
 
-  handleAdd() {
+  const handleAdd = () => {
 
     closePanel();
 
-    this.displayModal(this.state.list.length);
+    displayModal(state.list.length);
 
-  }
+  };
 
   //lifecycle
 
-  componentDidMount() {
-    initPanel();
+  useEffect(() => {
     checkInput();
     modalEvents();
-  }
+  }, []);
 
-  componentDidUpdate() {
-    initPanel();
-  }
+  useLayoutEffect(initPanel);
 
-  render() {
+  //render
 
-    const keyGen = initKeyGen();
+  const keyGen = initKeyGen();
 
-    const entry = this.state.list[this.state.modalNum];
+  const entry = state.list[state.modalNum];
 
-    return [
-      <RecipeBox
-        displayModal={this.displayModal}
-        handleAdd={this.handleAdd}
-        key={keyGen("recipe-box")}
-        list={this.state.list}
-        updateList={this.updateList}
-      />,
-      <RecipeEditor
-        entry={entry}
-        key={keyGen(entry ? entry.name : `${Date.now()}`)}
-        modalNum={this.state.modalNum}
-        updateList={this.updateList}
-        used={this.state.list.map((e) => e.name)}
-      />
-    ];
+  return [
+    <RecipeBox
+      displayModal={displayModal}
+      handleAdd={handleAdd}
+      key={keyGen("recipe-box")}
+      list={state.list}
+      updateList={updateList}
+    />,
+    <RecipeEditor
+      entry={entry}
+      key={keyGen(entry ? entry.name : `${Date.now()}`)}
+      modalNum={state.modalNum}
+      updateList={updateList}
+      used={state.list.map((e) => e.name)}
+    />
+  ];
 
-  }
-
-}
+};
 
 //initialize app
 

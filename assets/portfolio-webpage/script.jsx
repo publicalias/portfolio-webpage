@@ -25,32 +25,32 @@ const { initKeyGen } = require("react-utils");
 const React = require("react");
 const ReactDOM = require("react-dom");
 
+const { useEffect, useLayoutEffect } = React;
+
 //app logic
 
-class App extends React.Component {
+const App = (props) => {
 
-  componentDidMount() {
-    initPanel();
-    checkInput();
-  }
+  //lifecycle
 
-  render() {
+  useEffect(checkInput, []);
+  useLayoutEffect(initPanel, []);
 
-    const keyGen = initKeyGen();
+  //render
 
-    return [
-      <NavBar key={keyGen("nav-bar")} navBar={this.props.navBar} />,
-      <Bio bio={this.props.bio} key={keyGen("bio")} />,
-      <Showcase key={keyGen("showcase")} showcase={this.props.showcase} />,
-      this.props.groups.map((e) => <Group group={e} key={keyGen(e.id)} />),
-      <Contact contact={this.props.contact} key={keyGen("contact")} />,
-      <Footer footer={this.props.footer} key={keyGen("footer")} />,
-      <CookieBanner key={keyGen("cookie-banner")} />
-    ];
+  const keyGen = initKeyGen();
 
-  }
+  return [
+    <NavBar key={keyGen("nav-bar")} navBar={props.navBar} />,
+    <Bio bio={props.bio} key={keyGen("bio")} />,
+    <Showcase key={keyGen("showcase")} showcase={props.showcase} />,
+    props.groups.map((e) => <Group group={e} key={keyGen(e.id)} />),
+    <Contact contact={props.contact} key={keyGen("contact")} />,
+    <Footer footer={props.footer} key={keyGen("footer")} />,
+    <CookieBanner key={keyGen("cookie-banner")} />
+  ];
 
-}
+};
 
 App.defaultProps = defaultProps;
 

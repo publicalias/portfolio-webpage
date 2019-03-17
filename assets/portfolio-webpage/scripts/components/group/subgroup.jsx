@@ -9,7 +9,7 @@ const Project = require("./project/project");
 const { storageKey } = require("client-utils");
 const { togglePanel } = require("components/accordion");
 const { select } = require("dom-api");
-const { bindReactClass, initKeyGen } = require("react-utils");
+const { initKeyGen, useSetState } = require("react-utils");
 
 //node modules
 
@@ -17,59 +17,53 @@ const React = require("react");
 
 //subgroup
 
-class Subgroup extends React.Component {
+const Subgroup = (props) => {
 
-  constructor(props) {
+  //state
 
-    super(props);
+  const [state, setState] = useSetState({ viewed: props.subgroup.id === storageKey("panel", null, true) });
 
-    this.state = { viewed: this.props.subgroup.id === storageKey("panel", null, true) };
+  //events
 
-    bindReactClass(this);
-
-  }
-
-  handleClick() {
+  const handleClick = () => {
 
     const navHeight = select(".js-ref-nav-bar").rect().height;
-    const groupPadding = select(`.js-scroll-${this.props.groupId}`).css().paddingTop;
+    const groupPadding = select(`.js-scroll-${props.groupId}`).css().paddingTop;
 
-    togglePanel(this.props.subgroup.id, navHeight + parseFloat(groupPadding));
+    togglePanel(props.subgroup.id, navHeight + parseFloat(groupPadding));
 
-    if (!this.state.viewed) {
-      this.setState({ viewed: true });
+    if (!state.viewed) {
+      setState({ viewed: true });
     }
 
-  }
+  };
 
-  render() {
+  //render
 
-    const keyGen = initKeyGen();
+  const keyGen = initKeyGen();
 
-    const subgroup = this.props.subgroup;
+  const { name, id, projects } = props.subgroup;
 
-    return (
-      <div className="c-panel">
-        <h3 className={`c-panel__toggle js-toggle-panel-${subgroup.id}`} onClick={this.handleClick}>{subgroup.name}</h3>
-        {!this.props.isLastSubgroup && <hr />}
-        <div className={`c-panel__expand js-expand-panel js-expand-panel-${subgroup.id}`}>
-          {subgroup.projects.map((e, i, arr) => (
-            <Project
-              isFirstProject={i === 0}
-              isLastProject={i === arr.length - 1}
-              isLastSubgroup={this.props.isLastSubgroup}
-              key={keyGen(e.id)}
-              project={e}
-              viewed={this.state.viewed}
-            />
-          ))}
-        </div>
+  return (
+    <div className="c-panel">
+      <h3 className={`c-panel__toggle js-toggle-panel-${id}`} onClick={handleClick}>{name}</h3>
+      {!props.isLastSubgroup && <hr />}
+      <div className={`c-panel__expand js-expand-panel js-expand-panel-${id}`}>
+        {projects.map((e, i, arr) => (
+          <Project
+            isFirstProject={i === 0}
+            isLastProject={i === arr.length - 1}
+            isLastSubgroup={props.isLastSubgroup}
+            key={keyGen(e.id)}
+            project={e}
+            viewed={state.viewed}
+          />
+        ))}
       </div>
-    );
+    </div>
+  );
 
-  }
-
-}
+};
 
 //exports
 

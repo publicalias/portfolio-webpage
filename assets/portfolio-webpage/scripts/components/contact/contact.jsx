@@ -7,11 +7,12 @@
 const ContactForm = require("./contact-form");
 const MediaIcons = require("./media-icons");
 
-const { loadReCaptcha, resetForm } = require("../../app-logic");
+const { resetForm, useReCaptcha } = require("../../app-logic");
 
 //global imports
 
-const { bindReactClass } = require("react-utils");
+const { encodeAPICall } = require("client-utils");
+const { useSetState } = require("react-utils");
 
 //node modules
 
@@ -19,111 +20,95 @@ const React = require("react");
 
 //contact
 
-class Contact extends React.Component {
+const Contact = (props) => {
 
-  constructor(props) {
+  //state
 
-    super(props);
+  const [state, setState] = useSetState(resetForm(0));
 
-    this.state = resetForm(0);
+  //utilities
 
-    bindReactClass(this);
+  const getReCaptcha = async (data) => {
 
-  }
-
-  //recaptcha
-
-  async getReCaptcha(data) {
-
-    const body = {
+    const { path, init } = encodeAPICall({
+      path: "/portfolio-webpage/contact",
       method: "POST",
-      body: JSON.stringify(Object.assign({ verify: data }, this.state)),
-      headers: new Headers({ "Content-Type": "application/json" })
-    };
+      data: Object.assign({ verify: data }, state)
+    });
 
-    this.setState({ btnIndex: 1 });
+    setState({ btnIndex: 1 });
 
     try {
 
-      const res = await fetch("/portfolio-webpage/contact", body);
+      const res = await fetch(path, init);
 
       if (!res.ok) {
         throw Error(`${res.status} ${res.statusText}`);
       }
 
-      this.setState(resetForm(2));
+      setState(resetForm(2));
 
     } catch {
-      this.setState({ btnIndex: 3 });
+      setState({ btnIndex: 3 });
     }
 
     grecaptcha.reset();
 
-  }
+  };
 
-  //handle events
+  //events
 
-  handleChange(event) {
-
-    const { name, value } = event.target;
-
-    if (this.state.btnIndex !== 1) {
-      this.setState({
-        [name]: value,
+  const handleChange = (event) => {
+    if (state.btnIndex !== 1) {
+      setState({
+        [event.target.name]: event.target.value,
         btnIndex: 0
       });
     }
+  };
 
-  }
-
-  handleSubmit(event) {
+  const handleSubmit = (event) => {
 
     event.preventDefault();
 
     grecaptcha.execute();
 
-  }
+  };
 
   //lifecycle
 
-  componentDidMount() {
+  useReCaptcha(getReCaptcha);
 
-    window.getReCaptcha = this.getReCaptcha; //callback must precede script
+  //render
 
-    loadReCaptcha();
-
-  }
-
-  render() {
-    return (
-      <div className="c-content--xl js-scroll-contact">
-        <div className="c-row">
-          <div className="c-row__col--4">
-            <h1>Contact</h1>
-          </div>
-          <div className="c-row__col--8">
-            <ContactForm
-              body={this.state.body}
-              btnIndex={this.state.btnIndex}
-              email={this.state.email}
-              handleChange={this.handleChange}
-              handleSubmit={this.handleSubmit}
-              subject={this.state.subject}
-            />
-            <MediaIcons contact={this.props.contact} />
-            <div
-              className="g-recaptcha"
-              data-callback="getReCaptcha"
-              data-sitekey="6LexgzMUAAAAAE0tcL9o2_Tt0Clqk8xpQhhdlFDO"
-              data-size="invisible"
-            />
-          </div>
+  return (
+    <div className="c-content--xl js-scroll-contact">
+      <div className="c-row">
+        <div className="c-row__col--4">
+          <h1>Contact</h1>
+        </div>
+        <div className="c-row__col--8">
+          <ContactForm
+            body={state.body}
+            btnIndex={state.btnIndex}
+            email={state.email}
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+            subject={state.subject}
+          />
+          <MediaIcons contact={props.contact} />
+          <div
+            className="g-recaptcha"
+            data-callback="getReCaptcha"
+            data-sitekey="6LexgzMUAAAAAE0tcL9o2_Tt0Clqk8xpQhhdlFDO"
+            data-size="invisible"
+          />
         </div>
       </div>
-    );
-  }
+    </div>
+  );
 
-}
+};
 
 //exports
 

@@ -1,30 +1,8 @@
 "use strict";
 
-//bind react class
+//node modules
 
-const bindReactClass = (that) => {
-
-  const ignore = [
-    "constructor",
-    "getDerivedStateFromProps",
-    "render",
-    "componentDidMount",
-    "shouldComponentUpdate",
-    "getSnapshotBeforeUpdate",
-    "componentDidUpdate",
-    "componentWillUnmount",
-    "componentDidCatch"
-  ];
-
-  const methods = Object.getOwnPropertyNames(Object.getPrototypeOf(that));
-
-  for (const e of methods) {
-    if (!ignore.includes(e)) {
-      that[e] = that[e].bind(that);
-    }
-  }
-
-};
+const { useEffect, useRef, useState } = require("react");
 
 //init key gen
 
@@ -56,9 +34,66 @@ const initKeyGen = () => {
 
 };
 
+//use interval
+
+const useInterval = (fn, speed) => {
+
+  const callback = useRef();
+
+  useEffect(() => {
+    callback.current = fn;
+  });
+
+  useEffect(() => {
+
+    if (typeof speed !== "number") {
+      return;
+    }
+
+    const id = setInterval(() => {
+      callback.current();
+    }, speed);
+
+    return () => {
+      clearInterval(id);
+    };
+
+  }, [speed]);
+
+};
+
+//use set state
+
+const useSetState = (initialState, props) => {
+
+  const [state, setState] = useState(initialState);
+
+  const { current: queue } = useRef([]);
+
+  useEffect(() => {
+    while (queue.length) {
+      queue.shift()(state, props);
+    }
+  });
+
+  return [state, (merge, fn) => {
+
+    const next = typeof merge === "function" ? merge : () => merge;
+
+    if (fn) {
+      queue.push(fn);
+    }
+
+    setState((prev) => Object.assign({}, prev, next(prev)));
+
+  }];
+
+};
+
 //exports
 
 module.exports = {
-  bindReactClass,
-  initKeyGen
+  initKeyGen,
+  useInterval,
+  useSetState
 };

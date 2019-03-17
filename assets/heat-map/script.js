@@ -13,11 +13,7 @@ const { bindObject, months } = require("utilities");
 
 const calcMeanTemp = (data) => {
 
-  const mean = [];
-
-  for (const e of data) {
-    mean.push(e.temp);
-  }
+  const mean = data.map((e) => e.temp);
 
   return Number(d3.mean(mean).toFixed(3));
 

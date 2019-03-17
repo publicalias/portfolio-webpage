@@ -9,28 +9,21 @@ const { paintCanvas } = require("../view-logic");
 
 const { select } = require("dom-api");
 const { mouseYX } = require("react-projects/app-logic");
-const { bindReactClass } = require("react-utils");
 const { arrEqual } = require("utilities");
 
 //node modules
 
 const React = require("react");
 
+const { useEffect } = React;
+
 //level
 
-class Level extends React.Component {
+const Level = (props) => {
 
-  constructor(props) {
+  //utilities
 
-    super(props);
-
-    bindReactClass(this);
-
-  }
-
-  //update display
-
-  updateDisplay() {
+  const updateDisplay = () => {
 
     const DOMCanvas = select(".js-ref-canvas");
 
@@ -38,19 +31,19 @@ class Level extends React.Component {
     const w = DOMCanvas.rect().width;
     const h = DOMCanvas.rect().height;
 
-    const scale = [h / this.props.level.length, w / this.props.level[0].length];
+    const scale = [h / props.level.length, w / props.level[0].length];
 
     ctx.clearRect(0, 0, w, h);
 
-    paintCanvas(this.props, ctx, scale);
+    paintCanvas(props, ctx, scale);
 
-  }
+  };
 
-  //display info
+  //events
 
-  handleMouseMove(event) {
+  const handleMouseMove = (event) => {
 
-    const { level, bool, enemies, hover: { base, info, text, fn }, thisLevel } = this.props;
+    const { level, bool, enemies, hover: { base, info, text, fn }, thisLevel } = props;
 
     const [y, x] = mouseYX(event, level);
 
@@ -77,32 +70,28 @@ class Level extends React.Component {
       fn(newText);
     }
 
-  }
+  };
 
   //lifecycle
 
-  componentDidMount() {
-    this.updateDisplay();
-  }
+  useEffect(updateDisplay);
 
-  componentDidUpdate() {
-    this.updateDisplay();
-  }
+  //render
 
-  render() {
-    return (
-      <div className="js-resize-level u-margin-full">
-        <canvas
-          className="js-ref-canvas"
-          height={this.props.canvas[1]}
-          onMouseMove={this.handleMouseMove}
-          width={this.props.canvas[0]}
-        />
-      </div>
-    );
-  }
+  const { canvas: [width, height] } = props;
 
-}
+  return (
+    <div className="js-resize-level u-margin-full">
+      <canvas
+        className="js-ref-canvas"
+        height={height}
+        onMouseMove={handleMouseMove}
+        width={width}
+      />
+    </div>
+  );
+
+};
 
 //exports
 

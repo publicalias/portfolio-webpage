@@ -83,14 +83,16 @@ const delegate = (fn, parent, child) => (event) => {
 
 };
 
-const eventUtil = (api) => (events, ...args) => {
+const eventUtil = (api, add) => (events, ...args) => {
 
   const { all } = api;
   const { child, fn, options } = defineArgs(args);
 
+  const method = add ? "addEventListener" : "removeEventListener";
+
   for (const e of all) {
     for (const f of events.split(" ")) {
-      e.addEventListener(f, child ? delegate(fn, e, child) : fn, options);
+      e[method](f, child ? delegate(fn, e, child) : fn, options);
     }
   }
 
@@ -253,7 +255,8 @@ const select = (query) => {
 
   Object.assign(api, {
     animate: animateUtil(api),
-    on: eventUtil(api),
+    on: eventUtil(api, true),
+    off: eventUtil(api),
     class: classUtil(api),
     text: contentUtil(api, true),
     html: contentUtil(api),

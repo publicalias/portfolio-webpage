@@ -20,14 +20,11 @@ const WeaponInfo = (props) => {
 
   const { char, info, fn } = props.params;
 
-  const held = [];
-  const worn = info.weapon.list[char.items.weapon];
+  const held = Object.entries(char.items.weapons)
+    .filter(([, val]) => val)
+    .map(([key]) => info.weapon.type[key]);
 
-  for (const p in char.items.weapons) {
-    if (char.items.weapons[p]) {
-      held.push(info.weapon.type[p]);
-    }
-  }
+  const worn = info.weapon.list[char.items.weapon];
 
   return (
     <p className="c-sidebar__text">

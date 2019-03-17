@@ -1,5 +1,9 @@
 "use strict";
 
+//alphabet
+
+const alphabet = "abcdefghijklmnopqrstuvwxyz";
+
 //arr equal
 
 const arrEqual = (a, b) => a.toString() === b.toString();
@@ -122,6 +126,7 @@ const wrapFn = (fn, ...args) => () => fn(...args);
 //exports
 
 module.exports = {
+  alphabet,
   arrEqual,
   bindObject,
   chance,

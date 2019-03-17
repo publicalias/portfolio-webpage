@@ -4,17 +4,12 @@
 
 const tooltipLinks = (d, data) => {
 
-  const links = [];
+  const target = (e) => e.target.code === d.code;
+  const source = (e) => e.source.code === d.code;
 
-  for (const e of data.links) {
-    if (e.target.code === d.code) {
-      links.push(e.source.country);
-    } else if (e.source.code === d.code) {
-      links.push(e.target.country);
-    }
-  }
-
-  return links;
+  return data.links
+    .filter((e) => target(e) || source(e))
+    .map((e) => target(e) ? e.source.country : e.target.country);
 
 };
 

@@ -7,27 +7,20 @@ const { clearCanvas, paintCanvas } = require("../view-logic");
 //global imports
 
 const { select } = require("dom-api");
-const { bindReactClass } = require("react-utils");
 
 //node modules
 
 const React = require("react");
 
+const { useEffect } = React;
+
 //culture
 
-class Culture extends React.Component {
+const Culture = (props) => {
 
-  constructor(props) {
+  //utilities
 
-    super(props);
-
-    bindReactClass(this);
-
-  }
-
-  //fill canvas
-
-  updateDisplay() {
+  const updateDisplay = () => {
 
     const DOMCanvas = select(".js-ref-canvas");
 
@@ -45,48 +38,42 @@ class Culture extends React.Component {
     };
 
     clearCanvas(params);
-    paintCanvas(params, this.props.culture);
+    paintCanvas(params, props.culture);
 
-  }
+  };
 
-  //modify cell
+  //events
 
-  handleClick(event) {
-    this.props.modify(event);
-  }
+  const handleClick = (event) => {
+    props.modify(event);
+  };
 
   //lifecycle
 
-  componentDidMount() {
-
-    this.updateDisplay();
-
+  useEffect(() => {
     select(".js-ref-canvas").on("mousedown", (event) => {
       if (event.detail > 1) {
         event.preventDefault(); //ignore select
       }
     });
+  }, []);
 
-  }
+  useEffect(updateDisplay);
 
-  componentDidUpdate() {
-    this.updateDisplay();
-  }
+  //render
 
-  render() {
-    return (
-      <div className="js-resize-culture">
-        <canvas
-          className="js-ref-canvas u-cursor-crosshair"
-          height={this.props.canvas}
-          onClick={this.handleClick}
-          width={this.props.canvas}
-        />
-      </div>
-    );
-  }
+  return (
+    <div className="js-resize-culture">
+      <canvas
+        className="js-ref-canvas u-cursor-crosshair"
+        height={props.canvas}
+        onClick={handleClick}
+        width={props.canvas}
+      />
+    </div>
+  );
 
-}
+};
 
 //exports
 

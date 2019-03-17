@@ -14,8 +14,8 @@ const React = require("react");
 
 const Carousel = (props) => (
   <div className="c-preview">
-    <SwipeBtn handleClick={props.turnCarousel(false, true)} mod="left" />
-    <SwipeBtn handleClick={props.turnCarousel(true, true)} mod="right" />
+    <SwipeBtn handleClick={props.handleTurn(-1)} mod="left" />
+    <SwipeBtn handleClick={props.handleTurn(1)} mod="right" />
     <a className="c-preview__layer--top" href={voidLink(props.links.page)}>
       <div className="c-preview__clear" />
     </a>

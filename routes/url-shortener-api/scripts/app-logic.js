@@ -2,7 +2,7 @@
 
 //global imports
 
-const { rngInt } = require(`${__rootdir}/master/scripts/utilities`);
+const { alphabet, rngInt } = require(`${__rootdir}/master/scripts/utilities`);
 
 //node modules
 
@@ -21,12 +21,8 @@ const createRes = (url, code) => ({
 
 const createCode = () => {
 
-  const char = "abcdefghijklmnopqrstuvwxyz".split("");
+  const char = `${alphabet}${alphabet.toUpperCase()}`.split("");
   const code = [];
-
-  for (let i = 0; i < 26; i++) {
-    char.push(char[i].toUpperCase());
-  }
 
   for (let i = 0; i < 3; i++) {
     code.push(char[rngInt(0, char.length)]);

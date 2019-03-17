@@ -64,7 +64,7 @@ const handleGameplay = (params, event) => {
 
 };
 
-//key down params
+//keydown params
 
 const keyDownParams = (state, props) => {
 

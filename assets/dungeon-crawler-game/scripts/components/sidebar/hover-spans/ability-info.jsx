@@ -20,25 +20,16 @@ const AbilityInfo = (props) => {
 
   const { char, info, fn } = props.params;
 
-  let abilities = [];
+  let abilities = Object.entries(char.items.abilities).filter(([, val]) => val);
 
-  for (const p in char.items.abilities) {
-    if (char.items.abilities[p]) {
-      abilities.push({
-        text: info.ability.type[p],
-        info: info.ability.list[p]
-      });
-    }
-  }
+  abilities = abilities.length ? abilities : [
+    [0, true]
+  ];
 
-  if (!abilities.length) {
-    abilities.push({
-      text: info.ability.type[0],
-      info: info.ability.list[0]
-    });
-  }
-
-  abilities = abilities.map((e, i) => (
+  abilities = abilities.map(([key]) => ({
+    text: info.ability.type[key],
+    info: info.ability.list[key]
+  })).map((e, i) => (
     <HoverSpan
       fn={fn}
       info={e.info}

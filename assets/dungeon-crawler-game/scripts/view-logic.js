@@ -44,9 +44,8 @@ const sightRange = (map, mapped, index) => {
 
 };
 
-const childProps = (that) => {
+const childProps = (state, props, handlers) => {
 
-  const { state, props } = that;
   const { char, thisLevel } = state;
 
   const level = state.win ? winScreen() : state.levels[thisLevel];
@@ -63,14 +62,14 @@ const childProps = (that) => {
   const hover = {
     text: state.hoverText,
     info: props.hoverInfo,
-    fn: that.handleHover,
+    fn: handlers.hover,
     base: props.hoverInfo.base(state.enemies, thisLevel)
   };
 
   const charInfo = {
     btn: {
-      handleClick: that.handleSwitch,
-      text: "Switch"
+      handleClick: handlers.swap,
+      text: "Swap"
     },
     char: state.char,
     hover,
@@ -79,7 +78,7 @@ const childProps = (that) => {
 
   const hoverBox = {
     btn: {
-      handleClick: that.handleHint,
+      handleClick: handlers.hint,
       text: "Hint"
     },
     text: state.hoverText

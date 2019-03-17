@@ -6,15 +6,7 @@ const { genEnemies } = require("./gen-enemies");
 const { genMaze } = require("./gen-maze");
 const { populateLevel } = require("./populate-level");
 
-//gen level
-
-const genLevel = (params) => {
-  genMaze(params);
-  populateLevel(params);
-  genEnemies(params);
-};
-
-//new game params
+//new game
 
 const createArraySet = (items) => {
 
@@ -38,8 +30,6 @@ const newGameParams = () => ({
   bossIndex: null,
   charIndex: null
 });
-
-//new game state
 
 const newGameState = (params, props) => {
 
@@ -150,10 +140,26 @@ const newGameState = (params, props) => {
 
 };
 
+const newGame = (props) => {
+
+  const params = newGameParams();
+
+  const { levels } = params;
+
+  for (const p in levels) {
+
+    params.depth = Number(p);
+
+    genMaze(params);
+    populateLevel(params);
+    genEnemies(params);
+
+  }
+
+  return newGameState(params, props);
+
+};
+
 //exports
 
-module.exports = {
-  genLevel,
-  newGameParams,
-  newGameState
-};
+module.exports = { newGame };

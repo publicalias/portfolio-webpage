@@ -27,7 +27,7 @@ const handleClick = () => {
 
 const CookieBanner = () => !storageKey("consent") && (
   <div className="c-content--xl c-cookie-banner js-hide-banner">
-    <p className="c-cookie-banner__text">This site uses cookies to facilitate user authentication. By continuing to use this site, you consent to its use of cookies.</p>
+    <p className="c-cookie-banner__text">This site uses cookies to facilitate user authentication. By continuing to use this site, you <s>surrender your firstborn child</s> consent to its use of cookies.</p>
     <button className="c-cookie-banner__btn" onClick={handleClick}>OK</button>
   </div>
 );

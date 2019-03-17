@@ -9,59 +9,55 @@ const { positionMenu } = require("../../event-handlers");
 //global imports
 
 const { select } = require("dom-api");
-const { bindReactClass, initKeyGen } = require("react-utils");
+const { initKeyGen } = require("react-utils");
 
 //node modules
 
 const React = require("react");
 
+const { useEffect } = React;
+
 //nav sublist
 
-class NavSublist extends React.Component {
+const NavSublist = (props) => {
 
-  constructor(props) {
+  //events
 
-    super(props);
-
-    bindReactClass(this);
-
-  }
-
-  handleClick() {
+  const handleClick = () => {
 
     select(".js-expand-sublist").class("is-open", true);
 
     positionMenu();
 
-  }
+  };
 
-  componentDidMount() {
+  //lifecycle
+
+  useEffect(() => {
     select(window).on("resize scroll", positionMenu);
-  }
+  }, []);
 
-  render() {
+  //render
 
-    const keyGen = initKeyGen();
+  const keyGen = initKeyGen();
 
-    return (
-      <div className="c-nav-bar__sublist">
-        <li className="c-nav-bar__item--toggle" onClick={this.handleClick}>{this.props.name}</li>
-        <ul className="c-nav-bar__expand js-expand-sublist">
-          {this.props.sublist.map((e) => e.type === "item" ? (
-            <NavItem
-              key={keyGen(e.name)}
-              link={e.link}
-              mod="sublist"
-              name={e.name}
-            />
-          ) : <hr className="c-nav-bar__rule" key={keyGen("rule")} />)}
-        </ul>
-      </div>
-    );
+  return (
+    <div className="c-nav-bar__sublist">
+      <li className="c-nav-bar__item--toggle" onClick={handleClick}>{props.name}</li>
+      <ul className="c-nav-bar__expand js-expand-sublist">
+        {props.sublist.map((e) => e.type === "item" ? (
+          <NavItem
+            key={keyGen(e.name)}
+            link={e.link}
+            mod="sublist"
+            name={e.name}
+          />
+        ) : <hr className="c-nav-bar__rule" key={keyGen("rule")} />)}
+      </ul>
+    </div>
+  );
 
-  }
-
-}
+};
 
 //exports
 

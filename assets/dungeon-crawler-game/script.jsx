@@ -6,238 +6,106 @@ const EventLog = require("./scripts/components/event-log");
 const Level = require("./scripts/components/level");
 const Sidebar = require("./scripts/components/sidebar/sidebar");
 
+const { getHandlers, useKeyDown } = require("./scripts/event-handlers");
 const { defaultProps } = require("./scripts/default-props/default-props");
-const { handleGameplay, keyDownParams } = require("./scripts/handle-key-down/handle-key-down");
-const { genLevel, newGameParams, newGameState } = require("./scripts/new-game/new-game");
+const { newGame } = require("./scripts/new-game/new-game");
 const { childProps } = require("./scripts/view-logic");
-const { cycleHints, cycleWeapons } = require("./scripts/event-handlers");
 
 //global imports
 
 const { checkInput, storageKey } = require("client-utils");
 const { select } = require("dom-api");
-const { bindReactClass } = require("react-utils");
-const { deepCopy } = require("utilities");
+const { useInterval, useSetState } = require("react-utils");
 
 //node modules
 
 const React = require("react");
 const ReactDOM = require("react-dom");
 
+const { useEffect, useLayoutEffect } = React;
+
 //app logic
 
-class App extends React.Component {
+const App = (props) => {
 
-  constructor(props) {
+  //state
 
-    super(props);
+  const [state, setState] = useSetState(() => {
 
-    this.state = storageKey("save") || this.newGame();
+    const keys = ["deaths", "ng-plus", "best-time"];
 
-    bindReactClass(this);
-
-    storageKey("deaths", storageKey("deaths") || 0);
-    storageKey("ng-plus", storageKey("ng-plus") || 0);
-
-    storageKey("best-time", storageKey("best-time") || 0);
-
-  }
-
-  //start new game
-
-  newGame() {
-
-    const params = newGameParams();
-
-    const { levels } = params;
-
-    for (const p in levels) {
-
-      params.depth = Number(p);
-
-      genLevel(params);
-
+    for (const e of keys) {
+      storageKey(e, storageKey(e) || 0);
     }
 
-    return newGameState(params, this.props);
+    return storageKey("save") || newGame(props);
 
-  }
+  });
 
-  //key events
+  //utilities
 
-  handleKeyDown(event) {
-
-    const params = keyDownParams(deepCopy(this.state), this.props);
-
-    const { state, char } = params;
-
-    if (!char.stats.hp || state.win) {
-      return;
+  const updateTimer = () => {
+    if (document.visibilityState === "visible") {
+      setState((state) => {
+        if (state.start && state.char.stats.hp && !state.win) {
+          return { time: state.time + 1 };
+        }
+      });
     }
+  };
 
-    state.start = true;
+  //events
 
-    handleGameplay(params, event);
-
-    this.setState(state);
-
-    if (!char.stats.hp || state.win) {
-      setTimeout(() => {
-        this.setState(this.newGame(), this.handleResize);
-      }, 3000);
-    }
-
-  }
-
-  initKeyHandler() {
-
-    let move = true;
-
-    setInterval(() => {
-      move = true;
-    }, 100);
-
-    return (event) => {
-
-      if (event.key === "ArrowUp" || event.key === "ArrowDown") {
-        event.preventDefault();
-      }
-
-      if (!move) {
-        return;
-      }
-
-      move = false;
-
-      this.handleKeyDown(event);
-
-    };
-
-  }
-
-  //button events
-
-  handleSwitch() {
-
-    const debuff = this.state.char.debuff;
-
-    if (this.state.win || debuff.stun || debuff.disarm) {
-      return;
-    }
-
-    const char = deepCopy(this.state.char);
-    const eventLog = this.state.eventLog.slice();
-
-    const state = cycleWeapons(char, eventLog, this.props.hoverInfo, this.props.events);
-
-    if (state) {
-      this.setState(state);
-    }
-
-  }
-
-  handleHint() {
-
-    if (this.state.win) {
-      return;
-    }
-
-    const params = {
-      hints: this.props.hoverInfo.hints,
-      hintLevel: this.state.hintLevel,
-      nextIndex: this.state.nextIndex
-    };
-
-    this.setState(cycleHints(params));
-
-  }
-
-  //misc events
-
-  handleHover(hoverText) {
-    if (!this.state.win) {
-      this.setState({ hoverText });
-    }
-  }
-
-  handleResize() {
-
-    const w = Math.round(select(".js-resize-level").rect().width);
-    const h = Math.round(w * 0.8);
-
-    select(".js-resize-sidebar").rect({ height: h });
-    select(".js-resize-event-log").rect({ height: h * 0.15 });
-
-    this.setState({ canvas: [w, h] });
-
-  }
+  const handlers = getHandlers(setState);
 
   //lifecycle
 
-  componentDidMount() {
+  useEffect(checkInput, []);
 
-    checkInput();
+  useLayoutEffect(() => {
+    select(window).on("load resize", handlers.resize);
+  }, []);
 
-    //window events
+  useEffect(() => {
+    storageKey("save", state);
+  });
 
-    select(window)
-      .on("load resize", this.handleResize)
-      .on("keydown", this.initKeyHandler());
+  useInterval(updateTimer, 1000);
 
-    //auto-save and update timer
+  useKeyDown(handlers);
 
-    setInterval(() => {
+  //render
 
-      const save = () => {
-        storageKey("save", this.state);
-      };
+  const child = childProps(state, props, handlers);
 
-      if (document.visibilityState === "visible") {
-        if (this.state.start && this.state.char.stats.hp && !this.state.win) {
-          this.setState((prev) => ({ time: prev.time + 1 }), save);
-        } else {
-          save();
-        }
-      }
-
-    }, 1000);
-
-  }
-
-  render() {
-
-    const { thisLevel, level, bool, hover, charInfo, hoverBox } = childProps(this);
-
-    return (
-      <div className="c-content--lg">
-        <div className="c-row">
-          <div className="c-row__col--12">
-            <h1 className="u-align-center">Roguelike</h1>
-            <hr />
-          </div>
-          <div className="c-row__col--8">
-            <Level
-              bool={bool}
-              canvas={this.state.canvas}
-              enemies={this.state.enemies[thisLevel]}
-              hover={hover}
-              level={level}
-              thisLevel={thisLevel}
-            />
-          </div>
-          <div className="c-row__col--4">
-            <Sidebar charInfo={charInfo} hoverBox={hoverBox} />
-          </div>
-          <div className="c-row__col--12">
-            <EventLog text={this.state.eventLog} />
-          </div>
+  return (
+    <div className="c-content--lg">
+      <div className="c-row">
+        <div className="c-row__col--12">
+          <h1 className="u-align-center">Roguelike</h1>
+          <hr />
+        </div>
+        <div className="c-row__col--8">
+          <Level
+            bool={child.bool}
+            canvas={state.canvas}
+            enemies={state.enemies[child.thisLevel]}
+            hover={child.hover}
+            level={child.level}
+            thisLevel={child.thisLevel}
+          />
+        </div>
+        <div className="c-row__col--4">
+          <Sidebar charInfo={child.charInfo} hoverBox={child.hoverBox} />
+        </div>
+        <div className="c-row__col--12">
+          <EventLog text={state.eventLog} />
         </div>
       </div>
-    );
+    </div>
+  );
 
-  }
-
-}
+};
 
 App.defaultProps = defaultProps;
 

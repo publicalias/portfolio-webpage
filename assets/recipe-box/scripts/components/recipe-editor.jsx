@@ -7,7 +7,7 @@ const { cancelSubmit, populateModal } = require("../app-logic");
 //global imports
 
 const { toggleModal } = require("components/modal");
-const { bindReactClass } = require("react-utils");
+const { useSetState } = require("react-utils");
 const { deepCopy } = require("utilities");
 
 //node modules
@@ -16,103 +16,97 @@ const React = require("react");
 
 //recipe editor
 
-class RecipeEditor extends React.Component {
+const RecipeEditor = (props) => {
 
-  constructor(props) {
+  //state
 
-    super(props);
+  const [state, setState] = useSetState(populateModal(props));
 
-    this.state = populateModal(this.props);
+  //events
 
-    bindReactClass(this);
-
-  }
-
-  //handle events
-
-  handleChange(event) {
-    this.setState({
+  const handleChange = (event) => {
+    setState({
       [event.target.name]: event.target.value
     });
-  }
+  };
 
-  handleClose() {
+  const handleClose = () => {
     toggleModal();
-  }
+  };
 
-  handleSubmit() {
+  const handleSubmit = () => {
 
-    const state = deepCopy(this.state);
+    const entry = deepCopy(state);
 
-    for (const p in state) {
+    for (const p in entry) {
       if (p !== "num") {
-        state[p] = state[p].split("\n")
+        entry[p] = entry[p].split("\n")
           .map((e) => e.trim())
           .filter((e) => e)
           .join("\n");
       }
     }
 
-    if (cancelSubmit(this.props, state)) {
+    if (cancelSubmit(props, entry)) {
       return;
     }
 
-    this.handleClose();
+    handleClose();
 
-    this.props.updateList(state, this.props.entry ? "edit" : "add");
+    props.updateList(entry, props.entry ? "edit" : "add");
 
-  }
+  };
 
-  render() {
-    return (
-      <div className="c-modal-show">
-        <div className="c-modal-show__shadow js-fade-modal" />
-        <div className="c-modal-show__window js-show-modal" >
-          <div className="c-content--sm u-inset-modal">
-            <h3>{this.props.entry ? "Change Recipe" : "Add Recipe"}</h3>
-            <hr />
-            <input
-              className="u-margin-full"
-              maxLength="100"
-              name="name"
-              onChange={this.handleChange}
-              placeholder="Recipe"
-              value={this.state.name}
-            />
-            <textarea
-              className="c-field--xs u-margin-full"
-              maxLength="3000"
-              name="com"
-              onChange={this.handleChange}
-              placeholder="Comments"
-              value={this.state.com}
-            />
-            <textarea
-              className="c-field--sm u-margin-full"
-              maxLength="3000"
-              name="ingr"
-              onChange={this.handleChange}
-              placeholder="Ingedients"
-              value={this.state.ingr}
-            />
-            <textarea
-              className="c-field--sm"
-              maxLength="3000"
-              name="inst"
-              onChange={this.handleChange}
-              placeholder="Instructions"
-              value={this.state.inst}
-            />
-            <hr />
-            <button className="c-modal-btn" onClick={this.handleClose}>Close</button>
-            <button className="c-modal-btn" onClick={this.handleSubmit}>Submit</button>
-          </div>
+  //render
+
+  return (
+    <div className="c-modal-show">
+      <div className="c-modal-show__shadow js-fade-modal" />
+      <div className="c-modal-show__window js-show-modal" >
+        <div className="c-content--sm u-inset-modal">
+          <h3>{props.entry ? "Change Recipe" : "Add Recipe"}</h3>
+          <hr />
+          <input
+            className="u-margin-full"
+            maxLength="100"
+            name="name"
+            onChange={handleChange}
+            placeholder="Recipe"
+            value={state.name}
+          />
+          <textarea
+            className="c-field--xs u-margin-full"
+            maxLength="3000"
+            name="com"
+            onChange={handleChange}
+            placeholder="Comments"
+            value={state.com}
+          />
+          <textarea
+            className="c-field--sm u-margin-full"
+            maxLength="3000"
+            name="ingr"
+            onChange={handleChange}
+            placeholder="Ingedients"
+            value={state.ingr}
+          />
+          <textarea
+            className="c-field--sm"
+            maxLength="3000"
+            name="inst"
+            onChange={handleChange}
+            placeholder="Instructions"
+            value={state.inst}
+          />
+          <hr />
+          <button className="c-modal-btn" onClick={handleClose}>Close</button>
+          <button className="c-modal-btn" onClick={handleSubmit}>Submit</button>
         </div>
       </div>
-    );
-  }
+    </div>
+  );
 
-}
+};
 
 //exports
 

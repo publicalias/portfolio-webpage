@@ -111,6 +111,9 @@ const dataVis = {
       resources: [{
         text: "Maze Generation Algorithm",
         link: "https://en.wikipedia.org/wiki/Maze_generation_algorithm#Recursive_backtracker"
+      }, {
+        text: "Circle Reference",
+        link: "https://donatstudios.com/PixelCircleGenerator"
       }],
       preview: "window",
       links: {

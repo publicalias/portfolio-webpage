@@ -4,7 +4,20 @@
 
 const { select } = require("dom-api");
 
-//load recaptcha
+//node modules
+
+const { useEffect, useRef } = require("react");
+
+//reset form
+
+const resetForm = (btnIndex) => ({
+  email: "",
+  subject: "",
+  body: "",
+  btnIndex
+});
+
+//use recaptcha
 
 const loadReCaptcha = () => {
 
@@ -16,14 +29,25 @@ const loadReCaptcha = () => {
 
 };
 
-//reset form
+const useReCaptcha = (fn) => {
 
-const resetForm = (btnIndex) => ({
-  email: "",
-  subject: "",
-  body: "",
-  btnIndex
-});
+  const callback = useRef();
+
+  useEffect(() => {
+    callback.current = fn;
+  });
+
+  useEffect(() => {
+
+    window.getReCaptcha = () => {
+      callback.current(); //callback must precede script
+    };
+
+    loadReCaptcha();
+
+  }, []);
+
+};
 
 //void link
 
@@ -32,7 +56,7 @@ const voidLink = (link) => link || "javascript:void(0)";
 //exports
 
 module.exports = {
-  loadReCaptcha,
   resetForm,
+  useReCaptcha,
   voidLink
 };

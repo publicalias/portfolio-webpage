@@ -29,7 +29,7 @@ const frontEnd = {
     }, {
       name: "Portfolio Webpage",
       id: "portfolio-webpage",
-      comments: "I redesigned this project with React to make it easier to maintain. I also added useful features like a sticky nav bar, links to the projects' code, and a contact form. My solution to mobile responsiveness was to make everything scale with screen width.",
+      comments: "I redesigned this project with React to make it easier to maintain. I also added useful features like a sticky nav bar, a project showcase, and a contact form. My solution to mobile responsiveness was to make everything scale with screen width.",
       userStories: [
         "I can access all of the portfolio webpage's content just by scrolling.",
         "I can click different buttons that will take me to the portfolio creator's different social media pages.",

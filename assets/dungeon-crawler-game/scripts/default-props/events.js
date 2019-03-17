@@ -172,7 +172,7 @@ const events = {
 
   force: "You force the lock.",
 
-  //switch
+  //swap
 
   swap: ["You put away your weapon.", "You heft your club.", "You unsheathe your sword.", "You draw your dagger."]
 

@@ -2,28 +2,68 @@
 
 //global imports
 
-const { array2D } = require("react-projects/app-logic");
+const { array2D, array2DEach } = require("react-projects/app-logic");
 const { storageKey } = require("client-utils");
-const { chance, rngInt } = require("utilities");
+const { bindObject, chance, initDeepCopy, rngInt } = require("utilities");
 
 //create cell
 
 const createCell = (clear) => () => clear || chance(75) ? 0 : rngInt(1, 2, true);
 
-//create culture
+//get population
 
-const createCulture = (state, clear, scale, resize) => {
+const getPopulation = (culture) => {
 
-  if (resize) {
-    state.scale = scale;
-    state.scaleText = "";
-  }
+  const merge = { pop: culture.flat().filter((e) => e).length };
 
-  state.culture = array2D(scale, scale, createCell(clear));
+  return merge.pop ? merge : Object.assign(merge, {
+    start: false,
+    stable: true
+  });
 
 };
 
-//get next gen
+//get utils
+
+const loadCulture = (merge) => {
+
+  const culture = storageKey("culture");
+
+  merge.culture = culture;
+  merge.scale = culture.length;
+
+};
+
+const createCulture = (merge, clear, scale, resize) => {
+
+  if (resize) {
+    merge.scale = scale;
+    merge.scaleText = "";
+  }
+
+  merge.culture = array2D(scale, scale, createCell(clear));
+
+};
+
+const lastDiff = (last, next) => {
+
+  const diff = [];
+
+  array2DEach(last, (e, i, f, j) => {
+
+    if (!diff[i]) {
+      diff[i] = [];
+    }
+
+    if (f !== next[i][j]) {
+      diff[i][j] = f;
+    }
+
+  });
+
+  return diff;
+
+};
 
 const getNeighbors = (params, y, x) => {
 
@@ -95,7 +135,7 @@ const getNextGen = (params) => {
     .split("")
     .map(Number));
 
-  params.culture = array2D(scale, scale, (i, j) => {
+  const next = array2D(scale, scale, (i, j) => {
 
     const cell = {
       val: culture[i][j],
@@ -106,16 +146,111 @@ const getNextGen = (params) => {
 
   });
 
+  return {
+    culture: next,
+    stable: params.stable
+  };
+
 };
 
-//load culture
+const getUtils = (state, setState) => {
 
-const loadCulture = (state) => {
+  const lastCulture = () => {
 
-  const culture = storageKey("culture");
+    const history = state.history.slice();
+    const culture = initDeepCopy({ array: false })(state.culture, history.pop());
+    const gen = state.gen - 1;
 
-  state.culture = culture;
-  state.scale = culture.length;
+    const merge = {
+      culture,
+      stable: false,
+      history,
+      gen
+    };
+
+    if (!gen) {
+      Object.assign(merge, {
+        start: false,
+        reverse: false
+      });
+    }
+
+    setState(Object.assign(merge, getPopulation(culture)));
+
+  };
+
+  const nextCulture = () => {
+
+    const { culture, stable } = getNextGen({
+      culture: state.culture,
+      stable: true,
+      rules: state.rules,
+      scale: state.scale
+    });
+
+    if (stable) {
+
+      setState({
+        start: false,
+        stable: true
+      });
+
+      return;
+
+    }
+
+    const history = state.history.slice();
+
+    history.push(lastDiff(state.culture, culture));
+
+    const merge = {
+      culture,
+      stable,
+      history,
+      gen: state.gen + 1
+    };
+
+    setState(Object.assign(merge, getPopulation(culture)));
+
+  };
+
+  const utils = {
+
+    resetCulture(clear, load, scale = state.scale) {
+
+      const merge = {
+        culture: null,
+        stable: false,
+        history: [],
+        reverse: false,
+        gen: 0
+      };
+
+      const resize = scale !== state.scale;
+
+      if (load) {
+        loadCulture(merge);
+      } else {
+        createCulture(merge, clear, scale, resize);
+      }
+
+      setState(Object.assign(merge, getPopulation(merge.culture)));
+
+    },
+
+    updateCulture() {
+      if (state.reverse) {
+        lastCulture();
+      } else {
+        nextCulture();
+      }
+    }
+
+  };
+
+  bindObject(utils);
+
+  return utils;
 
 };
 
@@ -125,13 +260,13 @@ const validRules = (str) => {
 
   if (/^B[0-8]*\/S[0-8]*$/u.test(str)) {
 
-    const [a, b] = str.split("/").map((e) => e.slice(1));
-    const [c, d] = [a, b].map((e) => e.split("")
+    const [ba, sa] = str.split("/").map((e) => e.slice(1));
+    const [bb, sb] = [ba, sa].map((e) => e.split("")
       .sort()
       .filter((e, i, arr) => e !== arr[i - 1])
       .join(""));
 
-    return a === c && b === d;
+    return ba === bb && sa === sb;
 
   }
 
@@ -143,8 +278,7 @@ const validRules = (str) => {
 
 module.exports = {
   createCell,
-  createCulture,
-  getNextGen,
-  loadCulture,
+  getPopulation,
+  getUtils,
   validRules
 };
