@@ -23,7 +23,7 @@ const Bio = (props) => {
           <h1>Bio</h1>
         </div>
         <div className="c-row__col--5">
-          {text.map((e) => <p key={keyGen(e)}>{e}</p>)}
+          {text.map((e) => e === "---" ? <hr key={keyGen(e)} /> : <p key={keyGen(e)}>{e}</p>)}
         </div>
         <div className="c-row__col--5">
           <img

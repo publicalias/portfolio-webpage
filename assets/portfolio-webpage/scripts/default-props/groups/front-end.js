@@ -6,8 +6,8 @@ const frontEnd = {
   name: "Front-end",
   id: "front-end",
   subgroups: [{
-    name: "Basic Projects",
-    id: "basic-projects",
+    name: "Static Projects",
+    id: "static-projects",
     projects: [{
       name: "Tribute Page",
       id: "tribute-page",
@@ -71,8 +71,8 @@ const frontEnd = {
       }
     }]
   }, {
-    name: "Intermediate Projects",
-    id: "intermediate-projects",
+    name: "API Projects",
+    id: "client-api-projects",
     projects: [{
       name: "Random Quote Machine",
       id: "random-quote-machine",
@@ -156,8 +156,8 @@ const frontEnd = {
       }
     }]
   }, {
-    name: "Advanced Projects",
-    id: "advanced-projects",
+    name: "Scripting Projects",
+    id: "scripting-projects",
     projects: [{
       name: "JavaScript Calculator",
       id: "javascript-calculator",

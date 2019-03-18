@@ -7,7 +7,7 @@ const backEnd = {
   id: "back-end",
   subgroups: [{
     name: "API Projects",
-    id: "api-projects",
+    id: "server-api-projects",
     projects: [{
       name: "Timestamp API",
       id: "timestamp-api",
