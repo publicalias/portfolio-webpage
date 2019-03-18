@@ -12,14 +12,16 @@ const React = require("react");
 
 const List = (props) => {
 
+  const { name, text } = props;
+
   const keyGen = initKeyGen();
 
   return (
     <div>
-      <h4 className="u-margin-full" key={keyGen(props.name)}>{props.name}</h4>
-      {props.text.length ? (
+      <h4 className="u-margin-full" key={keyGen(name)}>{name}</h4>
+      {text.length ? (
         <ol>
-          {props.text.split("\n").map((e) => <li key={keyGen(e)}>{e}</li>)}
+          {text.split("\n").map((e) => <li key={keyGen(e)}>{e}</li>)}
         </ol>
       ) : <p key={keyGen("N/A")}>N/A</p>}
     </div>

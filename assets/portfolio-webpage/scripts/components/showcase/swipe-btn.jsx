@@ -6,14 +6,20 @@ const React = require("react");
 
 //swipe btn
 
-const SwipeBtn = (props) => (
-  <button
-    className={`c-preview__swipe-btn--${props.mod}`}
-    onClick={props.handleClick}
-  >
-    <i className={`fa fa-chevron-${props.mod}`} />
-  </button>
-);
+const SwipeBtn = (props) => {
+
+  const { handleClick, mod } = props;
+
+  return (
+    <button
+      className={`c-preview__swipe-btn--${mod}`}
+      onClick={handleClick}
+    >
+      <i className={`fa fa-chevron-${mod}`} />
+    </button>
+  );
+
+};
 
 //exports
 

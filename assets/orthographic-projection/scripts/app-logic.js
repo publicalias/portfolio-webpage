@@ -7,12 +7,14 @@ const scrubData = (res, data, mean) => {
 
     const props = e.properties;
 
-    if (!props.year || !Number(props.reclat) || !Number(props.reclong)) {
+    const { mass, year, reclat, reclong } = props;
+
+    if (!year || !Number(reclat) || !Number(reclong)) {
       continue;
     }
 
-    props.mass = Number((Number(props.mass) / 1000).toFixed(3));
-    props.year = Number(props.year.slice(0, 4));
+    props.mass = Number((Number(mass) / 1000).toFixed(3));
+    props.year = Number(year.slice(0, 4));
 
     data.push(e);
     mean.push(props.mass);

@@ -32,17 +32,16 @@ const threeTimeout = (params) => {
 
 const winTimeout = (params) => {
 
-  const { state } = params;
+  const { merge } = params;
 
-  const time = state.time;
-  const bestTime = storageKey("best-time");
+  const time = storageKey("time");
 
-  state.win = true;
+  merge.win = true;
 
   storageKey("deaths", 0);
-  storageKey("ng-plus", storageKey("ng-plus") + 1);
+  storageKey("ng-plus", (val) => val + 1);
 
-  storageKey("best-time", bestTime ? Math.min(time, bestTime) : time);
+  storageKey("best-time", (val) => Math.min(time, val || Infinity));
 
 };
 
@@ -52,9 +51,9 @@ const deathTimeout = (params) => {
 
 const timeoutHandler = (params) => {
 
-  const { state } = params;
+  const { merge: { timeouts } } = params;
 
-  const timeouts = {
+  const handlers = {
     oneTimeout,
     twoTimeout,
     threeTimeout,
@@ -62,16 +61,16 @@ const timeoutHandler = (params) => {
     deathTimeout
   };
 
-  for (const p in state.timeouts) {
+  for (const p in timeouts) {
 
-    if (!state.timeouts[p]) {
+    if (!timeouts[p]) {
       continue;
     }
 
-    state.timeouts[p]--;
+    timeouts[p]--;
 
-    if (!state.timeouts[p]) {
-      timeouts[`${p}Timeout`](params);
+    if (!timeouts[p]) {
+      handlers[`${p}Timeout`](params);
     }
 
   }

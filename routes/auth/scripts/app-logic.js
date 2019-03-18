@@ -21,7 +21,7 @@ const deleteVotingApp = async (id) => {
 const handleDelete = async (req, res) => {
   try {
 
-    const { id } = req.user;
+    const { user: { id } } = req;
 
     await Promise.all([deleteVotingApp(id)]);
     await usersCol().deleteOne({ id });

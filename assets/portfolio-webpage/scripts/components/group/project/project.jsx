@@ -14,7 +14,7 @@ const React = require("react");
 
 const Project = (props) => {
 
-  const project = props.project;
+  const { project: { name, comments, userStories, resources, links }, viewed } = props;
 
   const firstOfLast = props.isLastSubgroup && props.isFirstProject;
   const notLast = !(props.isLastSubgroup && props.isLastProject);
@@ -22,12 +22,12 @@ const Project = (props) => {
   return (
     <div>
       {firstOfLast && <hr />}
-      <h4 className="u-margin-full">{project.name}</h4>
-      {project.comments && <p className="u-margin-full">{project.comments}</p>}
-      <List list={project.userStories} name="User stories" />
-      <List list={project.resources} name="External resources" />
-      {props.viewed && <Preview project={project} />}
-      <CodeBtn code={project.links.code} />
+      <h4 className="u-margin-full">{name}</h4>
+      {comments && <p className="u-margin-full">{comments}</p>}
+      <List list={userStories} name="User stories" />
+      <List list={resources} name="External resources" />
+      {viewed && <Preview project={props.project} />}
+      <CodeBtn code={links.code} />
       {notLast && <hr />}
     </div>
   );

@@ -12,13 +12,15 @@ const React = require("react");
 
 const List = (props) => {
 
+  const { list, name } = props;
+
   const keyGen = initKeyGen();
 
-  return props.list.length ? (
+  return list.length ? (
     <div className="u-margin-full">
-      <h5 className="u-margin-full">{props.name}</h5>
+      <h5 className="u-margin-full">{name}</h5>
       <ul>
-        {props.list.map((e) => typeof e === "object" ? (
+        {list.map((e) => typeof e === "object" ? (
           <li className="u-underline" key={keyGen(e.link)}>
             <a href={e.link}>{e.text}</a>
           </li>

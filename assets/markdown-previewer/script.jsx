@@ -12,7 +12,7 @@ const { useSetState } = require("react-utils");
 const React = require("react");
 const ReactDOM = require("react-dom");
 
-const { useEffect } = React;
+const { useLayoutEffect } = React;
 
 //utilities
 
@@ -34,7 +34,7 @@ const App = () => {
 
   //lifecycle
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     select(".js-render-preview").html(marked(state.text));
   });
 

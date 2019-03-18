@@ -42,7 +42,7 @@ const handleExpGain = (params, action) => {
 
 const lootItems = (params) => {
 
-  const { state, char, thisLevel, events, updateLog } = params;
+  const { merge, char, thisLevel, events, updateLog } = params;
 
   const keys = ["maps", "lockpicks", "hpPots", "dmgPots"];
   const type = keys[rngInt(0, keys.length)];
@@ -52,7 +52,7 @@ const lootItems = (params) => {
       char.items.maps[thisLevel] = true;
       updateLog(events.loot(0));
     }
-  } else if (type !== "lockpicks" || state.hintLevel < 3) {
+  } else if (type !== "lockpicks" || merge.hintLevel < 3) {
     char.items[type]++;
     updateLog(events.loot(keys.indexOf(type)));
   }

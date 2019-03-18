@@ -12,28 +12,30 @@ const React = require("react");
 
 const BtnBox = (props) => {
 
+  const { handleCancel, handleChange, handleDelete, confirm } = props;
+
   const keyGen = initKeyGen();
 
   return (
     <div className="c-edit-btns">
-      <button className="c-edit-btns__btn" onClick={props.handleChange}>Change</button>
-      {props.confirm ? [
+      <button className="c-edit-btns__btn" onClick={handleChange}>Change</button>
+      {confirm ? [
         <p className="c-edit-btns__text" key={keyGen("confirm")}>Are you sure?</p>,
         <button
           className="c-edit-btns__btn"
           key={keyGen("yes")}
-          onClick={props.handleDelete}
+          onClick={handleDelete}
         >
           Yes
         </button>,
         <button
           className="c-edit-btns__btn"
           key={keyGen("no")}
-          onClick={props.handleCancel}
+          onClick={handleCancel}
         >
           No
         </button>
-      ] : <button className="c-edit-btns__btn" onClick={props.handleDelete}>Delete</button>}
+      ] : <button className="c-edit-btns__btn" onClick={handleDelete}>Delete</button>}
     </div>
   );
 

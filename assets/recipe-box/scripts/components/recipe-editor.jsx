@@ -47,7 +47,7 @@ const RecipeEditor = (props) => {
       }
     }
 
-    if (cancelSubmit(props, entry)) {
+    if (cancelSubmit(entry, props)) {
       return;
     }
 
@@ -58,6 +58,8 @@ const RecipeEditor = (props) => {
   };
 
   //render
+
+  const { name, com, ingr, inst } = state;
 
   return (
     <div className="c-modal-show">
@@ -72,7 +74,7 @@ const RecipeEditor = (props) => {
             name="name"
             onChange={handleChange}
             placeholder="Recipe"
-            value={state.name}
+            value={name}
           />
           <textarea
             className="c-field--xs u-margin-full"
@@ -80,7 +82,7 @@ const RecipeEditor = (props) => {
             name="com"
             onChange={handleChange}
             placeholder="Comments"
-            value={state.com}
+            value={com}
           />
           <textarea
             className="c-field--sm u-margin-full"
@@ -88,7 +90,7 @@ const RecipeEditor = (props) => {
             name="ingr"
             onChange={handleChange}
             placeholder="Ingedients"
-            value={state.ingr}
+            value={ingr}
           />
           <textarea
             className="c-field--sm"
@@ -96,7 +98,7 @@ const RecipeEditor = (props) => {
             name="inst"
             onChange={handleChange}
             placeholder="Instructions"
-            value={state.inst}
+            value={inst}
           />
           <hr />
           <button className="c-modal-btn" onClick={handleClose}>Close</button>

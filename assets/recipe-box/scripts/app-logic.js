@@ -2,12 +2,15 @@
 
 //cancel submit
 
-const cancelSubmit = (props, state) => {
+const cancelSubmit = (state, props) => {
 
-  const noName = !state.name;
-  const inUse = props.used.includes(state.name);
-  const newEntry = !props.entry;
-  const noMatch = props.entry && props.entry.name !== state.name;
+  const { name } = state;
+  const { entry, used } = props;
+
+  const noName = !name;
+  const inUse = used.includes(name);
+  const newEntry = !entry;
+  const noMatch = entry && entry.name !== name;
 
   return (noName || inUse) && (newEntry || noMatch);
 

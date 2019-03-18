@@ -9,17 +9,22 @@ const { paintCanvas } = require("../view-logic");
 
 const { select } = require("dom-api");
 const { mouseYX } = require("react-projects/app-logic");
+const { useSetState } = require("react-utils");
 const { arrEqual } = require("utilities");
 
 //node modules
 
 const React = require("react");
 
-const { useEffect } = React;
+const { useLayoutEffect } = React;
 
-//level
+//view port
 
-const Level = (props) => {
+const ViewPort = (props) => {
+
+  //state
+
+  const [state, setState] = useSetState({ canvas: [0, 0] });
 
   //utilities
 
@@ -72,21 +77,41 @@ const Level = (props) => {
 
   };
 
+  const handleResize = () => {
+
+    const w = Math.round(select(".js-resize-level").rect().width);
+    const h = Math.round(w * 0.8);
+
+    select(".js-resize-sidebar").rect({ height: h });
+    select(".js-resize-event-log").rect({ height: h * 0.15 });
+
+    setState({ canvas: [w, h] });
+
+  };
+
   //lifecycle
 
-  useEffect(updateDisplay);
+  useLayoutEffect(() => {
+
+    handleResize();
+
+    select(window).on("resize", handleResize);
+
+  }, []);
+
+  useLayoutEffect(updateDisplay);
 
   //render
 
-  const { canvas: [width, height] } = props;
+  const { canvas: [w, h] } = state;
 
   return (
     <div className="js-resize-level u-margin-full">
       <canvas
         className="js-ref-canvas"
-        height={height}
+        height={h}
         onMouseMove={handleMouseMove}
-        width={width}
+        width={w}
       />
     </div>
   );
@@ -95,4 +120,4 @@ const Level = (props) => {
 
 //exports
 
-module.exports = Level;
+module.exports = ViewPort;

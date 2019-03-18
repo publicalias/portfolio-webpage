@@ -34,19 +34,22 @@ const App = (props) => {
   //lifecycle
 
   useEffect(checkInput, []);
+
   useLayoutEffect(initPanel, []);
 
   //render
 
+  const { navBar, bio, showcase, groups, contact, footer } = props;
+
   const keyGen = initKeyGen();
 
   return [
-    <NavBar key={keyGen("nav-bar")} navBar={props.navBar} />,
-    <Bio bio={props.bio} key={keyGen("bio")} />,
-    <Showcase key={keyGen("showcase")} showcase={props.showcase} />,
-    props.groups.map((e) => <Group group={e} key={keyGen(e.id)} />),
-    <Contact contact={props.contact} key={keyGen("contact")} />,
-    <Footer footer={props.footer} key={keyGen("footer")} />,
+    <NavBar key={keyGen("nav-bar")} navBar={navBar} />,
+    <Bio bio={bio} key={keyGen("bio")} />,
+    <Showcase key={keyGen("showcase")} showcase={showcase} />,
+    groups.map((e) => <Group group={e} key={keyGen(e.id)} />),
+    <Contact contact={contact} key={keyGen("contact")} />,
+    <Footer footer={footer} key={keyGen("footer")} />,
     <CookieBanner key={keyGen("cookie-banner")} />
   ];
 

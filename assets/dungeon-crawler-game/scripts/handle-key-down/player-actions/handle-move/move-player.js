@@ -8,7 +8,7 @@ const { checkIndex, findRange, moveActor } = require("../../../app-logic");
 
 const movePlayer = (params, move) => {
 
-  const { state, char, thisLevel, level } = params;
+  const { merge, char, thisLevel, level } = params;
   const { from, to } = move;
 
   const range = char.items.maps[thisLevel] ? "long" : "normal";
@@ -17,7 +17,7 @@ const movePlayer = (params, move) => {
 
   for (const [y, x] of findRange(from, range)) {
     if (checkIndex(level, [y, x]) === 1) {
-      state.mapped[thisLevel][y][x] = true;
+      merge.mapped[thisLevel][y][x] = true;
     }
   }
 

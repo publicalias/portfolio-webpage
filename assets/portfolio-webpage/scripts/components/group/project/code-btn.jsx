@@ -12,7 +12,7 @@ const React = require("react");
 
 const CodeBtn = (props) => {
 
-  const code = props.code;
+  const { code } = props;
 
   return typeof code === "string" ? (
     <a href={voidLink(code)}>

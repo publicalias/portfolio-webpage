@@ -97,7 +97,7 @@ const handleDeath = (params) => {
 
   char.stats.hp = 0;
 
-  storageKey("deaths", storageKey("deaths") + 1);
+  storageKey("deaths", (val) => val + 1);
   storageKey("ng-plus", 0);
 
   updateLog(events.died);
@@ -153,10 +153,10 @@ const moveActor = (params, actor, val, [ty, tx]) => {
 
 const playerWins = (params, type, subtype) => {
 
-  const { state, char, events, updateLog } = params;
+  const { merge, char, events, updateLog } = params;
 
   char.stats.boss = true;
-  state.timeouts.win = 3;
+  merge.timeouts.win = 3;
 
   updateLog(events.win(type, subtype));
 

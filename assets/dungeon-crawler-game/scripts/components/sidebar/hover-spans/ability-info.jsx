@@ -16,9 +16,9 @@ const React = require("react");
 
 const AbilityInfo = (props) => {
 
-  const keyGen = initKeyGen();
+  const { params: { char, info, fn } } = props;
 
-  const { char, info, fn } = props.params;
+  const keyGen = initKeyGen();
 
   let abilities = Object.entries(char.items.abilities).filter(([, val]) => val);
 

@@ -53,24 +53,24 @@ const Recipe = (props) => {
 
   //render
 
-  const entry = props.entry;
+  const { entry: { num, name, com, ingr, inst } } = props;
 
   return (
     <div className="c-panel">
       <h3
-        className={`c-panel__toggle js-toggle-panel-${entry.num}`}
+        className={`c-panel__toggle js-toggle-panel-${num}`}
         onClick={handleClick}
       >
-        {`${entry.num + 1}. ${entry.name}`}
+        {`${num + 1}. ${name}`}
       </h3>
       <hr />
-      <div className={`c-panel__expand js-expand-panel js-expand-panel-${entry.num}`}>
+      <div className={`c-panel__expand js-expand-panel js-expand-panel-${num}`}>
         <h4 className="u-margin-full">Comments:</h4>
-        <p>{entry.com.trim() || "N/A"}</p>
+        <p>{com.trim() || "N/A"}</p>
         <hr />
-        <List name="Ingredients:" text={entry.ingr} />
+        <List name="Ingredients:" text={ingr} />
         <hr />
-        <List name="Instructions:" text={entry.inst} />
+        <List name="Instructions:" text={inst} />
         <hr />
         <BtnBox
           confirm={state.confirm}

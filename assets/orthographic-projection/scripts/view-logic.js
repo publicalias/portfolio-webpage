@@ -24,15 +24,11 @@ const pointRadius = (w, mean) => (d) => {
 //tooltip address
 
 const tooltipAddress = (d, res) => {
-
-  const { year } = d.properties;
-
   if (res.status === "OK") {
-    d.properties.address = `Fell near ${res.results[0].formatted_address} in ${year}`;
+    d.properties.address = `Fell near ${res.results[0].formatted_address} in ${d.properties.year}`;
   } else {
     d.properties.address = "No address found";
   }
-
 };
 
 //exports

@@ -60,98 +60,80 @@ const cycleHints = (params) => {
 
 };
 
-const getHandlers = (state, setState, props) => {
+const getHandlers = (state, setState, props) => ({
 
-  const resize = () => {
+  //keydown
 
-    const w = Math.round(select(".js-resize-level").rect().width);
-    const h = Math.round(w * 0.8);
+  keyDown(event) {
 
-    select(".js-resize-sidebar").rect({ height: h });
-    select(".js-resize-event-log").rect({ height: h * 0.15 });
+    const params = keyDownParams(state, props);
 
-    setState({ canvas: [w, h] });
+    const { merge, char } = params;
 
-  };
+    if (!char.stats.hp || merge.win) {
+      return;
+    }
 
-  const handlers = {
+    handleGameplay(params, event);
 
-    //keydown
+    merge.start = true;
 
-    keyDown(event) {
+    setState(merge);
 
-      const params = keyDownParams(deepCopy(state), props);
+    if (!char.stats.hp || merge.win) {
+      setTimeout(() => {
+        setState(newGame(props));
+      }, 3000);
+    }
 
-      const { state: merge, char } = params;
+  },
 
-      if (!char.stats.hp || merge.win) {
-        return;
-      }
+  //button
 
-      handleGameplay(params, event);
+  swap() {
 
-      setState(Object.assign(merge, { start: true }));
+    const { char, win, eventLog } = state;
+    const { hoverInfo, events } = props;
 
-      if (!char.stats.hp || state.win) {
-        setTimeout(() => {
-          setState(newGame(props), resize);
-        }, 3000);
-      }
+    if (!char.stats.hp || win || char.debuff.stun || char.debuff.disarm) {
+      return;
+    }
 
-    },
+    const merge = cycleWeapons(deepCopy(char), eventLog.slice(), hoverInfo, events);
 
-    //button
+    if (merge) {
+      setState(merge);
+    }
 
-    swap() {
+  },
 
-      const debuff = state.char.debuff;
+  hint() {
 
-      if (state.win || debuff.stun || debuff.disarm) {
-        return;
-      }
+    const { char, win, hintLevel, nextIndex } = state;
 
-      const char = deepCopy(state.char);
-      const eventLog = state.eventLog.slice();
+    if (!char.stats.hp || win) {
+      return;
+    }
 
-      const merge = cycleWeapons(char, eventLog, props.hoverInfo, props.events);
+    const params = {
+      hints: props.hoverInfo.hints,
+      hintLevel,
+      nextIndex
+    };
 
-      if (merge) {
-        setState(merge);
-      }
+    setState(cycleHints(params));
 
-    },
+  },
 
-    hint() {
+  //canvas
 
-      if (state.win) {
-        return;
-      }
+  hover(hoverText) {
+    if (state.char.stats.hp && !state.win) {
+      setState({ hoverText });
+    }
+  }
 
-      const params = {
-        hints: props.hoverInfo.hints,
-        hintLevel: state.hintLevel,
-        nextIndex: state.nextIndex
-      };
-
-      setState(cycleHints(params));
-
-    },
-
-    //canvas
-
-    hover(hoverText) {
-      if (!state.win) {
-        setState({ hoverText });
-      }
-    },
-
-    resize
-
-  };
-
-  return handlers;
-
-};
+});
 
 //use keydown
 

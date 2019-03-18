@@ -57,14 +57,14 @@ const dropPotions = (params, havePots) => {
 
 const climbLadder = (params, move, delta) => {
 
-  const { state, char, thisLevel, level, events, updateLog } = params;
+  const { merge, char, thisLevel, level, events, updateLog } = params;
   const { from: [y, x], next } = move;
 
   const havePots = char.items.hpPots + char.items.dmgPots;
 
   handleCollision(params, move);
 
-  state.levels[thisLevel - delta][y][x] = 0;
+  merge.levels[thisLevel - delta][y][x] = 0;
   level[y][x] = 9;
 
   char.active.bsMult = 0;
@@ -78,15 +78,15 @@ const climbLadder = (params, move, delta) => {
 
 const handleLock = (params, attempt) => {
 
-  const { state, char, thisLevel, events, updateLog } = params;
+  const { merge, char, thisLevel, events, updateLog } = params;
   const { unlocked, forced } = attempt;
 
   if (unlocked) {
     return;
   }
 
-  state.hintLevel++;
-  state.timeouts[thisLevel === 2 ? "two" : "three"] = 5;
+  merge.hintLevel++;
+  merge.timeouts[thisLevel === 2 ? "two" : "three"] = 5;
 
   if (forced) {
     char.active.sneak = false;
@@ -99,16 +99,20 @@ const handleLock = (params, attempt) => {
 
 const changeLevel = (params, move, attempt) => {
 
-  const { state } = params;
+  const { merge } = params;
   const { next } = move;
 
   const delta = next === 7 ? -1 : 1;
 
-  state.thisLevel += delta;
+  merge.thisLevel += delta;
 
-  params.thisLevel = state.thisLevel;
-  params.enemies = state.enemies[state.thisLevel];
-  params.level = state.levels[state.thisLevel];
+  const { levels, thisLevel, enemies } = merge;
+
+  Object.assign(params, {
+    thisLevel,
+    enemies: enemies[thisLevel],
+    level: levels[thisLevel]
+  });
 
   if (attempt) {
     handleLock(params, attempt);

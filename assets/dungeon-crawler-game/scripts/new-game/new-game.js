@@ -34,9 +34,10 @@ const newGameParams = () => ({
 const newGameState = (params, props) => {
 
   const { levels, mapped, enemies, charIndex } = params;
+  const { events, hoverInfo } = props;
 
-  const hoverProx = props.hoverInfo.enemyProx(levels[1], enemies[1], charIndex, false, 0);
-  const hoverBase = props.hoverInfo.base(enemies, 1);
+  const hoverProx = hoverInfo.enemyProx(levels[1], enemies[1], charIndex, false, 0);
+  const hoverBase = hoverInfo.base(enemies, 1);
 
   return {
 
@@ -131,10 +132,8 @@ const newGameState = (params, props) => {
 
     //display
 
-    canvas: [0, 0],
-    time: 0,
     hoverText: hoverProx || hoverBase,
-    eventLog: [props.events.start]
+    eventLog: [events.start]
 
   };
 

@@ -32,17 +32,15 @@ const Subgroup = (props) => {
 
     togglePanel(props.subgroup.id, navHeight + parseFloat(groupPadding));
 
-    if (!state.viewed) {
-      setState({ viewed: true });
-    }
+    setState({ viewed: true });
 
   };
 
   //render
 
-  const keyGen = initKeyGen();
+  const { subgroup: { name, id, projects } } = props;
 
-  const { name, id, projects } = props.subgroup;
+  const keyGen = initKeyGen();
 
   return (
     <div className="c-panel">

@@ -105,7 +105,7 @@ const tooltipHandler = (d, node, tooltip) => {
 
   //display tooltip
 
-  const { address, mass, name, recclass } = d.properties;
+  const { properties: { address, mass, name, recclass } } = d;
 
   select(".js-edit-name").text(name);
   select(".js-edit-mass").text(tooltipMass(mass));

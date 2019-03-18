@@ -12,11 +12,11 @@ const createCell = (clear) => () => clear || chance(75) ? 0 : rngInt(1, 2, true)
 
 //get population
 
-const getPopulation = (culture) => {
+const getPopulation = (merge) => {
 
-  const merge = { pop: culture.flat().filter((e) => e).length };
+  const pop = merge.culture.flat().filter((e) => e).length;
 
-  return merge.pop ? merge : Object.assign(merge, {
+  return Object.assign(merge, { pop }, pop ? {} : {
     start: false,
     stable: true
   });
@@ -25,40 +25,20 @@ const getPopulation = (culture) => {
 
 //get utils
 
-const loadCulture = (merge) => {
-
-  const culture = storageKey("culture");
-
-  merge.culture = culture;
-  merge.scale = culture.length;
-
-};
-
-const createCulture = (merge, clear, scale, resize) => {
-
-  if (resize) {
-    merge.scale = scale;
-    merge.scaleText = "";
-  }
-
-  merge.culture = array2D(scale, scale, createCell(clear));
-
-};
-
 const lastDiff = (last, next) => {
 
-  const diff = [];
+  const diff = []; //sparse
 
   array2DEach(last, (e, i, f, j) => {
-
-    if (!diff[i]) {
-      diff[i] = [];
-    }
-
     if (f !== next[i][j]) {
-      diff[i][j] = f;
-    }
 
+      if (!diff[i]) {
+        diff[i] = [];
+      }
+
+      diff[i][j] = f;
+
+    }
   });
 
   return diff;
@@ -155,27 +135,37 @@ const getNextGen = (params) => {
 
 const getUtils = (state, setState) => {
 
+  const initReset = (rules, scale) => Object.assign({
+    culture: null,
+    stable: false,
+    history: [],
+    reverse: false,
+    gen: 0
+  }, rules ? {
+    rules: state.rulesText,
+    rulesText: ""
+  } : {}, scale ? {
+    scale: Number(state.scaleText),
+    scaleText: ""
+  } : {});
+
   const lastCulture = () => {
 
     const history = state.history.slice();
     const culture = initDeepCopy({ array: false })(state.culture, history.pop());
     const gen = state.gen - 1;
 
-    const merge = {
+    const merge = Object.assign({
       culture,
       stable: false,
       history,
       gen
-    };
+    }, gen ? {} : {
+      start: false,
+      reverse: false
+    });
 
-    if (!gen) {
-      Object.assign(merge, {
-        start: false,
-        reverse: false
-      });
-    }
-
-    setState(Object.assign(merge, getPopulation(culture)));
+    setState(getPopulation(merge));
 
   };
 
@@ -210,31 +200,26 @@ const getUtils = (state, setState) => {
       gen: state.gen + 1
     };
 
-    setState(Object.assign(merge, getPopulation(culture)));
+    setState(getPopulation(merge));
 
   };
 
   const utils = {
 
-    resetCulture(clear, load, scale = state.scale) {
+    resetCulture(clear, load, rules, scale) {
 
-      const merge = {
-        culture: null,
-        stable: false,
-        history: [],
-        reverse: false,
-        gen: 0
-      };
+      const merge = initReset(rules, scale);
 
-      const resize = scale !== state.scale;
+      const length = merge.scale || state.scale;
 
-      if (load) {
-        loadCulture(merge);
-      } else {
-        createCulture(merge, clear, scale, resize);
-      }
+      const culture = load ? storageKey("culture") : array2D(length, length, createCell(clear));
 
-      setState(Object.assign(merge, getPopulation(merge.culture)));
+      Object.assign(merge, {
+        culture,
+        scale: culture.length
+      });
+
+      setState(getPopulation(merge));
 
     },
 

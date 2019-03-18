@@ -25,7 +25,7 @@ const Showcase = (props) => {
   //state
 
   const [state, setState] = useSetState({
-    view: props.showcase.projects[0],
+    project: props.showcase.projects[0],
     start: true,
     pause: false
   });
@@ -34,16 +34,18 @@ const Showcase = (props) => {
 
   const handleInit = () => {
 
-    if (state.pause) {
+    const { start, pause } = state;
+
+    if (pause) {
       return;
     }
 
     const navHeight = select(".js-ref-nav-bar").rect().height;
     const inView = itemIsInView(".js-toggle-showcase", navHeight);
 
-    if (inView && !state.start) {
+    if (inView && !start) {
       setState({ start: true });
-    } else if (!inView && state.start) {
+    } else if (!inView && start) {
       setState({ start: false });
     }
 
@@ -57,10 +59,10 @@ const Showcase = (props) => {
 
     const DOMShowcase = select(".js-toggle-showcase");
 
-    const view = cycleItems(props.showcase.projects, state.view, delta);
+    const project = cycleItems(props.showcase.projects, state.project, delta);
 
     DOMShowcase.animate({ opacity: 0 }, () => {
-      setState({ view }, () => {
+      setState({ project }, () => {
         DOMShowcase.animate({ opacity: 1 });
       });
     });
@@ -81,13 +83,11 @@ const Showcase = (props) => {
 
   });
 
-  const speed = state.start && !state.pause && 5000;
-
-  useInterval(handleTurn(1), speed);
+  useInterval(handleTurn(1), state.start && !state.pause && 5000);
 
   //render
 
-  const project = state.view;
+  const { project: { name, comments, links } } = state;
 
   return (
     <div className="c-content--xl js-scroll-showcase">
@@ -100,10 +100,10 @@ const Showcase = (props) => {
           onMouseEnter={handlePause(true)}
           onMouseLeave={handlePause()}
         >
-          <h3 className="u-align-center">{project.name}</h3>
+          <h3 className="u-align-center">{name}</h3>
           <hr />
-          {project.comments && <p className="u-margin-full">{project.comments}</p>}
-          <Carousel handleTurn={handleTurn} links={project.links} />
+          {comments && <p className="u-margin-full">{comments}</p>}
+          <Carousel handleTurn={handleTurn} links={links} />
         </div>
       </div>
     </div>

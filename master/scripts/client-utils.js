@@ -85,13 +85,17 @@ const initStorageKey = (path) => (key, val, session) => {
     .join("-");
 
   const innerKey = `${namespace}-${key}`;
-  const innerVal = JSON.stringify({ val });
 
-  if (val === null || val === undefined) {
-    return store[innerKey] && JSON.parse(store[innerKey]).val;
+  const getVal = () => store[innerKey] && JSON.parse(store[innerKey]).val;
+  const setVal = (val) => {
+    store[innerKey] = JSON.stringify({ val });
+  };
+
+  if (val !== null && val !== undefined) {
+    setVal(typeof val === "function" ? val(getVal()) : val);
   }
 
-  store[innerKey] = innerVal;
+  return getVal();
 
 };
 

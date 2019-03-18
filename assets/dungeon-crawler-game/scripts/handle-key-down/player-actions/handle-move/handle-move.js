@@ -15,9 +15,9 @@ const { chance, rngInt } = require("utilities");
 
 const attemptLock = (params) => {
 
-  const { state, char, thisLevel } = params;
+  const { merge, char, thisLevel } = params;
 
-  const unlocked = state.hintLevel > thisLevel;
+  const unlocked = merge.hintLevel > thisLevel;
   const forced = char.stats.level > thisLevel;
   const picked = char.items.lockpicks && chance(50);
 
@@ -67,7 +67,7 @@ const floorCell = (params, move) => {
 
 const wallCell = (params) => {
 
-  const { state, char, events, updateLog } = params;
+  const { merge, char, events, updateLog } = params;
 
   char.active.concussed++;
 
@@ -76,20 +76,20 @@ const wallCell = (params) => {
       updateLog(events.concussed);
       break;
     case 5:
-      state.timeouts.death = 15;
-      state.eventLog = state.eventLog.map(scramble);
+      merge.timeouts.death = 15;
+      merge.eventLog = merge.eventLog.map(scramble);
   }
 
 };
 
 const enemyCell = (params, move) => {
 
-  const { state, enemies } = params;
+  const { merge, enemies } = params;
   const { to } = move;
 
   const enemy = findEnemy(enemies, to);
 
-  if (!state.timeouts.win && enemy.stats.hp) {
+  if (!merge.timeouts.win && enemy.stats.hp) {
     params.playerTarget = enemy;
   }
 

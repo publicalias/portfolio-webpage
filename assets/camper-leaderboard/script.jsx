@@ -29,6 +29,22 @@ const App = () => {
     total: null
   });
 
+  //utilities
+
+  const loadData = async () => {
+
+    const [recent, total] = await Promise.all([
+      getJSON("https://fcctop100.herokuapp.com/api/fccusers/top/recent"),
+      getJSON("https://fcctop100.herokuapp.com/api/fccusers/top/alltime")
+    ]);
+
+    setState({
+      recent,
+      total
+    });
+
+  };
+
   //events
 
   const handleRecent = () => {
@@ -41,18 +57,8 @@ const App = () => {
 
   //lifecycle
 
-  useEffect(async () => {
-
-    const [recent, total] = await Promise.all([
-      getJSON("https://fcctop100.herokuapp.com/api/fccusers/top/recent"),
-      getJSON("https://fcctop100.herokuapp.com/api/fccusers/top/alltime")
-    ]);
-
-    setState({
-      recent,
-      total
-    });
-
+  useEffect(() => {
+    loadData(); //returns promise
   }, []);
 
   //render

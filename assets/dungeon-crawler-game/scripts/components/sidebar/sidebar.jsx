@@ -11,28 +11,13 @@ const React = require("react");
 
 //sidebar
 
-const Sidebar = (props) => {
-
-  const { btn: btnA, char, hover, time } = props.charInfo;
-  const { btn: btnB, text } = props.hoverBox;
-
-  return (
-    <div className="c-sidebar js-resize-sidebar">
-      <CharInfo
-        btn={btnA}
-        char={char}
-        hover={hover}
-        time={time}
-      />
-      <hr />
-      <HoverBox
-        btn={btnB}
-        text={text}
-      />
-    </div>
-  );
-
-};
+const Sidebar = (props) => (
+  <div className="c-sidebar js-resize-sidebar">
+    <CharInfo {...props.charInfo} />
+    <hr />
+    <HoverBox {...props.hoverBox} />
+  </div>
+);
 
 //exports
 

@@ -9,11 +9,15 @@ const { playerCombat } = require("./player-combat/player-combat");
 const { statusEffects } = require("./status-effects");
 const { timeoutHandler } = require("./timeout-handler");
 
+//global imports
+
+const { deepCopy } = require("utilities");
+
 //handle gameplay
 
 const setHoverText = (params) => {
 
-  const { state, char, thisLevel, level, enemies, hoverInfo, hoverText, playerTarget } = params;
+  const { merge, char, thisLevel, level, enemies, hoverInfo, hoverText, playerTarget } = params;
 
   const hoverTarget = hoverInfo.enemyInfo(playerTarget, char.active.bsMult);
   const hoverProx = hoverInfo.enemyProx(
@@ -23,9 +27,9 @@ const setHoverText = (params) => {
     char.items.maps[thisLevel],
     char.active.bsMult
   );
-  const hoverBase = hoverInfo.base(state.enemies, thisLevel);
+  const hoverBase = hoverInfo.base(merge.enemies, thisLevel);
 
-  state.hoverText = hoverTarget || hoverText || hoverProx || hoverBase;
+  merge.hoverText = hoverTarget || hoverText || hoverProx || hoverBase;
 
 };
 
@@ -46,7 +50,7 @@ const gameplayEvents = (params, action) => {
 
 const handleGameplay = (params, event) => {
 
-  const { state } = params;
+  const { merge } = params;
 
   const action = playerActions[`${event.key}Key`];
 
@@ -56,7 +60,7 @@ const handleGameplay = (params, event) => {
 
   timeoutHandler(params);
 
-  if (state.win) {
+  if (merge.win) {
     return;
   }
 
@@ -68,22 +72,25 @@ const handleGameplay = (params, event) => {
 
 const keyDownParams = (state, props) => {
 
-  const thisLevel = state.thisLevel;
+  const merge = deepCopy(state);
+
+  const { levels, thisLevel, char, enemies, eventLog } = merge;
+  const { hoverInfo, events } = props;
 
   return {
 
     //updated state
 
-    state,
+    merge,
 
     //shorthand props
 
-    char: state.char,
+    char,
     thisLevel,
-    level: state.levels[thisLevel],
-    enemies: state.enemies[thisLevel],
-    events: props.events,
-    hoverInfo: props.hoverInfo,
+    level: levels[thisLevel],
+    enemies: enemies[thisLevel],
+    events,
+    hoverInfo,
 
     //local state
 
@@ -93,14 +100,14 @@ const keyDownParams = (state, props) => {
     //utilities
 
     getCounts() {
-      return getCounts(state.enemies);
+      return getCounts(enemies);
     },
 
     updateLog(str) {
 
-      const event = state.char.active.concussed < 5 ? str : scramble(str);
+      const event = char.active.concussed < 5 ? str : scramble(str);
 
-      state.eventLog.unshift(event);
+      eventLog.unshift(event);
 
     }
 

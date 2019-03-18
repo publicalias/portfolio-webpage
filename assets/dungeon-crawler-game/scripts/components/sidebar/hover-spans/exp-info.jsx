@@ -17,7 +17,7 @@ const React = require("react");
 
 const ExpInfo = (props) => {
 
-  const { char, fn } = props.params;
+  const { params: { char, fn } } = props;
 
   const expCap = char.stats.level * 50 + 100;
 

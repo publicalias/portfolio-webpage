@@ -12,13 +12,13 @@ const { chance, rngInt } = require("utilities");
 
 const enemyMorale = (params, action) => {
 
-  const { state, char } = params;
+  const { merge, char } = params;
   const { target } = action;
 
   const maxExp = char.stats.level === 3 && char.stats.exp + target.stats.exp >= 250;
 
-  for (const p in state.enemies) {
-    for (const e of state.enemies[p]) {
+  for (const p in merge.enemies) {
+    for (const e of merge.enemies[p]) {
       e.active.ally = e.active.ally || e.stats.hp && !e.active.betray && (maxExp || chance(50));
     }
   }
@@ -29,7 +29,7 @@ const enemyMorale = (params, action) => {
 
 const restockPotions = (params, depth) => {
 
-  const { state } = params;
+  const { merge } = params;
 
   const contents = [{
     type: 3,
@@ -45,10 +45,10 @@ const restockPotions = (params, depth) => {
       const y = rngInt(0, 64, true);
       const x = rngInt(0, 80, true);
 
-      const freeCell = isCellFree(state.levels[depth], [y, x]);
+      const freeCell = isCellFree(merge.levels[depth], [y, x]);
 
       if (freeCell) {
-        state.levels[depth][y][x] = e.type;
+        merge.levels[depth][y][x] = e.type;
         e.count--;
       }
 
@@ -59,11 +59,11 @@ const restockPotions = (params, depth) => {
 
 const bonusContent = (params, stage) => {
 
-  const { state, char, events, updateLog } = params;
+  const { merge, char, events, updateLog } = params;
 
   if (stage === 2) {
 
-    state.bonus = true;
+    merge.bonus = true;
 
     char.items.maps[3] = true;
     char.items.hpPots += 2;

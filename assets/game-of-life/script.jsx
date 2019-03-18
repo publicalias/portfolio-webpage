@@ -5,8 +5,8 @@
 const Control = require("./scripts/components/control");
 const Culture = require("./scripts/components/culture");
 
-const { createCell, getUtils } = require("./scripts/app-logic");
-const { getHandlers } = require("./scripts/event-handlers");
+const { createCell, getPopulation, getUtils } = require("./scripts/app-logic");
+const { getHandlers, useFastInterval } = require("./scripts/event-handlers");
 const { childProps } = require("./scripts/view-logic");
 
 //global imports
@@ -14,14 +14,14 @@ const { childProps } = require("./scripts/view-logic");
 const { checkInput, submitKeys } = require("client-utils");
 const { select } = require("dom-api");
 const { array2D } = require("react-projects/app-logic");
-const { useInterval, useSetState } = require("react-utils");
+const { useSetState } = require("react-utils");
 
 //node modules
 
 const React = require("react");
 const ReactDOM = require("react-dom");
 
-const { useEffect, useLayoutEffect } = React;
+const { useEffect } = React;
 
 //app logic
 
@@ -33,13 +33,11 @@ const App = () => {
 
     const culture = array2D(48, 48, createCell());
 
-    const pop = culture.flat().filter((e) => e).length;
-
-    return {
+    return getPopulation({
 
       culture,
       start: true,
-      stable: !pop,
+      stable: false,
 
       history: [],
       reverse: false,
@@ -49,15 +47,13 @@ const App = () => {
       rules: "B3/S23",
       scale: 48,
 
-      canvas: null,
-
       gen: 0,
-      pop,
+      pop: null,
 
       rulesText: "",
       scaleText: ""
 
-    };
+    });
 
   });
 
@@ -80,11 +76,7 @@ const App = () => {
 
   }, []);
 
-  useLayoutEffect(() => {
-    select(window).on("load resize", handlers.resize);
-  }, []);
-
-  useInterval(utils.updateCulture, state.start && state.speed);
+  useFastInterval(utils.updateCulture, state.start && state.speed);
 
   //render
 
@@ -102,7 +94,6 @@ const App = () => {
         </div>
         <div className="c-row__col--8">
           <Culture
-            canvas={state.canvas}
             culture={state.culture}
             modify={handlers.modify}
           />

@@ -7,16 +7,21 @@ const { clearCanvas, paintCanvas } = require("../view-logic");
 //global imports
 
 const { select } = require("dom-api");
+const { useSetState } = require("react-utils");
 
 //node modules
 
 const React = require("react");
 
-const { useEffect } = React;
+const { useEffect, useLayoutEffect } = React;
 
 //culture
 
 const Culture = (props) => {
+
+  //state
+
+  const [state, setState] = useSetState({ canvas: 0 });
 
   //utilities
 
@@ -48,6 +53,16 @@ const Culture = (props) => {
     props.modify(event);
   };
 
+  const handleResize = () => {
+
+    const w = Math.round(select(".js-resize-culture").rect().width);
+
+    select(".js-resize-control, .js-resize-culture").rect({ height: w });
+
+    setState({ canvas: w });
+
+  };
+
   //lifecycle
 
   useEffect(() => {
@@ -58,17 +73,27 @@ const Culture = (props) => {
     });
   }, []);
 
-  useEffect(updateDisplay);
+  useLayoutEffect(() => {
+
+    handleResize();
+
+    select(window).on("resize", handleResize);
+
+  }, []);
+
+  useLayoutEffect(updateDisplay);
 
   //render
+
+  const { canvas } = state;
 
   return (
     <div className="js-resize-culture">
       <canvas
         className="js-ref-canvas u-cursor-crosshair"
-        height={props.canvas}
+        height={canvas}
         onClick={handleClick}
-        width={props.canvas}
+        width={canvas}
       />
     </div>
   );

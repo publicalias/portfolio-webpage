@@ -16,18 +16,20 @@ const React = require("react");
 
 const Group = (props) => {
 
+  const { group: { name, id, subgroups } } = props;
+
   const keyGen = initKeyGen();
 
   return (
-    <div className={`c-content--xl js-scroll-${props.group.id}`}>
+    <div className={`c-content--xl js-scroll-${id}`}>
       <div className="c-row">
         <div className="c-row__col--4">
-          <h1>{props.group.name}</h1>
+          <h1>{name}</h1>
         </div>
         <div className="c-row__col--8">
-          {props.group.subgroups.map((e, i, arr) => (
+          {subgroups.map((e, i, arr) => (
             <Subgroup
-              groupId={props.group.id}
+              groupId={id}
               isLastSubgroup={i === arr.length - 1}
               key={keyGen(e.id)}
               subgroup={e}

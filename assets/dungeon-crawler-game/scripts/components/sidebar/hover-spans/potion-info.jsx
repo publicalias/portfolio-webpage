@@ -12,7 +12,7 @@ const React = require("react");
 
 const PotionInfo = (props) => {
 
-  const { char, info, fn } = props.params;
+  const { params: { char, info, fn } } = props;
 
   const hpPots = (
     <HoverSpan

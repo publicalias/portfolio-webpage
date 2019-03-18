@@ -16,18 +16,20 @@ const React = require("react");
 
 const RecipeBox = (props) => {
 
+  const { displayModal, handleAdd, list, updateList } = props;
+
   const keyGen = initKeyGen();
 
   return (
     <div className="c-content--md js-scroll-recipe-box">
       <div className="c-row">
         <div className="c-row__col--12">
-          {props.list.length ? props.list.map((e) => (
+          {list.length ? list.map((e) => (
             <Recipe
-              displayModal={props.displayModal}
+              displayModal={displayModal}
               entry={e}
               key={keyGen(e.name)}
-              updateList={props.updateList}
+              updateList={updateList}
             />
           )) : (
             <div>
@@ -37,7 +39,7 @@ const RecipeBox = (props) => {
           )}
         </div>
         <div className="c-row__col--4">
-          <button onClick={props.handleAdd}>Add Recipe</button>
+          <button onClick={handleAdd}>Add Recipe</button>
         </div>
         <div className="c-row__col--8">
           <h3 className="u-float-right">Recipe <i className="fa fa-archive" /> 2.0</h3>

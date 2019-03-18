@@ -35,7 +35,7 @@ const app = {
 
   async handleMouseEnter(d) {
 
-    const { address, reclat, reclong } = d.properties;
+    const { properties: { address, reclat, reclong } } = d;
 
     const node = d3.event.target;
 

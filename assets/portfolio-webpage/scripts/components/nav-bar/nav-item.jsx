@@ -10,14 +10,20 @@ const React = require("react");
 
 //nav item
 
-const NavItem = (props) => (
-  <li
-    className={`c-nav-bar__item--${props.mod}`}
-    onClick={scrollToItem(props.link)}
-  >
-    {props.name}
-  </li>
-);
+const NavItem = (props) => {
+
+  const { link, mod, name } = props;
+
+  return (
+    <li
+      className={`c-nav-bar__item--${mod}`}
+      onClick={scrollToItem(link)}
+    >
+      {name}
+    </li>
+  );
+
+};
 
 //exports
 

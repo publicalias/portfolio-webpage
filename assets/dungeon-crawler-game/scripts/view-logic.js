@@ -46,34 +46,31 @@ const sightRange = (map, mapped, index) => {
 
 const childProps = (state, props, handlers) => {
 
-  const { char, thisLevel } = state;
-
-  const level = state.win ? winScreen() : state.levels[thisLevel];
-
-  const sight = sightRange(char.items.maps[thisLevel], state.mapped[thisLevel], char.stats.index);
+  const { start, levels, mapped, thisLevel, char, enemies, win, hoverText } = state;
 
   const bool = {
-    win: state.win,
-    sneak: char.active.sneak,
     bsMult: char.active.bsMult,
-    sight
+    sight: sightRange(char.items.maps[thisLevel], mapped[thisLevel], char.stats.index),
+    sneak: char.active.sneak,
+    start,
+    win
   };
 
   const hover = {
-    text: state.hoverText,
-    info: props.hoverInfo,
+    base: props.hoverInfo.base(enemies, thisLevel),
     fn: handlers.hover,
-    base: props.hoverInfo.base(state.enemies, thisLevel)
+    info: props.hoverInfo,
+    text: hoverText
   };
 
   const charInfo = {
+    bool,
     btn: {
       handleClick: handlers.swap,
       text: "Swap"
     },
-    char: state.char,
-    hover,
-    time: state.time
+    char,
+    hover
   };
 
   const hoverBox = {
@@ -81,16 +78,21 @@ const childProps = (state, props, handlers) => {
       handleClick: handlers.hint,
       text: "Hint"
     },
-    text: state.hoverText
+    text: hoverText
+  };
+
+  const viewPort = {
+    bool,
+    enemies: enemies[thisLevel],
+    hover,
+    level: win ? winScreen() : levels[thisLevel],
+    thisLevel
   };
 
   return {
-    thisLevel,
-    level,
-    bool,
-    hover,
     charInfo,
-    hoverBox
+    hoverBox,
+    viewPort
   };
 
 };

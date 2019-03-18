@@ -57,9 +57,8 @@ const App = () => {
     const list = deepCopy(state.list);
 
     const save = () => {
-      setState({ list }, (state) => {
-        storageKey("recipes", state.list);
-      });
+      storageKey("recipes", list);
+      setState({ list });
     };
 
     switch (type) {
@@ -111,24 +110,26 @@ const App = () => {
 
   //render
 
+  const { list, modalNum } = state;
+
   const keyGen = initKeyGen();
 
-  const entry = state.list[state.modalNum];
+  const entry = list[modalNum];
 
   return [
     <RecipeBox
       displayModal={displayModal}
       handleAdd={handleAdd}
       key={keyGen("recipe-box")}
-      list={state.list}
+      list={list}
       updateList={updateList}
     />,
     <RecipeEditor
       entry={entry}
       key={keyGen(entry ? entry.name : `${Date.now()}`)}
-      modalNum={state.modalNum}
+      modalNum={modalNum}
       updateList={updateList}
-      used={state.list.map((e) => e.name)}
+      used={list.map((e) => e.name)}
     />
   ];
 

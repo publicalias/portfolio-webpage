@@ -3,8 +3,8 @@
 //local imports
 
 const EventLog = require("./scripts/components/event-log");
-const Level = require("./scripts/components/level");
 const Sidebar = require("./scripts/components/sidebar/sidebar");
+const ViewPort = require("./scripts/components/view-port");
 
 const { getHandlers, useKeyDown } = require("./scripts/event-handlers");
 const { defaultProps } = require("./scripts/default-props/default-props");
@@ -15,14 +15,14 @@ const { childProps } = require("./scripts/view-logic");
 
 const { checkInput, storageKey } = require("client-utils");
 const { select } = require("dom-api");
-const { useInterval, useSetState } = require("react-utils");
+const { useSetState } = require("react-utils");
 
 //node modules
 
 const React = require("react");
 const ReactDOM = require("react-dom");
 
-const { useEffect, useLayoutEffect } = React;
+const { useEffect } = React;
 
 //app logic
 
@@ -35,42 +35,24 @@ const App = (props) => {
     const keys = ["deaths", "ng-plus", "best-time"];
 
     for (const e of keys) {
-      storageKey(e, storageKey(e) || 0);
+      storageKey(e, (val) => val || 0);
     }
 
     return storageKey("save") || newGame(props);
 
   });
 
-  //utilities
-
-  const updateTimer = () => {
-    if (document.visibilityState === "visible") {
-      setState((state) => {
-        if (state.start && state.char.stats.hp && !state.win) {
-          return { time: state.time + 1 };
-        }
-      });
-    }
-  };
-
   //events
 
-  const handlers = getHandlers(setState);
+  const handlers = getHandlers(state, setState, props);
 
   //lifecycle
 
   useEffect(checkInput, []);
 
-  useLayoutEffect(() => {
-    select(window).on("load resize", handlers.resize);
-  }, []);
-
   useEffect(() => {
     storageKey("save", state);
   });
-
-  useInterval(updateTimer, 1000);
 
   useKeyDown(handlers);
 
@@ -86,14 +68,7 @@ const App = (props) => {
           <hr />
         </div>
         <div className="c-row__col--8">
-          <Level
-            bool={child.bool}
-            canvas={state.canvas}
-            enemies={state.enemies[child.thisLevel]}
-            hover={child.hover}
-            level={child.level}
-            thisLevel={child.thisLevel}
-          />
+          <ViewPort {...child.viewPort} />
         </div>
         <div className="c-row__col--4">
           <Sidebar charInfo={child.charInfo} hoverBox={child.hoverBox} />

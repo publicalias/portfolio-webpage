@@ -12,6 +12,8 @@ const React = require("react");
 
 const Bio = (props) => {
 
+  const { bio: { text, avatar } } = props;
+
   const keyGen = initKeyGen();
 
   return (
@@ -21,13 +23,13 @@ const Bio = (props) => {
           <h1>Bio</h1>
         </div>
         <div className="c-row__col--5">
-          {props.bio.text.map((e) => <p key={keyGen(e)}>{e}</p>)}
+          {text.map((e) => <p key={keyGen(e)}>{e}</p>)}
         </div>
         <div className="c-row__col--5">
           <img
             alt="Ethan Frost"
             className="u-padding-left"
-            src={props.bio.avatar}
+            src={avatar}
           />
         </div>
       </div>

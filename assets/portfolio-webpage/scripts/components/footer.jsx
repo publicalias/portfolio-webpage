@@ -8,7 +8,7 @@ const React = require("react");
 
 const Footer = (props) => {
 
-  const { terms, privacy } = props.footer;
+  const { footer: { terms, privacy } } = props;
 
   return (
     <div className="c-content--xl c-footer">

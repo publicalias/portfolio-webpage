@@ -16,6 +16,8 @@ const React = require("react");
 
 const CamperTable = (props) => {
 
+  const { handleRecent, handleTotal, data } = props;
+
   const keyGen = initKeyGen();
 
   return (
@@ -25,12 +27,12 @@ const CamperTable = (props) => {
           <td className="c-campers__col--2">Rank</td>
           <td className="c-campers__col--2" />
           <td className="c-campers__col--4">Name</td>
-          <td className="c-campers__col--2 u-cursor-pointer" onClick={props.handleRecent}>30 days</td>
-          <td className="c-campers__col--2 u-cursor-pointer u-align-right" onClick={props.handleTotal}>All time</td>
+          <td className="c-campers__col--2 u-cursor-pointer" onClick={handleRecent}>30 days</td>
+          <td className="c-campers__col--2 u-cursor-pointer u-align-right" onClick={handleTotal}>All time</td>
         </tr>
       </thead>
       <tbody className="c-campers__body">
-        {props.data.map((e, i) => (
+        {data.map((e, i) => (
           <Camper
             avatar={e.img}
             key={keyGen(e.username)}

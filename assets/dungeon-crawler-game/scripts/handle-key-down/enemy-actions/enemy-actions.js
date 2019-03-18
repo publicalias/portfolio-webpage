@@ -26,12 +26,12 @@ const shouldFlee = (actors) => {
 
 const shouldSurrender = (params, actors) => {
 
-  const { state } = params;
+  const { merge } = params;
   const { self } = actors;
 
   const notAlly = !self.active.ally && !self.active.betray;
 
-  return notAlly && state.bonus;
+  return notAlly && merge.bonus;
 
 };
 
@@ -60,7 +60,7 @@ const flee = (params, actors) => {
 
 const shouldPursue = (params, actors) => {
 
-  const { state } = params;
+  const { merge } = params;
   const { self, target } = actors;
 
   const type = self.stats.type;
@@ -68,7 +68,7 @@ const shouldPursue = (params, actors) => {
 
   const hostile = self.hostile.includes(target.stats.id);
   const ruffian = type === 1 && chance(75);
-  const brute = type === 2 && state.hintLevel === 3;
+  const brute = type === 2 && merge.hintLevel === 3;
   const boss = type === 3 && player;
 
   return hostile || ruffian || brute || boss;

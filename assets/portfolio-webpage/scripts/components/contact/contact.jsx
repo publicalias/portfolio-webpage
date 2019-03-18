@@ -89,12 +89,9 @@ const Contact = (props) => {
         </div>
         <div className="c-row__col--8">
           <ContactForm
-            body={state.body}
-            btnIndex={state.btnIndex}
-            email={state.email}
+            {...state}
             handleChange={handleChange}
             handleSubmit={handleSubmit}
-            subject={state.subject}
           />
           <MediaIcons contact={props.contact} />
           <div

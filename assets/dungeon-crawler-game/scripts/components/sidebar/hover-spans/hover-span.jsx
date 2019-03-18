@@ -10,14 +10,20 @@ const React = require("react");
 
 //hover span
 
-const HoverSpan = (props) => (
-  <span
-    className="c-sidebar__span--hover"
-    onMouseEnter={wrapFn(props.fn, props.info)}
-  >
-    {props.text}
-  </span>
-);
+const HoverSpan = (props) => {
+
+  const { fn, info, text } = props;
+
+  return (
+    <span
+      className="c-sidebar__span--hover"
+      onMouseEnter={wrapFn(fn, info)}
+    >
+      {text}
+    </span>
+  );
+
+};
 
 //exports
 

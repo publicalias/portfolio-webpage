@@ -11,22 +11,60 @@ const UtilityBtn = require("./utility-btn");
 //global imports
 
 const { storageKey } = require("client-utils");
+const { useInterval, useSetState } = require("react-utils");
 const { roundTo } = require("utilities");
 
 //node modules
 
 const React = require("react");
 
+const { useEffect } = React;
+
 //char info
 
 const CharInfo = (props) => {
 
-  const char = props.char;
+  //state
 
-  const classInfo = props.hover.info.classes.char[char.stats.boss ? 3 : char.stats.level - 1];
+  const [state, setState] = useSetState({ time: storageKey("time", (val) => val || 0) });
+
+  //utilities
+
+  const setTime = (time) => {
+    storageKey("time", time);
+    setState({ time });
+  };
+
+  const timeInt = () => {
+
+    const { bool: { start, win }, char } = props;
+
+    const visible = document.visibilityState === "visible";
+
+    if (visible && start && char.stats.hp && !win) {
+      setTime(state.time + 1);
+    }
+
+  };
+
+  //lifecycle
+
+  useEffect(() => {
+    if (!props.bool.start) {
+      setTime(0);
+    }
+  });
+
+  useInterval(timeInt, 1000);
+
+  //render
+
+  const { btn, char, hover } = props;
+
+  const classInfo = hover.info.classes.char[char.stats.boss ? 3 : char.stats.level - 1];
   const dmgVal = char.stats.dmg * (char.active.bsMult ? 2 : 1) * (char.active.dmgMult ? 2 : 1);
 
-  const params = Object.assign({ char }, props.hover);
+  const params = Object.assign({ char }, hover);
 
   return (
     <div className="c-sidebar__char-info">
@@ -37,7 +75,7 @@ const CharInfo = (props) => {
       <ExpInfo params={params} />
       <p className="c-sidebar__text">
         <span className="c-sidebar__span">HP: {roundTo(char.stats.hp, 1)}%</span>
-        <span className="c-sidebar__span--right">Time: {props.time}</span>
+        <span className="c-sidebar__span--right">Time: {state.time}</span>
       </p>
       <p className="c-sidebar__text">
         <span className="c-sidebar__span">RES: {char.stats.res}</span>
@@ -47,7 +85,7 @@ const CharInfo = (props) => {
       <WeaponInfo params={params} />
       <AbilityInfo params={params} />
       <PotionInfo params={params} />
-      <UtilityBtn btn={props.btn} />
+      <UtilityBtn btn={btn} />
     </div>
   );
 

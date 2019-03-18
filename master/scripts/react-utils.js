@@ -2,7 +2,7 @@
 
 //node modules
 
-const { useEffect, useRef, useState } = require("react");
+const { useEffect, useLayoutEffect, useRef, useState } = require("react");
 
 //init key gen
 
@@ -64,27 +64,31 @@ const useInterval = (fn, speed) => {
 
 //use set state
 
-const useSetState = (initialState, props) => {
+const useSetState = (initialState) => {
 
   const [state, setState] = useState(initialState);
 
   const { current: queue } = useRef([]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     while (queue.length) {
-      queue.shift()(state, props);
+      queue.shift()();
     }
   });
 
   return [state, (merge, fn) => {
 
-    const next = typeof merge === "function" ? merge : () => merge;
-
     if (fn) {
       queue.push(fn);
     }
 
-    setState((prev) => Object.assign({}, prev, next(prev)));
+    setState((state) => {
+
+      const fn = typeof merge === "function" ? merge : () => merge;
+
+      return Object.assign({}, state, fn(state));
+
+    });
 
   }];
 

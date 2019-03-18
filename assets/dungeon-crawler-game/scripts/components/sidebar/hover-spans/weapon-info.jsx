@@ -16,9 +16,9 @@ const React = require("react");
 
 const WeaponInfo = (props) => {
 
-  const keyGen = initKeyGen();
+  const { params: { char, info, fn } } = props;
 
-  const { char, info, fn } = props.params;
+  const keyGen = initKeyGen();
 
   const held = Object.entries(char.items.weapons)
     .filter(([, val]) => val)

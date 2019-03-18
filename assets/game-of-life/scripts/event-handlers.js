@@ -7,9 +7,12 @@ const { getPopulation, validRules } = require("./app-logic");
 //global imports
 
 const { storageKey } = require("client-utils");
-const { select } = require("dom-api");
 const { mouseYX } = require("react-projects/app-logic");
 const { cycleItems, deepCopy } = require("utilities");
+
+//node modules
+
+const { useLayoutEffect } = require("react");
 
 //get handlers
 
@@ -19,8 +22,10 @@ const getHandlers = (state, setState, utils) => ({
 
   start() {
 
-    const reversed = state.reverse && state.history.length;
-    const iterable = !state.stable || reversed;
+    const { stable, history, reverse } = state;
+
+    const reversed = reverse && history.length;
+    const iterable = !stable || reversed;
 
     if (iterable) {
       setState({ start: true });
@@ -34,33 +39,33 @@ const getHandlers = (state, setState, utils) => ({
 
   reverse() {
     if (state.gen) {
-      setState((prev) => ({ reverse: !prev.reverse }));
+      setState({ reverse: !state.reverse });
     }
   },
 
   iterate() {
 
-    const reversed = state.reverse && state.history.length;
-    const iterable = !state.stable || reversed;
+    const { start, stable, history, reverse } = state;
 
-    if (!state.start && iterable) {
+    const reversed = reverse && history.length;
+    const iterable = !stable || reversed;
+
+    if (!start && iterable) {
       utils.updateCulture();
     }
 
   },
 
   speed() {
-    setState((prev) => ({ speed: cycleItems([300, 200, 100], prev.speed) }));
+    setState({ speed: cycleItems([300, 200, 100], state.speed) });
   },
 
   color() {
-    setState((prev) => ({ color: prev.color === 1 ? 2 : 1 }));
+    setState({ color: state.color === 1 ? 2 : 1 });
   },
 
   clear() {
-    if (!state.start) {
-      utils.resetCulture(true);
-    }
+    utils.resetCulture(true);
   },
 
   random() {
@@ -71,16 +76,11 @@ const getHandlers = (state, setState, utils) => ({
 
   rules() {
 
-    if (state.start || !validRules(state.rulesText)) {
-      return;
+    const { start, scale, rulesText } = state;
+
+    if (!start && validRules(rulesText)) {
+      utils.resetCulture(false, false, true, scale);
     }
-
-    const merge = {
-      rules: state.rulesText,
-      rulesText: ""
-    };
-
-    setState(merge, utils.resetCulture);
 
   },
 
@@ -92,19 +92,21 @@ const getHandlers = (state, setState, utils) => ({
 
   load() {
     if (!state.start && storageKey("culture")) {
-      utils.resetCulture(null, true);
+      utils.resetCulture(false, true);
     }
   },
 
   scale() {
 
-    const newVal = Number(state.scaleText);
+    const { start, scale, scaleText } = state;
 
-    const noMatch = newVal !== state.scale;
+    const newVal = Number(scaleText);
+
+    const noMatch = newVal !== scale;
     const inRange = newVal >= 12 && newVal <= 144;
 
-    if (!state.start && noMatch && inRange) {
-      utils.resetCulture(false, false, newVal);
+    if (!start && noMatch && inRange) {
+      utils.resetCulture(false, false, false, true);
     }
 
   },
@@ -140,22 +142,33 @@ const getHandlers = (state, setState, utils) => ({
       gen: 0
     };
 
-    setState(Object.assign(merge, getPopulation(culture)));
-
-  },
-
-  resize() {
-
-    const w = Math.round(select(".js-resize-culture").rect().width);
-
-    select(".js-resize-control, .js-resize-culture").rect({ height: w });
-
-    setState({ canvas: w });
+    setState(getPopulation(merge));
 
   }
 
 });
 
+//use fast interval
+
+const useFastInterval = (fn, speed) => {
+  useLayoutEffect(() => {
+
+    if (typeof speed !== "number") {
+      return;
+    }
+
+    const id = setTimeout(fn, speed); //less racy
+
+    return () => {
+      clearTimeout(id);
+    };
+
+  });
+};
+
 //exports
 
-module.exports = { getHandlers };
+module.exports = {
+  getHandlers,
+  useFastInterval
+};

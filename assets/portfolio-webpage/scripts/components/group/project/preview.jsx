@@ -12,10 +12,11 @@ const React = require("react");
 
 const Preview = (props) => {
 
-  const project = props.project;
-  const pageLink = voidLink(project.links.page);
+  const { project: { preview, links: { page, view } } } = props;
 
-  switch (project.preview) {
+  const pageLink = voidLink(page);
+
+  switch (preview) {
     case "window":
       return (
         <div className="c-preview u-margin-half">
@@ -25,7 +26,7 @@ const Preview = (props) => {
           <img
             alt="Screenshot"
             className="c-preview__layer"
-            src={project.links.view || "https://via.placeholder.com/800x450?text=undefined"}
+            src={view || "https://via.placeholder.com/800x450?text=undefined"}
           />
         </div>
       );
