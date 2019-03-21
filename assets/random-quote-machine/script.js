@@ -4,7 +4,7 @@
 
 const { checkInput, getJSON } = require("client-utils");
 const { select } = require("dom-api");
-const { bindObject, rngInt, wrapFn } = require("utilities");
+const { bindObject, rngInt } = require("utilities");
 
 //utilities
 
@@ -55,7 +55,9 @@ const app = {
     if (init) {
       display(next, init);
     } else {
-      select(".js-fade-text").animate({ opacity: 0 }, wrapFn(display, next));
+      select(".js-fade-text").animate({ opacity: 0 }, () => {
+        display(next);
+      });
     }
 
   }
@@ -79,7 +81,9 @@ select(document).on("DOMContentLoaded", () => {
 
   checkInput();
 
-  select(".js-click-refresh").on("click", wrapFn(app.refresh));
+  select(".js-click-refresh").on("click", () => {
+    app.refresh();
+  });
 
   app.ready++;
   app.refresh(true);

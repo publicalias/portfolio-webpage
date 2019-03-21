@@ -92,7 +92,16 @@ const initDeepCopy = (config) => (...args) => {
 
 //lead zero
 
-const leadZero = (val) => `${val < 10 ? "0" : ""}${val}`;
+const leadZero = (int, digits = 2) => {
+
+  const str = `${int}`;
+  const add = Array(Math.max(0, digits - str.length))
+    .fill(0)
+    .join("");
+
+  return `${add}${str}`;
+
+};
 
 //months
 
@@ -119,10 +128,6 @@ const rngInt = (min, max, inc = false) => Math.floor(Math.random() * (max - min 
 
 const roundTo = (val, dec) => Math.round(val * Math.pow(10, dec)) / Math.pow(10, dec);
 
-//wrap fn
-
-const wrapFn = (fn, ...args) => () => fn(...args);
-
 //exports
 
 module.exports = {
@@ -137,6 +142,5 @@ module.exports = {
   leadZero,
   months,
   rngInt,
-  roundTo,
-  wrapFn
+  roundTo
 };

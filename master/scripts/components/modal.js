@@ -3,7 +3,6 @@
 //global imports
 
 const { select } = require("dom-api");
-const { wrapFn } = require("utilities");
 
 //toggle modal
 
@@ -48,7 +47,9 @@ const toggleModal = (bool) => {
 
 const modalEvents = () => {
   select(window)
-    .on("resize", wrapFn(toggleModal))
+    .on("resize", () => {
+      toggleModal();
+    })
     .on("keydown", (event) => {
       if (event.key === "Escape") {
         toggleModal();

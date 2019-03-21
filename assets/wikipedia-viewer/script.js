@@ -9,7 +9,6 @@ const { renderResults, toggleOutline } = require("./scripts/view-logic");
 const { checkInput, getJSON, submitKeys } = require("client-utils");
 const { modalEvents, toggleModal } = require("components/modal");
 const { select } = require("dom-api");
-const { wrapFn } = require("utilities");
 
 //app logic
 
@@ -42,7 +41,9 @@ select(document).on("DOMContentLoaded", () => {
 
   submitKeys();
 
-  select(".js-render-output").on("click", ".js-close-modal", wrapFn(toggleModal));
+  select(".js-render-output").on("click", ".js-close-modal", () => {
+    toggleModal();
+  });
 
   modalEvents();
 

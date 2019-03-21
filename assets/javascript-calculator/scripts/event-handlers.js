@@ -3,7 +3,6 @@
 //global imports
 
 const { select } = require("dom-api");
-const { wrapFn } = require("utilities");
 
 //button events
 
@@ -13,16 +12,16 @@ const buttonEvents = (app) => {
     special: ["dec", "ms", "mc", "mr", "mp", "mm", "radix", "square", "frac", "neg", "ce", "c", "del", "equals"],
     basic: [{
       id: "div",
-      op: "/"
+      operator: "/"
     }, {
       id: "mult",
-      op: "*"
+      operator: "*"
     }, {
       id: "sub",
-      op: "-"
+      operator: "-"
     }, {
       id: "add",
-      op: "+"
+      operator: "+"
     }]
   };
 
@@ -31,11 +30,15 @@ const buttonEvents = (app) => {
   }
 
   for (const e of buttons.basic) {
-    select(`.js-click-${e.id}`).on("click", wrapFn(app.arith, e.op));
+    select(`.js-click-${e.id}`).on("click", () => {
+      app.arith(e.operator);
+    });
   }
 
   for (let i = 0; i < 10; i++) {
-    select(`.js-click-${i}`).on("click", wrapFn(app.num, i.toString()));
+    select(`.js-click-${i}`).on("click", () => {
+      app.num(i.toString());
+    });
   }
 
 };

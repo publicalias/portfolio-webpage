@@ -1,9 +1,5 @@
 "use strict";
 
-//global imports
-
-const { wrapFn } = require("utilities");
-
 //node modules
 
 const React = require("react");
@@ -17,7 +13,9 @@ const HoverSpan = (props) => {
   return (
     <span
       className="c-sidebar__span--hover"
-      onMouseEnter={wrapFn(fn, info)}
+      onMouseEnter={() => {
+        fn(info);
+      }}
     >
       {text}
     </span>

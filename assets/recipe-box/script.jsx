@@ -12,7 +12,7 @@ const { closePanel, initPanel } = require("components/accordion");
 const { modalEvents, toggleModal } = require("components/modal");
 const { select } = require("dom-api");
 const { initKeyGen, useSetState } = require("react-utils");
-const { deepCopy, wrapFn } = require("utilities");
+const { deepCopy } = require("utilities");
 
 //node modules
 
@@ -85,7 +85,9 @@ const App = () => {
     if (state.modalNum === num) {
       toggleModal(true);
     } else {
-      setState({ modalNum: num }, wrapFn(toggleModal, true));
+      setState({ modalNum: num }, () => {
+        toggleModal(true);
+      });
     }
   };
 
