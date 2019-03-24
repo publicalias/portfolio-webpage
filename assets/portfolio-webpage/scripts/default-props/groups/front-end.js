@@ -161,7 +161,7 @@ const frontEnd = {
     projects: [{
       name: "JavaScript Calculator",
       id: "javascript-calculator",
-      comments: "This project was an exercise in handling edge cases. For an extra challenge, I added radix, square, fraction, negate, and the full set of memory functions.",
+      comments: "This was an exercise in handling edge cases. For an extra challenge, I added radix, square, inverse, negate, and memory functions. Rounding error is hidden from the user.",
       userStories: [
         "I can add, subtract, multiply, and divide two numbers.",
         "I can clear the input field with a clear button.",

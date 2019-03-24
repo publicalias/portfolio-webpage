@@ -9,7 +9,7 @@ const { select } = require("dom-api");
 const buttonEvents = (app) => {
 
   const buttons = {
-    special: ["dec", "ms", "mc", "mr", "mp", "mm", "radix", "square", "frac", "neg", "ce", "c", "del", "equals"],
+    special: ["dec", "ms", "mc", "mr", "mp", "mm", "radix", "square", "rec", "neg", "ce", "c", "del", "equals"],
     basic: [{
       id: "div",
       operator: "/"
@@ -52,8 +52,8 @@ const keyEvents = (app) => {
         app.dec(true);
         break;
       case "+":
-        event.preventDefault();
       case "-":
+        event.preventDefault();
       case "*":
       case "/":
         app.arith(event.key, true);
@@ -66,7 +66,7 @@ const keyEvents = (app) => {
         app.equals(true);
         break;
       default:
-        if (isFinite(event.key)) {
+        if (/\d/u.test(event.key)) {
           app.num(event.key, true);
         }
     }

@@ -4,13 +4,13 @@
 
 const { buttonEvents, keyEvents } = require("./scripts/event-handlers");
 const { parseArith, resolve } = require("./scripts/app-logic");
-const { updateView } = require("./scripts/view-logic");
+const { readOutput, updateView } = require("./scripts/view-logic");
 
 //global imports
 
 const { checkInput } = require("client-utils");
 const { select } = require("dom-api");
-const { bindObject } = require("utilities");
+const { bindObject, toPrecision } = require("utilities");
 
 //app logic
 
@@ -25,6 +25,8 @@ const app = {
 
   num(str, key) {
 
+    this.val = readOutput();
+
     if (!isFinite(this.val) || this.val.includes("e")) {
       return;
     }
@@ -32,29 +34,29 @@ const app = {
     this.val = this.val === "0" ? str : `${this.val}${str}`;
     this.repeat = "";
 
-    updateView(this, key && str);
+    updateView(this, key && str, true);
 
   },
 
   dec(key) {
 
-    if (!isFinite(this.val) || this.val.includes(".") || this.val.includes("e")) {
+    this.val = readOutput();
+
+    if (!isFinite(this.val) || this.val.includes("e") || this.val.includes(".")) {
       return;
     }
 
     this.val = `${this.val}.`;
     this.repeat = "";
 
-    updateView(this, key && "dec");
+    updateView(this, key && "dec", true);
 
   },
 
   //memory
 
   ms() {
-    if (isFinite(this.val)) {
-      this.memory = Number(this.val);
-    }
+    this.memory = this.val;
   },
 
   mc() {
@@ -63,11 +65,11 @@ const app = {
 
   mr() {
 
-    if (this.memory === null) {
+    if (!this.memory) {
       return;
     }
 
-    this.val = this.memory.toString();
+    this.val = this.memory;
     this.repeat = "";
 
     updateView(this);
@@ -75,24 +77,20 @@ const app = {
   },
 
   mp() {
-    if (isFinite(this.val) && this.memory !== null) {
-      this.memory += Number(this.val);
+    if (this.memory) {
+      this.memory = resolve(`${this.memory} + ${this.val}`);
     }
   },
 
   mm() {
-    if (isFinite(this.val) && this.memory !== null) {
-      this.memory -= Number(this.val);
+    if (this.memory) {
+      this.memory = resolve(`${this.memory} - ${this.val}`);
     }
   },
 
   //basic
 
   arith(str, key) {
-
-    if (!isFinite(this.val)) {
-      return;
-    }
 
     const table = {
       "+": "add",
@@ -110,11 +108,7 @@ const app = {
 
   radix() {
 
-    if (!isFinite(this.val)) {
-      return;
-    }
-
-    this.val = Math.sqrt(this.val).toString();
+    this.val = toPrecision(Math.sqrt(this.val));
     this.repeat = "";
 
     updateView(this);
@@ -123,24 +117,16 @@ const app = {
 
   square() {
 
-    if (!isFinite(this.val)) {
-      return;
-    }
-
-    this.val = Math.pow(this.val, 2).toString();
+    this.val = toPrecision(Math.pow(this.val, 2));
     this.repeat = "";
 
     updateView(this);
 
   },
 
-  frac() {
+  rec() {
 
-    if (!isFinite(this.val)) {
-      return;
-    }
-
-    this.val = (1 / this.val).toString();
+    this.val = resolve(`1 / ${this.val}`);
     this.repeat = "";
 
     updateView(this);
@@ -149,11 +135,7 @@ const app = {
 
   neg() {
 
-    if (!isFinite(this.val)) {
-      return;
-    }
-
-    this.val = (this.val * -1).toString();
+    this.val = resolve(`${this.val} * -1`);
     this.repeat = "";
 
     updateView(this);
@@ -190,6 +172,8 @@ const app = {
 
   del(key) {
 
+    this.val = readOutput();
+
     if (!isFinite(this.val) || this.val.includes("e")) {
       return;
     }
@@ -202,7 +186,7 @@ const app = {
 
     this.repeat = "";
 
-    updateView(this, key && "del");
+    updateView(this, key && "del", true);
 
   },
 
@@ -210,14 +194,10 @@ const app = {
 
   equals(key) {
 
-    if (!isFinite(this.val)) {
-      return;
-    }
-
     if (!this.chain && this.repeat) {
-      this.val = resolve(this.val + this.repeat);
+      this.val = resolve(`${this.val}${this.repeat}`);
     } else if (this.chain) {
-      this.repeat = `${this.chain.substr(-2, 2)} ${this.val}`;
+      this.repeat = `${this.chain.slice(-2)} ${this.val}`;
       this.val = resolve(`${this.chain} ${this.val}`);
       this.chain = "";
     }

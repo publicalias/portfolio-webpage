@@ -1,10 +1,14 @@
 "use strict";
 
+//global imports
+
+const { toPrecision } = require("utilities");
+
 //parse arith
 
 const parseArith = (that, str) => {
 
-  const num = Number(that.val);
+  const num = Number(that.val); //remove trailing zeroes
 
   if (!that.chain) {
     that.chain = `${num} ${str}`;
@@ -45,7 +49,7 @@ const resolve = (str) => {
 
   }
 
-  return chain.join();
+  return toPrecision(chain[0]);
 
 };
 

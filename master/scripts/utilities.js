@@ -128,6 +128,29 @@ const rngInt = (min, max, inc = false) => Math.floor(Math.random() * (max - min 
 
 const roundTo = (val, dec) => Math.round(val * Math.pow(10, dec)) / Math.pow(10, dec);
 
+//to precision
+
+const toPrecision = (n, sf = 15) => {
+
+  const x = parseFloat(Number(n).toPrecision(sf));
+  const y = Math.pow(10, sf);
+
+  return x < y ? x.toString() : x.toExponential();
+
+};
+
+//truncate
+
+const truncate = (str, length) => {
+
+  if (str.length < length) {
+    return str;
+  }
+
+  return `${str.slice(0, length - 3)}...`;
+
+};
+
 //exports
 
 module.exports = {
@@ -142,5 +165,7 @@ module.exports = {
   leadZero,
   months,
   rngInt,
-  roundTo
+  roundTo,
+  toPrecision,
+  truncate
 };
