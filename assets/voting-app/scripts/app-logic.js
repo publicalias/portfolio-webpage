@@ -2,7 +2,7 @@
 
 //local imports
 
-const { metaAddErrors, metaNoOp, metaSetState } = require("./actions/factories/meta-factories");
+const { metaAddErrors, metaNoOp, metaSetState } = require("./state/actions/factories/meta-factories");
 
 //global imports
 

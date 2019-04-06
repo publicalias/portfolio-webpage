@@ -2,8 +2,8 @@
 
 //local imports
 
-const { actions } = require("../../../scripts/actions/actions");
-const { testReducer } = require("../../test-helpers");
+const { actions } = require("../../../../scripts/state/actions/actions");
+const { testReducer } = require("../../../test-helpers");
 
 //menu open form
 

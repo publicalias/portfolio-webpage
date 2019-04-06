@@ -2,9 +2,9 @@
 
 //local imports
 
-const { actions } = require("../../scripts/actions/actions");
-const { initialState, reducer } = require("../../scripts/reducer/reducer");
-const { testReducer } = require("../test-helpers");
+const { actions } = require("../../../scripts/state/actions/actions");
+const { initialState, reducer } = require("../../../scripts/state/reducer/reducer");
+const { testReducer } = require("../../test-helpers");
 
 //reducer
 

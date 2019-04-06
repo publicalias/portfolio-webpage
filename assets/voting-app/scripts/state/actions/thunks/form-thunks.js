@@ -2,7 +2,7 @@
 
 //local imports
 
-const { reduxAPICall } = require("../../app-logic");
+const { reduxAPICall } = require("../../../app-logic");
 const { metaAddErrors, metaSetState } = require("../factories/meta-factories");
 const { initialState } = require("../../reducer/reducer");
 

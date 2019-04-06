@@ -2,9 +2,9 @@
 
 //local imports
 
-const { actions } = require("../../../scripts/actions/actions");
-const { initialState } = require("../../../scripts/reducer/reducer");
-const { testReducer } = require("../../test-helpers");
+const { actions } = require("../../../../scripts/state/actions/actions");
+const { initialState } = require("../../../../scripts/state/reducer/reducer");
+const { testReducer } = require("../../../test-helpers");
 
 //global imports
 

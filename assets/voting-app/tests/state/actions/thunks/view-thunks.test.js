@@ -4,8 +4,8 @@
 
 //local imports
 
-const { actions } = require("../../../scripts/actions/actions");
-const { testAPIFailure, testAPISuccess } = require("../../test-helpers");
+const { actions } = require("../../../../scripts/state/actions/actions");
+const { testAPIFailure, testAPISuccess } = require("../../../test-helpers");
 
 //setup
 

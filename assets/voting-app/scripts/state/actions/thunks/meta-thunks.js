@@ -2,7 +2,7 @@
 
 //local imports
 
-const { reduxAPICall } = require("../../app-logic");
+const { reduxAPICall } = require("../../../app-logic");
 
 //meta get polls
 

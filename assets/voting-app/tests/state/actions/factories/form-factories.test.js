@@ -2,7 +2,7 @@
 
 //local imports
 
-const { actions } = require("../../../scripts/actions/actions");
+const { actions } = require("../../../../scripts/state/actions/actions");
 
 //form discard poll
 
