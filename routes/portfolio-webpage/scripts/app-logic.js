@@ -45,7 +45,7 @@ const handleForm = async (req, res) => {
 
     const data = await request({
       method: "POST",
-      uri: `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.API_RC_KEY}&response=${req.body.verify}&remoteip=${req.ip}`
+      uri: `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.API_RC_KEY}&response=${req.body.data.verify}&remoteip=${req.ip}`
     });
 
     const { success } = JSON.parse(data);

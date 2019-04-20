@@ -39,8 +39,8 @@ const useReCaptcha = (fn) => {
 
   useEffect(() => {
 
-    window.getReCaptcha = () => {
-      callback.current(); //callback must precede script
+    window.getReCaptcha = (data) => {
+      callback.current(data); //callback must precede script
     };
 
     loadReCaptcha();
