@@ -5,11 +5,31 @@
 //local imports
 
 const { actions } = require("../../../../scripts/state/actions/actions");
-const { testAPIFailure, testAPISuccess } = require("../../../test-helpers");
+const { initialState } = require("../../../../scripts/state/reducer/reducer");
+const { testAPIFailure, testAPISuccess, testThunk } = require("../../../test-helpers");
 
-afterEach(() => {
-  global.fetch = undefined;
-  global.Headers = undefined;
+//global imports
+
+const { initHistory } = require("test-helpers/client-tests");
+
+//list open view
+
+describe("listOpenView", () => {
+
+  const { listOpenView, metaSetState } = actions;
+
+  const { history, testHistory } = initHistory();
+
+  const action = listOpenView("id-a", history);
+
+  it("dispatches META_SET_STATE action", () => {
+
+    testThunk(action, [metaSetState({ view: initialState.view })]);
+
+    testHistory(["/voting-app/view/id-a"]);
+
+  });
+
 });
 
 //list toggle flag

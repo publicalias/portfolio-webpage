@@ -5,16 +5,6 @@
 const { actions } = require("../../../../scripts/state/actions/actions");
 const { testReducer } = require("../../../test-helpers");
 
-//menu open form
-
-test("reducer accepts MENU_OPEN_FORM actions", () => {
-
-  const { menuOpenForm } = actions;
-
-  testReducer(menuOpenForm(), {}, { page: "form" });
-
-});
-
 //menu set filter
 
 test("reducer accepts MENU_SET_FILTER actions", () => {

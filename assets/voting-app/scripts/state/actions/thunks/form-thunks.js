@@ -46,7 +46,7 @@ const formAddOption = () => (dispatch, getState) => {
 
 //form create poll
 
-const formCreatePoll = () => (dispatch, getState) => {
+const formCreatePoll = (history) => (dispatch, getState) => {
 
   const { form } = getState();
 
@@ -62,12 +62,21 @@ const formCreatePoll = () => (dispatch, getState) => {
 
     const { id, errors } = res;
 
-    dispatch(errors ? metaAddErrors(errors) : metaSetState({
-      page: "view",
+    if (errors) {
+
+      dispatch(metaAddErrors(errors));
+
+      return;
+
+    }
+
+    dispatch(metaSetState({
       list: deepCopy(list, { filter: "created" }),
       form: deepCopy(form),
-      view: deepCopy(view, { poll: id })
+      view: deepCopy(view)
     }));
+
+    history.push(`/voting-app/view/${id}`);
 
   };
 

@@ -3,7 +3,7 @@
 //local imports
 
 const { reduxAPICall } = require("../../../app-logic");
-const { metaSetState } = require("../factories/meta-factories");
+const { metaNoOp } = require("../factories/meta-factories");
 
 //view add option
 
@@ -43,7 +43,7 @@ const viewCastVote = (id, text) => (dispatch) => {
 
 //view delete poll
 
-const viewDeletePoll = (id) => (dispatch) => {
+const viewDeletePoll = (id, history) => (dispatch) => {
 
   const args = {
     path: "/api/view-delete-poll",
@@ -52,10 +52,24 @@ const viewDeletePoll = (id) => (dispatch) => {
   };
 
   const success = () => {
-    dispatch(metaSetState({ page: "list" }));
+
+    dispatch(metaNoOp());
+
+    history.push("/voting-app/list");
+
   };
 
   return reduxAPICall(dispatch, args, success);
+
+};
+
+//view open list
+
+const viewOpenList = (history) => (dispatch) => {
+
+  dispatch(metaNoOp());
+
+  history.push("/voting-app/list");
 
 };
 
@@ -96,6 +110,7 @@ module.exports = {
   viewAddOption,
   viewCastVote,
   viewDeletePoll,
+  viewOpenList,
   viewRemoveOption,
   viewTogglePrivate
 };

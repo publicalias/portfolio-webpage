@@ -4,16 +4,6 @@
 
 const { actions } = require("../../../../scripts/state/actions/actions");
 
-//view open list
-
-test("viewOpenList creates VIEW_OPEN_LIST actions", () => {
-
-  const { viewOpenList } = actions;
-
-  expect(viewOpenList()).toEqual({ type: "VIEW_OPEN_LIST" });
-
-});
-
 //view set add text
 
 test("viewSetAddText creates VIEW_SET_ADD_TEXT actions", () => {

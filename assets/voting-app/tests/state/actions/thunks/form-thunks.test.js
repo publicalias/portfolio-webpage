@@ -6,26 +6,12 @@
 
 const { actions } = require("../../../../scripts/state/actions/actions");
 const { initialState } = require("../../../../scripts/state/reducer/reducer");
-const { testAPIFailure, testAPISuccess } = require("../../../test-helpers");
+const { testAPIFailure, testAPISuccess, testThunk } = require("../../../test-helpers");
 
 //global imports
 
+const { initHistory } = require("test-helpers/client-tests");
 const { deepCopy } = require("utilities");
-
-//node modules
-
-const { default: configureStore } = require("redux-mock-store");
-const { default: ReduxThunk } = require("redux-thunk");
-
-//setup
-
-const middleware = [ReduxThunk];
-const mockStore = configureStore(middleware);
-
-afterEach(() => {
-  global.fetch = undefined;
-  global.Headers = undefined;
-});
 
 //form add option
 
@@ -37,21 +23,14 @@ describe("formAddOption", () => {
 
   const testOption = (add, output) => {
 
-    const lastState = deepCopy(initialState, {
+    const actionList = [typeof output === "string" ? metaAddErrors([output]) : metaSetState(output)];
+
+    testThunk(action, actionList, deepCopy(initialState, {
       form: {
         options: ["Option A", "Option B"],
         add
       }
-    });
-
-    const error = typeof output === "string";
-
-    const store = mockStore(lastState);
-    const actionList = [error ? metaAddErrors([output]) : metaSetState(output)];
-
-    store.dispatch(action);
-
-    expect(store.getActions()).toEqual(actionList);
+    }));
 
   };
 
@@ -84,38 +63,49 @@ describe("formCreatePoll", () => {
 
   const { formCreatePoll, metaAddErrors, metaSetState } = actions;
 
-  const action = formCreatePoll();
+  const { history, testHistory } = initHistory();
+
+  const action = formCreatePoll(history);
   const args = {
     path: "/api/form-create-poll",
     method: "POST",
     data: { form: initialState.form }
   };
 
-  it("dispatches META_SET_STATE action on success", () => {
+  it("dispatches META_SET_STATE action on success", async () => {
 
     const { list, form, view } = initialState;
 
     const res = { id: "id-a" };
 
     const actionList = [metaSetState({
-      page: "view",
       list: deepCopy(list, { filter: "created" }),
       form: deepCopy(form),
-      view: deepCopy(view, { poll: "id-a" })
+      view: deepCopy(view)
     })];
 
-    return testAPISuccess(action, args, res, actionList);
+    await testAPISuccess(action, args, res, actionList);
+
+    testHistory(["/voting-app/view/id-a"]);
 
   });
 
-  it("dispatches META_ADD_ERRORS action on success (errors)", () => {
+  it("dispatches META_ADD_ERRORS action on success (errors)", async () => {
 
     const actionList = [metaAddErrors([])];
 
-    return testAPISuccess(action, args, { errors: [] }, actionList);
+    await testAPISuccess(action, args, { errors: [] }, actionList);
+
+    testHistory([]);
 
   });
 
-  it("dispatches META_ADD_ERRORS action on failure", () => testAPIFailure(action, args));
+  it("dispatches META_ADD_ERRORS action on failure", async () => {
+
+    await testAPIFailure(action, args);
+
+    testHistory([]);
+
+  });
 
 });

@@ -1,12 +1,5 @@
 "use strict";
 
-//list open view
-
-const listOpenView = (id) => ({
-  type: "LIST_OPEN_VIEW",
-  id
-});
-
 //list set index
 
 const listSetIndex = (index) => ({
@@ -35,7 +28,6 @@ const listSubmitSearch = () => ({ type: "LIST_SUBMIT_SEARCH" });
 //exports
 
 module.exports = {
-  listOpenView,
   listSetIndex,
   listSetSearchText,
   listSetSort,

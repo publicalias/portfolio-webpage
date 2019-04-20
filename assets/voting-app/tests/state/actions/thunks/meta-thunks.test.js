@@ -8,13 +8,6 @@ const { actions } = require("../../../../scripts/state/actions/actions");
 const { initialState } = require("../../../../scripts/state/reducer/reducer");
 const { testAPIFailure, testAPISuccess } = require("../../../test-helpers");
 
-//setup
-
-afterEach(() => {
-  global.fetch = undefined;
-  global.Headers = undefined;
-});
-
 //meta get polls
 
 describe("metaGetPolls", () => {

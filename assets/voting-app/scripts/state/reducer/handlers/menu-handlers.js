@@ -4,10 +4,6 @@
 
 const { deepCopy } = require("utilities");
 
-//menu open form
-
-const MENU_OPEN_FORM = (state) => deepCopy(state, { page: "form" });
-
 //menu set filter
 
 const MENU_SET_FILTER = (state, { filter }) => deepCopy(state, {
@@ -24,7 +20,6 @@ const MENU_TOGGLE_CONFIRM = (state) => deepCopy(state, { menu: { confirm: !state
 //exports
 
 module.exports = {
-  MENU_OPEN_FORM,
   MENU_SET_FILTER,
   MENU_TOGGLE_CONFIRM
 };

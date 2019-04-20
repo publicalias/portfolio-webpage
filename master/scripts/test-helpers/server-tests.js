@@ -25,8 +25,8 @@ const mockAPICall = (fn, method) => async (user, data, type) => {
   });
 
   const res = {
-    json: jest.fn((obj) => JSON.stringify(obj)),
-    sendStatus: jest.fn((num) => num)
+    json: jest.fn(),
+    sendStatus: jest.fn()
   };
 
   const json = res.json.mock.calls;

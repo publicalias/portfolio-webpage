@@ -3,25 +3,7 @@
 //local imports
 
 const { actions } = require("../../../../scripts/state/actions/actions");
-const { initialState } = require("../../../../scripts/state/reducer/reducer");
 const { testReducer } = require("../../../test-helpers");
-
-//global imports
-
-const { deepCopy } = require("utilities");
-
-//list open view
-
-test("reducer accepts LIST_OPEN_VIEW actions", () => {
-
-  const { listOpenView } = actions;
-
-  testReducer(listOpenView("id-a"), {}, {
-    page: "view",
-    view: deepCopy(initialState.view, { poll: "id-a" })
-  });
-
-});
 
 //list set index
 

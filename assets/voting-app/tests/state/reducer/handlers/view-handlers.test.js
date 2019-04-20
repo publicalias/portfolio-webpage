@@ -5,16 +5,6 @@
 const { actions } = require("../../../../scripts/state/actions/actions");
 const { testReducer } = require("../../../test-helpers");
 
-//view open list
-
-test("reducer accepts VIEW_OPEN_LIST actions", () => {
-
-  const { viewOpenList } = actions;
-
-  testReducer(viewOpenList(), { page: "view" }, { page: "list" });
-
-});
-
 //view set add text
 
 test("reducer accepts VIEW_SET_ADD_TEXT actions", () => {

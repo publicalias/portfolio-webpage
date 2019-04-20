@@ -5,7 +5,6 @@
 const initialState = {
   user: {},
   polls: [],
-  page: "list",
   menu: { confirm: false },
   list: {
     filter: "all",
@@ -22,7 +21,6 @@ const initialState = {
     confirm: false
   },
   view: {
-    poll: "",
     add: "",
     settings: false,
     confirm: false

@@ -4,19 +4,6 @@
 
 const { actions } = require("../../../../scripts/state/actions/actions");
 
-//list open view
-
-test("listOpenView creates LIST_OPEN_VIEW actions", () => {
-
-  const { listOpenView } = actions;
-
-  expect(listOpenView("")).toEqual({
-    type: "LIST_OPEN_VIEW",
-    id: ""
-  });
-
-});
-
 //list set index
 
 test("listSetIndex creates LIST_SET_INDEX actions", () => {

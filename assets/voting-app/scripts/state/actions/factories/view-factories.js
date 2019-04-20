@@ -1,9 +1,5 @@
 "use strict";
 
-//view open list
-
-const viewOpenList = () => ({ type: "VIEW_OPEN_LIST" });
-
 //view set add text
 
 const viewSetAddText = (add) => ({
@@ -22,7 +18,6 @@ const viewToggleSettings = () => ({ type: "VIEW_TOGGLE_SETTINGS" });
 //exports
 
 module.exports = {
-  viewOpenList,
   viewSetAddText,
   viewToggleConfirm,
   viewToggleSettings

@@ -5,14 +5,11 @@
 //local imports
 
 const { actions } = require("../../../../scripts/state/actions/actions");
-const { testAPIFailure, testAPISuccess } = require("../../../test-helpers");
+const { testAPIFailure, testAPISuccess, testThunk } = require("../../../test-helpers");
 
-//setup
+//global imports
 
-afterEach(() => {
-  global.fetch = undefined;
-  global.Headers = undefined;
-});
+const { initHistory } = require("test-helpers/client-tests");
 
 //view add option
 
@@ -82,24 +79,54 @@ describe("viewCastVote", () => {
 
 describe("viewDeletePoll", () => {
 
-  const { metaSetState, viewDeletePoll } = actions;
+  const { metaNoOp, viewDeletePoll } = actions;
 
-  const action = viewDeletePoll("id-a");
+  const { history, testHistory } = initHistory();
+
+  const action = viewDeletePoll("id-a", history);
   const args = {
     path: "/api/view-delete-poll",
     method: "DELETE",
     data: { id: "id-a" }
   };
 
-  it("dispatches META_SET_STATE action on success", () => {
+  it("dispatches META_NO_OP action on success", async () => {
 
-    const actionList = [metaSetState({ page: "list" })];
+    const actionList = [metaNoOp()];
 
-    return testAPISuccess(action, args, {}, actionList);
+    await testAPISuccess(action, args, {}, actionList);
+
+    testHistory(["/voting-app/list"]);
 
   });
 
-  it("dispatches META_ADD_ERRORS action on failure", () => testAPIFailure(action, args));
+  it("dispatches META_ADD_ERRORS action on failure", async () => {
+
+    await testAPIFailure(action, args);
+
+    testHistory([]);
+
+  });
+
+});
+
+//view open list
+
+describe("viewOpenList", () => {
+
+  const { metaNoOp, viewOpenList } = actions;
+
+  const { history, testHistory } = initHistory();
+
+  const action = viewOpenList(history);
+
+  it("dispatches META_NO_OP action", () => {
+
+    testThunk(action, [metaNoOp()]);
+
+    testHistory(["/voting-app/list"]);
+
+  });
 
 });
 

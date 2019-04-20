@@ -8,24 +8,10 @@ const { initialState, reducer } = require("../scripts/state/reducer/reducer");
 //global imports
 
 const { encodeAPICall } = require("client-utils");
+const { mockStore } = require("test-helpers/client-tests");
 const { deepCopy } = require("utilities");
 
-//node modules
-
-const { default: configureStore } = require("redux-mock-store");
-const { default: ReduxThunk } = require("redux-thunk");
-
-//setup
-
-const middleware = [ReduxThunk];
-const mockStore = configureStore(middleware);
-
 //utilities
-
-const testAPIGlobals = (fetch) => {
-  global.fetch = jest.fn(fetch);
-  global.Headers = jest.fn((init) => init);
-};
 
 const testAPICall = (args) => {
 
@@ -39,6 +25,20 @@ const testAPICall = (args) => {
 
 };
 
+const testAPIThunk = (action, args, actionList, lastState, fetch) => {
+
+  const store = mockStore(lastState);
+
+  global.fetch = jest.fn(fetch);
+  global.Headers = jest.fn();
+
+  return store.dispatch(action).then(() => {
+    testAPICall(args);
+    expect(store.getActions()).toEqual(actionList);
+  });
+
+};
+
 //test api failure
 
 const testAPIFailure = (action, args, lastState = initialState) => {
@@ -48,7 +48,6 @@ const testAPIFailure = (action, args, lastState = initialState) => {
   const status = 500;
   const statusText = "Internal Server Error";
 
-  const store = mockStore(lastState);
   const actionList = [metaAddErrors([`${status} ${statusText}`])];
 
   const fetch = () => Promise.resolve({
@@ -57,20 +56,13 @@ const testAPIFailure = (action, args, lastState = initialState) => {
     statusText
   });
 
-  testAPIGlobals(fetch);
-
-  return store.dispatch(action).then(() => {
-    testAPICall(args);
-    expect(store.getActions()).toEqual(actionList);
-  });
+  return testAPIThunk(action, args, actionList, lastState, fetch);
 
 };
 
 //test api success
 
 const testAPISuccess = (action, args, res, actionList, lastState = initialState) => {
-
-  const store = mockStore(lastState);
 
   const fetch = () => Promise.resolve({
     ok: true,
@@ -79,12 +71,7 @@ const testAPISuccess = (action, args, res, actionList, lastState = initialState)
     }
   });
 
-  testAPIGlobals(fetch);
-
-  return store.dispatch(action).then(() => {
-    testAPICall(args);
-    expect(store.getActions()).toEqual(actionList);
-  });
+  return testAPIThunk(action, args, actionList, lastState, fetch);
 
 };
 
@@ -99,10 +86,23 @@ const testReducer = (action, last, next) => {
 
 };
 
+//test thunk
+
+const testThunk = (action, actionList, lastState = initialState) => {
+
+  const store = mockStore(lastState);
+
+  store.dispatch(action);
+
+  expect(store.getActions()).toEqual(actionList);
+
+};
+
 //exports
 
 module.exports = {
   testAPIFailure,
   testAPISuccess,
-  testReducer
+  testReducer,
+  testThunk
 };

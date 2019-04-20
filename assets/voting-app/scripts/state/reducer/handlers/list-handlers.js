@@ -1,19 +1,8 @@
 "use strict";
 
-//local imports
-
-const { initialState } = require("../initial-state");
-
 //global imports
 
 const { deepCopy } = require("utilities");
-
-//list open view
-
-const LIST_OPEN_VIEW = (state, { id }) => deepCopy(state, {
-  page: "view",
-  view: deepCopy(initialState.view, { poll: id })
-});
 
 //list set index
 
@@ -45,7 +34,6 @@ const LIST_SUBMIT_SEARCH = (state) => deepCopy(state, {
 //exports
 
 module.exports = {
-  LIST_OPEN_VIEW,
   LIST_SET_INDEX,
   LIST_SET_SEARCH_TEXT,
   LIST_SET_SORT,
