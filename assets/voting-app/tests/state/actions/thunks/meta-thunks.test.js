@@ -6,7 +6,7 @@
 
 const { actions } = require("../../../../scripts/state/actions/actions");
 const { initialState } = require("../../../../scripts/state/reducer/reducer");
-const { testAPIFailure, testAPISuccess } = require("../../../test-helpers");
+const { testAPI } = require("../../../test-helpers");
 
 //meta get polls
 
@@ -31,11 +31,11 @@ describe("metaGetPolls", () => {
 
     const actionList = [metaSetState(res)];
 
-    return testAPISuccess(action, args, res, actionList);
+    return testAPI.success(action, args, res, actionList);
 
   });
 
-  it("dispatches META_ADD_ERRORS action on failure", () => testAPIFailure(action, args));
+  it("dispatches META_ADD_ERRORS action on failure", () => testAPI.failure(action, args));
 
 });
 
@@ -57,10 +57,10 @@ describe("metaGetUser", () => {
 
     const actionList = [metaSetState(res)];
 
-    return testAPISuccess(action, args, res, actionList);
+    return testAPI.success(action, args, res, actionList);
 
   });
 
-  it("dispatches META_ADD_ERRORS action on failure", () => testAPIFailure(action, args));
+  it("dispatches META_ADD_ERRORS action on failure", () => testAPI.failure(action, args));
 
 });

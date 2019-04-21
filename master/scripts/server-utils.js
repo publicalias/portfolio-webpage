@@ -2,6 +2,7 @@
 
 //node modules
 
+const express = require("express");
 const session = require("express-session");
 const MongoDBStore = require("connect-mongodb-session")(session);
 const passport = require("passport");
@@ -11,6 +12,35 @@ const uuid = require("uuid/v1");
 //utilities
 
 const usersCol = () => db.collection("auth/users");
+
+//api handler
+
+const apiHandler = (handlers) => {
+
+  const router = express.Router();
+
+  const apiRequest = async (req, res) => {
+
+    const handler = req.params.action.split("-")
+      .map((e, i) => i === 0 ? e : `${e[0].toUpperCase()}${e.slice(1)}`)
+      .join("");
+
+    try {
+      await handlers[handler](req, res);
+    } catch {
+      res.sendStatus(500);
+    }
+
+  };
+
+  router.post("/:action", apiRequest);
+  router.get("/:action", apiRequest);
+  router.patch("/:action", apiRequest);
+  router.delete("/:action", apiRequest);
+
+  return router;
+
+};
 
 //get ip user
 
@@ -138,6 +168,7 @@ const toPromise = (...args) => new Promise((resolve, reject) => {
 //exports
 
 module.exports = {
+  apiHandler,
   getIPUser,
   getOrSetUser,
   handleSession,

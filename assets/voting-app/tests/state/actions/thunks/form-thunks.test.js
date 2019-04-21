@@ -6,7 +6,7 @@
 
 const { actions } = require("../../../../scripts/state/actions/actions");
 const { initialState } = require("../../../../scripts/state/reducer/reducer");
-const { testAPIFailure, testAPISuccess, testThunk } = require("../../../test-helpers");
+const { testAPI, testThunk } = require("../../../test-helpers");
 
 //global imports
 
@@ -84,7 +84,7 @@ describe("formCreatePoll", () => {
       view: deepCopy(view)
     })];
 
-    await testAPISuccess(action, args, res, actionList);
+    await testAPI.success(action, args, res, actionList);
 
     testHistory(["/voting-app/view/id-a"]);
 
@@ -94,7 +94,7 @@ describe("formCreatePoll", () => {
 
     const actionList = [metaAddErrors([])];
 
-    await testAPISuccess(action, args, { errors: [] }, actionList);
+    await testAPI.success(action, args, { errors: [] }, actionList);
 
     testHistory([]);
 
@@ -102,7 +102,7 @@ describe("formCreatePoll", () => {
 
   it("dispatches META_ADD_ERRORS action on failure", async () => {
 
-    await testAPIFailure(action, args);
+    await testAPI.failure(action, args);
 
     testHistory([]);
 

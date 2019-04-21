@@ -5,7 +5,7 @@
 //local imports
 
 const { actions } = require("../../../../scripts/state/actions/actions");
-const { testAPIFailure, testAPISuccess, testThunk } = require("../../../test-helpers");
+const { testAPI, testThunk } = require("../../../test-helpers");
 
 //global imports
 
@@ -31,7 +31,7 @@ describe("viewAddOption", () => {
 
     const actionList = [metaNoOp()];
 
-    return testAPISuccess(action, args, {}, actionList);
+    return testAPI.success(action, args, {}, actionList);
 
   });
 
@@ -39,11 +39,11 @@ describe("viewAddOption", () => {
 
     const actionList = [metaAddErrors([])];
 
-    return testAPISuccess(action, args, { errors: [] }, actionList);
+    return testAPI.success(action, args, { errors: [] }, actionList);
 
   });
 
-  it("dispatches META_ADD_ERRORS action on failure", () => testAPIFailure(action, args));
+  it("dispatches META_ADD_ERRORS action on failure", () => testAPI.failure(action, args));
 
 });
 
@@ -67,11 +67,11 @@ describe("viewCastVote", () => {
 
     const actionList = [metaNoOp()];
 
-    return testAPISuccess(action, args, {}, actionList);
+    return testAPI.success(action, args, {}, actionList);
 
   });
 
-  it("dispatches META_ADD_ERRORS action on failure", () => testAPIFailure(action, args));
+  it("dispatches META_ADD_ERRORS action on failure", () => testAPI.failure(action, args));
 
 });
 
@@ -94,7 +94,7 @@ describe("viewDeletePoll", () => {
 
     const actionList = [metaNoOp()];
 
-    await testAPISuccess(action, args, {}, actionList);
+    await testAPI.success(action, args, {}, actionList);
 
     testHistory(["/voting-app/list"]);
 
@@ -102,7 +102,7 @@ describe("viewDeletePoll", () => {
 
   it("dispatches META_ADD_ERRORS action on failure", async () => {
 
-    await testAPIFailure(action, args);
+    await testAPI.failure(action, args);
 
     testHistory([]);
 
@@ -150,11 +150,11 @@ describe("viewRemoveOption", () => {
 
     const actionList = [metaNoOp()];
 
-    return testAPISuccess(action, args, {}, actionList);
+    return testAPI.success(action, args, {}, actionList);
 
   });
 
-  it("dispatches META_ADD_ERRORS action on failure", () => testAPIFailure(action, args));
+  it("dispatches META_ADD_ERRORS action on failure", () => testAPI.failure(action, args));
 
 });
 
@@ -175,10 +175,10 @@ describe("viewTogglePrivate", () => {
 
     const actionList = [metaNoOp()];
 
-    return testAPISuccess(action, args, {}, actionList);
+    return testAPI.success(action, args, {}, actionList);
 
   });
 
-  it("dispatches META_ADD_ERRORS action on failure", () => testAPIFailure(action, args));
+  it("dispatches META_ADD_ERRORS action on failure", () => testAPI.failure(action, args));
 
 });

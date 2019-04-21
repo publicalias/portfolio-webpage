@@ -6,37 +6,12 @@ const { metaAddErrors, metaNoOp, metaSetState } = require("./state/actions/facto
 
 //global imports
 
-const { encodeAPICall, getJSON } = require("client-utils");
+const { initReduxAPICall } = require("client-utils");
 
 //redux api call
 
-const reduxAPICall = (dispatch, args, success, failure) => {
+const reduxAPICall = initReduxAPICall(metaSetState, metaAddErrors, metaNoOp);
 
-  const { path, init } = encodeAPICall(args);
-
-  const successFn = success || ((res) => {
-
-    const { errors } = res;
-    const { length } = Object.keys(res);
-
-    if (errors) {
-      dispatch(metaAddErrors(errors));
-    } else if (length) {
-      dispatch(metaSetState(res));
-    } else {
-      dispatch(metaNoOp());
-    }
-
-  });
-
-  const failureFn = failure || ((err) => {
-    dispatch(metaAddErrors([err.message]));
-  });
-
-  return getJSON(path, init)
-    .then(successFn)
-    .catch(failureFn);
-
-};
+//exports
 
 module.exports = { reduxAPICall };

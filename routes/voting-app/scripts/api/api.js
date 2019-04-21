@@ -7,41 +7,18 @@ const listHandlers = require("./handlers/list-handlers");
 const metaHandlers = require("./handlers/meta-handlers");
 const viewHandlers = require("./handlers/view-handlers");
 
-//node modules
+//global imports
 
-const express = require("express");
-
-const router = express.Router();
-
-//utilities
-
-const apiRequest = async (req, res) => {
-
-  const handlers = Object.assign(
-    formHandlers,
-    listHandlers,
-    metaHandlers,
-    viewHandlers
-  );
-
-  const handler = req.params.action.split("-")
-    .map((e, i) => i === 0 ? e : `${e[0].toUpperCase()}${e.slice(1)}`)
-    .join("");
-
-  try {
-    await handlers[handler](req, res);
-  } catch {
-    res.sendStatus(500);
-  }
-
-};
+const { apiHandler } = require(`${__rootdir}/master/scripts/server-utils`);
 
 //handle actions
 
-router.post("/:action", apiRequest);
-router.get("/:action", apiRequest);
-router.patch("/:action", apiRequest);
-router.delete("/:action", apiRequest);
+const router = apiHandler(Object.assign(
+  formHandlers,
+  listHandlers,
+  metaHandlers,
+  viewHandlers
+));
 
 //exports
 

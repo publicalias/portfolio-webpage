@@ -6,7 +6,7 @@
 
 const { actions } = require("../../../../scripts/state/actions/actions");
 const { initialState } = require("../../../../scripts/state/reducer/reducer");
-const { testAPIFailure, testAPISuccess, testThunk } = require("../../../test-helpers");
+const { testAPI, testThunk } = require("../../../test-helpers");
 
 //global imports
 
@@ -49,11 +49,11 @@ describe("listToggleFlag", () => {
 
     const actionList = [metaNoOp()];
 
-    return testAPISuccess(action, args, {}, actionList);
+    return testAPI.success(action, args, {}, actionList);
 
   });
 
-  it("dispatches META_ADD_ERRORS action on failure", () => testAPIFailure(action, args));
+  it("dispatches META_ADD_ERRORS action on failure", () => testAPI.failure(action, args));
 
 });
 
@@ -74,10 +74,10 @@ describe("listToggleHide", () => {
 
     const actionList = [metaNoOp()];
 
-    return testAPISuccess(action, args, {}, actionList);
+    return testAPI.success(action, args, {}, actionList);
 
   });
 
-  it("dispatches META_ADD_ERRORS action on failure", () => testAPIFailure(action, args));
+  it("dispatches META_ADD_ERRORS action on failure", () => testAPI.failure(action, args));
 
 });

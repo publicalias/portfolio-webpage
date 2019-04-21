@@ -64,6 +64,8 @@ const build = gulp.parallel(media, script, styles, view);
 
 const watch = () => gulp.watch(["assets/**", "master/**"], build);
 
+//exports
+
 module.exports = {
   build,
   watch

@@ -10,23 +10,19 @@ const viewHandlers = require("./handlers/view-handlers");
 
 const { initialState } = require("./initial-state");
 
+//global imports
+
+const { initReducer } = require("client-utils");
+
 //reducer
 
-const reducer = (state = initialState, action) => {
-
-  const handlers = Object.assign(
-    formHandlers,
-    listHandlers,
-    menuHandlers,
-    metaHandlers,
-    viewHandlers
-  );
-
-  const valid = action && handlers[action.type];
-
-  return valid ? valid(state, action) : state;
-
-};
+const reducer = initReducer(initialState, Object.assign(
+  formHandlers,
+  listHandlers,
+  menuHandlers,
+  metaHandlers,
+  viewHandlers
+));
 
 //exports
 
