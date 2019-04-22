@@ -25,7 +25,7 @@ app.use(express.static("build"));
 
 const serverless = (files) => (req, res) => {
   if (!files.includes(req.params.name)) {
-    res.sendFile(`${__dirname}/build/${req.params.name}/view.html`);
+    res.sendFile(`${__rootdir}/build/${req.params.name}/view.html`);
   }
 };
 

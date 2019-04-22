@@ -1,5 +1,10 @@
 "use strict";
 
+//global imports
+
+const { encodeAPICall } = require("client-utils");
+const { deepCopy } = require("utilities");
+
 //node modules
 
 const { configure } = require("enzyme");
@@ -7,11 +12,6 @@ const { default: configureStore } = require("redux-mock-store");
 const { default: ReduxThunk } = require("redux-thunk");
 
 const Adapter = require("enzyme-adapter-react-16");
-
-//global imports
-
-const { encodeAPICall } = require("client-utils");
-const { deepCopy } = require("utilities");
 
 //utilities
 

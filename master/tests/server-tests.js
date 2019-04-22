@@ -2,7 +2,7 @@
 
 //global imports
 
-const { mockUser } = require("test-helpers/mocks");
+const { newUser } = require("schemas/auth");
 const { bindObject } = require("utilities");
 
 //node modules
@@ -92,7 +92,7 @@ bindObject(mongoTests);
 
 const testAuthFail = async (handler, data, more = []) => {
 
-  const users = [{}, mockUser({ data: { restricted: true } })].concat(more);
+  const users = [{}, newUser({ data: { restricted: true } })].concat(more);
 
   const output = await Promise.all(users.map((e) => handler(e, data, "sendStatus")));
 

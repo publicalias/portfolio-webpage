@@ -3,11 +3,12 @@
 //local imports
 
 const { actions } = require("../scripts/state/actions/actions");
-const { initialState, reducer } = require("../scripts/state/reducer/reducer");
+const { reducer } = require("../scripts/state/reducer/reducer");
 
 //global imports
 
-const { initTestAPI, initTestReducer, initTestThunk } = require("test-helpers/client-tests");
+const { initTestAPI, initTestReducer, initTestThunk } = require("client-tests");
+const { newState } = require("schemas/voting-app");
 
 //test api
 
@@ -15,15 +16,15 @@ const { metaAddErrors } = actions;
 
 const getActionList = (status) => [metaAddErrors([status])];
 
-const testAPI = initTestAPI(getActionList, initialState);
+const testAPI = initTestAPI(getActionList, newState());
 
 //test reducer
 
-const testReducer = initTestReducer(initialState, reducer);
+const testReducer = initTestReducer(newState(), reducer);
 
 //test thunk
 
-const testThunk = initTestThunk(initialState);
+const testThunk = initTestThunk(newState());
 
 //exports
 

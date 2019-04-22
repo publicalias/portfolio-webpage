@@ -6,24 +6,18 @@
 
 const handlers = require("../../../scripts/api/handlers/form-handlers");
 
-const { mockPoll } = require("../../test-helpers");
-
 //global imports
 
-const { mockData, mockUser } = require("test-helpers/mocks");
-const { mockAPICall, mongoTests, testAuthFail } = require("test-helpers/server-tests");
+const { newUser } = require("schemas/auth");
+const { newPoll, newState } = require("schemas/voting-app");
+const { mockAPICall, mongoTests, testAuthFail } = require("server-tests");
+const { newSchema } = require("utilities");
 
 //utilities
 
 const pollsCol = () => db.collection("voting-app/polls");
 
-const mockForm = mockData({
-  title: "",
-  options: [],
-  add: "",
-  private: false,
-  confirm: false
-});
+const mockForm = newSchema(newState().form);
 
 //setup
 
@@ -44,7 +38,7 @@ describe("formCreatePoll", () => {
 
   const testError = async (error, data, docs = 0) => {
 
-    const output = await handler(mockUser(), getData(data), "json");
+    const output = await handler(newUser(), getData(data), "json");
 
     expect(output).toEqual({ errors: [error] });
 
@@ -66,7 +60,7 @@ describe("formCreatePoll", () => {
 
     const data = { title: "Title A" };
 
-    await pollsCol().insertOne(mockPoll(data));
+    await pollsCol().insertOne(newPoll(data));
 
     return testError("Title must be unique", data, 1);
 
@@ -91,7 +85,7 @@ describe("formCreatePoll", () => {
 
   it("sends id if poll is valid", async () => {
 
-    const output = await handler(mockUser(), getData({
+    const output = await handler(newUser(), getData({
       title: "Title A",
       options: ["Option A"]
     }), "json");

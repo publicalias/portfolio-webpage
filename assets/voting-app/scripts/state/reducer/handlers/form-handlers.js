@@ -1,16 +1,13 @@
 "use strict";
 
-//local imports
-
-const { initialState } = require("../initial-state");
-
 //global imports
 
+const { newState } = require("schemas/voting-app");
 const { deepCopy } = require("utilities");
 
 //form discard poll
 
-const FORM_DISCARD_POLL = (state) => deepCopy(state, { form: initialState.form });
+const FORM_DISCARD_POLL = (state) => deepCopy(state, { form: newState().form });
 
 //form remove option
 

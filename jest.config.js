@@ -4,6 +4,6 @@
 
 module.exports = {
   globals: { __rootdir: __dirname },
-  moduleDirectories: ["master/scripts", "node_modules"],
+  moduleDirectories: ["master/scripts", "master/tests", "node_modules"],
   moduleFileExtensions: ["js", "jsx"]
 };

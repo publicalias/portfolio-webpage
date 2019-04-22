@@ -4,13 +4,16 @@
 
 const { reduxAPICall } = require("../../../app-logic");
 const { metaSetState } = require("../factories/meta-factories");
-const { initialState } = require("../../reducer/reducer");
+
+//global imports
+
+const { newState } = require("schemas/voting-app");
 
 //list open view
 
 const listOpenView = (id, history) => (dispatch) => {
 
-  dispatch(metaSetState({ view: initialState.view }));
+  dispatch(metaSetState({ view: newState().view }));
 
   history.push(`/voting-app/view/${id}`);
 

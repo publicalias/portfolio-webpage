@@ -5,8 +5,11 @@
 //local imports
 
 const { actions } = require("../../../../scripts/state/actions/actions");
-const { initialState } = require("../../../../scripts/state/reducer/reducer");
 const { testAPI } = require("../../../test-helpers");
+
+//global imports
+
+const { newState } = require("schemas/voting-app");
 
 //meta get polls
 
@@ -21,7 +24,7 @@ describe("metaGetPolls", () => {
     data: {
       id: undefined,
       skip: false,
-      list: initialState.list
+      list: newState().list
     }
   };
 

@@ -2,24 +2,26 @@
 
 //global imports
 
+const { newError } = require("schemas/voting-app");
 const { deepCopy, initDeepCopy } = require("utilities");
 
 //meta add errors
 
-const META_ADD_ERRORS = (state, { errors }) => deepCopy(state, {
-  errors: state.errors.concat(errors.map((e) => ({
-    text: e,
-    timer: 1000
-  })))
-});
+const META_ADD_ERRORS = (state, { errors }) => {
+
+  const mapFn = (e) => newError({ text: e });
+
+  return deepCopy(state, { errors: state.errors.concat(errors.map(mapFn)) });
+
+};
 
 //meta close error
 
 const META_CLOSE_ERROR = (state, { index }) => {
 
-  const errors = state.errors.filter((e, i) => i !== index);
+  const filterFn = (e, i) => i !== index;
 
-  return deepCopy(state, { errors });
+  return deepCopy(state, { errors: state.errors.filter(filterFn) });
 
 };
 
@@ -31,15 +33,14 @@ const META_SET_STATE = (state, { merge, config }) => initDeepCopy(config)(state,
 
 const META_TIMEOUT_ERROR = (state) => {
 
-  const errors = deepCopy(state.errors).filter((e) => {
-
-    e.timer -= 100;
-
-    return e.timer;
-
+  const mapFn = (e) => ({
+    text: e.text,
+    timer: e.timer - 100
   });
 
-  return deepCopy(state, { errors });
+  const filterFn = (e) => e.timer;
+
+  return deepCopy(state, { errors: state.errors.map(mapFn).filter(filterFn) });
 
 };
 

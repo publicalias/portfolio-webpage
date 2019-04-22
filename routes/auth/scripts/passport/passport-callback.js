@@ -4,6 +4,10 @@
 
 const { handleUpdate } = require("../app-logic");
 
+//global imports
+
+const { newUser } = require(`${__rootdir}/master/scripts/schemas/auth`);
+
 //node modules
 
 const uuid = require("uuid/v1");
@@ -37,16 +41,14 @@ const createUser = async (profile, fn) => {
 
   const { provider, id, displayName } = profile;
 
-  const user = {
+  const user = newUser({
     name: displayName || "",
     id: uuid(),
-    type: "auth",
     auth: {
       provider,
       id
-    },
-    data: { restricted: false }
-  };
+    }
+  });
 
   await usersCol().insertOne(user);
 

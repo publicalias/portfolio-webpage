@@ -6,7 +6,7 @@ const App = require("../../scripts/components/app");
 
 //global imports
 
-const { reactTests } = require("test-helpers/client-tests");
+const { reactTests } = require("client-tests");
 
 //node modules
 

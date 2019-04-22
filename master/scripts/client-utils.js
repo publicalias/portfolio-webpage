@@ -115,7 +115,7 @@ const initReduxAPICall = (success, failure, noop) => (dispatch, args, successFn,
 
 };
 
-//init storage key
+//init storage key / storage key
 
 const initStorageKey = (path) => (key, val, session) => {
 
@@ -139,6 +139,8 @@ const initStorageKey = (path) => (key, val, session) => {
   return getVal();
 
 };
+
+const storageKey = initStorageKey();
 
 //submit keys
 
@@ -176,6 +178,6 @@ module.exports = {
   initReducer,
   initReduxAPICall,
   initStorageKey,
-  storageKey: initStorageKey(),
+  storageKey,
   submitKeys
 };

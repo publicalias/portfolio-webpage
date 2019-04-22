@@ -3,13 +3,16 @@
 //local imports
 
 const { metaSetState } = require("../factories/meta-factories");
-const { initialState } = require("../../reducer/reducer");
+
+//global imports
+
+const { newState } = require("schemas/voting-app");
 
 //menu open form
 
 const menuOpenForm = (history) => (dispatch) => {
 
-  dispatch(metaSetState({ form: initialState.form }));
+  dispatch(metaSetState({ form: newState().form }));
 
   history.push("/voting-app/form");
 

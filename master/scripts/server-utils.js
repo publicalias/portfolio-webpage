@@ -1,5 +1,9 @@
 "use strict";
 
+//global imports
+
+const { newIPUser } = require(`${__rootdir}/master/scripts/schemas/auth`);
+
 //node modules
 
 const express = require("express");
@@ -55,11 +59,10 @@ const getIPUser = (ip) => usersCol().findOne({
 
 const setIPUser = async (ip) => {
 
-  await usersCol().insertOne({
+  await usersCol().insertOne(newIPUser({
     id: uuid(),
-    type: "ip",
     ip
-  });
+  }));
 
   return getIPUser(ip);
 

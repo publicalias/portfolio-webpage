@@ -2,6 +2,7 @@
 
 //global imports
 
+const { newPoll } = require(`${__rootdir}/master/scripts/schemas/voting-app`);
 const { checkErrors } = require(`${__rootdir}/master/scripts/utilities`);
 
 //node modules
@@ -24,24 +25,18 @@ const handleCreate = async (req, res) => {
 
   await pollsCol().createIndex({ title: 1 }, { unique: true });
 
-  await pollsCol().insertOne({
+  await pollsCol().insertOne(newPoll({
     title: form.title,
     author: req.user.name,
     id,
     date: Date.now(),
     private: form.private,
-    users: {
-      created: req.user.id,
-      voted: 0,
-      hidden: [],
-      flagged: []
-    },
+    users: { created: req.user.id },
     options: form.options.map((e) => ({
       text: e,
-      created: req.user.id,
-      voted: []
+      created: req.user.id
     }))
-  });
+  }));
 
   res.json({ id });
 

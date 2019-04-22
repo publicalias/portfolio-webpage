@@ -9,7 +9,7 @@ const { testAPI, testThunk } = require("../../../test-helpers");
 
 //global imports
 
-const { initHistory } = require("test-helpers/client-tests");
+const { initHistory } = require("client-tests");
 
 //view add option
 

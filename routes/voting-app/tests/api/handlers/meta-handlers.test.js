@@ -6,25 +6,19 @@
 
 const handlers = require("../../../scripts/api/handlers/meta-handlers");
 
-const { mockPoll } = require("../../test-helpers");
-
 //global imports
 
-const { mockData, mockIPUser, mockUser } = require("test-helpers/mocks");
-const { mockAPICall, mongoTests, testAuthFail } = require("test-helpers/server-tests");
+const { newIPUser, newUser } = require("schemas/auth");
+const { newPoll, newState } = require("schemas/voting-app");
+const { mockAPICall, mongoTests, testAuthFail } = require("server-tests");
+const { newSchema } = require("utilities");
 
 //utilities
 
 const pollsCol = () => db.collection("voting-app/polls");
 const usersCol = () => db.collection("auth/users");
 
-const mockList = mockData({
-  filter: "all",
-  search: "",
-  searched: "",
-  sort: "new",
-  index: 0
-});
+const mockList = newSchema(newState().list);
 
 //setup
 
@@ -49,7 +43,7 @@ describe("metaGetPolls", () => {
 
   const testPolls = async (id, skip = false) => {
 
-    const polls = [{}, { id: "id-b" }].map(mockPoll);
+    const polls = [{}, { id: "id-b" }].map(newPoll);
     const index = Number(Boolean(id) || skip);
 
     await pollsCol().insertMany(polls);
@@ -78,7 +72,7 @@ describe("metaGetPolls (sort)", () => {
 
   const testPolls = async (pollData, sort) => {
 
-    const polls = pollData.map(mockPoll);
+    const polls = pollData.map(newPoll);
 
     await pollsCol().insertMany(polls);
 
@@ -116,7 +110,7 @@ describe("metaGetPolls (search)", () => {
 
   const testPolls = async (pollData, search, count) => {
 
-    const polls = pollData.map(mockPoll);
+    const polls = pollData.map(newPoll);
 
     await pollsCol().insertMany(polls);
 
@@ -156,9 +150,9 @@ describe("metaGetPolls (filter)", () => {
 
   const testPolls = async (pollData, filter, counts) => {
 
-    const userData = [mockUser, mockIPUser, () => ({})].slice(0, counts.length);
+    const userData = [newUser, newIPUser, () => ({})].slice(0, counts.length);
 
-    const polls = pollData.map(mockPoll);
+    const polls = pollData.map(newPoll);
     const users = userData.map((e) => e({ id: "id-a" }));
 
     await Promise.all([
@@ -234,11 +228,11 @@ describe("metaGetUser", () => {
 
   };
 
-  it("sends user if user is authenticated", () => testUser(mockUser()));
+  it("sends user if user is authenticated", () => testUser(newUser()));
 
   it("sends user if ip user exists", async () => {
 
-    const user = mockIPUser();
+    const user = newIPUser();
 
     await usersCol().insertOne(user);
 

@@ -3,8 +3,11 @@
 //local imports
 
 const { actions } = require("../../../../scripts/state/actions/actions");
-const { initialState } = require("../../../../scripts/state/reducer/reducer");
 const { testReducer } = require("../../../test-helpers");
+
+//global imports
+
+const { newState } = require("schemas/voting-app");
 
 //form discard poll
 
@@ -12,7 +15,7 @@ test("reducer accepts FORM_DISCARD_POLL actions", () => {
 
   const { formDiscardPoll } = actions;
 
-  testReducer(formDiscardPoll(), { form: { title: "Title A" } }, { form: initialState.form });
+  testReducer(formDiscardPoll(), { form: { title: "Title A" } }, { form: newState().form });
 
 });
 

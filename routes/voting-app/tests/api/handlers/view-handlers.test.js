@@ -6,12 +6,11 @@
 
 const handlers = require("../../../scripts/api/handlers/view-handlers");
 
-const { mockPoll } = require("../../test-helpers");
-
 //global imports
 
-const { mockIPUser, mockUser } = require("test-helpers/mocks");
-const { mockAPICall, mongoTests, testAuthFail } = require("test-helpers/server-tests");
+const { newIPUser, newUser } = require("schemas/auth");
+const { newPoll } = require("schemas/voting-app");
+const { mockAPICall, mongoTests, testAuthFail } = require("server-tests");
 
 //utilities
 
@@ -43,7 +42,7 @@ const initTestVote = (handler, getData) => async (user) => {
   };
 
   await Promise.all([
-    pollsCol().insertOne(mockPoll({
+    pollsCol().insertOne(newPoll({
       id: "id-a",
       options
     })),
@@ -77,11 +76,11 @@ describe("viewAddOption", () => {
 
   const testError = async (error, text, data) => {
 
-    const poll = mockPoll(Object.assign({ id: "id-a" }, data));
+    const poll = newPoll(Object.assign({ id: "id-a" }, data));
 
     await pollsCol().insertOne(poll);
 
-    const output = await handler(mockUser(), getData(text), "json");
+    const output = await handler(newUser(), getData(text), "json");
 
     expect(output).toEqual({ errors: [error] });
 
@@ -103,8 +102,8 @@ describe("viewAddOption", () => {
 
   it("sends object if option is valid", async () => {
 
-    const poll = mockPoll({ id: "id-a" });
-    const user = mockUser({ id: "id-b" });
+    const poll = newPoll({ id: "id-a" });
+    const user = newUser({ id: "id-b" });
 
     await pollsCol().insertOne(poll);
 
@@ -139,9 +138,9 @@ describe("viewCastVote", () => {
 
   const testVote = initTestVote(handler, getData);
 
-  it("sends object if user is authenticated", () => testVote(mockUser({ id: "id-b" })));
+  it("sends object if user is authenticated", () => testVote(newUser({ id: "id-b" })));
 
-  it("sends object if ip user exists", () => testVote(mockIPUser({ id: "id-b" })));
+  it("sends object if ip user exists", () => testVote(newIPUser({ id: "id-b" })));
 
   it("sends object if no ip user exists", () => testVote());
 
@@ -157,14 +156,14 @@ describe("viewDeletePoll", () => {
 
   const getData = () => ({ id: "id-a" });
 
-  const getPoll = () => mockPoll({
+  const getPoll = () => newPoll({
     id: "id-a",
     users: { created: "id-b" }
   });
 
   it("sends 401 if user is unauthenticated, restricted, or not the creator", async () => {
 
-    const user = mockUser({ id: "id-c" });
+    const user = newUser({ id: "id-c" });
 
     await pollsCol().insertOne(getPoll());
 
@@ -176,7 +175,7 @@ describe("viewDeletePoll", () => {
 
   it("sends object if user is valid", async () => {
 
-    const user = mockUser({ id: "id-b" });
+    const user = newUser({ id: "id-b" });
 
     await pollsCol().insertOne(getPoll());
 
@@ -203,7 +202,7 @@ describe("viewRemoveOption", () => {
     text
   });
 
-  const getPoll = () => mockPoll({
+  const getPoll = () => newPoll({
     id: "id-a",
     users: { created: "id-b" },
     options: [{
@@ -215,7 +214,7 @@ describe("viewRemoveOption", () => {
   const testRemove = async (id) => {
 
     const poll = getPoll();
-    const user = mockUser({ id });
+    const user = newUser({ id });
 
     await pollsCol().insertOne(poll);
 
@@ -229,7 +228,7 @@ describe("viewRemoveOption", () => {
 
   it("sends 401 if user is unauthenticated, restricted, or not the creator", async () => {
 
-    const user = mockUser({ id: "id-d" });
+    const user = newUser({ id: "id-d" });
     const data = getData("Option A");
 
     await pollsCol().insertOne(getPoll());
@@ -254,7 +253,7 @@ describe("viewTogglePrivate", () => {
 
   const getData = () => ({ id: "id-a" });
 
-  const getPoll = () => mockPoll({
+  const getPoll = () => newPoll({
     id: "id-a",
     users: { created: "id-b" }
   });
@@ -273,7 +272,7 @@ describe("viewTogglePrivate", () => {
 
   it("sends 401 if user is unauthenticated, restricted, or not the creator", async () => {
 
-    const user = mockUser({ id: "id-c" });
+    const user = newUser({ id: "id-c" });
 
     await pollsCol().insertOne(getPoll());
 
@@ -283,7 +282,7 @@ describe("viewTogglePrivate", () => {
 
   it("sends object if user is valid", async () => {
 
-    const user = mockUser({ id: "id-b" });
+    const user = newUser({ id: "id-b" });
 
     await pollsCol().insertOne(getPoll());
 

@@ -5,11 +5,12 @@
 //local imports
 
 const { actions } = require("../../../../scripts/state/actions/actions");
-const { initialState, reducer } = require("../../../../scripts/state/reducer/reducer");
+const { reducer } = require("../../../../scripts/state/reducer/reducer");
 const { testReducer } = require("../../../test-helpers");
 
 //global imports
 
+const { newError, newState } = require("schemas/voting-app");
 const { deepCopy, initDeepCopy } = require("utilities");
 
 //meta add errors
@@ -18,12 +19,7 @@ test("reducer accepts META_ADD_ERRORS actions", () => {
 
   const { metaAddErrors } = actions;
 
-  testReducer(metaAddErrors([""]), { errors: [{}] }, {
-    errors: [{}, {
-      text: "",
-      timer: 1000
-    }]
-  });
+  testReducer(metaAddErrors([""]), { errors: [{}] }, { errors: [{}, newError()] });
 
 });
 
@@ -60,7 +56,7 @@ describe("reducer", () => {
     const last = getUser(true);
     const next = getUser();
 
-    const lastState = deepCopy(initialState, last);
+    const lastState = deepCopy(newState(), last);
     const nextState = initDeepCopy(config)(lastState, next);
 
     expect(reducer(lastState, metaSetState(next, config))).toEqual(nextState);

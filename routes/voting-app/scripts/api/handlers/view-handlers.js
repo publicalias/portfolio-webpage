@@ -6,6 +6,7 @@ const { findByID } = require("../../app-logic");
 
 //global imports
 
+const { newOption } = require(`${__rootdir}/master/scripts/schemas/voting-app`);
 const { getOrSetUser, retryWrite } = require(`${__rootdir}/master/scripts/server-utils`);
 const { checkErrors } = require(`${__rootdir}/master/scripts/utilities`);
 
@@ -28,11 +29,10 @@ const handleOption = async (req, res) => {
     "options.text": { $ne: text }
   }, {
     $push: {
-      options: {
+      options: newOption({
         text,
-        created: req.user.id,
-        voted: []
-      }
+        created: req.user.id
+      })
     }
   });
 

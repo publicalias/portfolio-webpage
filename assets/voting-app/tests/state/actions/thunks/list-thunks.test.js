@@ -5,12 +5,12 @@
 //local imports
 
 const { actions } = require("../../../../scripts/state/actions/actions");
-const { initialState } = require("../../../../scripts/state/reducer/reducer");
 const { testAPI, testThunk } = require("../../../test-helpers");
 
 //global imports
 
-const { initHistory } = require("test-helpers/client-tests");
+const { initHistory } = require("client-tests");
+const { newState } = require("schemas/voting-app");
 
 //list open view
 
@@ -24,7 +24,7 @@ describe("listOpenView", () => {
 
   it("dispatches META_SET_STATE action", () => {
 
-    testThunk(action, [metaSetState({ view: initialState.view })]);
+    testThunk(action, [metaSetState({ view: newState().view })]);
 
     testHistory(["/voting-app/view/id-a"]);
 

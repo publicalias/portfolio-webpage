@@ -6,12 +6,11 @@
 
 const handlers = require("../../../scripts/api/handlers/list-handlers");
 
-const { mockPoll } = require("../../test-helpers");
-
 //global imports
 
-const { mockIPUser, mockUser } = require("test-helpers/mocks");
-const { mockAPICall, mongoTests, testAuthFail } = require("test-helpers/server-tests");
+const { newIPUser, newUser } = require("schemas/auth");
+const { newPoll } = require("schemas/voting-app");
+const { mockAPICall, mongoTests, testAuthFail } = require("server-tests");
 
 //utilities
 
@@ -35,7 +34,7 @@ const initTestToggle = (handler, getData, prop) => async (user) => {
   };
 
   await Promise.all([
-    pollsCol().insertOne(mockPoll({ id: "id-a" })),
+    pollsCol().insertOne(newPoll({ id: "id-a" })),
     user && "ip" in user && usersCol().insertOne(user)
   ]);
 
@@ -65,7 +64,7 @@ describe("listToggleFlag", () => {
 
   it("sends 401 if user is unauthenticated or restricted", () => testAuthFail(handler, getData()));
 
-  it("sends object if user is valid", () => testToggle(mockUser({ id: "id-b" })));
+  it("sends object if user is valid", () => testToggle(newUser({ id: "id-b" })));
 
 });
 
@@ -81,9 +80,9 @@ describe("listToggleHide", () => {
 
   const testToggle = initTestToggle(handler, getData, "hidden");
 
-  it("sends object if user is authenticated", () => testToggle(mockUser({ id: "id-b" })));
+  it("sends object if user is authenticated", () => testToggle(newUser({ id: "id-b" })));
 
-  it("sends object if ip user exists", () => testToggle(mockIPUser({ id: "id-b" })));
+  it("sends object if ip user exists", () => testToggle(newIPUser({ id: "id-b" })));
 
   it("sends object if no ip user exists", () => testToggle());
 

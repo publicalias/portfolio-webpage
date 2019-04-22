@@ -5,12 +5,12 @@
 //local imports
 
 const { actions } = require("../../../../scripts/state/actions/actions");
-const { initialState } = require("../../../../scripts/state/reducer/reducer");
 const { testAPI, testThunk } = require("../../../test-helpers");
 
 //global imports
 
-const { initHistory } = require("test-helpers/client-tests");
+const { initHistory } = require("client-tests");
+const { newState } = require("schemas/voting-app");
 const { deepCopy } = require("utilities");
 
 //form add option
@@ -25,7 +25,7 @@ describe("formAddOption", () => {
 
     const actionList = [typeof output === "string" ? metaAddErrors([output]) : metaSetState(output)];
 
-    testThunk(action, actionList, deepCopy(initialState, {
+    testThunk(action, actionList, deepCopy(newState(), {
       form: {
         options: ["Option A", "Option B"],
         add
@@ -69,12 +69,12 @@ describe("formCreatePoll", () => {
   const args = {
     path: "/api/form-create-poll",
     method: "POST",
-    data: { form: initialState.form }
+    data: { form: newState().form }
   };
 
   it("dispatches META_SET_STATE action on success", async () => {
 
-    const { list, form, view } = initialState;
+    const { list, form, view } = newState();
 
     const res = { id: "id-a" };
 

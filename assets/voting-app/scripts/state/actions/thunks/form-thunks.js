@@ -4,10 +4,10 @@
 
 const { reduxAPICall } = require("../../../app-logic");
 const { metaAddErrors, metaSetState } = require("../factories/meta-factories");
-const { initialState } = require("../../reducer/reducer");
 
 //global imports
 
+const { newState } = require("schemas/voting-app");
 const { checkErrors, deepCopy } = require("utilities");
 
 //node modules
@@ -58,7 +58,7 @@ const formCreatePoll = (history) => (dispatch, getState) => {
 
   const success = (res) => {
 
-    const { list, form, view } = initialState;
+    const { list, form, view } = newState();
 
     const { id, errors } = res;
 

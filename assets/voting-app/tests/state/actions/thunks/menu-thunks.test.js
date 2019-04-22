@@ -5,12 +5,12 @@
 //local imports
 
 const { actions } = require("../../../../scripts/state/actions/actions");
-const { initialState } = require("../../../../scripts/state/reducer/reducer");
 const { testThunk } = require("../../../test-helpers");
 
 //global imports
 
-const { initHistory } = require("test-helpers/client-tests");
+const { initHistory } = require("client-tests");
+const { newState } = require("schemas/voting-app");
 
 //menu open form
 
@@ -24,7 +24,7 @@ describe("menuOpenForm", () => {
 
   it("dispatches META_SET_STATE action", () => {
 
-    testThunk(action, [metaSetState({ form: initialState.form })]);
+    testThunk(action, [metaSetState({ form: newState().form })]);
 
     testHistory(["/voting-app/form"]);
 

@@ -45,7 +45,7 @@ const cycleItems = (arr, val, delta = 1) => {
 
 };
 
-//init deep copy
+//init deep copy / deep copy
 
 const initDeepCopy = (config) => (...args) => {
 
@@ -90,6 +90,8 @@ const initDeepCopy = (config) => (...args) => {
 
 };
 
+const deepCopy = initDeepCopy();
+
 //lead zero
 
 const leadZero = (int, digits = 2) => {
@@ -119,6 +121,20 @@ const months = [
   "November",
   "December"
 ];
+
+//new schema
+
+const newSchema = (schema, replace = {}) => (data = {}) => {
+
+  for (const p in replace) {
+    if (p in data) {
+      data[p] = replace[p](data[p]);
+    }
+  }
+
+  return deepCopy(schema, data);
+
+};
 
 //rng int
 
@@ -160,10 +176,11 @@ module.exports = {
   chance,
   checkErrors,
   cycleItems,
-  deepCopy: initDeepCopy(),
+  deepCopy,
   initDeepCopy,
   leadZero,
   months,
+  newSchema,
   rngInt,
   roundTo,
   toPrecision,
