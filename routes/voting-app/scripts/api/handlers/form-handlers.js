@@ -7,9 +7,9 @@ const { checkErrors } = require(`${__rootdir}/master/scripts/utilities`);
 
 //node modules
 
-const { regex: obscene } = require("badwords-list");
-
 const uuid = require("uuid/v1");
+
+const { regex: obscene } = require("badwords-list");
 
 //utilities
 

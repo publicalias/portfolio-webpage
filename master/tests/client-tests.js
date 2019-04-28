@@ -7,11 +7,11 @@ const { deepCopy } = require("utilities");
 
 //node modules
 
+const Adapter = require("enzyme-adapter-react-16");
+
 const { configure } = require("enzyme");
 const { default: configureStore } = require("redux-mock-store");
 const { default: ReduxThunk } = require("redux-thunk");
-
-const Adapter = require("enzyme-adapter-react-16");
 
 //utilities
 

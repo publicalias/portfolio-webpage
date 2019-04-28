@@ -2,10 +2,6 @@
 
 global.__rootdir = __dirname;
 
-//global imports
-
-const { toPromise } = require(`${__rootdir}/master/scripts/server-utils`);
-
 //node modules
 
 const compression = require("compression");
@@ -37,20 +33,13 @@ app.get("/", (req, res) => {
 
 //projects
 
-toPromise(fs, "readdir", "./routes")
-  .then((files) => {
+const files = fs.readdirSync("./routes");
 
-    for (const e of files) {
-      app.use(`/${e}`, require(`./routes/${e}/routes`));
-    }
+for (const e of files) {
+  app.use(`/${e}`, require(`./routes/${e}/routes`));
+}
 
-    app.get("/:name", serverless(files));
-
-  })
-  .catch((err) => {
-    console.log(err);
-    process.exit(1);
-  });
+app.get("/:name", serverless(files));
 
 //initialize server
 

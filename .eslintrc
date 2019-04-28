@@ -123,6 +123,7 @@
     "no-prototype-builtins": 0,
     "no-script-url": 0,
     "no-shadow": 0,
+    "no-sync": 0,
     "no-ternary": 0,
     "no-undefined": 0,
     "no-underscore-dangle": 0,

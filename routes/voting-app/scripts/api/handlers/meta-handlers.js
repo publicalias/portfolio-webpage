@@ -1,12 +1,12 @@
 "use strict";
 
-//global imports
-
-const { getIPUser } = require(`${__rootdir}/master/scripts/server-utils`);
-
 //local imports
 
 const { findByID, findPolls } = require("../../app-logic");
+
+//global imports
+
+const { getIPUser } = require(`${__rootdir}/master/scripts/server-utils`);
 
 //meta get polls
 
