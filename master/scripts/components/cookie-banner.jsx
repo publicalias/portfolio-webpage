@@ -1,9 +1,9 @@
 "use strict";
 
-//global imports
+//local imports
 
-const { initStorageKey } = require("client-utils");
-const { select } = require("dom-api");
+const { initStorageKey } = require("../client-utils");
+const { select } = require("../dom-api");
 
 const storageKey = initStorageKey("cookie-banner");
 

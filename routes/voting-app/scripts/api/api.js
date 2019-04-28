@@ -9,7 +9,7 @@ const viewHandlers = require("./handlers/view-handlers");
 
 //global imports
 
-const { apiHandler } = require(`${__rootdir}/master/scripts/server-utils`);
+const { apiHandler } = require(`${__rootdir}/master/scripts/redux-utils/server-utils`);
 
 //handle actions
 

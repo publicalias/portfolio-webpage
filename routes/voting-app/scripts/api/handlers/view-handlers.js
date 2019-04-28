@@ -7,7 +7,7 @@ const { findByID } = require("../../app-logic");
 //global imports
 
 const { newOption } = require(`${__rootdir}/master/scripts/schemas/voting-app`);
-const { getOrSetUser, retryWrite } = require(`${__rootdir}/master/scripts/server-utils`);
+const { getOrSetUser, retryWrite } = require(`${__rootdir}/master/scripts/redux-utils/server-utils`);
 const { checkErrors } = require(`${__rootdir}/master/scripts/utilities`);
 
 //node modules

@@ -1,11 +1,8 @@
 "use strict";
 
-//local imports
-
-const { metaSetState } = require("../factories/meta-factories");
-
 //global imports
 
+const { metaSetState } = require("redux-utils/meta-factories");
 const { newState } = require("schemas/voting-app");
 
 //menu open form

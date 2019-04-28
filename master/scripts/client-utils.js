@@ -1,9 +1,9 @@
 "use strict";
 
-//global imports
+//local imports
 
-const { select } = require("dom-api");
-const { bindObject } = require("utilities");
+const { select } = require("./dom-api");
+const { bindObject } = require("./utilities");
 
 //check input
 
@@ -74,47 +74,6 @@ const getJSON = async (path, init) => {
 
 };
 
-//init reducer
-
-const initReducer = (initialState, handlers) => (state = initialState, action) => {
-
-  const valid = action && handlers[action.type];
-
-  return valid ? valid(state, action) : state;
-
-};
-
-//init redux api call
-
-const initReduxAPICall = (success, failure, noop) => (dispatch, args, successFn, failureFn) => {
-
-  const { path, init } = encodeAPICall(args);
-
-  const successDefault = (res) => {
-
-    const { errors } = res;
-    const { length } = Object.keys(res);
-
-    if (errors) {
-      dispatch(failure(errors));
-    } else if (length) {
-      dispatch(success(res));
-    } else {
-      dispatch(noop());
-    }
-
-  };
-
-  const failureDefault = (err) => {
-    dispatch(failure([err.message]));
-  };
-
-  return getJSON(path, init)
-    .then(successFn || successDefault)
-    .catch(failureFn || failureDefault);
-
-};
-
 //init storage key / storage key
 
 const initStorageKey = (path) => (key, val, session) => {
@@ -175,8 +134,6 @@ module.exports = {
   checkInput,
   encodeAPICall,
   getJSON,
-  initReducer,
-  initReduxAPICall,
   initStorageKey,
   storageKey,
   submitKeys

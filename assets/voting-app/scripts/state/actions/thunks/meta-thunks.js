@@ -1,8 +1,8 @@
 "use strict";
 
-//local imports
+//global imports
 
-const { reduxAPICall } = require("../../../app-logic");
+const { reduxAPICall } = require("redux-utils/client-utils");
 
 //meta get polls
 

@@ -1,8 +1,8 @@
 "use strict";
 
-//global imports
+//local imports
 
-const { select } = require("dom-api");
+const { select } = require("../dom-api");
 
 //toggle modal
 

@@ -1,9 +1,9 @@
 "use strict";
 
-//global imports
+//local imports
 
-const { newUser } = require("schemas/auth");
-const { bindObject } = require("utilities");
+const { newUser } = require("../schemas/master");
+const { bindObject } = require("../utilities");
 
 //node modules
 

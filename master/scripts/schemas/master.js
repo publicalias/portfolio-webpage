@@ -2,7 +2,14 @@
 
 //local imports
 
-const { newSchema } = require("../utilities"); //necessary
+const { newSchema } = require("../utilities");
+
+//new error
+
+const newError = newSchema({
+  text: "",
+  timer: 1000
+});
 
 //new ip user
 
@@ -28,6 +35,7 @@ const newUser = newSchema({
 //exports
 
 module.exports = {
+  newError,
   newIPUser,
   newUser
 };

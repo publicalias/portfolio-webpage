@@ -1,9 +1,10 @@
 "use strict";
 
-//global imports
+//local imports
 
-const { encodeAPICall } = require("client-utils");
-const { deepCopy } = require("utilities");
+const { encodeAPICall } = require("../client-utils");
+const { metaAddErrors } = require("../redux-utils/meta-factories");
+const { deepCopy } = require("../utilities");
 
 //node modules
 
@@ -74,7 +75,7 @@ const testAPIThunk = (action, args, actionList, lastState, fetch) => {
 
 };
 
-const initTestAPI = (getActionList, initialState) => ({
+const initTestAPI = (initialState) => ({
 
   success(action, args, res, actionList, lastState = initialState) {
 
@@ -94,7 +95,7 @@ const initTestAPI = (getActionList, initialState) => ({
     const status = 500;
     const statusText = "Internal Server Error";
 
-    const actionList = getActionList(`${status} ${statusText}`);
+    const actionList = [metaAddErrors([`${status} ${statusText}`])];
 
     const fetch = () => Promise.resolve({
       ok: false,

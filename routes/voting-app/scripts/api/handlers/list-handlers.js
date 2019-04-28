@@ -6,7 +6,7 @@ const { findByID } = require("../../app-logic");
 
 //global imports
 
-const { getOrSetUser, retryWrite } = require(`${__rootdir}/master/scripts/server-utils`);
+const { getOrSetUser, retryWrite } = require(`${__rootdir}/master/scripts/redux-utils/server-utils`);
 
 //utilities
 

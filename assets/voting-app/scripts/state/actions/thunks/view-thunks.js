@@ -1,9 +1,9 @@
 "use strict";
 
-//local imports
+//global imports
 
-const { reduxAPICall } = require("../../../app-logic");
-const { metaNoOp } = require("../factories/meta-factories");
+const { reduxAPICall } = require("redux-utils/client-utils");
+const { metaNoOp } = require("redux-utils/meta-factories");
 
 //view add option
 

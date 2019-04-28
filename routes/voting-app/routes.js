@@ -6,7 +6,7 @@ const apiRouter = require("./scripts/api/api");
 
 //global imports
 
-const { handleSession } = require(`${__rootdir}/master/scripts/server-utils`);
+const { handleSession } = require(`${__rootdir}/master/scripts/redux-utils/server-utils`);
 
 //node modules
 

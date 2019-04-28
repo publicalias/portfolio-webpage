@@ -1,12 +1,9 @@
 "use strict";
 
-//local imports
-
-const { reduxAPICall } = require("../../../app-logic");
-const { metaAddErrors, metaSetState } = require("../factories/meta-factories");
-
 //global imports
 
+const { reduxAPICall } = require("redux-utils/client-utils");
+const { metaAddErrors, metaSetState } = require("redux-utils/meta-factories");
 const { newState } = require("schemas/voting-app");
 const { checkErrors, deepCopy } = require("utilities");
 

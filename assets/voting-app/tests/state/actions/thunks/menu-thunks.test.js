@@ -9,8 +9,8 @@ const { testThunk } = require("../../../test-helpers");
 
 //global imports
 
-const { initHistory } = require("client-tests");
 const { newState } = require("schemas/voting-app");
+const { initHistory } = require("test-helpers/client-tests");
 
 //menu open form
 

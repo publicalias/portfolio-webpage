@@ -1,9 +1,9 @@
 "use strict";
 
-//global imports
+//local imports
 
-const { newError } = require("schemas/voting-app");
-const { deepCopy, initDeepCopy } = require("utilities");
+const { newError } = require("../schemas/master");
+const { deepCopy, initDeepCopy } = require("../utilities");
 
 //meta add errors
 
@@ -24,6 +24,10 @@ const META_CLOSE_ERROR = (state, { index }) => {
   return deepCopy(state, { errors: state.errors.filter(filterFn) });
 
 };
+
+//meta no op
+
+const META_NO_OP = (state) => state;
 
 //meta set state
 
@@ -49,6 +53,7 @@ const META_TIMEOUT_ERROR = (state) => {
 module.exports = {
   META_ADD_ERRORS,
   META_CLOSE_ERROR,
+  META_NO_OP,
   META_SET_STATE,
   META_TIMEOUT_ERROR
 };

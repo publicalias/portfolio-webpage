@@ -8,9 +8,9 @@ const handlers = require("../../../scripts/api/handlers/list-handlers");
 
 //global imports
 
-const { newIPUser, newUser } = require("schemas/auth");
+const { newIPUser, newUser } = require("schemas/master");
 const { newPoll } = require("schemas/voting-app");
-const { mockAPICall, mongoTests, testAuthFail } = require("server-tests");
+const { mockAPICall, mongoTests, testAuthFail } = require("test-helpers/server-tests");
 
 //utilities
 

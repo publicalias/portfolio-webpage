@@ -2,14 +2,8 @@
 
 //local imports
 
-const { newSchema } = require("../utilities"); //necessary
-
-//new error
-
-const newError = newSchema({
-  text: "",
-  timer: 1000
-});
+const { newError } = require("./master");
+const { newSchema } = require("../utilities");
 
 //new option
 
@@ -75,7 +69,6 @@ const newState = newSchema({
 //exports
 
 module.exports = {
-  newError,
   newOption,
   newPoll,
   newState
