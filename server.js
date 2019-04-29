@@ -1,6 +1,10 @@
 "use strict";
 
-global.__rootdir = __dirname;
+//local imports
+
+const globals = require("./globals");
+
+Object.assign(global, globals);
 
 //node modules
 
@@ -21,7 +25,7 @@ app.use(express.static("build"));
 
 const serverless = (files) => (req, res) => {
   if (!files.includes(req.params.name)) {
-    res.sendFile(`${__rootdir}/build/${req.params.name}/view.html`);
+    res.sendFile(`./build/${req.params.name}/view.html`);
   }
 };
 

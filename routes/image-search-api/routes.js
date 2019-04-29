@@ -14,7 +14,7 @@ const router = express.Router();
 //home page
 
 router.get("/", (req, res) => {
-  res.sendFile(`${__rootdir}/build/image-search-api/view.html`);
+  res.sendFile(`${__build}/image-search-api/view.html`);
 });
 
 //get search results

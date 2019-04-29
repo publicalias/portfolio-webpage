@@ -6,7 +6,7 @@ const { handleUpload } = require("./scripts/app-logic");
 
 //global imports
 
-const { toPromise } = require(`${__rootdir}/master/scripts/server-utils`);
+const { toPromise } = require(`${__scripts}/server-utils`);
 
 //node modules
 
@@ -19,7 +19,7 @@ const upload = multer({ limits: { fileSize: Math.pow(2, 20) } }).single("input")
 //home page
 
 router.get("/", (req, res) => {
-  res.sendFile(`${__rootdir}/build/file-metadata-api/view.html`);
+  res.sendFile(`${__build}/file-metadata-api/view.html`);
 });
 
 //parse upload

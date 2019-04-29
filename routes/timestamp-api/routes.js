@@ -17,7 +17,7 @@ router.use(express.static("build"));
 //home page
 
 router.get("/", (req, res) => {
-  res.sendFile(`${__rootdir}/build/timestamp-api/view.html`);
+  res.sendFile(`${__build}/timestamp-api/view.html`);
 });
 
 //parse date

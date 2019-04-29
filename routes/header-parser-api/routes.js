@@ -10,7 +10,7 @@ const router = express.Router();
 //home page
 
 router.get("/", (req, res) => {
-  res.sendFile(`${__rootdir}/build/header-parser-api/view.html`);
+  res.sendFile(`${__build}/header-parser-api/view.html`);
 });
 
 //parse header

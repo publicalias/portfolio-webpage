@@ -2,8 +2,8 @@
 
 //global imports
 
-const { getIPUser } = require(`${__rootdir}/master/scripts/redux-utils/server-utils`);
-const { deepCopy } = require(`${__rootdir}/master/scripts/utilities`);
+const { getIPUser } = require(`${__scripts}/redux-utils/server-utils`);
+const { deepCopy } = require(`${__scripts}/utilities`);
 
 //utilities
 

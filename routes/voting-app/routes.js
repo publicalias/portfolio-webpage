@@ -6,7 +6,7 @@ const apiRouter = require("./scripts/api/api");
 
 //global imports
 
-const { handleSession } = require(`${__rootdir}/master/scripts/redux-utils/server-utils`);
+const { handleSession } = require(`${__scripts}/redux-utils/server-utils`);
 
 //node modules
 
@@ -28,7 +28,7 @@ router.use("/api", apiRouter);
 
 router.get("/*", (req, res) => {
   req.session.redirect = "/voting-app";
-  res.sendFile(`${__rootdir}/build/voting-app/view.html`);
+  res.sendFile(`${__build}/voting-app/view.html`);
 });
 
 //exports

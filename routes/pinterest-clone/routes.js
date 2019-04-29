@@ -13,7 +13,7 @@ router.use(express.static("build"));
 //home page
 
 router.get("/", (req, res) => {
-  res.sendFile(`${__rootdir}/build/pinterest-clone/view.html`);
+  res.sendFile(`${__build}/pinterest-clone/view.html`);
 });
 
 //exports

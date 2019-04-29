@@ -1,9 +1,13 @@
 "use strict";
 
+//local imports
+
+const globals = require("./globals");
+
 //exports
 
 module.exports = {
-  globals: { __rootdir: __dirname },
+  globals,
   moduleDirectories: ["master/scripts", "node_modules"],
   moduleFileExtensions: ["js", "jsx"]
 };

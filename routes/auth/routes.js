@@ -7,7 +7,7 @@ const { passport, providers } = require("./scripts/passport/passport-config");
 
 //global imports
 
-const { handleSession } = require(`${__rootdir}/master/scripts/redux-utils/server-utils`);
+const { handleSession } = require(`${__scripts}/redux-utils/server-utils`);
 
 //node modules
 

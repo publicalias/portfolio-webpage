@@ -2,7 +2,7 @@
 
 //global imports
 
-const { sendData } = require(`${__rootdir}/master/scripts/server-utils`);
+const { sendData } = require(`${__scripts}/server-utils`);
 
 //node modules
 
@@ -17,7 +17,7 @@ router.use(express.static("build"));
 //home page
 
 router.get("/", (req, res) => {
-  res.sendFile(`${__rootdir}/build/orthographic-projection/view.html`);
+  res.sendFile(`${__build}/orthographic-projection/view.html`);
 });
 
 //get api

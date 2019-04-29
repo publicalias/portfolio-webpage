@@ -2,8 +2,8 @@
 
 //global imports
 
-const { newPoll } = require(`${__rootdir}/master/scripts/schemas/voting-app`);
-const { checkErrors } = require(`${__rootdir}/master/scripts/utilities`);
+const { newPoll } = require(`${__scripts}/schemas/voting-app`);
+const { checkErrors } = require(`${__scripts}/utilities`);
 
 //node modules
 

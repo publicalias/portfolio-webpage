@@ -6,7 +6,7 @@ const { findByID, findPolls } = require("../../app-logic");
 
 //global imports
 
-const { getIPUser } = require(`${__rootdir}/master/scripts/redux-utils/server-utils`);
+const { getIPUser } = require(`${__scripts}/redux-utils/server-utils`);
 
 //meta get polls
 

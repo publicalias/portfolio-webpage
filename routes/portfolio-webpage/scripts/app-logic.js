@@ -2,7 +2,7 @@
 
 //global imports
 
-const { toPromise } = require(`${__rootdir}/master/scripts/server-utils`);
+const { toPromise } = require(`${__scripts}/server-utils`);
 
 //node modules
 

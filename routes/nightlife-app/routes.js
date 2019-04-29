@@ -13,7 +13,7 @@ router.use(express.static("build"));
 //home page
 
 router.get("/", (req, res) => {
-  res.sendFile(`${__rootdir}/build/nightlife-app/view.html`);
+  res.sendFile(`${__build}/nightlife-app/view.html`);
 });
 
 //exports
