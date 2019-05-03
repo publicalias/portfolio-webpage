@@ -3,7 +3,12 @@
 //local imports
 
 const { encodeAPICall, getJSON } = require("../client-utils");
-const { metaAddErrors, metaNoOp, metaSetState } = require("./meta-factories");
+const { select } = require("../dom-api");
+const { metaAddErrors, metaNoOp, metaSetLoading, metaSetState } = require("./meta-factories");
+
+//node modules
+
+const { useEffect } = require("react");
 
 //init reducer
 
@@ -20,6 +25,10 @@ const initReducer = (initialState, handlers) => (state = initialState, action) =
 const reduxAPICall = (dispatch, args, successFn, failureFn) => {
 
   const { path, init } = encodeAPICall(args);
+
+  const loadingFn = (bool) => () => {
+    dispatch(metaSetLoading(bool));
+  };
 
   const successDefault = (res) => {
 
@@ -40,9 +49,24 @@ const reduxAPICall = (dispatch, args, successFn, failureFn) => {
     dispatch(metaAddErrors([err.message]));
   };
 
+  loadingFn(true)();
+
   return getJSON(path, init)
     .then(successFn || successDefault)
-    .catch(failureFn || failureDefault);
+    .catch(failureFn || failureDefault)
+    .finally(loadingFn());
+
+};
+
+//use loading
+
+const useLoading = (props) => {
+
+  const { data: { loading } } = props;
+
+  useEffect(() => {
+    select(".js-loading-state").class("is-loading", true, loading);
+  }, [loading]);
 
 };
 
@@ -50,5 +74,6 @@ const reduxAPICall = (dispatch, args, successFn, failureFn) => {
 
 module.exports = {
   initReducer,
-  reduxAPICall
+  reduxAPICall,
+  useLoading
 };

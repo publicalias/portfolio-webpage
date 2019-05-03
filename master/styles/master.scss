@@ -214,6 +214,8 @@ thead { @include font-head; }
   }
 }
 
+.js-loading-state { &.is-loading { cursor: wait; } }
+
 //utilities
 
 .u-align-center { text-align: center; }

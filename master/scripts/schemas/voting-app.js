@@ -59,7 +59,8 @@ const newState = newSchema({
     settings: false,
     confirm: false
   },
-  errors: []
+  errors: [],
+  loading: false
 }, {
   errors(val) {
     return val.map(newError);

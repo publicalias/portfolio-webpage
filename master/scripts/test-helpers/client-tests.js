@@ -3,7 +3,7 @@
 //local imports
 
 const { encodeAPICall } = require("../client-utils");
-const { metaAddErrors } = require("../redux-utils/meta-factories");
+const { metaAddErrors, metaSetLoading } = require("../redux-utils/meta-factories");
 const { deepCopy } = require("../utilities");
 
 //node modules
@@ -65,12 +65,14 @@ const testAPIThunk = (action, args, actionList, lastState, fetch) => {
 
   const store = mockStore(lastState);
 
+  const fullList = [metaSetLoading(true), ...actionList, metaSetLoading()];
+
   global.fetch = jest.fn(fetch);
   global.Headers = jest.fn();
 
   return store.dispatch(action).then(() => {
     testAPICall(args);
-    expect(store.getActions()).toEqual(actionList);
+    expect(store.getActions()).toEqual(fullList);
   });
 
 };
