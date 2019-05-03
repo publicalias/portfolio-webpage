@@ -11,7 +11,7 @@ const metaGetPolls = (id, skip = false) => (dispatch, getState) => {
   const { list } = getState();
 
   const args = {
-    path: "/api/meta-get-polls",
+    path: "/voting-app/api/meta-get-polls",
     method: "GET",
     data: {
       id,
@@ -29,7 +29,7 @@ const metaGetPolls = (id, skip = false) => (dispatch, getState) => {
 const metaGetUser = () => (dispatch) => {
 
   const args = {
-    path: "/api/meta-get-user",
+    path: "/voting-app/api/meta-get-user",
     method: "GET"
   };
 

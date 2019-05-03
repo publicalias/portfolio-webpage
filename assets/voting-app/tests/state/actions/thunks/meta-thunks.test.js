@@ -19,7 +19,7 @@ describe("metaGetPolls", () => {
 
   const action = metaGetPolls();
   const args = {
-    path: "/api/meta-get-polls",
+    path: "/voting-app/api/meta-get-polls",
     method: "GET",
     data: {
       id: undefined,
@@ -50,7 +50,7 @@ describe("metaGetUser", () => {
 
   const action = metaGetUser();
   const args = {
-    path: "/api/meta-get-user",
+    path: "/voting-app/api/meta-get-user",
     method: "GET"
   };
 

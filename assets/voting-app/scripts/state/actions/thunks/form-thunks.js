@@ -48,7 +48,7 @@ const formCreatePoll = (history) => (dispatch, getState) => {
   const { form } = getState();
 
   const args = {
-    path: "/api/form-create-poll",
+    path: "/voting-app/api/form-create-poll",
     method: "POST",
     data: { form }
   };

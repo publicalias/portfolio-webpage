@@ -19,7 +19,7 @@ describe("viewAddOption", () => {
 
   const action = viewAddOption("");
   const args = {
-    path: "/api/view-add-option",
+    path: "/voting-app/api/view-add-option",
     method: "PATCH",
     data: {
       id: "",
@@ -55,7 +55,7 @@ describe("viewCastVote", () => {
 
   const action = viewCastVote("", "");
   const args = {
-    path: "/api/view-cast-vote",
+    path: "/voting-app/api/view-cast-vote",
     method: "PATCH",
     data: {
       id: "",
@@ -85,7 +85,7 @@ describe("viewDeletePoll", () => {
 
   const action = viewDeletePoll("id-a", history);
   const args = {
-    path: "/api/view-delete-poll",
+    path: "/voting-app/api/view-delete-poll",
     method: "DELETE",
     data: { id: "id-a" }
   };
@@ -138,7 +138,7 @@ describe("viewRemoveOption", () => {
 
   const action = viewRemoveOption("", "");
   const args = {
-    path: "/api/view-remove-option",
+    path: "/voting-app/api/view-remove-option",
     method: "PATCH",
     data: {
       id: "",
@@ -166,7 +166,7 @@ describe("viewTogglePrivate", () => {
 
   const action = viewTogglePrivate("");
   const args = {
-    path: "/api/view-toggle-private",
+    path: "/voting-app/api/view-toggle-private",
     method: "PATCH",
     data: { id: "" }
   };

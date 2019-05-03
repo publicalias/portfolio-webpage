@@ -67,7 +67,7 @@ describe("formCreatePoll", () => {
 
   const action = formCreatePoll(history);
   const args = {
-    path: "/api/form-create-poll",
+    path: "/voting-app/api/form-create-poll",
     method: "POST",
     data: { form: newState().form }
   };

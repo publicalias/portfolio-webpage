@@ -21,7 +21,7 @@ const listOpenView = (id, history) => (dispatch) => {
 const listToggleFlag = (id) => (dispatch) => {
 
   const args = {
-    path: "/api/list-toggle-flag",
+    path: "/voting-app/api/list-toggle-flag",
     method: "PATCH",
     data: { id }
   };
@@ -35,7 +35,7 @@ const listToggleFlag = (id) => (dispatch) => {
 const listToggleHide = (id) => (dispatch) => {
 
   const args = {
-    path: "/api/list-toggle-hide",
+    path: "/voting-app/api/list-toggle-hide",
     method: "PATCH",
     data: { id }
   };

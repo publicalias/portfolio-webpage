@@ -12,7 +12,7 @@ const viewAddOption = (id) => (dispatch, getState) => {
   const { view } = getState();
 
   const args = {
-    path: "/api/view-add-option",
+    path: "/voting-app/api/view-add-option",
     method: "PATCH",
     data: {
       id,
@@ -29,7 +29,7 @@ const viewAddOption = (id) => (dispatch, getState) => {
 const viewCastVote = (id, text) => (dispatch) => {
 
   const args = {
-    path: "/api/view-cast-vote",
+    path: "/voting-app/api/view-cast-vote",
     method: "PATCH",
     data: {
       id,
@@ -46,7 +46,7 @@ const viewCastVote = (id, text) => (dispatch) => {
 const viewDeletePoll = (id, history) => (dispatch) => {
 
   const args = {
-    path: "/api/view-delete-poll",
+    path: "/voting-app/api/view-delete-poll",
     method: "DELETE",
     data: { id }
   };
@@ -78,7 +78,7 @@ const viewOpenList = (history) => (dispatch) => {
 const viewRemoveOption = (id, text) => (dispatch) => {
 
   const args = {
-    path: "/api/view-remove-option",
+    path: "/voting-app/api/view-remove-option",
     method: "PATCH",
     data: {
       id,
@@ -95,7 +95,7 @@ const viewRemoveOption = (id, text) => (dispatch) => {
 const viewTogglePrivate = (id) => (dispatch) => {
 
   const args = {
-    path: "/api/view-toggle-private",
+    path: "/voting-app/api/view-toggle-private",
     method: "PATCH",
     data: { id }
   };
