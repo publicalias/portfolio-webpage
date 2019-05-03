@@ -13,7 +13,7 @@ const { default: ReduxThunk } = require("redux-thunk");
 
 const ReduxApp = (props) => {
 
-  const { actions, reducer, component } = props;
+  const { actions, component, reducer } = props;
 
   const middleware = applyMiddleware(ReduxThunk);
   const store = createStore(reducer, middleware);

@@ -86,7 +86,7 @@ describe("formCreatePoll", () => {
 
     await testAPI.success(action, args, res, actionList);
 
-    testHistory(["/voting-app/view/id-a"]);
+    testHistory(["/voting-app/view?id=id-a"]);
 
   });
 

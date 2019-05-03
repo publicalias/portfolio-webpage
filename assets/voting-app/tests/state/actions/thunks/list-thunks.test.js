@@ -26,7 +26,7 @@ describe("listOpenView", () => {
 
     testThunk(action, [metaSetState({ view: newState().view })]);
 
-    testHistory(["/voting-app/view/id-a"]);
+    testHistory(["/voting-app/view?id=id-a"]);
 
   });
 

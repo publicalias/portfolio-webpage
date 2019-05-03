@@ -73,7 +73,7 @@ const formCreatePoll = (history) => (dispatch, getState) => {
       view: deepCopy(view)
     }));
 
-    history.push(`/voting-app/view/${id}`);
+    history.push(`/voting-app/view?id=${id}`);
 
   };
 

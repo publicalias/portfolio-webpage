@@ -101,6 +101,22 @@ const initStorageKey = (path) => (key, val, session) => {
 
 const storageKey = initStorageKey();
 
+//parse query
+
+const parseQuery = () => {
+
+  const set = new URLSearchParams(new URL(location.href).search);
+
+  const obj = {};
+
+  for (const [key, val] of set) {
+    obj[key] = val;
+  }
+
+  return obj;
+
+};
+
 //submit keys
 
 const submitKeys = (id) => {
@@ -135,6 +151,7 @@ module.exports = {
   encodeAPICall,
   getJSON,
   initStorageKey,
+  parseQuery,
   storageKey,
   submitKeys
 };
