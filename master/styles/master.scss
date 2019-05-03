@@ -132,10 +132,7 @@ ol, ul {
   padding-left: 4vw;
 }
 
-p {
-  margin: 0 0 1vw;
-  &:first-child { @include offset-top(1.6vw); }
-}
+p { margin: 0 0 1vw; }
 
 table {
   border-collapse: separate;

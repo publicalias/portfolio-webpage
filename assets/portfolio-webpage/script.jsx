@@ -50,7 +50,7 @@ const App = (props) => {
     groups.map((e) => <Group group={e} key={keyGen(e.id)} />),
     <Contact contact={contact} key={keyGen("contact")} />,
     <Footer footer={footer} key={keyGen("footer")} />,
-    <CookieBanner key={keyGen("cookie-banner")} />
+    <CookieBanner key={keyGen("cookie")} />
   ];
 
 };

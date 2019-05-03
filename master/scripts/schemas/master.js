@@ -8,7 +8,7 @@ const { newSchema } = require("../utilities");
 
 const newError = newSchema({
   text: "",
-  timer: 1000
+  timer: 3000
 });
 
 //new ip user

@@ -9,10 +9,7 @@ const metaAddErrors = (errors) => ({
 
 //meta close error
 
-const metaCloseError = (index) => ({
-  type: "META_CLOSE_ERROR",
-  index
-});
+const metaCloseError = () => ({ type: "META_CLOSE_ERROR" });
 
 //meta no op
 

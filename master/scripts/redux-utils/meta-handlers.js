@@ -17,9 +17,9 @@ const META_ADD_ERRORS = (state, { errors }) => {
 
 //meta close error
 
-const META_CLOSE_ERROR = (state, { index }) => {
+const META_CLOSE_ERROR = (state) => {
 
-  const filterFn = (e, i) => i !== index;
+  const filterFn = (e, i) => i > 0;
 
   return deepCopy(state, { errors: state.errors.filter(filterFn) });
 
@@ -37,14 +37,12 @@ const META_SET_STATE = (state, { merge, config }) => initDeepCopy(config)(state,
 
 const META_TIMEOUT_ERROR = (state) => {
 
-  const mapFn = (e) => ({
+  const mapFn = (e, i) => i > 0 ? e : {
     text: e.text,
     timer: e.timer - 100
-  });
+  };
 
-  const filterFn = (e) => e.timer;
-
-  return deepCopy(state, { errors: state.errors.map(mapFn).filter(filterFn) });
+  return deepCopy(state, { errors: state.errors.map(mapFn) });
 
 };
 

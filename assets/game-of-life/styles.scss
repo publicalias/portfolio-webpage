@@ -30,6 +30,7 @@
     margin-bottom: 0;
     overflow: hidden;
     white-space: nowrap;
+    &:first-child { @include offset-top(1.6vw); }
   }
 
 }
