@@ -9,5 +9,6 @@ const globals = require("./globals");
 module.exports = {
   globals,
   moduleDirectories: ["master/scripts", "node_modules"],
-  moduleFileExtensions: ["js", "jsx"]
+  moduleFileExtensions: ["js", "jsx"],
+  snapshotSerializers: ["enzyme-to-json/serializer"]
 };

@@ -4,10 +4,10 @@
 
 const React = require("react");
 
-//app
+//ui
 
-const App = () => <div />;
+const UI = () => <div className="c-ui" />;
 
 //exports
 
-module.exports = App;
+module.exports = UI;

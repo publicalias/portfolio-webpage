@@ -10,7 +10,7 @@ const { testThunk } = require("../../../test-helpers");
 //global imports
 
 const { newState } = require("schemas/voting-app");
-const { initHistory } = require("test-helpers/client-tests");
+const { initHistory } = require("test-helpers/redux-tests");
 
 //menu open form
 

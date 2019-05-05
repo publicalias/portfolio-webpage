@@ -2,7 +2,7 @@
 
 //local imports
 
-const App = require("./scripts/components/app");
+const UI = require("./scripts/components/ui");
 
 const { actions } = require("./scripts/state/actions/actions");
 const { reducer } = require("./scripts/state/reducer/reducer");
@@ -22,8 +22,8 @@ const ReactDOM = require("react-dom");
 
 ReactDOM.render((
   <ReduxApp
+    UI={UI}
     actions={actions}
-    component={App}
     reducer={reducer}
   />
 ), select(".js-render-react").first);

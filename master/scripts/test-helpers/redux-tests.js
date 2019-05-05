@@ -8,9 +8,6 @@ const { deepCopy } = require("../utilities");
 
 //node modules
 
-const Adapter = require("enzyme-adapter-react-16");
-
-const { configure } = require("enzyme");
 const { default: configureStore } = require("redux-mock-store");
 const { default: ReduxThunk } = require("redux-thunk");
 
@@ -77,9 +74,9 @@ const testAPIThunk = (action, args, actionList, lastState, fetch) => {
 
 };
 
-const initTestAPI = (initialState) => ({
+const initTestAPI = (newState) => ({
 
-  success(action, args, res, actionList, lastState = initialState) {
+  success(action, args, res, actionList, lastState = newState()) {
 
     const fetch = () => Promise.resolve({
       ok: true,
@@ -92,7 +89,7 @@ const initTestAPI = (initialState) => ({
 
   },
 
-  failure(action, args, lastState = initialState) {
+  failure(action, args, lastState = newState()) {
 
     const status = 500;
     const statusText = "Internal Server Error";
@@ -113,9 +110,9 @@ const initTestAPI = (initialState) => ({
 
 //init test reducer
 
-const initTestReducer = (initialState, reducer) => (action, last, next) => {
+const initTestReducer = (newState, reducer) => (action, last, next) => {
 
-  const lastState = deepCopy(initialState, last);
+  const lastState = deepCopy(newState(), last);
   const nextState = deepCopy(lastState, next);
 
   expect(reducer(lastState, action)).toEqual(nextState);
@@ -124,7 +121,7 @@ const initTestReducer = (initialState, reducer) => (action, last, next) => {
 
 //init test thunk
 
-const initTestThunk = (initialState) => (action, actionList, lastState = initialState) => {
+const initTestThunk = (newState) => (action, actionList, lastState = newState()) => {
 
   const store = mockStore(lastState);
 
@@ -134,20 +131,11 @@ const initTestThunk = (initialState) => (action, actionList, lastState = initial
 
 };
 
-//react tests
-
-const reactTests = {
-  setup() {
-    configure({ adapter: new Adapter() });
-  }
-};
-
 //exports
 
 module.exports = {
   initHistory,
   initTestAPI,
   initTestReducer,
-  initTestThunk,
-  reactTests
+  initTestThunk
 };

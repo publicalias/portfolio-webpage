@@ -44,8 +44,8 @@
     "start": "node server.js",
     "start:local": "node -r dotenv/config server.js",
     "start:proxy": "ssh -o ServerAliveInterval=60 -R pa-portfolio-webpage:80:localhost:3000 serveo.net",
+    "test": "jest -i",
     "test:eslint": "eslint \"!(build|node_modules)/**/@(*.js|*.jsx)\" \"@(*.js|*.jsx)\"",
-    "test:jest": "jest -i",
     "test:sass-lint": "sass-lint \"!(build|node_modules)/**/*.scss\" -v -q",
     "watch": "gulp watch"
   },
@@ -64,6 +64,7 @@
     "dotenv": "^7.0.0",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.12.1",
+    "enzyme-to-json": "^3.3.5",
     "eslint": "^5.16.0",
     "eslint-plugin-react": "^7.12.4",
     "jest": "^24.7.1",

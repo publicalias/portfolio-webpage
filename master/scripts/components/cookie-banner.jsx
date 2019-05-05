@@ -13,24 +13,32 @@ const React = require("react");
 
 //cookie banner
 
-const handleClick = () => {
+const CookieBanner = () => {
 
-  const DOMBanner = select(".js-hide-banner");
+  //events
 
-  DOMBanner.animate({ opacity: 0 }, () => {
-    DOMBanner.class("is-hidden", true, true);
-  });
+  const handleClick = () => {
 
-  storageKey("consent", true);
+    const DOMBanner = select(".js-hide-banner");
+
+    DOMBanner.animate({ opacity: 0 }, () => {
+      DOMBanner.class("is-hidden", true, true);
+    });
+
+    storageKey("consent", true);
+
+  };
+
+  //render
+
+  return !storageKey("consent") && (
+    <div className="c-content--xl c-cookie-banner js-hide-banner">
+      <p className="c-cookie-banner__text">This site uses cookies to facilitate user authentication. By continuing to use this site, you <s>surrender your firstborn child</s> consent to its use of cookies.</p>
+      <button className="c-cookie-banner__btn" onClick={handleClick}>OK</button>
+    </div>
+  );
 
 };
-
-const CookieBanner = () => !storageKey("consent") && (
-  <div className="c-content--xl c-cookie-banner js-hide-banner">
-    <p className="c-cookie-banner__text">This site uses cookies to facilitate user authentication. By continuing to use this site, you <s>surrender your firstborn child</s> consent to its use of cookies.</p>
-    <button className="c-cookie-banner__btn" onClick={handleClick}>OK</button>
-  </div>
-);
 
 //exports
 
