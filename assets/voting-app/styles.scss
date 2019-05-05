@@ -1,1 +1,39 @@
 @import "master";
+
+@import "components/cookie-banner";
+@import "components/error-message";
+
+@mixin grid-area {
+  background-color: rgba(0, 0, 0, 0.75);
+  padding: 3vw 4.5vw;
+}
+
+//components
+
+.c-ui {
+
+  display: grid;
+  grid-gap: 4.5vw;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(2, auto);
+  margin: 4.5vw auto;
+  width: 91%;
+
+  &__form,
+  &__list,
+  &__view {
+    @include grid-area;
+    grid-area: 2 / 5 / 2 / 13;
+  }
+
+  &__nav-bar {
+    @include grid-area;
+    grid-area: 1 / 1 / 1 / 13;
+  }
+
+  &__sidebar {
+    @include grid-area;
+    grid-area: 2 / 1 / 2 / 5;
+  }
+
+}

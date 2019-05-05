@@ -6,6 +6,22 @@ const Adapter = require("enzyme-adapter-react-16");
 
 const { configure } = require("enzyme");
 
+//init mock props
+
+const initMockProps = (newState, actions) => (data) => ({
+
+  data: newState(data),
+
+  actions: Object.keys(actions).reduce((acc, e) => {
+
+    acc[e] = jest.fn();
+
+    return acc;
+
+  }, {})
+
+});
+
 //react tests
 
 const reactTests = {
@@ -16,4 +32,7 @@ const reactTests = {
 
 //exports
 
-module.exports = { reactTests };
+module.exports = {
+  initMockProps,
+  reactTests
+};

@@ -3,5 +3,27 @@
 exports[`ui should match snapshot 1`] = `
 <div
   className="c-ui"
-/>
+>
+  <NavBar />
+  <Sidebar />
+  <BrowserRouter>
+    <Route
+      component={[Function]}
+      exact={true}
+      path="/voting-app"
+    />
+    <Route
+      component={[Function]}
+      path="/voting-app/list"
+    />
+    <Route
+      component={[Function]}
+      path="/voting-app/form"
+    />
+    <Route
+      component={[Function]}
+      path="/voting-app/view"
+    />
+  </BrowserRouter>
+</div>
 `;
