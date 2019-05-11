@@ -27,7 +27,7 @@ describe("menuOpenForm", () => {
 
     testThunk(action, [metaSetState({ form: newState().form })]);
 
-    testHistory(["/voting-app/form"]);
+    testHistory(["/form"]);
 
   });
 
@@ -45,7 +45,7 @@ describe("menuSetFilter", () => {
 
     testThunk(action, [metaSetState({ list: deepCopy(newState().list, { filter: "created" }) })]);
 
-    testHistory(["/voting-app/list"]);
+    testHistory(["/list"]);
 
   });
 

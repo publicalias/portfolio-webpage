@@ -12,7 +12,7 @@ const menuOpenForm = (history) => (dispatch) => {
 
   dispatch(metaSetState({ form: newState().form }));
 
-  history.push("/voting-app/form");
+  history.push("/form");
 
 };
 
@@ -22,7 +22,7 @@ const menuSetFilter = (filter, history) => (dispatch) => {
 
   dispatch(metaSetState({ list: deepCopy(newState().list, { filter }) }));
 
-  history.push("/voting-app/list");
+  history.push("/list");
 
 };
 

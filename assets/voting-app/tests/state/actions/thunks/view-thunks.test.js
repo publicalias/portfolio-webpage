@@ -96,7 +96,7 @@ describe("viewDeletePoll", () => {
 
     await testAPI.success(action, args, {}, actionList);
 
-    testHistory(["/voting-app/list"]);
+    testHistory(["/list"]);
 
   });
 
@@ -124,7 +124,7 @@ describe("viewOpenList", () => {
 
     testThunk(action, [metaNoOp()]);
 
-    testHistory(["/voting-app/list"]);
+    testHistory(["/list"]);
 
   });
 

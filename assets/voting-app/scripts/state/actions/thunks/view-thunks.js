@@ -55,7 +55,7 @@ const viewDeletePoll = (id, history) => (dispatch) => {
 
     dispatch(metaNoOp());
 
-    history.push("/voting-app/list");
+    history.push("/list");
 
   };
 
@@ -69,7 +69,7 @@ const viewOpenList = (history) => (dispatch) => {
 
   dispatch(metaNoOp());
 
-  history.push("/voting-app/list");
+  history.push("/list");
 
 };
 

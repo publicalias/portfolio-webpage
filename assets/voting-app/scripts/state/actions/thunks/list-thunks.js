@@ -12,7 +12,7 @@ const listOpenView = (id, history) => (dispatch) => {
 
   dispatch(metaSetState({ view: newState().view }));
 
-  history.push(`/voting-app/view?id=${id}`);
+  history.push(`/view?id=${id}`);
 
 };
 

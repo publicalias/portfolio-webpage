@@ -38,11 +38,11 @@ const UI = (props) => {
       <Route
         component={List}
         exact
-        path="/voting-app"
+        path="/"
       />
-      <Route component={List} path="/voting-app/list" />
-      <Route component={Form} path="/voting-app/form" />
-      <Route component={View} path="/voting-app/view" />
+      <Route component={List} path="/list" />
+      <Route component={Form} path="/form" />
+      <Route component={View} path="/view" />
     </div>
   );
 

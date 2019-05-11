@@ -64,7 +64,7 @@ const getContext = (actions) => {
 
 const ReduxApp = (props) => {
 
-  const { UI, actions, reducer } = props;
+  const { UI, actions, path, reducer } = props;
 
   //utilities
 
@@ -78,7 +78,7 @@ const ReduxApp = (props) => {
   const Connected = getContext(actions);
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={path}>
       <Provider store={store}>
         <Connected />
       </Provider>

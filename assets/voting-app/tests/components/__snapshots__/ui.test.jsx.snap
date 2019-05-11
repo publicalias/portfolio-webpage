@@ -80,19 +80,19 @@ exports[`ui should match snapshot 1`] = `
   <Route
     component={[Function]}
     exact={true}
-    path="/voting-app"
+    path="/"
   />
   <Route
     component={[Function]}
-    path="/voting-app/list"
+    path="/list"
   />
   <Route
     component={[Function]}
-    path="/voting-app/form"
+    path="/form"
   />
   <Route
     component={[Function]}
-    path="/voting-app/view"
+    path="/view"
   />
 </div>
 `;
