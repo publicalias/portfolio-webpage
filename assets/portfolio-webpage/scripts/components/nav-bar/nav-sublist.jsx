@@ -43,7 +43,7 @@ const NavSublist = (props) => {
 
   return (
     <div className="c-nav-bar__sublist">
-      <li className="c-nav-bar__item--toggle" onClick={handleClick}>{props.name}</li>
+      <li className="c-nav-bar__item--toggle u-hover" onClick={handleClick}>{props.name}</li>
       <ul className="c-nav-bar__expand js-expand-sublist">
         {props.sublist.map((e) => e.type === "item" ? (
           <NavItem

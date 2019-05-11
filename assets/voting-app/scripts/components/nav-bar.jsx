@@ -51,7 +51,7 @@ const NavBar = (props) => {
 
         return bool && (
           <h3
-            className={`c-ui__nav-item qa-nav-${id}`}
+            className={`c-ui__nav-item qa-nav-${id} u-hover`}
             key={keyGen(id)}
             onClick={handleClick}
           >

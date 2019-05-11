@@ -1,6 +1,7 @@
 @import "master";
 
 @mixin timer-btn {
+  cursor: pointer;
   float: right;
   margin-left: 0.75vw;
   padding: 0.25vw 0.75vw;
@@ -41,21 +42,4 @@
 
   }
 
-}
-
-//states
-
-.js-check-input {
-  &.is-mouse {
-    .js-toggle-btn {
-      &.is-disabled {
-        &:enabled {
-          &:hover {
-            background-color: $bg-input;
-            color: white;
-          }
-        }
-      }
-    }
-  }
 }

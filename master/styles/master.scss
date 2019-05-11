@@ -12,6 +12,16 @@ $bg-input: rgba(64, 64, 64, 0.75);
   grid-template-rows: repeat($y, 1fr);
 }
 
+@mixin btn-hover {
+  &:not(.is-disabled) {
+    &:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+  }
+}
+
 @mixin btn-trans {
   transition-duration: 0.5s;
   transition-property: background-color, color;
@@ -202,15 +212,11 @@ thead { @include font-head; }
 
 .js-check-input {
   &.is-mouse {
-    button {
-      &:enabled {
-        &:hover {
-          background-color: white;
-          color: black;
-          cursor: pointer;
-        }
-      }
-    }
+
+    button { &:enabled { &:not(.u-no-hover) { @include btn-hover; } } }
+
+    .u-hover { @include btn-hover; }
+
   }
 }
 
@@ -231,6 +237,8 @@ thead { @include font-head; }
 
 .u-font-body { @include font-body; }
 .u-font-head { @include font-head; }
+
+.u-hover { @include btn-trans; }
 
 .u-italic { font-style: italic; }
 

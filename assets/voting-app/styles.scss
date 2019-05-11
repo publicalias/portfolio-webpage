@@ -33,30 +33,11 @@
     padding: 0 4.5vw;
   }
 
-  &__nav-item {
-    @include btn-trans;
-    padding: 1.5vw;
-  }
+  &__nav-item { padding: 1.5vw; }
 
   &__sidebar {
     @include grid-area;
     grid-area: 2 / 1 / 2 / 5;
   }
 
-}
-
-//states
-
-.js-check-input {
-  &.is-mouse {
-    .c-ui {
-      &__nav-item {
-        &:hover {
-          background-color: white;
-          color: black;
-          cursor: pointer;
-        }
-      }
-    }
-  }
 }

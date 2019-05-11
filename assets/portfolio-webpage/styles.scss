@@ -10,9 +10,7 @@
 }
 
 @mixin nav-item {
-  @include btn-trans;
   @include heading(2.8vw);
-  cursor: pointer;
   display: block;
   padding: 1.5vw 0;
   text-align: center;
@@ -148,23 +146,6 @@
 .c-wide-btn { @include wide-btn; }
 
 //states
-
-.js-check-input {
-  &.is-mouse {
-    .c-nav-bar {
-      &__item {
-        &--flex,
-        &--sublist,
-        &--toggle {
-          &:hover {
-            background-color: white;
-            color: black;
-          }
-        }
-      }
-    }
-  }
-}
 
 .js-expand-sublist { &.is-open { display: block; } }
 

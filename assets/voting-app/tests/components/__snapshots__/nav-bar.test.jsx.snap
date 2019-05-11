@@ -5,35 +5,35 @@ exports[`nav bar should match snapshot (authenticated) 1`] = `
   className="c-ui__nav-bar"
 >
   <h3
-    className="c-ui__nav-item qa-nav-all"
+    className="c-ui__nav-item qa-nav-all u-hover"
     key="0-313"
     onClick={[Function]}
   >
     All Polls
   </h3>
   <h3
-    className="c-ui__nav-item qa-nav-created"
+    className="c-ui__nav-item qa-nav-created u-hover"
     key="0-728"
     onClick={[Function]}
   >
     My Polls
   </h3>
   <h3
-    className="c-ui__nav-item qa-nav-voted"
+    className="c-ui__nav-item qa-nav-voted u-hover"
     key="0-546"
     onClick={[Function]}
   >
     Voted
   </h3>
   <h3
-    className="c-ui__nav-item qa-nav-hidden"
+    className="c-ui__nav-item qa-nav-hidden u-hover"
     key="0-620"
     onClick={[Function]}
   >
     Hidden
   </h3>
   <h3
-    className="c-ui__nav-item qa-nav-form"
+    className="c-ui__nav-item qa-nav-form u-hover"
     key="0-436"
     onClick={[Function]}
   >
@@ -47,21 +47,21 @@ exports[`nav bar should match snapshot (default) 1`] = `
   className="c-ui__nav-bar"
 >
   <h3
-    className="c-ui__nav-item qa-nav-all"
+    className="c-ui__nav-item qa-nav-all u-hover"
     key="0-313"
     onClick={[Function]}
   >
     All Polls
   </h3>
   <h3
-    className="c-ui__nav-item qa-nav-voted"
+    className="c-ui__nav-item qa-nav-voted u-hover"
     key="0-546"
     onClick={[Function]}
   >
     Voted
   </h3>
   <h3
-    className="c-ui__nav-item qa-nav-hidden"
+    className="c-ui__nav-item qa-nav-hidden u-hover"
     key="0-620"
     onClick={[Function]}
   >

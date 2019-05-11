@@ -16,7 +16,7 @@ const NavItem = (props) => {
 
   return (
     <li
-      className={`c-nav-bar__item--${mod}`}
+      className={`c-nav-bar__item--${mod} u-hover`}
       onClick={scrollToItem(link)}
     >
       {name}
