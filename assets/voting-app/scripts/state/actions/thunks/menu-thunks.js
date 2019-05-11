@@ -4,6 +4,7 @@
 
 const { metaSetState } = require("redux-utils/meta-factories");
 const { newState } = require("schemas/voting-app");
+const { deepCopy } = require("utilities");
 
 //menu open form
 
@@ -15,6 +16,19 @@ const menuOpenForm = (history) => (dispatch) => {
 
 };
 
+//menu set filter
+
+const menuSetFilter = (filter, history) => (dispatch) => {
+
+  dispatch(metaSetState({ list: deepCopy(newState().list, { filter }) }));
+
+  history.push("/voting-app/list");
+
+};
+
 //exports
 
-module.exports = { menuOpenForm };
+module.exports = {
+  menuOpenForm,
+  menuSetFilter
+};

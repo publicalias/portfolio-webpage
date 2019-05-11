@@ -12,7 +12,7 @@ const View = require("./poll/view");
 
 const React = require("react");
 
-const { BrowserRouter: Router, Route } = require("react-router-dom");
+const { Route } = require("react-router-dom");
 
 const { useEffect } = React;
 
@@ -33,18 +33,16 @@ const UI = (props) => {
 
   return (
     <div className="c-ui">
-      <NavBar />
+      <NavBar {...props} />
       <Sidebar />
-      <Router>
-        <Route
-          component={List}
-          exact
-          path="/voting-app"
-        />
-        <Route component={List} path="/voting-app/list" />
-        <Route component={Form} path="/voting-app/form" />
-        <Route component={View} path="/voting-app/view" />
-      </Router>
+      <Route
+        component={List}
+        exact
+        path="/voting-app"
+      />
+      <Route component={List} path="/voting-app/list" />
+      <Route component={Form} path="/voting-app/form" />
+      <Route component={View} path="/voting-app/view" />
     </div>
   );
 

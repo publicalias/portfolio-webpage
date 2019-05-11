@@ -8,12 +8,8 @@ const { reducer } = require("../scripts/state/reducer/reducer");
 //global imports
 
 const { newState } = require("schemas/voting-app");
-const { initMockProps } = require("test-helpers/react-tests");
+const { initTestWrapper } = require("test-helpers/react-tests");
 const { initTestAPI, initTestReducer, initTestThunk } = require("test-helpers/redux-tests");
-
-//mock props
-
-const mockProps = initMockProps(newState, actions);
 
 //test api
 
@@ -27,11 +23,15 @@ const testReducer = initTestReducer(newState, reducer);
 
 const testThunk = initTestThunk(newState);
 
+//test wrapper
+
+const testWrapper = initTestWrapper(newState, actions);
+
 //exports
 
 module.exports = {
-  mockProps,
   testAPI,
   testReducer,
-  testThunk
+  testThunk,
+  testWrapper
 };

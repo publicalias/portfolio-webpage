@@ -4,26 +4,95 @@ exports[`ui should match snapshot 1`] = `
 <div
   className="c-ui"
 >
-  <NavBar />
+  <NavBar
+    actions={
+      Object {
+        "formAddOption": [MockFunction],
+        "formCreatePoll": [MockFunction],
+        "formDiscardPoll": [MockFunction],
+        "formRemoveOption": [MockFunction],
+        "formSetAddText": [MockFunction],
+        "formSetTitleText": [MockFunction],
+        "formToggleConfirm": [MockFunction],
+        "formTogglePrivate": [MockFunction],
+        "listOpenView": [MockFunction],
+        "listSetIndex": [MockFunction],
+        "listSetSearchText": [MockFunction],
+        "listSetSort": [MockFunction],
+        "listSubmitSearch": [MockFunction],
+        "listToggleFlag": [MockFunction],
+        "listToggleHide": [MockFunction],
+        "menuOpenForm": [MockFunction],
+        "menuSetFilter": [MockFunction],
+        "menuToggleConfirm": [MockFunction],
+        "metaAddErrors": [MockFunction],
+        "metaCloseError": [MockFunction],
+        "metaGetPolls": [MockFunction],
+        "metaGetUser": [MockFunction],
+        "metaNoOp": [MockFunction],
+        "metaSetLoading": [MockFunction],
+        "metaSetState": [MockFunction],
+        "metaTimeoutError": [MockFunction],
+        "viewAddOption": [MockFunction],
+        "viewCastVote": [MockFunction],
+        "viewDeletePoll": [MockFunction],
+        "viewOpenList": [MockFunction],
+        "viewRemoveOption": [MockFunction],
+        "viewSetAddText": [MockFunction],
+        "viewToggleConfirm": [MockFunction],
+        "viewTogglePrivate": [MockFunction],
+        "viewToggleSettings": [MockFunction],
+      }
+    }
+    data={
+      Object {
+        "errors": Array [],
+        "form": Object {
+          "add": "",
+          "confirm": false,
+          "options": Array [],
+          "private": false,
+          "title": "",
+        },
+        "list": Object {
+          "filter": "all",
+          "index": 0,
+          "search": "",
+          "searched": "",
+          "sort": "new",
+        },
+        "loading": false,
+        "menu": Object {
+          "confirm": false,
+        },
+        "polls": Array [],
+        "user": Object {},
+        "view": Object {
+          "add": "",
+          "confirm": false,
+          "settings": false,
+        },
+      }
+    }
+    history={Object {}}
+  />
   <Sidebar />
-  <BrowserRouter>
-    <Route
-      component={[Function]}
-      exact={true}
-      path="/voting-app"
-    />
-    <Route
-      component={[Function]}
-      path="/voting-app/list"
-    />
-    <Route
-      component={[Function]}
-      path="/voting-app/form"
-    />
-    <Route
-      component={[Function]}
-      path="/voting-app/view"
-    />
-  </BrowserRouter>
+  <Route
+    component={[Function]}
+    exact={true}
+    path="/voting-app"
+  />
+  <Route
+    component={[Function]}
+    path="/voting-app/list"
+  />
+  <Route
+    component={[Function]}
+    path="/voting-app/form"
+  />
+  <Route
+    component={[Function]}
+    path="/voting-app/view"
+  />
 </div>
 `;

@@ -4,25 +4,25 @@
 
 const View = require("../../../scripts/components/poll/view");
 
+const { testWrapper } = require("../../test-helpers");
+
 //global imports
 
 const { reactTests } = require("test-helpers/react-tests");
-
-//node modules
-
-const React = require("react");
-
-const { shallow } = require("enzyme");
 
 //setup
 
 beforeAll(reactTests.setup);
 
+//utilities
+
+const { testShallow } = testWrapper(View);
+
 //view
 
 test("view should match snapshot", () => {
 
-  const wrapper = shallow(<View />);
+  const { wrapper } = testShallow();
 
   expect(wrapper).toMatchSnapshot();
 

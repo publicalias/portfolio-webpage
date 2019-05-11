@@ -1,7 +1,71 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`nav bar should match snapshot 1`] = `
+exports[`nav bar should match snapshot (authenticated) 1`] = `
 <div
   className="c-ui__nav-bar"
-/>
+>
+  <h3
+    className="c-ui__nav-item qa-nav-all"
+    key="0-313"
+    onClick={[Function]}
+  >
+    All Polls
+  </h3>
+  <h3
+    className="c-ui__nav-item qa-nav-created"
+    key="0-728"
+    onClick={[Function]}
+  >
+    My Polls
+  </h3>
+  <h3
+    className="c-ui__nav-item qa-nav-voted"
+    key="0-546"
+    onClick={[Function]}
+  >
+    Voted
+  </h3>
+  <h3
+    className="c-ui__nav-item qa-nav-hidden"
+    key="0-620"
+    onClick={[Function]}
+  >
+    Hidden
+  </h3>
+  <h3
+    className="c-ui__nav-item qa-nav-form"
+    key="0-436"
+    onClick={[Function]}
+  >
+    New Poll
+  </h3>
+</div>
+`;
+
+exports[`nav bar should match snapshot (default) 1`] = `
+<div
+  className="c-ui__nav-bar"
+>
+  <h3
+    className="c-ui__nav-item qa-nav-all"
+    key="0-313"
+    onClick={[Function]}
+  >
+    All Polls
+  </h3>
+  <h3
+    className="c-ui__nav-item qa-nav-voted"
+    key="0-546"
+    onClick={[Function]}
+  >
+    Voted
+  </h3>
+  <h3
+    className="c-ui__nav-item qa-nav-hidden"
+    key="0-620"
+    onClick={[Function]}
+  >
+    Hidden
+  </h3>
+</div>
 `;

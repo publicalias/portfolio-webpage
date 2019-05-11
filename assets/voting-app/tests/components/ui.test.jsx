@@ -4,7 +4,7 @@
 
 const UI = require("../../scripts/components/ui");
 
-const { mockProps } = require("../test-helpers");
+const { testWrapper } = require("../test-helpers");
 
 //global imports
 
@@ -12,9 +12,7 @@ const { reactTests } = require("test-helpers/react-tests");
 
 //node modules
 
-const React = require("react");
-
-const { mount, shallow } = require("enzyme");
+const { MemoryRouter } = require("react-router-dom");
 
 //setup
 
@@ -24,10 +22,11 @@ beforeAll(reactTests.setup);
 
 describe("ui", () => {
 
+  const { testMount, testShallow } = testWrapper(UI, MemoryRouter);
+
   it("should match snapshot", () => {
 
-    const props = mockProps();
-    const wrapper = shallow(<UI {...props} />);
+    const { wrapper } = testShallow();
 
     expect(wrapper).toMatchSnapshot();
 
@@ -35,8 +34,7 @@ describe("ui", () => {
 
   it("should call metaGetPolls and metaGetUser on mount", () => {
 
-    const props = mockProps();
-    const wrapper = mount(<UI {...props} />);
+    const { props, wrapper } = testMount();
 
     const { actions: { metaGetPolls, metaGetUser } } = props;
 

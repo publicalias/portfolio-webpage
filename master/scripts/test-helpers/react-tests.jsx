@@ -3,14 +3,13 @@
 //node modules
 
 const Adapter = require("enzyme-adapter-react-16");
+const React = require("react");
 
-const { configure } = require("enzyme");
+const { configure, mount, shallow } = require("enzyme");
 
-//init mock props
+//init test wrapper
 
-const initMockProps = (newState, actions) => (data) => ({
-
-  data: newState(data),
+const mockProps = (newState, actions, data) => ({
 
   actions: Object.keys(actions).reduce((acc, e) => {
 
@@ -18,9 +17,45 @@ const initMockProps = (newState, actions) => (data) => ({
 
     return acc;
 
-  }, {})
+  }, {}),
+
+  data: newState(data),
+
+  history: {}
 
 });
+
+const initTestWrapper = (newState, actions) => (UUT, Context) => {
+
+  const wrapFn = (render) => (data) => {
+
+    const props = mockProps(newState, actions, data);
+
+    const Component = Context ? (
+      <Context>
+        <UUT {...props} />
+      </Context>
+    ) : <UUT {...props} />;
+
+    return {
+      props,
+      wrapper: render(Component)
+    };
+
+  };
+
+  const dive = (Component) => shallow(Component)
+    .find(UUT)
+    .dive();
+
+  const shallowFn = Context ? dive : shallow;
+
+  return {
+    testMount: wrapFn(mount),
+    testShallow: wrapFn(shallowFn)
+  };
+
+};
 
 //react tests
 
@@ -33,6 +68,6 @@ const reactTests = {
 //exports
 
 module.exports = {
-  initMockProps,
+  initTestWrapper,
   reactTests
 };

@@ -4,25 +4,25 @@
 
 const Form = require("../../../scripts/components/poll/form");
 
+const { testWrapper } = require("../../test-helpers");
+
 //global imports
 
 const { reactTests } = require("test-helpers/react-tests");
-
-//node modules
-
-const React = require("react");
-
-const { shallow } = require("enzyme");
 
 //setup
 
 beforeAll(reactTests.setup);
 
+//utilities
+
+const { testShallow } = testWrapper(Form);
+
 //form
 
 test("form should match snapshot", () => {
 
-  const wrapper = shallow(<Form />);
+  const { wrapper } = testShallow();
 
   expect(wrapper).toMatchSnapshot();
 

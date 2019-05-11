@@ -4,25 +4,25 @@
 
 const List = require("../../../scripts/components/poll/list");
 
+const { testWrapper } = require("../../test-helpers");
+
 //global imports
 
 const { reactTests } = require("test-helpers/react-tests");
-
-//node modules
-
-const React = require("react");
-
-const { shallow } = require("enzyme");
 
 //setup
 
 beforeAll(reactTests.setup);
 
+//utilities
+
+const { testShallow } = testWrapper(List);
+
 //list
 
 test("list should match snapshot", () => {
 
-  const wrapper = shallow(<List />);
+  const { wrapper } = testShallow();
 
   expect(wrapper).toMatchSnapshot();
 
