@@ -3,6 +3,7 @@
 //local imports
 
 const { encodeAPICall } = require("../client-utils");
+const { testMock } = require("./meta-tests");
 const { metaAddErrors, metaSetLoading } = require("../redux-utils/meta-factories");
 const { deepCopy } = require("../utilities");
 
@@ -21,16 +22,8 @@ const initHistory = () => {
 
   const history = {};
 
-  const testHistory = (redirects) => {
-
-    const calls = history.push.mock.calls;
-
-    expect(calls.length).toEqual(redirects.length);
-
-    calls.forEach((e, i) => {
-      expect(e[0]).toEqual(redirects[i]);
-    });
-
+  const testHistory = (...calls) => {
+    testMock(history.push, ...calls);
   };
 
   beforeEach(() => {
@@ -50,11 +43,7 @@ const testAPICall = (args) => {
 
   const { path, init } = encodeAPICall(args);
 
-  const calls = fetch.mock.calls;
-
-  expect(calls.length).toEqual(1);
-  expect(calls[0][0]).toEqual(path);
-  expect(calls[0][1]).toEqual(init);
+  testMock(fetch, [path, init]);
 
 };
 

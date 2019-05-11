@@ -96,7 +96,7 @@ describe("formCreatePoll", () => {
 
     await testAPI.success(action, args, { errors: [] }, actionList);
 
-    testHistory([]);
+    testHistory();
 
   });
 
@@ -104,7 +104,7 @@ describe("formCreatePoll", () => {
 
     await testAPI.failure(action, args);
 
-    testHistory([]);
+    testHistory();
 
   });
 

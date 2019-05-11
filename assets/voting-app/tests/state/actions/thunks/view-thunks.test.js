@@ -104,7 +104,7 @@ describe("viewDeletePoll", () => {
 
     await testAPI.failure(action, args);
 
-    testHistory([]);
+    testHistory();
 
   });
 

@@ -2,6 +2,7 @@
 
 //local imports
 
+const { testMock } = require("./meta-tests");
 const { newUser } = require("../schemas/master");
 const { bindObject } = require("../utilities");
 
@@ -10,46 +11,24 @@ const { bindObject } = require("../utilities");
 const { MongoClient } = require("mongodb");
 const { MongoMemoryServer } = require("mongodb-memory-server");
 
-//mock api call
+//init mock api call
 
-const mockAPICall = (fn, method) => async (user, data, type) => {
+const initMockAPICall = (fn, method) => async (user, data) => {
 
-  const req = Object.assign(user.auth ? {
-    user
-  } : {
-    ip: user.ip
-  }, method === "GET" || method === "DELETE" ? {
-    query: { data: JSON.stringify(data) }
-  } : {
-    body: { data }
-  });
+  const isQuery = method === "GET" || method === "DELETE";
 
+  const reqUser = user.auth ? { user } : { ip: user.ip };
+  const reqData = isQuery ? { query: { data: JSON.stringify(data) } } : { body: { data } };
+
+  const req = Object.assign(reqUser, reqData);
   const res = {
     json: jest.fn(),
     sendStatus: jest.fn()
   };
 
-  const json = res.json.mock.calls;
-  const sendStatus = res.sendStatus.mock.calls;
-
   await fn(req, res);
 
-  switch (type) {
-    case "json":
-
-      expect(json.length).toEqual(1);
-      expect(sendStatus.length).toEqual(0);
-
-      return json[0][0];
-
-    case "sendStatus":
-
-      expect(json.length).toEqual(0);
-      expect(sendStatus.length).toEqual(1);
-
-      return sendStatus[0][0];
-
-  }
+  return res;
 
 };
 
@@ -90,20 +69,22 @@ bindObject(mongoTests);
 
 //test auth fail
 
-const testAuthFail = async (handler, data, more = []) => {
+const testAuthFail = async (mockAPICall, data, other = []) => {
 
-  const users = [{}, newUser({ data: { restricted: true } })].concat(more);
+  const users = [{}, newUser({ data: { restricted: true } })].concat(other);
 
-  const output = await Promise.all(users.map((e) => handler(e, data, "sendStatus")));
+  const res = await Promise.all(users.map((e) => mockAPICall(e, data)));
 
-  expect(output).toEqual(Array(users.length).fill(401));
+  for (const e of res) {
+    testMock(e.sendStatus, [401]);
+  }
 
 };
 
 //exports
 
 module.exports = {
-  mockAPICall,
+  initMockAPICall,
   mongoTests,
   testAuthFail
 };

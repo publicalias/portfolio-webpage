@@ -8,6 +8,7 @@ const { testWrapper } = require("../test-helpers");
 
 //global imports
 
+const { testMock } = require("test-helpers/meta-tests");
 const { reactTests } = require("test-helpers/react-tests");
 
 //node modules
@@ -40,8 +41,8 @@ describe("ui", () => {
 
     wrapper.mount();
 
-    expect(metaGetPolls.mock.calls.length).toEqual(1);
-    expect(metaGetUser.mock.calls.length).toEqual(1);
+    testMock(metaGetPolls, []);
+    testMock(metaGetUser, []);
 
     wrapper.unmount();
 

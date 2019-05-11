@@ -9,6 +9,7 @@ const { testWrapper } = require("../test-helpers");
 //global imports
 
 const { newUser } = require("schemas/master");
+const { testMock } = require("test-helpers/meta-tests");
 const { reactTests } = require("test-helpers/react-tests");
 
 //setup
@@ -29,9 +30,7 @@ describe("nav bar", () => {
 
     wrapper.find(`.qa-nav-${id}`).simulate("click");
 
-    expect(menuSetFilter.mock.calls).toEqual([
-      [id, history]
-    ]);
+    testMock(menuSetFilter, [id, history]);
 
   };
 
@@ -67,9 +66,7 @@ describe("nav bar", () => {
 
     wrapper.find(".qa-nav-form").simulate("click");
 
-    expect(menuOpenForm.mock.calls).toEqual([
-      [history]
-    ]);
+    testMock(menuOpenForm, [history]);
 
   });
 

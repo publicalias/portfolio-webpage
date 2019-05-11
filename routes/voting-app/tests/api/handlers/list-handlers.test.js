@@ -10,7 +10,8 @@ const handlers = require("../../../scripts/api/handlers/list-handlers");
 
 const { newIPUser, newUser } = require("schemas/master");
 const { newPoll } = require("schemas/voting-app");
-const { mockAPICall, mongoTests, testAuthFail } = require("test-helpers/server-tests");
+const { testMock } = require("test-helpers/meta-tests");
+const { initMockAPICall, mongoTests, testAuthFail } = require("test-helpers/server-tests");
 
 //utilities
 
@@ -21,14 +22,15 @@ const initTestToggle = (handler, getData, prop) => async (user) => {
 
   const toggleProp = async (bool) => {
 
-    const output = await handler(user || {}, getData(), "json");
+    const res = await handler(user || {}, getData());
 
     const [update, actual] = await Promise.all([
       pollsCol().findOne(),
       user || usersCol().findOne()
     ]);
 
-    expect(output).toEqual({});
+    testMock(res.json, [{}]);
+
     expect(update.users[prop]).toEqual(bool ? [actual.id] : []);
 
   };
@@ -56,13 +58,13 @@ describe("listToggleFlag", () => {
 
   const { listToggleFlag } = handlers;
 
-  const handler = mockAPICall(listToggleFlag, "PATCH");
+  const mockAPICall = initMockAPICall(listToggleFlag, "PATCH");
 
   const getData = () => ({ id: "id-a" });
 
-  const testToggle = initTestToggle(handler, getData, "flagged");
+  const testToggle = initTestToggle(mockAPICall, getData, "flagged");
 
-  it("sends 401 if user is unauthenticated or restricted", () => testAuthFail(handler, getData()));
+  it("sends 401 if user is unauthenticated or restricted", () => testAuthFail(mockAPICall, getData()));
 
   it("sends object if user is valid", () => testToggle(newUser({ id: "id-b" })));
 
@@ -74,11 +76,11 @@ describe("listToggleHide", () => {
 
   const { listToggleHide } = handlers;
 
-  const handler = mockAPICall(listToggleHide, "PATCH");
+  const mockAPICall = initMockAPICall(listToggleHide, "PATCH");
 
   const getData = () => ({ id: "id-a" });
 
-  const testToggle = initTestToggle(handler, getData, "hidden");
+  const testToggle = initTestToggle(mockAPICall, getData, "hidden");
 
   it("sends object if user is authenticated", () => testToggle(newUser({ id: "id-b" })));
 

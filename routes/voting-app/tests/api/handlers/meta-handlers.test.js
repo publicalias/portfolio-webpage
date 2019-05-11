@@ -10,7 +10,8 @@ const handlers = require("../../../scripts/api/handlers/meta-handlers");
 
 const { newIPUser, newUser } = require("schemas/master");
 const { newPoll, newState } = require("schemas/voting-app");
-const { mockAPICall, mongoTests, testAuthFail } = require("test-helpers/server-tests");
+const { testMock } = require("test-helpers/meta-tests");
+const { initMockAPICall, mongoTests, testAuthFail } = require("test-helpers/server-tests");
 const { newSchema } = require("utilities");
 
 //utilities
@@ -33,7 +34,7 @@ describe("metaGetPolls", () => {
 
   const { metaGetPolls } = handlers;
 
-  const handler = mockAPICall(metaGetPolls, "GET");
+  const mockAPICall = initMockAPICall(metaGetPolls, "GET");
 
   const getData = (id, skip) => ({
     id,
@@ -48,9 +49,9 @@ describe("metaGetPolls", () => {
 
     await pollsCol().insertMany(polls);
 
-    const output = await handler({}, getData(id, skip), "json");
+    const res = await mockAPICall({}, getData(id, skip));
 
-    expect(output).toEqual({ polls: polls.slice(index) });
+    testMock(res.json, [{ polls: polls.slice(index) }]);
 
   };
 
@@ -66,7 +67,7 @@ describe("metaGetPolls (sort)", () => {
 
   const { metaGetPolls } = handlers;
 
-  const handler = mockAPICall(metaGetPolls, "GET");
+  const mockAPICall = initMockAPICall(metaGetPolls, "GET");
 
   const getData = (sort) => ({ list: mockList({ sort }) });
 
@@ -76,9 +77,9 @@ describe("metaGetPolls (sort)", () => {
 
     await pollsCol().insertMany(polls);
 
-    const output = await handler({}, getData(sort), "json");
+    const res = await mockAPICall({}, getData(sort));
 
-    expect(output).toEqual({ polls: polls.reverse() });
+    testMock(res.json, [{ polls: polls.reverse() }]);
 
   };
 
@@ -104,7 +105,7 @@ describe("metaGetPolls (search)", () => {
 
   const { metaGetPolls } = handlers;
 
-  const handler = mockAPICall(metaGetPolls, "GET");
+  const mockAPICall = initMockAPICall(metaGetPolls, "GET");
 
   const getData = (searched) => ({ list: mockList({ searched }) });
 
@@ -114,15 +115,15 @@ describe("metaGetPolls (search)", () => {
 
     await pollsCol().insertMany(polls);
 
-    const output = await handler({}, getData(search), "json");
+    const res = await mockAPICall({}, getData(search));
 
     if (search) {
-      output.polls.forEach((e, i) => {
-        polls[i].score = e.score;
-      });
+      for (const e of res.json.mock.calls[0][0].polls) {
+        delete e.score;
+      }
     }
 
-    expect(output).toEqual({ polls: polls.slice(0, count) });
+    testMock(res.json, [{ polls: polls.slice(0, count) }]);
 
   };
 
@@ -144,7 +145,7 @@ describe("metaGetPolls (filter)", () => {
 
   const { metaGetPolls } = handlers;
 
-  const handler = mockAPICall(metaGetPolls, "GET");
+  const mockAPICall = initMockAPICall(metaGetPolls, "GET");
 
   const getData = (filter) => ({ list: mockList({ filter }) });
 
@@ -160,10 +161,10 @@ describe("metaGetPolls (filter)", () => {
       usersCol().insertMany(users)
     ]);
 
-    const output = await Promise.all(users.map((e) => handler(e, getData(filter), "json")));
+    const res = await Promise.all(users.map((e) => mockAPICall(e, getData(filter))));
 
-    output.forEach((e, i) => {
-      expect(e).toEqual({ polls: polls.slice(0, counts[i]) });
+    res.forEach((e, i) => {
+      testMock(e.json, [{ polls: polls.slice(0, counts[i]) }]);
     });
 
   };
@@ -180,7 +181,7 @@ describe("metaGetPolls (filter)", () => {
 
     const data = getData("created");
 
-    return testAuthFail(handler, data);
+    return testAuthFail(mockAPICall, data);
 
   });
 
@@ -216,15 +217,15 @@ describe("metaGetUser", () => {
 
   const { metaGetUser } = handlers;
 
-  const handler = mockAPICall(metaGetUser, "GET");
+  const mockAPICall = initMockAPICall(metaGetUser, "GET");
 
   const getData = () => {};
 
   const testUser = async (user) => {
 
-    const output = await handler(user, getData(), "json");
+    const res = await mockAPICall(user, getData());
 
-    expect(output).toEqual({ user });
+    testMock(res.json, [{ user }]);
 
   };
 

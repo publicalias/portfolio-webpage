@@ -10,7 +10,8 @@ const handlers = require("../../../scripts/api/handlers/form-handlers");
 
 const { newUser } = require("schemas/master");
 const { newPoll, newState } = require("schemas/voting-app");
-const { mockAPICall, mongoTests, testAuthFail } = require("test-helpers/server-tests");
+const { testMock } = require("test-helpers/meta-tests");
+const { initMockAPICall, mongoTests, testAuthFail } = require("test-helpers/server-tests");
 const { newSchema } = require("utilities");
 
 //utilities
@@ -32,15 +33,15 @@ describe("formCreatePoll", () => {
 
   const { formCreatePoll } = handlers;
 
-  const handler = mockAPICall(formCreatePoll, "POST");
+  const mockAPICall = initMockAPICall(formCreatePoll, "POST");
 
   const getData = (form) => ({ form: mockForm(form) });
 
   const testError = async (error, data, docs = 0) => {
 
-    const output = await handler(newUser(), getData(data), "json");
+    const res = await mockAPICall(newUser(), getData(data));
 
-    expect(output).toEqual({ errors: [error] });
+    testMock(res.json, [{ errors: [error] }]);
 
     expect(await pollsCol().countDocuments()).toEqual(docs);
 
@@ -48,7 +49,7 @@ describe("formCreatePoll", () => {
 
   it("sends 401 if user is unauthenticated or restricted", async () => {
 
-    await testAuthFail(handler, getData());
+    await testAuthFail(mockAPICall, getData());
 
     expect(await pollsCol().countDocuments()).toEqual(0);
 
@@ -85,14 +86,14 @@ describe("formCreatePoll", () => {
 
   it("sends id if poll is valid", async () => {
 
-    const output = await handler(newUser(), getData({
+    const res = await mockAPICall(newUser(), getData({
       title: "Title A",
       options: ["Option A"]
-    }), "json");
+    }));
 
     const { id } = await pollsCol().findOne();
 
-    expect(output).toEqual({ id });
+    testMock(res.json, [{ id }]);
 
     expect(await pollsCol().countDocuments()).toEqual(1);
 
