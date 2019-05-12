@@ -1,7 +1,64 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`sidebar should match snapshot 1`] = `
+exports[`sidebar should match snapshot (authenticated) 1`] = `
 <div
   className="c-ui__sidebar"
-/>
+>
+  <p>
+    Hi, Ethan Frost!
+  </p>
+  <hr />
+  <a
+    href="/auth/logout"
+    key="0-666"
+  >
+    <button
+      className="c-ui__sidebar-item "
+    >
+      Logout
+    </button>
+  </a>
+  <DeleteButton />
+</div>
+`;
+
+exports[`sidebar should match snapshot (default) 1`] = `
+<div
+  className="c-ui__sidebar"
+>
+  <p>
+    Hi, Anonymous!
+  </p>
+  <hr />
+  <a
+    href="/auth/facebook"
+    key="0-826"
+  >
+    <button
+      className="c-ui__sidebar-item "
+    >
+      Facebook Login
+    </button>
+  </a>
+  <a
+    href="/auth/github"
+    key="0-643"
+  >
+    <button
+      className="c-ui__sidebar-item "
+    >
+      GitHub Login
+    </button>
+  </a>
+  <a
+    href="/auth/twitter"
+    key="0-787"
+  >
+    <button
+      className="c-ui__sidebar-item u-no-margin"
+    >
+      Twitter Login
+    </button>
+  </a>
+</div>
 `;

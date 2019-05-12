@@ -1,6 +1,7 @@
 @import "master";
 
 @import "components/cookie-banner";
+@import "components/delete-button";
 @import "components/error-message";
 
 @mixin grid-area {
@@ -19,9 +20,7 @@
   margin: 4.5vw auto;
   width: 91%;
 
-  &__form,
-  &__list,
-  &__view {
+  &__form, &__list, &__view {
     @include grid-area;
     grid-area: 2 / 5 / 2 / 13;
   }
@@ -40,4 +39,13 @@
     grid-area: 2 / 1 / 2 / 5;
   }
 
+  &__sidebar-item {
+    margin-bottom: 1.5vw;
+    width: 100%;
+  }
+
 }
+
+//utilities
+
+.u-no-margin { margin: 0; }

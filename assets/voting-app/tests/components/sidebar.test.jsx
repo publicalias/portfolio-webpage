@@ -8,22 +8,33 @@ const { testWrapper } = require("../test-helpers");
 
 //global imports
 
+const { newUser } = require("schemas/master");
 const { reactTests } = require("test-helpers/react-tests");
 
 //setup
 
 beforeAll(reactTests.setup);
 
-//utilities
-
-const { testShallow } = testWrapper(Sidebar);
-
 //sidebar
 
-test("sidebar should match snapshot", () => {
+describe("sidebar", () => {
 
-  const { wrapper } = testShallow();
+  const { testShallow } = testWrapper(Sidebar);
 
-  expect(wrapper).toMatchSnapshot();
+  it("should match snapshot (default)", () => {
+
+    const { wrapper } = testShallow();
+
+    expect(wrapper).toMatchSnapshot();
+
+  });
+
+  it("should match snapshot (authenticated)", () => {
+
+    const { wrapper } = testShallow({ user: newUser({ name: "Ethan Frost" }) });
+
+    expect(wrapper).toMatchSnapshot();
+
+  });
 
 });

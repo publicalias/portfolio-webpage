@@ -34,7 +34,7 @@ const UI = (props) => {
   return (
     <div className="c-ui">
       <NavBar {...props} />
-      <Sidebar />
+      <Sidebar {...props} />
       <Route
         component={List}
         exact
