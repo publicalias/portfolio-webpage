@@ -212,11 +212,8 @@ thead { @include font-head; }
 
 .js-check-input {
   &.is-mouse {
-
     button { &:enabled { &:not(.u-no-hover) { @include btn-hover; } } }
-
     .u-hover { @include btn-hover; }
-
   }
 }
 
@@ -244,5 +241,6 @@ thead { @include font-head; }
 
 .u-margin-full { margin-bottom: 3vw; }
 .u-margin-half { margin-bottom: 1.5vw; }
+.u-margin-right { margin-right: 1.5vw; }
 
 .u-underline { text-decoration: underline; }

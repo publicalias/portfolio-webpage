@@ -4,7 +4,6 @@
 
 const formFactories = require("./factories/form-factories");
 const listFactories = require("./factories/list-factories");
-const menuFactories = require("./factories/menu-factories");
 const viewFactories = require("./factories/view-factories");
 
 const formThunks = require("./thunks/form-thunks");
@@ -23,7 +22,6 @@ const actions = Object.assign(
 
   formFactories,
   listFactories,
-  menuFactories,
   metaFactories,
   viewFactories,
 

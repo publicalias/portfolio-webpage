@@ -4,7 +4,6 @@
 
 const formHandlers = require("./handlers/form-handlers");
 const listHandlers = require("./handlers/list-handlers");
-const menuHandlers = require("./handlers/menu-handlers");
 const viewHandlers = require("./handlers/view-handlers");
 
 //global imports
@@ -19,7 +18,6 @@ const { newState } = require("schemas/voting-app");
 const reducer = initReducer(newState(), Object.assign(
   formHandlers,
   listHandlers,
-  menuHandlers,
   metaHandlers,
   viewHandlers
 ));

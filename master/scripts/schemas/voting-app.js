@@ -39,7 +39,6 @@ const newPoll = newSchema({
 const newState = newSchema({
   user: {},
   polls: [],
-  menu: { confirm: false },
   list: {
     filter: "all",
     search: "",

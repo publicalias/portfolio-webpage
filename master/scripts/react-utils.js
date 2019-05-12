@@ -82,13 +82,7 @@ const useSetState = (initialState) => {
       queue.push(fn);
     }
 
-    setState((state) => {
-
-      const fn = typeof merge === "function" ? merge : () => merge;
-
-      return Object.assign({}, state, fn(state));
-
-    });
+    setState((state) => Object.assign({}, state, merge));
 
   }];
 

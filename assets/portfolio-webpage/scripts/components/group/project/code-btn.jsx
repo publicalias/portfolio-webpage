@@ -20,7 +20,7 @@ const CodeBtn = (props) => {
     </a>
   ) : (
     <div className="c-btn-set">
-      <a className="c-btn-set__link--first" href={voidLink(code.client)}>
+      <a className="c-btn-set__link u-margin-right" href={voidLink(code.client)}>
         <button className="c-btn-set__btn">View code (client)</button>
       </a>
       <a className="c-btn-set__link" href={voidLink(code.server)}>
