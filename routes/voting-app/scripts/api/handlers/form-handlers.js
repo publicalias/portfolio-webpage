@@ -26,14 +26,14 @@ const handleCreate = async (req, res) => {
   await pollsCol().createIndex({ title: 1 }, { unique: true });
 
   await pollsCol().insertOne(newPoll({
-    title: form.title,
+    title: form.title.trim(),
     author: req.user.name,
     id,
     date: Date.now(),
     private: form.private,
     users: { created: req.user.id },
     options: form.options.map((e) => ({
-      text: e,
+      text: e.trim(),
       created: req.user.id
     }))
   }));
@@ -60,14 +60,20 @@ const formCreatePoll = async (req, res) => {
     bool: !form.title.trim(),
     text: "Title must not be empty"
   }, {
+    bool: form.title.length > 100,
+    text: "Title must not exceed character limit"
+  }, {
     bool: exists,
     text: "Title must be unique"
   }, {
     bool: obscene.test(form.title),
     text: "Title must not be obscene"
   }, {
-    bool: form.options.filter((e) => e.trim() === "").length,
+    bool: form.options.filter((e) => !e.trim()).length,
     text: "Option must not be empty"
+  }, {
+    bool: form.options.filter((e) => e.length > 100).length,
+    text: "Option must not exceed character limit"
   }, {
     bool: form.options.filter((e, i, arr) => arr.lastIndexOf(e) !== i).length,
     text: "Option must be unique"

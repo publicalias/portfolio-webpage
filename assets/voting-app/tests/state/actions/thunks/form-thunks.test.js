@@ -5,57 +5,13 @@
 //local imports
 
 const { actions } = require("../../../../scripts/state/actions/actions");
-const { testAPI, testThunk } = require("../../../test-helpers");
+const { testAPI } = require("../../../test-helpers");
 
 //global imports
 
 const { newState } = require("schemas/voting-app");
 const { initHistory } = require("test-helpers/redux-tests");
 const { deepCopy } = require("utilities");
-
-//form add option
-
-describe("formAddOption", () => {
-
-  const { formAddOption, metaAddErrors, metaSetState } = actions;
-
-  const action = formAddOption();
-
-  const testOption = (add, output) => {
-
-    const actionList = [typeof output === "string" ? metaAddErrors([output]) : metaSetState(output)];
-
-    testThunk(action, actionList, deepCopy(newState(), {
-      form: {
-        options: ["Option A", "Option B"],
-        add
-      }
-    }));
-
-  };
-
-  it("dispatches META_ADD_ERRORS action if option is empty", () => {
-    testOption("", "Option must not be empty");
-  });
-
-  it("dispatches META_ADD_ERRORS action if option is duplicate", () => {
-    testOption("Option A", "Option must be unique");
-  });
-
-  it("dispatches META_ADD_ERRORS action if option is obscene", () => {
-    testOption("Fuck", "Option must not be obscene");
-  });
-
-  it("dispatches META_SET_STATE action if option is valid", () => {
-    testOption("Option C", {
-      form: {
-        options: ["Option A", "Option B", "Option C"],
-        add: ""
-      }
-    });
-  });
-
-});
 
 //form create poll
 

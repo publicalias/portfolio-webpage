@@ -6,6 +6,8 @@
 
 const handlers = require("../../../scripts/api/handlers/view-handlers");
 
+const { overlyLongInput } = require("../../test-helpers");
+
 //global imports
 
 const { newIPUser, newUser } = require("schemas/master");
@@ -90,6 +92,8 @@ describe("viewAddOption", () => {
   it("sends 401 if user is unauthenticated or restricted", () => testAuthFail(mockAPICall, getData()));
 
   it("sends errors if option is empty", () => testError("Option must not be empty", ""));
+
+  it("sends errors if option is too long", () => testError("Option must not exceed character limit", overlyLongInput));
 
   it("sends errors if option is duplicate", () => {
 

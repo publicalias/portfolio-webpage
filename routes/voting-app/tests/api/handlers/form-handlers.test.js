@@ -6,6 +6,8 @@
 
 const handlers = require("../../../scripts/api/handlers/form-handlers");
 
+const { overlyLongInput } = require("../../test-helpers");
+
 //global imports
 
 const { newUser } = require("schemas/master");
@@ -41,7 +43,7 @@ describe("formCreatePoll", () => {
 
     const res = await mockAPICall(newUser(), getData(data));
 
-    testMock(res.json, [{ errors: [error] }]);
+    expect(res.json.mock.calls[0][0].errors.includes(error)).toEqual(true);
 
     expect(await pollsCol().countDocuments()).toEqual(docs);
 
@@ -57,6 +59,8 @@ describe("formCreatePoll", () => {
 
   it("sends errors if title is empty", () => testError("Title must not be empty"));
 
+  it("sends errors if title is too long", () => testError("Title must not exceed character limit", { title: overlyLongInput }));
+
   it("sends errors if title is duplicate", async () => {
 
     const data = { title: "Title A" };
@@ -69,20 +73,13 @@ describe("formCreatePoll", () => {
 
   it("sends errors if title is obscene", () => testError("Title must not be obscene", { title: "Fuck" }));
 
-  it("sends errors if option is empty", () => testError("Option must not be empty", {
-    title: "Title A",
-    options: [""]
-  }));
+  it("sends errors if option is empty", () => testError("Option must not be empty", { options: [""] }));
 
-  it("sends errors if option is duplicate", () => testError("Option must be unique", {
-    title: "Title A",
-    options: ["Option A", "Option A"]
-  }));
+  it("sends errors if option is too long", () => testError("Option must not exceed character limit", { options: [overlyLongInput] }));
 
-  it("sends errors if option is obscene", () => testError("Option must not be obscene", {
-    title: "Title A",
-    options: ["Fuck"]
-  }));
+  it("sends errors if option is duplicate", () => testError("Option must be unique", { options: ["Option A", "Option A"] }));
+
+  it("sends errors if option is obscene", () => testError("Option must not be obscene", { options: ["Fuck"] }));
 
   it("sends id if poll is valid", async () => {
 

@@ -5,41 +5,7 @@
 const { reduxAPICall } = require("redux-utils/client-utils");
 const { metaAddErrors, metaSetState } = require("redux-utils/meta-factories");
 const { newState } = require("schemas/voting-app");
-const { checkErrors, deepCopy } = require("utilities");
-
-//node modules
-
-const { regex: obscene } = require("badwords-list");
-
-//form add option
-
-const formAddOption = () => (dispatch, getState) => {
-
-  const { form } = getState();
-
-  const errors = checkErrors([{
-    bool: !form.add.trim(),
-    text: "Option must not be empty"
-  }, {
-    bool: form.options.filter((e) => e === form.add).length,
-    text: "Option must be unique"
-  }, {
-    bool: obscene.test(form.add),
-    text: "Option must not be obscene"
-  }]);
-
-  if (errors.length) {
-    dispatch(metaAddErrors(errors));
-  } else {
-    dispatch(metaSetState({
-      form: {
-        options: form.options.concat(form.add),
-        add: ""
-      }
-    }));
-  }
-
-};
+const { deepCopy } = require("utilities");
 
 //form create poll
 
@@ -83,7 +49,4 @@ const formCreatePoll = (history) => (dispatch, getState) => {
 
 //exports
 
-module.exports = {
-  formAddOption,
-  formCreatePoll
-};
+module.exports = { formCreatePoll };

@@ -5,6 +5,15 @@
 const { newState } = require("schemas/voting-app");
 const { deepCopy } = require("utilities");
 
+//form add option
+
+const FORM_ADD_OPTION = (state) => deepCopy(state, {
+  form: {
+    options: state.form.options.concat(state.form.add),
+    add: ""
+  }
+});
+
 //form discard poll
 
 const FORM_DISCARD_POLL = (state) => deepCopy(state, { form: newState().form });
@@ -38,6 +47,7 @@ const FORM_TOGGLE_PRIVATE = (state) => deepCopy(state, { form: { private: !state
 //exports
 
 module.exports = {
+  FORM_ADD_OPTION,
   FORM_DISCARD_POLL,
   FORM_REMOVE_OPTION,
   FORM_SET_ADD_TEXT,

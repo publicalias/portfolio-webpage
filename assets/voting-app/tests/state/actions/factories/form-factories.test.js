@@ -4,6 +4,16 @@
 
 const { actions } = require("../../../../scripts/state/actions/actions");
 
+//form add option
+
+test("formAddOption creates FORM_ADD_OPTION actions", () => {
+
+  const { formAddOption } = actions;
+
+  expect(formAddOption()).toEqual({ type: "FORM_ADD_OPTION" });
+
+});
+
 //form discard poll
 
 test("formDiscardPoll creates FORM_DISCARD_POLL actions", () => {

@@ -62,6 +62,9 @@ const viewAddOption = async (req, res) => {
     bool: !text.trim(),
     text: "Option must not be empty"
   }, {
+    bool: text.length > 100,
+    text: "Option must not exceed character limit"
+  }, {
     bool: options.filter((e) => e.text === text).length,
     text: "Option must be unique"
   }, {

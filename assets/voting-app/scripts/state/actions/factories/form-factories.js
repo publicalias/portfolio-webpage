@@ -1,5 +1,9 @@
 "use strict";
 
+//form add option
+
+const formAddOption = () => ({ type: "FORM_ADD_OPTION" });
+
 //form discard poll
 
 const formDiscardPoll = () => ({ type: "FORM_DISCARD_POLL" });
@@ -36,6 +40,7 @@ const formTogglePrivate = () => ({ type: "FORM_TOGGLE_PRIVATE" });
 //exports
 
 module.exports = {
+  formAddOption,
   formDiscardPoll,
   formRemoveOption,
   formSetAddText,

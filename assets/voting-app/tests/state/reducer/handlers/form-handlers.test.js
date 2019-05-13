@@ -9,6 +9,21 @@ const { testReducer } = require("../../../test-helpers");
 
 const { newState } = require("schemas/voting-app");
 
+//form add option
+
+test("reducer accepts FORM_ADD_OPTION actions", () => {
+
+  const { formAddOption } = actions;
+
+  testReducer(formAddOption(), { form: { add: "Option A" } }, {
+    form: {
+      options: ["Option A"],
+      add: ""
+    }
+  });
+
+});
+
 //form discard poll
 
 test("reducer accepts FORM_DISCARD_POLL actions", () => {
