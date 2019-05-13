@@ -12,7 +12,7 @@
   }
 
   height: calc(100vh - 9vw);
-  max-height: (91vw - 9vw) * 11 / 8.5;
+  max-height: 90vw;
   width: 100%;
   &__iframe { @include square(100%); }
 
