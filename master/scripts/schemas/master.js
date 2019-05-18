@@ -1,6 +1,8 @@
 "use strict";
 
-const { deepCopy } = require("utilities");
+//local imports
+
+const { deepCopy } = require("../utilities");
 
 //init schema
 
