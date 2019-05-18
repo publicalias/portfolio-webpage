@@ -1,19 +1,31 @@
 "use strict";
 
-//local imports
+const { deepCopy } = require("utilities");
 
-const { newSchema } = require("../utilities");
+//init schema
+
+const initSchema = (schema, replace = {}) => (data = {}) => {
+
+  for (const p in replace) {
+    if (p in data) {
+      data[p] = replace[p](data[p]);
+    }
+  }
+
+  return deepCopy(schema, data);
+
+};
 
 //new error
 
-const newError = newSchema({
+const newError = initSchema({
   text: "",
   timer: 3000
 });
 
 //new ip user
 
-const newIPUser = newSchema({
+const newIPUser = initSchema({
   id: "",
   type: "ip",
   ip: ""
@@ -21,7 +33,7 @@ const newIPUser = newSchema({
 
 //new user
 
-const newUser = newSchema({
+const newUser = initSchema({
   name: "",
   id: "",
   type: "auth",
@@ -35,6 +47,7 @@ const newUser = newSchema({
 //exports
 
 module.exports = {
+  initSchema,
   newError,
   newIPUser,
   newUser

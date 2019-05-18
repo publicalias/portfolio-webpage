@@ -2,11 +2,10 @@
 
 //local imports
 
-const { findByID } = require("../../app-logic");
+const { findByID, handleOption, handleToggle } = require("../../app-logic");
 
 //global imports
 
-const { newOption } = require(`${__scripts}/schemas/voting-app`);
 const { getOrSetUser, retryWrite } = require(`${__scripts}/redux-utils/server-utils`);
 const { checkErrors } = require(`${__scripts}/utilities`);
 
@@ -18,33 +17,9 @@ const { regex: obscene } = require("badwords-list");
 
 const pollsCol = () => db.collection("voting-app/polls");
 
-//view add option
+//poll add option
 
-const handleOption = async (req, res) => {
-
-  const { id, text } = req.body.data;
-
-  const { matchedCount } = await pollsCol().updateOne({
-    id,
-    "options.text": { $ne: text }
-  }, {
-    $push: {
-      options: newOption({
-        text,
-        created: req.user.id
-      })
-    }
-  });
-
-  if (matchedCount) {
-    res.json({});
-  } else {
-    res.sendStatus(500);
-  }
-
-};
-
-const viewAddOption = async (req, res) => {
+const pollAddOption = async (req, res) => {
 
   if (!req.user || req.user.data.restricted) {
 
@@ -80,9 +55,9 @@ const viewAddOption = async (req, res) => {
 
 };
 
-//view cast vote
+//poll cast vote
 
-const viewCastVote = async (req, res) => {
+const pollCastVote = async (req, res) => {
 
   const { id, text } = req.body.data;
 
@@ -117,33 +92,9 @@ const viewCastVote = async (req, res) => {
 
 };
 
-//view delete poll
+//poll remove option
 
-const viewDeletePoll = async (req, res) => {
-
-  const { id } = JSON.parse(req.query.data);
-
-  const { users } = await findByID(id);
-
-  const created = (id) => id === users.created;
-
-  if (!req.user || req.user.data.restricted || !created(req.user.id)) {
-
-    res.sendStatus(401);
-
-    return;
-
-  }
-
-  await pollsCol().deleteOne({ id });
-
-  res.json({});
-
-};
-
-//view remove option
-
-const viewRemoveOption = async (req, res) => {
+const pollRemoveOption = async (req, res) => {
 
   const { id, text } = req.body.data;
 
@@ -184,9 +135,41 @@ const viewRemoveOption = async (req, res) => {
 
 };
 
-//view toggle private
+//poll toggle flag
 
-const viewTogglePrivate = async (req, res) => {
+const pollToggleFlag = async (req, res) => {
+
+  if (!req.user || req.user.data.restricted) {
+
+    res.sendStatus(401);
+
+    return;
+
+  }
+
+  const { id } = req.body.data;
+
+  await handleToggle(id, req.user, "flagged");
+
+  res.json({});
+
+};
+
+//poll toggle hide
+
+const pollToggleHide = async (req, res) => {
+
+  const { id } = req.body.data;
+
+  await handleToggle(id, await getOrSetUser(req), "hidden");
+
+  res.json({});
+
+};
+
+//poll toggle secret
+
+const pollToggleSecret = async (req, res) => {
 
   const { id } = req.body.data;
 
@@ -204,13 +187,13 @@ const viewTogglePrivate = async (req, res) => {
 
   await retryWrite(async () => {
 
-    const { private: bool } = await findByID(id);
+    const { secret: bool } = await findByID(id);
 
     const { matchedCount } = await pollsCol().updateOne({
       id,
-      private: bool
+      secret: bool
     }, {
-      $set: { private: !bool }
+      $set: { secret: !bool }
     });
 
     return matchedCount;
@@ -224,9 +207,10 @@ const viewTogglePrivate = async (req, res) => {
 //exports
 
 module.exports = {
-  viewAddOption,
-  viewCastVote,
-  viewDeletePoll,
-  viewRemoveOption,
-  viewTogglePrivate
+  pollAddOption,
+  pollCastVote,
+  pollRemoveOption,
+  pollToggleFlag,
+  pollToggleHide,
+  pollToggleSecret
 };

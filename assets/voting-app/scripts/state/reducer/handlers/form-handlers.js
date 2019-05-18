@@ -28,21 +28,21 @@ const FORM_REMOVE_OPTION = (state, { text }) => {
 
 };
 
-//form set add text
+//form set add
 
-const FORM_SET_ADD_TEXT = (state, { add }) => deepCopy(state, { form: { add } });
+const FORM_SET_ADD = (state, { add }) => deepCopy(state, { form: { add } });
 
-//form set title text
+//form set title
 
-const FORM_SET_TITLE_TEXT = (state, { title }) => deepCopy(state, { form: { title } });
+const FORM_SET_TITLE = (state, { title }) => deepCopy(state, { form: { title } });
 
 //form toggle confirm
 
 const FORM_TOGGLE_CONFIRM = (state) => deepCopy(state, { form: { confirm: !state.form.confirm } });
 
-//form toggle private
+//form toggle secret
 
-const FORM_TOGGLE_PRIVATE = (state) => deepCopy(state, { form: { private: !state.form.private } });
+const FORM_TOGGLE_SECRET = (state) => deepCopy(state, { form: { secret: !state.form.secret } });
 
 //exports
 
@@ -50,8 +50,8 @@ module.exports = {
   FORM_ADD_OPTION,
   FORM_DISCARD_POLL,
   FORM_REMOVE_OPTION,
-  FORM_SET_ADD_TEXT,
-  FORM_SET_TITLE_TEXT,
+  FORM_SET_ADD,
+  FORM_SET_TITLE,
   FORM_TOGGLE_CONFIRM,
-  FORM_TOGGLE_PRIVATE
+  FORM_TOGGLE_SECRET
 };

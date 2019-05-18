@@ -17,14 +17,14 @@ test("listSetIndex creates LIST_SET_INDEX actions", () => {
 
 });
 
-//list set search text
+//list set search
 
-test("listSetSearchText creates LIST_SET_SEARCH_TEXT actions", () => {
+test("listSetSearch creates LIST_SET_SEARCH actions", () => {
 
-  const { listSetSearchText } = actions;
+  const { listSetSearch } = actions;
 
-  expect(listSetSearchText("")).toEqual({
-    type: "LIST_SET_SEARCH_TEXT",
+  expect(listSetSearch("")).toEqual({
+    type: "LIST_SET_SEARCH",
     search: ""
   });
 

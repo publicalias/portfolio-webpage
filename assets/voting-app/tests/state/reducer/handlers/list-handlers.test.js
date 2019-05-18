@@ -17,11 +17,11 @@ test("reducer accepts LIST_SET_INDEX actions", () => {
 
 //list set search
 
-test("reducer accepts LIST_SET_SEARCH_TEXT actions", () => {
+test("reducer accepts LIST_SET_SEARCH actions", () => {
 
-  const { listSetSearchText } = actions;
+  const { listSetSearch } = actions;
 
-  testReducer(listSetSearchText("Apple"), {}, { list: { search: "Apple" } });
+  testReducer(listSetSearch("Apple"), {}, { list: { search: "Apple" } });
 
 });
 

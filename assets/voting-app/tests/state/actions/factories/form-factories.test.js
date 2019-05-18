@@ -37,27 +37,27 @@ test("formRemoveOption creates FORM_REMOVE_OPTION actions", () => {
 
 });
 
-//form set add text
+//form set add
 
-test("formSetAddText creates FORM_SET_ADD_TEXT actions", () => {
+test("formSetAdd creates FORM_SET_ADD actions", () => {
 
-  const { formSetAddText } = actions;
+  const { formSetAdd } = actions;
 
-  expect(formSetAddText("")).toEqual({
-    type: "FORM_SET_ADD_TEXT",
+  expect(formSetAdd("")).toEqual({
+    type: "FORM_SET_ADD",
     add: ""
   });
 
 });
 
-//form set title text
+//form set title
 
-test("formSetTitleText creates FORM_SET_TITLE_TEXT actions", () => {
+test("formSetTitle creates FORM_SET_TITLE actions", () => {
 
-  const { formSetTitleText } = actions;
+  const { formSetTitle } = actions;
 
-  expect(formSetTitleText("")).toEqual({
-    type: "FORM_SET_TITLE_TEXT",
+  expect(formSetTitle("")).toEqual({
+    type: "FORM_SET_TITLE",
     title: ""
   });
 
@@ -73,12 +73,12 @@ test("formToggleConfirm creates FORM_TOGGLE_CONFIRM actions", () => {
 
 });
 
-//form toggle private
+//form toggle secret
 
-test("formTogglePrivate creates FORM_TOGGLE_PRIVATE actions", () => {
+test("formToggleSecret creates FORM_TOGGLE_SECRET actions", () => {
 
-  const { formTogglePrivate } = actions;
+  const { formToggleSecret } = actions;
 
-  expect(formTogglePrivate()).toEqual({ type: "FORM_TOGGLE_PRIVATE" });
+  expect(formToggleSecret()).toEqual({ type: "FORM_TOGGLE_SECRET" });
 
 });

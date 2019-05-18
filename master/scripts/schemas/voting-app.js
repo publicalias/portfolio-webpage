@@ -2,12 +2,11 @@
 
 //local imports
 
-const { newError } = require("./master");
-const { newSchema } = require("../utilities");
+const { initSchema, newError } = require("./master");
 
 //new option
 
-const newOption = newSchema({
+const newOption = initSchema({
   text: "",
   created: "",
   voted: []
@@ -15,12 +14,12 @@ const newOption = newSchema({
 
 //new poll
 
-const newPoll = newSchema({
+const newPoll = initSchema({
   title: "",
   author: "",
   id: "",
   date: 0,
-  private: false,
+  secret: false,
   users: {
     created: "",
     voted: 0,
@@ -36,7 +35,7 @@ const newPoll = newSchema({
 
 //new state
 
-const newState = newSchema({
+const newState = initSchema({
   user: {},
   polls: [],
   list: {
@@ -50,7 +49,7 @@ const newState = newSchema({
     title: "",
     options: [],
     add: "",
-    private: false,
+    secret: false,
     confirm: false
   },
   view: {

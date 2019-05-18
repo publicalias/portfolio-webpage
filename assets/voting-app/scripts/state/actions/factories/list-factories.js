@@ -7,10 +7,10 @@ const listSetIndex = (index) => ({
   index
 });
 
-//list set search text
+//list set search
 
-const listSetSearchText = (search) => ({
-  type: "LIST_SET_SEARCH_TEXT",
+const listSetSearch = (search) => ({
+  type: "LIST_SET_SEARCH",
   search
 });
 
@@ -29,7 +29,7 @@ const listSubmitSearch = () => ({ type: "LIST_SUBMIT_SEARCH" });
 
 module.exports = {
   listSetIndex,
-  listSetSearchText,
+  listSetSearch,
   listSetSort,
   listSubmitSearch
 };

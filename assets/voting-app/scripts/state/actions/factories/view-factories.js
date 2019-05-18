@@ -1,9 +1,9 @@
 "use strict";
 
-//view set add text
+//view set add
 
-const viewSetAddText = (add) => ({
-  type: "VIEW_SET_ADD_TEXT",
+const viewSetAdd = (add) => ({
+  type: "VIEW_SET_ADD",
   add
 });
 
@@ -18,7 +18,7 @@ const viewToggleSettings = () => ({ type: "VIEW_TOGGLE_SETTINGS" });
 //exports
 
 module.exports = {
-  viewSetAddText,
+  viewSetAdd,
   viewToggleConfirm,
   viewToggleSettings
 };

@@ -122,20 +122,6 @@ const months = [
   "December"
 ];
 
-//new schema
-
-const newSchema = (schema, replace = {}) => (data = {}) => {
-
-  for (const p in replace) {
-    if (p in data) {
-      data[p] = replace[p](data[p]);
-    }
-  }
-
-  return deepCopy(schema, data);
-
-};
-
 //rng int
 
 const rngInt = (min, max, inc = false) => Math.floor(Math.random() * (max - min + Number(inc))) + min;
@@ -180,7 +166,6 @@ module.exports = {
   initDeepCopy,
   leadZero,
   months,
-  newSchema,
   rngInt,
   roundTo,
   toPrecision,

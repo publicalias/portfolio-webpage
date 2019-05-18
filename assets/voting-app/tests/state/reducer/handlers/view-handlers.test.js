@@ -5,13 +5,13 @@
 const { actions } = require("../../../../scripts/state/actions/actions");
 const { testReducer } = require("../../../test-helpers");
 
-//view set add text
+//view set add
 
-test("reducer accepts VIEW_SET_ADD_TEXT actions", () => {
+test("reducer accepts VIEW_SET_ADD actions", () => {
 
-  const { viewSetAddText } = actions;
+  const { viewSetAdd } = actions;
 
-  testReducer(viewSetAddText("Option A"), {}, { view: { add: "Option A" } });
+  testReducer(viewSetAdd("Option A"), {}, { view: { add: "Option A" } });
 
 });
 

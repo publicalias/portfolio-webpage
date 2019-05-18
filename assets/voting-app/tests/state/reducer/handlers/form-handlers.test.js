@@ -44,23 +44,23 @@ test("reducer accepts FORM_REMOVE_OPTION actions", () => {
 
 });
 
-//form set add text
+//form set add
 
-test("reducer accepts FORM_SET_ADD_TEXT actions", () => {
+test("reducer accepts FORM_SET_ADD actions", () => {
 
-  const { formSetAddText } = actions;
+  const { formSetAdd } = actions;
 
-  testReducer(formSetAddText("Option A"), {}, { form: { add: "Option A" } });
+  testReducer(formSetAdd("Option A"), {}, { form: { add: "Option A" } });
 
 });
 
-//form set title text
+//form set title
 
-test("reducer accepts FORM_SET_TITLE_TEXT actions", () => {
+test("reducer accepts FORM_SET_TITLE actions", () => {
 
-  const { formSetTitleText } = actions;
+  const { formSetTitle } = actions;
 
-  testReducer(formSetTitleText("Title A"), {}, { form: { title: "Title A" } });
+  testReducer(formSetTitle("Title A"), {}, { form: { title: "Title A" } });
 
 });
 
@@ -74,12 +74,12 @@ test("reducer accepts FORM_TOGGLE_CONFIRM actions", () => {
 
 });
 
-//form toggle private
+//form toggle secret
 
-test("reducer accepts FORM_TOGGLE_PRIVATE actions", () => {
+test("reducer accepts FORM_TOGGLE_SECRET actions", () => {
 
-  const { formTogglePrivate } = actions;
+  const { formToggleSecret } = actions;
 
-  testReducer(formTogglePrivate(), {}, { form: { private: true } });
+  testReducer(formToggleSecret(), {}, { form: { secret: true } });
 
 });

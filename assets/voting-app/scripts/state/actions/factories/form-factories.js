@@ -15,17 +15,17 @@ const formRemoveOption = (text) => ({
   text
 });
 
-//form set add text
+//form set add
 
-const formSetAddText = (add) => ({
-  type: "FORM_SET_ADD_TEXT",
+const formSetAdd = (add) => ({
+  type: "FORM_SET_ADD",
   add
 });
 
-//form set title text
+//form set title
 
-const formSetTitleText = (title) => ({
-  type: "FORM_SET_TITLE_TEXT",
+const formSetTitle = (title) => ({
+  type: "FORM_SET_TITLE",
   title
 });
 
@@ -33,9 +33,9 @@ const formSetTitleText = (title) => ({
 
 const formToggleConfirm = () => ({ type: "FORM_TOGGLE_CONFIRM" });
 
-//form toggle private
+//form toggle secret
 
-const formTogglePrivate = () => ({ type: "FORM_TOGGLE_PRIVATE" });
+const formToggleSecret = () => ({ type: "FORM_TOGGLE_SECRET" });
 
 //exports
 
@@ -43,8 +43,8 @@ module.exports = {
   formAddOption,
   formDiscardPoll,
   formRemoveOption,
-  formSetAddText,
-  formSetTitleText,
+  formSetAdd,
+  formSetTitle,
   formToggleConfirm,
-  formTogglePrivate
+  formToggleSecret
 };

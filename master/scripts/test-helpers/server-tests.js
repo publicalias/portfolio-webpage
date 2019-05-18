@@ -59,7 +59,16 @@ const mongoTests = {
 
   reset(...args) {
     return async () => {
-      await Promise.all(args.map((e) => e().deleteMany()));
+
+      const mapAll = (fn) => Promise.all(args.map((e) => fn(e())));
+
+      await mapAll((e) => e.createIndex({ __qa: 1 })); //prevents error if no index exists
+
+      await Promise.all([
+        mapAll((e) => e.deleteMany()),
+        mapAll((e) => e.dropIndexes())
+      ]);
+
     };
   }
 

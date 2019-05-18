@@ -8,9 +8,9 @@ const { deepCopy } = require("utilities");
 
 const LIST_SET_INDEX = (state, { index }) => deepCopy(state, { list: { index } });
 
-//list set search text
+//list set search
 
-const LIST_SET_SEARCH_TEXT = (state, { search }) => deepCopy(state, { list: { search } });
+const LIST_SET_SEARCH = (state, { search }) => deepCopy(state, { list: { search } });
 
 //list set sort
 
@@ -35,7 +35,7 @@ const LIST_SUBMIT_SEARCH = (state) => deepCopy(state, {
 
 module.exports = {
   LIST_SET_INDEX,
-  LIST_SET_SEARCH_TEXT,
+  LIST_SET_SEARCH,
   LIST_SET_SORT,
   LIST_SUBMIT_SEARCH
 };

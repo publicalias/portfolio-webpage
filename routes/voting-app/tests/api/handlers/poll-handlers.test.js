@@ -4,9 +4,9 @@
 
 //local imports
 
-const handlers = require("../../../scripts/api/handlers/view-handlers");
+const handlers = require("../../../scripts/api/handlers/poll-handlers");
 
-const { overlyLongInput } = require("../../test-helpers");
+const { initTestVote, initTestToggle, overlyLongInput } = require("../../test-helpers");
 
 //global imports
 
@@ -20,43 +20,6 @@ const { initMockAPICall, mongoTests, testAuthFail } = require("test-helpers/serv
 const pollsCol = () => db.collection("voting-app/polls");
 const usersCol = () => db.collection("auth/users");
 
-const initTestVote = (handler, getData) => async (user) => {
-
-  const options = [{ text: "Option A" }, { text: "Option B" }];
-
-  const castVote = async (index) => {
-
-    const res = await handler(user || {}, getData(options[index].text));
-
-    const [update, actual] = await Promise.all([
-      pollsCol().findOne(),
-      user || usersCol().findOne()
-    ]);
-
-    const checkVote = (val) => {
-      expect(update.options[val].voted).toEqual(index === val ? [actual.id] : []);
-    };
-
-    testMock(res.json, [{}]);
-
-    checkVote(0);
-    checkVote(1);
-
-  };
-
-  await Promise.all([
-    pollsCol().insertOne(newPoll({
-      id: "id-a",
-      options
-    })),
-    user && "ip" in user && usersCol().insertOne(user)
-  ]);
-
-  await castVote(0);
-  await castVote(1);
-
-};
-
 //setup
 
 beforeAll(mongoTests.setup);
@@ -64,13 +27,13 @@ afterAll(mongoTests.teardown);
 
 afterEach(mongoTests.reset(pollsCol, usersCol));
 
-//view add option
+//poll add option
 
-describe("viewAddOption", () => {
+describe("pollAddOption", () => {
 
-  const { viewAddOption } = handlers;
+  const { pollAddOption } = handlers;
 
-  const mockAPICall = initMockAPICall(viewAddOption, "PATCH");
+  const mockAPICall = initMockAPICall(pollAddOption, "PATCH");
 
   const getData = (text) => ({
     id: "id-a",
@@ -130,13 +93,13 @@ describe("viewAddOption", () => {
 
 });
 
-//view cast vote
+//poll cast vote
 
-describe("viewCastVote", () => {
+describe("pollCastVote", () => {
 
-  const { viewCastVote } = handlers;
+  const { pollCastVote } = handlers;
 
-  const mockAPICall = initMockAPICall(viewCastVote, "PATCH");
+  const mockAPICall = initMockAPICall(pollCastVote, "PATCH");
 
   const getData = (text) => ({
     id: "id-a",
@@ -153,56 +116,13 @@ describe("viewCastVote", () => {
 
 });
 
-//view delete poll
+//poll remove option
 
-describe("viewDeletePoll", () => {
+describe("pollRemoveOption", () => {
 
-  const { viewDeletePoll } = handlers;
+  const { pollRemoveOption } = handlers;
 
-  const mockAPICall = initMockAPICall(viewDeletePoll, "DELETE");
-
-  const getData = () => ({ id: "id-a" });
-
-  const getPoll = () => newPoll({
-    id: "id-a",
-    users: { created: "id-b" }
-  });
-
-  it("sends 401 if user is unauthenticated, restricted, or not the creator", async () => {
-
-    const user = newUser({ id: "id-c" });
-
-    await pollsCol().insertOne(getPoll());
-
-    await testAuthFail(mockAPICall, getData(), [user]);
-
-    expect(await pollsCol().countDocuments()).toEqual(1);
-
-  });
-
-  it("sends object if user is valid", async () => {
-
-    const user = newUser({ id: "id-b" });
-
-    await pollsCol().insertOne(getPoll());
-
-    const res = await mockAPICall(user, getData());
-
-    testMock(res.json, [{}]);
-
-    expect(await pollsCol().countDocuments()).toEqual(0);
-
-  });
-
-});
-
-//view remove option
-
-describe("viewRemoveOption", () => {
-
-  const { viewRemoveOption } = handlers;
-
-  const mockAPICall = initMockAPICall(viewRemoveOption, "PATCH");
+  const mockAPICall = initMockAPICall(pollRemoveOption, "PATCH");
 
   const getData = (text) => ({
     id: "id-a",
@@ -252,13 +172,51 @@ describe("viewRemoveOption", () => {
 
 });
 
-//view toggle private
+//poll toggle flag
 
-describe("viewTogglePrivate", () => {
+describe("pollToggleFlag", () => {
 
-  const { viewTogglePrivate } = handlers;
+  const { pollToggleFlag } = handlers;
 
-  const mockAPICall = initMockAPICall(viewTogglePrivate, "PATCH");
+  const mockAPICall = initMockAPICall(pollToggleFlag, "PATCH");
+
+  const getData = () => ({ id: "id-a" });
+
+  const testToggle = initTestToggle(mockAPICall, getData, "flagged");
+
+  it("sends 401 if user is unauthenticated or restricted", () => testAuthFail(mockAPICall, getData()));
+
+  it("sends object if user is valid", () => testToggle(newUser({ id: "id-b" })));
+
+});
+
+//poll toggle hide
+
+describe("pollToggleHide", () => {
+
+  const { pollToggleHide } = handlers;
+
+  const mockAPICall = initMockAPICall(pollToggleHide, "PATCH");
+
+  const getData = () => ({ id: "id-a" });
+
+  const testToggle = initTestToggle(mockAPICall, getData, "hidden");
+
+  it("sends object if user is authenticated", () => testToggle(newUser({ id: "id-b" })));
+
+  it("sends object if ip user exists", () => testToggle(newIPUser({ id: "id-b" })));
+
+  it("sends object if no ip user exists", () => testToggle());
+
+});
+
+//poll toggle secret
+
+describe("pollToggleSecret", () => {
+
+  const { pollToggleSecret } = handlers;
+
+  const mockAPICall = initMockAPICall(pollToggleSecret, "PATCH");
 
   const getData = () => ({ id: "id-a" });
 
@@ -269,7 +227,7 @@ describe("viewTogglePrivate", () => {
 
   const testToggle = async (user) => {
 
-    const { private: bool } = await pollsCol().findOne();
+    const { secret: bool } = await pollsCol().findOne();
 
     const res = await mockAPICall(user, getData());
 
@@ -277,7 +235,7 @@ describe("viewTogglePrivate", () => {
 
     testMock(res.json, [{}]);
 
-    expect(update.private).toEqual(!bool);
+    expect(update.secret).toEqual(!bool);
 
   };
 

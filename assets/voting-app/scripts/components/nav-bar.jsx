@@ -12,7 +12,7 @@ const React = require("react");
 
 const NavBar = (props) => {
 
-  const { actions: { menuOpenForm, menuSetFilter }, data: { user }, history } = props;
+  const { actions: { listSetFilter, metaOpenForm }, data: { user }, history } = props;
 
   //utilities
 
@@ -30,13 +30,13 @@ const NavBar = (props) => {
     const [id] = e;
 
     e.push(() => {
-      menuSetFilter(id, history);
+      listSetFilter(id, history);
     });
 
   }
 
   items.push(["form", "New Poll", auth, () => {
-    menuOpenForm(history);
+    metaOpenForm(history);
   }]);
 
   //render

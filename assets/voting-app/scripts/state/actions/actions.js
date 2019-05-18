@@ -6,11 +6,9 @@ const formFactories = require("./factories/form-factories");
 const listFactories = require("./factories/list-factories");
 const viewFactories = require("./factories/view-factories");
 
-const formThunks = require("./thunks/form-thunks");
 const listThunks = require("./thunks/list-thunks");
-const menuThunks = require("./thunks/menu-thunks");
 const metaThunks = require("./thunks/meta-thunks");
-const viewThunks = require("./thunks/view-thunks");
+const pollThunks = require("./thunks/poll-thunks");
 
 //global imports
 
@@ -25,11 +23,9 @@ const actions = Object.assign(
   metaFactories,
   viewFactories,
 
-  formThunks,
   listThunks,
-  menuThunks,
   metaThunks,
-  viewThunks
+  pollThunks
 
 );
 

@@ -4,14 +4,14 @@
 
 const { actions } = require("../../../../scripts/state/actions/actions");
 
-//view set add text
+//view set add
 
-test("viewSetAddText creates VIEW_SET_ADD_TEXT actions", () => {
+test("viewSetAdd creates VIEW_SET_ADD actions", () => {
 
-  const { viewSetAddText } = actions;
+  const { viewSetAdd } = actions;
 
-  expect(viewSetAddText("")).toEqual({
-    type: "VIEW_SET_ADD_TEXT",
+  expect(viewSetAdd("")).toEqual({
+    type: "VIEW_SET_ADD",
     add: ""
   });
 

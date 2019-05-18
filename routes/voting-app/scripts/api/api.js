@@ -2,10 +2,8 @@
 
 //local imports
 
-const formHandlers = require("./handlers/form-handlers");
-const listHandlers = require("./handlers/list-handlers");
 const metaHandlers = require("./handlers/meta-handlers");
-const viewHandlers = require("./handlers/view-handlers");
+const pollHandlers = require("./handlers/poll-handlers");
 
 //global imports
 
@@ -14,10 +12,8 @@ const { apiHandler } = require(`${__scripts}/redux-utils/server-utils`);
 //handle actions
 
 const router = apiHandler(Object.assign(
-  formHandlers,
-  listHandlers,
   metaHandlers,
-  viewHandlers
+  pollHandlers
 ));
 
 //exports

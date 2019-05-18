@@ -1,25 +1,24 @@
 "use strict";
 
-/*eslint max-nested-callbacks: 0*/
+/*eslint max-nested-callbacks: 0, max-statements: 0*/
 
 //local imports
 
 const handlers = require("../../../scripts/api/handlers/meta-handlers");
 
+const { mockList, overlyLongInput } = require("../../test-helpers");
+
 //global imports
 
-const { newIPUser, newUser } = require("schemas/master");
+const { initSchema, newIPUser, newUser } = require("schemas/master");
 const { newPoll, newState } = require("schemas/voting-app");
 const { testMock } = require("test-helpers/meta-tests");
 const { initMockAPICall, mongoTests, testAuthFail } = require("test-helpers/server-tests");
-const { newSchema } = require("utilities");
 
 //utilities
 
 const pollsCol = () => db.collection("voting-app/polls");
 const usersCol = () => db.collection("auth/users");
-
-const mockList = newSchema(newState().list);
 
 //setup
 
@@ -27,6 +26,120 @@ beforeAll(mongoTests.setup);
 afterAll(mongoTests.teardown);
 
 afterEach(mongoTests.reset(pollsCol, usersCol));
+
+//meta create poll
+
+describe("metaCreatePoll", () => {
+
+  const { metaCreatePoll } = handlers;
+
+  const mockAPICall = initMockAPICall(metaCreatePoll, "POST");
+
+  const mockForm = initSchema(newState().form);
+
+  const getData = (form) => mockForm(form);
+
+  const testError = async (error, data, docs = 0) => {
+
+    const res = await mockAPICall(newUser(), getData(data));
+
+    expect(res.json.mock.calls[0][0].errors.includes(error)).toEqual(true);
+
+    expect(await pollsCol().countDocuments()).toEqual(docs);
+
+  };
+
+  it("sends 401 if user is unauthenticated or restricted", async () => {
+
+    await testAuthFail(mockAPICall, getData());
+
+    expect(await pollsCol().countDocuments()).toEqual(0);
+
+  });
+
+  it("sends errors if title is empty", () => testError("Title must not be empty"));
+
+  it("sends errors if title is too long", () => testError("Title must not exceed character limit", { title: overlyLongInput }));
+
+  it("sends errors if title is duplicate", async () => {
+
+    const data = { title: "Title A" };
+
+    await pollsCol().insertOne(newPoll(data));
+
+    return testError("Title must be unique", data, 1);
+
+  });
+
+  it("sends errors if title is obscene", () => testError("Title must not be obscene", { title: "Fuck" }));
+
+  it("sends errors if option is empty", () => testError("Option must not be empty", { options: [""] }));
+
+  it("sends errors if option is too long", () => testError("Option must not exceed character limit", { options: [overlyLongInput] }));
+
+  it("sends errors if option is duplicate", () => testError("Option must be unique", { options: ["Option A", "Option A"] }));
+
+  it("sends errors if option is obscene", () => testError("Option must not be obscene", { options: ["Fuck"] }));
+
+  it("sends id if poll is valid", async () => {
+
+    const res = await mockAPICall(newUser(), getData({
+      title: "Title A",
+      options: ["Option A"]
+    }));
+
+    const { id } = await pollsCol().findOne();
+
+    testMock(res.json, [{ id }]);
+
+    expect(await pollsCol().countDocuments()).toEqual(1);
+
+  });
+
+});
+
+//meta delete poll
+
+describe("metaDeletePoll", () => {
+
+  const { metaDeletePoll } = handlers;
+
+  const mockAPICall = initMockAPICall(metaDeletePoll, "DELETE");
+
+  const getData = () => ({ id: "id-a" });
+
+  const getPoll = () => newPoll({
+    id: "id-a",
+    users: { created: "id-b" }
+  });
+
+  it("sends 401 if user is unauthenticated, restricted, or not the creator", async () => {
+
+    const user = newUser({ id: "id-c" });
+
+    await pollsCol().insertOne(getPoll());
+
+    await testAuthFail(mockAPICall, getData(), [user]);
+
+    expect(await pollsCol().countDocuments()).toEqual(1);
+
+  });
+
+  it("sends object if user is valid", async () => {
+
+    const user = newUser({ id: "id-b" });
+
+    await pollsCol().insertOne(getPoll());
+
+    const res = await mockAPICall(user, getData());
+
+    testMock(res.json, [{}]);
+
+    expect(await pollsCol().countDocuments()).toEqual(0);
+
+  });
+
+});
 
 //meta get polls
 
@@ -171,7 +284,7 @@ describe("metaGetPolls (filter)", () => {
 
   it("sends polls if filter is all", () => {
 
-    const polls = [{}, { users: { hidden: ["id-a"] } }, { private: true }];
+    const polls = [{}, { users: { hidden: ["id-a"] } }, { secret: true }];
 
     return testPolls(polls, "all", [1, 1, 2]);
 

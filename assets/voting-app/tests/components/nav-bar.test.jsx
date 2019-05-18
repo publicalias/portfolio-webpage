@@ -26,11 +26,11 @@ describe("nav bar", () => {
 
     const { props, wrapper } = testMount(data);
 
-    const { actions: { menuSetFilter }, history } = props;
+    const { actions: { listSetFilter }, history } = props;
 
     wrapper.find(`.qa-nav-${id}`).simulate("click");
 
-    testMock(menuSetFilter, [id, history]);
+    testMock(listSetFilter, [id, history]);
 
   };
 
@@ -50,23 +50,23 @@ describe("nav bar", () => {
 
   });
 
-  it("should call menuSetFilter on click (all)", testFilter("all"));
+  it("should call listSetFilter on click (all)", testFilter("all"));
 
-  it("should call menuSetFilter on click (created)", testFilter("created", { user: newUser() }));
+  it("should call listSetFilter on click (created)", testFilter("created", { user: newUser() }));
 
-  it("should call menuSetFilter on click (voted)", testFilter("voted"));
+  it("should call listSetFilter on click (voted)", testFilter("voted"));
 
-  it("should call menuSetFilter on click (hidden)", testFilter("hidden"));
+  it("should call listSetFilter on click (hidden)", testFilter("hidden"));
 
-  it("should call menuOpenForm on click (form)", () => {
+  it("should call metaOpenForm on click (form)", () => {
 
     const { props, wrapper } = testMount({ user: newUser() });
 
-    const { actions: { menuOpenForm }, history } = props;
+    const { actions: { metaOpenForm }, history } = props;
 
     wrapper.find(".qa-nav-form").simulate("click");
 
-    testMock(menuOpenForm, [history]);
+    testMock(metaOpenForm, [history]);
 
   });
 

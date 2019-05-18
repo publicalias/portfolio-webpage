@@ -2,52 +2,20 @@
 
 //global imports
 
-const { reduxAPICall } = require("redux-utils/client-utils");
 const { metaSetState } = require("redux-utils/meta-factories");
 const { newState } = require("schemas/voting-app");
+const { deepCopy } = require("utilities");
 
-//list open view
+//list set filter
 
-const listOpenView = (id, history) => (dispatch) => {
+const listSetFilter = (filter, history) => (dispatch) => {
 
-  dispatch(metaSetState({ view: newState().view }));
+  dispatch(metaSetState({ list: deepCopy(newState().list, { filter }) }));
 
-  history.push(`/view?id=${id}`);
-
-};
-
-//list toggle flag
-
-const listToggleFlag = (id) => (dispatch) => {
-
-  const args = {
-    path: "/voting-app/api/list-toggle-flag",
-    method: "PATCH",
-    data: { id }
-  };
-
-  return reduxAPICall(dispatch, args);
-
-};
-
-//list toggle hide
-
-const listToggleHide = (id) => (dispatch) => {
-
-  const args = {
-    path: "/voting-app/api/list-toggle-hide",
-    method: "PATCH",
-    data: { id }
-  };
-
-  return reduxAPICall(dispatch, args);
+  history.push("/list");
 
 };
 
 //exports
 
-module.exports = {
-  listOpenView,
-  listToggleFlag,
-  listToggleHide
-};
+module.exports = { listSetFilter };

@@ -4,9 +4,9 @@
 
 const { deepCopy } = require("utilities");
 
-//view set add text
+//view set add
 
-const VIEW_SET_ADD_TEXT = (state, { add }) => deepCopy(state, { view: { add } });
+const VIEW_SET_ADD = (state, { add }) => deepCopy(state, { view: { add } });
 
 //view toggle confirm
 
@@ -19,7 +19,7 @@ const VIEW_TOGGLE_SETTINGS = (state) => deepCopy(state, { view: { settings: !sta
 //exports
 
 module.exports = {
-  VIEW_SET_ADD_TEXT,
+  VIEW_SET_ADD,
   VIEW_TOGGLE_CONFIRM,
   VIEW_TOGGLE_SETTINGS
 };
