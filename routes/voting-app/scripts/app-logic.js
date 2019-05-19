@@ -20,7 +20,7 @@ const findByID = (id) => pollsCol().findOne({ id });
 
 //find polls
 
-const getQuery = (user, list) => {
+const getQuery = (user, { filter }) => {
 
   const types = {
     all: { $nor: [{ secret: true }, { "users.hidden": user.id }] },
@@ -29,35 +29,37 @@ const getQuery = (user, list) => {
     hidden: { "users.hidden": user.id }
   };
 
-  return types[list.filter];
+  return types[filter];
 
 };
 
-const getSort = (list) => {
+const getSort = ({ sort }) => {
 
   const types = {
     new: { date: -1 },
     popular: { "users.voted": -1 }
   };
 
-  return types[list.sort];
+  return types[sort];
 
 };
 
-const findPolls = async (req, list, skip) => {
+const findPolls = async (req, params, length = 0) => {
+
+  const { search } = params;
 
   const user = req.user || await getIPUser(req.ip) || {};
 
-  const text = { $text: { $search: list.searched } };
+  const text = { $text: { $search: search } };
   const meta = { score: { $meta: "textScore" } };
 
   let args = {
-    query: getQuery(user, list),
+    query: getQuery(user, params),
     projection: {},
-    sort: getSort(list)
+    sort: getSort(params)
   };
 
-  if (list.searched) {
+  if (search) {
     args = deepCopy(args, {
       query: text,
       projection: meta,
@@ -74,8 +76,7 @@ const findPolls = async (req, list, skip) => {
   return pollsCol()
     .find(args.query, { projection: args.projection })
     .sort(args.sort)
-    .skip(skip ? list.index + 1 : 0)
-    .limit((skip ? 0 : list.index) + 50)
+    .limit(length + 100) //refreshes the whole list
     .toArray();
 
 };
@@ -86,14 +87,12 @@ const handleCreate = async (req, res) => {
 
   const { title, options, secret } = req.body.data;
 
-  const id = uuid();
-
   await pollsCol().createIndex({ title: 1 }, { unique: true });
 
   await pollsCol().insertOne(newPoll({
     title: title.trim(),
     author: req.user.name,
-    id,
+    id: uuid(),
     date: Date.now(),
     secret,
     users: { created: req.user.id },
@@ -103,7 +102,7 @@ const handleCreate = async (req, res) => {
     }))
   }));
 
-  res.json({ id });
+  res.json({});
 
 };
 

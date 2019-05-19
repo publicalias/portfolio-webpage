@@ -95,9 +95,9 @@ const metaDeletePoll = async (req, res) => {
 
 const metaGetPolls = async (req, res) => {
 
-  const { id, skip, list } = JSON.parse(req.query.data);
+  const { params, id, length } = JSON.parse(req.query.data);
 
-  if ((!req.user || req.user.data.restricted) && list.filter === "created") {
+  if ((!req.user || req.user.data.restricted) && params.filter === "created") {
 
     res.sendStatus(401);
 
@@ -105,7 +105,7 @@ const metaGetPolls = async (req, res) => {
 
   }
 
-  const polls = id ? [await findByID(id)] : await findPolls(req, list, skip);
+  const polls = id ? [await findByID(id)] : await findPolls(req, params, length);
 
   res.json({ polls });
 

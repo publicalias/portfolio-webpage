@@ -16,27 +16,6 @@ const { default: ReduxThunk } = require("redux-thunk");
 
 const mockStore = configureStore([ReduxThunk]);
 
-//init history
-
-const initHistory = () => {
-
-  const history = {};
-
-  const testHistory = (...calls) => {
-    testMock(history.push, ...calls);
-  };
-
-  beforeEach(() => {
-    history.push = jest.fn();
-  });
-
-  return {
-    history,
-    testHistory
-  };
-
-};
-
 //init test api
 
 const testAPICall = (args) => {
@@ -108,23 +87,9 @@ const initTestReducer = (newState, reducer) => (action, last, next) => {
 
 };
 
-//init test thunk
-
-const initTestThunk = (newState) => (action, actionList, lastState = newState()) => {
-
-  const store = mockStore(lastState);
-
-  store.dispatch(action);
-
-  expect(store.getActions()).toEqual(actionList);
-
-};
-
 //exports
 
 module.exports = {
-  initHistory,
   initTestAPI,
-  initTestReducer,
-  initTestThunk
+  initTestReducer
 };

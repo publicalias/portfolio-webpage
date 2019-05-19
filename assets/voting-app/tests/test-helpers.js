@@ -9,7 +9,7 @@ const { reducer } = require("../scripts/state/reducer/reducer");
 
 const { newState } = require("schemas/voting-app");
 const { initTestWrapper } = require("test-helpers/react-tests");
-const { initTestAPI, initTestReducer, initTestThunk } = require("test-helpers/redux-tests");
+const { initTestAPI, initTestReducer } = require("test-helpers/redux-tests");
 
 //test api
 
@@ -18,10 +18,6 @@ const testAPI = initTestAPI(newState);
 //test reducer
 
 const testReducer = initTestReducer(newState, reducer);
-
-//test thunk
-
-const testThunk = initTestThunk(newState);
 
 //test wrapper
 
@@ -32,6 +28,5 @@ const testWrapper = initTestWrapper(newState, actions);
 module.exports = {
   testAPI,
   testReducer,
-  testThunk,
   testWrapper
 };

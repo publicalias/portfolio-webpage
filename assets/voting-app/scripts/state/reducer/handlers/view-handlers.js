@@ -2,7 +2,12 @@
 
 //global imports
 
+const { newState } = require("schemas/voting-app");
 const { deepCopy } = require("utilities");
+
+//view clear state
+
+const VIEW_CLEAR_STATE = (state) => deepCopy(state, { view: newState().view });
 
 //view set add
 
@@ -19,6 +24,7 @@ const VIEW_TOGGLE_SETTINGS = (state) => deepCopy(state, { view: { settings: !sta
 //exports
 
 module.exports = {
+  VIEW_CLEAR_STATE,
   VIEW_SET_ADD,
   VIEW_TOGGLE_CONFIRM,
   VIEW_TOGGLE_SETTINGS

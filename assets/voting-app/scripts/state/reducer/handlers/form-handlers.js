@@ -14,9 +14,9 @@ const FORM_ADD_OPTION = (state) => deepCopy(state, {
   }
 });
 
-//form discard poll
+//form clear state
 
-const FORM_DISCARD_POLL = (state) => deepCopy(state, { form: newState().form });
+const FORM_CLEAR_STATE = (state) => deepCopy(state, { form: newState().form });
 
 //form remove option
 
@@ -48,7 +48,7 @@ const FORM_TOGGLE_SECRET = (state) => deepCopy(state, { form: { secret: !state.f
 
 module.exports = {
   FORM_ADD_OPTION,
-  FORM_DISCARD_POLL,
+  FORM_CLEAR_STATE,
   FORM_REMOVE_OPTION,
   FORM_SET_ADD,
   FORM_SET_TITLE,

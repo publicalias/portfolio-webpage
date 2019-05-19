@@ -17,13 +17,7 @@ const META_ADD_ERRORS = (state, { errors }) => {
 
 //meta close error
 
-const META_CLOSE_ERROR = (state) => {
-
-  const filterFn = (e, i) => i > 0;
-
-  return deepCopy(state, { errors: state.errors.filter(filterFn) });
-
-};
+const META_CLOSE_ERROR = (state) => deepCopy(state, { errors: state.errors.slice(1) });
 
 //meta no op
 

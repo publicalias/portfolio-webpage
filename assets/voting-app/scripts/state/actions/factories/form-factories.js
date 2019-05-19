@@ -4,9 +4,9 @@
 
 const formAddOption = () => ({ type: "FORM_ADD_OPTION" });
 
-//form discard poll
+//form clear state
 
-const formDiscardPoll = () => ({ type: "FORM_DISCARD_POLL" });
+const formClearState = () => ({ type: "FORM_CLEAR_STATE" });
 
 //form remove option
 
@@ -41,7 +41,7 @@ const formToggleSecret = () => ({ type: "FORM_TOGGLE_SECRET" });
 
 module.exports = {
   formAddOption,
-  formDiscardPoll,
+  formClearState,
   formRemoveOption,
   formSetAdd,
   formSetTitle,

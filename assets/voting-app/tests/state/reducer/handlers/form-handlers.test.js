@@ -24,13 +24,13 @@ test("reducer accepts FORM_ADD_OPTION actions", () => {
 
 });
 
-//form discard poll
+//form clear state
 
-test("reducer accepts FORM_DISCARD_POLL actions", () => {
+test("reducer accepts FORM_CLEAR_STATE actions", () => {
 
-  const { formDiscardPoll } = actions;
+  const { formClearState } = actions;
 
-  testReducer(formDiscardPoll(), { form: { title: "Title A" } }, { form: newState().form });
+  testReducer(formClearState(), { form: { title: "Title A" } }, { form: newState().form });
 
 });
 

@@ -20,12 +20,11 @@ const { useEffect } = React;
 
 const UI = (props) => {
 
-  const { actions: { metaGetPolls, metaGetUser } } = props;
+  const { actions: { metaGetUser } } = props;
 
   //lifecycle
 
   useEffect(() => {
-    metaGetPolls();
     metaGetUser();
   }, []);
 

@@ -4,6 +4,16 @@
 
 const { actions } = require("../../../../scripts/state/actions/actions");
 
+//view clear state
+
+test("viewClearState creates VIEW_CLEAR_STATE actions", () => {
+
+  const { viewClearState } = actions;
+
+  expect(viewClearState()).toEqual({ type: "VIEW_CLEAR_STATE" });
+
+});
+
 //view set add
 
 test("viewSetAdd creates VIEW_SET_ADD actions", () => {

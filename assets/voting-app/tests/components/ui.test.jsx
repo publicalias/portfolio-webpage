@@ -33,15 +33,14 @@ describe("ui", () => {
 
   });
 
-  it("should call metaGetPolls and metaGetUser on mount", () => {
+  it("should call metaGetUser on mount", () => {
 
     const { props, wrapper } = testMount();
 
-    const { actions: { metaGetPolls, metaGetUser } } = props;
+    const { actions: { metaGetUser } } = props;
 
     wrapper.mount();
 
-    testMock(metaGetPolls, []);
     testMock(metaGetUser, []);
 
     wrapper.unmount();

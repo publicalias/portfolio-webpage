@@ -6,12 +6,12 @@
 
 const handlers = require("../../../scripts/api/handlers/meta-handlers");
 
-const { mockList, overlyLongInput } = require("../../test-helpers");
+const { overlyLongInput } = require("../../test-helpers");
 
 //global imports
 
 const { initSchema, newIPUser, newUser } = require("schemas/master");
-const { newPoll, newState } = require("schemas/voting-app");
+const { newListParams, newPoll, newState } = require("schemas/voting-app");
 const { testMock } = require("test-helpers/meta-tests");
 const { initMockAPICall, mongoTests, testAuthFail } = require("test-helpers/server-tests");
 
@@ -81,16 +81,14 @@ describe("metaCreatePoll", () => {
 
   it("sends errors if option is obscene", () => testError("Option must not be obscene", { options: ["Fuck"] }));
 
-  it("sends id if poll is valid", async () => {
+  it("sends object if poll is valid", async () => {
 
     const res = await mockAPICall(newUser(), getData({
       title: "Title A",
       options: ["Option A"]
     }));
 
-    const { id } = await pollsCol().findOne();
-
-    testMock(res.json, [{ id }]);
+    testMock(res.json, [{}]);
 
     expect(await pollsCol().countDocuments()).toEqual(1);
 
@@ -149,30 +147,30 @@ describe("metaGetPolls", () => {
 
   const mockAPICall = initMockAPICall(metaGetPolls, "GET");
 
-  const getData = (id, skip) => ({
+  const getData = (id, length) => ({
+    params: newListParams(),
     id,
-    skip,
-    list: mockList()
+    length
   });
 
-  const testPolls = async (id, skip = false) => {
+  const testPolls = async (pollData, id, length = 0) => {
 
-    const polls = [{}, { id: "id-b" }].map(newPoll);
-    const index = Number(Boolean(id) || skip);
+    const polls = pollData.map(newPoll);
+    const index = id ? 1 : 0;
 
     await pollsCol().insertMany(polls);
 
-    const res = await mockAPICall({}, getData(id, skip));
+    const res = await mockAPICall({}, getData(id, length));
 
     testMock(res.json, [{ polls: polls.slice(index) }]);
 
   };
 
-  it("sends polls if skip is false", () => testPolls());
+  it("sends polls if length is 0", () => testPolls([{}]));
 
-  it("sends polls if skip is true", () => testPolls(null, true));
+  it("sends polls if length is 1", () => testPolls(Array(100 + 1).fill({}), null, 1));
 
-  it("sends polls if poll is valid", () => testPolls("id-b"));
+  it("sends polls if id is valid", () => testPolls([{}, { id: "id-b" }], "id-b"));
 
 });
 
@@ -182,7 +180,7 @@ describe("metaGetPolls (sort)", () => {
 
   const mockAPICall = initMockAPICall(metaGetPolls, "GET");
 
-  const getData = (sort) => ({ list: mockList({ sort }) });
+  const getData = (sort) => ({ params: newListParams({ sort }) });
 
   const testPolls = async (pollData, sort) => {
 
@@ -220,7 +218,7 @@ describe("metaGetPolls (search)", () => {
 
   const mockAPICall = initMockAPICall(metaGetPolls, "GET");
 
-  const getData = (searched) => ({ list: mockList({ searched }) });
+  const getData = (search) => ({ params: newListParams({ search }) });
 
   const testPolls = async (pollData, search, count) => {
 
@@ -260,7 +258,7 @@ describe("metaGetPolls (filter)", () => {
 
   const mockAPICall = initMockAPICall(metaGetPolls, "GET");
 
-  const getData = (filter) => ({ list: mockList({ filter }) });
+  const getData = (filter) => ({ params: newListParams({ filter }) });
 
   const testPolls = async (pollData, filter, counts) => {
 

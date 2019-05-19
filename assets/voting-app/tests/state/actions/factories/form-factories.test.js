@@ -14,13 +14,13 @@ test("formAddOption creates FORM_ADD_OPTION actions", () => {
 
 });
 
-//form discard poll
+//form clear state
 
-test("formDiscardPoll creates FORM_DISCARD_POLL actions", () => {
+test("formClearState creates FORM_CLEAR_STATE actions", () => {
 
-  const { formDiscardPoll } = actions;
+  const { formClearState } = actions;
 
-  expect(formDiscardPoll()).toEqual({ type: "FORM_DISCARD_POLL" });
+  expect(formClearState()).toEqual({ type: "FORM_CLEAR_STATE" });
 
 });
 

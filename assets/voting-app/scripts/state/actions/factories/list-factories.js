@@ -1,11 +1,8 @@
 "use strict";
 
-//list set index
+//list clear state
 
-const listSetIndex = (index) => ({
-  type: "LIST_SET_INDEX",
-  index
-});
+const listClearState = () => ({ type: "LIST_CLEAR_STATE" });
 
 //list set search
 
@@ -14,22 +11,9 @@ const listSetSearch = (search) => ({
   search
 });
 
-//list set sort
-
-const listSetSort = (sort) => ({
-  type: "LIST_SET_SORT",
-  sort
-});
-
-//list submit search
-
-const listSubmitSearch = () => ({ type: "LIST_SUBMIT_SEARCH" });
-
 //exports
 
 module.exports = {
-  listSetIndex,
-  listSetSearch,
-  listSetSort,
-  listSubmitSearch
+  listClearState,
+  listSetSearch
 };

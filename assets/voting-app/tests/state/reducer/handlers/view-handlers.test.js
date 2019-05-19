@@ -5,6 +5,20 @@
 const { actions } = require("../../../../scripts/state/actions/actions");
 const { testReducer } = require("../../../test-helpers");
 
+//global imports
+
+const { newState } = require("schemas/voting-app");
+
+//view clear state
+
+test("reducer accepts VIEW_CLEAR_STATE actions", () => {
+
+  const { viewClearState } = actions;
+
+  testReducer(viewClearState(), { view: { add: "Option A" } }, { view: newState().view });
+
+});
+
 //view set add
 
 test("reducer accepts VIEW_SET_ADD actions", () => {

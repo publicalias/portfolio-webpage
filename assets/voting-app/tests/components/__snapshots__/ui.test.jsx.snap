@@ -8,38 +8,33 @@ exports[`ui should match snapshot 1`] = `
     actions={
       Object {
         "formAddOption": [MockFunction],
-        "formCreatePoll": [MockFunction],
-        "formDiscardPoll": [MockFunction],
+        "formClearState": [MockFunction],
         "formRemoveOption": [MockFunction],
-        "formSetAddText": [MockFunction],
-        "formSetTitleText": [MockFunction],
+        "formSetAdd": [MockFunction],
+        "formSetTitle": [MockFunction],
         "formToggleConfirm": [MockFunction],
-        "formTogglePrivate": [MockFunction],
-        "listOpenView": [MockFunction],
-        "listSetIndex": [MockFunction],
-        "listSetSearchText": [MockFunction],
-        "listSetSort": [MockFunction],
-        "listSubmitSearch": [MockFunction],
-        "listToggleFlag": [MockFunction],
-        "listToggleHide": [MockFunction],
-        "menuOpenForm": [MockFunction],
-        "menuSetFilter": [MockFunction],
+        "formToggleSecret": [MockFunction],
+        "listClearState": [MockFunction],
+        "listSetSearch": [MockFunction],
         "metaAddErrors": [MockFunction],
         "metaCloseError": [MockFunction],
+        "metaCreatePoll": [MockFunction],
+        "metaDeletePoll": [MockFunction],
         "metaGetPolls": [MockFunction],
         "metaGetUser": [MockFunction],
         "metaNoOp": [MockFunction],
         "metaSetLoading": [MockFunction],
         "metaSetState": [MockFunction],
         "metaTimeoutError": [MockFunction],
-        "viewAddOption": [MockFunction],
-        "viewCastVote": [MockFunction],
-        "viewDeletePoll": [MockFunction],
-        "viewOpenList": [MockFunction],
-        "viewRemoveOption": [MockFunction],
-        "viewSetAddText": [MockFunction],
+        "pollAddOption": [MockFunction],
+        "pollCastVote": [MockFunction],
+        "pollRemoveOption": [MockFunction],
+        "pollToggleFlag": [MockFunction],
+        "pollToggleHide": [MockFunction],
+        "pollToggleSecret": [MockFunction],
+        "viewClearState": [MockFunction],
+        "viewSetAdd": [MockFunction],
         "viewToggleConfirm": [MockFunction],
-        "viewTogglePrivate": [MockFunction],
         "viewToggleSettings": [MockFunction],
       }
     }
@@ -50,15 +45,11 @@ exports[`ui should match snapshot 1`] = `
           "add": "",
           "confirm": false,
           "options": Array [],
-          "private": false,
+          "secret": false,
           "title": "",
         },
         "list": Object {
-          "filter": "all",
-          "index": 0,
           "search": "",
-          "searched": "",
-          "sort": "new",
         },
         "loading": false,
         "polls": Array [],
@@ -70,44 +61,43 @@ exports[`ui should match snapshot 1`] = `
         },
       }
     }
-    history={Object {}}
+    history={
+      Object {
+        "push": [MockFunction],
+      }
+    }
   />
   <Sidebar
     actions={
       Object {
         "formAddOption": [MockFunction],
-        "formCreatePoll": [MockFunction],
-        "formDiscardPoll": [MockFunction],
+        "formClearState": [MockFunction],
         "formRemoveOption": [MockFunction],
-        "formSetAddText": [MockFunction],
-        "formSetTitleText": [MockFunction],
+        "formSetAdd": [MockFunction],
+        "formSetTitle": [MockFunction],
         "formToggleConfirm": [MockFunction],
-        "formTogglePrivate": [MockFunction],
-        "listOpenView": [MockFunction],
-        "listSetIndex": [MockFunction],
-        "listSetSearchText": [MockFunction],
-        "listSetSort": [MockFunction],
-        "listSubmitSearch": [MockFunction],
-        "listToggleFlag": [MockFunction],
-        "listToggleHide": [MockFunction],
-        "menuOpenForm": [MockFunction],
-        "menuSetFilter": [MockFunction],
+        "formToggleSecret": [MockFunction],
+        "listClearState": [MockFunction],
+        "listSetSearch": [MockFunction],
         "metaAddErrors": [MockFunction],
         "metaCloseError": [MockFunction],
+        "metaCreatePoll": [MockFunction],
+        "metaDeletePoll": [MockFunction],
         "metaGetPolls": [MockFunction],
         "metaGetUser": [MockFunction],
         "metaNoOp": [MockFunction],
         "metaSetLoading": [MockFunction],
         "metaSetState": [MockFunction],
         "metaTimeoutError": [MockFunction],
-        "viewAddOption": [MockFunction],
-        "viewCastVote": [MockFunction],
-        "viewDeletePoll": [MockFunction],
-        "viewOpenList": [MockFunction],
-        "viewRemoveOption": [MockFunction],
-        "viewSetAddText": [MockFunction],
+        "pollAddOption": [MockFunction],
+        "pollCastVote": [MockFunction],
+        "pollRemoveOption": [MockFunction],
+        "pollToggleFlag": [MockFunction],
+        "pollToggleHide": [MockFunction],
+        "pollToggleSecret": [MockFunction],
+        "viewClearState": [MockFunction],
+        "viewSetAdd": [MockFunction],
         "viewToggleConfirm": [MockFunction],
-        "viewTogglePrivate": [MockFunction],
         "viewToggleSettings": [MockFunction],
       }
     }
@@ -118,15 +108,11 @@ exports[`ui should match snapshot 1`] = `
           "add": "",
           "confirm": false,
           "options": Array [],
-          "private": false,
+          "secret": false,
           "title": "",
         },
         "list": Object {
-          "filter": "all",
-          "index": 0,
           "search": "",
-          "searched": "",
-          "sort": "new",
         },
         "loading": false,
         "polls": Array [],
@@ -138,7 +124,11 @@ exports[`ui should match snapshot 1`] = `
         },
       }
     }
-    history={Object {}}
+    history={
+      Object {
+        "push": [MockFunction],
+      }
+    }
   />
   <Route
     component={[Function]}

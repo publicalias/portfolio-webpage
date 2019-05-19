@@ -4,16 +4,13 @@
 
 const { actions } = require("../../../../scripts/state/actions/actions");
 
-//list set index
+//list clear state
 
-test("listSetIndex creates LIST_SET_INDEX actions", () => {
+test("listClearState creates LIST_CLEAR_STATE actions", () => {
 
-  const { listSetIndex } = actions;
+  const { listClearState } = actions;
 
-  expect(listSetIndex(0)).toEqual({
-    type: "LIST_SET_INDEX",
-    index: 0
-  });
+  expect(listClearState()).toEqual({ type: "LIST_CLEAR_STATE" });
 
 });
 
@@ -27,28 +24,5 @@ test("listSetSearch creates LIST_SET_SEARCH actions", () => {
     type: "LIST_SET_SEARCH",
     search: ""
   });
-
-});
-
-//list set sort
-
-test("listSetSort creates LIST_SET_SORT actions", () => {
-
-  const { listSetSort } = actions;
-
-  expect(listSetSort("")).toEqual({
-    type: "LIST_SET_SORT",
-    sort: ""
-  });
-
-});
-
-//list submit search
-
-test("listSubmitSearch creates LIST_SUBMIT_SEARCH actions", () => {
-
-  const { listSubmitSearch } = actions;
-
-  expect(listSubmitSearch()).toEqual({ type: "LIST_SUBMIT_SEARCH" });
 
 });

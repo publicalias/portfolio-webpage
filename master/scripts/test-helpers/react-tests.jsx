@@ -21,7 +21,7 @@ const mockProps = (newState, actions, data) => ({
 
   data: newState(data),
 
-  history: {}
+  history: { push: jest.fn() }
 
 });
 

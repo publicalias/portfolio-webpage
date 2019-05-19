@@ -4,41 +4,56 @@ exports[`nav bar should match snapshot (authenticated) 1`] = `
 <div
   className="c-ui__nav-bar"
 >
-  <h3
-    className="c-ui__nav-item qa-nav-all u-hover"
+  <Link
     key="0-313"
-    onClick={[Function]}
+    to="/list?filter=all"
   >
-    All Polls
-  </h3>
-  <h3
-    className="c-ui__nav-item qa-nav-created u-hover"
+    <h3
+      className="c-ui__nav-item u-hover"
+    >
+      All Polls
+    </h3>
+  </Link>
+  <Link
     key="0-728"
-    onClick={[Function]}
+    to="/list?filter=created"
   >
-    My Polls
-  </h3>
-  <h3
-    className="c-ui__nav-item qa-nav-voted u-hover"
+    <h3
+      className="c-ui__nav-item u-hover"
+    >
+      My Polls
+    </h3>
+  </Link>
+  <Link
     key="0-546"
-    onClick={[Function]}
+    to="/list?filter=voted"
   >
-    Voted
-  </h3>
-  <h3
-    className="c-ui__nav-item qa-nav-hidden u-hover"
+    <h3
+      className="c-ui__nav-item u-hover"
+    >
+      Voted
+    </h3>
+  </Link>
+  <Link
     key="0-620"
-    onClick={[Function]}
+    to="/list?filter=hidden"
   >
-    Hidden
-  </h3>
-  <h3
-    className="c-ui__nav-item qa-nav-form u-hover"
+    <h3
+      className="c-ui__nav-item u-hover"
+    >
+      Hidden
+    </h3>
+  </Link>
+  <Link
     key="0-436"
-    onClick={[Function]}
+    to="/form"
   >
-    New Poll
-  </h3>
+    <h3
+      className="c-ui__nav-item u-hover"
+    >
+      New Poll
+    </h3>
+  </Link>
 </div>
 `;
 
@@ -46,26 +61,35 @@ exports[`nav bar should match snapshot (default) 1`] = `
 <div
   className="c-ui__nav-bar"
 >
-  <h3
-    className="c-ui__nav-item qa-nav-all u-hover"
+  <Link
     key="0-313"
-    onClick={[Function]}
+    to="/list?filter=all"
   >
-    All Polls
-  </h3>
-  <h3
-    className="c-ui__nav-item qa-nav-voted u-hover"
+    <h3
+      className="c-ui__nav-item u-hover"
+    >
+      All Polls
+    </h3>
+  </Link>
+  <Link
     key="0-546"
-    onClick={[Function]}
+    to="/list?filter=voted"
   >
-    Voted
-  </h3>
-  <h3
-    className="c-ui__nav-item qa-nav-hidden u-hover"
+    <h3
+      className="c-ui__nav-item u-hover"
+    >
+      Voted
+    </h3>
+  </Link>
+  <Link
     key="0-620"
-    onClick={[Function]}
+    to="/list?filter=hidden"
   >
-    Hidden
-  </h3>
+    <h3
+      className="c-ui__nav-item u-hover"
+    >
+      Hidden
+    </h3>
+  </Link>
 </div>
 `;

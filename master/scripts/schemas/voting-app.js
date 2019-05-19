@@ -2,7 +2,7 @@
 
 //local imports
 
-const { initSchema, newError } = require("./master");
+const { initSchema, newError, newIPUser, newUser } = require("./master");
 
 //new option
 
@@ -10,6 +10,14 @@ const newOption = initSchema({
   text: "",
   created: "",
   voted: []
+});
+
+//new list params
+
+const newListParams = initSchema({
+  filter: "all",
+  search: "",
+  sort: "new"
 });
 
 //new poll
@@ -38,13 +46,7 @@ const newPoll = initSchema({
 const newState = initSchema({
   user: {},
   polls: [],
-  list: {
-    filter: "all",
-    search: "",
-    searched: "",
-    sort: "new",
-    index: 0
-  },
+  list: { search: "" },
   form: {
     title: "",
     options: [],
@@ -60,15 +62,31 @@ const newState = initSchema({
   errors: [],
   loading: false
 }, {
+
+  user(val) {
+    switch (val.type) {
+      case "ip":
+        return newIPUser(val);
+      default:
+        return newUser(val);
+    }
+  },
+
+  polls(val) {
+    return val.map(newPoll);
+  },
+
   errors(val) {
     return val.map(newError);
   }
+
 });
 
 //exports
 
 module.exports = {
   newOption,
+  newListParams,
   newPoll,
   newState
 };

@@ -2,8 +2,7 @@
 
 //global imports
 
-const { initSchema } = require("schemas/master");
-const { newPoll, newState } = require("schemas/voting-app");
+const { newPoll } = require("schemas/voting-app");
 const { testMock } = require("test-helpers/meta-tests");
 
 //utilities
@@ -79,10 +78,6 @@ const initTestVote = (handler, getData) => async (user) => {
 
 };
 
-//mock list
-
-const mockList = initSchema(newState().list);
-
 //overly long input
 
 const overlyLongInput = Array(100 + 1)
@@ -94,6 +89,5 @@ const overlyLongInput = Array(100 + 1)
 module.exports = {
   initTestVote,
   initTestToggle,
-  mockList,
   overlyLongInput
 };

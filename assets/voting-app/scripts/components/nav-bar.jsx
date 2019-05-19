@@ -8,11 +8,13 @@ const { initKeyGen } = require("react-utils");
 
 const React = require("react");
 
+const { Link } = require("react-router-dom");
+
 //nav bar
 
 const NavBar = (props) => {
 
-  const { actions: { listSetFilter, metaOpenForm }, data: { user }, history } = props;
+  const { data: { user } } = props;
 
   //utilities
 
@@ -29,15 +31,11 @@ const NavBar = (props) => {
 
     const [id] = e;
 
-    e.push(() => {
-      listSetFilter(id, history);
-    });
+    e.push(`/list?filter=${id}`);
 
   }
 
-  items.push(["form", "New Poll", auth, () => {
-    metaOpenForm(history);
-  }]);
+  items.push(["form", "New Poll", auth, "/form"]);
 
   //render
 
@@ -47,16 +45,12 @@ const NavBar = (props) => {
     <div className="c-ui__nav-bar">
       {items.map((e) => {
 
-        const [id, text, bool, handleClick] = e;
+        const [id, text, bool, link] = e;
 
         return bool && (
-          <h3
-            className={`c-ui__nav-item qa-nav-${id} u-hover`}
-            key={keyGen(id)}
-            onClick={handleClick}
-          >
-            {text}
-          </h3>
+          <Link key={keyGen(id)} to={link}>
+            <h3 className="c-ui__nav-item u-hover">{text}</h3>
+          </Link>
         );
 
       })}

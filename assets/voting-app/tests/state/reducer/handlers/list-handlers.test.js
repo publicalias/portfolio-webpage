@@ -5,13 +5,17 @@
 const { actions } = require("../../../../scripts/state/actions/actions");
 const { testReducer } = require("../../../test-helpers");
 
-//list set index
+//global imports
 
-test("reducer accepts LIST_SET_INDEX actions", () => {
+const { newState } = require("schemas/voting-app");
 
-  const { listSetIndex } = actions;
+//list clear state
 
-  testReducer(listSetIndex(1), {}, { list: { index: 1 } });
+test("reducer accepts LIST_CLEAR_STATE actions", () => {
+
+  const { listClearState } = actions;
+
+  testReducer(listClearState(), { list: { search: "Apple" } }, { list: newState().list });
 
 });
 
@@ -22,36 +26,5 @@ test("reducer accepts LIST_SET_SEARCH actions", () => {
   const { listSetSearch } = actions;
 
   testReducer(listSetSearch("Apple"), {}, { list: { search: "Apple" } });
-
-});
-
-//list set sort
-
-test("reducer accepts LIST_SET_SORT actions", () => {
-
-  const { listSetSort } = actions;
-
-  testReducer(listSetSort("popular"), {}, { list: { sort: "popular" } });
-
-});
-
-//list submit search
-
-test("reducer accepts LIST_SUBMIT_SEARCH actions", () => {
-
-  const { listSubmitSearch } = actions;
-
-  testReducer(listSubmitSearch(), {
-    list: {
-      search: "Apple",
-      index: 1
-    }
-  }, {
-    list: {
-      search: "",
-      searched: "Apple",
-      index: 0
-    }
-  });
 
 });
