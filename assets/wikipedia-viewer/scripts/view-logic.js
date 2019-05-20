@@ -46,7 +46,7 @@ const renderResults = (res) => {
 //toggle outline
 
 const toggleOutline = (event) => {
-  select(".js-outline-search-bar").css({ outline: event.type === "focus" ? "1px solid white" : "none" });
+  select(".js-set-outline").css({ outline: event.type === "focus" ? "1px solid white" : "none" });
 };
 
 //exports

@@ -1,0 +1,25 @@
+@mixin search-btn {
+  cursor: pointer;
+  width: 4.5vw;
+}
+
+//components
+
+.c-search-bar {
+
+  display: flex;
+  outline-offset: -1px;
+
+  &__clear { @include search-btn; }
+
+  &__input {
+    padding-right: 0;
+    &:focus { outline: none; } //parent receives focus
+  }
+
+  &__submit {
+    @include search-btn;
+    &:focus { outline: none; }
+  }
+
+}

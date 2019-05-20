@@ -36,7 +36,8 @@ select(document).on("DOMContentLoaded", () => {
 
   checkInput();
 
-  select(".js-submit-input, .js-submit-button").on("blur focus", toggleOutline);
+  select(".js-get-outline").on("blur focus", toggleOutline);
+
   select(".js-submit-button").on("click", search);
 
   submitKeys();
