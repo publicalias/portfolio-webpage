@@ -105,6 +105,19 @@ const metaGetPolls = async (req, res) => {
 
   }
 
+  const errors = checkErrors([{
+    bool: params.search.length > 100,
+    text: "Search must not exceed character limit"
+  }]);
+
+  if (errors.length) {
+
+    res.json({ errors });
+
+    return;
+
+  }
+
   const polls = id ? [await findByID(id)] : await findPolls(req, params, length);
 
   res.json({ polls });

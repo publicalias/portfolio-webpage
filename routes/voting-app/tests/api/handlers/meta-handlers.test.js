@@ -238,6 +238,14 @@ describe("metaGetPolls (search)", () => {
 
   };
 
+  it("sends errors if search is too long", async () => {
+
+    const res = await mockAPICall({}, getData(overlyLongInput));
+
+    testMock(res.json, [{ errors: ["Search must not exceed character limit"] }]);
+
+  });
+
   it("sends polls if search is empty", () => testPolls([{}], "", 1));
 
   it("sends polls if search is valid", () => {
