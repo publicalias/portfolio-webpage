@@ -39,10 +39,18 @@ const Sidebar = (props) => {
 
         const [id, text, bool, mod = ""] = e;
 
+        const handleClick = () => {
+          location.assign(`/auth/${id}`);
+        };
+
         return bool && (
-          <a href={`/auth/${id}`} key={keyGen(id)}>
-            <button className={`c-ui__sidebar-item ${mod}`}>{text}</button>
-          </a>
+          <button
+            className={`c-ui__sidebar-item qa-click-${id} ${mod}`}
+            key={keyGen(id)}
+            onClick={handleClick}
+          >
+            {text}
+          </button>
         );
 
       })}

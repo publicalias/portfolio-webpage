@@ -8,16 +8,13 @@ exports[`sidebar should match snapshot (authenticated) 1`] = `
     Hi, Ethan Frost!
   </p>
   <hr />
-  <a
-    href="/auth/logout"
+  <button
+    className="c-ui__sidebar-item qa-click-logout "
     key="0-666"
+    onClick={[Function]}
   >
-    <button
-      className="c-ui__sidebar-item "
-    >
-      Logout
-    </button>
-  </a>
+    Logout
+  </button>
   <DeleteButton />
 </div>
 `;
@@ -30,35 +27,26 @@ exports[`sidebar should match snapshot (default) 1`] = `
     Hi, Anonymous!
   </p>
   <hr />
-  <a
-    href="/auth/facebook"
+  <button
+    className="c-ui__sidebar-item qa-click-facebook "
     key="0-826"
+    onClick={[Function]}
   >
-    <button
-      className="c-ui__sidebar-item "
-    >
-      Facebook Login
-    </button>
-  </a>
-  <a
-    href="/auth/github"
+    Facebook Login
+  </button>
+  <button
+    className="c-ui__sidebar-item qa-click-github "
     key="0-643"
+    onClick={[Function]}
   >
-    <button
-      className="c-ui__sidebar-item "
-    >
-      GitHub Login
-    </button>
-  </a>
-  <a
-    href="/auth/twitter"
+    GitHub Login
+  </button>
+  <button
+    className="c-ui__sidebar-item qa-click-twitter u-no-margin"
     key="0-787"
+    onClick={[Function]}
   >
-    <button
-      className="c-ui__sidebar-item u-no-margin"
-    >
-      Twitter Login
-    </button>
-  </a>
+    Twitter Login
+  </button>
 </div>
 `;

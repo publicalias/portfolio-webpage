@@ -246,9 +246,9 @@ describe("metaGetPolls (search)", () => {
 
   });
 
-  it("sends polls if search is empty", () => testPolls([{}], "", 1));
+  it("sends polls if search is valid (empty)", () => testPolls([{}], "", 1));
 
-  it("sends polls if search is valid", () => {
+  it("sends polls if search is valid (non-empty)", () => {
 
     const str = "Apple";
 
