@@ -2,9 +2,9 @@
 
 //local imports
 
-const List = require("../../../scripts/components/poll/list");
+const Form = require("../../../../scripts/components/poll/form/form");
 
-const { testWrapper } = require("../../test-helpers");
+const { testWrapper } = require("../../../test-helpers");
 
 //global imports
 
@@ -16,11 +16,11 @@ beforeAll(reactTests.setup);
 
 //utilities
 
-const { testShallow } = testWrapper(List);
+const { testShallow } = testWrapper(Form);
 
-//list
+//form
 
-test("list should match snapshot", () => {
+test("form should match snapshot", () => {
 
   const { wrapper } = testShallow();
 
