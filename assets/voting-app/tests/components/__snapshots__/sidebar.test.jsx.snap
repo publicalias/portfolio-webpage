@@ -9,7 +9,7 @@ exports[`sidebar should match snapshot (authenticated) 1`] = `
   </p>
   <hr />
   <button
-    className="c-ui__sidebar-item qa-click-logout "
+    className="c-ui__sidebar-item qa-auth-logout "
     key="0-666"
     onClick={[Function]}
   >
@@ -28,21 +28,21 @@ exports[`sidebar should match snapshot (default) 1`] = `
   </p>
   <hr />
   <button
-    className="c-ui__sidebar-item qa-click-facebook "
+    className="c-ui__sidebar-item qa-auth-facebook "
     key="0-826"
     onClick={[Function]}
   >
     Facebook Login
   </button>
   <button
-    className="c-ui__sidebar-item qa-click-github "
+    className="c-ui__sidebar-item qa-auth-github "
     key="0-643"
     onClick={[Function]}
   >
     GitHub Login
   </button>
   <button
-    className="c-ui__sidebar-item qa-click-twitter u-no-margin"
+    className="c-ui__sidebar-item qa-auth-twitter u-no-margin"
     key="0-787"
     onClick={[Function]}
   >

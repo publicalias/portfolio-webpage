@@ -9,6 +9,7 @@ const { testWrapper } = require("../test-helpers");
 //global imports
 
 const { newUser } = require("schemas/master");
+const { testMock } = require("test-helpers/meta-tests");
 const { reactTests } = require("test-helpers/react-tests");
 
 //setup
@@ -27,11 +28,11 @@ describe("sidebar", () => {
 
     location.assign = jest.fn();
 
-    wrapper.find(`.qa-click-${id}`).simulate("click");
+    wrapper.find(`.qa-auth-${id}`).simulate("click");
 
-    expect(location.assign.mock.calls).toEqual([
-      [`/auth/${id}`]
-    ]);
+    testMock(location.assign, [`/auth/${id}`]);
+
+    wrapper.unmount();
 
   };
 

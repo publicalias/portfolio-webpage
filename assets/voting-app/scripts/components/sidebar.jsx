@@ -45,7 +45,7 @@ const Sidebar = (props) => {
 
         return bool && (
           <button
-            className={`c-ui__sidebar-item qa-click-${id} ${mod}`}
+            className={`c-ui__sidebar-item qa-auth-${id} ${mod}`}
             key={keyGen(id)}
             onClick={handleClick}
           >

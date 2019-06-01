@@ -110,21 +110,27 @@ const submitKeys = (id) => {
   const DOMInput = select(`.js-submit-input${pairID}`);
   const DOMButton = select(`.js-submit-button${pairID}`);
 
-  DOMInput.on("keydown", (event) => {
+  const ignore = ["Enter", "Tab", "Shift"];
+
+  const handleSubmit = (event) => {
     if (event.key === "Enter") {
       DOMButton.focus(); //fires event
     }
-  });
+  };
 
-  DOMButton.on("keydown", (event) => {
-
-    const ignore = ["Enter", "Tab", "Shift"];
-
+  const handleChange = (event) => {
     if (!ignore.includes(event.key)) {
       DOMInput.focus();
     }
+  };
 
-  });
+  DOMInput.on("keydown", handleSubmit);
+  DOMButton.on("keydown", handleChange);
+
+  return () => {
+    DOMInput.off("keydown", handleSubmit);
+    DOMButton.off("keydown", handleChange);
+  };
 
 };
 
