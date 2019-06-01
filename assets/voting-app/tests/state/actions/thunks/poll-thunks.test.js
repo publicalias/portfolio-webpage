@@ -1,7 +1,5 @@
 "use strict";
 
-/*eslint max-nested-callbacks: 0*/
-
 //local imports
 
 const { actions } = require("../../../../scripts/state/actions/actions");

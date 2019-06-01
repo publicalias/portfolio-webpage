@@ -1,6 +1,6 @@
 "use strict";
 
-/*eslint max-nested-callbacks: 0, max-statements: 0*/
+/*eslint max-statements: 0*/
 
 //local imports
 
