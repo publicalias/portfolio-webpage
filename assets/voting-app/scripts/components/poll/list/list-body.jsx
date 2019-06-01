@@ -22,7 +22,7 @@ const ListBody = (props) => {
 
   const keyGen = initKeyGen();
 
-  const auth = user.auth && !user.data.restricted;
+  const auth = user.type === "auth";
 
   return (
     <div className="c-list__body">

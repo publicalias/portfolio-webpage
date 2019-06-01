@@ -18,7 +18,7 @@ const NavBar = (props) => {
 
   //utilities
 
-  const auth = user.auth && !user.data.restricted;
+  const auth = user.type === "auth";
 
   const items = [
     ["all", "All Polls", true],

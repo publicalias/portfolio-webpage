@@ -11,7 +11,9 @@ const React = require("react");
 
 //delete button
 
-const DeleteButton = () => {
+const DeleteButton = (props) => {
+
+  const { actions: { metaAddErrors } } = props;
 
   //state
 
@@ -30,8 +32,12 @@ const DeleteButton = () => {
       method: "DELETE"
     });
 
-    fetch(path, init).then(() => {
-      location.reload();
+    fetch(path, init).then((res) => {
+      if (res.ok) {
+        location.reload();
+      } else {
+        metaAddErrors([`${res.status} ${res.statusText}`]);
+      }
     });
 
   };

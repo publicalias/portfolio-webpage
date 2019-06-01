@@ -52,7 +52,7 @@ const ListItem = (props) => {
 
   //render
 
-  const auth = user.auth && !user.data.restricted;
+  const auth = user.type === "auth";
 
   const hideIcon = toggle("hidden", "fa-eye-slash", "fa-eye");
   const flagIcon = toggle("flagged", "fa-flag", "fa-flag-o");
