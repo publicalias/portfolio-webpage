@@ -66,6 +66,9 @@ exports[`ui should match snapshot 1`] = `
         "push": [MockFunction],
       }
     }
+    location={Object {}}
+    match={Object {}}
+    staticContext={Object {}}
   />
   <Sidebar
     actions={
@@ -129,15 +132,18 @@ exports[`ui should match snapshot 1`] = `
         "push": [MockFunction],
       }
     }
+    location={Object {}}
+    match={Object {}}
+    staticContext={Object {}}
   />
   <Route
-    component={[Function]}
     exact={true}
     path="/"
+    render={[Function]}
   />
   <Route
-    component={[Function]}
     path="/list"
+    render={[Function]}
   />
   <Route
     component={[Function]}

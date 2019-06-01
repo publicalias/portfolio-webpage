@@ -35,11 +35,11 @@ const UI = (props) => {
       <NavBar {...props} />
       <Sidebar {...props} />
       <Route
-        component={List}
         exact
         path="/"
+        render={() => <List {...props} />}
       />
-      <Route component={List} path="/list" />
+      <Route path="/list" render={() => <List {...props} />} />
       <Route component={Form} path="/form" />
       <Route component={View} path="/view" />
     </div>

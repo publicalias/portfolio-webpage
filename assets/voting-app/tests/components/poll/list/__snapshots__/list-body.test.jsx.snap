@@ -1,0 +1,216 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`list body should match snapshot (authenticated) 1`] = `
+<div
+  className="c-list__body"
+>
+  <div
+    className="c-list__scroll-box js-scroll-box"
+  >
+    <table
+      className="c-list__table js-scroll-content"
+    >
+      <thead>
+        <tr>
+          <td>
+            <h5>
+              Hide
+            </h5>
+          </td>
+          <td>
+            <h5>
+              Flag
+            </h5>
+          </td>
+          <td>
+            <h5>
+              Description
+            </h5>
+          </td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            N/A
+          </td>
+          <td>
+            N/A
+          </td>
+          <td>
+            No Polls
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;
+
+exports[`list body should match snapshot (default) 1`] = `
+<div
+  className="c-list__body"
+>
+  <div
+    className="c-list__scroll-box js-scroll-box"
+  >
+    <table
+      className="c-list__table js-scroll-content"
+    >
+      <thead>
+        <tr>
+          <td>
+            <h5>
+              Hide
+            </h5>
+          </td>
+          <td>
+            <h5>
+              Description
+            </h5>
+          </td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            N/A
+          </td>
+          <td>
+            No Polls
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;
+
+exports[`list body should match snapshot (polls) 1`] = `
+<div
+  className="c-list__body"
+>
+  <div
+    className="c-list__scroll-box js-scroll-box"
+  >
+    <table
+      className="c-list__table js-scroll-content"
+    >
+      <thead>
+        <tr>
+          <td>
+            <h5>
+              Hide
+            </h5>
+          </td>
+          <td>
+            <h5>
+              Description
+            </h5>
+          </td>
+        </tr>
+      </thead>
+      <tbody>
+        <ListItem
+          actions={
+            Object {
+              "formAddOption": [MockFunction],
+              "formClearState": [MockFunction],
+              "formRemoveOption": [MockFunction],
+              "formSetAdd": [MockFunction],
+              "formSetTitle": [MockFunction],
+              "formToggleConfirm": [MockFunction],
+              "formToggleSecret": [MockFunction],
+              "listClearState": [MockFunction],
+              "listSetSearch": [MockFunction],
+              "metaAddErrors": [MockFunction],
+              "metaCloseError": [MockFunction],
+              "metaCreatePoll": [MockFunction],
+              "metaDeletePoll": [MockFunction],
+              "metaGetPolls": [MockFunction],
+              "metaGetUser": [MockFunction],
+              "metaNoOp": [MockFunction],
+              "metaSetLoading": [MockFunction],
+              "metaSetState": [MockFunction],
+              "metaTimeoutError": [MockFunction],
+              "pollAddOption": [MockFunction],
+              "pollCastVote": [MockFunction],
+              "pollRemoveOption": [MockFunction],
+              "pollToggleFlag": [MockFunction],
+              "pollToggleHide": [MockFunction],
+              "pollToggleSecret": [MockFunction],
+              "viewClearState": [MockFunction],
+              "viewSetAdd": [MockFunction],
+              "viewToggleConfirm": [MockFunction],
+              "viewToggleSettings": [MockFunction],
+            }
+          }
+          data={
+            Object {
+              "errors": Array [],
+              "form": Object {
+                "add": "",
+                "confirm": false,
+                "options": Array [],
+                "secret": false,
+                "title": "",
+              },
+              "list": Object {
+                "search": "",
+              },
+              "loading": false,
+              "polls": Array [
+                Object {
+                  "author": "",
+                  "date": 0,
+                  "id": "",
+                  "options": Array [],
+                  "secret": false,
+                  "title": "",
+                  "users": Object {
+                    "created": "",
+                    "flagged": Array [],
+                    "hidden": Array [],
+                    "voted": 0,
+                  },
+                },
+              ],
+              "user": Object {},
+              "view": Object {
+                "add": "",
+                "confirm": false,
+                "settings": false,
+              },
+            }
+          }
+          history={
+            Object {
+              "push": [MockFunction],
+            }
+          }
+          key="0-0"
+          location={Object {}}
+          match={Object {}}
+          poll={
+            Object {
+              "author": "",
+              "date": 0,
+              "id": "",
+              "options": Array [],
+              "secret": false,
+              "title": "",
+              "users": Object {
+                "created": "",
+                "flagged": Array [],
+                "hidden": Array [],
+                "voted": 0,
+              },
+            }
+          }
+          staticContext={Object {}}
+        />
+      </tbody>
+    </table>
+  </div>
+</div>
+`;

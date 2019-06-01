@@ -9,7 +9,9 @@ const { configure, mount, shallow } = require("enzyme");
 
 //init test wrapper
 
-const mockProps = (newState, actions, data) => ({
+const mockProps = (newState, actions, data, other) => ({
+
+  ...other,
 
   actions: Object.keys(actions).reduce((acc, e) => {
 
@@ -21,15 +23,18 @@ const mockProps = (newState, actions, data) => ({
 
   data: newState(data),
 
-  history: { push: jest.fn() }
+  history: { push: jest.fn() },
+  location: {},
+  match: {},
+  staticContext: {}
 
 });
 
 const initTestWrapper = (newState, actions) => (UUT, Context) => {
 
-  const wrapFn = (render) => (data) => {
+  const wrapFn = (render) => (data, other) => {
 
-    const props = mockProps(newState, actions, data);
+    const props = mockProps(newState, actions, data, other);
 
     const Component = Context ? (
       <Context>

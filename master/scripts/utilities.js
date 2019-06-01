@@ -122,6 +122,20 @@ const months = [
   "December"
 ];
 
+//read date
+
+const readDate = (unix) => {
+
+  const date = new Date(unix);
+
+  const d = date.getDate();
+  const m = months[date.getMonth()];
+  const y = date.getFullYear();
+
+  return `${d} ${m} ${y}`;
+
+};
+
 //rng int
 
 const rngInt = (min, max, inc = false) => Math.floor(Math.random() * (max - min + Number(inc))) + min;
@@ -143,15 +157,7 @@ const toPrecision = (n, sf = 15) => {
 
 //truncate
 
-const truncate = (str, length) => {
-
-  if (str.length < length) {
-    return str;
-  }
-
-  return `${str.slice(0, length - 3)}...`;
-
-};
+const truncate = (str, length) => str.length < length ? str : `${str.slice(0, length - 3)}...`;
 
 //exports
 
@@ -166,6 +172,7 @@ module.exports = {
   initDeepCopy,
   leadZero,
   months,
+  readDate,
   rngInt,
   roundTo,
   toPrecision,

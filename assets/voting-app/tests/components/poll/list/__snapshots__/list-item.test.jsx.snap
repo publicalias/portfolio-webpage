@@ -1,0 +1,234 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`list item should match snapshot (10^3 votes) 1`] = `
+<tr>
+  <td>
+    <button
+      className="qa-toggle-hide"
+      onClick={[Function]}
+    >
+      <i
+        className="fa fa-eye"
+      />
+    </button>
+  </td>
+  <td
+    className="u-cursor-pointer"
+  >
+    <Link
+      to="/view?id="
+    >
+      <p />
+      <p
+        className="u-no-margin"
+      >
+        1K Votes — 31 December 1969
+      </p>
+    </Link>
+  </td>
+</tr>
+`;
+
+exports[`list item should match snapshot (10^6 votes) 1`] = `
+<tr>
+  <td>
+    <button
+      className="qa-toggle-hide"
+      onClick={[Function]}
+    >
+      <i
+        className="fa fa-eye"
+      />
+    </button>
+  </td>
+  <td
+    className="u-cursor-pointer"
+  >
+    <Link
+      to="/view?id="
+    >
+      <p />
+      <p
+        className="u-no-margin"
+      >
+        1M Votes — 31 December 1969
+      </p>
+    </Link>
+  </td>
+</tr>
+`;
+
+exports[`list item should match snapshot (10^9 votes) 1`] = `
+<tr>
+  <td>
+    <button
+      className="qa-toggle-hide"
+      onClick={[Function]}
+    >
+      <i
+        className="fa fa-eye"
+      />
+    </button>
+  </td>
+  <td
+    className="u-cursor-pointer"
+  >
+    <Link
+      to="/view?id="
+    >
+      <p />
+      <p
+        className="u-no-margin"
+      >
+        1B Votes — 31 December 1969
+      </p>
+    </Link>
+  </td>
+</tr>
+`;
+
+exports[`list item should match snapshot (authenticated) 1`] = `
+<tr>
+  <td>
+    <button
+      className="qa-toggle-hide"
+      onClick={[Function]}
+    >
+      <i
+        className="fa fa-eye"
+      />
+    </button>
+  </td>
+  <td>
+    <button
+      className="qa-toggle-flag"
+      onClick={[Function]}
+    >
+      <i
+        className="fa fa-flag-o"
+      />
+    </button>
+  </td>
+  <td
+    className="u-cursor-pointer"
+  >
+    <Link
+      to="/view?id="
+    >
+      <p />
+      <p
+        className="u-no-margin"
+      >
+        0 Votes — 31 December 1969
+      </p>
+    </Link>
+  </td>
+</tr>
+`;
+
+exports[`list item should match snapshot (default) 1`] = `
+<tr>
+  <td>
+    <button
+      className="qa-toggle-hide"
+      onClick={[Function]}
+    >
+      <i
+        className="fa fa-eye"
+      />
+    </button>
+  </td>
+  <td
+    className="u-cursor-pointer"
+  >
+    <Link
+      to="/view?id="
+    >
+      <p />
+      <p
+        className="u-no-margin"
+      >
+        0 Votes — 31 December 1969
+      </p>
+    </Link>
+  </td>
+</tr>
+`;
+
+exports[`list item should match snapshot (flagged) 1`] = `
+<tr>
+  <td>
+    <button
+      className="qa-toggle-hide"
+      onClick={[Function]}
+    >
+      <i
+        className="fa fa-eye"
+      />
+    </button>
+  </td>
+  <td>
+    <button
+      className="qa-toggle-flag"
+      onClick={[Function]}
+    >
+      <i
+        className="fa fa-flag"
+      />
+    </button>
+  </td>
+  <td
+    className="u-cursor-pointer"
+  >
+    <Link
+      to="/view?id="
+    >
+      <p />
+      <p
+        className="u-no-margin"
+      >
+        0 Votes — 31 December 1969
+      </p>
+    </Link>
+  </td>
+</tr>
+`;
+
+exports[`list item should match snapshot (hidden) 1`] = `
+<tr>
+  <td>
+    <button
+      className="qa-toggle-hide"
+      onClick={[Function]}
+    >
+      <i
+        className="fa fa-eye-slash"
+      />
+    </button>
+  </td>
+  <td>
+    <button
+      className="qa-toggle-flag"
+      onClick={[Function]}
+    >
+      <i
+        className="fa fa-flag-o"
+      />
+    </button>
+  </td>
+  <td
+    className="u-cursor-pointer"
+  >
+    <Link
+      to="/view?id="
+    >
+      <p />
+      <p
+        className="u-no-margin"
+      >
+        0 Votes — 31 December 1969
+      </p>
+    </Link>
+  </td>
+</tr>
+`;

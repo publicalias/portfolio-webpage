@@ -3,6 +3,14 @@
 @import "components/cookie-banner";
 @import "components/delete-button";
 @import "components/error-message";
+@import "components/search-bar";
+
+@mixin grid {
+  display: grid;
+  grid-gap: 4.5vw;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(2, auto);
+}
 
 @mixin grid-area {
   background-color: rgba(0, 0, 0, 0.75);
@@ -11,18 +19,59 @@
 
 //components
 
+.c-list {
+
+  grid-template-rows: min-content auto;
+
+  &__body {
+    @include grid-area;
+    grid-area: 2 / 1 / 2 / 13;
+  }
+
+  &__menu {
+    @include grid-area;
+    display: flex;
+    grid-area: 1 / 1 / 1 / 13;
+  }
+
+  &__scroll-box {
+    height: calc(100vh - 9vw);
+    max-height: 45vw;
+    overflow-y: scroll;
+    padding-right: 4.5vw;
+  }
+
+  &__search {
+    flex: 1;
+    margin-right: 3vw;
+  }
+
+  &__sort {
+    margin-right: 1.5vw;
+  }
+
+  &__table {
+    border-spacing: 1.5vw;
+    margin: -1.5vw;
+  }
+
+}
+
 .c-ui {
 
-  display: grid;
-  grid-gap: 4.5vw;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: repeat(2, auto);
+  @include grid;
   margin: 4.5vw auto;
   width: 91%;
 
-  &__form, &__list, &__view {
+  &__form, &__view {
     @include grid-area;
     grid-area: 2 / 5 / 2 / 13;
+  }
+
+  &__list {
+    @include grid;
+    grid-area: 2 / 5 / 2 / 13;
+    grid-template-rows: min-content auto;
   }
 
   &__nav-bar {

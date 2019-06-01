@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`list menu should match snapshot (default) 1`] = `
+<div
+  className="c-list__menu"
+>
+  <div
+    className="c-list__search"
+  >
+    <SearchBar
+      handleChange={[Function]}
+      handleClear={[Function]}
+      handleSubmit={[Function]}
+      value=""
+    />
+  </div>
+  <div
+    className="c-list__sort"
+  >
+    <button
+      className="qa-sort-new u-hover"
+      onClick={[Function]}
+    >
+      New
+    </button>
+  </div>
+  <div
+    className="c-list__sort u-no-margin"
+  >
+    <button
+      className="qa-sort-popular u-hover"
+      onClick={[Function]}
+    >
+      Popular
+    </button>
+  </div>
+</div>
+`;
+
+exports[`list menu should match snapshot (search) 1`] = `
+<div
+  className="c-list__menu"
+>
+  <div
+    className="c-list__search"
+  >
+    <SearchBar
+      handleChange={[Function]}
+      handleClear={[Function]}
+      handleSubmit={[Function]}
+      value="Apple"
+    />
+  </div>
+  <div
+    className="c-list__sort"
+  >
+    <button
+      className="qa-sort-new u-hover"
+      onClick={[Function]}
+    >
+      New
+    </button>
+  </div>
+  <div
+    className="c-list__sort u-no-margin"
+  >
+    <button
+      className="qa-sort-popular u-hover"
+      onClick={[Function]}
+    >
+      Popular
+    </button>
+  </div>
+</div>
+`;
