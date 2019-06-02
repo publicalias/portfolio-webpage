@@ -3,47 +3,48 @@
 //local imports
 
 const { select } = require("./dom-api");
-const { bindObject } = require("./utilities");
+const { handleTeardown, hookEvent } = require("./react-utils");
 
 //check input
 
-const DOMInput = select(".js-check-input");
+const checkInput = () => {
 
-const utils = {
+  const DOMInput = select(".js-check-input");
 
-  timer: null,
-  block: false,
+  const state = {
+    timer: null,
+    blocked: false
+  };
 
-  isTouch() {
+  const setClass = (touch) => {
+    DOMInput.class("is-touch", true, touch).class("is-mouse", true, !touch);
+  };
 
-    clearTimeout(this.timer);
+  const isTouch = () => {
 
-    this.block = true;
+    clearTimeout(state.timer);
 
-    this.timer = setTimeout(() => {
-      this.block = false;
+    state.blocked = true;
+
+    state.timer = setTimeout(() => {
+      state.blocked = false;
     }, 500);
 
-    DOMInput.class("is-mouse", true, false).class("is-touch", true, true);
+    setClass(true);
 
-  },
+  };
 
-  isMouse() {
-
-    if (this.block) {
-      return;
+  const isMouse = () => {
+    if (!state.blocked) {
+      setClass(false);
     }
+  };
 
-    DOMInput.class("is-mouse", true, true).class("is-touch", true, false);
+  return handleTeardown([
+    hookEvent(DOMInput, "touchstart", isTouch, { passive: true }),
+    hookEvent(DOMInput, "mouseover", isMouse)
+  ]);
 
-  }
-
-};
-
-bindObject(utils);
-
-const checkInput = () => {
-  DOMInput.on("touchstart", utils.isTouch, { passive: true }).on("mouseover", utils.isMouse);
 };
 
 //encode api call
@@ -112,25 +113,21 @@ const submitKeys = (id) => {
 
   const ignore = ["Enter", "Tab", "Shift"];
 
-  const handleSubmit = (event) => {
-    if (event.key === "Enter") {
-      DOMButton.focus(); //fires event
-    }
-  };
+  return handleTeardown([
 
-  const handleChange = (event) => {
-    if (!ignore.includes(event.key)) {
-      DOMInput.focus();
-    }
-  };
+    hookEvent(DOMInput, "keydown", (event) => {
+      if (event.key === "Enter") {
+        DOMButton.focus(); //fires event
+      }
+    }),
 
-  DOMInput.on("keydown", handleSubmit);
-  DOMButton.on("keydown", handleChange);
+    hookEvent(DOMButton, "keydown", (event) => {
+      if (!ignore.includes(event.key)) {
+        DOMInput.focus();
+      }
+    })
 
-  return () => {
-    DOMInput.off("keydown", handleSubmit);
-    DOMButton.off("keydown", handleChange);
-  };
+  ]);
 
 };
 

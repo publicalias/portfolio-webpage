@@ -7,7 +7,7 @@ const { clearCanvas, paintCanvas } = require("../view-logic");
 //global imports
 
 const { select } = require("dom-api");
-const { useSetState } = require("react-utils");
+const { hookEvent, useSetState } = require("react-utils");
 
 //node modules
 
@@ -65,19 +65,17 @@ const Culture = (props) => {
 
   //lifecycle
 
-  useEffect(() => {
-    select(".js-ref-canvas").on("mousedown", (event) => {
-      if (event.detail > 1) {
-        event.preventDefault(); //ignore select
-      }
-    });
-  }, []);
+  useEffect(() => hookEvent(select(".js-ref-canvas"), "mousedown", (event) => {
+    if (event.detail > 1) {
+      event.preventDefault(); //ignore select
+    }
+  }), []);
 
   useLayoutEffect(() => {
 
     handleResize();
 
-    select(window).on("resize", handleResize);
+    return hookEvent(select(window), "load resize", handleResize);
 
   }, []);
 

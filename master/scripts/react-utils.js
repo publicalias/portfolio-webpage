@@ -4,6 +4,26 @@
 
 const { useEffect, useLayoutEffect, useRef, useState } = require("react");
 
+//handle teardown
+
+const handleTeardown = (list) => () => {
+  for (const e of list) {
+    e();
+  }
+};
+
+//hook event
+
+const hookEvent = (DOMNode, ...args) => {
+
+  DOMNode.on(...args);
+
+  return () => {
+    DOMNode.off(...args);
+  };
+
+};
+
 //init key gen
 
 const initKeyGen = () => {
@@ -88,10 +108,19 @@ const useSetState = (initialState) => {
 
 };
 
+//use teardown
+
+const useTeardown = (getList, bool) => {
+  useEffect(() => handleTeardown(getList()), bool);
+};
+
 //exports
 
 module.exports = {
+  handleTeardown,
+  hookEvent,
   initKeyGen,
   useInterval,
-  useSetState
+  useSetState,
+  useTeardown
 };

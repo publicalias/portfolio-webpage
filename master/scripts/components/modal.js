@@ -3,6 +3,7 @@
 //local imports
 
 const { select } = require("../dom-api");
+const { handleTeardown, hookEvent } = require("../react-utils");
 
 //toggle modal
 
@@ -45,17 +46,19 @@ const toggleModal = (bool) => {
 
 //modal events
 
-const modalEvents = () => {
-  select(window)
-    .on("resize", () => {
+const modalEvents = () => handleTeardown([
+
+  hookEvent(select(window), "resize", () => {
+    toggleModal();
+  }),
+
+  hookEvent(select(window), "keydown", (event) => {
+    if (event.key === "Escape") {
       toggleModal();
-    })
-    .on("keydown", (event) => {
-      if (event.key === "Escape") {
-        toggleModal();
-      }
-    });
-};
+    }
+  })
+
+]);
 
 //exports
 

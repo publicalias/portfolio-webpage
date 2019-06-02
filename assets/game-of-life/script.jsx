@@ -14,14 +14,12 @@ const { childProps } = require("./scripts/view-logic");
 const { checkInput, submitKeys } = require("client-utils");
 const { select } = require("dom-api");
 const { array2D } = require("react-projects/app-logic");
-const { useSetState } = require("react-utils");
+const { useSetState, useTeardown } = require("react-utils");
 
 //node modules
 
 const React = require("react");
 const ReactDOM = require("react-dom");
-
-const { useEffect } = React;
 
 //app logic
 
@@ -67,14 +65,14 @@ const App = () => {
 
   //lifecycle
 
-  useEffect(() => {
+  useTeardown(() => [
 
-    checkInput();
+    checkInput(),
 
-    submitKeys("rules");
-    submitKeys("scale");
+    submitKeys("rules"),
+    submitKeys("scale")
 
-  }, []);
+  ], []);
 
   useFastInterval(utils.updateCulture, state.start && state.speed);
 

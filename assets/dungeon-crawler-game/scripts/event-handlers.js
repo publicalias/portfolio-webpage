@@ -8,6 +8,7 @@ const { newGame } = require("./new-game/new-game");
 //global imports
 
 const { select } = require("dom-api");
+const { hookEvent } = require("react-utils");
 const { cycleItems, deepCopy } = require("utilities");
 
 //node modules
@@ -142,35 +143,31 @@ const useKeyDown = (handlers) => {
   const enabled = useRef(true);
 
   useEffect(() => {
-    setInterval(() => {
+
+    const id = setInterval(() => {
       enabled.current = true;
     }, 100);
-  }, []);
-
-  useEffect(() => {
-
-    const fn = (event) => {
-
-      const arrows = ["ArrowUp", "ArrowLeft", "ArrowDown", "ArrowRight"];
-
-      if (arrows.includes(event.key)) {
-        event.preventDefault();
-      }
-
-      if (enabled.current) {
-        enabled.current = false;
-        handlers.keyDown(event);
-      }
-
-    };
-
-    select(window).on("keydown", fn);
 
     return () => {
-      select(window).off("keydown", fn);
+      clearInterval(id);
     };
 
-  });
+  }, []);
+
+  useEffect(() => hookEvent(select(window), "keydown", (event) => {
+
+    const arrows = ["ArrowUp", "ArrowLeft", "ArrowDown", "ArrowRight"];
+
+    if (arrows.includes(event.key)) {
+      event.preventDefault();
+    }
+
+    if (enabled.current) {
+      enabled.current = false;
+      handlers.keyDown(event);
+    }
+
+  }));
 
 };
 

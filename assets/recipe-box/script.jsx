@@ -11,7 +11,7 @@ const { checkInput, storageKey } = require("client-utils");
 const { closePanel, initPanel } = require("components/accordion");
 const { modalEvents, toggleModal } = require("components/modal");
 const { select } = require("dom-api");
-const { initKeyGen, useSetState } = require("react-utils");
+const { initKeyGen, useSetState, useTeardown } = require("react-utils");
 const { deepCopy } = require("utilities");
 
 //node modules
@@ -19,7 +19,7 @@ const { deepCopy } = require("utilities");
 const React = require("react");
 const ReactDOM = require("react-dom");
 
-const { useEffect, useLayoutEffect } = React;
+const { useLayoutEffect } = React;
 
 //app logic
 
@@ -103,10 +103,10 @@ const App = () => {
 
   //lifecycle
 
-  useEffect(() => {
-    checkInput();
-    modalEvents();
-  }, []);
+  useTeardown(() => [
+    checkInput(),
+    modalEvents()
+  ], []);
 
   useLayoutEffect(initPanel);
 

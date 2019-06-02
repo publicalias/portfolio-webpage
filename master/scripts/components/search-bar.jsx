@@ -4,12 +4,11 @@
 
 const { submitKeys } = require("client-utils");
 const { select } = require("dom-api");
+const { hookEvent, useTeardown } = require("react-utils");
 
 //node modules
 
 const React = require("react");
-
-const { useEffect } = React;
 
 //search bar
 
@@ -19,27 +18,15 @@ const SearchBar = (props) => {
 
   //lifecycle
 
-  useEffect(() => {
+  useTeardown(() => [
 
-    const DOMInput = select(".js-get-outline");
+    submitKeys(),
 
-    const toggleOutline = (event) => {
+    hookEvent(select(".js-get-outline"), "blur focus", (event) => {
       select(".js-set-outline").css({ outline: event.type === "focus" ? "1px solid white" : "none" });
-    };
+    })
 
-    const teardown = submitKeys();
-
-    DOMInput.on("blur focus", toggleOutline);
-
-    return () => {
-
-      teardown();
-
-      DOMInput.off("blur focus", toggleOutline);
-
-    };
-
-  }, []);
+  ], []);
 
   //render
 

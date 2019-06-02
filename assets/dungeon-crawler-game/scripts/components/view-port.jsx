@@ -9,7 +9,7 @@ const { paintCanvas } = require("../view-logic");
 
 const { select } = require("dom-api");
 const { mouseYX } = require("react-projects/app-logic");
-const { useSetState } = require("react-utils");
+const { hookEvent, useSetState } = require("react-utils");
 const { arrEqual } = require("utilities");
 
 //node modules
@@ -95,7 +95,7 @@ const ViewPort = (props) => {
 
     handleResize();
 
-    select(window).on("resize", handleResize);
+    return hookEvent(select(window), "load resize", handleResize);
 
   }, []);
 

@@ -9,7 +9,7 @@ const { positionMenu } = require("../../event-handlers");
 //global imports
 
 const { select } = require("dom-api");
-const { initKeyGen } = require("react-utils");
+const { hookEvent, initKeyGen } = require("react-utils");
 
 //node modules
 
@@ -33,9 +33,7 @@ const NavSublist = (props) => {
 
   //lifecycle
 
-  useEffect(() => {
-    select(window).on("resize scroll", positionMenu);
-  }, []);
+  useEffect(() => hookEvent(select(window), "resize scroll", positionMenu), []);
 
   //render
 
