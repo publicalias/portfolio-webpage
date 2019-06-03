@@ -15,13 +15,13 @@ const { useEffect } = React;
 
 const ErrorMessage = (props) => {
 
-  const { actions: { metaCloseError, metaTimeoutError }, data: { errors } } = props;
+  const { actions: { metaAddErrors, metaCloseError, metaTimeoutError }, data: { errors }, history, location } = props;
 
   //utilities
 
-  const error = errors[0];
-
   const DOMError = select(".js-hide-error");
+
+  const error = errors[0];
 
   const fadeIn = () => {
     if (error && (DOMError.class("is-hidden") || DOMError.css().opacity === "0")) {
@@ -47,6 +47,20 @@ const ErrorMessage = (props) => {
   const handleClick = fadeOut;
 
   //lifecycle
+
+  useEffect(() => {
+
+    const errors = new URLSearchParams(location.search).get("errors");
+
+    if (errors) {
+
+      history.replace("/");
+
+      metaAddErrors(JSON.parse(errors));
+
+    }
+
+  }, []);
 
   useEffect(fadeIn);
 

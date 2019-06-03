@@ -18,20 +18,13 @@ const usersCol = () => db.collection("auth/users");
 
 //find user
 
-const updateUser = async (profile, fn, user) => {
+const updateUser = async (profile, fn, id) => {
 
-  const { provider, id, displayName } = profile;
+  const { displayName } = profile;
 
-  user.name = displayName || "";
-  user.auth = {
-    provider,
-    id
-  };
+  const { value: user } = await usersCol().findOneAndUpdate({ id }, { $set: { name: displayName || "" } });
 
-  await Promise.all([
-    usersCol().updateOne({ id: user.id }, { $set: user }),
-    handleUpdate(user)
-  ]);
+  await handleUpdate(user);
 
   fn(null, user);
 
@@ -70,7 +63,7 @@ const findUser = async (accessToken, refreshToken, profile, fn) => {
     });
 
     if (doc) {
-      await updateUser(profile, fn, doc);
+      await updateUser(profile, fn, doc.id);
     } else {
       await createUser(profile, fn);
     }

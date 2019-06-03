@@ -24,6 +24,7 @@ const handleDelete = async (req, res) => {
     const { user: { id } } = req;
 
     await Promise.all([deleteVotingApp(id)]);
+
     await usersCol().deleteOne({ id });
 
     req.logout();

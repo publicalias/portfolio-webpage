@@ -16,7 +16,7 @@ const { Strategy: TwitterStrategy } = require("passport-twitter");
 
 const usersCol = () => db.collection("auth/users");
 
-const getURL = (str) => `${process.env.OA_CB_DOMAIN}/auth/${str}/callback`;
+const getURL = (provider) => `${process.env.OA_CB_DOMAIN}/auth/${provider}/callback`;
 
 //passport
 

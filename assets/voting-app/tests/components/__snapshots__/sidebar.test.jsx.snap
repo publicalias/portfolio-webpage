@@ -90,6 +90,7 @@ exports[`sidebar should match snapshot (authenticated) 1`] = `
     }
     location={Object {}}
     match={Object {}}
+    root="/voting-app"
     staticContext={Object {}}
   />
 </div>

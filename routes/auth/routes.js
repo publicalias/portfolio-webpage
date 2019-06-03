@@ -30,11 +30,21 @@ router.use("/delete", (req, res, next) => {
 //handle login
 
 for (const e of providers) {
+
   router.get(`/${e}`, passport.authenticate(e));
   router.get(`/${e}/callback`, passport.authenticate(e, {
     successRedirect: "/auth/redirect",
-    failureRedirect: "/auth/redirect"
+    failureRedirect: "/auth/redirect?status=401"
   }));
+
+  router.use(`/${e}/callback`, (err, req, res, next) => {
+    if (err) {
+      res.redirect("/auth/redirect?status=500");
+    } else {
+      next();
+    }
+  });
+
 }
 
 //handle logout
@@ -47,7 +57,16 @@ router.get("/logout", (req, res) => {
 //redirect
 
 router.get("/redirect", (req, res) => {
-  res.redirect(req.session.redirect);
+
+  const status = {
+    401: "401 Unauthorized",
+    500: "500 Internal Server Error"
+  };
+
+  const search = req.query.status ? `?errors=${JSON.stringify([status[req.query.status]])}` : "";
+
+  res.redirect(`${req.session.redirect}${search}`);
+
 });
 
 //delete user

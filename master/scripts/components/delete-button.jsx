@@ -13,7 +13,7 @@ const React = require("react");
 
 const DeleteButton = (props) => {
 
-  const { actions: { metaAddErrors } } = props;
+  const { actions: { metaAddErrors, metaSetLoading }, root } = props;
 
   //state
 
@@ -25,20 +25,23 @@ const DeleteButton = (props) => {
     setState({ confirm: !state.confirm });
   };
 
-  const handleDelete = () => {
+  const handleDelete = async () => {
 
     const { path, init } = encodeAPICall({
       path: "/auth/delete",
       method: "DELETE"
     });
 
-    fetch(path, init).then((res) => {
-      if (res.ok) {
-        location.reload();
-      } else {
-        metaAddErrors([`${res.status} ${res.statusText}`]);
-      }
-    });
+    metaSetLoading(true);
+
+    const res = await fetch(path, init);
+
+    if (res.ok) {
+      location.assign(root);
+    } else {
+      metaAddErrors([`${res.status} ${res.statusText}`]);
+      metaSetLoading();
+    }
 
   };
 

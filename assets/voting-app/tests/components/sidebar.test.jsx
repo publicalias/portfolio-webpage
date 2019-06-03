@@ -24,11 +24,15 @@ describe("sidebar", () => {
 
   const testAuth = (id, data) => {
 
-    const { wrapper } = testMount(data);
+    const { props, wrapper } = testMount(data);
+
+    const { actions: { metaSetLoading } } = props;
 
     location.assign = jest.fn();
 
     wrapper.find(`.qa-auth-${id}`).simulate("click");
+
+    testMock(metaSetLoading, [true]);
 
     testMock(location.assign, [`/auth/${id}`]);
 

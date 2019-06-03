@@ -24,7 +24,7 @@ ReactDOM.render((
   <ReduxApp
     UI={UI}
     actions={actions}
-    path="/voting-app"
     reducer={reducer}
+    root="/voting-app"
   />
 ), select(".js-render-react").first);

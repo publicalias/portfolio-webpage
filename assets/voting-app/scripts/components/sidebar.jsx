@@ -14,7 +14,7 @@ const React = require("react");
 
 const Sidebar = (props) => {
 
-  const { data: { user } } = props;
+  const { actions: { metaSetLoading }, data: { user } } = props;
 
   //utilities
 
@@ -40,7 +40,11 @@ const Sidebar = (props) => {
         const [id, text, bool, mod = ""] = e;
 
         const handleClick = () => {
+
+          metaSetLoading(true);
+
           location.assign(`/auth/${id}`);
+
         };
 
         return bool && (
@@ -54,7 +58,7 @@ const Sidebar = (props) => {
         );
 
       })}
-      {auth && <DeleteButton {...props} />}
+      {auth && <DeleteButton {...props} root="/voting-app" />}
     </div>
   );
 
