@@ -24,7 +24,7 @@ describe("metaCreatePoll", () => {
     data: getData()
   };
 
-  it("dispatches META_SET_STATE action on success", () => {
+  it("dispatches META_NO_OP action on success", () => {
 
     const actionList = [metaNoOp()];
 

@@ -8,22 +8,39 @@ const { testWrapper } = require("../../../test-helpers");
 
 //global imports
 
+const { testMock } = require("test-helpers/meta-tests");
 const { reactTests } = require("test-helpers/react-tests");
 
 //setup
 
 beforeAll(reactTests.setup);
 
-//utilities
-
-const { testShallow } = testWrapper(Form);
-
 //form
 
-test("form should match snapshot", () => {
+describe("form", () => {
 
-  const { wrapper } = testShallow();
+  const { testMount, testShallow } = testWrapper(Form);
 
-  expect(wrapper).toMatchSnapshot();
+  it("should match snapshot", () => {
+
+    const { wrapper } = testShallow();
+
+    expect(wrapper).toMatchSnapshot();
+
+  });
+
+  it("should call formClearState on load", () => {
+
+    const { props, wrapper } = testMount();
+
+    const { actions: { formClearState } } = props;
+
+    wrapper.mount();
+
+    testMock(formClearState, []);
+
+    wrapper.unmount();
+
+  });
 
 });

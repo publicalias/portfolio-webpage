@@ -4,56 +4,72 @@ exports[`nav bar should match snapshot (authenticated) 1`] = `
 <div
   className="c-ui__nav-bar"
 >
-  <Link
+  <div
     key="0-313"
-    to="/list?filter=all"
   >
-    <h3
-      className="c-ui__nav-item u-hover"
+    <Link
+      to="/list?filter=all"
     >
-      All Polls
-    </h3>
-  </Link>
-  <Link
+      <h3
+        className="c-ui__nav-item u-hover"
+      >
+        All Polls
+      </h3>
+    </Link>
+  </div>
+  <div
     key="0-728"
-    to="/list?filter=created"
   >
-    <h3
-      className="c-ui__nav-item u-hover"
+    <Link
+      to="/list?filter=created"
     >
-      My Polls
-    </h3>
-  </Link>
-  <Link
+      <h3
+        className="c-ui__nav-item u-hover"
+      >
+        My Polls
+      </h3>
+    </Link>
+  </div>
+  <div
     key="0-546"
-    to="/list?filter=voted"
   >
-    <h3
-      className="c-ui__nav-item u-hover"
+    <Link
+      to="/list?filter=voted"
     >
-      Voted
-    </h3>
-  </Link>
-  <Link
+      <h3
+        className="c-ui__nav-item u-hover"
+      >
+        Voted
+      </h3>
+    </Link>
+  </div>
+  <div
     key="0-620"
-    to="/list?filter=hidden"
   >
-    <h3
-      className="c-ui__nav-item u-hover"
+    <Link
+      to="/list?filter=hidden"
     >
-      Hidden
-    </h3>
-  </Link>
-  <Link
+      <h3
+        className="c-ui__nav-item u-hover"
+      >
+        Hidden
+      </h3>
+    </Link>
+  </div>
+  <div
+    className="u-align-right"
     key="0-436"
-    to="/form"
   >
-    <h3
-      className="c-ui__nav-item u-hover"
+    <Link
+      to="/form"
     >
-      New Poll
-    </h3>
-  </Link>
+      <h3
+        className="c-ui__nav-item u-hover"
+      >
+        New Poll
+      </h3>
+    </Link>
+  </div>
 </div>
 `;
 
@@ -61,35 +77,44 @@ exports[`nav bar should match snapshot (default) 1`] = `
 <div
   className="c-ui__nav-bar"
 >
-  <Link
+  <div
     key="0-313"
-    to="/list?filter=all"
   >
-    <h3
-      className="c-ui__nav-item u-hover"
+    <Link
+      to="/list?filter=all"
     >
-      All Polls
-    </h3>
-  </Link>
-  <Link
+      <h3
+        className="c-ui__nav-item u-hover"
+      >
+        All Polls
+      </h3>
+    </Link>
+  </div>
+  <div
     key="0-546"
-    to="/list?filter=voted"
   >
-    <h3
-      className="c-ui__nav-item u-hover"
+    <Link
+      to="/list?filter=voted"
     >
-      Voted
-    </h3>
-  </Link>
-  <Link
+      <h3
+        className="c-ui__nav-item u-hover"
+      >
+        Voted
+      </h3>
+    </Link>
+  </div>
+  <div
     key="0-620"
-    to="/list?filter=hidden"
   >
-    <h3
-      className="c-ui__nav-item u-hover"
+    <Link
+      to="/list?filter=hidden"
     >
-      Hidden
-    </h3>
-  </Link>
+      <h3
+        className="c-ui__nav-item u-hover"
+      >
+        Hidden
+      </h3>
+    </Link>
+  </div>
 </div>
 `;

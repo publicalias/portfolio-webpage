@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`form menu should match snapshot (confirm) 1`] = `
+<div
+  className="c-form__menu"
+>
+  <button
+    className="c-form__create-btn qa-create-poll"
+    onClick={[Function]}
+  >
+    Create
+  </button>
+  <div
+    className="c-form__confirm-box"
+  >
+    <p
+      className="c-form__confirm-text"
+    >
+      Are you sure?
+    </p>
+    <button
+      className="c-form__confirm-btn qa-discard-poll"
+      onClick={[Function]}
+    >
+      Yes
+    </button>
+    <button
+      className="c-form__confirm-btn qa-confirm-false"
+      onClick={[Function]}
+    >
+      No
+    </button>
+  </div>
+  <button
+    className="c-form__secret-btn qa-toggle-secret"
+    onClick={[Function]}
+  >
+    Public
+  </button>
+</div>
+`;
+
+exports[`form menu should match snapshot (default) 1`] = `
+<div
+  className="c-form__menu"
+>
+  <button
+    className="c-form__create-btn qa-create-poll"
+    onClick={[Function]}
+  >
+    Create
+  </button>
+  <button
+    className="c-form__confirm-btn qa-confirm-true"
+    onClick={[Function]}
+  >
+    Discard
+  </button>
+  <button
+    className="c-form__secret-btn qa-toggle-secret"
+    onClick={[Function]}
+  >
+    Public
+  </button>
+</div>
+`;
+
+exports[`form menu should match snapshot (secret) 1`] = `
+<div
+  className="c-form__menu"
+>
+  <button
+    className="c-form__create-btn qa-create-poll"
+    onClick={[Function]}
+  >
+    Create
+  </button>
+  <button
+    className="c-form__confirm-btn qa-confirm-true"
+    onClick={[Function]}
+  >
+    Discard
+  </button>
+  <button
+    className="c-form__secret-btn qa-toggle-secret"
+    onClick={[Function]}
+  >
+    Private
+  </button>
+</div>
+`;

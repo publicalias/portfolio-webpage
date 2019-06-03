@@ -35,7 +35,7 @@ const NavBar = (props) => {
 
   }
 
-  items.push(["form", "New Poll", auth, "/form"]);
+  items.push(["form", "New Poll", auth, "/form", "u-align-right"]);
 
   //render
 
@@ -45,12 +45,14 @@ const NavBar = (props) => {
     <div className="c-ui__nav-bar">
       {items.map((e) => {
 
-        const [id, text, bool, link] = e;
+        const [id, text, bool, link, util] = e;
 
         return bool && (
-          <Link key={keyGen(id)} to={link}>
-            <h3 className="c-ui__nav-item u-hover">{text}</h3>
-          </Link>
+          <div className={util} key={keyGen(id)}>
+            <Link to={link}>
+              <h3 className="c-ui__nav-item u-hover">{text}</h3>
+            </Link>
+          </div>
         );
 
       })}

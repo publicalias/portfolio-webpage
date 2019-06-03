@@ -9,7 +9,6 @@
   display: grid;
   grid-gap: 4.5vw;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: repeat(2, auto);
 }
 
 @mixin grid-area {
@@ -19,9 +18,38 @@
 
 //components
 
-.c-list {
+.c-form {
 
-  grid-template-rows: min-content auto;
+  &__confirm-box { display: flex; }
+
+  &__confirm-text {
+    margin: 0 1.5vw 0 0;
+    padding: 0.5vw 0.75vw;
+  }
+
+  &__confirm-btn, &__create-btn { margin-right: 1.5vw; }
+
+  &__display {
+    @include grid-area;
+    grid-area: 2 / 1 / 2 / 13;
+  }
+
+  &__menu {
+    @include grid-area;
+    display: flex;
+    grid-area: 1 / 1 / 1 / 13;
+  }
+
+  &__options {
+    @include grid-area;
+    grid-area: 3 / 1 / 3 / 13;
+  }
+
+  &__secret-btn { margin-left: auto; }
+
+};
+
+.c-list {
 
   &__body {
     @include grid-area;
@@ -63,15 +91,9 @@
   margin: 4.5vw auto;
   width: 91%;
 
-  &__form, &__view {
-    @include grid-area;
-    grid-area: 2 / 5 / 2 / 13;
-  }
-
-  &__list {
+  &__form, &__list, &__view {
     @include grid;
     grid-area: 2 / 5 / 2 / 13;
-    grid-template-rows: min-content auto;
   }
 
   &__nav-bar {
@@ -96,5 +118,7 @@
 }
 
 //utilities
+
+.u-align-right { margin-left: auto; }
 
 .u-no-margin { margin: 0; }

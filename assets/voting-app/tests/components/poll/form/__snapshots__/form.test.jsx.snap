@@ -2,6 +2,79 @@
 
 exports[`form should match snapshot 1`] = `
 <div
-  className="c-ui__form"
-/>
+  className="c-form c-ui__form"
+>
+  <FormMenu
+    actions={
+      Object {
+        "formAddOption": [MockFunction],
+        "formClearState": [MockFunction],
+        "formRemoveOption": [MockFunction],
+        "formSetAdd": [MockFunction],
+        "formSetTitle": [MockFunction],
+        "formToggleConfirm": [MockFunction],
+        "formToggleSecret": [MockFunction],
+        "listClearState": [MockFunction],
+        "listSetSearch": [MockFunction],
+        "metaAddErrors": [MockFunction],
+        "metaCloseError": [MockFunction],
+        "metaCreatePoll": [MockFunction],
+        "metaDeletePoll": [MockFunction],
+        "metaGetPolls": [MockFunction],
+        "metaGetUser": [MockFunction],
+        "metaNoOp": [MockFunction],
+        "metaSetLoading": [MockFunction],
+        "metaSetState": [MockFunction],
+        "metaTimeoutError": [MockFunction],
+        "pollAddOption": [MockFunction],
+        "pollCastVote": [MockFunction],
+        "pollRemoveOption": [MockFunction],
+        "pollToggleFlag": [MockFunction],
+        "pollToggleHide": [MockFunction],
+        "pollToggleSecret": [MockFunction],
+        "viewClearState": [MockFunction],
+        "viewSetAdd": [MockFunction],
+        "viewToggleConfirm": [MockFunction],
+        "viewToggleSettings": [MockFunction],
+      }
+    }
+    data={
+      Object {
+        "errors": Array [],
+        "form": Object {
+          "add": "",
+          "confirm": false,
+          "options": Array [],
+          "secret": false,
+          "title": "",
+        },
+        "list": Object {
+          "search": "",
+        },
+        "loading": false,
+        "polls": Array [],
+        "user": Object {},
+        "view": Object {
+          "add": "",
+          "confirm": false,
+          "settings": false,
+        },
+      }
+    }
+    history={
+      Object {
+        "push": [MockFunction],
+      }
+    }
+    location={Object {}}
+    match={Object {}}
+    staticContext={Object {}}
+  />
+  <div
+    className="c-form__display"
+  />
+  <div
+    className="c-form__options"
+  />
+</div>
 `;

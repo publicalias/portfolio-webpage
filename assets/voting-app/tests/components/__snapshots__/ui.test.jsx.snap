@@ -146,8 +146,8 @@ exports[`ui should match snapshot 1`] = `
     render={[Function]}
   />
   <Route
-    component={[Function]}
     path="/form"
+    render={[Function]}
   />
   <Route
     component={[Function]}

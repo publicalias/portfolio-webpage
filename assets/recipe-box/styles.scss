@@ -6,10 +6,16 @@
 //components
 
 .c-edit-btns {
-  &__btn, &__text {
-    display: inline;
-    margin-right: 1.5vw;
+
+  display: flex;
+
+  &__btn { margin-right: 1.5vw; }
+
+  &__text {
+    margin: 0 1.5vw 0 0;
+    padding: 0.5vw 0.75vw;
   }
+
 }
 
 .c-modal-btn {

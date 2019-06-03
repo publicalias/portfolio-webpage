@@ -25,7 +25,7 @@ const UI = (props) => {
   //lifecycle
 
   useEffect(() => {
-    metaGetUser();
+    metaGetUser(); //returns promise
   }, []);
 
   //render
@@ -40,7 +40,7 @@ const UI = (props) => {
         render={() => <List {...props} />}
       />
       <Route path="/list" render={() => <List {...props} />} />
-      <Route component={Form} path="/form" />
+      <Route path="/form" render={() => <Form {...props} />} />
       <Route component={View} path="/view" />
     </div>
   );
