@@ -16,9 +16,17 @@
   padding: 3vw 4.5vw;
 }
 
+@mixin menu {
+  @include grid-area;
+  display: flex;
+  grid-area: 1 / 1 / 1 / 13;
+}
+
 //components
 
-.c-form {
+.c-form-menu {
+
+  @include menu;
 
   &__confirm-box { display: flex; }
 
@@ -29,38 +37,14 @@
 
   &__confirm-btn, &__create-btn { margin-right: 1.5vw; }
 
-  &__display {
-    @include grid-area;
-    grid-area: 2 / 1 / 2 / 13;
-  }
-
-  &__menu {
-    @include grid-area;
-    display: flex;
-    grid-area: 1 / 1 / 1 / 13;
-  }
-
-  &__options {
-    @include grid-area;
-    grid-area: 3 / 1 / 3 / 13;
-  }
-
   &__secret-btn { margin-left: auto; }
 
 };
 
-.c-list {
+.c-list-body {
 
-  &__body {
-    @include grid-area;
-    grid-area: 2 / 1 / 2 / 13;
-  }
-
-  &__menu {
-    @include grid-area;
-    display: flex;
-    grid-area: 1 / 1 / 1 / 13;
-  }
+  @include grid-area;
+  grid-area: 2 / 1 / 2 / 13;
 
   &__scroll-box {
     height: calc(100vh - 9vw);
@@ -68,6 +52,17 @@
     overflow-y: scroll;
     padding-right: 4.5vw;
   }
+
+  &__table {
+    border-spacing: 1.5vw;
+    margin: -1.5vw;
+  }
+
+}
+
+.c-list-menu {
+
+  @include menu;
 
   &__search {
     flex: 1;
@@ -78,11 +73,16 @@
     margin-right: 1.5vw;
   }
 
-  &__table {
-    border-spacing: 1.5vw;
-    margin: -1.5vw;
-  }
+}
 
+.c-meta-display {
+  @include grid-area;
+  grid-area: 2 / 1 / 2 / 13;
+}
+
+.c-meta-options {
+  @include grid-area;
+  grid-area: 3 / 1 / 3 / 13;
 }
 
 .c-ui {

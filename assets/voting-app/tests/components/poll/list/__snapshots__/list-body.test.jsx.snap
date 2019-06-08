@@ -2,13 +2,13 @@
 
 exports[`list body should match snapshot (authenticated) 1`] = `
 <div
-  className="c-list__body"
+  className="c-list-body"
 >
   <div
-    className="c-list__scroll-box js-scroll-box"
+    className="c-list-body__scroll-box js-scroll-box"
   >
     <table
-      className="c-list__table js-scroll-content"
+      className="c-list-body__table js-scroll-content"
     >
       <thead>
         <tr>
@@ -49,13 +49,13 @@ exports[`list body should match snapshot (authenticated) 1`] = `
 
 exports[`list body should match snapshot (default) 1`] = `
 <div
-  className="c-list__body"
+  className="c-list-body"
 >
   <div
-    className="c-list__scroll-box js-scroll-box"
+    className="c-list-body__scroll-box js-scroll-box"
   >
     <table
-      className="c-list__table js-scroll-content"
+      className="c-list-body__table js-scroll-content"
     >
       <thead>
         <tr>
@@ -88,13 +88,13 @@ exports[`list body should match snapshot (default) 1`] = `
 
 exports[`list body should match snapshot (polls) 1`] = `
 <div
-  className="c-list__body"
+  className="c-list-body"
 >
   <div
-    className="c-list__scroll-box js-scroll-box"
+    className="c-list-body__scroll-box js-scroll-box"
   >
     <table
-      className="c-list__table js-scroll-content"
+      className="c-list-body__table js-scroll-content"
     >
       <thead>
         <tr>

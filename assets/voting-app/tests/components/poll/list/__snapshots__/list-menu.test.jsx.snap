@@ -2,10 +2,10 @@
 
 exports[`list menu should match snapshot (default) 1`] = `
 <div
-  className="c-list__menu"
+  className="c-list-menu"
 >
   <div
-    className="c-list__search"
+    className="c-list-menu__search"
   >
     <SearchBar
       handleChange={[Function]}
@@ -15,7 +15,7 @@ exports[`list menu should match snapshot (default) 1`] = `
     />
   </div>
   <div
-    className="c-list__sort"
+    className="c-list-menu__sort"
   >
     <button
       className="qa-sort-new u-hover"
@@ -25,7 +25,7 @@ exports[`list menu should match snapshot (default) 1`] = `
     </button>
   </div>
   <div
-    className="c-list__sort u-no-margin"
+    className="c-list-menu__sort u-no-margin"
   >
     <button
       className="qa-sort-popular u-hover"
@@ -39,10 +39,10 @@ exports[`list menu should match snapshot (default) 1`] = `
 
 exports[`list menu should match snapshot (search) 1`] = `
 <div
-  className="c-list__menu"
+  className="c-list-menu"
 >
   <div
-    className="c-list__search"
+    className="c-list-menu__search"
   >
     <SearchBar
       handleChange={[Function]}
@@ -52,7 +52,7 @@ exports[`list menu should match snapshot (search) 1`] = `
     />
   </div>
   <div
-    className="c-list__sort"
+    className="c-list-menu__sort"
   >
     <button
       className="qa-sort-new u-hover"
@@ -62,7 +62,7 @@ exports[`list menu should match snapshot (search) 1`] = `
     </button>
   </div>
   <div
-    className="c-list__sort u-no-margin"
+    className="c-list-menu__sort u-no-margin"
   >
     <button
       className="qa-sort-popular u-hover"

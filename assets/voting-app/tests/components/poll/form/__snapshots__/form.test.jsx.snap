@@ -2,7 +2,7 @@
 
 exports[`form should match snapshot 1`] = `
 <div
-  className="c-form c-ui__form"
+  className="c-ui__form"
 >
   <FormMenu
     actions={
@@ -71,10 +71,10 @@ exports[`form should match snapshot 1`] = `
     staticContext={Object {}}
   />
   <div
-    className="c-form__display"
+    className="c-meta-display"
   />
   <div
-    className="c-form__options"
+    className="c-meta-options"
   />
 </div>
 `;

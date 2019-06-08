@@ -49,14 +49,14 @@ const ListMenu = (props) => {
   };
 
   return (
-    <div className="c-list__menu">
-      <div className="c-list__search">
+    <div className="c-list-menu">
+      <div className="c-list-menu__search">
         <SearchBar {...searchProps} />
       </div>
-      <div className="c-list__sort">
+      <div className="c-list-menu__sort">
         <button className="qa-sort-new u-hover" onClick={handleSortNew}>New</button>
       </div>
-      <div className="c-list__sort u-no-margin">
+      <div className="c-list-menu__sort u-no-margin">
         <button className="qa-sort-popular u-hover" onClick={handleSortPopular}>Popular</button>
       </div>
     </div>

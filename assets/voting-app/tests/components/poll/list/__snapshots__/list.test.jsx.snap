@@ -2,7 +2,7 @@
 
 exports[`list should match snapshot 1`] = `
 <div
-  className="c-list c-ui__list"
+  className="c-ui__list"
 >
   <ListMenu
     actions={

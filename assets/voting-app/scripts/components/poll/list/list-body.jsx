@@ -25,9 +25,9 @@ const ListBody = (props) => {
   const auth = user.type === "auth";
 
   return (
-    <div className="c-list__body">
-      <div className="c-list__scroll-box js-scroll-box">
-        <table className="c-list__table js-scroll-content">
+    <div className="c-list-body">
+      <div className="c-list-body__scroll-box js-scroll-box">
+        <table className="c-list-body__table js-scroll-content">
           <thead>
             <tr>
               <td>

@@ -23,10 +23,10 @@ const Form = (props) => {
   //render
 
   return (
-    <div className="c-form c-ui__form">
+    <div className="c-ui__form">
       <FormMenu {...props} />
-      <div className="c-form__display" />
-      <div className="c-form__options" />
+      <div className="c-meta-display" />
+      <div className="c-meta-options" />
     </div>
   );
 

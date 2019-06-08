@@ -33,7 +33,7 @@ const List = (props) => {
   //render
 
   return (
-    <div className="c-list c-ui__list">
+    <div className="c-ui__list">
       <ListMenu {...props} />
       <ListBody {...props} />
     </div>
