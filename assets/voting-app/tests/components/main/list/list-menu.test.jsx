@@ -2,7 +2,7 @@
 
 //local imports
 
-const ListMenu = require("../../../../scripts/components/poll/list/list-menu");
+const ListMenu = require("../../../../scripts/components/main/list/list-menu");
 
 const { testWrapper } = require("../../../test-helpers");
 

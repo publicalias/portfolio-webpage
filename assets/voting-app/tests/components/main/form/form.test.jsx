@@ -2,7 +2,7 @@
 
 //local imports
 
-const Form = require("../../../../scripts/components/poll/form/form");
+const Form = require("../../../../scripts/components/main/form/form");
 
 const { testWrapper } = require("../../../test-helpers");
 

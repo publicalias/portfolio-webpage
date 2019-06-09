@@ -25,8 +25,8 @@ const Form = (props) => {
   return (
     <div className="c-ui__form">
       <FormMenu {...props} />
-      <div className="c-meta-display" />
-      <div className="c-meta-options" />
+      <div className="c-poll-display" />
+      <div className="c-poll-options" />
     </div>
   );
 

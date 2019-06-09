@@ -4,9 +4,9 @@
 
 const NavBar = require("./nav-bar");
 const Sidebar = require("./sidebar");
-const Form = require("./poll/form/form");
-const List = require("./poll/list/list");
-const View = require("./poll/view/view");
+const Form = require("./main/form/form");
+const List = require("./main/list/list");
+const View = require("./main/view/view");
 
 //node modules
 

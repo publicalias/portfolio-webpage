@@ -2,7 +2,7 @@
 
 //local imports
 
-const FormMenu = require("../../../../scripts/components/poll/form/form-menu");
+const FormMenu = require("../../../../scripts/components/main/form/form-menu");
 
 const { testWrapper } = require("../../../test-helpers");
 

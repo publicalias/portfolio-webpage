@@ -2,7 +2,7 @@
 
 //local imports
 
-const ListBody = require("../../../../scripts/components/poll/list/list-body");
+const ListBody = require("../../../../scripts/components/main/list/list-body");
 
 const { testWrapper } = require("../../../test-helpers");
 

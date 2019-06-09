@@ -71,10 +71,10 @@ exports[`form should match snapshot 1`] = `
     staticContext={Object {}}
   />
   <div
-    className="c-meta-display"
+    className="c-poll-display"
   />
   <div
-    className="c-meta-options"
+    className="c-poll-options"
   />
 </div>
 `;

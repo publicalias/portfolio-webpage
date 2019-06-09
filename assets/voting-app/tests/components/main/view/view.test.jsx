@@ -2,7 +2,7 @@
 
 //local imports
 
-const View = require("../../../../scripts/components/poll/view/view");
+const View = require("../../../../scripts/components/main/view/view");
 
 const { testWrapper } = require("../../../test-helpers");
 
