@@ -2,7 +2,8 @@
 
 //local imports
 
-const { getListParams } = require("../../../app-logic");
+const PollToggle = require("../poll/poll-toggle");
+
 const { getVotes } = require("../../../view-logic");
 
 //global imports
@@ -19,54 +20,30 @@ const { Link } = require("react-router-dom");
 
 const ListItem = (props) => {
 
-  const { actions: { metaGetPolls, metaGetUser, pollToggleFlag, pollToggleHide }, data: { user, polls } } = props;
-
-  const { poll: { title, id, date, users } } = props;
-
-  //utilities
-
-  const toggle = (prop, a, b) => `fa ${users[prop].includes(user.id) ? a : b}`;
-
-  //events
-
-  const handleHide = async () => {
-
-    const params = getListParams(location);
-
-    await pollToggleHide(id);
-
-    metaGetUser();
-    metaGetPolls(params, null, polls.length);
-
-  };
-
-  const handleFlag = async () => {
-
-    const params = getListParams(location);
-
-    await pollToggleFlag(id);
-
-    metaGetPolls(params, null, polls.length);
-
-  };
+  const { data: { user }, poll: { title, id, date, users } } = props;
 
   //render
 
   const auth = user.type === "auth";
-
-  const hideIcon = toggle("hidden", "fa-eye-slash", "fa-eye");
-  const flagIcon = toggle("flagged", "fa-flag", "fa-flag-o");
 
   const stats = `${getVotes(users.voted)} Votes \u2014 ${readDate(date)}`;
 
   return (
     <tr>
       <td>
-        <button className="qa-toggle-hide" onClick={handleHide}><i className={hideIcon} /></button>
+        <PollToggle
+          {...props}
+          list
+          type="hide"
+        />
       </td>
       {auth && (
         <td>
-          <button className="qa-toggle-flag" onClick={handleFlag}><i className={flagIcon} /></button>
+          <PollToggle
+            {...props}
+            list
+            type="flag"
+          />
         </td>
       )}
       <td className="u-cursor-pointer">

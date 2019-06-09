@@ -3,14 +3,90 @@
 exports[`list item should match snapshot (10^3 votes) 1`] = `
 <tr>
   <td>
-    <button
-      className="qa-toggle-hide"
-      onClick={[Function]}
-    >
-      <i
-        className="fa fa-eye"
-      />
-    </button>
+    <PollToggle
+      actions={
+        Object {
+          "formAddOption": [MockFunction],
+          "formClearState": [MockFunction],
+          "formRemoveOption": [MockFunction],
+          "formSetAdd": [MockFunction],
+          "formSetTitle": [MockFunction],
+          "formToggleConfirm": [MockFunction],
+          "formToggleSecret": [MockFunction],
+          "listClearState": [MockFunction],
+          "listSetSearch": [MockFunction],
+          "metaAddErrors": [MockFunction],
+          "metaCloseError": [MockFunction],
+          "metaCreatePoll": [MockFunction],
+          "metaDeletePoll": [MockFunction],
+          "metaGetPolls": [MockFunction],
+          "metaGetUser": [MockFunction],
+          "metaNoOp": [MockFunction],
+          "metaSetLoading": [MockFunction],
+          "metaSetState": [MockFunction],
+          "metaTimeoutError": [MockFunction],
+          "pollAddOption": [MockFunction],
+          "pollCastVote": [MockFunction],
+          "pollRemoveOption": [MockFunction],
+          "pollToggleFlag": [MockFunction],
+          "pollToggleHide": [MockFunction],
+          "pollToggleSecret": [MockFunction],
+          "viewClearState": [MockFunction],
+          "viewSetAdd": [MockFunction],
+          "viewToggleConfirm": [MockFunction],
+          "viewToggleSettings": [MockFunction],
+        }
+      }
+      data={
+        Object {
+          "errors": Array [],
+          "form": Object {
+            "add": "",
+            "confirm": false,
+            "options": Array [],
+            "secret": false,
+            "title": "",
+          },
+          "list": Object {
+            "search": "",
+          },
+          "loading": false,
+          "polls": Array [],
+          "user": Object {},
+          "view": Object {
+            "add": "",
+            "confirm": false,
+            "settings": false,
+          },
+        }
+      }
+      history={
+        Object {
+          "push": [MockFunction],
+        }
+      }
+      list={true}
+      location={Object {}}
+      match={Object {}}
+      poll={
+        Object {
+          "author": "",
+          "date": 0,
+          "id": "",
+          "options": Array [],
+          "secret": false,
+          "title": "",
+          "users": Object {
+            "created": "",
+            "flagged": Array [],
+            "hidden": Array [],
+            "voted": 1000,
+          },
+        }
+      }
+      staticContext={Object {}}
+      type="hide"
+    />
   </td>
   <td
     className="u-cursor-pointer"
@@ -32,14 +108,90 @@ exports[`list item should match snapshot (10^3 votes) 1`] = `
 exports[`list item should match snapshot (10^6 votes) 1`] = `
 <tr>
   <td>
-    <button
-      className="qa-toggle-hide"
-      onClick={[Function]}
-    >
-      <i
-        className="fa fa-eye"
-      />
-    </button>
+    <PollToggle
+      actions={
+        Object {
+          "formAddOption": [MockFunction],
+          "formClearState": [MockFunction],
+          "formRemoveOption": [MockFunction],
+          "formSetAdd": [MockFunction],
+          "formSetTitle": [MockFunction],
+          "formToggleConfirm": [MockFunction],
+          "formToggleSecret": [MockFunction],
+          "listClearState": [MockFunction],
+          "listSetSearch": [MockFunction],
+          "metaAddErrors": [MockFunction],
+          "metaCloseError": [MockFunction],
+          "metaCreatePoll": [MockFunction],
+          "metaDeletePoll": [MockFunction],
+          "metaGetPolls": [MockFunction],
+          "metaGetUser": [MockFunction],
+          "metaNoOp": [MockFunction],
+          "metaSetLoading": [MockFunction],
+          "metaSetState": [MockFunction],
+          "metaTimeoutError": [MockFunction],
+          "pollAddOption": [MockFunction],
+          "pollCastVote": [MockFunction],
+          "pollRemoveOption": [MockFunction],
+          "pollToggleFlag": [MockFunction],
+          "pollToggleHide": [MockFunction],
+          "pollToggleSecret": [MockFunction],
+          "viewClearState": [MockFunction],
+          "viewSetAdd": [MockFunction],
+          "viewToggleConfirm": [MockFunction],
+          "viewToggleSettings": [MockFunction],
+        }
+      }
+      data={
+        Object {
+          "errors": Array [],
+          "form": Object {
+            "add": "",
+            "confirm": false,
+            "options": Array [],
+            "secret": false,
+            "title": "",
+          },
+          "list": Object {
+            "search": "",
+          },
+          "loading": false,
+          "polls": Array [],
+          "user": Object {},
+          "view": Object {
+            "add": "",
+            "confirm": false,
+            "settings": false,
+          },
+        }
+      }
+      history={
+        Object {
+          "push": [MockFunction],
+        }
+      }
+      list={true}
+      location={Object {}}
+      match={Object {}}
+      poll={
+        Object {
+          "author": "",
+          "date": 0,
+          "id": "",
+          "options": Array [],
+          "secret": false,
+          "title": "",
+          "users": Object {
+            "created": "",
+            "flagged": Array [],
+            "hidden": Array [],
+            "voted": 1000000,
+          },
+        }
+      }
+      staticContext={Object {}}
+      type="hide"
+    />
   </td>
   <td
     className="u-cursor-pointer"
@@ -61,14 +213,90 @@ exports[`list item should match snapshot (10^6 votes) 1`] = `
 exports[`list item should match snapshot (10^9 votes) 1`] = `
 <tr>
   <td>
-    <button
-      className="qa-toggle-hide"
-      onClick={[Function]}
-    >
-      <i
-        className="fa fa-eye"
-      />
-    </button>
+    <PollToggle
+      actions={
+        Object {
+          "formAddOption": [MockFunction],
+          "formClearState": [MockFunction],
+          "formRemoveOption": [MockFunction],
+          "formSetAdd": [MockFunction],
+          "formSetTitle": [MockFunction],
+          "formToggleConfirm": [MockFunction],
+          "formToggleSecret": [MockFunction],
+          "listClearState": [MockFunction],
+          "listSetSearch": [MockFunction],
+          "metaAddErrors": [MockFunction],
+          "metaCloseError": [MockFunction],
+          "metaCreatePoll": [MockFunction],
+          "metaDeletePoll": [MockFunction],
+          "metaGetPolls": [MockFunction],
+          "metaGetUser": [MockFunction],
+          "metaNoOp": [MockFunction],
+          "metaSetLoading": [MockFunction],
+          "metaSetState": [MockFunction],
+          "metaTimeoutError": [MockFunction],
+          "pollAddOption": [MockFunction],
+          "pollCastVote": [MockFunction],
+          "pollRemoveOption": [MockFunction],
+          "pollToggleFlag": [MockFunction],
+          "pollToggleHide": [MockFunction],
+          "pollToggleSecret": [MockFunction],
+          "viewClearState": [MockFunction],
+          "viewSetAdd": [MockFunction],
+          "viewToggleConfirm": [MockFunction],
+          "viewToggleSettings": [MockFunction],
+        }
+      }
+      data={
+        Object {
+          "errors": Array [],
+          "form": Object {
+            "add": "",
+            "confirm": false,
+            "options": Array [],
+            "secret": false,
+            "title": "",
+          },
+          "list": Object {
+            "search": "",
+          },
+          "loading": false,
+          "polls": Array [],
+          "user": Object {},
+          "view": Object {
+            "add": "",
+            "confirm": false,
+            "settings": false,
+          },
+        }
+      }
+      history={
+        Object {
+          "push": [MockFunction],
+        }
+      }
+      list={true}
+      location={Object {}}
+      match={Object {}}
+      poll={
+        Object {
+          "author": "",
+          "date": 0,
+          "id": "",
+          "options": Array [],
+          "secret": false,
+          "title": "",
+          "users": Object {
+            "created": "",
+            "flagged": Array [],
+            "hidden": Array [],
+            "voted": 1000000000,
+          },
+        }
+      }
+      staticContext={Object {}}
+      type="hide"
+    />
   </td>
   <td
     className="u-cursor-pointer"
@@ -90,24 +318,198 @@ exports[`list item should match snapshot (10^9 votes) 1`] = `
 exports[`list item should match snapshot (authenticated) 1`] = `
 <tr>
   <td>
-    <button
-      className="qa-toggle-hide"
-      onClick={[Function]}
-    >
-      <i
-        className="fa fa-eye"
-      />
-    </button>
+    <PollToggle
+      actions={
+        Object {
+          "formAddOption": [MockFunction],
+          "formClearState": [MockFunction],
+          "formRemoveOption": [MockFunction],
+          "formSetAdd": [MockFunction],
+          "formSetTitle": [MockFunction],
+          "formToggleConfirm": [MockFunction],
+          "formToggleSecret": [MockFunction],
+          "listClearState": [MockFunction],
+          "listSetSearch": [MockFunction],
+          "metaAddErrors": [MockFunction],
+          "metaCloseError": [MockFunction],
+          "metaCreatePoll": [MockFunction],
+          "metaDeletePoll": [MockFunction],
+          "metaGetPolls": [MockFunction],
+          "metaGetUser": [MockFunction],
+          "metaNoOp": [MockFunction],
+          "metaSetLoading": [MockFunction],
+          "metaSetState": [MockFunction],
+          "metaTimeoutError": [MockFunction],
+          "pollAddOption": [MockFunction],
+          "pollCastVote": [MockFunction],
+          "pollRemoveOption": [MockFunction],
+          "pollToggleFlag": [MockFunction],
+          "pollToggleHide": [MockFunction],
+          "pollToggleSecret": [MockFunction],
+          "viewClearState": [MockFunction],
+          "viewSetAdd": [MockFunction],
+          "viewToggleConfirm": [MockFunction],
+          "viewToggleSettings": [MockFunction],
+        }
+      }
+      data={
+        Object {
+          "errors": Array [],
+          "form": Object {
+            "add": "",
+            "confirm": false,
+            "options": Array [],
+            "secret": false,
+            "title": "",
+          },
+          "list": Object {
+            "search": "",
+          },
+          "loading": false,
+          "polls": Array [],
+          "user": Object {
+            "auth": Object {
+              "id": "",
+              "provider": "",
+            },
+            "data": Object {
+              "restricted": false,
+            },
+            "id": "",
+            "name": "",
+            "type": "auth",
+          },
+          "view": Object {
+            "add": "",
+            "confirm": false,
+            "settings": false,
+          },
+        }
+      }
+      history={
+        Object {
+          "push": [MockFunction],
+        }
+      }
+      list={true}
+      location={Object {}}
+      match={Object {}}
+      poll={
+        Object {
+          "author": "",
+          "date": 0,
+          "id": "",
+          "options": Array [],
+          "secret": false,
+          "title": "",
+          "users": Object {
+            "created": "",
+            "flagged": Array [],
+            "hidden": Array [],
+            "voted": 0,
+          },
+        }
+      }
+      staticContext={Object {}}
+      type="hide"
+    />
   </td>
   <td>
-    <button
-      className="qa-toggle-flag"
-      onClick={[Function]}
-    >
-      <i
-        className="fa fa-flag-o"
-      />
-    </button>
+    <PollToggle
+      actions={
+        Object {
+          "formAddOption": [MockFunction],
+          "formClearState": [MockFunction],
+          "formRemoveOption": [MockFunction],
+          "formSetAdd": [MockFunction],
+          "formSetTitle": [MockFunction],
+          "formToggleConfirm": [MockFunction],
+          "formToggleSecret": [MockFunction],
+          "listClearState": [MockFunction],
+          "listSetSearch": [MockFunction],
+          "metaAddErrors": [MockFunction],
+          "metaCloseError": [MockFunction],
+          "metaCreatePoll": [MockFunction],
+          "metaDeletePoll": [MockFunction],
+          "metaGetPolls": [MockFunction],
+          "metaGetUser": [MockFunction],
+          "metaNoOp": [MockFunction],
+          "metaSetLoading": [MockFunction],
+          "metaSetState": [MockFunction],
+          "metaTimeoutError": [MockFunction],
+          "pollAddOption": [MockFunction],
+          "pollCastVote": [MockFunction],
+          "pollRemoveOption": [MockFunction],
+          "pollToggleFlag": [MockFunction],
+          "pollToggleHide": [MockFunction],
+          "pollToggleSecret": [MockFunction],
+          "viewClearState": [MockFunction],
+          "viewSetAdd": [MockFunction],
+          "viewToggleConfirm": [MockFunction],
+          "viewToggleSettings": [MockFunction],
+        }
+      }
+      data={
+        Object {
+          "errors": Array [],
+          "form": Object {
+            "add": "",
+            "confirm": false,
+            "options": Array [],
+            "secret": false,
+            "title": "",
+          },
+          "list": Object {
+            "search": "",
+          },
+          "loading": false,
+          "polls": Array [],
+          "user": Object {
+            "auth": Object {
+              "id": "",
+              "provider": "",
+            },
+            "data": Object {
+              "restricted": false,
+            },
+            "id": "",
+            "name": "",
+            "type": "auth",
+          },
+          "view": Object {
+            "add": "",
+            "confirm": false,
+            "settings": false,
+          },
+        }
+      }
+      history={
+        Object {
+          "push": [MockFunction],
+        }
+      }
+      list={true}
+      location={Object {}}
+      match={Object {}}
+      poll={
+        Object {
+          "author": "",
+          "date": 0,
+          "id": "",
+          "options": Array [],
+          "secret": false,
+          "title": "",
+          "users": Object {
+            "created": "",
+            "flagged": Array [],
+            "hidden": Array [],
+            "voted": 0,
+          },
+        }
+      }
+      staticContext={Object {}}
+      type="flag"
+    />
   </td>
   <td
     className="u-cursor-pointer"
@@ -129,92 +531,90 @@ exports[`list item should match snapshot (authenticated) 1`] = `
 exports[`list item should match snapshot (default) 1`] = `
 <tr>
   <td>
-    <button
-      className="qa-toggle-hide"
-      onClick={[Function]}
-    >
-      <i
-        className="fa fa-eye"
-      />
-    </button>
-  </td>
-  <td
-    className="u-cursor-pointer"
-  >
-    <Link
-      to="/view?id="
-    >
-      <p />
-      <p
-        className="u-no-margin"
-      >
-        0 Votes — 31 December 1969
-      </p>
-    </Link>
-  </td>
-</tr>
-`;
-
-exports[`list item should match snapshot (flagged) 1`] = `
-<tr>
-  <td>
-    <button
-      className="qa-toggle-hide"
-      onClick={[Function]}
-    >
-      <i
-        className="fa fa-eye"
-      />
-    </button>
-  </td>
-  <td>
-    <button
-      className="qa-toggle-flag"
-      onClick={[Function]}
-    >
-      <i
-        className="fa fa-flag"
-      />
-    </button>
-  </td>
-  <td
-    className="u-cursor-pointer"
-  >
-    <Link
-      to="/view?id="
-    >
-      <p />
-      <p
-        className="u-no-margin"
-      >
-        0 Votes — 31 December 1969
-      </p>
-    </Link>
-  </td>
-</tr>
-`;
-
-exports[`list item should match snapshot (hidden) 1`] = `
-<tr>
-  <td>
-    <button
-      className="qa-toggle-hide"
-      onClick={[Function]}
-    >
-      <i
-        className="fa fa-eye-slash"
-      />
-    </button>
-  </td>
-  <td>
-    <button
-      className="qa-toggle-flag"
-      onClick={[Function]}
-    >
-      <i
-        className="fa fa-flag-o"
-      />
-    </button>
+    <PollToggle
+      actions={
+        Object {
+          "formAddOption": [MockFunction],
+          "formClearState": [MockFunction],
+          "formRemoveOption": [MockFunction],
+          "formSetAdd": [MockFunction],
+          "formSetTitle": [MockFunction],
+          "formToggleConfirm": [MockFunction],
+          "formToggleSecret": [MockFunction],
+          "listClearState": [MockFunction],
+          "listSetSearch": [MockFunction],
+          "metaAddErrors": [MockFunction],
+          "metaCloseError": [MockFunction],
+          "metaCreatePoll": [MockFunction],
+          "metaDeletePoll": [MockFunction],
+          "metaGetPolls": [MockFunction],
+          "metaGetUser": [MockFunction],
+          "metaNoOp": [MockFunction],
+          "metaSetLoading": [MockFunction],
+          "metaSetState": [MockFunction],
+          "metaTimeoutError": [MockFunction],
+          "pollAddOption": [MockFunction],
+          "pollCastVote": [MockFunction],
+          "pollRemoveOption": [MockFunction],
+          "pollToggleFlag": [MockFunction],
+          "pollToggleHide": [MockFunction],
+          "pollToggleSecret": [MockFunction],
+          "viewClearState": [MockFunction],
+          "viewSetAdd": [MockFunction],
+          "viewToggleConfirm": [MockFunction],
+          "viewToggleSettings": [MockFunction],
+        }
+      }
+      data={
+        Object {
+          "errors": Array [],
+          "form": Object {
+            "add": "",
+            "confirm": false,
+            "options": Array [],
+            "secret": false,
+            "title": "",
+          },
+          "list": Object {
+            "search": "",
+          },
+          "loading": false,
+          "polls": Array [],
+          "user": Object {},
+          "view": Object {
+            "add": "",
+            "confirm": false,
+            "settings": false,
+          },
+        }
+      }
+      history={
+        Object {
+          "push": [MockFunction],
+        }
+      }
+      list={true}
+      location={Object {}}
+      match={Object {}}
+      poll={
+        Object {
+          "author": "",
+          "date": 0,
+          "id": "",
+          "options": Array [],
+          "secret": false,
+          "title": "",
+          "users": Object {
+            "created": "",
+            "flagged": Array [],
+            "hidden": Array [],
+            "voted": 0,
+          },
+        }
+      }
+      staticContext={Object {}}
+      type="hide"
+    />
   </td>
   <td
     className="u-cursor-pointer"

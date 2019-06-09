@@ -21,13 +21,13 @@ describe("list menu", () => {
 
   const { testMount, testShallow } = testWrapper(ListMenu);
 
-  const testSearch = (id, path, data) => {
+  const testSearch = (qa, path, data) => {
 
     const { props, wrapper } = testMount(data);
 
     const { history } = props;
 
-    wrapper.find(id).simulate("click");
+    wrapper.find(qa).simulate("click");
 
     testMock(history.push, [path]);
 

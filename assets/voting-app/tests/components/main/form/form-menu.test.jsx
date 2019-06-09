@@ -21,15 +21,13 @@ describe("form menu", () => {
 
   const { testMount, testShallow } = testWrapper(FormMenu);
 
-  const testClick = (id, type, confirm = false) => {
+  const testClick = (qa, action, confirm = false) => {
 
     const { props, wrapper } = testMount({ form: { confirm } });
 
-    const { actions } = props;
+    wrapper.find(qa).simulate("click");
 
-    wrapper.find(id).simulate("click");
-
-    testMock(actions[type], []);
+    testMock(props.actions[action], []);
 
     wrapper.unmount();
 
