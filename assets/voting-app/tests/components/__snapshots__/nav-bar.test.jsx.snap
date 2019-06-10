@@ -57,7 +57,7 @@ exports[`nav bar should match snapshot (authenticated) 1`] = `
     </Link>
   </div>
   <div
-    className="u-align-right"
+    className="u-flex-right"
     key="0-436"
   >
     <Link

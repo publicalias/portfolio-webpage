@@ -35,7 +35,7 @@ const NavBar = (props) => {
 
   }
 
-  items.push(["form", "New Poll", auth, "/form", "u-align-right"]);
+  items.push(["form", "New Poll", auth, "/form", "u-flex-right"]);
 
   //render
 

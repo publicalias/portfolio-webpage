@@ -5,13 +5,13 @@ exports[`form menu should match snapshot (confirm) 1`] = `
   className="c-form-menu"
 >
   <button
-    className="c-form-menu__create-btn qa-create-poll"
+    className="c-form-menu__control-btn qa-create-poll"
     onClick={[Function]}
   >
     Create
   </button>
   <div
-    className="c-form-menu__confirm-box"
+    className="c-form-menu__display-box"
   >
     <p
       className="c-form-menu__confirm-text"
@@ -19,20 +19,20 @@ exports[`form menu should match snapshot (confirm) 1`] = `
       Are you sure?
     </p>
     <button
-      className="c-form-menu__confirm-btn qa-discard-poll"
+      className="c-form-menu__control-btn qa-discard-poll"
       onClick={[Function]}
     >
       Yes
     </button>
     <button
-      className="c-form-menu__confirm-btn qa-confirm-false"
+      className="c-form-menu__control-btn qa-confirm-false"
       onClick={[Function]}
     >
       No
     </button>
   </div>
   <button
-    className="c-form-menu__secret-btn qa-toggle-secret"
+    className="c-form-menu__toggle-btn qa-toggle-secret u-flex-right"
     onClick={[Function]}
   >
     Public
@@ -45,19 +45,19 @@ exports[`form menu should match snapshot (default) 1`] = `
   className="c-form-menu"
 >
   <button
-    className="c-form-menu__create-btn qa-create-poll"
+    className="c-form-menu__control-btn qa-create-poll"
     onClick={[Function]}
   >
     Create
   </button>
   <button
-    className="c-form-menu__confirm-btn qa-confirm-true"
+    className="c-form-menu__control-btn qa-confirm-true"
     onClick={[Function]}
   >
     Discard
   </button>
   <button
-    className="c-form-menu__secret-btn qa-toggle-secret"
+    className="c-form-menu__toggle-btn qa-toggle-secret u-flex-right"
     onClick={[Function]}
   >
     Public
@@ -70,19 +70,19 @@ exports[`form menu should match snapshot (secret) 1`] = `
   className="c-form-menu"
 >
   <button
-    className="c-form-menu__create-btn qa-create-poll"
+    className="c-form-menu__control-btn qa-create-poll"
     onClick={[Function]}
   >
     Create
   </button>
   <button
-    className="c-form-menu__confirm-btn qa-confirm-true"
+    className="c-form-menu__control-btn qa-confirm-true"
     onClick={[Function]}
   >
     Discard
   </button>
   <button
-    className="c-form-menu__secret-btn qa-toggle-secret"
+    className="c-form-menu__toggle-btn qa-toggle-secret u-flex-right"
     onClick={[Function]}
   >
     Private

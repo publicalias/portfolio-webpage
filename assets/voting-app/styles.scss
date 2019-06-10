@@ -28,16 +28,16 @@
 
   @include menu;
 
-  &__confirm-box { display: flex; }
-
   &__confirm-text {
     margin: 0 1.5vw 0 0;
     padding: 0.5vw 0.75vw;
   }
 
-  &__confirm-btn, &__create-btn { margin-right: 1.5vw; }
+  &__control-btn { margin-right: 1.5vw; }
 
-  &__secret-btn { margin-left: auto; }
+  &__display-box { display: flex; }
+
+  &__toggle-btn { margin-left: 1.5vw; }
 
 };
 
@@ -119,6 +119,6 @@
 
 //utilities
 
-.u-align-right { margin-left: auto; }
+.u-flex-right { margin-left: auto; }
 
 .u-no-margin { margin: 0; }

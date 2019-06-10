@@ -38,16 +38,16 @@ const FormMenu = (props) => {
 
   return (
     <div className="c-form-menu">
-      <button className="c-form-menu__create-btn qa-create-poll" onClick={handleCreate}>Create</button>
+      <button className="c-form-menu__control-btn qa-create-poll" onClick={handleCreate}>Create</button>
       {form.confirm ? (
-        <div className="c-form-menu__confirm-box">
+        <div className="c-form-menu__display-box">
           <p className="c-form-menu__confirm-text">Are you sure?</p>
-          <button className="c-form-menu__confirm-btn qa-discard-poll" onClick={handleDiscard}>Yes</button>
-          <button className="c-form-menu__confirm-btn qa-confirm-false" onClick={handleConfirm}>No</button>
+          <button className="c-form-menu__control-btn qa-discard-poll" onClick={handleDiscard}>Yes</button>
+          <button className="c-form-menu__control-btn qa-confirm-false" onClick={handleConfirm}>No</button>
         </div>
-      ) : <button className="c-form-menu__confirm-btn qa-confirm-true" onClick={handleConfirm}>Discard</button>}
+      ) : <button className="c-form-menu__control-btn qa-confirm-true" onClick={handleConfirm}>Discard</button>}
       <button
-        className="c-form-menu__secret-btn qa-toggle-secret"
+        className="c-form-menu__toggle-btn qa-toggle-secret u-flex-right"
         onClick={handleSecret}
       >
         {form.secret ? "Private" : "Public"}
