@@ -1,5 +1,7 @@
 "use strict";
 
+/*eslint max-statements: 0*/
+
 //local imports
 
 const FormMenu = require("../../../../scripts/components/main/form/form-menu");
@@ -20,6 +22,28 @@ beforeAll(reactTests.setup);
 describe("form menu", () => {
 
   const { testMount, testShallow } = testWrapper(FormMenu);
+
+  const testCreate = async (res) => {
+
+    const { props, wrapper } = testMount();
+
+    const { actions: { metaCreatePoll }, data: { form }, history } = props;
+
+    metaCreatePoll.mockReturnValue(res);
+
+    wrapper.find(".qa-create-poll").simulate("click"); //async
+
+    await Promise.resolve();
+
+    testMock(metaCreatePoll, [form]);
+
+    if (res && !res.errors) {
+      testMock(history.push, ["/list?filter=created"]);
+    }
+
+    wrapper.unmount();
+
+  };
 
   const testClick = (qa, action, confirm = false) => {
 
@@ -57,23 +81,11 @@ describe("form menu", () => {
 
   });
 
-  it("should call metaCreatePoll and history.push on click (create)", async () => {
+  it("should call metaCreatePoll and history.push on click (create, success)", () => testCreate({}));
 
-    const { props, wrapper } = testMount();
+  it("should call metaCreatePoll and history.push on click (create, errors)", () => testCreate({ errors: [] }));
 
-    const { actions: { metaCreatePoll }, data: { form }, history } = props;
-
-    wrapper.find(".qa-create-poll").simulate("click"); //async
-
-    await Promise.resolve();
-
-    testMock(metaCreatePoll, [form]);
-
-    testMock(history.push, ["/list?filter=created"]);
-
-    wrapper.unmount();
-
-  });
+  it("should call metaCreatePoll and history.push on click (create, failure)", () => testCreate());
 
   it("should call formToggleConfirm on click (discard)", () => testClick(".qa-confirm-true", "formToggleConfirm"));
 

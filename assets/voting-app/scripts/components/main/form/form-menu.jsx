@@ -12,16 +12,18 @@ const FormMenu = (props) => {
 
   //events
 
-  const handleCreate = async () => {
-
-    await metaCreatePoll(form);
-
-    history.push("/list?filter=created");
-
-  };
-
   const handleConfirm = () => {
     formToggleConfirm();
+  };
+
+  const handleCreate = async () => {
+
+    const res = await metaCreatePoll(form);
+
+    if (res && !res.errors) {
+      history.push("/list?filter=created");
+    }
+
   };
 
   const handleDiscard = () => {

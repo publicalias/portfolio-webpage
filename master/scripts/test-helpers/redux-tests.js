@@ -26,7 +26,7 @@ const testAPICall = (args) => {
 
 };
 
-const testAPIThunk = (action, args, actionList, lastState, fetch) => {
+const testAPIThunk = async (action, args, actionList, lastState, fetch) => {
 
   const store = mockStore(lastState);
 
@@ -35,10 +35,10 @@ const testAPIThunk = (action, args, actionList, lastState, fetch) => {
   global.fetch = jest.fn(fetch);
   global.Headers = jest.fn();
 
-  return store.dispatch(action).then(() => {
-    testAPICall(args);
-    expect(store.getActions()).toEqual(fullList);
-  });
+  await store.dispatch(action);
+
+  testAPICall(args);
+  expect(store.getActions()).toEqual(fullList);
 
 };
 

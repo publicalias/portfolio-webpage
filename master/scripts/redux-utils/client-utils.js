@@ -40,15 +40,9 @@ const parseQuery = (props) => {
 
 //redux api call
 
-const reduxAPICall = (dispatch, args, successFn, failureFn) => {
+const resHandlers = (dispatch, successFn, failureFn) => ({
 
-  const { path, init } = encodeAPICall(args);
-
-  const loadingFn = (bool) => () => {
-    dispatch(metaSetLoading(bool));
-  };
-
-  const successDefault = (res) => {
+  success: successFn || ((res) => {
 
     const { errors } = res;
     const { length } = Object.keys(res);
@@ -61,18 +55,39 @@ const reduxAPICall = (dispatch, args, successFn, failureFn) => {
       dispatch(metaNoOp());
     }
 
-  };
+  }),
 
-  const failureDefault = (err) => {
+  failure: failureFn || ((err) => {
     dispatch(metaAddErrors([err.message]));
-  };
+  }),
 
-  loadingFn(true)();
+  loading(bool) {
+    dispatch(metaSetLoading(bool));
+  }
 
-  return getJSON(path, init)
-    .then(successFn || successDefault)
-    .catch(failureFn || failureDefault)
-    .finally(loadingFn());
+});
+
+const reduxAPICall = async (dispatch, args, successFn, failureFn) => {
+
+  const { path, init } = encodeAPICall(args);
+
+  const { success, failure, loading } = resHandlers(dispatch, successFn, failureFn);
+
+  loading(true);
+
+  try {
+
+    const res = await getJSON(path, init);
+
+    success(res);
+    loading();
+
+    return res;
+
+  } catch (err) {
+    failure(err);
+    loading();
+  }
 
 };
 

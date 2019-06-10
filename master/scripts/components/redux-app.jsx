@@ -51,7 +51,11 @@ const getContext = (actions) => {
   const mapDispatch = (dispatch) => ({
     actions: Object.entries(actions).reduce((acc, [key, val]) => {
 
-      acc[key] = (...args) => dispatch(val(...args));
+      const thunk = typeof val() === "function";
+
+      acc[key] = thunk ? (...args) => dispatch(val(...args)) : (...args) => {
+        dispatch(val(...args));
+      };
 
       return acc;
 
