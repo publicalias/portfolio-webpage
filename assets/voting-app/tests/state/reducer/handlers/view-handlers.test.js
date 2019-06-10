@@ -45,6 +45,11 @@ test("reducer accepts VIEW_TOGGLE_SETTINGS actions", () => {
 
   const { viewToggleSettings } = actions;
 
-  testReducer(viewToggleSettings(), {}, { view: { settings: true } });
+  testReducer(viewToggleSettings(), { confirm: true }, {
+    view: {
+      settings: true,
+      confirm: false
+    }
+  });
 
 });

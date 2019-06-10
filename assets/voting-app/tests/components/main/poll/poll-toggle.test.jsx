@@ -26,9 +26,7 @@ describe("poll toggle", () => {
 
   const testRender = (type, prop) => {
 
-    const { wrapper } = testShallow({
-      user: newUser({ id: "id-a" })
-    }, {
+    const { wrapper } = testShallow({ user: newUser({ id: "id-a" }) }, {
       poll: newPoll(prop && {
         users: {
           [prop]: ["id-a"]

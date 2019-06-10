@@ -19,7 +19,12 @@ const VIEW_TOGGLE_CONFIRM = (state) => deepCopy(state, { view: { confirm: !state
 
 //view toggle settings
 
-const VIEW_TOGGLE_SETTINGS = (state) => deepCopy(state, { view: { settings: !state.view.settings } });
+const VIEW_TOGGLE_SETTINGS = (state) => deepCopy(state, {
+  view: {
+    settings: !state.view.settings,
+    confirm: false
+  }
+});
 
 //exports
 

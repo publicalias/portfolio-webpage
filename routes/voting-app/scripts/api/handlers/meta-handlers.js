@@ -97,9 +97,9 @@ const metaGetPolls = async (req, res) => {
 
   const { params, id, length } = JSON.parse(req.query.data);
 
-  if ((!req.user || req.user.data.restricted) && params.filter === "created") {
+  if (id) {
 
-    res.sendStatus(401);
+    res.json({ polls: [await findByID(id)] });
 
     return;
 
@@ -110,17 +110,13 @@ const metaGetPolls = async (req, res) => {
     text: "Search must not exceed character limit"
   }]);
 
-  if (errors.length) {
-
+  if ((!req.user || req.user.data.restricted) && params.filter === "created") {
+    res.sendStatus(401);
+  } else if (errors.length) {
     res.json({ errors });
-
-    return;
-
+  } else {
+    res.json({ polls: await findPolls(req, params, length) });
   }
-
-  const polls = id ? [await findByID(id)] : await findPolls(req, params, length);
-
-  res.json({ polls });
 
 };
 

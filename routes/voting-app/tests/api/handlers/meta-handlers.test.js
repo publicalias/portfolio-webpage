@@ -148,7 +148,7 @@ describe("metaGetPolls", () => {
   const mockAPICall = initMockAPICall(metaGetPolls, "GET");
 
   const getData = (id, length) => ({
-    params: newListParams(),
+    params: id ? null : newListParams(),
     id,
     length
   });
