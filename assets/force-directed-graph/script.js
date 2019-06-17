@@ -156,7 +156,7 @@ const svg = {
 
     const manyBody = d3.forceManyBody()
       .distanceMax(nw * 10)
-      .strength(Math.pow(nw, 2) / -10);
+      .strength(nw ** 2 / -10);
 
     const sim = d3.forceSimulation(app.data.nodes)
       .force("body", manyBody)

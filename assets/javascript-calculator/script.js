@@ -117,7 +117,7 @@ const app = {
 
   square() {
 
-    this.val = toPrecision(Math.pow(this.val, 2));
+    this.val = toPrecision(this.val ** 2);
     this.repeat = "";
 
     updateView(this);

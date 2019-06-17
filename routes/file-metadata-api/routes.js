@@ -14,7 +14,7 @@ const express = require("express");
 const multer = require("multer");
 
 const router = express.Router();
-const upload = multer({ limits: { fileSize: Math.pow(2, 20) } }).single("input");
+const upload = multer({ limits: { fileSize: 2 ** 20 } }).single("input");
 
 //home page
 

@@ -26,6 +26,14 @@ describe("list item", () => {
 
   const { testShallow } = testWrapper(ListItem, MemoryRouter);
 
+  const testVotes = (mag) => {
+
+    const { wrapper } = testShallow({}, { poll: newPoll({ users: { voted: 10 ** mag } }) });
+
+    expect(wrapper).toMatchSnapshot();
+
+  };
+
   it("should match snapshot (default)", () => {
 
     const { wrapper } = testShallow({}, { poll: newPoll() });
@@ -42,28 +50,12 @@ describe("list item", () => {
 
   });
 
-  it("should match snapshot (10^3 votes)", () => {
+  it("should match snapshot (10^3 votes)", () => testVotes(3));
 
-    const { wrapper } = testShallow({}, { poll: newPoll({ users: { voted: Math.pow(10, 3) } }) });
+  it("should match snapshot (10^6 votes)", () => testVotes(6));
 
-    expect(wrapper).toMatchSnapshot();
+  it("should match snapshot (10^9 votes)", () => testVotes(9));
 
-  });
-
-  it("should match snapshot (10^6 votes)", () => {
-
-    const { wrapper } = testShallow({}, { poll: newPoll({ users: { voted: Math.pow(10, 6) } }) });
-
-    expect(wrapper).toMatchSnapshot();
-
-  });
-
-  it("should match snapshot (10^9 votes)", () => {
-
-    const { wrapper } = testShallow({}, { poll: newPoll({ users: { voted: Math.pow(10, 9) } }) });
-
-    expect(wrapper).toMatchSnapshot();
-
-  });
+  it("should match snapshot (10^12 votes)", () => testVotes(12));
 
 });

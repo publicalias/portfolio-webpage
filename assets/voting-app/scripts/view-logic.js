@@ -8,10 +8,11 @@ const { toPrecision } = require("utilities");
 
 const getVotes = (n) => {
 
-  const check = (pow, symbol) => {
+  const check = (mag, symbol) => {
 
-    const val = n / Math.pow(10, pow);
-    const str = `${toPrecision(val, 3)}${symbol}`;
+    const val = n / 10 ** mag;
+    const cap = 10 ** 3;
+    const str = val >= cap ? -1 : `${toPrecision(val, 3)}${symbol}`;
 
     return val >= 1 && str;
 

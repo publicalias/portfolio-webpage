@@ -142,14 +142,14 @@ const rngInt = (min, max, inc = false) => Math.floor(Math.random() * (max - min 
 
 //round to
 
-const roundTo = (val, dec) => Math.round(val * Math.pow(10, dec)) / Math.pow(10, dec);
+const roundTo = (val, dec) => Math.round(val * 10 ** dec) / 10 ** dec;
 
 //to precision
 
 const toPrecision = (n, sf = 15) => {
 
   const x = parseFloat(Number(n).toPrecision(sf));
-  const y = Math.pow(10, sf);
+  const y = 10 ** sf;
 
   return x < y ? x.toString() : x.toExponential();
 
