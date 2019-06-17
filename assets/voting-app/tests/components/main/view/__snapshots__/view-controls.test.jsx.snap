@@ -1,0 +1,313 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`view controls should match snapshot (authenticated) 1`] = `
+<div
+  className="c-view-menu__display-box u-flex-right"
+>
+  <button
+    className="c-view-menu__toggle-btn qa-share-poll"
+    onClick={[Function]}
+  >
+    Share
+  </button>
+  <div
+    className="c-view-menu__toggle-btn"
+  >
+    <PollToggle
+      actions={
+        Object {
+          "formAddOption": [MockFunction],
+          "formClearState": [MockFunction],
+          "formRemoveOption": [MockFunction],
+          "formSetAdd": [MockFunction],
+          "formSetTitle": [MockFunction],
+          "formToggleConfirm": [MockFunction],
+          "formToggleSecret": [MockFunction],
+          "listClearState": [MockFunction],
+          "listSetSearch": [MockFunction],
+          "metaAddErrors": [MockFunction],
+          "metaCloseError": [MockFunction],
+          "metaCreatePoll": [MockFunction],
+          "metaDeletePoll": [MockFunction],
+          "metaGetPolls": [MockFunction],
+          "metaGetUser": [MockFunction],
+          "metaNoOp": [MockFunction],
+          "metaSetLoading": [MockFunction],
+          "metaSetState": [MockFunction],
+          "metaTimeoutError": [MockFunction],
+          "pollAddOption": [MockFunction],
+          "pollCastVote": [MockFunction],
+          "pollRemoveOption": [MockFunction],
+          "pollToggleFlag": [MockFunction],
+          "pollToggleHide": [MockFunction],
+          "pollToggleSecret": [MockFunction],
+          "viewClearState": [MockFunction],
+          "viewSetAdd": [MockFunction],
+          "viewToggleConfirm": [MockFunction],
+          "viewToggleSettings": [MockFunction],
+        }
+      }
+      data={
+        Object {
+          "errors": Array [],
+          "form": Object {
+            "add": "",
+            "confirm": false,
+            "options": Array [],
+            "secret": false,
+            "title": "",
+          },
+          "list": Object {
+            "search": "",
+          },
+          "loading": false,
+          "polls": Array [],
+          "user": Object {
+            "auth": Object {
+              "id": "",
+              "provider": "",
+            },
+            "data": Object {
+              "restricted": false,
+            },
+            "id": "",
+            "name": "",
+            "type": "auth",
+          },
+          "view": Object {
+            "add": "",
+            "confirm": false,
+            "settings": false,
+          },
+        }
+      }
+      history={
+        Object {
+          "push": [MockFunction],
+        }
+      }
+      location={Object {}}
+      match={Object {}}
+      poll={
+        Object {
+          "author": "",
+          "date": 0,
+          "id": "",
+          "options": Array [],
+          "secret": false,
+          "title": "",
+          "users": Object {
+            "created": "",
+            "flagged": Array [],
+            "hidden": Array [],
+            "voted": 0,
+          },
+        }
+      }
+      staticContext={Object {}}
+      type="hide"
+    />
+  </div>
+  <div
+    className="c-view-menu__toggle-btn"
+  >
+    <PollToggle
+      actions={
+        Object {
+          "formAddOption": [MockFunction],
+          "formClearState": [MockFunction],
+          "formRemoveOption": [MockFunction],
+          "formSetAdd": [MockFunction],
+          "formSetTitle": [MockFunction],
+          "formToggleConfirm": [MockFunction],
+          "formToggleSecret": [MockFunction],
+          "listClearState": [MockFunction],
+          "listSetSearch": [MockFunction],
+          "metaAddErrors": [MockFunction],
+          "metaCloseError": [MockFunction],
+          "metaCreatePoll": [MockFunction],
+          "metaDeletePoll": [MockFunction],
+          "metaGetPolls": [MockFunction],
+          "metaGetUser": [MockFunction],
+          "metaNoOp": [MockFunction],
+          "metaSetLoading": [MockFunction],
+          "metaSetState": [MockFunction],
+          "metaTimeoutError": [MockFunction],
+          "pollAddOption": [MockFunction],
+          "pollCastVote": [MockFunction],
+          "pollRemoveOption": [MockFunction],
+          "pollToggleFlag": [MockFunction],
+          "pollToggleHide": [MockFunction],
+          "pollToggleSecret": [MockFunction],
+          "viewClearState": [MockFunction],
+          "viewSetAdd": [MockFunction],
+          "viewToggleConfirm": [MockFunction],
+          "viewToggleSettings": [MockFunction],
+        }
+      }
+      data={
+        Object {
+          "errors": Array [],
+          "form": Object {
+            "add": "",
+            "confirm": false,
+            "options": Array [],
+            "secret": false,
+            "title": "",
+          },
+          "list": Object {
+            "search": "",
+          },
+          "loading": false,
+          "polls": Array [],
+          "user": Object {
+            "auth": Object {
+              "id": "",
+              "provider": "",
+            },
+            "data": Object {
+              "restricted": false,
+            },
+            "id": "",
+            "name": "",
+            "type": "auth",
+          },
+          "view": Object {
+            "add": "",
+            "confirm": false,
+            "settings": false,
+          },
+        }
+      }
+      history={
+        Object {
+          "push": [MockFunction],
+        }
+      }
+      location={Object {}}
+      match={Object {}}
+      poll={
+        Object {
+          "author": "",
+          "date": 0,
+          "id": "",
+          "options": Array [],
+          "secret": false,
+          "title": "",
+          "users": Object {
+            "created": "",
+            "flagged": Array [],
+            "hidden": Array [],
+            "voted": 0,
+          },
+        }
+      }
+      staticContext={Object {}}
+      type="flag"
+    />
+  </div>
+</div>
+`;
+
+exports[`view controls should match snapshot (default) 1`] = `
+<div
+  className="c-view-menu__display-box u-flex-right"
+>
+  <button
+    className="c-view-menu__toggle-btn qa-share-poll"
+    onClick={[Function]}
+  >
+    Share
+  </button>
+  <div
+    className="c-view-menu__toggle-btn"
+  >
+    <PollToggle
+      actions={
+        Object {
+          "formAddOption": [MockFunction],
+          "formClearState": [MockFunction],
+          "formRemoveOption": [MockFunction],
+          "formSetAdd": [MockFunction],
+          "formSetTitle": [MockFunction],
+          "formToggleConfirm": [MockFunction],
+          "formToggleSecret": [MockFunction],
+          "listClearState": [MockFunction],
+          "listSetSearch": [MockFunction],
+          "metaAddErrors": [MockFunction],
+          "metaCloseError": [MockFunction],
+          "metaCreatePoll": [MockFunction],
+          "metaDeletePoll": [MockFunction],
+          "metaGetPolls": [MockFunction],
+          "metaGetUser": [MockFunction],
+          "metaNoOp": [MockFunction],
+          "metaSetLoading": [MockFunction],
+          "metaSetState": [MockFunction],
+          "metaTimeoutError": [MockFunction],
+          "pollAddOption": [MockFunction],
+          "pollCastVote": [MockFunction],
+          "pollRemoveOption": [MockFunction],
+          "pollToggleFlag": [MockFunction],
+          "pollToggleHide": [MockFunction],
+          "pollToggleSecret": [MockFunction],
+          "viewClearState": [MockFunction],
+          "viewSetAdd": [MockFunction],
+          "viewToggleConfirm": [MockFunction],
+          "viewToggleSettings": [MockFunction],
+        }
+      }
+      data={
+        Object {
+          "errors": Array [],
+          "form": Object {
+            "add": "",
+            "confirm": false,
+            "options": Array [],
+            "secret": false,
+            "title": "",
+          },
+          "list": Object {
+            "search": "",
+          },
+          "loading": false,
+          "polls": Array [],
+          "user": Object {},
+          "view": Object {
+            "add": "",
+            "confirm": false,
+            "settings": false,
+          },
+        }
+      }
+      history={
+        Object {
+          "push": [MockFunction],
+        }
+      }
+      location={Object {}}
+      match={Object {}}
+      poll={
+        Object {
+          "author": "",
+          "date": 0,
+          "id": "",
+          "options": Array [],
+          "secret": false,
+          "title": "",
+          "users": Object {
+            "created": "",
+            "flagged": Array [],
+            "hidden": Array [],
+            "voted": 0,
+          },
+        }
+      }
+      staticContext={Object {}}
+      type="hide"
+    />
+  </div>
+  <div
+    className="c-view-menu__toggle-btn"
+  />
+</div>
+`;

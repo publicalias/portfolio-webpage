@@ -33,7 +33,7 @@ describe("ui", () => {
 
   });
 
-  it("should call metaGetUser on mount", () => {
+  it("should call metaGetUser on load", () => {
 
     const { props, wrapper } = testMount();
 

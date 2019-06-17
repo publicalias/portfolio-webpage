@@ -20,13 +20,13 @@ const { Link } = require("react-router-dom");
 
 const ListItem = (props) => {
 
-  const { data: { user }, poll: { title, id, date, users } } = props;
+  const { data: { user }, poll } = props;
 
   //render
 
   const auth = user.type === "auth";
 
-  const stats = `${getVotes(users.voted)} Votes \u2014 ${readDate(date)}`;
+  const stats = `${getVotes(poll.users.voted)} Votes \u2014 ${readDate(poll.date)}`;
 
   return (
     <tr>
@@ -47,8 +47,8 @@ const ListItem = (props) => {
         </td>
       )}
       <td className="u-cursor-pointer">
-        <Link to={`/view?id=${id}`}>
-          <p>{title}</p>
+        <Link to={`/view?id=${poll.id}`}>
+          <p>{poll.title}</p>
           <p className="u-no-margin">{stats}</p>
         </Link>
       </td>

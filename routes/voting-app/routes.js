@@ -22,11 +22,15 @@ router.use(express.static("build"));
 
 handleSession(router);
 
+//api handlers
+
 router.use("/api", apiRouter);
 
 //react router
 
-router.get("/*", (req, res) => {
+const pages = ["/", "/form", "/list", "/view"];
+
+router.get(pages, (req, res) => {
   req.session.redirect = "/voting-app";
   res.sendFile(`${__build}/voting-app/view.html`);
 });

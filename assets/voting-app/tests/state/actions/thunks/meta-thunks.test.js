@@ -7,6 +7,7 @@ const { testAPI } = require("../../../test-helpers");
 
 //global imports
 
+const { newUser } = require("schemas/master");
 const { newListParams, newState } = require("schemas/voting-app");
 
 //meta create poll
@@ -116,7 +117,7 @@ describe("metaGetUser", () => {
 
   it("dispatches META_SET_STATE action on success", () => {
 
-    const res = { user: { id: "id-a" } };
+    const res = { user: newUser() };
 
     const actionList = [metaSetState(res)];
 

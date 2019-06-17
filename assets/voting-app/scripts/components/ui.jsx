@@ -41,7 +41,7 @@ const UI = (props) => {
       />
       <Route path="/list" render={() => <List {...props} />} />
       <Route path="/form" render={() => <Form {...props} />} />
-      <Route component={View} path="/view" />
+      <Route path="/view" render={() => <View {...props} />} />
     </div>
   );
 

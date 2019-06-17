@@ -1,5 +1,9 @@
 "use strict";
 
+//local imports
+
+const { testMock } = require("./meta-tests");
+
 //node modules
 
 const Adapter = require("enzyme-adapter-react-16");
@@ -7,11 +11,23 @@ const React = require("react");
 
 const { configure, mount, shallow } = require("enzyme");
 
+//init test click
+
+const initTestClick = (render) => (qa, action, args = [], data, other) => {
+
+  const { props, wrapper } = render(data, other);
+
+  wrapper.find(qa).simulate("click");
+
+  testMock(props.actions[action], args);
+
+  wrapper.unmount();
+
+};
+
 //init test wrapper
 
 const mockProps = (newState, actions, data, other) => ({
-
-  ...other,
 
   actions: Object.keys(actions).reduce((acc, e) => {
 
@@ -26,7 +42,9 @@ const mockProps = (newState, actions, data, other) => ({
   history: { push: jest.fn() },
   location: {},
   match: {},
-  staticContext: {}
+  staticContext: {},
+
+  ...other
 
 });
 
@@ -73,6 +91,7 @@ const reactTests = {
 //exports
 
 module.exports = {
+  initTestClick,
   initTestWrapper,
   reactTests
 };

@@ -41,13 +41,13 @@ describe("poll toggle", () => {
 
   const testToggle = (type, qa, action, list) => {
 
-    const render = testMount({}, {
+    const { props, wrapper } = testMount({}, {
       list,
       poll: newPoll({ id: "id-a" }),
       type
     });
 
-    return testReload(render, qa, action, ["id-a"], list);
+    return testReload(props, wrapper, qa, action, ["id-a"], list);
 
   };
 

@@ -16,17 +16,35 @@ const { initTestAPI, initTestReducer } = require("test-helpers/redux-tests");
 
 const testAPI = initTestAPI(newState);
 
+//test create delete
+
+const testCreateDelete = async (props, wrapper, qa, fn, args, res) => {
+
+  const { history } = props;
+
+  wrapper.find(qa).simulate("click"); //async
+
+  await Promise.resolve();
+
+  testMock(fn, args);
+
+  if (res && !res.errors) {
+    testMock(history.push, ["/list?filter=created"]);
+  }
+
+  wrapper.unmount();
+
+};
+
 //test reducer
 
 const testReducer = initTestReducer(newState, reducer);
 
 //test reload
 
-const testReload = async (render, qa, action, args, list) => {
+const testReload = async (props, wrapper, qa, action, args, list) => {
 
-  const { props, wrapper } = render;
-
-  const { actions: { metaGetPolls, metaGetUser }, poll: { id } } = props;
+  const { actions: { metaGetPolls, metaGetUser }, poll } = props;
 
   wrapper.find(qa).simulate("click"); //async
 
@@ -35,7 +53,7 @@ const testReload = async (render, qa, action, args, list) => {
   testMock(props.actions[action], args);
 
   testMock(metaGetUser, []);
-  testMock(metaGetPolls, list ? [newListParams(), null, 0] : [null, id]);
+  testMock(metaGetPolls, list ? [newListParams(), null, 0] : [null, poll.id]);
 
   wrapper.unmount();
 
@@ -49,6 +67,7 @@ const testWrapper = initTestWrapper(newState, actions);
 
 module.exports = {
   testAPI,
+  testCreateDelete,
   testReducer,
   testReload,
   testWrapper

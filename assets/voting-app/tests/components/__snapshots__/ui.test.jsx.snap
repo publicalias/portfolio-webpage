@@ -150,8 +150,8 @@ exports[`ui should match snapshot 1`] = `
     render={[Function]}
   />
   <Route
-    component={[Function]}
     path="/view"
+    render={[Function]}
   />
 </div>
 `;

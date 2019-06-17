@@ -6,12 +6,11 @@
 
 const FormMenu = require("../../../../scripts/components/main/form/form-menu");
 
-const { testWrapper } = require("../../../test-helpers");
+const { testCreateDelete, testWrapper } = require("../../../test-helpers");
 
 //global imports
 
-const { testMock } = require("test-helpers/meta-tests");
-const { reactTests } = require("test-helpers/react-tests");
+const { initTestClick, reactTests } = require("test-helpers/react-tests");
 
 //setup
 
@@ -23,37 +22,17 @@ describe("form menu", () => {
 
   const { testMount, testShallow } = testWrapper(FormMenu);
 
-  const testCreate = async (res) => {
+  const testClick = initTestClick(testMount);
 
-    const { props, wrapper } = testMount();
+  const testCreate = (res) => {
 
-    const { actions: { metaCreatePoll }, data: { form }, history } = props;
+    const metaCreatePoll = jest.fn(() => res);
 
-    metaCreatePoll.mockReturnValue(res);
+    const { props, wrapper } = testMount({}, { actions: { metaCreatePoll } });
 
-    wrapper.find(".qa-create-poll").simulate("click"); //async
+    const { data: { form } } = props;
 
-    await Promise.resolve();
-
-    testMock(metaCreatePoll, [form]);
-
-    if (res && !res.errors) {
-      testMock(history.push, ["/list?filter=created"]);
-    }
-
-    wrapper.unmount();
-
-  };
-
-  const testClick = (qa, action, confirm = false) => {
-
-    const { props, wrapper } = testMount({ form: { confirm } });
-
-    wrapper.find(qa).simulate("click");
-
-    testMock(props.actions[action], []);
-
-    wrapper.unmount();
+    return testCreateDelete(props, wrapper, ".qa-create-poll", metaCreatePoll, [form], res);
 
   };
 
@@ -89,9 +68,9 @@ describe("form menu", () => {
 
   it("should call formToggleConfirm on click (discard)", () => testClick(".qa-confirm-true", "formToggleConfirm"));
 
-  it("should call formClearState on click (yes)", () => testClick(".qa-discard-poll", "formClearState", true));
+  it("should call formClearState on click (yes)", () => testClick(".qa-discard-poll", "formClearState", [], { form: { confirm: true } }));
 
-  it("should call formToggleConfirm on click (no)", () => testClick(".qa-confirm-false", "formToggleConfirm", true));
+  it("should call formToggleConfirm on click (no)", () => testClick(".qa-confirm-false", "formToggleConfirm", [], { form: { confirm: true } }));
 
   it("should call formToggleSecret on click (secret)", () => testClick(".qa-toggle-secret", "formToggleSecret"));
 
