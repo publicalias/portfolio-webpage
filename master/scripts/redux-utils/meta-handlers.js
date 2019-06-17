@@ -25,7 +25,7 @@ const META_NO_OP = (state) => state;
 
 //meta set loading
 
-const META_SET_LOADING = (state, { loading }) => deepCopy(state, { loading });
+const META_SET_LOADING = (state, { loading }) => deepCopy(state, { loading: state.loading + (loading ? 1 : -1) });
 
 //meta set state
 

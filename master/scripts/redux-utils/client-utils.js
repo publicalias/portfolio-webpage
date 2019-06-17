@@ -97,9 +97,11 @@ const useLoading = (props) => {
 
   const { data: { loading } } = props;
 
+  const bool = Boolean(loading);
+
   useEffect(() => {
-    select(".js-loading-state").class("is-loading", true, loading);
-  }, [loading]);
+    select(".js-loading-state").class("is-loading", true, bool);
+  }, [bool]);
 
 };
 

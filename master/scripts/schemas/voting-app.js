@@ -60,7 +60,7 @@ const newState = initSchema({
     confirm: false
   },
   errors: [],
-  loading: false
+  loading: 0
 }, {
 
   user(val) {
