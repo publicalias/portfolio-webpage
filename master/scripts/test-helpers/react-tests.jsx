@@ -13,13 +13,13 @@ const { configure, mount, shallow } = require("enzyme");
 
 //init test click
 
-const initTestClick = (render) => (qa, action, args = [], data, other) => {
+const initTestClick = (render) => (qa, type, args = [], data, local, other) => {
 
-  const { props, wrapper } = render(data, other);
+  const { props, wrapper } = render(data, local, other);
 
   wrapper.find(qa).simulate("click");
 
-  testMock(props.actions[action], args);
+  testMock(props.actions[type], args);
 
   wrapper.unmount();
 
@@ -27,7 +27,7 @@ const initTestClick = (render) => (qa, action, args = [], data, other) => {
 
 //init test wrapper
 
-const mockProps = (newState, actions, data, other) => ({
+const mockProps = (newState, actions, data, local, other) => ({
 
   actions: Object.keys(actions).reduce((acc, e) => {
 
@@ -38,6 +38,8 @@ const mockProps = (newState, actions, data, other) => ({
   }, {}),
 
   data: newState(data),
+
+  local,
 
   history: { push: jest.fn() },
   location: {},
@@ -50,9 +52,9 @@ const mockProps = (newState, actions, data, other) => ({
 
 const initTestWrapper = (newState, actions) => (UUT, Context) => {
 
-  const wrapFn = (render) => (data, other) => {
+  const wrapFn = (render) => (data, local, other) => {
 
-    const props = mockProps(newState, actions, data, other);
+    const props = mockProps(newState, actions, data, local, other);
 
     const Component = Context ? (
       <Context>

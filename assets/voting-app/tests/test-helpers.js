@@ -42,15 +42,15 @@ const testReducer = initTestReducer(newState, reducer);
 
 //test reload
 
-const testReload = async (props, wrapper, qa, action, args, list) => {
+const testReload = async (props, wrapper, qa, type, args, list) => {
 
-  const { actions: { metaGetPolls, metaGetUser }, poll } = props;
+  const { actions: { metaGetPolls, metaGetUser }, local: { poll } } = props;
 
   wrapper.find(qa).simulate("click"); //async
 
   await Promise.resolve();
 
-  testMock(props.actions[action], args);
+  testMock(props.actions[type], args);
 
   testMock(metaGetUser, []);
   testMock(metaGetPolls, list ? [newListParams(), null, 0] : [null, poll.id]);

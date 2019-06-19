@@ -62,7 +62,7 @@ exports[`sidebar should match snapshot (authenticated) 1`] = `
         "list": Object {
           "search": "",
         },
-        "loading": false,
+        "loading": 0,
         "polls": Array [],
         "user": Object {
           "auth": Object {
@@ -88,9 +88,13 @@ exports[`sidebar should match snapshot (authenticated) 1`] = `
         "push": [MockFunction],
       }
     }
+    local={
+      Object {
+        "root": "/voting-app",
+      }
+    }
     location={Object {}}
     match={Object {}}
-    root="/voting-app"
     staticContext={Object {}}
   />
 </div>

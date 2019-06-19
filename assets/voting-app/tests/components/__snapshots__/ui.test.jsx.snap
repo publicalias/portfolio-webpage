@@ -51,7 +51,7 @@ exports[`ui should match snapshot 1`] = `
         "list": Object {
           "search": "",
         },
-        "loading": false,
+        "loading": 0,
         "polls": Array [],
         "user": Object {},
         "view": Object {
@@ -117,7 +117,7 @@ exports[`ui should match snapshot 1`] = `
         "list": Object {
           "search": "",
         },
-        "loading": false,
+        "loading": 0,
         "polls": Array [],
         "user": Object {},
         "view": Object {

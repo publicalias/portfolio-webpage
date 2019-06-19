@@ -24,7 +24,7 @@ describe("poll toggle", () => {
 
   const { testMount, testShallow } = testWrapper(PollToggle);
 
-  const testRender = (type, prop) => {
+  const testRender = (role, prop) => {
 
     const { wrapper } = testShallow({ user: newUser({ id: "id-a" }) }, {
       poll: newPoll(prop && {
@@ -32,22 +32,22 @@ describe("poll toggle", () => {
           [prop]: ["id-a"]
         }
       }),
-      type
+      role
     });
 
     expect(wrapper).toMatchSnapshot();
 
   };
 
-  const testToggle = (type, qa, action, list) => {
+  const testToggle = (role, qa, type, list) => {
 
     const { props, wrapper } = testMount({}, {
       list,
       poll: newPoll({ id: "id-a" }),
-      type
+      role
     });
 
-    return testReload(props, wrapper, qa, action, ["id-a"], list);
+    return testReload(props, wrapper, qa, type, ["id-a"], list);
 
   };
 

@@ -20,7 +20,7 @@ const { Link } = require("react-router-dom");
 
 const ListItem = (props) => {
 
-  const { data: { user }, poll } = props;
+  const { data: { user }, local: { poll } } = props;
 
   //render
 
@@ -33,16 +33,22 @@ const ListItem = (props) => {
       <td>
         <PollToggle
           {...props}
-          list
-          type="hide"
+          local={{
+            list: true,
+            poll,
+            role: "hide"
+          }}
         />
       </td>
       {auth && (
         <td>
           <PollToggle
             {...props}
-            list
-            type="flag"
+            local={{
+              list: true,
+              poll,
+              role: "flag"
+            }}
           />
         </td>
       )}

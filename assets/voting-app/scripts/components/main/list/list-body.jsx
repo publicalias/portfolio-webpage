@@ -48,7 +48,7 @@ const ListBody = (props) => {
               <ListItem
                 {...props}
                 key={keyGen(e.title)}
-                poll={e}
+                local={{ poll: e }}
               />
             )) : (
               <tr>

@@ -12,7 +12,7 @@ const React = require("react");
 
 const ViewControls = (props) => {
 
-  const { data: { user } } = props;
+  const { data: { user }, local: { poll } } = props;
 
   //events
 
@@ -28,10 +28,24 @@ const ViewControls = (props) => {
     <div className="c-view-menu__display-box u-flex-right">
       <button className="c-view-menu__toggle-btn qa-share-poll" onClick={handleShare}>Share</button>
       <div className="c-view-menu__toggle-btn">
-        <PollToggle {...props} type="hide" />
+        <PollToggle
+          {...props}
+          local={{
+            poll,
+            role: "hide"
+          }}
+        />
       </div>
       <div className="c-view-menu__toggle-btn">
-        {auth && <PollToggle {...props} type="flag" />}
+        {auth && (
+          <PollToggle
+            {...props}
+            local={{
+              poll,
+              role: "flag"
+            }}
+          />
+        )}
       </div>
     </div>
   );

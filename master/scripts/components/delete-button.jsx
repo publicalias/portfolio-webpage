@@ -13,7 +13,7 @@ const React = require("react");
 
 const DeleteButton = (props) => {
 
-  const { actions: { metaAddErrors, metaSetLoading }, root } = props;
+  const { actions: { metaAddErrors, metaSetLoading }, local: { root } } = props;
 
   //state
 

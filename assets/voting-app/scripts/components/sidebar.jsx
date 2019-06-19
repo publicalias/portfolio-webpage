@@ -20,7 +20,7 @@ const Sidebar = (props) => {
 
   const auth = user.type === "auth";
 
-  const items = [
+  const buttons = [
     ["facebook", "Facebook Login", !auth],
     ["github", "GitHub Login", !auth],
     ["twitter", "Twitter Login", !auth, "u-no-margin"],
@@ -35,7 +35,7 @@ const Sidebar = (props) => {
     <div className="c-ui__sidebar">
       <p>{`Hi, ${user.name || "Anonymous"}!`}</p>
       <hr />
-      {items.map((e) => {
+      {buttons.map((e) => {
 
         const [id, text, bool, mod = ""] = e;
 
@@ -58,7 +58,7 @@ const Sidebar = (props) => {
         );
 
       })}
-      {auth && <DeleteButton {...props} root="/voting-app" />}
+      {auth && <DeleteButton {...props} local={{ root: "/voting-app" }} />}
     </div>
   );
 

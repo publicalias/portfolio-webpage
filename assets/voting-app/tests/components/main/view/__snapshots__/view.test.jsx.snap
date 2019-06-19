@@ -51,7 +51,7 @@ exports[`view should match snapshot (default) 1`] = `
         "list": Object {
           "search": "",
         },
-        "loading": false,
+        "loading": 0,
         "polls": Array [],
         "user": Object {},
         "view": Object {
@@ -66,24 +66,26 @@ exports[`view should match snapshot (default) 1`] = `
         "push": [MockFunction],
       }
     }
-    location={Object {}}
-    match={Object {}}
-    poll={
+    local={
       Object {
-        "author": "",
-        "date": 0,
-        "id": "",
-        "options": Array [],
-        "secret": false,
-        "title": "",
-        "users": Object {
-          "created": "",
-          "flagged": Array [],
-          "hidden": Array [],
-          "voted": 0,
+        "poll": Object {
+          "author": "",
+          "date": 0,
+          "id": "",
+          "options": Array [],
+          "secret": false,
+          "title": "",
+          "users": Object {
+            "created": "",
+            "flagged": Array [],
+            "hidden": Array [],
+            "voted": 0,
+          },
         },
       }
     }
+    location={Object {}}
+    match={Object {}}
     staticContext={Object {}}
   />
   <div
@@ -146,7 +148,7 @@ exports[`view should match snapshot (id) 1`] = `
         "list": Object {
           "search": "",
         },
-        "loading": false,
+        "loading": 0,
         "polls": Array [
           Object {
             "author": "",
@@ -176,28 +178,30 @@ exports[`view should match snapshot (id) 1`] = `
         "push": [MockFunction],
       }
     }
+    local={
+      Object {
+        "poll": Object {
+          "author": "",
+          "date": 0,
+          "id": "id-a",
+          "options": Array [],
+          "secret": false,
+          "title": "",
+          "users": Object {
+            "created": "",
+            "flagged": Array [],
+            "hidden": Array [],
+            "voted": 0,
+          },
+        },
+      }
+    }
     location={
       Object {
         "search": "?id=id-a",
       }
     }
     match={Object {}}
-    poll={
-      Object {
-        "author": "",
-        "date": 0,
-        "id": "id-a",
-        "options": Array [],
-        "secret": false,
-        "title": "",
-        "users": Object {
-          "created": "",
-          "flagged": Array [],
-          "hidden": Array [],
-          "voted": 0,
-        },
-      }
-    }
     staticContext={Object {}}
   />
   <div

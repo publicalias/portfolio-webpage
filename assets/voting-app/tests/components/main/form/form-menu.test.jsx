@@ -28,7 +28,7 @@ describe("form menu", () => {
 
     const metaCreatePoll = jest.fn(() => res);
 
-    const { props, wrapper } = testMount({}, { actions: { metaCreatePoll } });
+    const { props, wrapper } = testMount({}, {}, { actions: { metaCreatePoll } });
 
     const { data: { form } } = props;
 

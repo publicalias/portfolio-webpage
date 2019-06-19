@@ -8,7 +8,7 @@ const { getListParams } = require("./app-logic");
 
 const handleReload = async (fn, props, list) => {
 
-  const { actions: { metaGetPolls, metaGetUser }, data: { polls }, poll } = props;
+  const { actions: { metaGetPolls, metaGetUser }, data: { polls }, local: { poll } } = props;
 
   const args = list ? [getListParams(location), null, polls.length] : [null, poll.id];
 

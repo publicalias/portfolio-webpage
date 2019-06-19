@@ -13,7 +13,7 @@ const React = require("react");
 
 const ViewMenu = (props) => {
 
-  const { actions: { viewToggleSettings }, data: { user, view }, poll } = props;
+  const { actions: { viewToggleSettings }, data: { user, view }, local: { poll } } = props;
 
   //events
 

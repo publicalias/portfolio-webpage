@@ -12,7 +12,7 @@ const React = require("react");
 
 const PollToggle = (props) => {
 
-  const { actions: { pollToggleFlag, pollToggleHide }, data: { user }, list, poll, type } = props;
+  const { actions: { pollToggleFlag, pollToggleHide }, data: { user }, local: { list, poll, role } } = props;
 
   //events
 
@@ -31,7 +31,7 @@ const PollToggle = (props) => {
   const hideIcon = toggled("hidden") ? "fa fa-eye-slash" : "fa fa-eye";
   const flagIcon = toggled("flagged") ? "fa fa-flag" : "fa fa-flag-o";
 
-  switch (type) {
+  switch (role) {
     case "flag":
       return <button className="qa-toggle-flag" onClick={handleFlag}><i className={flagIcon} /></button>;
     case "hide":

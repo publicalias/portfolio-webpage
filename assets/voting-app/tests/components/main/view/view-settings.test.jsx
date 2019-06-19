@@ -29,10 +29,7 @@ describe("view settings", () => {
 
     const metaDeletePoll = jest.fn(() => res);
 
-    const { props, wrapper } = testMount({ view: { confirm: true } }, {
-      actions: { metaDeletePoll },
-      poll: newPoll({ id: "id-a" })
-    });
+    const { props, wrapper } = testMount({ view: { confirm: true } }, { poll: newPoll({ id: "id-a" }) }, { actions: { metaDeletePoll } });
 
     return testCreateDelete(props, wrapper, ".qa-delete-poll", metaDeletePoll, ["id-a"], res);
 

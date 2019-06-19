@@ -57,7 +57,7 @@ exports[`view menu should match snapshot (created) 1`] = `
         "list": Object {
           "search": "",
         },
-        "loading": false,
+        "loading": 0,
         "polls": Array [],
         "user": Object {
           "auth": Object {
@@ -83,24 +83,26 @@ exports[`view menu should match snapshot (created) 1`] = `
         "push": [MockFunction],
       }
     }
-    location={Object {}}
-    match={Object {}}
-    poll={
+    local={
       Object {
-        "author": "",
-        "date": 0,
-        "id": "",
-        "options": Array [],
-        "secret": false,
-        "title": "",
-        "users": Object {
-          "created": "id-a",
-          "flagged": Array [],
-          "hidden": Array [],
-          "voted": 0,
+        "poll": Object {
+          "author": "",
+          "date": 0,
+          "id": "",
+          "options": Array [],
+          "secret": false,
+          "title": "",
+          "users": Object {
+            "created": "id-a",
+            "flagged": Array [],
+            "hidden": Array [],
+            "voted": 0,
+          },
         },
       }
     }
+    location={Object {}}
+    match={Object {}}
     staticContext={Object {}}
   />
 </div>
@@ -163,7 +165,7 @@ exports[`view menu should match snapshot (created, settings) 1`] = `
         "list": Object {
           "search": "",
         },
-        "loading": false,
+        "loading": 0,
         "polls": Array [],
         "user": Object {
           "auth": Object {
@@ -189,24 +191,26 @@ exports[`view menu should match snapshot (created, settings) 1`] = `
         "push": [MockFunction],
       }
     }
-    location={Object {}}
-    match={Object {}}
-    poll={
+    local={
       Object {
-        "author": "",
-        "date": 0,
-        "id": "",
-        "options": Array [],
-        "secret": false,
-        "title": "",
-        "users": Object {
-          "created": "id-a",
-          "flagged": Array [],
-          "hidden": Array [],
-          "voted": 0,
+        "poll": Object {
+          "author": "",
+          "date": 0,
+          "id": "",
+          "options": Array [],
+          "secret": false,
+          "title": "",
+          "users": Object {
+            "created": "id-a",
+            "flagged": Array [],
+            "hidden": Array [],
+            "voted": 0,
+          },
         },
       }
     }
+    location={Object {}}
+    match={Object {}}
     staticContext={Object {}}
   />
 </div>
@@ -263,7 +267,7 @@ exports[`view menu should match snapshot (default) 1`] = `
         "list": Object {
           "search": "",
         },
-        "loading": false,
+        "loading": 0,
         "polls": Array [],
         "user": Object {},
         "view": Object {
@@ -278,24 +282,26 @@ exports[`view menu should match snapshot (default) 1`] = `
         "push": [MockFunction],
       }
     }
-    location={Object {}}
-    match={Object {}}
-    poll={
+    local={
       Object {
-        "author": "",
-        "date": 0,
-        "id": "",
-        "options": Array [],
-        "secret": false,
-        "title": "",
-        "users": Object {
-          "created": "",
-          "flagged": Array [],
-          "hidden": Array [],
-          "voted": 0,
+        "poll": Object {
+          "author": "",
+          "date": 0,
+          "id": "",
+          "options": Array [],
+          "secret": false,
+          "title": "",
+          "users": Object {
+            "created": "",
+            "flagged": Array [],
+            "hidden": Array [],
+            "voted": 0,
+          },
         },
       }
     }
+    location={Object {}}
+    match={Object {}}
     staticContext={Object {}}
   />
 </div>

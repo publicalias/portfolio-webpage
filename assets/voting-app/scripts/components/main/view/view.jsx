@@ -42,7 +42,7 @@ const View = (props) => {
 
   return (
     <div className="c-ui__view">
-      <ViewMenu {...props} poll={poll} />
+      <ViewMenu {...props} local={{ poll }} />
       <div className="c-poll-display" />
       <div className="c-poll-options" />
     </div>

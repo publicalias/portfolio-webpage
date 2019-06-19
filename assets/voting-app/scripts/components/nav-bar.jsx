@@ -20,14 +20,14 @@ const NavBar = (props) => {
 
   const auth = user.type === "auth";
 
-  const items = [
+  const links = [
     ["all", "All Polls", true],
     ["created", "My Polls", auth],
     ["voted", "Voted", true],
     ["hidden", "Hidden", true]
   ];
 
-  for (const e of items) {
+  for (const e of links) {
 
     const [id] = e;
 
@@ -35,7 +35,7 @@ const NavBar = (props) => {
 
   }
 
-  items.push(["form", "New Poll", auth, "/form", "u-flex-right"]);
+  links.push(["form", "New Poll", auth, "/form", "u-flex-right"]);
 
   //render
 
@@ -43,7 +43,7 @@ const NavBar = (props) => {
 
   return (
     <div className="c-ui__nav-bar">
-      {items.map((e) => {
+      {links.map((e) => {
 
         const [id, text, bool, link, util] = e;
 

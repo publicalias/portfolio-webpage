@@ -32,7 +32,7 @@ describe("view", () => {
 
   it("should match snapshot (id)", () => {
 
-    const { wrapper } = testShallow({ polls: [newPoll({ id: "id-a" })] }, { location: { search: "?id=id-a" } });
+    const { wrapper } = testShallow({ polls: [newPoll({ id: "id-a" })] }, {}, { location: { search: "?id=id-a" } });
 
     expect(wrapper).toMatchSnapshot();
 
@@ -54,7 +54,7 @@ describe("view", () => {
 
   it("should call viewClearState and metaGetPolls on load (id)", () => {
 
-    const { props, wrapper } = testMount({}, { location: { search: "?id=id-a" } });
+    const { props, wrapper } = testMount({}, {}, { location: { search: "?id=id-a" } });
 
     const { actions: { metaGetPolls, viewClearState } } = props;
 

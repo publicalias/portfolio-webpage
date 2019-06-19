@@ -12,7 +12,7 @@ const React = require("react");
 
 const ViewSettings = (props) => {
 
-  const { actions: { metaDeletePoll, pollToggleSecret, viewToggleConfirm }, data: { view }, history, poll } = props;
+  const { actions: { metaDeletePoll, pollToggleSecret, viewToggleConfirm }, data: { view }, history, local: { poll } } = props;
 
   //events
 

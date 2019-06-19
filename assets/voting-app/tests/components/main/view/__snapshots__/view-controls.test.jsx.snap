@@ -60,7 +60,7 @@ exports[`view controls should match snapshot (authenticated) 1`] = `
           "list": Object {
             "search": "",
           },
-          "loading": false,
+          "loading": 0,
           "polls": Array [],
           "user": Object {
             "auth": Object {
@@ -86,26 +86,28 @@ exports[`view controls should match snapshot (authenticated) 1`] = `
           "push": [MockFunction],
         }
       }
-      location={Object {}}
-      match={Object {}}
-      poll={
+      local={
         Object {
-          "author": "",
-          "date": 0,
-          "id": "",
-          "options": Array [],
-          "secret": false,
-          "title": "",
-          "users": Object {
-            "created": "",
-            "flagged": Array [],
-            "hidden": Array [],
-            "voted": 0,
+          "poll": Object {
+            "author": "",
+            "date": 0,
+            "id": "",
+            "options": Array [],
+            "secret": false,
+            "title": "",
+            "users": Object {
+              "created": "",
+              "flagged": Array [],
+              "hidden": Array [],
+              "voted": 0,
+            },
           },
+          "role": "hide",
         }
       }
+      location={Object {}}
+      match={Object {}}
       staticContext={Object {}}
-      type="hide"
     />
   </div>
   <div
@@ -158,7 +160,7 @@ exports[`view controls should match snapshot (authenticated) 1`] = `
           "list": Object {
             "search": "",
           },
-          "loading": false,
+          "loading": 0,
           "polls": Array [],
           "user": Object {
             "auth": Object {
@@ -184,26 +186,28 @@ exports[`view controls should match snapshot (authenticated) 1`] = `
           "push": [MockFunction],
         }
       }
-      location={Object {}}
-      match={Object {}}
-      poll={
+      local={
         Object {
-          "author": "",
-          "date": 0,
-          "id": "",
-          "options": Array [],
-          "secret": false,
-          "title": "",
-          "users": Object {
-            "created": "",
-            "flagged": Array [],
-            "hidden": Array [],
-            "voted": 0,
+          "poll": Object {
+            "author": "",
+            "date": 0,
+            "id": "",
+            "options": Array [],
+            "secret": false,
+            "title": "",
+            "users": Object {
+              "created": "",
+              "flagged": Array [],
+              "hidden": Array [],
+              "voted": 0,
+            },
           },
+          "role": "flag",
         }
       }
+      location={Object {}}
+      match={Object {}}
       staticContext={Object {}}
-      type="flag"
     />
   </div>
 </div>
@@ -269,7 +273,7 @@ exports[`view controls should match snapshot (default) 1`] = `
           "list": Object {
             "search": "",
           },
-          "loading": false,
+          "loading": 0,
           "polls": Array [],
           "user": Object {},
           "view": Object {
@@ -284,26 +288,28 @@ exports[`view controls should match snapshot (default) 1`] = `
           "push": [MockFunction],
         }
       }
-      location={Object {}}
-      match={Object {}}
-      poll={
+      local={
         Object {
-          "author": "",
-          "date": 0,
-          "id": "",
-          "options": Array [],
-          "secret": false,
-          "title": "",
-          "users": Object {
-            "created": "",
-            "flagged": Array [],
-            "hidden": Array [],
-            "voted": 0,
+          "poll": Object {
+            "author": "",
+            "date": 0,
+            "id": "",
+            "options": Array [],
+            "secret": false,
+            "title": "",
+            "users": Object {
+              "created": "",
+              "flagged": Array [],
+              "hidden": Array [],
+              "voted": 0,
+            },
           },
+          "role": "hide",
         }
       }
+      location={Object {}}
+      match={Object {}}
       staticContext={Object {}}
-      type="hide"
     />
   </div>
   <div
