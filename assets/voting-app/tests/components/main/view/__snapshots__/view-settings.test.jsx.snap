@@ -57,32 +57,17 @@ exports[`view settings should match snapshot (secret) 1`] = `
 <div
   className="c-view-menu__display-box u-flex-1"
 >
-  <div
-    className="c-view-menu__display-box"
+  <button
+    className="c-view-menu__control-btn qa-confirm-true"
+    onClick={[Function]}
   >
-    <p
-      className="c-view-menu__confirm-text"
-    >
-      Are you sure?
-    </p>
-    <button
-      className="c-view-menu__control-btn qa-delete-poll"
-      onClick={[Function]}
-    >
-      Yes
-    </button>
-    <button
-      className="c-view-menu__control-btn qa-confirm-false"
-      onClick={[Function]}
-    >
-      No
-    </button>
-  </div>
+    Delete
+  </button>
   <button
     className="c-view-menu__toggle-btn qa-toggle-secret u-flex-right"
     onClick={[Function]}
   >
-    Public
+    Private
   </button>
 </div>
 `;

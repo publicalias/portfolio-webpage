@@ -10,7 +10,7 @@ const { testWrapper } = require("../test-helpers");
 
 const { newUser } = require("schemas/master");
 const { testMock } = require("test-helpers/meta-tests");
-const { reactTests } = require("test-helpers/react-tests");
+const { initTestSnapshot, reactTests } = require("test-helpers/react-tests");
 
 //setup
 
@@ -21,6 +21,8 @@ beforeAll(reactTests.setup);
 describe("sidebar", () => {
 
   const { testMount, testShallow } = testWrapper(Sidebar);
+
+  const testSnapshot = initTestSnapshot(testShallow);
 
   const testAuth = (id, data) => {
 
@@ -40,21 +42,9 @@ describe("sidebar", () => {
 
   };
 
-  it("should match snapshot (default)", () => {
+  it("should match snapshot (default)", () => testSnapshot());
 
-    const { wrapper } = testShallow();
-
-    expect(wrapper).toMatchSnapshot();
-
-  });
-
-  it("should match snapshot (authenticated)", () => {
-
-    const { wrapper } = testShallow({ user: newUser({ name: "Ethan Frost" }) });
-
-    expect(wrapper).toMatchSnapshot();
-
-  });
+  it("should match snapshot (authenticated)", () => testSnapshot({ user: newUser({ name: "Ethan Frost" }) }));
 
   it("should call location.assign on click (facebook)", () => testAuth("facebook"));
 

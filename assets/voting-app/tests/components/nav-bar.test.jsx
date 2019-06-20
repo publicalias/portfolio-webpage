@@ -9,7 +9,7 @@ const { testWrapper } = require("../test-helpers");
 //global imports
 
 const { newUser } = require("schemas/master");
-const { reactTests } = require("test-helpers/react-tests");
+const { initTestSnapshot, reactTests } = require("test-helpers/react-tests");
 
 //setup
 
@@ -21,20 +21,10 @@ describe("nav bar", () => {
 
   const { testShallow } = testWrapper(NavBar);
 
-  it("should match snapshot (default)", () => {
+  const testSnapshot = initTestSnapshot(testShallow);
 
-    const { wrapper } = testShallow();
+  it("should match snapshot (default)", () => testSnapshot());
 
-    expect(wrapper).toMatchSnapshot();
-
-  });
-
-  it("should match snapshot (authenticated)", () => {
-
-    const { wrapper } = testShallow({ user: newUser() });
-
-    expect(wrapper).toMatchSnapshot();
-
-  });
+  it("should match snapshot (authenticated)", () => testSnapshot({ user: newUser() }));
 
 });

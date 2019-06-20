@@ -9,7 +9,7 @@ const { testWrapper } = require("../../../test-helpers");
 //global imports
 
 const { testMock } = require("test-helpers/meta-tests");
-const { reactTests } = require("test-helpers/react-tests");
+const { initTestSnapshot, reactTests } = require("test-helpers/react-tests");
 
 //setup
 
@@ -20,6 +20,8 @@ beforeAll(reactTests.setup);
 describe("list menu", () => {
 
   const { testMount, testShallow } = testWrapper(ListMenu);
+
+  const testSnapshot = initTestSnapshot(testShallow);
 
   const testSearch = (qa, path, data) => {
 
@@ -35,21 +37,9 @@ describe("list menu", () => {
 
   };
 
-  it("should match snapshot (default)", () => {
+  it("should match snapshot (default)", () => testSnapshot());
 
-    const { wrapper } = testShallow();
-
-    expect(wrapper).toMatchSnapshot();
-
-  });
-
-  it("should match snapshot (search)", () => {
-
-    const { wrapper } = testShallow({ list: { search: "Apple" } });
-
-    expect(wrapper).toMatchSnapshot();
-
-  });
+  it("should match snapshot (search)", () => testSnapshot({ list: { search: "Apple" } }));
 
   it("should call listSetSearch on change", () => {
 

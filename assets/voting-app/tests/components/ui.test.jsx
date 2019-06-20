@@ -9,7 +9,7 @@ const { testWrapper } = require("../test-helpers");
 //global imports
 
 const { testMock } = require("test-helpers/meta-tests");
-const { reactTests } = require("test-helpers/react-tests");
+const { initTestSnapshot, reactTests } = require("test-helpers/react-tests");
 
 //node modules
 
@@ -25,13 +25,9 @@ describe("ui", () => {
 
   const { testMount, testShallow } = testWrapper(UI, MemoryRouter);
 
-  it("should match snapshot", () => {
+  const testSnapshot = initTestSnapshot(testShallow);
 
-    const { wrapper } = testShallow();
-
-    expect(wrapper).toMatchSnapshot();
-
-  });
+  it("should match snapshot", () => testSnapshot());
 
   it("should call metaGetUser on load", () => {
 

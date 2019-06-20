@@ -10,7 +10,7 @@ const { testWrapper } = require("../../../test-helpers");
 
 const { newListParams } = require("schemas/voting-app");
 const { testMock } = require("test-helpers/meta-tests");
-const { reactTests } = require("test-helpers/react-tests");
+const { initTestSnapshot, reactTests } = require("test-helpers/react-tests");
 
 //setup
 
@@ -22,13 +22,9 @@ describe("list", () => {
 
   const { testMount, testShallow } = testWrapper(List);
 
-  it("should match snapshot", () => {
+  const testSnapshot = initTestSnapshot(testShallow);
 
-    const { wrapper } = testShallow();
-
-    expect(wrapper).toMatchSnapshot();
-
-  });
+  it("should match snapshot", () => testSnapshot());
 
   it("should call listClearState and metaGetPolls on load and when query string changes", () => {
 

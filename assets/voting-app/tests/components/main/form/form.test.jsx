@@ -9,7 +9,7 @@ const { testWrapper } = require("../../../test-helpers");
 //global imports
 
 const { testMock } = require("test-helpers/meta-tests");
-const { reactTests } = require("test-helpers/react-tests");
+const { initTestSnapshot, reactTests } = require("test-helpers/react-tests");
 
 //setup
 
@@ -21,13 +21,9 @@ describe("form", () => {
 
   const { testMount, testShallow } = testWrapper(Form);
 
-  it("should match snapshot", () => {
+  const testSnapshot = initTestSnapshot(testShallow);
 
-    const { wrapper } = testShallow();
-
-    expect(wrapper).toMatchSnapshot();
-
-  });
+  it("should match snapshot", () => testSnapshot());
 
   it("should call formClearState on load", () => {
 

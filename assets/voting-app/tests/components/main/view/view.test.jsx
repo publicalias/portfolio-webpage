@@ -10,7 +10,7 @@ const { testWrapper } = require("../../../test-helpers");
 
 const { newPoll } = require("schemas/voting-app");
 const { testMock } = require("test-helpers/meta-tests");
-const { reactTests } = require("test-helpers/react-tests");
+const { initTestSnapshot, reactTests } = require("test-helpers/react-tests");
 
 //setup
 
@@ -22,21 +22,11 @@ describe("view", () => {
 
   const { testMount, testShallow } = testWrapper(View);
 
-  it("should match snapshot (default)", () => {
+  const testSnapshot = initTestSnapshot(testShallow);
 
-    const { wrapper } = testShallow();
+  it("should match snapshot (default)", () => testSnapshot());
 
-    expect(wrapper).toMatchSnapshot();
-
-  });
-
-  it("should match snapshot (id)", () => {
-
-    const { wrapper } = testShallow({ polls: [newPoll({ id: "id-a" })] }, {}, { location: { search: "?id=id-a" } });
-
-    expect(wrapper).toMatchSnapshot();
-
-  });
+  it("should match snapshot (id)", () => testSnapshot({ polls: [newPoll({ id: "id-a" })] }, {}, { location: { search: "?id=id-a" } }));
 
   it("should call viewClearState on load (default)", () => {
 

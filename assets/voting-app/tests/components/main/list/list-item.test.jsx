@@ -10,7 +10,7 @@ const { testWrapper } = require("../../../test-helpers");
 
 const { newUser } = require("schemas/master");
 const { newPoll } = require("schemas/voting-app");
-const { reactTests } = require("test-helpers/react-tests");
+const { initTestSnapshot, reactTests } = require("test-helpers/react-tests");
 
 //node modules
 
@@ -26,36 +26,28 @@ describe("list item", () => {
 
   const { testShallow } = testWrapper(ListItem, MemoryRouter);
 
-  const testVotes = (mag) => {
+  const testSnapshot = initTestSnapshot(testShallow);
 
-    const { wrapper } = testShallow({}, { poll: newPoll({ users: { voted: 10 ** mag } }) });
-
-    expect(wrapper).toMatchSnapshot();
-
+  const data = {
+    title: "Title A",
+    id: "id-a"
   };
 
-  it("should match snapshot (default)", () => {
-
-    const { wrapper } = testShallow({}, { poll: newPoll() });
-
-    expect(wrapper).toMatchSnapshot();
-
+  const testVotes = (mag) => testSnapshot({}, {
+    poll: newPoll({
+      users: { voted: 10 ** mag },
+      ...data
+    })
   });
 
-  it("should match snapshot (authenticated)", () => {
+  it("should match snapshot (default)", () => testSnapshot({}, { poll: newPoll(data) }));
 
-    const { wrapper } = testShallow({ user: newUser() }, { poll: newPoll() });
-
-    expect(wrapper).toMatchSnapshot();
-
-  });
+  it("should match snapshot (authenticated)", () => testSnapshot({ user: newUser() }, { poll: newPoll(data) }));
 
   it("should match snapshot (10^3 votes)", () => testVotes(3));
 
   it("should match snapshot (10^6 votes)", () => testVotes(6));
 
   it("should match snapshot (10^9 votes)", () => testVotes(9));
-
-  it("should match snapshot (10^12 votes)", () => testVotes(12));
 
 });

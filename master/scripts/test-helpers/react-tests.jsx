@@ -25,6 +25,16 @@ const initTestClick = (render) => (qa, type, args = [], data, local, other) => {
 
 };
 
+//init test snapshot
+
+const initTestSnapshot = (render) => (data, local, other) => {
+
+  const { wrapper } = render(data, local, other);
+
+  expect(wrapper).toMatchSnapshot();
+
+};
+
 //init test wrapper
 
 const mockProps = (newState, actions, data, local, other) => ({
@@ -94,6 +104,7 @@ const reactTests = {
 
 module.exports = {
   initTestClick,
+  initTestSnapshot,
   initTestWrapper,
   reactTests
 };

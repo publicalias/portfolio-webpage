@@ -10,7 +10,7 @@ const { testCreateDelete, testWrapper } = require("../../../test-helpers");
 
 //global imports
 
-const { initTestClick, reactTests } = require("test-helpers/react-tests");
+const { initTestClick, initTestSnapshot, reactTests } = require("test-helpers/react-tests");
 
 //setup
 
@@ -23,6 +23,7 @@ describe("form menu", () => {
   const { testMount, testShallow } = testWrapper(FormMenu);
 
   const testClick = initTestClick(testMount);
+  const testSnapshot = initTestSnapshot(testShallow);
 
   const testCreate = (res) => {
 
@@ -36,29 +37,11 @@ describe("form menu", () => {
 
   };
 
-  it("should match snapshot (default)", () => {
+  it("should match snapshot (default)", () => testSnapshot());
 
-    const { wrapper } = testShallow();
+  it("should match snapshot (confirm)", () => testSnapshot({ form: { confirm: true } }));
 
-    expect(wrapper).toMatchSnapshot();
-
-  });
-
-  it("should match snapshot (confirm)", () => {
-
-    const { wrapper } = testShallow({ form: { confirm: true } });
-
-    expect(wrapper).toMatchSnapshot();
-
-  });
-
-  it("should match snapshot (secret)", () => {
-
-    const { wrapper } = testShallow({ form: { secret: true } });
-
-    expect(wrapper).toMatchSnapshot();
-
-  });
+  it("should match snapshot (secret)", () => testSnapshot({ form: { secret: true } }));
 
   it("should call metaCreatePoll and history.push on click (create, success)", () => testCreate({}));
 

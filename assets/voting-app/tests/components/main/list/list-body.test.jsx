@@ -10,7 +10,7 @@ const { testWrapper } = require("../../../test-helpers");
 
 const { newUser } = require("schemas/master");
 const { newPoll } = require("schemas/voting-app");
-const { reactTests } = require("test-helpers/react-tests");
+const { initTestSnapshot, reactTests } = require("test-helpers/react-tests");
 
 //setup
 
@@ -22,28 +22,12 @@ describe("list body", () => {
 
   const { testShallow } = testWrapper(ListBody);
 
-  it("should match snapshot (default)", () => {
+  const testSnapshot = initTestSnapshot(testShallow);
 
-    const { wrapper } = testShallow();
+  it("should match snapshot (default)", () => testSnapshot());
 
-    expect(wrapper).toMatchSnapshot();
+  it("should match snapshot (authenticated)", () => testSnapshot({ user: newUser() }));
 
-  });
-
-  it("should match snapshot (authenticated)", () => {
-
-    const { wrapper } = testShallow({ user: newUser() });
-
-    expect(wrapper).toMatchSnapshot();
-
-  });
-
-  it("should match snapshot (polls)", () => {
-
-    const { wrapper } = testShallow({ polls: [newPoll()] });
-
-    expect(wrapper).toMatchSnapshot();
-
-  });
+  it("should match snapshot (polls)", () => testSnapshot({ polls: [newPoll()] }));
 
 });

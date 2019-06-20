@@ -11,7 +11,7 @@ const { testCreateDelete, testReload, testWrapper } = require("../../../test-hel
 //global imports
 
 const { newPoll } = require("schemas/voting-app");
-const { initTestClick, reactTests } = require("test-helpers/react-tests");
+const { initTestClick, initTestSnapshot, reactTests } = require("test-helpers/react-tests");
 
 //setup
 
@@ -24,6 +24,7 @@ describe("view settings", () => {
   const { testMount, testShallow } = testWrapper(ViewSettings);
 
   const testClick = initTestClick(testMount);
+  const testSnapshot = initTestSnapshot(testShallow);
 
   const testDelete = (res) => {
 
@@ -35,29 +36,11 @@ describe("view settings", () => {
 
   };
 
-  it("should match snapshot (default)", () => {
+  it("should match snapshot (default)", () => testSnapshot({}, { poll: newPoll() }));
 
-    const { wrapper } = testShallow({}, { poll: newPoll() });
+  it("should match snapshot (confirm)", () => testSnapshot({ view: { confirm: true } }, { poll: newPoll() }));
 
-    expect(wrapper).toMatchSnapshot();
-
-  });
-
-  it("should match snapshot (confirm)", () => {
-
-    const { wrapper } = testShallow({ view: { confirm: true } }, { poll: newPoll() });
-
-    expect(wrapper).toMatchSnapshot();
-
-  });
-
-  it("should match snapshot (secret)", () => {
-
-    const { wrapper } = testShallow({ view: { confirm: true } }, { poll: newPoll() });
-
-    expect(wrapper).toMatchSnapshot();
-
-  });
+  it("should match snapshot (secret)", () => testSnapshot({}, { poll: newPoll({ secret: true }) }));
 
   it("should call viewToggleConfirm on click (delete)", () => testClick(".qa-confirm-true", "viewToggleConfirm", [], {}, { poll: newPoll() }));
 

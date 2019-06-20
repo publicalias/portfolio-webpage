@@ -12,7 +12,7 @@ const { testReload, testWrapper } = require("../../../test-helpers");
 
 const { newUser } = require("schemas/master");
 const { newPoll } = require("schemas/voting-app");
-const { reactTests } = require("test-helpers/react-tests");
+const { initTestSnapshot, reactTests } = require("test-helpers/react-tests");
 
 //setup
 
@@ -24,20 +24,16 @@ describe("poll toggle", () => {
 
   const { testMount, testShallow } = testWrapper(PollToggle);
 
-  const testRender = (role, prop) => {
+  const testSnapshot = initTestSnapshot(testShallow);
 
-    const { wrapper } = testShallow({ user: newUser({ id: "id-a" }) }, {
-      poll: newPoll(prop && {
-        users: {
-          [prop]: ["id-a"]
-        }
-      }),
-      role
-    });
-
-    expect(wrapper).toMatchSnapshot();
-
-  };
+  const testRole = (role, prop) => testSnapshot({ user: newUser({ id: "id-a" }) }, {
+    poll: newPoll(prop && {
+      users: {
+        [prop]: ["id-a"]
+      }
+    }),
+    role
+  });
 
   const testToggle = (role, qa, type, list) => {
 
@@ -51,21 +47,15 @@ describe("poll toggle", () => {
 
   };
 
-  it("should match snapshot (default)", () => {
+  it("should match snapshot (default)", () => testSnapshot({}, { poll: newPoll() }));
 
-    const { wrapper } = testShallow({}, { poll: newPoll() });
+  it("should match snapshot (flag)", () => testRole("flag"));
 
-    expect(wrapper).toMatchSnapshot();
+  it("should match snapshot (flag, true)", () => testRole("flag", "flagged"));
 
-  });
+  it("should match snapshot (hide)", () => testRole("hide"));
 
-  it("should match snapshot (flag)", () => testRender("flag"));
-
-  it("should match snapshot (flag, true)", () => testRender("flag", "flagged"));
-
-  it("should match snapshot (hide)", () => testRender("hide"));
-
-  it("should match snapshot (hide, true)", () => testRender("hide", "hidden"));
+  it("should match snapshot (hide, true)", () => testRole("hide", "hidden"));
 
   it("should call pollToggleFlag on click (list)", () => testToggle("flag", ".qa-toggle-flag", "pollToggleFlag", true));
 

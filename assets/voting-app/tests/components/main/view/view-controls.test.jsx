@@ -11,7 +11,7 @@ const { testWrapper } = require("../../../test-helpers");
 const { newUser } = require("schemas/master");
 const { newPoll } = require("schemas/voting-app");
 const { testMock } = require("test-helpers/meta-tests");
-const { reactTests } = require("test-helpers/react-tests");
+const { initTestSnapshot, reactTests } = require("test-helpers/react-tests");
 
 //setup
 
@@ -23,21 +23,11 @@ describe("view controls", () => {
 
   const { testMount, testShallow } = testWrapper(ViewControls);
 
-  it("should match snapshot (default)", () => {
+  const testSnapshot = initTestSnapshot(testShallow);
 
-    const { wrapper } = testShallow({}, { poll: newPoll() });
+  it("should match snapshot (default)", () => testSnapshot({}, { poll: newPoll() }));
 
-    expect(wrapper).toMatchSnapshot();
-
-  });
-
-  it("should match snapshot (authenticated)", () => {
-
-    const { wrapper } = testShallow({ user: newUser() }, { poll: newPoll() });
-
-    expect(wrapper).toMatchSnapshot();
-
-  });
+  it("should match snapshot (authenticated)", () => testSnapshot({ user: newUser() }, { poll: newPoll() }));
 
   it("should call writeText on click", () => {
 

@@ -71,10 +71,10 @@ exports[`list item should match snapshot (10^3 votes) 1`] = `
           "poll": Object {
             "author": "",
             "date": 0,
-            "id": "",
+            "id": "id-a",
             "options": Array [],
             "secret": false,
-            "title": "",
+            "title": "Title A",
             "users": Object {
               "created": "",
               "flagged": Array [],
@@ -94,9 +94,11 @@ exports[`list item should match snapshot (10^3 votes) 1`] = `
     className="u-cursor-pointer"
   >
     <Link
-      to="/view?id="
+      to="/view?id=id-a"
     >
-      <p />
+      <p>
+        Title A
+      </p>
       <p
         className="u-no-margin"
       >
@@ -178,10 +180,10 @@ exports[`list item should match snapshot (10^6 votes) 1`] = `
           "poll": Object {
             "author": "",
             "date": 0,
-            "id": "",
+            "id": "id-a",
             "options": Array [],
             "secret": false,
-            "title": "",
+            "title": "Title A",
             "users": Object {
               "created": "",
               "flagged": Array [],
@@ -201,9 +203,11 @@ exports[`list item should match snapshot (10^6 votes) 1`] = `
     className="u-cursor-pointer"
   >
     <Link
-      to="/view?id="
+      to="/view?id=id-a"
     >
-      <p />
+      <p>
+        Title A
+      </p>
       <p
         className="u-no-margin"
       >
@@ -285,10 +289,10 @@ exports[`list item should match snapshot (10^9 votes) 1`] = `
           "poll": Object {
             "author": "",
             "date": 0,
-            "id": "",
+            "id": "id-a",
             "options": Array [],
             "secret": false,
-            "title": "",
+            "title": "Title A",
             "users": Object {
               "created": "",
               "flagged": Array [],
@@ -308,120 +312,15 @@ exports[`list item should match snapshot (10^9 votes) 1`] = `
     className="u-cursor-pointer"
   >
     <Link
-      to="/view?id="
+      to="/view?id=id-a"
     >
-      <p />
-      <p
-        className="u-no-margin"
-      >
-        1B Votes — 31 December 1969
+      <p>
+        Title A
       </p>
-    </Link>
-  </td>
-</tr>
-`;
-
-exports[`list item should match snapshot (10^12 votes) 1`] = `
-<tr>
-  <td>
-    <PollToggle
-      actions={
-        Object {
-          "formAddOption": [MockFunction],
-          "formClearState": [MockFunction],
-          "formRemoveOption": [MockFunction],
-          "formSetAdd": [MockFunction],
-          "formSetTitle": [MockFunction],
-          "formToggleConfirm": [MockFunction],
-          "formToggleSecret": [MockFunction],
-          "listClearState": [MockFunction],
-          "listSetSearch": [MockFunction],
-          "metaAddErrors": [MockFunction],
-          "metaCloseError": [MockFunction],
-          "metaCreatePoll": [MockFunction],
-          "metaDeletePoll": [MockFunction],
-          "metaGetPolls": [MockFunction],
-          "metaGetUser": [MockFunction],
-          "metaNoOp": [MockFunction],
-          "metaSetLoading": [MockFunction],
-          "metaSetState": [MockFunction],
-          "metaTimeoutError": [MockFunction],
-          "pollAddOption": [MockFunction],
-          "pollCastVote": [MockFunction],
-          "pollRemoveOption": [MockFunction],
-          "pollToggleFlag": [MockFunction],
-          "pollToggleHide": [MockFunction],
-          "pollToggleSecret": [MockFunction],
-          "viewClearState": [MockFunction],
-          "viewSetAdd": [MockFunction],
-          "viewToggleConfirm": [MockFunction],
-          "viewToggleSettings": [MockFunction],
-        }
-      }
-      data={
-        Object {
-          "errors": Array [],
-          "form": Object {
-            "add": "",
-            "confirm": false,
-            "options": Array [],
-            "secret": false,
-            "title": "",
-          },
-          "list": Object {
-            "search": "",
-          },
-          "loading": 0,
-          "polls": Array [],
-          "user": Object {},
-          "view": Object {
-            "add": "",
-            "confirm": false,
-            "settings": false,
-          },
-        }
-      }
-      history={
-        Object {
-          "push": [MockFunction],
-        }
-      }
-      local={
-        Object {
-          "list": true,
-          "poll": Object {
-            "author": "",
-            "date": 0,
-            "id": "",
-            "options": Array [],
-            "secret": false,
-            "title": "",
-            "users": Object {
-              "created": "",
-              "flagged": Array [],
-              "hidden": Array [],
-              "voted": 1000000000000,
-            },
-          },
-          "role": "hide",
-        }
-      }
-      location={Object {}}
-      match={Object {}}
-      staticContext={Object {}}
-    />
-  </td>
-  <td
-    className="u-cursor-pointer"
-  >
-    <Link
-      to="/view?id="
-    >
-      <p />
       <p
         className="u-no-margin"
       >
-        -1 Votes — 31 December 1969
+        ??? Votes — 31 December 1969
       </p>
     </Link>
   </td>
@@ -510,10 +409,10 @@ exports[`list item should match snapshot (authenticated) 1`] = `
           "poll": Object {
             "author": "",
             "date": 0,
-            "id": "",
+            "id": "id-a",
             "options": Array [],
             "secret": false,
-            "title": "",
+            "title": "Title A",
             "users": Object {
               "created": "",
               "flagged": Array [],
@@ -609,10 +508,10 @@ exports[`list item should match snapshot (authenticated) 1`] = `
           "poll": Object {
             "author": "",
             "date": 0,
-            "id": "",
+            "id": "id-a",
             "options": Array [],
             "secret": false,
-            "title": "",
+            "title": "Title A",
             "users": Object {
               "created": "",
               "flagged": Array [],
@@ -632,9 +531,11 @@ exports[`list item should match snapshot (authenticated) 1`] = `
     className="u-cursor-pointer"
   >
     <Link
-      to="/view?id="
+      to="/view?id=id-a"
     >
-      <p />
+      <p>
+        Title A
+      </p>
       <p
         className="u-no-margin"
       >
@@ -716,10 +617,10 @@ exports[`list item should match snapshot (default) 1`] = `
           "poll": Object {
             "author": "",
             "date": 0,
-            "id": "",
+            "id": "id-a",
             "options": Array [],
             "secret": false,
-            "title": "",
+            "title": "Title A",
             "users": Object {
               "created": "",
               "flagged": Array [],
@@ -739,9 +640,11 @@ exports[`list item should match snapshot (default) 1`] = `
     className="u-cursor-pointer"
   >
     <Link
-      to="/view?id="
+      to="/view?id=id-a"
     >
-      <p />
+      <p>
+        Title A
+      </p>
       <p
         className="u-no-margin"
       >

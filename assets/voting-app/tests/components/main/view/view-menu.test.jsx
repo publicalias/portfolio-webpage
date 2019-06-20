@@ -10,7 +10,7 @@ const { testWrapper } = require("../../../test-helpers");
 
 const { newUser } = require("schemas/master");
 const { newPoll } = require("schemas/voting-app");
-const { initTestClick, reactTests } = require("test-helpers/react-tests");
+const { initTestClick, initTestSnapshot, reactTests } = require("test-helpers/react-tests");
 const { deepCopy } = require("utilities");
 
 //setup
@@ -23,33 +23,20 @@ describe("view menu", () => {
 
   const { testMount, testShallow } = testWrapper(ViewMenu);
 
+  const testClick = initTestClick(testMount);
+  const testSnapshot = initTestSnapshot(testShallow);
+
   const props = [{ user: newUser({ id: "id-a" }) }, { poll: newPoll({ users: { created: "id-a" } }) }];
 
-  const testClick = initTestClick(testMount);
+  it("should match snapshot (default)", () => testSnapshot({}, { poll: newPoll() }));
 
-  it("should match snapshot (default)", () => {
-
-    const { wrapper } = testShallow({}, { poll: newPoll() });
-
-    expect(wrapper).toMatchSnapshot();
-
-  });
-
-  it("should match snapshot (created)", () => {
-
-    const { wrapper } = testShallow(...props);
-
-    expect(wrapper).toMatchSnapshot();
-
-  });
+  it("should match snapshot (created)", () => testSnapshot(...props));
 
   it("should match snapshot (created, settings)", () => {
 
-    const localProps = deepCopy(props, [{ view: { settings: true } }]);
+    const innerProps = deepCopy(props, [{ view: { settings: true } }]);
 
-    const { wrapper } = testShallow(...localProps);
-
-    expect(wrapper).toMatchSnapshot();
+    testSnapshot(...innerProps);
 
   });
 
