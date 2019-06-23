@@ -8,9 +8,11 @@ const { testWrapper } = require("../../../test-helpers");
 
 //global imports
 
+const { initSchema } = require("schemas/master");
 const { newListParams } = require("schemas/voting-app");
 const { testMock } = require("test-helpers/meta-tests");
-const { initTestSnapshot, reactTests } = require("test-helpers/react-tests");
+const { initTestRef, initTestSnapshot, reactTests } = require("test-helpers/react-tests");
+const { deepCopy } = require("utilities");
 
 //setup
 
@@ -20,26 +22,185 @@ beforeAll(reactTests.setup);
 
 describe("list", () => {
 
-  const { testMount, testShallow } = testWrapper(List);
+  const { testShallow } = testWrapper(List);
 
   const testSnapshot = initTestSnapshot(testShallow);
 
   it("should match snapshot", () => testSnapshot());
 
-  it("should call listClearState and metaGetPolls on load and when query string changes", () => {
+});
 
-    const { props, wrapper } = testMount();
+describe("list (load and location.search)", () => {
 
-    const { actions: { listClearState, metaGetPolls } } = props;
+  const { testMount } = testWrapper(List);
+
+  const testEffect = async (fn) => {
+
+    const { props, wrapper } = testMount(); //async
 
     wrapper.setProps({ location: { search: "?sort=popular" } });
 
     wrapper.mount();
 
-    testMock(listClearState, [], []);
-    testMock(metaGetPolls, [newListParams()], [newListParams({ sort: "popular" })]);
+    await Promise.resolve();
+
+    fn(props);
 
     wrapper.unmount();
+
+  };
+
+  it("should reset scrollTop", () => {
+
+    const DOMView = { scrollTop: 1000 };
+
+    const select = jest.fn(() => DOMView);
+
+    List.injected.select = select;
+
+    return testEffect(() => {
+
+      testMock(select, [".js-scroll-view"], [".js-scroll-view"]);
+
+      expect(DOMView.scrollTop).toEqual(0);
+
+    });
+
+  });
+
+  it("should reset ref", () => {
+
+    const exposed = initTestRef(List);
+
+    return testEffect(() => {
+
+      const { ref, useRef } = exposed;
+
+      testMock(useRef, [], [], []);
+
+      expect(ref.current).toEqual({
+        end: false,
+        pending: false
+      });
+
+    });
+
+  });
+
+  it("should reset state", () => testEffect((props) => {
+
+    const { actions: { listClearState, metaGetPolls } } = props;
+
+    testMock(metaGetPolls, [newListParams()], [newListParams({ sort: "popular" })]);
+    testMock(listClearState, [], []);
+
+  }));
+
+});
+
+describe("list (scroll)", () => {
+
+  const { testMount } = testWrapper(List);
+
+  const newRef = initSchema({
+    end: false,
+    pending: false
+  });
+
+  const initTestFn = (refOneVal, refTwoVal, call) => (metaGetPolls, refOne, refTwo) => {
+
+    testMock(metaGetPolls, call);
+
+    expect(refOne.current).toEqual(newRef(refOneVal));
+    expect(refTwo.current).toEqual(newRef(refTwoVal));
+
+  };
+
+  const setupList = async (scrollVal, refVal, res) => {
+
+    const exposed = initTestRef(List);
+
+    List.injected.scrollInfo = () => scrollVal || {
+      view: 100,
+      bottom: 300
+    };
+
+    List.injected.select = () => ({});
+
+    const { props, wrapper } = testMount(); //async
+
+    const { actions: { metaGetPolls } } = props;
+
+    const { ref } = exposed;
+
+    await Promise.resolve();
+
+    metaGetPolls.mockClear().mockReturnValueOnce(res);
+
+    ref.current = newRef(refVal);
+
+    return {
+      props,
+      wrapper,
+      ref
+    };
+
+  };
+
+  const testScroll = async (fn, scrollVal, refVal, res) => {
+
+    const { props, wrapper, ref } = await setupList(scrollVal, refVal, res);
+
+    const { actions: { metaGetPolls } } = props;
+
+    wrapper.find(".js-scroll-view").simulate("scroll"); //async
+
+    const refOne = deepCopy(ref);
+
+    await Promise.resolve();
+
+    const refTwo = deepCopy(ref);
+
+    fn(metaGetPolls, refOne, refTwo);
+
+    wrapper.unmount();
+
+  };
+
+  it("should do nothing if above threshold", () => testScroll(initTestFn(), {
+    view: 100,
+    bottom: 400
+  }));
+
+  it("should do nothing if ref.end", () => {
+
+    const testFn = initTestFn({ end: true }, { end: true });
+
+    return testScroll(testFn, null, { end: true });
+
+  });
+
+  it("should do nothing if ref.pending", () => {
+
+    const testFn = initTestFn({ pending: true }, { pending: true });
+
+    return testScroll(testFn, null, { pending: true });
+
+  });
+
+  it("should call metaGetPolls if allowed (end)", () => {
+
+    const testFn = initTestFn({ pending: true }, { end: true }, [newListParams(), null, 0]);
+
+    return testScroll(testFn, null, {}, { polls: Array(0) });
+
+  });
+
+  it("should call metaGetPolls if allowed (not end)", () => {
+
+    const testFn = initTestFn({ pending: true }, {}, [newListParams(), null, 0]);
+
+    return testScroll(testFn, null, {}, { polls: Array(100) });
 
   });
 

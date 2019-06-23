@@ -58,7 +58,7 @@ const App = () => {
   //lifecycle
 
   useEffect(() => {
-    loadData(); //returns promise
+    loadData(); //async
   }, []);
 
   //render

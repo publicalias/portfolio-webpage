@@ -24,10 +24,12 @@ describe("list body", () => {
 
   const testSnapshot = initTestSnapshot(testShallow);
 
-  it("should match snapshot (default)", () => testSnapshot());
+  const local = { handleScroll() {} };
 
-  it("should match snapshot (authenticated)", () => testSnapshot({ user: newUser() }));
+  it("should match snapshot (default)", () => testSnapshot({}, local));
 
-  it("should match snapshot (polls)", () => testSnapshot({ polls: [newPoll()] }));
+  it("should match snapshot (authenticated)", () => testSnapshot({ user: newUser() }, local));
+
+  it("should match snapshot (polls)", () => testSnapshot({ polls: [newPoll()] }, local));
 
 });

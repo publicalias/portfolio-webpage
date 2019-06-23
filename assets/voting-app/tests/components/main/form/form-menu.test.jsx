@@ -27,11 +27,11 @@ describe("form menu", () => {
 
   const testCreate = (res) => {
 
-    const metaCreatePoll = jest.fn(() => res);
+    const { props, wrapper } = testMount();
 
-    const { props, wrapper } = testMount({}, {}, { actions: { metaCreatePoll } });
+    const { actions: { metaCreatePoll }, data: { form } } = props;
 
-    const { data: { form } } = props;
+    metaCreatePoll.mockReturnValueOnce(res);
 
     return testCreateDelete(props, wrapper, ".qa-create-poll", metaCreatePoll, [form], res);
 

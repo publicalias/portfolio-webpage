@@ -24,7 +24,7 @@ const { useEffect } = React;
 
 const App = (props) => {
 
-  const { UI } = App.injected;
+  const { injected: { UI } } = App;
 
   //lifecycle
 

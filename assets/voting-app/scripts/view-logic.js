@@ -2,6 +2,7 @@
 
 //global imports
 
+const { select } = require("dom-api");
 const { toPrecision } = require("utilities");
 
 //get votes
@@ -25,6 +26,28 @@ const getVotes = (n) => {
 
 };
 
+//scroll info
+
+const scrollInfo = () => {
+
+  const DOMView = select(".js-scroll-view");
+
+  const view = DOMView.rect().height;
+  const content = DOMView.scrollHeight;
+  const top = DOMView.scrollTop;
+
+  return {
+    view,
+    content,
+    top,
+    bottom: content - view - top
+  };
+
+};
+
 //exports
 
-module.exports = { getVotes };
+module.exports = {
+  getVotes,
+  scrollInfo
+};

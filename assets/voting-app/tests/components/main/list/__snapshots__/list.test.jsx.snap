@@ -132,6 +132,11 @@ exports[`list should match snapshot 1`] = `
         "push": [MockFunction],
       }
     }
+    local={
+      Object {
+        "handleScroll": [Function],
+      }
+    }
     location={Object {}}
     match={Object {}}
     staticContext={Object {}}

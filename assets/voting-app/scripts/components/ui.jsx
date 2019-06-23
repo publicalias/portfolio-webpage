@@ -25,7 +25,7 @@ const UI = (props) => {
   //lifecycle
 
   useEffect(() => {
-    metaGetUser(); //returns promise
+    metaGetUser(); //async
   }, []);
 
   //render

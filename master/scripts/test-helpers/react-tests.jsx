@@ -9,6 +9,8 @@ const { testMock } = require("./meta-tests");
 const Adapter = require("enzyme-adapter-react-16");
 const React = require("react");
 
+const { useRef } = React;
+
 const { configure, mount, shallow } = require("enzyme");
 
 //init test click
@@ -22,6 +24,30 @@ const initTestClick = (render) => (qa, type, args = [], data, local, other) => {
   testMock(props.actions[type], args);
 
   wrapper.unmount();
+
+};
+
+//init test ref
+
+const initTestRef = (Component, init) => {
+
+  const exposed = {
+
+    ref: null,
+
+    useRef: jest.fn(() => {
+
+      exposed.ref = useRef(init);
+
+      return exposed.ref;
+
+    })
+
+  };
+
+  Component.injected.useRef = exposed.useRef;
+
+  return exposed;
 
 };
 
@@ -104,6 +130,7 @@ const reactTests = {
 
 module.exports = {
   initTestClick,
+  initTestRef,
   initTestSnapshot,
   initTestWrapper,
   reactTests

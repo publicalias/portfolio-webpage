@@ -2,6 +2,7 @@
 
 //local imports
 
+const List = require("../../scripts/components/main/list/list");
 const UI = require("../../scripts/components/ui");
 
 const { testWrapper } = require("../test-helpers");
@@ -30,6 +31,8 @@ describe("ui", () => {
   it("should match snapshot", () => testSnapshot());
 
   it("should call metaGetUser on load", () => {
+
+    List.injected.select = () => ({});
 
     const { props, wrapper } = testMount();
 

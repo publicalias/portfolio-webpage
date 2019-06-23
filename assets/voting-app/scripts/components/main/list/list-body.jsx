@@ -16,7 +16,7 @@ const React = require("react");
 
 const ListBody = (props) => {
 
-  const { data: { user, polls } } = props;
+  const { data: { user, polls }, local: { handleScroll } } = props;
 
   //render
 
@@ -26,7 +26,7 @@ const ListBody = (props) => {
 
   return (
     <div className="c-list-body">
-      <div className="c-list-body__scroll-box js-scroll-box">
+      <div className="c-list-body__scroll-view js-scroll-view" onScroll={handleScroll}>
         <table className="c-list-body__table js-scroll-content">
           <thead>
             <tr>

@@ -30,7 +30,7 @@ const ListMenu = (props) => {
 
   //render
 
-  const searchProps = {
+  const childProps = {
 
     handleChange(event) {
       listSetSearch(event.target.value);
@@ -51,7 +51,7 @@ const ListMenu = (props) => {
   return (
     <div className="c-list-menu">
       <div className="c-list-menu__search">
-        <SearchBar {...searchProps} />
+        <SearchBar {...childProps} />
       </div>
       <div className="c-list-menu__sort">
         <button className="qa-sort-new u-hover" onClick={handleSortNew}>New</button>
