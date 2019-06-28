@@ -35,9 +35,9 @@ describe("metaCreatePoll", () => {
 
   const mockAPICall = initMockAPICall(metaCreatePoll, "POST");
 
-  const mockForm = initSchema(newState().form);
+  const newForm = initSchema(newState().form);
 
-  const getData = (form) => mockForm(form);
+  const getData = (form) => newForm(form);
 
   const testError = async (error, data, docs = 0) => {
 

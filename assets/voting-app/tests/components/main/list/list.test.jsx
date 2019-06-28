@@ -10,7 +10,7 @@ const { testWrapper } = require("../../../test-helpers");
 
 const { initSchema } = require("schemas/master");
 const { newListParams } = require("schemas/voting-app");
-const { testMock } = require("test-helpers/meta-tests");
+const { mockResults, testMock } = require("test-helpers/meta-tests");
 const { initTestRef, initTestSnapshot, reactTests } = require("test-helpers/react-tests");
 const { deepCopy } = require("utilities");
 
@@ -52,17 +52,18 @@ describe("list (load and location.search)", () => {
 
   it("should reset scrollTop", () => {
 
-    const DOMView = { scrollTop: 1000 };
-
-    const select = jest.fn(() => DOMView);
+    const select = jest.fn(() => ({}));
 
     List.injected.select = select;
 
     return testEffect(() => {
 
+      const [a, b] = mockResults(select);
+
       testMock(select, [".js-scroll-view"], [".js-scroll-view"]);
 
-      expect(DOMView.scrollTop).toEqual(0);
+      expect(a.scrollTop).toEqual(0);
+      expect(b.scrollTop).toEqual(0);
 
     });
 

@@ -75,8 +75,26 @@
 }
 
 .c-poll-display {
+
   @include grid-area;
   grid-area: 2 / 1 / 2 / 13;
+
+  &__chart { height: 45vw; }
+
+  &__input-box { position: relative; }
+
+  &__input-text {
+    outline: none;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__input-placeholder {
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
 }
 
 .c-poll-options {
@@ -115,6 +133,10 @@
   }
 
 }
+
+//states
+
+.js-hide-placeholder { &.is-hidden { display: none; } }
 
 //utilities
 

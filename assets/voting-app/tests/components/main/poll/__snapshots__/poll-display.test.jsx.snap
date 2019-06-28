@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`poll display should match snapshot 1`] = `
+<div
+  className="c-poll-display"
+>
+  <PollTitle
+    actions={
+      Object {
+        "formAddOption": [MockFunction],
+        "formClearState": [MockFunction],
+        "formRemoveOption": [MockFunction],
+        "formSetAdd": [MockFunction],
+        "formSetTitle": [MockFunction],
+        "formToggleConfirm": [MockFunction],
+        "formToggleSecret": [MockFunction],
+        "listClearState": [MockFunction],
+        "listSetSearch": [MockFunction],
+        "metaAddErrors": [MockFunction],
+        "metaCloseError": [MockFunction],
+        "metaCreatePoll": [MockFunction],
+        "metaDeletePoll": [MockFunction],
+        "metaGetPolls": [MockFunction],
+        "metaGetUser": [MockFunction],
+        "metaNoOp": [MockFunction],
+        "metaSetLoading": [MockFunction],
+        "metaSetState": [MockFunction],
+        "metaTimeoutError": [MockFunction],
+        "pollAddOption": [MockFunction],
+        "pollCastVote": [MockFunction],
+        "pollRemoveOption": [MockFunction],
+        "pollToggleFlag": [MockFunction],
+        "pollToggleHide": [MockFunction],
+        "pollToggleSecret": [MockFunction],
+        "viewClearState": [MockFunction],
+        "viewSetAdd": [MockFunction],
+        "viewToggleConfirm": [MockFunction],
+        "viewToggleSettings": [MockFunction],
+      }
+    }
+    data={
+      Object {
+        "errors": Array [],
+        "form": Object {
+          "add": "",
+          "confirm": false,
+          "options": Array [],
+          "secret": false,
+          "title": "",
+        },
+        "list": Object {
+          "search": "",
+        },
+        "loading": 0,
+        "polls": Array [],
+        "user": Object {},
+        "view": Object {
+          "add": "",
+          "confirm": false,
+          "settings": false,
+        },
+      }
+    }
+    history={
+      Object {
+        "push": [MockFunction],
+      }
+    }
+    location={Object {}}
+    match={Object {}}
+    staticContext={Object {}}
+  />
+  <hr />
+  <div
+    className="c-poll-display__chart"
+  />
+</div>
+`;

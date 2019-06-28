@@ -2,6 +2,7 @@
 
 //local imports
 
+const PollDisplay = require("../poll/poll-display");
 const ViewMenu = require("./view-menu");
 
 //global imports
@@ -43,7 +44,13 @@ const View = (props) => {
   return (
     <div className="c-ui__view">
       <ViewMenu {...props} local={{ poll }} />
-      <div className="c-poll-display" />
+      <PollDisplay
+        {...props}
+        local={{
+          poll,
+          role: "view"
+        }}
+      />
       <div className="c-poll-options" />
     </div>
   );

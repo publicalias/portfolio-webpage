@@ -3,6 +3,7 @@
 //local imports
 
 const FormMenu = require("./form-menu");
+const PollDisplay = require("../poll/poll-display");
 
 //node modules
 
@@ -14,7 +15,7 @@ const { useEffect } = React;
 
 const Form = (props) => {
 
-  const { actions: { formClearState } } = props;
+  const { actions: { formClearState }, data: { form } } = props;
 
   //lifecycle
 
@@ -25,7 +26,13 @@ const Form = (props) => {
   return (
     <div className="c-ui__form">
       <FormMenu {...props} />
-      <div className="c-poll-display" />
+      <PollDisplay
+        {...props}
+        local={{
+          poll: form,
+          role: "form"
+        }}
+      />
       <div className="c-poll-options" />
     </div>
   );

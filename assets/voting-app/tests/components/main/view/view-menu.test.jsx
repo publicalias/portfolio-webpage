@@ -26,20 +26,21 @@ describe("view menu", () => {
   const testClick = initTestClick(testMount);
   const testSnapshot = initTestSnapshot(testShallow);
 
-  const props = [{ user: newUser({ id: "id-a" }) }, { poll: newPoll({ users: { created: "id-a" } }) }];
+  const data = { user: newUser({ id: "id-a" }) };
+  const local = { poll: newPoll({ users: { created: "id-a" } }) };
 
   it("should match snapshot (default)", () => testSnapshot({}, { poll: newPoll() }));
 
-  it("should match snapshot (created)", () => testSnapshot(...props));
+  it("should match snapshot (created)", () => testSnapshot(data, local));
 
   it("should match snapshot (created, settings)", () => {
 
-    const innerProps = deepCopy(props, [{ view: { settings: true } }]);
+    const thisData = deepCopy(data, { view: { settings: true } });
 
-    testSnapshot(...innerProps);
+    testSnapshot(thisData, local);
 
   });
 
-  it("should call viewToggleSettings on click", () => testClick(".qa-toggle-settings", "viewToggleSettings", [], ...props));
+  it("should call viewToggleSettings on click", () => testClick(".qa-toggle-settings", "viewToggleSettings", [], data, local));
 
 });
