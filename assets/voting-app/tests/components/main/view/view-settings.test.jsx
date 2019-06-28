@@ -1,7 +1,5 @@
 "use strict";
 
-/*eslint max-statements: 0*/
-
 //local imports
 
 const ViewSettings = require("../../../../scripts/components/main/view/view-settings");
@@ -21,10 +19,21 @@ beforeAll(reactTests.setup);
 
 describe("view settings", () => {
 
-  const { testMount, testShallow } = testWrapper(ViewSettings);
+  const { testShallow } = testWrapper(ViewSettings);
 
-  const testClick = initTestClick(testMount);
   const testSnapshot = initTestSnapshot(testShallow);
+
+  it("should match snapshot (default)", () => testSnapshot({}, { poll: newPoll() }));
+
+  it("should match snapshot (confirm)", () => testSnapshot({ view: { confirm: true } }, { poll: newPoll() }));
+
+  it("should match snapshot (secret)", () => testSnapshot({}, { poll: newPoll({ secret: true }) }));
+
+});
+
+describe("view settings (delete)", () => {
+
+  const { testMount } = testWrapper(ViewSettings);
 
   const testDelete = (res) => {
 
@@ -38,19 +47,21 @@ describe("view settings", () => {
 
   };
 
-  it("should match snapshot (default)", () => testSnapshot({}, { poll: newPoll() }));
+  it("should call metaDeletePoll on click (success)", () => testDelete({}));
 
-  it("should match snapshot (confirm)", () => testSnapshot({ view: { confirm: true } }, { poll: newPoll() }));
+  it("should call metaDeletePoll on click (errors)", () => testDelete({ errors: [] }));
 
-  it("should match snapshot (secret)", () => testSnapshot({}, { poll: newPoll({ secret: true }) }));
+  it("should call metaDeletePoll on click (failure)", () => testDelete());
+
+});
+
+describe("view settings (click)", () => {
+
+  const { testMount } = testWrapper(ViewSettings);
+
+  const testClick = initTestClick(testMount);
 
   it("should call viewToggleConfirm on click (delete)", () => testClick(".qa-confirm-true", "viewToggleConfirm", [], {}, { poll: newPoll() }));
-
-  it("should call metaDeletePoll on click (yes, success)", () => testDelete({}));
-
-  it("should call metaDeletePoll on click (yes, errors)", () => testDelete({ errors: [] }));
-
-  it("should call metaDeletePoll on click (yes, failure)", () => testDelete());
 
   it("should call viewToggleConfirm on click (no)", () => testClick(".qa-confirm-false", "viewToggleConfirm", [], { view: { confirm: true } }, { poll: newPoll() }));
 

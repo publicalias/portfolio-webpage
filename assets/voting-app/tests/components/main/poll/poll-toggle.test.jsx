@@ -1,7 +1,5 @@
 "use strict";
 
-/*eslint max-statements: 0*/
-
 //local imports
 
 const PollToggle = require("../../../../scripts/components/main/poll/poll-toggle");
@@ -22,7 +20,7 @@ beforeAll(reactTests.setup);
 
 describe("poll toggle", () => {
 
-  const { testMount, testShallow } = testWrapper(PollToggle);
+  const { testShallow } = testWrapper(PollToggle);
 
   const testSnapshot = initTestSnapshot(testShallow);
 
@@ -35,6 +33,22 @@ describe("poll toggle", () => {
     role
   });
 
+  it("should match snapshot (default)", () => testSnapshot({}, { poll: newPoll() }));
+
+  it("should match snapshot (flag)", () => testRole("flag"));
+
+  it("should match snapshot (flag, true)", () => testRole("flag", "flagged"));
+
+  it("should match snapshot (hide)", () => testRole("hide"));
+
+  it("should match snapshot (hide, true)", () => testRole("hide", "hidden"));
+
+});
+
+describe("poll toggle (click)", () => {
+
+  const { testMount } = testWrapper(PollToggle);
+
   const testToggle = (role, qa, type, list) => {
 
     const { props, wrapper } = testMount({}, {
@@ -46,16 +60,6 @@ describe("poll toggle", () => {
     return testReload(props, wrapper, qa, type, ["id-a"], list);
 
   };
-
-  it("should match snapshot (default)", () => testSnapshot({}, { poll: newPoll() }));
-
-  it("should match snapshot (flag)", () => testRole("flag"));
-
-  it("should match snapshot (flag, true)", () => testRole("flag", "flagged"));
-
-  it("should match snapshot (hide)", () => testRole("hide"));
-
-  it("should match snapshot (hide, true)", () => testRole("hide", "hidden"));
 
   it("should call pollToggleFlag on click (list)", () => testToggle("flag", ".qa-toggle-flag", "pollToggleFlag", true));
 

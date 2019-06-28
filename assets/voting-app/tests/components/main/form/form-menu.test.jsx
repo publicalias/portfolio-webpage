@@ -1,7 +1,5 @@
 "use strict";
 
-/*eslint max-statements: 0*/
-
 //local imports
 
 const FormMenu = require("../../../../scripts/components/main/form/form-menu");
@@ -20,10 +18,21 @@ beforeAll(reactTests.setup);
 
 describe("form menu", () => {
 
-  const { testMount, testShallow } = testWrapper(FormMenu);
+  const { testShallow } = testWrapper(FormMenu);
 
-  const testClick = initTestClick(testMount);
   const testSnapshot = initTestSnapshot(testShallow);
+
+  it("should match snapshot (default)", () => testSnapshot());
+
+  it("should match snapshot (confirm)", () => testSnapshot({ form: { confirm: true } }));
+
+  it("should match snapshot (secret)", () => testSnapshot({ form: { secret: true } }));
+
+});
+
+describe("form menu (create)", () => {
+
+  const { testMount } = testWrapper(FormMenu);
 
   const testCreate = (res) => {
 
@@ -37,17 +46,19 @@ describe("form menu", () => {
 
   };
 
-  it("should match snapshot (default)", () => testSnapshot());
+  it("should call metaCreatePoll and history.push on click (success)", () => testCreate({}));
 
-  it("should match snapshot (confirm)", () => testSnapshot({ form: { confirm: true } }));
+  it("should call metaCreatePoll and history.push on click (errors)", () => testCreate({ errors: [] }));
 
-  it("should match snapshot (secret)", () => testSnapshot({ form: { secret: true } }));
+  it("should call metaCreatePoll and history.push on click (failure)", () => testCreate());
 
-  it("should call metaCreatePoll and history.push on click (create, success)", () => testCreate({}));
+});
 
-  it("should call metaCreatePoll and history.push on click (create, errors)", () => testCreate({ errors: [] }));
+describe("form menu (click)", () => {
 
-  it("should call metaCreatePoll and history.push on click (create, failure)", () => testCreate());
+  const { testMount } = testWrapper(FormMenu);
+
+  const testClick = initTestClick(testMount);
 
   it("should call formToggleConfirm on click (discard)", () => testClick(".qa-confirm-true", "formToggleConfirm"));
 

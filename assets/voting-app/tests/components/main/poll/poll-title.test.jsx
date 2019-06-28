@@ -1,7 +1,5 @@
 "use strict";
 
-/*eslint max-statements: 0*/
-
 //local imports
 
 const PollTitle = require("../../../../scripts/components/main/poll/poll-title");

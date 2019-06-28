@@ -23,20 +23,6 @@ describe("list menu", () => {
 
   const testSnapshot = initTestSnapshot(testShallow);
 
-  const testSearch = (qa, path, data) => {
-
-    const { props, wrapper } = testMount(data);
-
-    const { history } = props;
-
-    wrapper.find(qa).simulate("click");
-
-    testMock(history.push, [path]);
-
-    wrapper.unmount();
-
-  };
-
   it("should match snapshot (default)", () => testSnapshot());
 
   it("should match snapshot (search)", () => testSnapshot({ list: { search: "Apple" } }));
@@ -54,6 +40,26 @@ describe("list menu", () => {
     wrapper.unmount();
 
   });
+
+});
+
+describe("list menu (search)", () => {
+
+  const { testMount } = testWrapper(ListMenu);
+
+  const testSearch = (qa, path, data) => {
+
+    const { props, wrapper } = testMount(data);
+
+    const { history } = props;
+
+    wrapper.find(qa).simulate("click");
+
+    testMock(history.push, [path]);
+
+    wrapper.unmount();
+
+  };
 
   it("should call history.push on search (submit)", () => testSearch(".qa-search-submit", "/list?search=Apple", { list: { search: "Apple" } }));
 

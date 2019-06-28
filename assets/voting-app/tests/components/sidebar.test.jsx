@@ -20,9 +20,19 @@ beforeAll(reactTests.setup);
 
 describe("sidebar", () => {
 
-  const { testMount, testShallow } = testWrapper(Sidebar);
+  const { testShallow } = testWrapper(Sidebar);
 
   const testSnapshot = initTestSnapshot(testShallow);
+
+  it("should match snapshot (default)", () => testSnapshot());
+
+  it("should match snapshot (authenticated)", () => testSnapshot({ user: newUser({ name: "Ethan Frost" }) }));
+
+});
+
+describe("sidebar (auth)", () => {
+
+  const { testMount } = testWrapper(Sidebar);
 
   const testAuth = (id, data) => {
 
@@ -41,10 +51,6 @@ describe("sidebar", () => {
     wrapper.unmount();
 
   };
-
-  it("should match snapshot (default)", () => testSnapshot());
-
-  it("should match snapshot (authenticated)", () => testSnapshot({ user: newUser({ name: "Ethan Frost" }) }));
 
   it("should call location.assign on click (facebook)", () => testAuth("facebook"));
 
