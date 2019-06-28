@@ -79,7 +79,7 @@ const ErrorMessage = (props) => {
   //render
 
   return (
-    <div className="c-error-message js-hide-error is-hidden" onClick={handleClick}>
+    <div className="c-error-message is-hidden js-hide-error" onClick={handleClick}>
       <p className="c-error-message__error">{error && error.text}</p>
       <p className="c-error-message__close"><i className="fa fa-times" /></p>
     </div>

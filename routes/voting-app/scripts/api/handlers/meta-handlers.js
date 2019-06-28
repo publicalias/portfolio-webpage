@@ -99,7 +99,7 @@ const metaGetPolls = async (req, res) => {
 
   if (id) {
 
-    res.json({ polls: [await findByID(id)] });
+    res.json({ polls: [await findByID(id)].filter((e) => e) });
 
     return;
 

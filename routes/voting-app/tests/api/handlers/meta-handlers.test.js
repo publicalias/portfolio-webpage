@@ -155,14 +155,15 @@ describe("metaGetPolls", () => {
 
   const testPolls = async (pollData, id, length = 0) => {
 
-    const polls = pollData.map(newPoll);
-    const index = id ? 1 : 0;
+    let polls = pollData.map(newPoll);
 
     await pollsCol().insertMany(polls);
 
     const res = await mockAPICall({}, getData(id, length));
 
-    testMock(res.json, [{ polls: polls.slice(index) }]);
+    polls = id ? polls.filter((e) => e.id === id) : polls;
+
+    testMock(res.json, [{ polls }]);
 
   };
 
@@ -170,7 +171,9 @@ describe("metaGetPolls", () => {
 
   it("sends polls if length is 1", () => testPolls(Array(100 + 1).fill({}), null, 1));
 
-  it("sends polls if id is valid", () => testPolls([{}, { id: "id-b" }], "id-b"));
+  it("sends polls if id exists", () => testPolls([{ id: "id-a" }, {}], "id-a"));
+
+  it("sends polls if id does not exist", () => testPolls([{}], "id-a"));
 
 });
 

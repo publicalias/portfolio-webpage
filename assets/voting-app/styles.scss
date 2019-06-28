@@ -47,8 +47,7 @@
   grid-area: 2 / 1 / 2 / 13;
 
   &__scroll-view {
-    height: calc(100vh - 9vw);
-    max-height: 45vw;
+    height: 45vw;
     overflow-y: scroll;
     padding-right: 4.5vw;
   }

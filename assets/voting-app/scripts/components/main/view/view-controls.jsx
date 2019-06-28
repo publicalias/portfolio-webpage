@@ -36,8 +36,8 @@ const ViewControls = (props) => {
           }}
         />
       </div>
-      <div className="c-view-menu__toggle-btn">
-        {auth && (
+      {auth && (
+        <div className="c-view-menu__toggle-btn">
           <PollToggle
             {...props}
             local={{
@@ -45,8 +45,8 @@ const ViewControls = (props) => {
               role: "flag"
             }}
           />
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 

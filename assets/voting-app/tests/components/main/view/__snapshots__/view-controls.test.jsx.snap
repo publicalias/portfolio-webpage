@@ -312,8 +312,5 @@ exports[`view controls should match snapshot (default) 1`] = `
       staticContext={Object {}}
     />
   </div>
-  <div
-    className="c-view-menu__toggle-btn"
-  />
 </div>
 `;
