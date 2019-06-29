@@ -26,7 +26,7 @@ describe("list body", () => {
 
   const local = { handleScroll() {} };
 
-  it("should match snapshot (default)", () => testSnapshot({}, local));
+  it("should match snapshot (default)", () => testSnapshot(null, local));
 
   it("should match snapshot (authenticated)", () => testSnapshot({ user: newUser() }, local));
 

@@ -16,7 +16,7 @@ const getPopulation = (merge) => {
 
   const pop = merge.culture.flat().filter((e) => e).length;
 
-  return Object.assign(merge, { pop }, pop ? {} : {
+  return Object.assign(merge, { pop }, pop || {
     start: false,
     stable: true
   });
@@ -141,13 +141,13 @@ const getUtils = (state, setState) => {
     history: [],
     reverse: false,
     gen: 0
-  }, rules ? {
+  }, rules && {
     rules: state.rulesText,
     rulesText: ""
-  } : {}, scale ? {
+  }, scale && {
     scale: Number(state.scaleText),
     scaleText: ""
-  } : {});
+  });
 
   const lastCulture = () => {
 
@@ -160,7 +160,7 @@ const getUtils = (state, setState) => {
       stable: false,
       history,
       gen
-    }, gen ? {} : {
+    }, gen || {
       start: false,
       reverse: false
     });

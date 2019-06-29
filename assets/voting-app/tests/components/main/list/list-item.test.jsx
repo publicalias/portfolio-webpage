@@ -33,14 +33,14 @@ describe("list item", () => {
     id: "id-a"
   };
 
-  const testVotes = (mag) => testSnapshot({}, {
+  const testVotes = (mag) => testSnapshot(null, {
     poll: newPoll({
       users: { voted: 10 ** mag },
       ...data
     })
   });
 
-  it("should match snapshot (default)", () => testSnapshot({}, { poll: newPoll(data) }));
+  it("should match snapshot (default)", () => testSnapshot(null, { poll: newPoll(data) }));
 
   it("should match snapshot (authenticated)", () => testSnapshot({ user: newUser() }, { poll: newPoll(data) }));
 

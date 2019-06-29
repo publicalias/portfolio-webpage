@@ -26,7 +26,7 @@ describe("view", () => {
 
   it("should match snapshot (default)", () => testSnapshot());
 
-  it("should match snapshot (id)", () => testSnapshot({ polls: [newPoll({ id: "id-a" })] }, {}, { location: { search: "?id=id-a" } }));
+  it("should match snapshot (id)", () => testSnapshot({ polls: [newPoll({ id: "id-a" })] }, null, { location: { search: "?id=id-a" } }));
 
   it("should call viewClearState on load (default)", () => {
 
@@ -44,7 +44,7 @@ describe("view", () => {
 
   it("should call viewClearState and metaGetPolls on load (id)", () => {
 
-    const { props, wrapper } = testMount({}, {}, { location: { search: "?id=id-a" } });
+    const { props, wrapper } = testMount(null, null, { location: { search: "?id=id-a" } });
 
     const { actions: { metaGetPolls, viewClearState } } = props;
 

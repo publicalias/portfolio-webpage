@@ -78,7 +78,7 @@ describe("poll title (input)", () => {
 
     PollTitle.injected.select = select;
 
-    const { props, wrapper } = testMount({}, {
+    const { props, wrapper } = testMount(null, {
       poll: newPoll(),
       role: "form"
     });

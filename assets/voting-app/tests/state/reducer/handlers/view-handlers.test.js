@@ -25,7 +25,7 @@ test("reducer accepts VIEW_SET_ADD actions", () => {
 
   const { viewSetAdd } = actions;
 
-  testReducer(viewSetAdd("Option A"), {}, { view: { add: "Option A" } });
+  testReducer(viewSetAdd("Option A"), null, { view: { add: "Option A" } });
 
 });
 
@@ -35,7 +35,7 @@ test("reducer accepts VIEW_TOGGLE_CONFIRM actions", () => {
 
   const { viewToggleConfirm } = actions;
 
-  testReducer(viewToggleConfirm(), {}, { view: { confirm: true } });
+  testReducer(viewToggleConfirm(), null, { view: { confirm: true } });
 
 });
 

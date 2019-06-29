@@ -33,7 +33,7 @@ describe("poll toggle", () => {
     role
   });
 
-  it("should match snapshot (default)", () => testSnapshot({}, { poll: newPoll() }));
+  it("should match snapshot (default)", () => testSnapshot(null, { poll: newPoll() }));
 
   it("should match snapshot (flag)", () => testRole("flag"));
 
@@ -51,7 +51,7 @@ describe("poll toggle (click)", () => {
 
   const testToggle = (role, qa, type, list) => {
 
-    const { props, wrapper } = testMount({}, {
+    const { props, wrapper } = testMount(null, {
       list,
       poll: newPoll({ id: "id-a" }),
       role

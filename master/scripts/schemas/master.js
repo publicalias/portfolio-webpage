@@ -6,11 +6,13 @@ const { deepCopy } = require("../utilities");
 
 //init schema
 
-const initSchema = (schema, replace = {}) => (data = {}) => {
+const initSchema = (schema, replace = {}) => (data) => {
 
-  for (const p in replace) {
-    if (p in data) {
-      data[p] = replace[p](data[p]);
+  if (data) {
+    for (const p in replace) {
+      if (p in data) {
+        data[p] = replace[p](data[p]);
+      }
     }
   }
 

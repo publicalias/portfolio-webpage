@@ -25,6 +25,6 @@ test("reducer accepts LIST_SET_SEARCH actions", () => {
 
   const { listSetSearch } = actions;
 
-  testReducer(listSetSearch("Apple"), {}, { list: { search: "Apple" } });
+  testReducer(listSetSearch("Apple"), null, { list: { search: "Apple" } });
 
 });

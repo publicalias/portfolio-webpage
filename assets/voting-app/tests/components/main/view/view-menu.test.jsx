@@ -29,7 +29,7 @@ describe("view menu", () => {
   const data = { user: newUser({ id: "id-a" }) };
   const local = { poll: newPoll({ users: { created: "id-a" } }) };
 
-  it("should match snapshot (default)", () => testSnapshot({}, { poll: newPoll() }));
+  it("should match snapshot (default)", () => testSnapshot(null, { poll: newPoll() }));
 
   it("should match snapshot (created)", () => testSnapshot(data, local));
 

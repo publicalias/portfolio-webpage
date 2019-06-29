@@ -51,7 +51,7 @@ const findWall = (maze, [cy, cx], [ny, nx]) => {
 
   //wall segment
 
-  return range.map((e) => [wy ? wy : e, wx ? wx : e]);
+  return range.map((e) => [wy || e, wx || e]);
 
 };
 

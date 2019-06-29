@@ -49,6 +49,8 @@ const cycleItems = (arr, val, delta = 1) => {
 
 const initDeepCopy = (config) => (...args) => {
 
+  const isObject = (val) => val && typeof val === "object";
+
   const overwrite = (val) => {
 
     const { array, object } = Object.assign({
@@ -66,7 +68,7 @@ const initDeepCopy = (config) => (...args) => {
 
     for (const [key, val] of Object.entries(from)) {
 
-      if (typeof val !== "object" || val === null) {
+      if (!isObject(val)) {
 
         to[key] = val;
 
@@ -86,7 +88,7 @@ const initDeepCopy = (config) => (...args) => {
 
   };
 
-  return args.reduce(mergeFn, newObj(args[0]));
+  return args.filter(isObject).reduce(mergeFn, newObj(args[0]));
 
 };
 

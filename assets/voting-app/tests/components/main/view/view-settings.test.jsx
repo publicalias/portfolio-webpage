@@ -23,11 +23,11 @@ describe("view settings", () => {
 
   const testSnapshot = initTestSnapshot(testShallow);
 
-  it("should match snapshot (default)", () => testSnapshot({}, { poll: newPoll() }));
+  it("should match snapshot (default)", () => testSnapshot(null, { poll: newPoll() }));
 
   it("should match snapshot (confirm)", () => testSnapshot({ view: { confirm: true } }, { poll: newPoll() }));
 
-  it("should match snapshot (secret)", () => testSnapshot({}, { poll: newPoll({ secret: true }) }));
+  it("should match snapshot (secret)", () => testSnapshot(null, { poll: newPoll({ secret: true }) }));
 
 });
 
@@ -67,7 +67,7 @@ describe("view settings (click)", () => {
 
   it("should call pollToggleSecret on click (secret)", () => {
 
-    const { props, wrapper } = testMount({}, { poll: newPoll({ id: "id-a" }) });
+    const { props, wrapper } = testMount(null, { poll: newPoll({ id: "id-a" }) });
 
     return testReload(props, wrapper, ".qa-toggle-secret", "pollToggleSecret", ["id-a"]);
 

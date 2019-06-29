@@ -63,11 +63,9 @@ describe("metaCreatePoll", () => {
 
   it("sends errors if title is duplicate", async () => {
 
-    const data = { title: "Title A" };
+    await pollsCol().insertOne(newPoll({ title: "Title A" }));
 
-    await pollsCol().insertOne(newPoll(data));
-
-    return testError("Title must be unique", data, 1);
+    return testError("Title must be unique", { title: "Title A" }, 1);
 
   });
 

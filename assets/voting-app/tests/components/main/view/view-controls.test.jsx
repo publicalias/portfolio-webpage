@@ -25,13 +25,13 @@ describe("view controls", () => {
 
   const testSnapshot = initTestSnapshot(testShallow);
 
-  it("should match snapshot (default)", () => testSnapshot({}, { poll: newPoll() }));
+  it("should match snapshot (default)", () => testSnapshot(null, { poll: newPoll() }));
 
   it("should match snapshot (authenticated)", () => testSnapshot({ user: newUser() }, { poll: newPoll() }));
 
   it("should call writeText on click", () => {
 
-    const { wrapper } = testMount({}, { poll: newPoll() });
+    const { wrapper } = testMount(null, { poll: newPoll() });
 
     const writeText = jest.fn();
 

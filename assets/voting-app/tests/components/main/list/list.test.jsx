@@ -193,15 +193,15 @@ describe("list (scroll)", () => {
 
     const testFn = initTestFn({ pending: true }, { end: true }, [newListParams(), null, 0]);
 
-    return testScroll(testFn, null, {}, { polls: Array(0) });
+    return testScroll(testFn, null, null, { polls: Array(0) });
 
   });
 
   it("should call metaGetPolls if allowed (not end)", () => {
 
-    const testFn = initTestFn({ pending: true }, {}, [newListParams(), null, 0]);
+    const testFn = initTestFn({ pending: true }, null, [newListParams(), null, 0]);
 
-    return testScroll(testFn, null, {}, { polls: Array(100) });
+    return testScroll(testFn, null, null, { polls: Array(100) });
 
   });
 
