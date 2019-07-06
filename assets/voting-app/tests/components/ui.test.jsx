@@ -32,7 +32,7 @@ describe("ui", () => {
 
   it("should call metaGetUser on load", () => {
 
-    List.injected.select = () => ({});
+    List.injected.select = jest.fn(() => ({}));
 
     const { props, wrapper } = testMount();
 

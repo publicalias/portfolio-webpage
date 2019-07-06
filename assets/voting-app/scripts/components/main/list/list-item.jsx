@@ -26,7 +26,7 @@ const ListItem = (props) => {
 
   const auth = user.type === "auth";
 
-  const stats = `${getVotes(poll.users.voted)} Votes \u2014 ${readDate(poll.date)}`;
+  const stats = `${getVotes(poll.users.voted)} \u2014 ${readDate(poll.date)}`;
 
   return (
     <tr>

@@ -18,13 +18,14 @@ $bg-input: rgba(64, 64, 64, 0.75);
       background-color: white;
       color: black;
       cursor: pointer;
+      fill: white;
     }
   }
 }
 
 @mixin btn-trans {
   transition-duration: 0.5s;
-  transition-property: background-color, color;
+  transition-property: background-color, color, fill;
 }
 
 @mixin centered {
@@ -146,6 +147,12 @@ p { margin: 0 0 1vw; }
 
 td { padding: 0; }
 
+text {
+  @include font-body;
+  fill: white;
+  font-size: 16px; //scales with svg
+}
+
 textarea {
   @include input;
   overflow-y: scroll;
@@ -160,6 +167,7 @@ thead { @include font-head; }
 ::selection {
   background-color: white;
   color: black;
+  fill: black;
 }
 
 //components

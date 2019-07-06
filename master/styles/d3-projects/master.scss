@@ -9,14 +9,6 @@
 
 line, path { stroke: white; }
 
-svg { width: 100%; }
-
-text {
-  @include font-body;
-  fill: white;
-  font-size: 16px; //scales with svg
-}
-
 //components
 
 .c-axis {

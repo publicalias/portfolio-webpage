@@ -82,9 +82,14 @@ const newState = initSchema({
 
 });
 
+//new form
+
+const newForm = initSchema(newState().form);
+
 //exports
 
 module.exports = {
+  newForm,
   newOption,
   newListParams,
   newPoll,

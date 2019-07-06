@@ -8,8 +8,8 @@ const { testWrapper } = require("../../../test-helpers");
 
 //global imports
 
-const { initSchema, newUser } = require("schemas/master");
-const { newPoll, newState } = require("schemas/voting-app");
+const { newUser } = require("schemas/master");
+const { newForm, newPoll } = require("schemas/voting-app");
 const { mockResults, testMock } = require("test-helpers/meta-tests");
 const { initTestSnapshot, reactTests } = require("test-helpers/react-tests");
 
@@ -26,8 +26,6 @@ describe("poll title", () => {
   const testSnapshot = initTestSnapshot(testShallow);
 
   const testProps = (role, data = {}) => {
-
-    const newForm = initSchema(newState().form);
 
     const fn = (poll, user = {}) => {
       testSnapshot({ user }, {
@@ -71,12 +69,12 @@ describe("poll title (input)", () => {
 
   const testInput = (event, fn) => {
 
-    const select = jest.fn(() => ({
-      class: jest.fn(),
-      text: jest.fn(() => "")
-    }));
-
-    PollTitle.injected.select = select;
+    const { select } = Object.assign(PollTitle.injected, {
+      select: jest.fn(() => ({
+        class: jest.fn(),
+        text: jest.fn(() => "")
+      }))
+    });
 
     const { props, wrapper } = testMount(null, {
       poll: newPoll(),

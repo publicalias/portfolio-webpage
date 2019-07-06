@@ -10,8 +10,8 @@ const { overlyLongInput } = require("../../test-helpers");
 
 //global imports
 
-const { initSchema, newIPUser, newUser } = require("schemas/master");
-const { newListParams, newPoll, newState } = require("schemas/voting-app");
+const { newIPUser, newUser } = require("schemas/master");
+const { newForm, newListParams, newPoll } = require("schemas/voting-app");
 const { testMock } = require("test-helpers/meta-tests");
 const { initMockAPICall, mongoTests, testAuthFail } = require("test-helpers/server-tests");
 
@@ -34,8 +34,6 @@ describe("metaCreatePoll", () => {
   const { metaCreatePoll } = handlers;
 
   const mockAPICall = initMockAPICall(metaCreatePoll, "POST");
-
-  const newForm = initSchema(newState().form);
 
   const getData = (form) => newForm(form);
 

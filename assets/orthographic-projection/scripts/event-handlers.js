@@ -37,8 +37,9 @@ const rotateHandlers = (params, tooltip) => {
     rotate() {
 
       fo.rotate([xs(this.xc), ys(this.yc)]);
-      chart.selectAll(".js-rotate-front").attr("d", fp);
       bo.rotate([xs(this.xc), ys(this.yc)]);
+
+      chart.selectAll(".js-rotate-front").attr("d", fp);
       chart.selectAll(".js-rotate-back").attr("d", bp);
 
       tooltip();

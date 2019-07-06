@@ -127,24 +127,26 @@ const svg = {
 
     const { w, h, chart } = params;
 
-    const createBars = (id) => chart.selectAll(`.${id}`)
+    const createBars = (type) => chart.selectAll(`.${type}`)
       .data(app.data)
       .enter()
       .append("rect")
-      .attr("class", id);
+      .attr("class", type);
 
     createBars("c-bar")
       .attr("height", (d) => h * Number(d[1]) / 18)
       .attr("transform", (d, i) => `translate(${w / app.data.length * i}, ${h - h * Number(d[1]) / 18})`)
       .attr("width", w / app.data.length + 1);
 
-    createBars("c-bar--hover js-ref-data")
+    createBars("c-bar--hover")
       .attr("height", () => h)
       .attr("transform", (d, i) => `translate(${w / app.data.length * i}, 0)`)
       .attr("width", w / app.data.length)
       .on("mouseenter", app.handleMouseEnter)
       .on("mouseleave", app.handleMouseLeave)
       .on("touchstart", checkTooltip(app), { passive: true });
+
+    select(".c-bar--hover").class("js-ref-data", true, true);
 
   }
 

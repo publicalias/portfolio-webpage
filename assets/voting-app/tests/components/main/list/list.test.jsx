@@ -52,9 +52,7 @@ describe("list (load and location.search)", () => {
 
   it("should reset scrollTop", () => {
 
-    const select = jest.fn(() => ({}));
-
-    List.injected.select = select;
+    const { select } = Object.assign(List.injected, { select: jest.fn(() => ({})) });
 
     return testEffect(() => {
 
@@ -121,12 +119,16 @@ describe("list (scroll)", () => {
 
     const exposed = initTestRef(List);
 
-    List.injected.scrollInfo = () => scrollVal || {
-      view: 100,
-      bottom: 300
-    };
+    Object.assign(List.injected, {
 
-    List.injected.select = () => ({});
+      scrollInfo: jest.fn(() => scrollVal || {
+        view: 100,
+        bottom: 300
+      }),
+
+      select: jest.fn(() => ({}))
+
+    });
 
     const { props, wrapper } = testMount(); //async
 

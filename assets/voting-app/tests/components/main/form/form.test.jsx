@@ -3,6 +3,7 @@
 //local imports
 
 const Form = require("../../../../scripts/components/main/form/form");
+const PollChart = require("../../../../scripts/components/main/poll/poll-chart");
 
 const { testWrapper } = require("../../../test-helpers");
 
@@ -26,6 +27,8 @@ describe("form", () => {
   it("should match snapshot", () => testSnapshot());
 
   it("should call formClearState on load", () => {
+
+    PollChart.injected.renderChart = jest.fn();
 
     const { props, wrapper } = testMount();
 

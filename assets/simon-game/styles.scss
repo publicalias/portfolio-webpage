@@ -2,12 +2,7 @@
 
 $offset: calc(50% + 1.5vw);
 
-@mixin btn-path($quad) {
-  fill: rgba($quad * 85, $quad * 85, $quad * 85, 0.75);
-  stroke: none;
-  transition-duration: 0.5s;
-  transition-property: fill;
-}
+@mixin btn-path($quad) { fill: rgba($quad * 85, $quad * 85, $quad * 85, 0.75); }
 
 @mixin circle($outer, $inner) {
   @include square(3vw * $outer);
@@ -34,8 +29,6 @@ $offset: calc(50% + 1.5vw);
     &--tl { @include btn-path(0); }
     &--tr { @include btn-path(1); }
   }
-
-  &__btn-svg { width: 100%; }
 
   &__inner-border {
     @include circle(10, 2);
@@ -83,18 +76,5 @@ $offset: calc(50% + 1.5vw);
 }
 
 //states
-
-.js-check-input {
-  &.is-mouse {
-    .js-hover-btn {
-      &:not(.is-disabled) {
-        &:hover {
-          cursor: pointer;
-          fill: white;
-        }
-      }
-    }
-  }
-}
 
 .js-hover-btn { &.is-active { fill: white; } }

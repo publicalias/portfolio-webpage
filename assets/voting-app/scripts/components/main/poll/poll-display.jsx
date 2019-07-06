@@ -2,6 +2,7 @@
 
 //local imports
 
+const PollChart = require("./poll-chart");
 const PollTitle = require("./poll-title");
 
 //node modules
@@ -14,7 +15,7 @@ const PollDisplay = (props) => (
   <div className="c-poll-display">
     <PollTitle {...props} />
     <hr />
-    <div className="c-poll-display__chart" />
+    <PollChart {...props} />
   </div>
 );
 

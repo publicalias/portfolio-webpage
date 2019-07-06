@@ -46,8 +46,11 @@
   @include grid-area;
   grid-area: 2 / 1 / 2 / 13;
 
+  height: calc(100vh - 9vw);
+  max-height: 60vw;
+
   &__scroll-view {
-    height: 45vw;
+    height: 100%;
     overflow-y: scroll;
     padding-right: 4.5vw;
   }
@@ -79,8 +82,6 @@
   @include grid-area;
   grid-area: 2 / 1 / 2 / 13;
 
-  &__chart { height: 45vw; }
-
   &__input-box { position: relative; }
 
   &__input-text {
@@ -93,6 +94,11 @@
     position: absolute;
     top: 0;
     width: 100%;
+  }
+
+  &__votes {
+    opacity: 0;
+    text-anchor: middle;
   }
 
 }
