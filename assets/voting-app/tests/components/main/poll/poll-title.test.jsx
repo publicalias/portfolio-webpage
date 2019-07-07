@@ -10,7 +10,7 @@ const { testWrapper } = require("../../../test-helpers");
 
 const { newUser } = require("schemas/master");
 const { newForm, newPoll } = require("schemas/voting-app");
-const { mockResults, testMock } = require("test-helpers/meta-tests");
+const { testMock } = require("test-helpers/meta-tests");
 const { initTestSnapshot, reactTests } = require("test-helpers/react-tests");
 
 //setup
@@ -67,51 +67,21 @@ describe("poll title (input)", () => {
 
   const { testMount } = testWrapper(PollTitle);
 
-  const testInput = (event, fn) => {
-
-    const { select } = Object.assign(PollTitle.injected, {
-      select: jest.fn(() => ({
-        class: jest.fn(),
-        text: jest.fn(() => "")
-      }))
-    });
+  it("should call formSetTitle on change", () => {
 
     const { props, wrapper } = testMount(null, {
-      poll: newPoll(),
+      poll: newForm(),
       role: "form"
     });
 
-    wrapper.find(".js-ref-input").simulate(event);
+    const { actions: { formSetTitle } } = props;
 
-    fn(props, select);
+    wrapper.find(".qa-title-input").simulate("change", { target: { value: "Title A" } });
+
+    testMock(formSetTitle, ["Title A"]);
 
     wrapper.unmount();
 
-  };
-
-  it("should call formSetTitle on blur", () => testInput("blur", (props, select) => {
-
-    const { actions: { formSetTitle } } = props;
-
-    const [a] = mockResults(select);
-
-    testMock(select, [".js-ref-input"]);
-
-    testMock(a.text, []);
-
-    testMock(formSetTitle, [""]);
-
-  }));
-
-  it("should toggle is-hidden on input", () => testInput("input", (props, select) => {
-
-    const [a, b] = mockResults(select);
-
-    testMock(select, [".js-hide-placeholder"], [".js-ref-input"]);
-
-    testMock(a.class, ["is-hidden", true, ""]);
-    testMock(b.text, []);
-
-  }));
+  });
 
 });

@@ -156,7 +156,7 @@ describe("list (scroll)", () => {
 
     const { actions: { metaGetPolls } } = props;
 
-    wrapper.find(".js-scroll-view").simulate("scroll"); //async
+    wrapper.find(".qa-scroll-view").simulate("scroll"); //async
 
     const refOne = deepCopy(ref);
 

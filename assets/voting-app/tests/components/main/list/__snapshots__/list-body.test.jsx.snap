@@ -5,7 +5,7 @@ exports[`list body should match snapshot (authenticated) 1`] = `
   className="c-list-body"
 >
   <div
-    className="c-list-body__scroll-view js-scroll-view"
+    className="c-list-body__scroll-view js-scroll-view qa-scroll-view"
     onScroll={[Function]}
   >
     <table
@@ -53,7 +53,7 @@ exports[`list body should match snapshot (default) 1`] = `
   className="c-list-body"
 >
   <div
-    className="c-list-body__scroll-view js-scroll-view"
+    className="c-list-body__scroll-view js-scroll-view qa-scroll-view"
     onScroll={[Function]}
   >
     <table
@@ -93,7 +93,7 @@ exports[`list body should match snapshot (polls) 1`] = `
   className="c-list-body"
 >
   <div
-    className="c-list-body__scroll-view js-scroll-view"
+    className="c-list-body__scroll-view js-scroll-view qa-scroll-view"
     onScroll={[Function]}
   >
     <table

@@ -4,20 +4,14 @@ exports[`poll title should match snapshot (default) 1`] = `""`;
 
 exports[`poll title should match snapshot (form) 1`] = `
 <div
-  className="c-poll-display__input-box u-align-center"
+  className="u-align-center"
 >
-  <h3
-    className="c-poll-display__input-text js-ref-input u-margin-half"
-    contentEditable={true}
-    onBlur={[Function]}
-    onInput={[Function]}
-    suppressContentEditableWarning={true}
+  <input
+    className="c-poll-display__input qa-title-input u-margin-half"
+    maxLength="100"
+    onChange={[Function]}
+    placeholder="Untitled"
   />
-  <h3
-    className="c-poll-display__input-placeholder  js-hide-placeholder"
-  >
-    Untitled
-  </h3>
   <h4>
     By Anonymous
   </h4>
@@ -26,20 +20,14 @@ exports[`poll title should match snapshot (form) 1`] = `
 
 exports[`poll title should match snapshot (form, author) 1`] = `
 <div
-  className="c-poll-display__input-box u-align-center"
+  className="u-align-center"
 >
-  <h3
-    className="c-poll-display__input-text js-ref-input u-margin-half"
-    contentEditable={true}
-    onBlur={[Function]}
-    onInput={[Function]}
-    suppressContentEditableWarning={true}
+  <input
+    className="c-poll-display__input qa-title-input u-margin-half"
+    maxLength="100"
+    onChange={[Function]}
+    placeholder="Untitled"
   />
-  <h3
-    className="c-poll-display__input-placeholder  js-hide-placeholder"
-  >
-    Untitled
-  </h3>
   <h4>
     By Author A
   </h4>
@@ -48,22 +36,15 @@ exports[`poll title should match snapshot (form, author) 1`] = `
 
 exports[`poll title should match snapshot (form, title) 1`] = `
 <div
-  className="c-poll-display__input-box u-align-center"
+  className="u-align-center"
 >
-  <h3
-    className="c-poll-display__input-text js-ref-input u-margin-half"
-    contentEditable={true}
-    onBlur={[Function]}
-    onInput={[Function]}
-    suppressContentEditableWarning={true}
-  >
-    Title A
-  </h3>
-  <h3
-    className="c-poll-display__input-placeholder is-hidden js-hide-placeholder"
-  >
-    Untitled
-  </h3>
+  <input
+    className="c-poll-display__input qa-title-input u-margin-half"
+    maxLength="100"
+    onChange={[Function]}
+    placeholder="Untitled"
+    value="Title A"
+  />
   <h4>
     By Anonymous
   </h4>
