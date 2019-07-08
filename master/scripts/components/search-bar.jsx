@@ -14,13 +14,13 @@ const React = require("react");
 
 const SearchBar = (props) => {
 
-  const { handleChange, handleClear, handleSubmit, value } = props;
+  const { handleChange, handleClear, handleSubmit, id, value } = props;
 
   //lifecycle
 
   useTeardown(() => [
 
-    submitKeys(),
+    submitKeys(id),
 
     hookEvent(select(".js-get-outline"), "blur focus", (event) => {
       select(".js-set-outline").css({ outline: event.type === "focus" ? "1px solid white" : "none" });
@@ -33,14 +33,14 @@ const SearchBar = (props) => {
   return (
     <div className="c-search-bar js-set-outline">
       <input
-        className="c-search-bar__input js-get-outline js-submit-input qa-search-input"
+        className={`c-search-bar__input js-get-outline js-submit-input-${id} qa-search-input`}
         maxLength="100"
         onChange={handleChange}
         placeholder="Search"
         value={value}
       />
       <button
-        className="c-search-bar__submit js-get-outline js-submit-button qa-search-submit u-no-hover"
+        className={`c-search-bar__submit js-get-outline js-submit-button-${id} qa-search-submit u-no-hover`}
         onClick={handleSubmit}
       >
         <i className="fa fa-search" />

@@ -7,10 +7,17 @@ const { reducer } = require("../scripts/state/reducer/reducer");
 
 //global imports
 
-const { newListParams, newState } = require("schemas/voting-app");
+const { newForm, newListParams, newPoll, newState } = require("schemas/voting-app");
 const { testMock } = require("test-helpers/meta-tests");
 const { initTestWrapper } = require("test-helpers/react-tests");
 const { initTestAPI, initTestReducer } = require("test-helpers/redux-tests");
+
+//init test poll
+
+const initTestPoll = (render, role) => (data, pollData) => render(data, {
+  poll: role === "form" ? newForm(pollData) : newPoll(pollData),
+  role
+});
 
 //test api
 
@@ -66,6 +73,7 @@ const testWrapper = initTestWrapper(newState, actions);
 //exports
 
 module.exports = {
+  initTestPoll,
   testAPI,
   testCreateDelete,
   testReducer,

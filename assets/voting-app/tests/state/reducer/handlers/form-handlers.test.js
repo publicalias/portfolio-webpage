@@ -15,12 +15,7 @@ test("reducer accepts FORM_ADD_OPTION actions", () => {
 
   const { formAddOption } = actions;
 
-  testReducer(formAddOption(), { form: { add: "Option A" } }, {
-    form: {
-      options: ["Option A"],
-      add: ""
-    }
-  });
+  testReducer(formAddOption(), { form: { add: "Option A" } }, { form: { options: ["Option A"] } });
 
 });
 

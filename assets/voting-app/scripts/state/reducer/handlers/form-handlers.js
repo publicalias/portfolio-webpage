@@ -7,12 +7,7 @@ const { deepCopy } = require("utilities");
 
 //form add option
 
-const FORM_ADD_OPTION = (state) => deepCopy(state, {
-  form: {
-    options: state.form.options.concat(state.form.add),
-    add: ""
-  }
-});
+const FORM_ADD_OPTION = (state) => deepCopy(state, { form: { options: state.form.options.concat(state.form.add) } });
 
 //form clear state
 

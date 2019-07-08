@@ -107,6 +107,10 @@
 
   &__color-icon { @include square(100%) }
 
+  &__input-box { display: flex; }
+
+  &__input { flex: 11; }
+
   &__option { display: inline; }
 
   &__remove {
@@ -114,6 +118,8 @@
     display: inline-block;
     margin-right: 0.75vw;
   }
+
+  &__submit { flex: 1; }
 
 }
 

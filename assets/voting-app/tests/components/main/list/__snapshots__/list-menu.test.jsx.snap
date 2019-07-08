@@ -11,6 +11,7 @@ exports[`list menu should match snapshot (default) 1`] = `
       handleChange={[Function]}
       handleClear={[Function]}
       handleSubmit={[Function]}
+      id="search"
       value=""
     />
   </div>
@@ -48,6 +49,7 @@ exports[`list menu should match snapshot (search) 1`] = `
       handleChange={[Function]}
       handleClear={[Function]}
       handleSubmit={[Function]}
+      id="search"
       value="Apple"
     />
   </div>

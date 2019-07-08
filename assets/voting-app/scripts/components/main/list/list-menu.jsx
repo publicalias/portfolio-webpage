@@ -44,6 +44,7 @@ const ListMenu = (props) => {
       history.push(`/list${setListParams(location, "search", list.search)}`);
     },
 
+    id: "search",
     value: list.search
 
   };
