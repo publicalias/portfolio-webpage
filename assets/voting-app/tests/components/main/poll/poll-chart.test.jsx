@@ -24,9 +24,15 @@ describe("poll chart", () => {
 
   const testSnapshot = initTestSnapshot(testShallow);
 
-  it("should match snapshot (form)", () => testSnapshot(null, { poll: newForm() }));
+  it("should match snapshot (form)", () => testSnapshot(null, {
+    poll: newForm(),
+    role: "form"
+  }));
 
-  it("should match snapshot (view)", () => testSnapshot(null, { poll: newPoll() }));
+  it("should match snapshot (view)", () => testSnapshot(null, {
+    poll: newPoll(),
+    role: "view"
+  }));
 
 });
 

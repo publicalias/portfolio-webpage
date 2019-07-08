@@ -4,6 +4,7 @@
 
 const FormMenu = require("./form-menu");
 const PollDisplay = require("../poll/poll-display");
+const PollOptions = require("../poll/poll-options");
 
 //node modules
 
@@ -23,17 +24,16 @@ const Form = (props) => {
 
   //render
 
+  const local = {
+    poll: form,
+    role: "form"
+  };
+
   return (
     <div className="c-ui__form">
       <FormMenu {...props} />
-      <PollDisplay
-        {...props}
-        local={{
-          poll: form,
-          role: "form"
-        }}
-      />
-      <div className="c-poll-options" />
+      <PollDisplay {...props} local={local} />
+      <PollOptions {...props} local={local} />
     </div>
   );
 

@@ -1,10 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`form should match snapshot 1`] = `
+exports[`poll options should match snapshot (form) 1`] = `""`;
+
+exports[`poll options should match snapshot (form, input) 1`] = `
 <div
-  className="c-ui__form"
+  className="c-poll-options"
 >
-  <FormMenu
+  <PollInput
     actions={
       Object {
         "formAddOption": [MockFunction],
@@ -53,7 +55,18 @@ exports[`form should match snapshot 1`] = `
         },
         "loading": 0,
         "polls": Array [],
-        "user": Object {},
+        "user": Object {
+          "auth": Object {
+            "id": "",
+            "provider": "",
+          },
+          "data": Object {
+            "restricted": false,
+          },
+          "id": "",
+          "name": "",
+          "type": "auth",
+        },
         "view": Object {
           "add": "",
           "confirm": false,
@@ -66,11 +79,30 @@ exports[`form should match snapshot 1`] = `
         "push": [MockFunction],
       }
     }
+    local={
+      Object {
+        "poll": Object {
+          "add": "",
+          "confirm": false,
+          "options": Array [],
+          "secret": false,
+          "title": "",
+        },
+        "role": "form",
+      }
+    }
     location={Object {}}
     match={Object {}}
     staticContext={Object {}}
   />
-  <PollDisplay
+</div>
+`;
+
+exports[`poll options should match snapshot (form, list) 1`] = `
+<div
+  className="c-poll-options"
+>
+  <PollList
     actions={
       Object {
         "formAddOption": [MockFunction],
@@ -137,7 +169,9 @@ exports[`form should match snapshot 1`] = `
         "poll": Object {
           "add": "",
           "confirm": false,
-          "options": Array [],
+          "options": Array [
+            "Option A",
+          ],
           "secret": false,
           "title": "",
         },
@@ -148,7 +182,134 @@ exports[`form should match snapshot 1`] = `
     match={Object {}}
     staticContext={Object {}}
   />
-  <PollOptions
+</div>
+`;
+
+exports[`poll options should match snapshot (view) 1`] = `""`;
+
+exports[`poll options should match snapshot (view, input) 1`] = `
+<div
+  className="c-poll-options"
+>
+  <PollInput
+    actions={
+      Object {
+        "formAddOption": [MockFunction],
+        "formClearState": [MockFunction],
+        "formRemoveOption": [MockFunction],
+        "formSetAdd": [MockFunction],
+        "formSetTitle": [MockFunction],
+        "formToggleConfirm": [MockFunction],
+        "formToggleSecret": [MockFunction],
+        "listClearState": [MockFunction],
+        "listSetSearch": [MockFunction],
+        "metaAddErrors": [MockFunction],
+        "metaCloseError": [MockFunction],
+        "metaCreatePoll": [MockFunction],
+        "metaDeletePoll": [MockFunction],
+        "metaGetPolls": [MockFunction],
+        "metaGetUser": [MockFunction],
+        "metaNoOp": [MockFunction],
+        "metaSetLoading": [MockFunction],
+        "metaSetState": [MockFunction],
+        "metaTimeoutError": [MockFunction],
+        "pollAddOption": [MockFunction],
+        "pollCastVote": [MockFunction],
+        "pollRemoveOption": [MockFunction],
+        "pollToggleFlag": [MockFunction],
+        "pollToggleHide": [MockFunction],
+        "pollToggleSecret": [MockFunction],
+        "viewClearState": [MockFunction],
+        "viewSetAdd": [MockFunction],
+        "viewToggleConfirm": [MockFunction],
+        "viewToggleSettings": [MockFunction],
+      }
+    }
+    data={
+      Object {
+        "errors": Array [],
+        "form": Object {
+          "add": "",
+          "confirm": false,
+          "options": Array [],
+          "secret": false,
+          "title": "",
+        },
+        "list": Object {
+          "search": "",
+        },
+        "loading": 0,
+        "polls": Array [
+          Object {
+            "author": "",
+            "date": 0,
+            "id": "id-a",
+            "options": Array [],
+            "secret": false,
+            "title": "",
+            "users": Object {
+              "created": "",
+              "flagged": Array [],
+              "hidden": Array [],
+              "voted": 0,
+            },
+          },
+        ],
+        "user": Object {
+          "auth": Object {
+            "id": "",
+            "provider": "",
+          },
+          "data": Object {
+            "restricted": false,
+          },
+          "id": "",
+          "name": "",
+          "type": "auth",
+        },
+        "view": Object {
+          "add": "",
+          "confirm": false,
+          "settings": false,
+        },
+      }
+    }
+    history={
+      Object {
+        "push": [MockFunction],
+      }
+    }
+    local={
+      Object {
+        "poll": Object {
+          "author": "",
+          "date": 0,
+          "id": "id-a",
+          "options": Array [],
+          "secret": false,
+          "title": "",
+          "users": Object {
+            "created": "",
+            "flagged": Array [],
+            "hidden": Array [],
+            "voted": 0,
+          },
+        },
+        "role": "view",
+      }
+    }
+    location={Object {}}
+    match={Object {}}
+    staticContext={Object {}}
+  />
+</div>
+`;
+
+exports[`poll options should match snapshot (view, list) 1`] = `
+<div
+  className="c-poll-options"
+>
+  <PollList
     actions={
       Object {
         "formAddOption": [MockFunction],
@@ -213,13 +374,26 @@ exports[`form should match snapshot 1`] = `
     local={
       Object {
         "poll": Object {
-          "add": "",
-          "confirm": false,
-          "options": Array [],
+          "author": "",
+          "date": 0,
+          "id": "",
+          "options": Array [
+            Object {
+              "created": "",
+              "text": "",
+              "voted": Array [],
+            },
+          ],
           "secret": false,
           "title": "",
+          "users": Object {
+            "created": "",
+            "flagged": Array [],
+            "hidden": Array [],
+            "voted": 0,
+          },
         },
-        "role": "form",
+        "role": "view",
       }
     }
     location={Object {}}
