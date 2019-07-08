@@ -56,7 +56,7 @@ describe("poll chart (load and poll.options)", () => {
 
     wrapper.setProps({
       local: {
-        poll: { options: [role === "form" ? "Option A" : newOption("Option A")] },
+        poll: { options: [role === "form" ? "Option A" : newOption({})] },
         role
       }
     });

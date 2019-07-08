@@ -8,7 +8,11 @@ const React = require("react");
 
 const FormMenu = (props) => {
 
-  const { actions: { formClearState, formToggleConfirm, formToggleSecret, metaCreatePoll }, data: { form }, history } = props;
+  const {
+    actions: { formClearState, formToggleConfirm, formToggleSecret, metaCreatePoll },
+    data: { form },
+    history
+  } = props;
 
   //events
 

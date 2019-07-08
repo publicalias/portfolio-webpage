@@ -9,7 +9,7 @@ const { toPrecision } = require("utilities");
 
 const chartColor = (i, arr) => {
 
-  const val = i / (arr.length - 1) * 255;
+  const val = i && i / (arr.length - 1) * 255;
 
   return `rgba(${val}, ${val}, ${val}, 0.75)`;
 

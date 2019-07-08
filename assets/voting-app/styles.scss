@@ -71,9 +71,7 @@
     margin-right: 3vw;
   }
 
-  &__sort {
-    margin-right: 1.5vw;
-  }
+  &__sort { margin-right: 1.5vw; }
 
 }
 
@@ -96,8 +94,27 @@
 }
 
 .c-poll-options {
+
   @include grid-area;
   grid-area: 3 / 1 / 3 / 13;
+
+  &__color-box {
+    @include square(1.6vw);
+    margin-right: 0.75vw;
+    position: relative;
+    top: 0.32vw;
+  }
+
+  &__color-icon { @include square(100%) }
+
+  &__option { display: inline; }
+
+  &__remove {
+    @include square(1.6vw);
+    display: inline-block;
+    margin-right: 0.75vw;
+  }
+
 }
 
 .c-ui {
@@ -135,5 +152,7 @@
 //utilities
 
 .u-flex-right { margin-left: auto; }
+
+.u-margin-half--negative { margin-bottom: -1.5vw; }
 
 .u-no-margin { margin: 0; }

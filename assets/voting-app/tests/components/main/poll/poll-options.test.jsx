@@ -9,7 +9,7 @@ const { testWrapper } = require("../../../test-helpers");
 //global imports
 
 const { newUser } = require("schemas/master");
-const { newForm, newOption, newPoll } = require("schemas/voting-app");
+const { newForm, newPoll } = require("schemas/voting-app");
 const { initTestSnapshot, reactTests } = require("test-helpers/react-tests");
 
 //setup
@@ -45,7 +45,7 @@ describe("poll options", () => {
   }));
 
   it("should match snapshot (view, list)", () => testSnapshot(null, {
-    poll: newPoll({ options: [newOption("Option A")] }),
+    poll: newPoll({ options: [{}] }),
     role: "view"
   }));
 
