@@ -24,12 +24,12 @@ describe("list body", () => {
 
   const testSnapshot = initTestSnapshot(testShallow);
 
-  const local = { handleScroll() {} };
+  const testProps = (data) => testSnapshot(data, { handleScroll: jest.fn() });
 
-  it("should match snapshot (default)", () => testSnapshot(null, local));
+  it("should match snapshot (default)", () => testProps());
 
-  it("should match snapshot (authenticated)", () => testSnapshot({ user: newUser() }, local));
+  it("should match snapshot (authenticated)", () => testProps({ user: newUser() }));
 
-  it("should match snapshot (polls)", () => testSnapshot({ polls: [newPoll()] }, local));
+  it("should match snapshot (polls)", () => testProps({ polls: [newPoll()] }));
 
 });

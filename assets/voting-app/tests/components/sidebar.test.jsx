@@ -10,7 +10,7 @@ const { testWrapper } = require("../test-helpers");
 
 const { newUser } = require("schemas/master");
 const { testMock } = require("test-helpers/meta-tests");
-const { initTestSnapshot, reactTests } = require("test-helpers/react-tests");
+const { initTestEvent, initTestSnapshot, reactTests } = require("test-helpers/react-tests");
 
 //setup
 
@@ -34,21 +34,15 @@ describe("sidebar (auth)", () => {
 
   const { testMount } = testWrapper(Sidebar);
 
-  const testAuth = (id, data) => {
+  const testClick = initTestEvent(testMount, "click");
 
-    const { props, wrapper } = testMount(data);
-
-    const { actions: { metaSetLoading } } = props;
+  const testAuth = (id, dataList = []) => {
 
     location.assign = jest.fn();
 
-    wrapper.find(`.qa-auth-${id}`).simulate("click");
-
-    testMock(metaSetLoading, [true]);
-
-    testMock(location.assign, [`/auth/${id}`]);
-
-    wrapper.unmount();
+    return testClick(`.qa-auth-${id}`, dataList, ["metaSetLoading", [true]], () => {
+      testMock(location.assign, [`/auth/${id}`]);
+    });
 
   };
 
@@ -58,6 +52,6 @@ describe("sidebar (auth)", () => {
 
   it("should call location.assign on click (twitter)", () => testAuth("twitter"));
 
-  it("should call location.assign on click (logout)", () => testAuth("logout", { user: newUser() }));
+  it("should call location.assign on click (logout)", () => testAuth("logout", [{ user: newUser() }]));
 
 });

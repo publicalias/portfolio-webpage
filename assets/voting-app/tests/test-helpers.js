@@ -9,7 +9,7 @@ const { reducer } = require("../scripts/state/reducer/reducer");
 
 const { newForm, newListParams, newPoll, newState } = require("schemas/voting-app");
 const { testMock } = require("test-helpers/meta-tests");
-const { initTestWrapper } = require("test-helpers/react-tests");
+const { initTestEvent, initTestWrapper } = require("test-helpers/react-tests");
 const { initTestAPI, initTestReducer } = require("test-helpers/redux-tests");
 
 //init test poll
@@ -25,15 +25,19 @@ const testAPI = initTestAPI(newState);
 
 //test create delete
 
-const testCreateDelete = async (props, wrapper, qa, fn, args, res) => {
+const testCreateDelete = async (render, dataList, qa, res, [type, args]) => {
+
+  const { props, wrapper } = render(...dataList);
 
   const { history } = props;
+
+  props.actions[type].mockReturnValueOnce(res);
 
   wrapper.find(qa).simulate("click"); //async
 
   await Promise.resolve();
 
-  testMock(fn, args);
+  testMock(props.actions[type], args);
 
   if (res && !res.errors) {
     testMock(history.push, ["/list?filter=created"]);
@@ -49,20 +53,16 @@ const testReducer = initTestReducer(newState, reducer);
 
 //test reload
 
-const testReload = async (props, wrapper, qa, type, args, list) => {
+const testReload = (render, dataList, qa, id, ...fnList) => {
 
-  const { actions: { metaGetPolls, metaGetUser }, local: { poll } } = props;
+  const testClick = initTestEvent(render, "click");
 
-  wrapper.find(qa).simulate("click"); //async
+  const fullList = fnList.concat([
+    ["metaGetUser", []],
+    ["metaGetPolls", id ? [null, id] : [newListParams(), null, 0]]
+  ]);
 
-  await Promise.resolve();
-
-  testMock(props.actions[type], args);
-
-  testMock(metaGetUser, []);
-  testMock(metaGetPolls, list ? [newListParams(), null, 0] : [null, poll.id]);
-
-  wrapper.unmount();
+  return testClick(qa, dataList, ...fullList);
 
 };
 

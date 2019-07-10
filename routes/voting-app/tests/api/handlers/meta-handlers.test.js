@@ -337,11 +337,9 @@ describe("metaGetUser", () => {
 
   const mockAPICall = initMockAPICall(metaGetUser, "GET");
 
-  const getData = () => {};
-
   const testUser = async (user) => {
 
-    const res = await mockAPICall(user, getData());
+    const res = await mockAPICall(user);
 
     testMock(res.json, [{ user }]);
 

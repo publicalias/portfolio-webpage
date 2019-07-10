@@ -36,9 +36,9 @@ const initMockAPICall = (fn, method) => async (user, data) => {
 
 const mongoTests = {
 
-  //initialization
-
   mongoServer: null,
+
+  //setup
 
   async setup() {
 
@@ -50,6 +50,8 @@ const mongoTests = {
     global.db = client.db();
 
   },
+
+  //teardown
 
   teardown() {
     this.mongoServer.stop();

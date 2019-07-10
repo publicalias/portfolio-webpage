@@ -9,8 +9,7 @@ const { initTestPoll, testReload, testWrapper } = require("../../../test-helpers
 //global imports
 
 const { newUser } = require("schemas/master");
-const { testMock } = require("test-helpers/meta-tests");
-const { initTestSnapshot, reactTests } = require("test-helpers/react-tests");
+const { initTestEvent, initTestSnapshot, reactTests } = require("test-helpers/react-tests");
 
 //setup
 
@@ -53,10 +52,9 @@ describe("poll list (view)", () => {
 
   it("should match snapshot (options, created option)", () => {
 
-    const data = { user: newUser({ id: "id-a" }) };
-    const pollData = { options: [{ created: "id-a" }] };
+    const dataList = [{ user: newUser({ id: "id-a" }) }, { options: [{ created: "id-a" }] }];
 
-    testView(data, pollData);
+    testView(...dataList);
 
   });
 
@@ -66,33 +64,18 @@ describe("poll list (form, events)", () => {
 
   const { testMount } = testWrapper(PollList);
 
-  const testForm = initTestPoll(testMount, "form");
+  const testFormMount = initTestPoll(testMount, "form");
+  const testClick = initTestEvent(testFormMount, "click");
 
-  it("should do nothing on click (vote)", () => {
+  const dataList = [null, { options: ["Option A"] }];
 
-    const { props, wrapper } = testForm(null, { options: ["Option A"] });
-
-    const { actions: { pollCastVote } } = props;
-
-    wrapper.find(".qa-option-vote").simulate("click");
-
-    testMock(pollCastVote);
-
-    wrapper.unmount();
-
-  });
+  it("should do nothing on click (vote)", () => testClick(".qa-option-vote", dataList, ["pollCastVote"]));
 
   it("should call formRemoveOption on click (remove)", () => {
 
-    const { props, wrapper } = testForm(null, { options: ["Option A"] });
+    const fn = ["formRemoveOption", ["Option A"]];
 
-    const { actions: { formRemoveOption } } = props;
-
-    wrapper.find(".qa-option-remove").simulate("click");
-
-    testMock(formRemoveOption, ["Option A"]);
-
-    wrapper.unmount();
+    return testClick(".qa-option-remove", dataList, fn);
 
   });
 
@@ -102,30 +85,30 @@ describe("poll list (view, events)", () => {
 
   const { testMount } = testWrapper(PollList);
 
-  const testView = initTestPoll(testMount, "view");
+  const testViewMount = initTestPoll(testMount, "view");
 
   it("should call pollCastVote on click (vote)", () => {
 
-    const { props, wrapper } = testView(null, {
+    const dataList = [null, {
       id: "id-a",
       options: [{ text: "Option A" }]
-    });
+    }];
 
-    return testReload(props, wrapper, ".qa-option-vote", "pollCastVote", ["id-a", "Option A"]);
+    return testReload(testViewMount, dataList, ".qa-option-vote", "id-a", ["pollCastVote", ["id-a", "Option A"]]);
 
   });
 
   it("should call pollRemoveOption on click (remove)", () => {
 
-    const { props, wrapper } = testView({ user: newUser({ id: "id-a" }) }, {
+    const dataList = [{ user: newUser({ id: "id-a" }) }, {
       id: "id-b",
       options: [{
         text: "Option A",
         created: "id-a"
       }]
-    });
+    }];
 
-    return testReload(props, wrapper, ".qa-option-remove", "pollRemoveOption", ["id-b", "Option A"]);
+    return testReload(testViewMount, dataList, ".qa-option-remove", "id-b", ["pollRemoveOption", ["id-b", "Option A"]]);
 
   });
 

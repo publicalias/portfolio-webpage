@@ -28,21 +28,19 @@ describe("list item", () => {
 
   const testSnapshot = initTestSnapshot(testShallow);
 
-  const data = {
-    title: "Title A",
-    id: "id-a"
-  };
-
-  const testVotes = (mag) => testSnapshot(null, {
+  const testProps = (data, pollData = {}) => testSnapshot(data, {
     poll: newPoll({
-      users: { voted: 10 ** mag },
-      ...data
+      title: "Title A",
+      id: "id-a",
+      ...pollData
     })
   });
 
-  it("should match snapshot (default)", () => testSnapshot(null, { poll: newPoll(data) }));
+  const testVotes = (mag) => testProps(null, { users: { voted: 10 ** mag } });
 
-  it("should match snapshot (authenticated)", () => testSnapshot({ user: newUser() }, { poll: newPoll(data) }));
+  it("should match snapshot (default)", () => testProps());
+
+  it("should match snapshot (authenticated)", () => testProps({ user: newUser() }));
 
   it("should match snapshot (10^3 votes)", () => testVotes(3));
 

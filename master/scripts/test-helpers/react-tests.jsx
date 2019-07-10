@@ -13,15 +13,23 @@ const { useRef } = React;
 
 const { configure, mount, shallow } = require("enzyme");
 
-//init test click
+//init test event
 
-const initTestClick = (render) => (qa, type, args = [], data, local, other) => {
+const initTestEvent = (render, event, merge) => async (qa, dataList, ...fnList) => {
 
-  const { props, wrapper } = render(data, local, other);
+  const { props, wrapper } = render(...dataList);
 
-  wrapper.find(qa).simulate("click");
+  wrapper.find(qa).simulate(event, merge);
 
-  testMock(props.actions[type], args);
+  await Promise.resolve(); //supports simple async events
+
+  for (const e of fnList) {
+    if (typeof e === "function") {
+      e(props);
+    } else {
+      testMock(props.actions[e[0]], e[1]);
+    }
+  }
 
   wrapper.unmount();
 
@@ -31,23 +39,23 @@ const initTestClick = (render) => (qa, type, args = [], data, local, other) => {
 
 const initTestRef = (Component, init) => {
 
-  const exposed = {
+  const spied = {
 
     ref: null,
 
     useRef: jest.fn(() => {
 
-      exposed.ref = useRef(init);
+      spied.ref = useRef(init);
 
-      return exposed.ref;
+      return spied.ref;
 
     })
 
   };
 
-  Component.injected.useRef = exposed.useRef;
+  Component.injected.useRef = spied.useRef;
 
-  return exposed;
+  return spied;
 
 };
 
@@ -129,7 +137,7 @@ const reactTests = {
 //exports
 
 module.exports = {
-  initTestClick,
+  initTestEvent,
   initTestRef,
   initTestSnapshot,
   initTestWrapper,

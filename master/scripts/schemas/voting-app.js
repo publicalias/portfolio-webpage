@@ -65,10 +65,12 @@ const newState = initSchema({
 
   user(val) {
     switch (val.type) {
+      case "auth":
+        return newUser(val);
       case "ip":
         return newIPUser(val);
       default:
-        return newUser(val);
+        return {};
     }
   },
 

@@ -51,13 +51,13 @@ describe("poll toggle (click)", () => {
 
   const testToggle = (role, qa, type, list) => {
 
-    const { props, wrapper } = testMount(null, {
+    const dataList = [null, {
       list,
       poll: newPoll({ id: "id-a" }),
       role
-    });
+    }];
 
-    return testReload(props, wrapper, qa, type, ["id-a"], list);
+    return testReload(testMount, dataList, qa, list ? null : "id-a", [type, ["id-a"]]);
 
   };
 

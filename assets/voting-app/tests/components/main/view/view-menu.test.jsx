@@ -10,7 +10,7 @@ const { testWrapper } = require("../../../test-helpers");
 
 const { newUser } = require("schemas/master");
 const { newPoll } = require("schemas/voting-app");
-const { initTestClick, initTestSnapshot, reactTests } = require("test-helpers/react-tests");
+const { initTestEvent, initTestSnapshot, reactTests } = require("test-helpers/react-tests");
 const { deepCopy } = require("utilities");
 
 //setup
@@ -23,24 +23,29 @@ describe("view menu", () => {
 
   const { testMount, testShallow } = testWrapper(ViewMenu);
 
-  const testClick = initTestClick(testMount);
+  const testClick = initTestEvent(testMount, "click");
   const testSnapshot = initTestSnapshot(testShallow);
 
-  const data = { user: newUser({ id: "id-a" }) };
-  const local = { poll: newPoll({ users: { created: "id-a" } }) };
+  const dataList = [{ user: newUser({ id: "id-a" }) }, { poll: newPoll({ users: { created: "id-a" } }) }];
 
   it("should match snapshot (default)", () => testSnapshot(null, { poll: newPoll() }));
 
-  it("should match snapshot (created)", () => testSnapshot(data, local));
+  it("should match snapshot (created)", () => testSnapshot(...dataList));
 
   it("should match snapshot (created, settings)", () => {
 
-    const thisData = deepCopy(data, { view: { settings: true } });
+    const thisDataList = deepCopy(dataList, [{ view: { settings: true } }]);
 
-    testSnapshot(thisData, local);
+    testSnapshot(...thisDataList);
 
   });
 
-  it("should call viewToggleSettings on click", () => testClick(".qa-toggle-settings", "viewToggleSettings", [], data, local));
+  it("should call viewToggleSettings on click", () => {
+
+    const fn = ["viewToggleSettings", []];
+
+    return testClick(".qa-toggle-settings", dataList, fn);
+
+  });
 
 });

@@ -9,7 +9,7 @@ const { initTestPoll, testReload, testWrapper } = require("../../../test-helpers
 //global imports
 
 const { testMock } = require("test-helpers/meta-tests");
-const { initTestSnapshot, reactTests } = require("test-helpers/react-tests");
+const { initTestEvent, initTestSnapshot, reactTests } = require("test-helpers/react-tests");
 
 //utilities
 
@@ -29,13 +29,9 @@ const testLoad = (render, args) => {
 
 const testChange = (render, type) => {
 
-  const { props, wrapper } = render();
+  const testChange = initTestEvent(render, "change", { target: { value: "Option A" } });
 
-  wrapper.find(".qa-option-input").simulate("change", { target: { value: "Option A" } });
-
-  testMock(props.actions[type], ["Option A"]);
-
-  wrapper.unmount();
+  return testChange(".qa-option-input", [], [type, ["Option A"]]);
 
 };
 
@@ -56,6 +52,7 @@ describe("poll input (form)", () => {
   const testSnapshot = initTestSnapshot(testShallow);
   const testForm = initTestPoll(testSnapshot, "form");
   const testFormMount = initTestPoll(testMount, "form");
+  const testClick = initTestEvent(testFormMount, "click");
 
   it("should match snapshot (default)", () => testForm());
 
@@ -67,16 +64,9 @@ describe("poll input (form)", () => {
 
   it("should call formAddOption and formSetAdd on submit", () => {
 
-    const { props, wrapper } = testFormMount({ form: { add: "Option A" } });
+    const dataList = [{ form: { add: "Option A" } }];
 
-    const { actions: { formAddOption, formSetAdd } } = props;
-
-    wrapper.find(".qa-option-submit").simulate("click");
-
-    testMock(formAddOption, []);
-    testMock(formSetAdd, [""]);
-
-    wrapper.unmount();
+    return testClick(".qa-option-submit", dataList, ["formAddOption", []], ["formSetAdd", [""]]);
 
   });
 
@@ -98,15 +88,15 @@ describe("poll input (view)", () => {
 
   it("should call viewSetAdd on change", () => testChange(testViewMount, "viewSetAdd"));
 
-  it("should call pollAddOption and viewSetAdd on submit", async () => {
+  it("should call pollAddOption and viewSetAdd on submit", () => {
 
-    const { props, wrapper } = testViewMount({ view: { add: "Option A" } }, { id: "id-a" });
+    const dataList = [{ view: { add: "Option A" } }, { id: "id-a" }];
+    const fnList = [
+      ["pollAddOption", ["id-a", "Option A"]],
+      ["viewSetAdd", [""]]
+    ];
 
-    const { actions: { viewSetAdd } } = props;
-
-    await testReload(props, wrapper, ".qa-option-submit", "pollAddOption", ["id-a", "Option A"]);
-
-    testMock(viewSetAdd, [""]);
+    return testReload(testViewMount, dataList, ".qa-option-submit", "id-a", ...fnList);
 
   });
 

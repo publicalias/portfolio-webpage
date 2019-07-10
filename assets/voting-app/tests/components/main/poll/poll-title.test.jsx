@@ -10,8 +10,7 @@ const { testWrapper } = require("../../../test-helpers");
 
 const { newUser } = require("schemas/master");
 const { newForm, newPoll } = require("schemas/voting-app");
-const { testMock } = require("test-helpers/meta-tests");
-const { initTestSnapshot, reactTests } = require("test-helpers/react-tests");
+const { initTestEvent, initTestSnapshot, reactTests } = require("test-helpers/react-tests");
 
 //setup
 
@@ -67,20 +66,16 @@ describe("poll title (input)", () => {
 
   const { testMount } = testWrapper(PollTitle);
 
+  const testChange = initTestEvent(testMount, "change", { target: { value: "Title A" } });
+
   it("should call formSetTitle on change", () => {
 
-    const { props, wrapper } = testMount(null, {
+    const dataList = [null, {
       poll: newForm(),
       role: "form"
-    });
+    }];
 
-    const { actions: { formSetTitle } } = props;
-
-    wrapper.find(".qa-title-input").simulate("change", { target: { value: "Title A" } });
-
-    testMock(formSetTitle, ["Title A"]);
-
-    wrapper.unmount();
+    return testChange(".qa-title-input", dataList, ["formSetTitle", ["Title A"]]);
 
   });
 

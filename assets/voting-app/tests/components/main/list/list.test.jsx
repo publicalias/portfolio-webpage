@@ -69,11 +69,11 @@ describe("list (load and location.search)", () => {
 
   it("should reset ref", () => {
 
-    const exposed = initTestRef(List);
+    const spied = initTestRef(List);
 
     return testEffect(() => {
 
-      const { ref, useRef } = exposed;
+      const { ref, useRef } = spied;
 
       testMock(useRef, [], [], []);
 
@@ -117,7 +117,7 @@ describe("list (scroll)", () => {
 
   const setupList = async (scrollVal, refVal, res) => {
 
-    const exposed = initTestRef(List);
+    const spied = initTestRef(List);
 
     Object.assign(List.injected, {
 
@@ -134,7 +134,7 @@ describe("list (scroll)", () => {
 
     const { actions: { metaGetPolls } } = props;
 
-    const { ref } = exposed;
+    const { ref } = spied;
 
     await Promise.resolve();
 

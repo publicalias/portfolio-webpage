@@ -9,7 +9,7 @@ const { testCreateDelete, testReload, testWrapper } = require("../../../test-hel
 //global imports
 
 const { newPoll } = require("schemas/voting-app");
-const { initTestClick, initTestSnapshot, reactTests } = require("test-helpers/react-tests");
+const { initTestEvent, initTestSnapshot, reactTests } = require("test-helpers/react-tests");
 
 //setup
 
@@ -37,13 +37,9 @@ describe("view settings (delete)", () => {
 
   const testDelete = (res) => {
 
-    const { props, wrapper } = testMount({ view: { confirm: true } }, { poll: newPoll({ id: "id-a" }) });
+    const dataList = [{ view: { confirm: true } }, { poll: newPoll({ id: "id-a" }) }];
 
-    const { actions: { metaDeletePoll } } = props;
-
-    metaDeletePoll.mockReturnValueOnce(res);
-
-    return testCreateDelete(props, wrapper, ".qa-delete-poll", metaDeletePoll, ["id-a"], res);
+    return testCreateDelete(testMount, dataList, ".qa-delete-poll", res, ["metaDeletePoll", ["id-a"]]);
 
   };
 
@@ -59,17 +55,29 @@ describe("view settings (click)", () => {
 
   const { testMount } = testWrapper(ViewSettings);
 
-  const testClick = initTestClick(testMount);
+  const testClick = initTestEvent(testMount, "click");
 
-  it("should call viewToggleConfirm on click (delete)", () => testClick(".qa-confirm-true", "viewToggleConfirm", [], {}, { poll: newPoll() }));
+  it("should call viewToggleConfirm on click (delete)", () => {
 
-  it("should call viewToggleConfirm on click (no)", () => testClick(".qa-confirm-false", "viewToggleConfirm", [], { view: { confirm: true } }, { poll: newPoll() }));
+    const dataList = [null, { poll: newPoll() }];
+
+    return testClick(".qa-confirm-true", dataList, ["viewToggleConfirm", []]);
+
+  });
+
+  it("should call viewToggleConfirm on click (no)", () => {
+
+    const dataList = [{ view: { confirm: true } }, { poll: newPoll() }];
+
+    return testClick(".qa-confirm-false", dataList, ["viewToggleConfirm", []]);
+
+  });
 
   it("should call pollToggleSecret on click (secret)", () => {
 
-    const { props, wrapper } = testMount(null, { poll: newPoll({ id: "id-a" }) });
+    const dataList = [null, { poll: newPoll({ id: "id-a" }) }];
 
-    return testReload(props, wrapper, ".qa-toggle-secret", "pollToggleSecret", ["id-a"]);
+    return testReload(testMount, dataList, ".qa-toggle-secret", "id-a", ["pollToggleSecret", ["id-a"]]);
 
   });
 
