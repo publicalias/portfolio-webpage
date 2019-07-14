@@ -31,14 +31,15 @@ const PollToggle = (props) => {
   const hideIcon = toggled("hidden") ? "fa fa-eye-slash" : "fa fa-eye";
   const flagIcon = toggled("flagged") ? "fa fa-flag" : "fa fa-flag-o";
 
-  switch (role) {
-    case "flag":
-      return <button className="qa-toggle-flag" onClick={handleFlag}><i className={flagIcon} /></button>;
-    case "hide":
-      return <button className="qa-toggle-hide" onClick={handleHide}><i className={hideIcon} /></button>;
-    default:
-      return null;
-  }
+  return role === "flag" ? (
+    <button className="qa-toggle-flag" onClick={handleFlag}>
+      <i className={flagIcon} />
+    </button>
+  ) : (
+    <button className="qa-toggle-hide" onClick={handleHide}>
+      <i className={hideIcon} />
+    </button>
+  );
 
 };
 

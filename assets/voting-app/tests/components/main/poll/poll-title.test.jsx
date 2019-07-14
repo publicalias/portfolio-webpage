@@ -4,17 +4,18 @@
 
 const PollTitle = require("../../../../scripts/components/main/poll/poll-title");
 
-const { testWrapper } = require("../../../test-helpers");
+const { initTestPoll, testWrapper } = require("../../../test-helpers");
 
 //global imports
 
 const { newUser } = require("schemas/master");
-const { newForm, newPoll } = require("schemas/voting-app");
 const { initTestEvent, initTestSnapshot, reactTests } = require("test-helpers/react-tests");
 
 //utilities
 
 const { testMount, testShallow } = testWrapper(PollTitle);
+
+const testSnapshot = initTestSnapshot(testShallow);
 
 //setup
 
@@ -23,61 +24,31 @@ beforeEach(reactTests.inject(PollTitle));
 
 //poll title
 
-describe("poll title", () => {
+describe("poll title (form)", () => {
 
-  const testSnapshot = initTestSnapshot(testShallow);
+  const testForm = initTestPoll(testSnapshot, "form");
+  const testFormMount = initTestPoll(testMount, "form");
 
-  const testProps = (role, data = {}) => {
+  const testChange = initTestEvent(testFormMount, "change", { target: { value: "Title A" } });
 
-    const fn = (poll, user = {}) => {
-      testSnapshot({ user }, {
-        poll,
-        role
-      });
-    };
+  it("should match snapshot", () => testForm());
 
-    switch (role) {
-      case "form":
-        fn(newForm({ title: data.title }), newUser({ name: data.author }));
-        break;
-      case "view":
-        fn(newPoll(data));
-        break;
-      default:
-        fn(newPoll());
-    }
+  it("should match snapshot (title)", () => testForm(null, { title: "Title A" }));
 
-  };
+  it("should match snapshot (author)", () => testForm({ user: newUser({ name: "Author A" }) }));
 
-  it("should match snapshot (default)", () => testProps());
-
-  it("should match snapshot (form)", () => testProps("form"));
-
-  it("should match snapshot (form, title)", () => testProps("form", { title: "Title A" }));
-
-  it("should match snapshot (form, author)", () => testProps("form", { author: "Author A" }));
-
-  it("should match snapshot (view)", () => testProps("view"));
-
-  it("should match snapshot (view, title)", () => testProps("view", { title: "Title A" }));
-
-  it("should match snapshot (view, author)", () => testProps("view", { author: "Author A" }));
+  it("should call formSetTitle on change", () => testChange(".qa-title-input", [], ["formSetTitle", ["Title A"]]));
 
 });
 
-describe("poll title (input)", () => {
+describe("poll title (view)", () => {
 
-  const testChange = initTestEvent(testMount, "change", { target: { value: "Title A" } });
+  const testView = initTestPoll(testSnapshot, "view");
 
-  it("should call formSetTitle on change", () => {
+  it("should match snapshot", () => testView());
 
-    const dataList = [null, {
-      poll: newForm(),
-      role: "form"
-    }];
+  it("should match snapshot (title)", () => testView(null, { title: "Title A" }));
 
-    return testChange(".qa-title-input", dataList, ["formSetTitle", ["Title A"]]);
-
-  });
+  it("should match snapshot (author)", () => testView(null, { author: "Author A" }));
 
 });

@@ -4,17 +4,48 @@
 
 const PollChart = require("../../../../scripts/components/main/poll/poll-chart");
 
-const { testWrapper } = require("../../../test-helpers");
+const { initTestPoll, testWrapper } = require("../../../test-helpers");
 
 //global imports
 
-const { newForm, newOption, newPoll } = require("schemas/voting-app");
+const { newOption } = require("schemas/voting-app");
 const { testMock } = require("test-helpers/meta-tests");
 const { initTestSnapshot, reactTests } = require("test-helpers/react-tests");
 
 //utilities
 
 const { testMount, testShallow } = testWrapper(PollChart);
+
+const testSnapshot = initTestSnapshot(testShallow);
+
+const testLoad = (render, role) => {
+
+  const { lib: { renderChart, rngInt } } = PollChart.injected;
+
+  const { wrapper } = render();
+
+  wrapper.mount();
+
+  wrapper.setProps({
+    local: {
+      poll: { options: [role === "form" ? "Option A" : newOption()] },
+      role
+    }
+  });
+
+  if (role === "form") {
+    testMock(rngInt, [0, 9, true]);
+  }
+
+  testMock(renderChart, [
+    []
+  ], [
+    [0]
+  ]);
+
+  wrapper.unmount();
+
+};
 
 //setup
 
@@ -23,58 +54,24 @@ beforeEach(reactTests.inject(PollChart, { lib: { rngInt: jest.fn(() => 0) } }));
 
 //poll chart
 
-describe("poll chart", () => {
+describe("poll chart (form)", () => {
 
-  const testSnapshot = initTestSnapshot(testShallow);
+  const testForm = initTestPoll(testSnapshot, "form");
+  const testFormMount = initTestPoll(testMount, "form");
 
-  it("should match snapshot (form)", () => testSnapshot(null, {
-    poll: newForm(),
-    role: "form"
-  }));
+  it("should match snapshot", () => testForm());
 
-  it("should match snapshot (view)", () => testSnapshot(null, {
-    poll: newPoll(),
-    role: "view"
-  }));
+  it("should call renderChart on load and poll.options", () => testLoad(testFormMount, "form"));
 
 });
 
-describe("poll chart (load and poll.options)", () => {
+describe("poll chart (view)", () => {
 
-  const testLoad = (role) => {
+  const testView = initTestPoll(testSnapshot, "view");
+  const testViewMount = initTestPoll(testMount, "view");
 
-    const { lib: { renderChart, rngInt } } = PollChart.injected;
+  it("should match snapshot", () => testView());
 
-    const { wrapper } = testMount(null, {
-      poll: role === "form" ? newForm() : newPoll(),
-      role
-    });
-
-    wrapper.mount();
-
-    wrapper.setProps({
-      local: {
-        poll: { options: [role === "form" ? "Option A" : newOption({})] },
-        role
-      }
-    });
-
-    testMock(renderChart, [
-      []
-    ], [
-      [0]
-    ]);
-
-    if (role === "form") {
-      testMock(rngInt, [0, 9, true]);
-    }
-
-    wrapper.unmount();
-
-  };
-
-  it("should call renderChart (form)", () => testLoad("form"));
-
-  it("should call renderChart (view)", () => testLoad("view"));
+  it("should call renderChart on load and poll.options", () => testLoad(testViewMount, "view"));
 
 });

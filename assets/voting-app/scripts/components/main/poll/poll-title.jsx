@@ -22,30 +22,23 @@ const PollTitle = (props) => {
 
   const attribution = <h4>{`By ${author || "Anonymous"}`}</h4>;
 
-  switch (role) {
-    case "form":
-      return (
-        <div className="u-align-center">
-          <input
-            className="c-poll-display__input qa-title-input u-margin-half"
-            maxLength="100"
-            onChange={handleChange}
-            placeholder="Untitled"
-            value={poll.title}
-          />
-          {attribution}
-        </div>
-      );
-    case "view":
-      return (
-        <div className="u-align-center">
-          <h3 className="u-margin-half">{poll.title || "Untitled"}</h3>
-          {attribution}
-        </div>
-      );
-    default:
-      return null;
-  }
+  return role === "form" ? (
+    <div className="u-align-center">
+      <input
+        className="c-poll-display__input qa-title-input u-margin-half"
+        maxLength="100"
+        onChange={handleChange}
+        placeholder="Untitled"
+        value={poll.title}
+      />
+      {attribution}
+    </div>
+  ) : (
+    <div className="u-align-center">
+      <h3 className="u-margin-half">{poll.title || "Untitled"}</h3>
+      {attribution}
+    </div>
+  );
 
 };
 

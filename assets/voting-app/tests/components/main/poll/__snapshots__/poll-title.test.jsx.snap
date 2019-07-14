@@ -1,8 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`poll title should match snapshot (default) 1`] = `""`;
-
-exports[`poll title should match snapshot (form) 1`] = `
+exports[`poll title (form) should match snapshot (author) 1`] = `
 <div
   className="u-align-center"
 >
@@ -11,22 +9,7 @@ exports[`poll title should match snapshot (form) 1`] = `
     maxLength="100"
     onChange={[Function]}
     placeholder="Untitled"
-  />
-  <h4>
-    By Anonymous
-  </h4>
-</div>
-`;
-
-exports[`poll title should match snapshot (form, author) 1`] = `
-<div
-  className="u-align-center"
->
-  <input
-    className="c-poll-display__input qa-title-input u-margin-half"
-    maxLength="100"
-    onChange={[Function]}
-    placeholder="Untitled"
+    value=""
   />
   <h4>
     By Author A
@@ -34,7 +17,7 @@ exports[`poll title should match snapshot (form, author) 1`] = `
 </div>
 `;
 
-exports[`poll title should match snapshot (form, title) 1`] = `
+exports[`poll title (form) should match snapshot (title) 1`] = `
 <div
   className="u-align-center"
 >
@@ -51,22 +34,24 @@ exports[`poll title should match snapshot (form, title) 1`] = `
 </div>
 `;
 
-exports[`poll title should match snapshot (view) 1`] = `
+exports[`poll title (form) should match snapshot 1`] = `
 <div
   className="u-align-center"
 >
-  <h3
-    className="u-margin-half"
-  >
-    Untitled
-  </h3>
+  <input
+    className="c-poll-display__input qa-title-input u-margin-half"
+    maxLength="100"
+    onChange={[Function]}
+    placeholder="Untitled"
+    value=""
+  />
   <h4>
     By Anonymous
   </h4>
 </div>
 `;
 
-exports[`poll title should match snapshot (view, author) 1`] = `
+exports[`poll title (view) should match snapshot (author) 1`] = `
 <div
   className="u-align-center"
 >
@@ -81,7 +66,7 @@ exports[`poll title should match snapshot (view, author) 1`] = `
 </div>
 `;
 
-exports[`poll title should match snapshot (view, title) 1`] = `
+exports[`poll title (view) should match snapshot (title) 1`] = `
 <div
   className="u-align-center"
 >
@@ -89,6 +74,21 @@ exports[`poll title should match snapshot (view, title) 1`] = `
     className="u-margin-half"
   >
     Title A
+  </h3>
+  <h4>
+    By Anonymous
+  </h4>
+</div>
+`;
+
+exports[`poll title (view) should match snapshot 1`] = `
+<div
+  className="u-align-center"
+>
+  <h3
+    className="u-margin-half"
+  >
+    Untitled
   </h3>
   <h4>
     By Anonymous

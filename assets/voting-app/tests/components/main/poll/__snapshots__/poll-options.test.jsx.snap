@@ -1,8 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`poll options should match snapshot (form) 1`] = `""`;
-
-exports[`poll options should match snapshot (form, input) 1`] = `
+exports[`poll options (form) should match snapshot (poll input) 1`] = `
 <div
   className="c-poll-options"
 >
@@ -102,7 +100,7 @@ exports[`poll options should match snapshot (form, input) 1`] = `
 </div>
 `;
 
-exports[`poll options should match snapshot (form, list) 1`] = `
+exports[`poll options (form) should match snapshot (poll list) 1`] = `
 <div
   className="c-poll-options"
 >
@@ -193,9 +191,9 @@ exports[`poll options should match snapshot (form, list) 1`] = `
 </div>
 `;
 
-exports[`poll options should match snapshot (view) 1`] = `""`;
+exports[`poll options (form) should match snapshot 1`] = `""`;
 
-exports[`poll options should match snapshot (view, input) 1`] = `
+exports[`poll options (view) should match snapshot (poll input) 1`] = `
 <div
   className="c-poll-options"
 >
@@ -317,7 +315,7 @@ exports[`poll options should match snapshot (view, input) 1`] = `
 </div>
 `;
 
-exports[`poll options should match snapshot (view, list) 1`] = `
+exports[`poll options (view) should match snapshot (poll list) 1`] = `
 <div
   className="c-poll-options"
 >
@@ -418,3 +416,5 @@ exports[`poll options should match snapshot (view, list) 1`] = `
   />
 </div>
 `;
+
+exports[`poll options (view) should match snapshot 1`] = `""`;
