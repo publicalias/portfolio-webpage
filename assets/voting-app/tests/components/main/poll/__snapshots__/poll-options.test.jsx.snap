@@ -28,6 +28,7 @@ exports[`poll options should match snapshot (form, input) 1`] = `
         "metaSetLoading": [MockFunction],
         "metaSetState": [MockFunction],
         "metaTimeoutError": [MockFunction],
+        "metaToggleDelete": [MockFunction],
         "pollAddOption": [MockFunction],
         "pollCastVote": [MockFunction],
         "pollRemoveOption": [MockFunction],
@@ -54,6 +55,9 @@ exports[`poll options should match snapshot (form, input) 1`] = `
           "search": "",
         },
         "loading": 0,
+        "meta": Object {
+          "delete": false,
+        },
         "polls": Array [],
         "user": Object {
           "auth": Object {
@@ -124,6 +128,7 @@ exports[`poll options should match snapshot (form, list) 1`] = `
         "metaSetLoading": [MockFunction],
         "metaSetState": [MockFunction],
         "metaTimeoutError": [MockFunction],
+        "metaToggleDelete": [MockFunction],
         "pollAddOption": [MockFunction],
         "pollCastVote": [MockFunction],
         "pollRemoveOption": [MockFunction],
@@ -150,6 +155,9 @@ exports[`poll options should match snapshot (form, list) 1`] = `
           "search": "",
         },
         "loading": 0,
+        "meta": Object {
+          "delete": false,
+        },
         "polls": Array [],
         "user": Object {},
         "view": Object {
@@ -213,6 +221,7 @@ exports[`poll options should match snapshot (view, input) 1`] = `
         "metaSetLoading": [MockFunction],
         "metaSetState": [MockFunction],
         "metaTimeoutError": [MockFunction],
+        "metaToggleDelete": [MockFunction],
         "pollAddOption": [MockFunction],
         "pollCastVote": [MockFunction],
         "pollRemoveOption": [MockFunction],
@@ -239,6 +248,9 @@ exports[`poll options should match snapshot (view, input) 1`] = `
           "search": "",
         },
         "loading": 0,
+        "meta": Object {
+          "delete": false,
+        },
         "polls": Array [
           Object {
             "author": "",
@@ -331,6 +343,7 @@ exports[`poll options should match snapshot (view, list) 1`] = `
         "metaSetLoading": [MockFunction],
         "metaSetState": [MockFunction],
         "metaTimeoutError": [MockFunction],
+        "metaToggleDelete": [MockFunction],
         "pollAddOption": [MockFunction],
         "pollCastVote": [MockFunction],
         "pollRemoveOption": [MockFunction],
@@ -357,6 +370,9 @@ exports[`poll options should match snapshot (view, list) 1`] = `
           "search": "",
         },
         "loading": 0,
+        "meta": Object {
+          "delete": false,
+        },
         "polls": Array [],
         "user": Object {},
         "view": Object {

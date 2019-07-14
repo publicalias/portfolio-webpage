@@ -32,6 +32,7 @@ exports[`view menu should match snapshot (created) 1`] = `
         "metaSetLoading": [MockFunction],
         "metaSetState": [MockFunction],
         "metaTimeoutError": [MockFunction],
+        "metaToggleDelete": [MockFunction],
         "pollAddOption": [MockFunction],
         "pollCastVote": [MockFunction],
         "pollRemoveOption": [MockFunction],
@@ -58,6 +59,9 @@ exports[`view menu should match snapshot (created) 1`] = `
           "search": "",
         },
         "loading": 0,
+        "meta": Object {
+          "delete": false,
+        },
         "polls": Array [],
         "user": Object {
           "auth": Object {
@@ -140,6 +144,7 @@ exports[`view menu should match snapshot (created, settings) 1`] = `
         "metaSetLoading": [MockFunction],
         "metaSetState": [MockFunction],
         "metaTimeoutError": [MockFunction],
+        "metaToggleDelete": [MockFunction],
         "pollAddOption": [MockFunction],
         "pollCastVote": [MockFunction],
         "pollRemoveOption": [MockFunction],
@@ -166,6 +171,9 @@ exports[`view menu should match snapshot (created, settings) 1`] = `
           "search": "",
         },
         "loading": 0,
+        "meta": Object {
+          "delete": false,
+        },
         "polls": Array [],
         "user": Object {
           "auth": Object {
@@ -242,6 +250,7 @@ exports[`view menu should match snapshot (default) 1`] = `
         "metaSetLoading": [MockFunction],
         "metaSetState": [MockFunction],
         "metaTimeoutError": [MockFunction],
+        "metaToggleDelete": [MockFunction],
         "pollAddOption": [MockFunction],
         "pollCastVote": [MockFunction],
         "pollRemoveOption": [MockFunction],
@@ -268,6 +277,9 @@ exports[`view menu should match snapshot (default) 1`] = `
           "search": "",
         },
         "loading": 0,
+        "meta": Object {
+          "delete": false,
+        },
         "polls": Array [],
         "user": Object {},
         "view": Object {

@@ -44,6 +44,10 @@ const META_TIMEOUT_ERROR = (state) => {
 
 };
 
+//meta toggle delete
+
+const META_TOGGLE_DELETE = (state) => deepCopy(state, { meta: { delete: !state.meta.delete } });
+
 //exports
 
 module.exports = {
@@ -52,5 +56,6 @@ module.exports = {
   META_NO_OP,
   META_SET_LOADING,
   META_SET_STATE,
-  META_TIMEOUT_ERROR
+  META_TIMEOUT_ERROR,
+  META_TOGGLE_DELETE
 };

@@ -37,6 +37,7 @@ exports[`sidebar should match snapshot (authenticated) 1`] = `
         "metaSetLoading": [MockFunction],
         "metaSetState": [MockFunction],
         "metaTimeoutError": [MockFunction],
+        "metaToggleDelete": [MockFunction],
         "pollAddOption": [MockFunction],
         "pollCastVote": [MockFunction],
         "pollRemoveOption": [MockFunction],
@@ -63,6 +64,9 @@ exports[`sidebar should match snapshot (authenticated) 1`] = `
           "search": "",
         },
         "loading": 0,
+        "meta": Object {
+          "delete": false,
+        },
         "polls": Array [],
         "user": Object {
           "auth": Object {

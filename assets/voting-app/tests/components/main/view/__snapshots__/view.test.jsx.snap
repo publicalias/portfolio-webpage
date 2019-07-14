@@ -26,6 +26,7 @@ exports[`view should match snapshot (default) 1`] = `
         "metaSetLoading": [MockFunction],
         "metaSetState": [MockFunction],
         "metaTimeoutError": [MockFunction],
+        "metaToggleDelete": [MockFunction],
         "pollAddOption": [MockFunction],
         "pollCastVote": [MockFunction],
         "pollRemoveOption": [MockFunction],
@@ -52,6 +53,9 @@ exports[`view should match snapshot (default) 1`] = `
           "search": "",
         },
         "loading": 0,
+        "meta": Object {
+          "delete": false,
+        },
         "polls": Array [],
         "user": Object {},
         "view": Object {
@@ -110,6 +114,7 @@ exports[`view should match snapshot (default) 1`] = `
         "metaSetLoading": [MockFunction],
         "metaSetState": [MockFunction],
         "metaTimeoutError": [MockFunction],
+        "metaToggleDelete": [MockFunction],
         "pollAddOption": [MockFunction],
         "pollCastVote": [MockFunction],
         "pollRemoveOption": [MockFunction],
@@ -136,6 +141,9 @@ exports[`view should match snapshot (default) 1`] = `
           "search": "",
         },
         "loading": 0,
+        "meta": Object {
+          "delete": false,
+        },
         "polls": Array [],
         "user": Object {},
         "view": Object {
@@ -195,6 +203,7 @@ exports[`view should match snapshot (default) 1`] = `
         "metaSetLoading": [MockFunction],
         "metaSetState": [MockFunction],
         "metaTimeoutError": [MockFunction],
+        "metaToggleDelete": [MockFunction],
         "pollAddOption": [MockFunction],
         "pollCastVote": [MockFunction],
         "pollRemoveOption": [MockFunction],
@@ -221,6 +230,9 @@ exports[`view should match snapshot (default) 1`] = `
           "search": "",
         },
         "loading": 0,
+        "meta": Object {
+          "delete": false,
+        },
         "polls": Array [],
         "user": Object {},
         "view": Object {
@@ -287,6 +299,7 @@ exports[`view should match snapshot (id) 1`] = `
         "metaSetLoading": [MockFunction],
         "metaSetState": [MockFunction],
         "metaTimeoutError": [MockFunction],
+        "metaToggleDelete": [MockFunction],
         "pollAddOption": [MockFunction],
         "pollCastVote": [MockFunction],
         "pollRemoveOption": [MockFunction],
@@ -313,6 +326,9 @@ exports[`view should match snapshot (id) 1`] = `
           "search": "",
         },
         "loading": 0,
+        "meta": Object {
+          "delete": false,
+        },
         "polls": Array [
           Object {
             "author": "",
@@ -390,6 +406,7 @@ exports[`view should match snapshot (id) 1`] = `
         "metaSetLoading": [MockFunction],
         "metaSetState": [MockFunction],
         "metaTimeoutError": [MockFunction],
+        "metaToggleDelete": [MockFunction],
         "pollAddOption": [MockFunction],
         "pollCastVote": [MockFunction],
         "pollRemoveOption": [MockFunction],
@@ -416,6 +433,9 @@ exports[`view should match snapshot (id) 1`] = `
           "search": "",
         },
         "loading": 0,
+        "meta": Object {
+          "delete": false,
+        },
         "polls": Array [
           Object {
             "author": "",
@@ -494,6 +514,7 @@ exports[`view should match snapshot (id) 1`] = `
         "metaSetLoading": [MockFunction],
         "metaSetState": [MockFunction],
         "metaTimeoutError": [MockFunction],
+        "metaToggleDelete": [MockFunction],
         "pollAddOption": [MockFunction],
         "pollCastVote": [MockFunction],
         "pollRemoveOption": [MockFunction],
@@ -520,6 +541,9 @@ exports[`view should match snapshot (id) 1`] = `
           "search": "",
         },
         "loading": 0,
+        "meta": Object {
+          "delete": false,
+        },
         "polls": Array [
           Object {
             "author": "",

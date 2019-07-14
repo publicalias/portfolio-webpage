@@ -34,6 +34,10 @@ const metaSetState = (merge, config) => ({
 
 const metaTimeoutError = () => ({ type: "META_TIMEOUT_ERROR" });
 
+//meta toggle delete
+
+const metaToggleDelete = () => ({ type: "META_TOGGLE_DELETE" });
+
 //exports
 
 module.exports = {
@@ -42,5 +46,6 @@ module.exports = {
   metaNoOp,
   metaSetLoading,
   metaSetState,
-  metaTimeoutError
+  metaTimeoutError,
+  metaToggleDelete
 };

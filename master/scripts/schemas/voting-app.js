@@ -41,12 +41,23 @@ const newPoll = initSchema({
   }
 });
 
-//new state
+//new state / new form
 
 const newState = initSchema({
+
+  //meta
+
   user: {},
+  errors: [],
+  loading: 0,
+  meta: { delete: false },
+
   polls: [],
+
+  //page
+
   list: { search: "" },
+
   form: {
     title: "",
     options: [],
@@ -54,13 +65,13 @@ const newState = initSchema({
     secret: false,
     confirm: false
   },
+
   view: {
     add: "",
     settings: false,
     confirm: false
-  },
-  errors: [],
-  loading: 0
+  }
+
 }, {
 
   user(val) {
@@ -74,17 +85,15 @@ const newState = initSchema({
     }
   },
 
-  polls(val) {
-    return val.map(newPoll);
-  },
-
   errors(val) {
     return val.map(newError);
+  },
+
+  polls(val) {
+    return val.map(newPoll);
   }
 
 });
-
-//new form
 
 const newForm = initSchema(newState().form);
 

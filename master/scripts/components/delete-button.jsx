@@ -3,7 +3,6 @@
 //local imports
 
 const { encodeAPICall } = require("../client-utils");
-const { useSetState } = require("../react-utils");
 
 //node modules
 
@@ -13,16 +12,12 @@ const React = require("react");
 
 const DeleteButton = (props) => {
 
-  const { actions: { metaAddErrors, metaSetLoading }, local: { root } } = props;
-
-  //state
-
-  const [state, setState] = useSetState({ confirm: false });
+  const { data: { meta }, actions: { metaAddErrors, metaSetLoading, metaToggleDelete }, local: { root } } = props;
 
   //events
 
   const handleToggle = () => {
-    setState({ confirm: !state.confirm });
+    metaToggleDelete();
   };
 
   const handleDelete = async () => {
@@ -49,7 +44,7 @@ const DeleteButton = (props) => {
 
   return (
     <div className="c-delete-button">
-      {state.confirm ? (
+      {meta.delete ? (
         <div>
           <p className="c-delete-button__dialog">This will delete your account and any data associated with it, including any content you have created and any interactions with other users' content. It will be like you never existed. Are you sure you want to do this?</p>
           <div className="c-delete-button__choice-box">

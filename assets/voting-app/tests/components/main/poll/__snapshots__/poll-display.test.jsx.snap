@@ -26,6 +26,7 @@ exports[`poll display should match snapshot 1`] = `
         "metaSetLoading": [MockFunction],
         "metaSetState": [MockFunction],
         "metaTimeoutError": [MockFunction],
+        "metaToggleDelete": [MockFunction],
         "pollAddOption": [MockFunction],
         "pollCastVote": [MockFunction],
         "pollRemoveOption": [MockFunction],
@@ -52,6 +53,9 @@ exports[`poll display should match snapshot 1`] = `
           "search": "",
         },
         "loading": 0,
+        "meta": Object {
+          "delete": false,
+        },
         "polls": Array [],
         "user": Object {},
         "view": Object {
@@ -93,6 +97,7 @@ exports[`poll display should match snapshot 1`] = `
         "metaSetLoading": [MockFunction],
         "metaSetState": [MockFunction],
         "metaTimeoutError": [MockFunction],
+        "metaToggleDelete": [MockFunction],
         "pollAddOption": [MockFunction],
         "pollCastVote": [MockFunction],
         "pollRemoveOption": [MockFunction],
@@ -119,6 +124,9 @@ exports[`poll display should match snapshot 1`] = `
           "search": "",
         },
         "loading": 0,
+        "meta": Object {
+          "delete": false,
+        },
         "polls": Array [],
         "user": Object {},
         "view": Object {
