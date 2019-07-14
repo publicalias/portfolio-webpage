@@ -19,6 +19,7 @@ const { MemoryRouter } = require("react-router-dom");
 //setup
 
 beforeAll(reactTests.setup);
+beforeEach(reactTests.inject(ListItem, { lib: { getVotes: jest.fn(() => "0 Votes") } }));
 
 //list item
 
@@ -36,16 +37,8 @@ describe("list item", () => {
     })
   });
 
-  const testVotes = (mag) => testProps(null, { users: { voted: 10 ** mag } });
-
   it("should match snapshot (default)", () => testProps());
 
   it("should match snapshot (authenticated)", () => testProps({ user: newUser() }));
-
-  it("should match snapshot (10^3 votes)", () => testVotes(3));
-
-  it("should match snapshot (10^6 votes)", () => testVotes(6));
-
-  it("should match snapshot (10^9 votes)", () => testVotes(9));
 
 });

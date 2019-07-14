@@ -13,15 +13,20 @@ const React = require("react");
 
 const PollOptions = (props) => {
 
-  const { data: { user, polls }, local } = props;
+  const { data: { user, polls }, local: { poll, role } } = props;
 
-  const { poll, role } = local;
+  const { jsx: { PollInput, PollList } } = PollOptions.injected;
 
   //render
 
   const canAdd = user.type === "auth" && (role === "form" || polls[0] && polls[0].id === poll.id);
 
   const hasOptions = poll.options.length > 0;
+
+  const local = {
+    poll,
+    role
+  };
 
   return (canAdd || hasOptions) && (
     <div className="c-poll-options">
@@ -30,6 +35,13 @@ const PollOptions = (props) => {
     </div>
   );
 
+};
+
+PollOptions.injected = {
+  jsx: {
+    PollInput,
+    PollList
+  }
 };
 
 //exports

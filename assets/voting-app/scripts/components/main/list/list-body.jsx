@@ -18,6 +18,8 @@ const ListBody = (props) => {
 
   const { data: { user, polls }, local: { handleScroll } } = props;
 
+  const { jsx: { ListItem } } = ListBody.injected;
+
   //render
 
   const keyGen = initKeyGen();
@@ -64,6 +66,8 @@ const ListBody = (props) => {
   );
 
 };
+
+ListBody.injected = { jsx: { ListItem } };
 
 //exports
 

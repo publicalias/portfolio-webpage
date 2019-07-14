@@ -21,9 +21,8 @@ const usersCol = () => db.collection("auth/users");
 //setup
 
 beforeAll(mongoTests.setup);
+beforeEach(mongoTests.reset(pollsCol, usersCol));
 afterAll(mongoTests.teardown);
-
-afterEach(mongoTests.reset(pollsCol, usersCol));
 
 //poll add option
 

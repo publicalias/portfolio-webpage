@@ -3,13 +3,12 @@
 //local imports
 
 const { testMock } = require("./meta-tests");
+const { deepCopy } = require("../utilities");
 
 //node modules
 
 const Adapter = require("enzyme-adapter-react-16");
 const React = require("react");
-
-const { useRef } = React;
 
 const { configure, mount, shallow } = require("enzyme");
 
@@ -40,20 +39,11 @@ const initTestEvent = (render, event, merge) => async (qa, dataList, ...fnList) 
 const initTestRef = (Component, init) => {
 
   const spied = {
-
-    ref: null,
-
-    useRef: jest.fn(() => {
-
-      spied.ref = useRef(init);
-
-      return spied.ref;
-
-    })
-
+    ref: { current: init },
+    useRef: jest.fn(() => spied.ref)
   };
 
-  Component.injected.useRef = spied.useRef;
+  Component.injected.lib.useRef = spied.useRef;
 
   return spied;
 
@@ -129,9 +119,51 @@ const initTestWrapper = (newState, actions) => (UUT, Context) => {
 //react tests
 
 const reactTests = {
+
+  inject(Component, overwrite = {}) {
+
+    const nameFn = (fn, name) => {
+
+      Object.defineProperty(fn, "name", { value: name });
+
+      return fn;
+
+    };
+
+    const setVal = (k, v, l) => {
+
+      const w = overwrite[k] && overwrite[k][l];
+
+      const stub = nameFn(() => null, l);
+
+      if (w !== "ignore") {
+        v[l] = w || (k === "jsx" ? stub : jest.fn());
+      }
+
+    };
+
+    return () => {
+
+      if (!Component.injected) {
+        return;
+      }
+
+      Component.original = deepCopy(Component.injected);
+
+      for (const [k, v] of Object.entries(Component.injected)) {
+        for (const l of Object.keys(v)) {
+          setVal(k, v, l);
+        }
+      }
+
+    };
+
+  },
+
   setup() {
     configure({ adapter: new Adapter() });
   }
+
 };
 
 //exports

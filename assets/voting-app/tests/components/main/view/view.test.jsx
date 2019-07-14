@@ -2,7 +2,6 @@
 
 //local imports
 
-const PollChart = require("../../../../scripts/components/main/poll/poll-chart");
 const View = require("../../../../scripts/components/main/view/view");
 
 const { testWrapper } = require("../../../test-helpers");
@@ -16,6 +15,7 @@ const { initTestSnapshot, reactTests } = require("test-helpers/react-tests");
 //setup
 
 beforeAll(reactTests.setup);
+beforeEach(reactTests.inject(View));
 
 //view
 
@@ -31,8 +31,6 @@ describe("view", () => {
 
   it("should call viewClearState on load (default)", () => {
 
-    PollChart.injected.renderChart = jest.fn();
-
     const { props, wrapper } = testMount();
 
     const { actions: { viewClearState } } = props;
@@ -46,8 +44,6 @@ describe("view", () => {
   });
 
   it("should call viewClearState and metaGetPolls on load (id)", () => {
-
-    PollChart.injected.renderChart = jest.fn();
 
     const { props, wrapper } = testMount(null, null, { location: { search: "?id=id-a" } });
 

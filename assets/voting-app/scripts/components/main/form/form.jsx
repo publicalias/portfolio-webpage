@@ -18,6 +18,8 @@ const Form = (props) => {
 
   const { actions: { formClearState }, data: { form } } = props;
 
+  const { jsx: { FormMenu, PollDisplay, PollOptions } } = Form.injected;
+
   //lifecycle
 
   useEffect(formClearState, []);
@@ -37,6 +39,14 @@ const Form = (props) => {
     </div>
   );
 
+};
+
+Form.injected = {
+  jsx: {
+    FormMenu,
+    PollDisplay,
+    PollOptions
+  }
 };
 
 //exports

@@ -22,6 +22,8 @@ const ListItem = (props) => {
 
   const { data: { user }, local: { poll } } = props;
 
+  const { jsx: { Link, PollToggle }, lib: { getVotes } } = ListItem.injected;
+
   //render
 
   const auth = user.type === "auth";
@@ -61,6 +63,14 @@ const ListItem = (props) => {
     </tr>
   );
 
+};
+
+ListItem.injected = {
+  jsx: {
+    Link,
+    PollToggle
+  },
+  lib: { getVotes }
 };
 
 //exports

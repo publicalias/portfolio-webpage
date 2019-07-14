@@ -16,6 +16,8 @@ const Sidebar = (props) => {
 
   const { actions: { metaSetLoading }, data: { user } } = props;
 
+  const { jsx: { DeleteButton } } = Sidebar.injected;
+
   //utilities
 
   const auth = user.type === "auth";
@@ -63,6 +65,8 @@ const Sidebar = (props) => {
   );
 
 };
+
+Sidebar.injected = { jsx: { DeleteButton } };
 
 //exports
 

@@ -11,13 +11,26 @@ const React = require("react");
 
 //poll display
 
-const PollDisplay = (props) => (
-  <div className="c-poll-display">
-    <PollTitle {...props} />
-    <hr />
-    <PollChart {...props} />
-  </div>
-);
+const PollDisplay = (props) => {
+
+  const { jsx: { PollChart, PollTitle } } = PollDisplay.injected;
+
+  return (
+    <div className="c-poll-display">
+      <PollTitle {...props} />
+      <hr />
+      <PollChart {...props} />
+    </div>
+  );
+
+};
+
+PollDisplay.injected = {
+  jsx: {
+    PollChart,
+    PollTitle
+  }
+};
 
 //exports
 

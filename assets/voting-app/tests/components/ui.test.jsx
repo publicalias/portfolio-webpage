@@ -2,7 +2,6 @@
 
 //local imports
 
-const List = require("../../scripts/components/main/list/list");
 const UI = require("../../scripts/components/ui");
 
 const { testWrapper } = require("../test-helpers");
@@ -19,6 +18,7 @@ const { MemoryRouter } = require("react-router-dom");
 //setup
 
 beforeAll(reactTests.setup);
+beforeEach(reactTests.inject(UI));
 
 //ui
 
@@ -31,8 +31,6 @@ describe("ui", () => {
   it("should match snapshot", () => testSnapshot());
 
   it("should call metaGetUser on load", () => {
-
-    List.injected.select = jest.fn(() => ({}));
 
     const { props, wrapper } = testMount();
 

@@ -24,7 +24,7 @@ const List = (props) => {
 
   const { actions: { listClearState, metaGetPolls }, data: { polls }, location } = props;
 
-  const { injected: { scrollInfo, select, useRef } } = List;
+  const { jsx: { ListBody, ListMenu }, lib: { scrollInfo, select, useRef } } = List.injected;
 
   //utilities
 
@@ -87,9 +87,15 @@ const List = (props) => {
 };
 
 List.injected = {
-  scrollInfo,
-  select,
-  useRef
+  jsx: {
+    ListBody,
+    ListMenu
+  },
+  lib: {
+    scrollInfo,
+    select,
+    useRef
+  }
 };
 
 //exports

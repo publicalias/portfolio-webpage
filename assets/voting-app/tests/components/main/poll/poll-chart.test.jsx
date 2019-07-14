@@ -15,6 +15,7 @@ const { initTestSnapshot, reactTests } = require("test-helpers/react-tests");
 //setup
 
 beforeAll(reactTests.setup);
+beforeEach(reactTests.inject(PollChart, { lib: { rngInt: jest.fn(() => 0) } }));
 
 //poll chart
 
@@ -42,10 +43,7 @@ describe("poll chart (load and poll.options)", () => {
 
   const testLoad = (role) => {
 
-    const { renderChart, rngInt } = Object.assign(PollChart.injected, {
-      renderChart: jest.fn(),
-      rngInt: jest.fn(() => 0)
-    });
+    const { lib: { renderChart, rngInt } } = PollChart.injected;
 
     const { wrapper } = testMount(null, {
       poll: role === "form" ? newForm() : newPoll(),

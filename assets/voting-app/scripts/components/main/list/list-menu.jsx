@@ -18,6 +18,8 @@ const ListMenu = (props) => {
 
   const { actions: { listSetSearch }, data: { list }, history, location } = props;
 
+  const { jsx: { SearchBar } } = ListMenu.injected;
+
   //events
 
   const handleSortNew = () => {
@@ -64,6 +66,8 @@ const ListMenu = (props) => {
   );
 
 };
+
+ListMenu.injected = { jsx: { SearchBar } };
 
 //exports
 

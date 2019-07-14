@@ -24,7 +24,7 @@ const PollInput = (props) => {
     local: { poll, role }
   } = props;
 
-  const { injected: { submitKeys } } = PollInput;
+  const { lib: { submitKeys } } = PollInput.injected;
 
   //events
 
@@ -74,7 +74,7 @@ const PollInput = (props) => {
 
 };
 
-PollInput.injected = { submitKeys };
+PollInput.injected = { lib: { submitKeys } };
 
 //exports
 

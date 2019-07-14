@@ -16,6 +16,7 @@ const { deepCopy } = require("utilities");
 //setup
 
 beforeAll(reactTests.setup);
+beforeEach(reactTests.inject(ViewMenu));
 
 //view menu
 

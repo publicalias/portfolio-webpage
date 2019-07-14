@@ -14,6 +14,7 @@ const { initTestEvent, initTestSnapshot, reactTests } = require("test-helpers/re
 //setup
 
 beforeAll(reactTests.setup);
+beforeEach(reactTests.inject(PollList, { lib: { chartColor: jest.fn(() => "rgba(0, 0, 0, 0.75)") } }));
 
 //poll list
 

@@ -15,7 +15,7 @@ const { initTestEvent, initTestSnapshot, reactTests } = require("test-helpers/re
 
 const testLoad = (render, args) => {
 
-  const { submitKeys } = Object.assign(PollInput.injected, { submitKeys: jest.fn() });
+  const { lib: { submitKeys } } = PollInput.injected;
 
   const { wrapper } = render();
 
@@ -38,10 +38,7 @@ const testChange = (render, type) => {
 //setup
 
 beforeAll(reactTests.setup);
-
-beforeEach(() => {
-  PollInput.injected.submitKeys = jest.fn();
-});
+beforeEach(reactTests.inject(PollInput));
 
 //poll input
 

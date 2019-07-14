@@ -23,6 +23,8 @@ const PollList = (props) => {
     local: { poll, role }
   } = props;
 
+  const { lib: { chartColor } } = PollList.injected;
+
   //events
 
   const handleVote = (text) => () => {
@@ -80,6 +82,8 @@ const PollList = (props) => {
   );
 
 };
+
+PollList.injected = { lib: { chartColor } };
 
 //exports
 

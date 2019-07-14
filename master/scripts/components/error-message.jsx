@@ -19,18 +19,23 @@ const ErrorMessage = (props) => {
 
   //utilities
 
-  const DOMError = select(".js-hide-error");
-
   const error = errors[0];
 
   const fadeIn = () => {
+
+    const DOMError = select(".js-hide-error");
+
     if (error && (DOMError.class("is-hidden") || DOMError.css().opacity === "0")) {
       DOMError.class("is-hidden", true, false);
       DOMError.animate({ opacity: 1 });
     }
+
   };
 
   const fadeOut = () => {
+
+    const DOMError = select(".js-hide-error");
+
     DOMError.animate({ opacity: 0 }, () => {
 
       if (errors.length === 1) {
@@ -40,6 +45,7 @@ const ErrorMessage = (props) => {
       metaCloseError();
 
     });
+
   };
 
   //events

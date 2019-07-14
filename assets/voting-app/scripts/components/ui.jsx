@@ -22,6 +22,8 @@ const UI = (props) => {
 
   const { actions: { metaGetUser } } = props;
 
+  const { jsx: { Form, List, NavBar, Route, Sidebar, View } } = UI.injected;
+
   //lifecycle
 
   useEffect(() => {
@@ -45,6 +47,17 @@ const UI = (props) => {
     </div>
   );
 
+};
+
+UI.injected = {
+  jsx: {
+    Form,
+    List,
+    NavBar,
+    Route,
+    Sidebar,
+    View
+  }
 };
 
 //exports

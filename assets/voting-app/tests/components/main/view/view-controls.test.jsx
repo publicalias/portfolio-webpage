@@ -16,6 +16,7 @@ const { initTestEvent, initTestSnapshot, reactTests } = require("test-helpers/re
 //setup
 
 beforeAll(reactTests.setup);
+beforeEach(reactTests.inject(ViewControls));
 
 //view controls
 

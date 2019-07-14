@@ -17,6 +17,13 @@ const { deepCopy } = require("utilities");
 //setup
 
 beforeAll(reactTests.setup);
+beforeEach(reactTests.inject(List, {
+  jsx: { ListBody: "ignore" },
+  lib: {
+    select: jest.fn(() => ({})),
+    useRef: jest.fn(() => ({}))
+  }
+}));
 
 //list
 
@@ -52,7 +59,7 @@ describe("list (load and location.search)", () => {
 
   it("should reset scrollTop", () => {
 
-    const { select } = Object.assign(List.injected, { select: jest.fn(() => ({})) });
+    const { lib: { select } } = List.injected;
 
     return testEffect(() => {
 
@@ -69,11 +76,9 @@ describe("list (load and location.search)", () => {
 
   it("should reset ref", () => {
 
-    const spied = initTestRef(List);
+    const { ref, useRef } = initTestRef(List);
 
     return testEffect(() => {
-
-      const { ref, useRef } = spied;
 
       testMock(useRef, [], [], []);
 
@@ -117,24 +122,16 @@ describe("list (scroll)", () => {
 
   const setupList = async (scrollVal, refVal, res) => {
 
-    const spied = initTestRef(List);
+    const { ref } = initTestRef(List);
 
-    Object.assign(List.injected, {
-
-      scrollInfo: jest.fn(() => scrollVal || {
-        view: 100,
-        bottom: 300
-      }),
-
-      select: jest.fn(() => ({}))
-
+    List.injected.lib.scrollInfo = jest.fn(() => scrollVal || {
+      view: 100,
+      bottom: 300
     });
 
     const { props, wrapper } = testMount(); //async
 
     const { actions: { metaGetPolls } } = props;
-
-    const { ref } = spied;
 
     await Promise.resolve();
 
@@ -143,16 +140,16 @@ describe("list (scroll)", () => {
     ref.current = newRef(refVal);
 
     return {
+      ref,
       props,
-      wrapper,
-      ref
+      wrapper
     };
 
   };
 
   const testScroll = async (fn, scrollVal, refVal, res) => {
 
-    const { props, wrapper, ref } = await setupList(scrollVal, refVal, res);
+    const { ref, props, wrapper } = await setupList(scrollVal, refVal, res);
 
     const { actions: { metaGetPolls } } = props;
 

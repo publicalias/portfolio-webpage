@@ -15,6 +15,7 @@ const { initTestSnapshot, reactTests } = require("test-helpers/react-tests");
 //setup
 
 beforeAll(reactTests.setup);
+beforeEach(reactTests.inject(PollOptions));
 
 //poll options
 

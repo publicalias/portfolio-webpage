@@ -20,7 +20,7 @@ const PollChart = (props) => {
 
   const { local: { poll, role } } = props;
 
-  const { injected: { renderChart, rngInt } } = PollChart;
+  const { lib: { renderChart, rngInt } } = PollChart.injected;
 
   //lifecycle
 
@@ -39,8 +39,10 @@ const PollChart = (props) => {
 };
 
 PollChart.injected = {
-  renderChart,
-  rngInt
+  lib: {
+    renderChart,
+    rngInt
+  }
 };
 
 //exports

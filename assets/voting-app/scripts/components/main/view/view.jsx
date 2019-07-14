@@ -22,6 +22,8 @@ const View = (props) => {
 
   const { actions: { metaGetPolls, viewClearState }, data: { polls }, location } = props;
 
+  const { jsx: { PollDisplay, PollOptions, ViewMenu } } = View.injected;
+
   //utilities
 
   const id = new URLSearchParams(location.search).get("id");
@@ -55,6 +57,14 @@ const View = (props) => {
     </div>
   );
 
+};
+
+View.injected = {
+  jsx: {
+    PollDisplay,
+    PollOptions,
+    ViewMenu
+  }
 };
 
 //exports

@@ -24,7 +24,7 @@ const { useEffect } = React;
 
 const App = (props) => {
 
-  const { injected: { UI } } = App;
+  const { jsx: { UI } } = App.injected;
 
   //lifecycle
 
@@ -43,6 +43,8 @@ const App = (props) => {
   ];
 
 };
+
+App.injected = { jsx: { UI: null } };
 
 const getContext = (actions) => {
 
@@ -75,7 +77,7 @@ const ReduxApp = (props) => {
   const middleware = applyMiddleware(ReduxThunk);
   const store = createStore(reducer, middleware);
 
-  App.injected = { UI };
+  App.injected.jsx.UI = UI;
 
   //render
 

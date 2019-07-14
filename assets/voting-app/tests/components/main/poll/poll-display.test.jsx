@@ -19,6 +19,7 @@ const testSnapshot = initTestSnapshot(testShallow);
 //setup
 
 beforeAll(reactTests.setup);
+beforeEach(reactTests.inject(PollDisplay));
 
 //poll display
 

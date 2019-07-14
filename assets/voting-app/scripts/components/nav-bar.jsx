@@ -16,6 +16,8 @@ const NavBar = (props) => {
 
   const { data: { user } } = props;
 
+  const { jsx: { Link } } = NavBar.injected;
+
   //utilities
 
   const auth = user.type === "auth";
@@ -60,6 +62,8 @@ const NavBar = (props) => {
   );
 
 };
+
+NavBar.injected = { jsx: { Link } };
 
 //exports
 

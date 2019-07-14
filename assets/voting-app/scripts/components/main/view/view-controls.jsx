@@ -14,6 +14,8 @@ const ViewControls = (props) => {
 
   const { data: { user }, local: { poll } } = props;
 
+  const { jsx: { PollToggle } } = ViewControls.injected;
+
   //events
 
   const handleShare = () => {
@@ -51,6 +53,8 @@ const ViewControls = (props) => {
   );
 
 };
+
+ViewControls.injected = { jsx: { PollToggle } };
 
 //exports
 

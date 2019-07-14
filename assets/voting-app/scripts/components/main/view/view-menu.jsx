@@ -15,6 +15,8 @@ const ViewMenu = (props) => {
 
   const { actions: { viewToggleSettings }, data: { user, view }, local: { poll } } = props;
 
+  const { jsx: { ViewControls, ViewSettings } } = ViewMenu.injected;
+
   //events
 
   const handleSettings = () => {
@@ -39,6 +41,13 @@ const ViewMenu = (props) => {
     </div>
   );
 
+};
+
+ViewMenu.injected = {
+  jsx: {
+    ViewControls,
+    ViewSettings
+  }
 };
 
 //exports
