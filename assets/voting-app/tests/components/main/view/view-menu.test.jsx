@@ -13,6 +13,10 @@ const { newPoll } = require("schemas/voting-app");
 const { initTestEvent, initTestSnapshot, reactTests } = require("test-helpers/react-tests");
 const { deepCopy } = require("utilities");
 
+//utilities
+
+const { testMount, testShallow } = testWrapper(ViewMenu);
+
 //setup
 
 beforeAll(reactTests.setup);
@@ -22,10 +26,9 @@ beforeEach(reactTests.inject(ViewMenu));
 
 describe("view menu", () => {
 
-  const { testMount, testShallow } = testWrapper(ViewMenu);
+  const testSnapshot = initTestSnapshot(testShallow);
 
   const testClick = initTestEvent(testMount, "click");
-  const testSnapshot = initTestSnapshot(testShallow);
 
   const dataList = [{ user: newUser({ id: "id-a" }) }, { poll: newPoll({ users: { created: "id-a" } }) }];
 

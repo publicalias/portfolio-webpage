@@ -11,6 +11,10 @@ const { testWrapper } = require("../../../test-helpers");
 const { testMock } = require("test-helpers/meta-tests");
 const { initTestSnapshot, reactTests } = require("test-helpers/react-tests");
 
+//utilities
+
+const { testMount, testShallow } = testWrapper(Form);
+
 //setup
 
 beforeAll(reactTests.setup);
@@ -19,8 +23,6 @@ beforeEach(reactTests.inject(Form));
 //form
 
 describe("form", () => {
-
-  const { testMount, testShallow } = testWrapper(Form);
 
   const testSnapshot = initTestSnapshot(testShallow);
 

@@ -11,6 +11,10 @@ const { testCreateDelete, testWrapper } = require("../../../test-helpers");
 const { newForm } = require("schemas/voting-app");
 const { initTestEvent, initTestSnapshot, reactTests } = require("test-helpers/react-tests");
 
+//utilities
+
+const { testMount, testShallow } = testWrapper(FormMenu);
+
 //setup
 
 beforeAll(reactTests.setup);
@@ -19,8 +23,6 @@ beforeEach(reactTests.inject(FormMenu));
 //form menu
 
 describe("form menu", () => {
-
-  const { testShallow } = testWrapper(FormMenu);
 
   const testSnapshot = initTestSnapshot(testShallow);
 
@@ -34,8 +36,6 @@ describe("form menu", () => {
 
 describe("form menu (create)", () => {
 
-  const { testMount } = testWrapper(FormMenu);
-
   const testCreate = (res) => testCreateDelete(testMount, [], ".qa-create-poll", res, ["metaCreatePoll", [newForm()]]);
 
   it("should call metaCreatePoll and history.push on click (success)", () => testCreate({}));
@@ -47,8 +47,6 @@ describe("form menu (create)", () => {
 });
 
 describe("form menu (click)", () => {
-
-  const { testMount } = testWrapper(FormMenu);
 
   const testClick = initTestEvent(testMount, "click");
 

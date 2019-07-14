@@ -11,6 +11,10 @@ const { testWrapper } = require("../test-helpers");
 const { newUser } = require("schemas/master");
 const { initTestSnapshot, reactTests } = require("test-helpers/react-tests");
 
+//utilities
+
+const { testShallow } = testWrapper(NavBar);
+
 //setup
 
 beforeAll(reactTests.setup);
@@ -19,8 +23,6 @@ beforeEach(reactTests.inject(NavBar));
 //nav bar
 
 describe("nav bar", () => {
-
-  const { testShallow } = testWrapper(NavBar);
 
   const testSnapshot = initTestSnapshot(testShallow);
 

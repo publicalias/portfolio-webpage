@@ -11,6 +11,10 @@ const { testCreateDelete, testReload, testWrapper } = require("../../../test-hel
 const { newPoll } = require("schemas/voting-app");
 const { initTestEvent, initTestSnapshot, reactTests } = require("test-helpers/react-tests");
 
+//utilities
+
+const { testMount, testShallow } = testWrapper(ViewSettings);
+
 //setup
 
 beforeAll(reactTests.setup);
@@ -19,8 +23,6 @@ beforeEach(reactTests.inject(ViewSettings));
 //view settings
 
 describe("view settings", () => {
-
-  const { testShallow } = testWrapper(ViewSettings);
 
   const testSnapshot = initTestSnapshot(testShallow);
 
@@ -33,8 +35,6 @@ describe("view settings", () => {
 });
 
 describe("view settings (delete)", () => {
-
-  const { testMount } = testWrapper(ViewSettings);
 
   const testDelete = (res) => {
 
@@ -53,8 +53,6 @@ describe("view settings (delete)", () => {
 });
 
 describe("view settings (click)", () => {
-
-  const { testMount } = testWrapper(ViewSettings);
 
   const testClick = initTestEvent(testMount, "click");
 

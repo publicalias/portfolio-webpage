@@ -12,6 +12,10 @@ const { newUser } = require("schemas/master");
 const { testMock } = require("test-helpers/meta-tests");
 const { initTestEvent, initTestSnapshot, reactTests } = require("test-helpers/react-tests");
 
+//utilities
+
+const { testMount, testShallow } = testWrapper(Sidebar);
+
 //setup
 
 beforeAll(reactTests.setup);
@@ -20,8 +24,6 @@ beforeEach(reactTests.inject(Sidebar));
 //sidebar
 
 describe("sidebar", () => {
-
-  const { testShallow } = testWrapper(Sidebar);
 
   const testSnapshot = initTestSnapshot(testShallow);
 
@@ -32,8 +34,6 @@ describe("sidebar", () => {
 });
 
 describe("sidebar (auth)", () => {
-
-  const { testMount } = testWrapper(Sidebar);
 
   const testClick = initTestEvent(testMount, "click");
 

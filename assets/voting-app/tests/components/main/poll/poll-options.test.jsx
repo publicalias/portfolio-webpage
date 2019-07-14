@@ -12,6 +12,10 @@ const { newUser } = require("schemas/master");
 const { newForm, newPoll } = require("schemas/voting-app");
 const { initTestSnapshot, reactTests } = require("test-helpers/react-tests");
 
+//utilities
+
+const { testShallow } = testWrapper(PollOptions);
+
 //setup
 
 beforeAll(reactTests.setup);
@@ -20,8 +24,6 @@ beforeEach(reactTests.inject(PollOptions));
 //poll options
 
 describe("poll options", () => {
-
-  const { testShallow } = testWrapper(PollOptions);
 
   const testSnapshot = initTestSnapshot(testShallow);
 

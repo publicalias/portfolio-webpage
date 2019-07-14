@@ -12,6 +12,10 @@ const { newUser } = require("schemas/master");
 const { newPoll } = require("schemas/voting-app");
 const { initTestSnapshot, reactTests } = require("test-helpers/react-tests");
 
+//utilities
+
+const { testMount, testShallow } = testWrapper(PollToggle);
+
 //setup
 
 beforeAll(reactTests.setup);
@@ -20,8 +24,6 @@ beforeEach(reactTests.inject(PollToggle));
 //poll toggle
 
 describe("poll toggle", () => {
-
-  const { testShallow } = testWrapper(PollToggle);
 
   const testSnapshot = initTestSnapshot(testShallow);
 
@@ -47,8 +49,6 @@ describe("poll toggle", () => {
 });
 
 describe("poll toggle (click)", () => {
-
-  const { testMount } = testWrapper(PollToggle);
 
   const testToggle = (role, qa, type, list) => {
 

@@ -16,6 +16,10 @@ const { initTestSnapshot, reactTests } = require("test-helpers/react-tests");
 
 const { MemoryRouter } = require("react-router-dom");
 
+//utilities
+
+const { testShallow } = testWrapper(ListItem, MemoryRouter);
+
 //setup
 
 beforeAll(reactTests.setup);
@@ -24,8 +28,6 @@ beforeEach(reactTests.inject(ListItem, { lib: { getVotes: jest.fn(() => "0 Votes
 //list item
 
 describe("list item", () => {
-
-  const { testShallow } = testWrapper(ListItem, MemoryRouter);
 
   const testSnapshot = initTestSnapshot(testShallow);
 

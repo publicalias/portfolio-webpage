@@ -13,6 +13,10 @@ const { newPoll } = require("schemas/voting-app");
 const { testMock } = require("test-helpers/meta-tests");
 const { initTestEvent, initTestSnapshot, reactTests } = require("test-helpers/react-tests");
 
+//utilities
+
+const { testMount, testShallow } = testWrapper(ViewControls);
+
 //setup
 
 beforeAll(reactTests.setup);
@@ -22,9 +26,8 @@ beforeEach(reactTests.inject(ViewControls));
 
 describe("view controls", () => {
 
-  const { testMount, testShallow } = testWrapper(ViewControls);
-
   const testSnapshot = initTestSnapshot(testShallow);
+
   const testClick = initTestEvent(testMount, "click");
 
   it("should match snapshot (default)", () => testSnapshot(null, { poll: newPoll() }));

@@ -11,6 +11,10 @@ const { testWrapper } = require("../../../test-helpers");
 const { testMock } = require("test-helpers/meta-tests");
 const { initTestEvent, initTestSnapshot, reactTests } = require("test-helpers/react-tests");
 
+//utilities
+
+const { testMount, testShallow } = testWrapper(ListMenu);
+
 //setup
 
 beforeAll(reactTests.setup);
@@ -20,9 +24,8 @@ beforeEach(reactTests.inject(ListMenu, { jsx: { SearchBar: "ignore" } }));
 
 describe("list menu", () => {
 
-  const { testMount, testShallow } = testWrapper(ListMenu);
-
   const testSnapshot = initTestSnapshot(testShallow);
+
   const testChange = initTestEvent(testMount, "change", { target: { value: "Apple" } });
 
   it("should match snapshot (default)", () => testSnapshot());
@@ -34,8 +37,6 @@ describe("list menu", () => {
 });
 
 describe("list menu (search)", () => {
-
-  const { testMount } = testWrapper(ListMenu);
 
   const testClick = initTestEvent(testMount, "click");
 

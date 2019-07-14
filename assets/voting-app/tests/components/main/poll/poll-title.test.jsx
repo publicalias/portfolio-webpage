@@ -12,6 +12,10 @@ const { newUser } = require("schemas/master");
 const { newForm, newPoll } = require("schemas/voting-app");
 const { initTestEvent, initTestSnapshot, reactTests } = require("test-helpers/react-tests");
 
+//utilities
+
+const { testMount, testShallow } = testWrapper(PollTitle);
+
 //setup
 
 beforeAll(reactTests.setup);
@@ -20,8 +24,6 @@ beforeEach(reactTests.inject(PollTitle));
 //poll title
 
 describe("poll title", () => {
-
-  const { testShallow } = testWrapper(PollTitle);
 
   const testSnapshot = initTestSnapshot(testShallow);
 
@@ -64,8 +66,6 @@ describe("poll title", () => {
 });
 
 describe("poll title (input)", () => {
-
-  const { testMount } = testWrapper(PollTitle);
 
   const testChange = initTestEvent(testMount, "change", { target: { value: "Title A" } });
 

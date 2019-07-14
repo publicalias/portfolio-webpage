@@ -14,6 +14,15 @@ const { mockResults, testMock } = require("test-helpers/meta-tests");
 const { initTestRef, initTestSnapshot, reactTests } = require("test-helpers/react-tests");
 const { deepCopy } = require("utilities");
 
+//utilities
+
+const { testMount, testShallow } = testWrapper(List);
+
+const newRef = initSchema({
+  end: false,
+  pending: false
+});
+
 //setup
 
 beforeAll(reactTests.setup);
@@ -29,8 +38,6 @@ beforeEach(reactTests.inject(List, {
 
 describe("list", () => {
 
-  const { testShallow } = testWrapper(List);
-
   const testSnapshot = initTestSnapshot(testShallow);
 
   it("should match snapshot", () => testSnapshot());
@@ -38,8 +45,6 @@ describe("list", () => {
 });
 
 describe("list (load and location.search)", () => {
-
-  const { testMount } = testWrapper(List);
 
   const testEffect = async (fn) => {
 
@@ -103,13 +108,6 @@ describe("list (load and location.search)", () => {
 });
 
 describe("list (scroll)", () => {
-
-  const { testMount } = testWrapper(List);
-
-  const newRef = initSchema({
-    end: false,
-    pending: false
-  });
 
   const initTestFn = (refOneVal, refTwoVal, call) => (metaGetPolls, refOne, refTwo) => {
 

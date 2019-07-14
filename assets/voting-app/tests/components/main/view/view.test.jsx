@@ -12,6 +12,10 @@ const { newPoll } = require("schemas/voting-app");
 const { testMock } = require("test-helpers/meta-tests");
 const { initTestSnapshot, reactTests } = require("test-helpers/react-tests");
 
+//utilities
+
+const { testMount, testShallow } = testWrapper(View);
+
 //setup
 
 beforeAll(reactTests.setup);
@@ -20,8 +24,6 @@ beforeEach(reactTests.inject(View));
 //view
 
 describe("view", () => {
-
-  const { testMount, testShallow } = testWrapper(View);
 
   const testSnapshot = initTestSnapshot(testShallow);
 

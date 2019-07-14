@@ -12,6 +12,10 @@ const { newForm, newOption, newPoll } = require("schemas/voting-app");
 const { testMock } = require("test-helpers/meta-tests");
 const { initTestSnapshot, reactTests } = require("test-helpers/react-tests");
 
+//utilities
+
+const { testMount, testShallow } = testWrapper(PollChart);
+
 //setup
 
 beforeAll(reactTests.setup);
@@ -20,8 +24,6 @@ beforeEach(reactTests.inject(PollChart, { lib: { rngInt: jest.fn(() => 0) } }));
 //poll chart
 
 describe("poll chart", () => {
-
-  const { testShallow } = testWrapper(PollChart);
 
   const testSnapshot = initTestSnapshot(testShallow);
 
@@ -38,8 +40,6 @@ describe("poll chart", () => {
 });
 
 describe("poll chart (load and poll.options)", () => {
-
-  const { testMount } = testWrapper(PollChart);
 
   const testLoad = (role) => {
 

@@ -11,6 +11,12 @@ const { initTestPoll, testReload, testWrapper } = require("../../../test-helpers
 const { newUser } = require("schemas/master");
 const { initTestEvent, initTestSnapshot, reactTests } = require("test-helpers/react-tests");
 
+//utilities
+
+const { testMount, testShallow } = testWrapper(PollList);
+
+const testSnapshot = initTestSnapshot(testShallow);
+
 //setup
 
 beforeAll(reactTests.setup);
@@ -20,9 +26,6 @@ beforeEach(reactTests.inject(PollList, { lib: { chartColor: jest.fn(() => "rgba(
 
 describe("poll list (form)", () => {
 
-  const { testShallow } = testWrapper(PollList);
-
-  const testSnapshot = initTestSnapshot(testShallow);
   const testForm = initTestPoll(testSnapshot, "form");
 
   it("should match snapshot (default)", () => testForm());
@@ -35,9 +38,6 @@ describe("poll list (form)", () => {
 
 describe("poll list (view)", () => {
 
-  const { testShallow } = testWrapper(PollList);
-
-  const testSnapshot = initTestSnapshot(testShallow);
   const testView = initTestPoll(testSnapshot, "view");
 
   it("should match snapshot (default)", () => testView());
@@ -63,9 +63,8 @@ describe("poll list (view)", () => {
 
 describe("poll list (form, events)", () => {
 
-  const { testMount } = testWrapper(PollList);
-
   const testFormMount = initTestPoll(testMount, "form");
+
   const testClick = initTestEvent(testFormMount, "click");
 
   const dataList = [null, { options: ["Option A"] }];
@@ -83,8 +82,6 @@ describe("poll list (form, events)", () => {
 });
 
 describe("poll list (view, events)", () => {
-
-  const { testMount } = testWrapper(PollList);
 
   const testViewMount = initTestPoll(testMount, "view");
 

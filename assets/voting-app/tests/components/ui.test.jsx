@@ -15,6 +15,10 @@ const { initTestSnapshot, reactTests } = require("test-helpers/react-tests");
 
 const { MemoryRouter } = require("react-router-dom");
 
+//utilities
+
+const { testMount, testShallow } = testWrapper(UI, MemoryRouter);
+
 //setup
 
 beforeAll(reactTests.setup);
@@ -23,8 +27,6 @@ beforeEach(reactTests.inject(UI));
 //ui
 
 describe("ui", () => {
-
-  const { testMount, testShallow } = testWrapper(UI, MemoryRouter);
 
   const testSnapshot = initTestSnapshot(testShallow);
 

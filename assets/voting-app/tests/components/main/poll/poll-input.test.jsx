@@ -13,6 +13,10 @@ const { initTestEvent, initTestSnapshot, reactTests } = require("test-helpers/re
 
 //utilities
 
+const { testMount, testShallow } = testWrapper(PollInput);
+
+const testSnapshot = initTestSnapshot(testShallow);
+
 const testLoad = (render, args) => {
 
   const { lib: { submitKeys } } = PollInput.injected;
@@ -44,11 +48,9 @@ beforeEach(reactTests.inject(PollInput));
 
 describe("poll input (form)", () => {
 
-  const { testMount, testShallow } = testWrapper(PollInput);
-
-  const testSnapshot = initTestSnapshot(testShallow);
   const testForm = initTestPoll(testSnapshot, "form");
   const testFormMount = initTestPoll(testMount, "form");
+
   const testClick = initTestEvent(testFormMount, "click");
 
   it("should match snapshot (default)", () => testForm());
@@ -71,9 +73,6 @@ describe("poll input (form)", () => {
 
 describe("poll input (view)", () => {
 
-  const { testMount, testShallow } = testWrapper(PollInput);
-
-  const testSnapshot = initTestSnapshot(testShallow);
   const testView = initTestPoll(testSnapshot, "view");
   const testViewMount = initTestPoll(testMount, "view");
 
