@@ -11,9 +11,9 @@ const viewSetAdd = (add) => ({
   add
 });
 
-//view toggle confirm
+//view toggle delete
 
-const viewToggleConfirm = () => ({ type: "VIEW_TOGGLE_CONFIRM" });
+const viewToggleDelete = () => ({ type: "VIEW_TOGGLE_DELETE" });
 
 //view toggle settings
 
@@ -24,6 +24,6 @@ const viewToggleSettings = () => ({ type: "VIEW_TOGGLE_SETTINGS" });
 module.exports = {
   viewClearState,
   viewSetAdd,
-  viewToggleConfirm,
+  viewToggleDelete,
   viewToggleSettings
 };

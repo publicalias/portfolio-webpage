@@ -59,13 +59,13 @@ test("reducer accepts FORM_SET_TITLE actions", () => {
 
 });
 
-//form toggle confirm
+//form toggle delete
 
-test("reducer accepts FORM_TOGGLE_CONFIRM actions", () => {
+test("reducer accepts FORM_TOGGLE_DELETE actions", () => {
 
-  const { formToggleConfirm } = actions;
+  const { formToggleDelete } = actions;
 
-  testReducer(formToggleConfirm(), null, { form: { confirm: true } });
+  testReducer(formToggleDelete(), null, { form: { delete: true } });
 
 });
 

@@ -13,16 +13,16 @@ const VIEW_CLEAR_STATE = (state) => deepCopy(state, { view: newState().view });
 
 const VIEW_SET_ADD = (state, { add }) => deepCopy(state, { view: { add } });
 
-//view toggle confirm
+//view toggle delete
 
-const VIEW_TOGGLE_CONFIRM = (state) => deepCopy(state, { view: { confirm: !state.view.confirm } });
+const VIEW_TOGGLE_DELETE = (state) => deepCopy(state, { view: { delete: !state.view.delete } });
 
 //view toggle settings
 
 const VIEW_TOGGLE_SETTINGS = (state) => deepCopy(state, {
   view: {
     settings: !state.view.settings,
-    confirm: false
+    delete: false
   }
 });
 
@@ -31,6 +31,6 @@ const VIEW_TOGGLE_SETTINGS = (state) => deepCopy(state, {
 module.exports = {
   VIEW_CLEAR_STATE,
   VIEW_SET_ADD,
-  VIEW_TOGGLE_CONFIRM,
+  VIEW_TOGGLE_DELETE,
   VIEW_TOGGLE_SETTINGS
 };

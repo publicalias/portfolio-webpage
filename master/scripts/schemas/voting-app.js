@@ -63,13 +63,13 @@ const newState = initSchema({
     options: [],
     add: "",
     secret: false,
-    confirm: false
+    delete: false
   },
 
   view: {
     add: "",
     settings: false,
-    confirm: false
+    delete: false
   }
 
 }, {

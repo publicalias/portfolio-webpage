@@ -28,7 +28,7 @@ describe("view settings", () => {
 
   it("should match snapshot (default)", () => testSnapshot(null, { poll: newPoll() }));
 
-  it("should match snapshot (confirm)", () => testSnapshot({ view: { confirm: true } }, { poll: newPoll() }));
+  it("should match snapshot (confirm)", () => testSnapshot({ view: { delete: true } }, { poll: newPoll() }));
 
   it("should match snapshot (secret)", () => testSnapshot(null, { poll: newPoll({ secret: true }) }));
 
@@ -38,7 +38,7 @@ describe("view settings (delete)", () => {
 
   const testDelete = (res) => {
 
-    const dataList = [{ view: { confirm: true } }, { poll: newPoll({ id: "id-a" }) }];
+    const dataList = [{ view: { delete: true } }, { poll: newPoll({ id: "id-a" }) }];
 
     return testCreateDelete(testMount, dataList, ".qa-delete-poll", res, ["metaDeletePoll", ["id-a"]]);
 
@@ -56,19 +56,19 @@ describe("view settings (click)", () => {
 
   const testClick = initTestEvent(testMount, "click");
 
-  it("should call viewToggleConfirm on click (delete)", () => {
+  it("should call viewToggleDelete on click (delete)", () => {
 
     const dataList = [null, { poll: newPoll() }];
 
-    return testClick(".qa-confirm-true", dataList, ["viewToggleConfirm", []]);
+    return testClick(".qa-confirm-true", dataList, ["viewToggleDelete", []]);
 
   });
 
-  it("should call viewToggleConfirm on click (no)", () => {
+  it("should call viewToggleDelete on click (no)", () => {
 
-    const dataList = [{ view: { confirm: true } }, { poll: newPoll() }];
+    const dataList = [{ view: { delete: true } }, { poll: newPoll() }];
 
-    return testClick(".qa-confirm-false", dataList, ["viewToggleConfirm", []]);
+    return testClick(".qa-confirm-false", dataList, ["viewToggleDelete", []]);
 
   });
 

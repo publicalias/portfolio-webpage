@@ -28,7 +28,7 @@ describe("form menu", () => {
 
   it("should match snapshot (default)", () => testSnapshot());
 
-  it("should match snapshot (confirm)", () => testSnapshot({ form: { confirm: true } }));
+  it("should match snapshot (confirm)", () => testSnapshot({ form: { delete: true } }));
 
   it("should match snapshot (secret)", () => testSnapshot({ form: { secret: true } }));
 
@@ -50,13 +50,13 @@ describe("form menu (click)", () => {
 
   const testClick = initTestEvent(testMount, "click");
 
-  const dataList = [{ form: { confirm: true } }];
+  const dataList = [{ form: { delete: true } }];
 
-  it("should call formToggleConfirm on click (discard)", () => testClick(".qa-confirm-true", [], ["formToggleConfirm", []]));
+  it("should call formToggleDelete on click (discard)", () => testClick(".qa-confirm-true", [], ["formToggleDelete", []]));
 
   it("should call formClearState on click (yes)", () => testClick(".qa-discard-poll", dataList, ["formClearState", []]));
 
-  it("should call formToggleConfirm on click (no)", () => testClick(".qa-confirm-false", dataList, ["formToggleConfirm", []]));
+  it("should call formToggleDelete on click (no)", () => testClick(".qa-confirm-false", dataList, ["formToggleDelete", []]));
 
   it("should call formToggleSecret on click (secret)", () => testClick(".qa-toggle-secret", [], ["formToggleSecret", []]));
 

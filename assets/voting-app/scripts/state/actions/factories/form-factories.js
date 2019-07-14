@@ -29,9 +29,9 @@ const formSetTitle = (title) => ({
   title
 });
 
-//form toggle confirm
+//form toggle delete
 
-const formToggleConfirm = () => ({ type: "FORM_TOGGLE_CONFIRM" });
+const formToggleDelete = () => ({ type: "FORM_TOGGLE_DELETE" });
 
 //form toggle secret
 
@@ -45,6 +45,6 @@ module.exports = {
   formRemoveOption,
   formSetAdd,
   formSetTitle,
-  formToggleConfirm,
+  formToggleDelete,
   formToggleSecret
 };

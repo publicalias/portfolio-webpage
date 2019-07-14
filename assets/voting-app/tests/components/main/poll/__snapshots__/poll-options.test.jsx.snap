@@ -12,7 +12,7 @@ exports[`poll options (form) should match snapshot (poll input) 1`] = `
         "formRemoveOption": [MockFunction],
         "formSetAdd": [MockFunction],
         "formSetTitle": [MockFunction],
-        "formToggleConfirm": [MockFunction],
+        "formToggleDelete": [MockFunction],
         "formToggleSecret": [MockFunction],
         "listClearState": [MockFunction],
         "listSetSearch": [MockFunction],
@@ -35,7 +35,7 @@ exports[`poll options (form) should match snapshot (poll input) 1`] = `
         "pollToggleSecret": [MockFunction],
         "viewClearState": [MockFunction],
         "viewSetAdd": [MockFunction],
-        "viewToggleConfirm": [MockFunction],
+        "viewToggleDelete": [MockFunction],
         "viewToggleSettings": [MockFunction],
       }
     }
@@ -44,7 +44,7 @@ exports[`poll options (form) should match snapshot (poll input) 1`] = `
         "errors": Array [],
         "form": Object {
           "add": "",
-          "confirm": false,
+          "delete": false,
           "options": Array [],
           "secret": false,
           "title": "",
@@ -71,7 +71,7 @@ exports[`poll options (form) should match snapshot (poll input) 1`] = `
         },
         "view": Object {
           "add": "",
-          "confirm": false,
+          "delete": false,
           "settings": false,
         },
       }
@@ -85,7 +85,7 @@ exports[`poll options (form) should match snapshot (poll input) 1`] = `
       Object {
         "poll": Object {
           "add": "",
-          "confirm": false,
+          "delete": false,
           "options": Array [],
           "secret": false,
           "title": "",
@@ -112,7 +112,7 @@ exports[`poll options (form) should match snapshot (poll list) 1`] = `
         "formRemoveOption": [MockFunction],
         "formSetAdd": [MockFunction],
         "formSetTitle": [MockFunction],
-        "formToggleConfirm": [MockFunction],
+        "formToggleDelete": [MockFunction],
         "formToggleSecret": [MockFunction],
         "listClearState": [MockFunction],
         "listSetSearch": [MockFunction],
@@ -135,7 +135,7 @@ exports[`poll options (form) should match snapshot (poll list) 1`] = `
         "pollToggleSecret": [MockFunction],
         "viewClearState": [MockFunction],
         "viewSetAdd": [MockFunction],
-        "viewToggleConfirm": [MockFunction],
+        "viewToggleDelete": [MockFunction],
         "viewToggleSettings": [MockFunction],
       }
     }
@@ -144,7 +144,7 @@ exports[`poll options (form) should match snapshot (poll list) 1`] = `
         "errors": Array [],
         "form": Object {
           "add": "",
-          "confirm": false,
+          "delete": false,
           "options": Array [],
           "secret": false,
           "title": "",
@@ -160,7 +160,7 @@ exports[`poll options (form) should match snapshot (poll list) 1`] = `
         "user": Object {},
         "view": Object {
           "add": "",
-          "confirm": false,
+          "delete": false,
           "settings": false,
         },
       }
@@ -174,7 +174,7 @@ exports[`poll options (form) should match snapshot (poll list) 1`] = `
       Object {
         "poll": Object {
           "add": "",
-          "confirm": false,
+          "delete": false,
           "options": Array [
             "Option A",
           ],
@@ -205,7 +205,7 @@ exports[`poll options (view) should match snapshot (poll input) 1`] = `
         "formRemoveOption": [MockFunction],
         "formSetAdd": [MockFunction],
         "formSetTitle": [MockFunction],
-        "formToggleConfirm": [MockFunction],
+        "formToggleDelete": [MockFunction],
         "formToggleSecret": [MockFunction],
         "listClearState": [MockFunction],
         "listSetSearch": [MockFunction],
@@ -228,7 +228,7 @@ exports[`poll options (view) should match snapshot (poll input) 1`] = `
         "pollToggleSecret": [MockFunction],
         "viewClearState": [MockFunction],
         "viewSetAdd": [MockFunction],
-        "viewToggleConfirm": [MockFunction],
+        "viewToggleDelete": [MockFunction],
         "viewToggleSettings": [MockFunction],
       }
     }
@@ -237,7 +237,7 @@ exports[`poll options (view) should match snapshot (poll input) 1`] = `
         "errors": Array [],
         "form": Object {
           "add": "",
-          "confirm": false,
+          "delete": false,
           "options": Array [],
           "secret": false,
           "title": "",
@@ -279,7 +279,7 @@ exports[`poll options (view) should match snapshot (poll input) 1`] = `
         },
         "view": Object {
           "add": "",
-          "confirm": false,
+          "delete": false,
           "settings": false,
         },
       }
@@ -327,7 +327,7 @@ exports[`poll options (view) should match snapshot (poll list) 1`] = `
         "formRemoveOption": [MockFunction],
         "formSetAdd": [MockFunction],
         "formSetTitle": [MockFunction],
-        "formToggleConfirm": [MockFunction],
+        "formToggleDelete": [MockFunction],
         "formToggleSecret": [MockFunction],
         "listClearState": [MockFunction],
         "listSetSearch": [MockFunction],
@@ -350,7 +350,7 @@ exports[`poll options (view) should match snapshot (poll list) 1`] = `
         "pollToggleSecret": [MockFunction],
         "viewClearState": [MockFunction],
         "viewSetAdd": [MockFunction],
-        "viewToggleConfirm": [MockFunction],
+        "viewToggleDelete": [MockFunction],
         "viewToggleSettings": [MockFunction],
       }
     }
@@ -359,7 +359,7 @@ exports[`poll options (view) should match snapshot (poll list) 1`] = `
         "errors": Array [],
         "form": Object {
           "add": "",
-          "confirm": false,
+          "delete": false,
           "options": Array [],
           "secret": false,
           "title": "",
@@ -375,7 +375,7 @@ exports[`poll options (view) should match snapshot (poll list) 1`] = `
         "user": Object {},
         "view": Object {
           "add": "",
-          "confirm": false,
+          "delete": false,
           "settings": false,
         },
       }

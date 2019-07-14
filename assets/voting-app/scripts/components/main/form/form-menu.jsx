@@ -9,7 +9,7 @@ const React = require("react");
 const FormMenu = (props) => {
 
   const {
-    actions: { formClearState, formToggleConfirm, formToggleSecret, metaCreatePoll },
+    actions: { formClearState, formToggleDelete, formToggleSecret, metaCreatePoll },
     data: { form },
     history
   } = props;
@@ -17,7 +17,7 @@ const FormMenu = (props) => {
   //events
 
   const handleConfirm = () => {
-    formToggleConfirm();
+    formToggleDelete();
   };
 
   const handleCreate = async () => {
@@ -43,7 +43,7 @@ const FormMenu = (props) => {
   return (
     <div className="c-form-menu">
       <button className="c-form-menu__control-btn qa-create-poll" onClick={handleCreate}>Create</button>
-      {form.confirm ? (
+      {form.delete ? (
         <div className="c-form-menu__display-box">
           <p className="c-form-menu__confirm-text">Are you sure?</p>
           <button className="c-form-menu__control-btn qa-discard-poll" onClick={handleDiscard}>Yes</button>

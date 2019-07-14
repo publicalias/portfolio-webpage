@@ -29,13 +29,13 @@ test("reducer accepts VIEW_SET_ADD actions", () => {
 
 });
 
-//view toggle confirm
+//view toggle delete
 
-test("reducer accepts VIEW_TOGGLE_CONFIRM actions", () => {
+test("reducer accepts VIEW_TOGGLE_DELETE actions", () => {
 
-  const { viewToggleConfirm } = actions;
+  const { viewToggleDelete } = actions;
 
-  testReducer(viewToggleConfirm(), null, { view: { confirm: true } });
+  testReducer(viewToggleDelete(), null, { view: { delete: true } });
 
 });
 
@@ -45,10 +45,10 @@ test("reducer accepts VIEW_TOGGLE_SETTINGS actions", () => {
 
   const { viewToggleSettings } = actions;
 
-  testReducer(viewToggleSettings(), { confirm: true }, {
+  testReducer(viewToggleSettings(), { delete: true }, {
     view: {
       settings: true,
-      confirm: false
+      delete: false
     }
   });
 

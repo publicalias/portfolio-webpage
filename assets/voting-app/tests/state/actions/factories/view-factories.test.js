@@ -27,13 +27,13 @@ test("viewSetAdd creates VIEW_SET_ADD actions", () => {
 
 });
 
-//view toggle confirm
+//view toggle delete
 
-test("viewToggleConfirm creates VIEW_TOGGLE_CONFIRM actions", () => {
+test("viewToggleDelete creates VIEW_TOGGLE_DELETE actions", () => {
 
-  const { viewToggleConfirm } = actions;
+  const { viewToggleDelete } = actions;
 
-  expect(viewToggleConfirm()).toEqual({ type: "VIEW_TOGGLE_CONFIRM" });
+  expect(viewToggleDelete()).toEqual({ type: "VIEW_TOGGLE_DELETE" });
 
 });
 

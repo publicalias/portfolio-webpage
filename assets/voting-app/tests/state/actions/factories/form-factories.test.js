@@ -63,13 +63,13 @@ test("formSetTitle creates FORM_SET_TITLE actions", () => {
 
 });
 
-//form toggle confirm
+//form toggle delete
 
-test("formToggleConfirm creates FORM_TOGGLE_CONFIRM actions", () => {
+test("formToggleDelete creates FORM_TOGGLE_DELETE actions", () => {
 
-  const { formToggleConfirm } = actions;
+  const { formToggleDelete } = actions;
 
-  expect(formToggleConfirm()).toEqual({ type: "FORM_TOGGLE_CONFIRM" });
+  expect(formToggleDelete()).toEqual({ type: "FORM_TOGGLE_DELETE" });
 
 });
 

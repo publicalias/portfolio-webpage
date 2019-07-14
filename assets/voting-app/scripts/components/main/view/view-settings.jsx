@@ -13,7 +13,7 @@ const React = require("react");
 const ViewSettings = (props) => {
 
   const {
-    actions: { metaDeletePoll, pollToggleSecret, viewToggleConfirm },
+    actions: { metaDeletePoll, pollToggleSecret, viewToggleDelete },
     data: { view },
     history,
     local: { poll }
@@ -22,7 +22,7 @@ const ViewSettings = (props) => {
   //events
 
   const handleConfirm = () => {
-    viewToggleConfirm();
+    viewToggleDelete();
   };
 
   const handleDelete = async () => {
@@ -43,7 +43,7 @@ const ViewSettings = (props) => {
 
   return (
     <div className="c-view-menu__display-box u-flex-1">
-      {view.confirm ? (
+      {view.delete ? (
         <div className="c-view-menu__display-box">
           <p className="c-view-menu__confirm-text">Are you sure?</p>
           <button className="c-view-menu__control-btn qa-delete-poll" onClick={handleDelete}>Yes</button>

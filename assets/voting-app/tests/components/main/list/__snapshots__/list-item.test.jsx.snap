@@ -11,7 +11,7 @@ exports[`list item should match snapshot (authenticated) 1`] = `
           "formRemoveOption": [MockFunction],
           "formSetAdd": [MockFunction],
           "formSetTitle": [MockFunction],
-          "formToggleConfirm": [MockFunction],
+          "formToggleDelete": [MockFunction],
           "formToggleSecret": [MockFunction],
           "listClearState": [MockFunction],
           "listSetSearch": [MockFunction],
@@ -34,7 +34,7 @@ exports[`list item should match snapshot (authenticated) 1`] = `
           "pollToggleSecret": [MockFunction],
           "viewClearState": [MockFunction],
           "viewSetAdd": [MockFunction],
-          "viewToggleConfirm": [MockFunction],
+          "viewToggleDelete": [MockFunction],
           "viewToggleSettings": [MockFunction],
         }
       }
@@ -43,7 +43,7 @@ exports[`list item should match snapshot (authenticated) 1`] = `
           "errors": Array [],
           "form": Object {
             "add": "",
-            "confirm": false,
+            "delete": false,
             "options": Array [],
             "secret": false,
             "title": "",
@@ -70,7 +70,7 @@ exports[`list item should match snapshot (authenticated) 1`] = `
           },
           "view": Object {
             "add": "",
-            "confirm": false,
+            "delete": false,
             "settings": false,
           },
         }
@@ -114,7 +114,7 @@ exports[`list item should match snapshot (authenticated) 1`] = `
           "formRemoveOption": [MockFunction],
           "formSetAdd": [MockFunction],
           "formSetTitle": [MockFunction],
-          "formToggleConfirm": [MockFunction],
+          "formToggleDelete": [MockFunction],
           "formToggleSecret": [MockFunction],
           "listClearState": [MockFunction],
           "listSetSearch": [MockFunction],
@@ -137,7 +137,7 @@ exports[`list item should match snapshot (authenticated) 1`] = `
           "pollToggleSecret": [MockFunction],
           "viewClearState": [MockFunction],
           "viewSetAdd": [MockFunction],
-          "viewToggleConfirm": [MockFunction],
+          "viewToggleDelete": [MockFunction],
           "viewToggleSettings": [MockFunction],
         }
       }
@@ -146,7 +146,7 @@ exports[`list item should match snapshot (authenticated) 1`] = `
           "errors": Array [],
           "form": Object {
             "add": "",
-            "confirm": false,
+            "delete": false,
             "options": Array [],
             "secret": false,
             "title": "",
@@ -173,7 +173,7 @@ exports[`list item should match snapshot (authenticated) 1`] = `
           },
           "view": Object {
             "add": "",
-            "confirm": false,
+            "delete": false,
             "settings": false,
           },
         }
@@ -238,7 +238,7 @@ exports[`list item should match snapshot (default) 1`] = `
           "formRemoveOption": [MockFunction],
           "formSetAdd": [MockFunction],
           "formSetTitle": [MockFunction],
-          "formToggleConfirm": [MockFunction],
+          "formToggleDelete": [MockFunction],
           "formToggleSecret": [MockFunction],
           "listClearState": [MockFunction],
           "listSetSearch": [MockFunction],
@@ -261,7 +261,7 @@ exports[`list item should match snapshot (default) 1`] = `
           "pollToggleSecret": [MockFunction],
           "viewClearState": [MockFunction],
           "viewSetAdd": [MockFunction],
-          "viewToggleConfirm": [MockFunction],
+          "viewToggleDelete": [MockFunction],
           "viewToggleSettings": [MockFunction],
         }
       }
@@ -270,7 +270,7 @@ exports[`list item should match snapshot (default) 1`] = `
           "errors": Array [],
           "form": Object {
             "add": "",
-            "confirm": false,
+            "delete": false,
             "options": Array [],
             "secret": false,
             "title": "",
@@ -286,7 +286,7 @@ exports[`list item should match snapshot (default) 1`] = `
           "user": Object {},
           "view": Object {
             "add": "",
-            "confirm": false,
+            "delete": false,
             "settings": false,
           },
         }
