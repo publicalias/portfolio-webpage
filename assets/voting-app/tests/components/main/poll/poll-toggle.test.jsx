@@ -46,7 +46,7 @@ describe("poll toggle (flag)", () => {
   const testProp = initTestProp(testFlag);
   const testToggle = initTestToggle(testFlagMount);
 
-  it("should match snapshot", () => testProp());
+  it("should match snapshot (default)", () => testProp());
 
   it("should match snapshot (toggled)", () => testProp("flagged"));
 
@@ -64,7 +64,7 @@ describe("poll toggle (hide)", () => {
   const testProp = initTestProp(testHide);
   const testToggle = initTestToggle(testHideMount);
 
-  it("should match snapshot", () => testProp());
+  it("should match snapshot (default)", () => testProp());
 
   it("should match snapshot (toggled)", () => testProp("hidden"));
 

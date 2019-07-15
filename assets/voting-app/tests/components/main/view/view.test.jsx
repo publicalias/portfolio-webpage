@@ -8,7 +8,6 @@ const { testWrapper } = require("../../../test-helpers");
 
 //global imports
 
-const { newPoll } = require("schemas/voting-app");
 const { testMock } = require("test-helpers/meta-tests");
 const { initTestSnapshot, reactTests } = require("test-helpers/react-tests");
 
@@ -29,7 +28,13 @@ describe("view", () => {
 
   it("should match snapshot (default)", () => testSnapshot());
 
-  it("should match snapshot (id)", () => testSnapshot({ polls: [newPoll({ id: "id-a" })] }, null, { location: { search: "?id=id-a" } }));
+  it("should match snapshot (id)", () => {
+
+    const dataList = [{ polls: [{ id: "id-a" }] }, null, { location: { search: "?id=id-a" } }];
+
+    testSnapshot(...dataList);
+
+  });
 
   it("should call viewClearState on load (default)", () => {
 

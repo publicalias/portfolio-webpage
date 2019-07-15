@@ -1,5 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`poll toggle (flag) should match snapshot (default) 1`] = `
+<button
+  className="qa-toggle-flag"
+  onClick={[Function]}
+>
+  <i
+    className="fa fa-flag-o"
+  />
+</button>
+`;
+
 exports[`poll toggle (flag) should match snapshot (toggled) 1`] = `
 <button
   className="qa-toggle-flag"
@@ -11,13 +22,13 @@ exports[`poll toggle (flag) should match snapshot (toggled) 1`] = `
 </button>
 `;
 
-exports[`poll toggle (flag) should match snapshot 1`] = `
+exports[`poll toggle (hide) should match snapshot (default) 1`] = `
 <button
-  className="qa-toggle-flag"
+  className="qa-toggle-hide"
   onClick={[Function]}
 >
   <i
-    className="fa fa-flag-o"
+    className="fa fa-eye"
   />
 </button>
 `;
@@ -29,17 +40,6 @@ exports[`poll toggle (hide) should match snapshot (toggled) 1`] = `
 >
   <i
     className="fa fa-eye-slash"
-  />
-</button>
-`;
-
-exports[`poll toggle (hide) should match snapshot 1`] = `
-<button
-  className="qa-toggle-hide"
-  onClick={[Function]}
->
-  <i
-    className="fa fa-eye"
   />
 </button>
 `;

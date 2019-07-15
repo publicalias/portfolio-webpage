@@ -9,8 +9,7 @@ const { testWrapper } = require("../../../test-helpers");
 //global imports
 
 const { newUser } = require("schemas/master");
-const { newPoll } = require("schemas/voting-app");
-const { initTestSnapshot, reactTests } = require("test-helpers/react-tests");
+const { initTestSnapshot, reactTests, withDataList } = require("test-helpers/react-tests");
 
 //utilities
 
@@ -25,14 +24,12 @@ beforeEach(reactTests.inject(ListBody));
 
 describe("list body", () => {
 
-  const testSnapshot = initTestSnapshot(testShallow);
+  const testSnapshot = withDataList(initTestSnapshot(testShallow), [null, { handleScroll: jest.fn() }]);
 
-  const testProps = (data) => testSnapshot(data, { handleScroll: jest.fn() });
+  it("should match snapshot (default)", () => testSnapshot());
 
-  it("should match snapshot (default)", () => testProps());
+  it("should match snapshot (authenticated)", () => testSnapshot({ user: newUser() }));
 
-  it("should match snapshot (authenticated)", () => testProps({ user: newUser() }));
-
-  it("should match snapshot (polls)", () => testProps({ polls: [newPoll()] }));
+  it("should match snapshot (polls)", () => testSnapshot({ polls: [{}] }));
 
 });

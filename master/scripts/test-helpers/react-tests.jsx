@@ -3,7 +3,7 @@
 //local imports
 
 const { testMock } = require("./meta-tests");
-const { deepCopy } = require("../utilities");
+const { deepCopy, initDeepCopy } = require("../utilities");
 
 //node modules
 
@@ -166,6 +166,17 @@ const reactTests = {
 
 };
 
+//with data list
+
+const withDataList = (render, dataList) => (...args) => {
+
+  const deepCopy = initDeepCopy({ array: false });
+  const fullDataList = deepCopy(dataList, args.map((e) => e === null ? {} : e));
+
+  return render(...fullDataList);
+
+};
+
 //exports
 
 module.exports = {
@@ -173,5 +184,6 @@ module.exports = {
   initTestRef,
   initTestSnapshot,
   initTestWrapper,
-  reactTests
+  reactTests,
+  withDataList
 };

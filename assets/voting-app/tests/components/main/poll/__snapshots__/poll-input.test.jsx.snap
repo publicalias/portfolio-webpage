@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`poll input (form) should match snapshot (add) 1`] = `
+exports[`poll input (form) should match snapshot 1`] = `
 <div
   className="c-poll-options__input-box"
 >
@@ -20,27 +20,7 @@ exports[`poll input (form) should match snapshot (add) 1`] = `
 </div>
 `;
 
-exports[`poll input (form) should match snapshot (default) 1`] = `
-<div
-  className="c-poll-options__input-box"
->
-  <input
-    className="c-poll-options__input js-submit-input-form qa-option-input u-margin-right"
-    maxLength="100"
-    onChange={[Function]}
-    placeholder="New Option"
-    value=""
-  />
-  <button
-    className="c-poll-options__submit js-submit-button-form qa-option-submit"
-    onClick={[Function]}
-  >
-    Add
-  </button>
-</div>
-`;
-
-exports[`poll input (view) should match snapshot (add) 1`] = `
+exports[`poll input (view) should match snapshot 1`] = `
 <div
   className="c-poll-options__input-box"
 >
@@ -50,26 +30,6 @@ exports[`poll input (view) should match snapshot (add) 1`] = `
     onChange={[Function]}
     placeholder="New Option"
     value="Option A"
-  />
-  <button
-    className="c-poll-options__submit js-submit-button-view qa-option-submit"
-    onClick={[Function]}
-  >
-    Add
-  </button>
-</div>
-`;
-
-exports[`poll input (view) should match snapshot (default) 1`] = `
-<div
-  className="c-poll-options__input-box"
->
-  <input
-    className="c-poll-options__input js-submit-input-view qa-option-input u-margin-right"
-    maxLength="100"
-    onChange={[Function]}
-    placeholder="New Option"
-    value=""
   />
   <button
     className="c-poll-options__submit js-submit-button-view qa-option-submit"

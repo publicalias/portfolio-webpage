@@ -76,7 +76,7 @@ const initDeepCopy = (config) => (...args) => {
 
       }
 
-      if (!(key in to) || overwrite(val)) {
+      if (!(key in to) || to[key] === null || overwrite(val)) {
         to[key] = newObj(val);
       }
 

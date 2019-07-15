@@ -190,7 +190,7 @@ describe("list (scroll)", () => {
 
     const testFn = initTestFn({ pending: true }, { end: true }, [newListParams(), null, 0]);
 
-    return testScroll(testFn, null, null, { polls: Array(0) });
+    return testScroll(testFn, null, null, { polls: Array(0).fill({}) });
 
   });
 
@@ -198,7 +198,7 @@ describe("list (scroll)", () => {
 
     const testFn = initTestFn({ pending: true }, null, [newListParams(), null, 0]);
 
-    return testScroll(testFn, null, null, { polls: Array(100) });
+    return testScroll(testFn, null, null, { polls: Array(100).fill({}) });
 
   });
 

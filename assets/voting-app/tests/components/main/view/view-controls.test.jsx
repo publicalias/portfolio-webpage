@@ -11,7 +11,7 @@ const { testWrapper } = require("../../../test-helpers");
 const { newUser } = require("schemas/master");
 const { newPoll } = require("schemas/voting-app");
 const { testMock } = require("test-helpers/meta-tests");
-const { initTestEvent, initTestSnapshot, reactTests } = require("test-helpers/react-tests");
+const { initTestEvent, initTestSnapshot, reactTests, withDataList } = require("test-helpers/react-tests");
 
 //utilities
 
@@ -26,19 +26,21 @@ beforeEach(reactTests.inject(ViewControls));
 
 describe("view controls", () => {
 
-  const testSnapshot = initTestSnapshot(testShallow);
+  const dataList = [null, { poll: newPoll() }];
 
-  const testClick = initTestEvent(testMount, "click");
+  const testSnapshot = withDataList(initTestSnapshot(testShallow), dataList);
 
-  it("should match snapshot (default)", () => testSnapshot(null, { poll: newPoll() }));
+  const testClick = initTestEvent(withDataList(testMount, dataList), "click");
 
-  it("should match snapshot (authenticated)", () => testSnapshot({ user: newUser() }, { poll: newPoll() }));
+  it("should match snapshot (default)", () => testSnapshot());
+
+  it("should match snapshot (authenticated)", () => testSnapshot({ user: newUser() }));
 
   it("should call writeText on click", () => {
 
     navigator.clipboard = { writeText: jest.fn() };
 
-    return testClick(".qa-share-poll", [null, { poll: newPoll() }], () => {
+    return testClick(".qa-share-poll", [], () => {
       testMock(navigator.clipboard.writeText, [location.href]);
     });
 

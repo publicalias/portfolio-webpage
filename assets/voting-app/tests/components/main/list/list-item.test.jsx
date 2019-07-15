@@ -10,7 +10,7 @@ const { testWrapper } = require("../../../test-helpers");
 
 const { newUser } = require("schemas/master");
 const { newPoll } = require("schemas/voting-app");
-const { initTestSnapshot, reactTests } = require("test-helpers/react-tests");
+const { initTestSnapshot, reactTests, withDataList } = require("test-helpers/react-tests");
 
 //node modules
 
@@ -29,18 +29,15 @@ beforeEach(reactTests.inject(ListItem, { lib: { getVotes: jest.fn(() => "0 Votes
 
 describe("list item", () => {
 
-  const testSnapshot = initTestSnapshot(testShallow);
-
-  const testProps = (data, pollData = {}) => testSnapshot(data, {
+  const testSnapshot = withDataList(initTestSnapshot(testShallow), [null, {
     poll: newPoll({
       title: "Title A",
-      id: "id-a",
-      ...pollData
+      id: "id-a"
     })
-  });
+  }]);
 
-  it("should match snapshot (default)", () => testProps());
+  it("should match snapshot (default)", () => testSnapshot());
 
-  it("should match snapshot (authenticated)", () => testProps({ user: newUser() }));
+  it("should match snapshot (authenticated)", () => testSnapshot({ user: newUser() }));
 
 });

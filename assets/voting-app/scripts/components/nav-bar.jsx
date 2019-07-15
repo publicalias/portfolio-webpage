@@ -26,18 +26,15 @@ const NavBar = (props) => {
     ["all", "All Polls", true],
     ["created", "My Polls", auth],
     ["voted", "Voted", true],
-    ["hidden", "Hidden", true]
+    ["hidden", "Hidden", true],
+    ["form", "New Poll", auth, "/form", "u-flex-right"]
   ];
 
   for (const e of links) {
-
-    const [id] = e;
-
-    e.push(`/list?filter=${id}`);
-
+    if (e.length === 3) {
+      e.push(`/list?filter=${e[0]}`);
+    }
   }
-
-  links.push(["form", "New Poll", auth, "/form", "u-flex-right"]);
 
   //render
 

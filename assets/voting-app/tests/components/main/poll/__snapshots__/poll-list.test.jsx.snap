@@ -3,16 +3,28 @@
 exports[`poll list (form) should match snapshot (authenticated) 1`] = `
 <div
   className="u-margin-half"
-/>
+>
+  <button
+    className="c-poll-options__option u-margin-half u-margin-right qa-option-vote"
+    key="0-730"
+    onClick={[Function]}
+  >
+    <span
+      className="c-poll-options__remove qa-option-remove"
+      onClick={[Function]}
+    >
+      <i
+        className="fa fa-close"
+      />
+    </span>
+    <span>
+      Option A
+    </span>
+  </button>
+</div>
 `;
 
 exports[`poll list (form) should match snapshot (default) 1`] = `
-<div
-  className="u-margin-half--negative"
-/>
-`;
-
-exports[`poll list (form) should match snapshot (options) 1`] = `
 <div
   className="u-margin-half--negative"
 >
@@ -39,22 +51,34 @@ exports[`poll list (form) should match snapshot (options) 1`] = `
 exports[`poll list (view) should match snapshot (authenticated) 1`] = `
 <div
   className="u-margin-half"
-/>
+>
+  <button
+    className="c-poll-options__option u-margin-half u-margin-right qa-option-vote"
+    key="0-730"
+    onClick={[Function]}
+  >
+    <span
+      className="c-poll-options__remove qa-option-remove"
+      onClick={[Function]}
+    >
+      <i
+        className="fa fa-close"
+      />
+    </span>
+    <span>
+      Option A
+    </span>
+  </button>
+</div>
 `;
 
 exports[`poll list (view) should match snapshot (default) 1`] = `
 <div
   className="u-margin-half--negative"
-/>
-`;
-
-exports[`poll list (view) should match snapshot (options) 1`] = `
-<div
-  className="u-margin-half--negative"
 >
   <button
     className="c-poll-options__option u-margin-half u-margin-right qa-option-vote"
-    key="0-0"
+    key="0-730"
     onClick={[Function]}
   >
     <svg
@@ -65,7 +89,9 @@ exports[`poll list (view) should match snapshot (options) 1`] = `
         fill="rgba(0, 0, 0, 0.75)"
       />
     </svg>
-    <span />
+    <span>
+      Option A
+    </span>
   </button>
 </div>
 `;
@@ -76,7 +102,7 @@ exports[`poll list (view) should match snapshot (options, created option) 1`] = 
 >
   <button
     className="c-poll-options__option u-margin-half u-margin-right qa-option-vote"
-    key="0-0"
+    key="0-730"
     onClick={[Function]}
   >
     <span
@@ -87,7 +113,9 @@ exports[`poll list (view) should match snapshot (options, created option) 1`] = 
         className="fa fa-close"
       />
     </span>
-    <span />
+    <span>
+      Option A
+    </span>
   </button>
 </div>
 `;
@@ -98,7 +126,7 @@ exports[`poll list (view) should match snapshot (options, created poll) 1`] = `
 >
   <button
     className="c-poll-options__option u-margin-half u-margin-right qa-option-vote"
-    key="0-0"
+    key="0-730"
     onClick={[Function]}
   >
     <span
@@ -109,7 +137,9 @@ exports[`poll list (view) should match snapshot (options, created poll) 1`] = `
         className="fa fa-close"
       />
     </span>
-    <span />
+    <span>
+      Option A
+    </span>
   </button>
 </div>
 `;

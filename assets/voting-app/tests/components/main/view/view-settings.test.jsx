@@ -9,7 +9,7 @@ const { testCreateDelete, testReload, testWrapper } = require("../../../test-hel
 //global imports
 
 const { newPoll } = require("schemas/voting-app");
-const { initTestEvent, initTestSnapshot, reactTests } = require("test-helpers/react-tests");
+const { initTestEvent, initTestSnapshot, reactTests, withDataList } = require("test-helpers/react-tests");
 
 //utilities
 
@@ -24,13 +24,13 @@ beforeEach(reactTests.inject(ViewSettings));
 
 describe("view settings", () => {
 
-  const testSnapshot = initTestSnapshot(testShallow);
+  const testSnapshot = withDataList(initTestSnapshot(testShallow), [null, { poll: newPoll() }]);
 
-  it("should match snapshot (default)", () => testSnapshot(null, { poll: newPoll() }));
+  it("should match snapshot (default)", () => testSnapshot());
 
-  it("should match snapshot (confirm)", () => testSnapshot({ view: { delete: true } }, { poll: newPoll() }));
+  it("should match snapshot (confirm)", () => testSnapshot({ view: { delete: true } }));
 
-  it("should match snapshot (secret)", () => testSnapshot(null, { poll: newPoll({ secret: true }) }));
+  it("should match snapshot (secret)", () => testSnapshot(null, { poll: { secret: true } }));
 
 });
 
@@ -54,19 +54,13 @@ describe("view settings (delete)", () => {
 
 describe("view settings (click)", () => {
 
-  const testClick = initTestEvent(testMount, "click");
+  const testClick = initTestEvent(withDataList(testMount, [null, { poll: newPoll() }]), "click");
 
-  it("should call viewToggleDelete on click (delete)", () => {
-
-    const dataList = [null, { poll: newPoll() }];
-
-    return testClick(".qa-confirm-true", dataList, ["viewToggleDelete", []]);
-
-  });
+  it("should call viewToggleDelete on click (delete)", () => testClick(".qa-confirm-true", [], ["viewToggleDelete", []]));
 
   it("should call viewToggleDelete on click (no)", () => {
 
-    const dataList = [{ view: { delete: true } }, { poll: newPoll() }];
+    const dataList = [{ view: { delete: true } }];
 
     return testClick(".qa-confirm-false", dataList, ["viewToggleDelete", []]);
 

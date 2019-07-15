@@ -5,6 +5,142 @@ exports[`sidebar should match snapshot (authenticated) 1`] = `
   className="c-ui__sidebar"
 >
   <p>
+    Hi, Anonymous!
+  </p>
+  <hr />
+  <button
+    className="c-ui__sidebar-item qa-auth-logout "
+    key="0-666"
+    onClick={[Function]}
+  >
+    Logout
+  </button>
+  <DeleteButton
+    actions={
+      Object {
+        "formAddOption": [MockFunction],
+        "formClearState": [MockFunction],
+        "formRemoveOption": [MockFunction],
+        "formSetAdd": [MockFunction],
+        "formSetTitle": [MockFunction],
+        "formToggleDelete": [MockFunction],
+        "formToggleSecret": [MockFunction],
+        "listClearState": [MockFunction],
+        "listSetSearch": [MockFunction],
+        "metaAddErrors": [MockFunction],
+        "metaCloseError": [MockFunction],
+        "metaCreatePoll": [MockFunction],
+        "metaDeletePoll": [MockFunction],
+        "metaGetPolls": [MockFunction],
+        "metaGetUser": [MockFunction],
+        "metaNoOp": [MockFunction],
+        "metaSetLoading": [MockFunction],
+        "metaSetState": [MockFunction],
+        "metaTimeoutError": [MockFunction],
+        "metaToggleDelete": [MockFunction],
+        "pollAddOption": [MockFunction],
+        "pollCastVote": [MockFunction],
+        "pollRemoveOption": [MockFunction],
+        "pollToggleFlag": [MockFunction],
+        "pollToggleHide": [MockFunction],
+        "pollToggleSecret": [MockFunction],
+        "viewClearState": [MockFunction],
+        "viewSetAdd": [MockFunction],
+        "viewToggleDelete": [MockFunction],
+        "viewToggleSettings": [MockFunction],
+      }
+    }
+    data={
+      Object {
+        "errors": Array [],
+        "form": Object {
+          "add": "",
+          "delete": false,
+          "options": Array [],
+          "secret": false,
+          "title": "",
+        },
+        "list": Object {
+          "search": "",
+        },
+        "loading": 0,
+        "meta": Object {
+          "delete": false,
+        },
+        "polls": Array [],
+        "user": Object {
+          "auth": Object {
+            "id": "",
+            "provider": "",
+          },
+          "data": Object {
+            "restricted": false,
+          },
+          "id": "",
+          "name": "",
+          "type": "auth",
+        },
+        "view": Object {
+          "add": "",
+          "delete": false,
+          "settings": false,
+        },
+      }
+    }
+    history={
+      Object {
+        "push": [MockFunction],
+      }
+    }
+    local={
+      Object {
+        "root": "/voting-app",
+      }
+    }
+    location={Object {}}
+    match={Object {}}
+    staticContext={Object {}}
+  />
+</div>
+`;
+
+exports[`sidebar should match snapshot (default) 1`] = `
+<div
+  className="c-ui__sidebar"
+>
+  <p>
+    Hi, Anonymous!
+  </p>
+  <hr />
+  <button
+    className="c-ui__sidebar-item qa-auth-facebook "
+    key="0-826"
+    onClick={[Function]}
+  >
+    Facebook Login
+  </button>
+  <button
+    className="c-ui__sidebar-item qa-auth-github "
+    key="0-643"
+    onClick={[Function]}
+  >
+    GitHub Login
+  </button>
+  <button
+    className="c-ui__sidebar-item qa-auth-twitter u-no-margin"
+    key="0-787"
+    onClick={[Function]}
+  >
+    Twitter Login
+  </button>
+</div>
+`;
+
+exports[`sidebar should match snapshot (name) 1`] = `
+<div
+  className="c-ui__sidebar"
+>
+  <p>
     Hi, Ethan Frost!
   </p>
   <hr />
@@ -101,37 +237,5 @@ exports[`sidebar should match snapshot (authenticated) 1`] = `
     match={Object {}}
     staticContext={Object {}}
   />
-</div>
-`;
-
-exports[`sidebar should match snapshot (default) 1`] = `
-<div
-  className="c-ui__sidebar"
->
-  <p>
-    Hi, Anonymous!
-  </p>
-  <hr />
-  <button
-    className="c-ui__sidebar-item qa-auth-facebook "
-    key="0-826"
-    onClick={[Function]}
-  >
-    Facebook Login
-  </button>
-  <button
-    className="c-ui__sidebar-item qa-auth-github "
-    key="0-643"
-    onClick={[Function]}
-  >
-    GitHub Login
-  </button>
-  <button
-    className="c-ui__sidebar-item qa-auth-twitter u-no-margin"
-    key="0-787"
-    onClick={[Function]}
-  >
-    Twitter Login
-  </button>
 </div>
 `;

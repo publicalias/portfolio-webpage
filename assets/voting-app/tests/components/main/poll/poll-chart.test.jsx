@@ -8,7 +8,6 @@ const { initTestPoll, testWrapper } = require("../../../test-helpers");
 
 //global imports
 
-const { newOption } = require("schemas/voting-app");
 const { testMock } = require("test-helpers/meta-tests");
 const { initTestSnapshot, reactTests } = require("test-helpers/react-tests");
 
@@ -22,24 +21,15 @@ const testLoad = (render, role) => {
 
   const { lib: { renderChart, rngInt } } = PollChart.injected;
 
-  const { wrapper } = render();
+  const { wrapper } = render(null, { options: [role === "form" ? "Option A" : {}] });
 
   wrapper.mount();
-
-  wrapper.setProps({
-    local: {
-      poll: { options: [role === "form" ? "Option A" : newOption()] },
-      role
-    }
-  });
 
   if (role === "form") {
     testMock(rngInt, [0, 9, true]);
   }
 
   testMock(renderChart, [
-    []
-  ], [
     [0]
   ]);
 

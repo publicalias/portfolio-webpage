@@ -9,8 +9,7 @@ const { initTestPoll, testWrapper } = require("../../../test-helpers");
 //global imports
 
 const { newUser } = require("schemas/master");
-const { newOption, newPoll } = require("schemas/voting-app");
-const { initTestSnapshot, reactTests } = require("test-helpers/react-tests");
+const { initTestSnapshot, reactTests, withDataList } = require("test-helpers/react-tests");
 
 //utilities
 
@@ -29,11 +28,11 @@ describe("poll options (form)", () => {
 
   const testForm = initTestPoll(testSnapshot, "form");
 
-  it("should match snapshot", () => testForm());
+  it("should match snapshot (default)", () => testForm());
 
-  it("should match snapshot (poll list)", () => testForm(null, { options: ["Option A"] }));
+  it("should match snapshot (authenticated)", () => testForm({ user: newUser() }));
 
-  it("should match snapshot (poll input)", () => testForm({ user: newUser() }));
+  it("should match snapshot (options)", () => testForm(null, { options: ["Option A"] }));
 
 });
 
@@ -41,15 +40,19 @@ describe("poll options (view)", () => {
 
   const testView = initTestPoll(testSnapshot, "view");
 
-  it("should match snapshot", () => testView());
-
-  it("should match snapshot (poll list)", () => testView(null, { options: [newOption()] }));
-
-  it("should match snapshot (poll input)", () => testView({
+  const testPoll = withDataList(testView, [{
     user: newUser(),
-    polls: [newPoll({ id: "id-a" })]
-  }, {
-    id: "id-a"
-  }));
+    polls: [{ id: "id-a" }]
+  }]);
+
+  it("should match snapshot (default)", () => testView());
+
+  it("should match snapshot (authenticated)", () => testView({ user: newUser() }));
+
+  it("should match snapshot (authenticated, wrong poll)", () => testPoll(null, { id: "id-b" }));
+
+  it("should match snapshot (authenticated, right poll)", () => testPoll(null, { id: "id-a" }));
+
+  it("should match snapshot (options)", () => testView(null, { options: [{}] }));
 
 });

@@ -151,8 +151,10 @@ const getUtils = (state, setState) => {
 
   const lastCulture = () => {
 
+    const deepCopy = initDeepCopy({ array: false });
+
     const history = state.history.slice();
-    const culture = initDeepCopy({ array: false })(state.culture, history.pop());
+    const culture = deepCopy(state.culture, history.pop());
     const gen = state.gen - 1;
 
     const merge = Object.assign({

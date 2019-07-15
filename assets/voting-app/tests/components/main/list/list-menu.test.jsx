@@ -28,9 +28,7 @@ describe("list menu", () => {
 
   const testChange = initTestEvent(testMount, "change", { target: { value: "Apple" } });
 
-  it("should match snapshot (default)", () => testSnapshot());
-
-  it("should match snapshot (search)", () => testSnapshot({ list: { search: "Apple" } }));
+  it("should match snapshot", () => testSnapshot({ list: { search: "Apple" } }));
 
   it("should call listSetSearch on change", () => testChange(".qa-search-input", [], ["listSetSearch", ["Apple"]]));
 

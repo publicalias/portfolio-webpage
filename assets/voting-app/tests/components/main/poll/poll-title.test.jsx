@@ -31,9 +31,7 @@ describe("poll title (form)", () => {
 
   const testChange = initTestEvent(testFormMount, "change", { target: { value: "Title A" } });
 
-  it("should match snapshot", () => testForm());
-
-  it("should match snapshot (title)", () => testForm(null, { title: "Title A" }));
+  it("should match snapshot (default)", () => testForm(null, { title: "Title A" }));
 
   it("should match snapshot (author)", () => testForm({ user: newUser({ name: "Author A" }) }));
 
@@ -45,7 +43,7 @@ describe("poll title (view)", () => {
 
   const testView = initTestPoll(testSnapshot, "view");
 
-  it("should match snapshot", () => testView());
+  it("should match snapshot (default)", () => testView());
 
   it("should match snapshot (title)", () => testView(null, { title: "Title A" }));
 

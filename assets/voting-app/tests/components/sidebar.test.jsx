@@ -29,7 +29,9 @@ describe("sidebar", () => {
 
   it("should match snapshot (default)", () => testSnapshot());
 
-  it("should match snapshot (authenticated)", () => testSnapshot({ user: newUser({ name: "Ethan Frost" }) }));
+  it("should match snapshot (authenticated)", () => testSnapshot({ user: newUser() }));
+
+  it("should match snapshot (name)", () => testSnapshot({ user: newUser({ name: "Ethan Frost" }) }));
 
 });
 

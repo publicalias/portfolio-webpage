@@ -47,6 +47,7 @@ const ListMenu = (props) => {
     },
 
     id: "search",
+
     value: list.search
 
   };

@@ -38,9 +38,9 @@ describe("view menu", () => {
 
   it("should match snapshot (created, settings)", () => {
 
-    const thisDataList = deepCopy(dataList, [{ view: { settings: true } }]);
+    const fullDataList = deepCopy(dataList, [{ view: { settings: true } }]);
 
-    testSnapshot(...thisDataList);
+    testSnapshot(...fullDataList);
 
   });
 

@@ -53,9 +53,7 @@ describe("poll input (form)", () => {
 
   const testClick = initTestEvent(testFormMount, "click");
 
-  it("should match snapshot (default)", () => testForm());
-
-  it("should match snapshot (add)", () => testForm({ form: { add: "Option A" } }));
+  it("should match snapshot", () => testForm({ form: { add: "Option A" } }));
 
   it("should call submitKeys on load", () => testLoad(testFormMount, ["form"]));
 
@@ -76,9 +74,7 @@ describe("poll input (view)", () => {
   const testView = initTestPoll(testSnapshot, "view");
   const testViewMount = initTestPoll(testMount, "view");
 
-  it("should match snapshot (default)", () => testView());
-
-  it("should match snapshot (add)", () => testView({ view: { add: "Option A" } }));
+  it("should match snapshot", () => testView({ view: { add: "Option A" } }));
 
   it("should call submitKeys on load", () => testLoad(testViewMount, ["view"]));
 
