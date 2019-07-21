@@ -6,8 +6,8 @@ const { findByID, handleOption, handleToggle } = require("../../app-logic");
 
 //global imports
 
-const { getOrSetUser, retryWrite } = require(`${__scripts}/redux-utils/server-utils`);
-const { checkErrors } = require(`${__scripts}/utilities`);
+const { getOrSetUser, retryWrite } = require("redux-utils/server-utils");
+const { checkErrors } = require("utilities");
 
 //node modules
 

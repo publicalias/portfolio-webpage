@@ -2,7 +2,7 @@
 
 //global imports
 
-const { initSchema, newError, newIPUser, newUser } = require("../../master/scripts/schemas"); //isomorphic
+const { initSchema, newError, newIPUser, newUser } = require("schemas"); //isomorphic
 
 //new option
 

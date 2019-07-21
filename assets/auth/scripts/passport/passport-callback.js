@@ -6,7 +6,7 @@ const { handleUpdate } = require("../app-logic");
 
 //global imports
 
-const { newUser } = require(`${__scripts}/schemas`);
+const { newUser } = require("schemas");
 
 //node modules
 

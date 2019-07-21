@@ -2,7 +2,7 @@
 
 //global imports
 
-const { sendData } = require(`${__scripts}/server-utils`);
+const { sendData } = require("server-utils");
 
 //node modules
 

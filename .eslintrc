@@ -13,7 +13,6 @@
 
   "globals": {
     "__build": false,
-    "__scripts": false,
     "d3": false,
     "db": false
   },

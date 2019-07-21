@@ -6,8 +6,8 @@ const { findByID, findPolls, handleCreate } = require("../../app-logic");
 
 //global imports
 
-const { getIPUser } = require(`${__scripts}/redux-utils/server-utils`);
-const { checkErrors } = require(`${__scripts}/utilities`);
+const { getIPUser } = require("redux-utils/server-utils");
+const { checkErrors } = require("utilities");
 
 //node modules
 

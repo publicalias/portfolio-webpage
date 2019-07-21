@@ -1,11 +1,5 @@
 "use strict";
 
-//local imports
-
-const globals = require("./globals");
-
-Object.assign(global, globals);
-
 //node modules
 
 const compression = require("compression");
@@ -15,6 +9,12 @@ const fs = require("fs");
 const { MongoClient } = require("mongodb");
 
 const app = express();
+
+//setup
+
+global.__build = `${__dirname}/build`;
+
+require("app-module-path").addPath("master/scripts");
 
 //middleware
 

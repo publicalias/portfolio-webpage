@@ -6,7 +6,7 @@ const { handleUpload } = require("./scripts/app-logic");
 
 //global imports
 
-const { toPromise } = require(`${__scripts}/server-utils`);
+const { toPromise } = require("server-utils");
 
 //node modules
 

@@ -2,7 +2,7 @@
 
 //global imports
 
-const { alphabet, rngInt } = require(`${__scripts}/utilities`);
+const { alphabet, rngInt } = require("utilities");
 
 //node modules
 
