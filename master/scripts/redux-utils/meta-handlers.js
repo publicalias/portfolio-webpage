@@ -2,7 +2,7 @@
 
 //local imports
 
-const { newError } = require("../schemas/master");
+const { newError } = require("../schemas");
 const { deepCopy, initDeepCopy } = require("../utilities");
 
 //meta add errors

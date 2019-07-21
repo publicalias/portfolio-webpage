@@ -2,7 +2,7 @@
 
 //local imports
 
-const { initDisplay, toggleMetric } = require("./scripts/view-logic");
+const { initDisplay, toggleMetric } = require("./scripts/client/view-logic");
 
 //global imports
 

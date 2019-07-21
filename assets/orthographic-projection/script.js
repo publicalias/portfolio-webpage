@@ -4,9 +4,9 @@
 
 //local imports
 
-const { scrubData } = require("./scripts/app-logic");
-const { rotateHandlers, tooltipHandler } = require("./scripts/event-handlers");
-const { pointRadius, tooltipAddress } = require("./scripts/view-logic");
+const { scrubData } = require("./scripts/client/app-logic");
+const { rotateHandlers, tooltipHandler } = require("./scripts/client/event-handlers");
+const { pointRadius, tooltipAddress } = require("./scripts/client/view-logic");
 
 //global imports
 

@@ -3,7 +3,7 @@
 //local imports
 
 const { testMock } = require("./meta-tests");
-const { newUser } = require("../schemas/master");
+const { newUser } = require("../schemas");
 const { bindObject } = require("../utilities");
 
 //node modules

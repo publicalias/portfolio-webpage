@@ -2,14 +2,14 @@
 
 //local imports
 
-const Bio = require("./scripts/components/bio");
-const Contact = require("./scripts/components/contact/contact");
-const Footer = require("./scripts/components/footer");
-const Group = require("./scripts/components/group/group");
-const NavBar = require("./scripts/components/nav-bar/nav-bar");
-const Showcase = require("./scripts/components/showcase/showcase");
+const Bio = require("./scripts/client/components/bio");
+const Contact = require("./scripts/client/components/contact/contact");
+const Footer = require("./scripts/client/components/footer");
+const Group = require("./scripts/client/components/group/group");
+const NavBar = require("./scripts/client/components/nav-bar/nav-bar");
+const Showcase = require("./scripts/client/components/showcase/showcase");
 
-const { defaultProps } = require("./scripts/default-props/default-props");
+const { defaultProps } = require("./scripts/client/default-props/default-props");
 
 //global imports
 

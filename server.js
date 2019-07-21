@@ -21,14 +21,6 @@ const app = express();
 app.use(compression());
 app.use(express.static("build"));
 
-//utilities
-
-const serverless = (files) => (req, res) => {
-  if (!files.includes(req.params.name)) {
-    res.sendFile(`${__build}/${req.params.name}/view.html`);
-  }
-};
-
 //home page
 
 app.get("/", (req, res) => {
@@ -37,13 +29,21 @@ app.get("/", (req, res) => {
 
 //projects
 
-const files = fs.readdirSync("./routes");
+const projects = fs.readdirSync("./assets");
 
-for (const e of files) {
-  app.use(`/${e}`, require(`./routes/${e}/routes`));
+for (const e of projects) {
+
+  const routes = fs.existsSync(`./assets/${e}/routes.js`);
+
+  if (routes) {
+    app.use(`/${e}`, require(`./assets/${e}/routes`));
+  } else {
+    app.get(`/${e}`, (req, res) => {
+      res.sendFile(`${__build}/${e}/view.html`);
+    });
+  }
+
 }
-
-app.get("/:name", serverless(files));
 
 //initialize server
 

@@ -2,10 +2,10 @@
 
 //local imports
 
-const UI = require("./scripts/components/ui");
+const UI = require("./scripts/client/components/ui");
 
-const { actions } = require("./scripts/state/actions/actions");
-const { reducer } = require("./scripts/state/reducer/reducer");
+const { actions } = require("./scripts/client/state/actions/actions");
+const { reducer } = require("./scripts/client/state/reducer/reducer");
 
 //global imports
 

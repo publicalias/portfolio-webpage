@@ -2,8 +2,8 @@
 
 //local imports
 
-const { filterEvents, submitEvents } = require("./scripts/event-handlers");
-const { getOutput } = require("./scripts/view-logic");
+const { filterEvents, submitEvents } = require("./scripts/client/event-handlers");
+const { getOutput } = require("./scripts/client/view-logic");
 
 //global imports
 

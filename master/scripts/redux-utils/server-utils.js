@@ -2,7 +2,7 @@
 
 //local imports
 
-const { newIPUser } = require("../schemas/master");
+const { newIPUser } = require("../schemas");
 
 //node modules
 
