@@ -7,9 +7,8 @@ exports[`poll title (form) should match snapshot (author) 1`] = `
   <input
     className="c-poll-display__input qa-title-input u-margin-half"
     maxLength="100"
-    onChange={[Function]}
+    onBlur={[Function]}
     placeholder="Untitled"
-    value=""
   />
   <h4>
     By Author A
@@ -24,9 +23,8 @@ exports[`poll title (form) should match snapshot (default) 1`] = `
   <input
     className="c-poll-display__input qa-title-input u-margin-half"
     maxLength="100"
-    onChange={[Function]}
+    onBlur={[Function]}
     placeholder="Untitled"
-    value="Title A"
   />
   <h4>
     By Anonymous

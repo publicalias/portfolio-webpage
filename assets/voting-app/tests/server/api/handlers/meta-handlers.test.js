@@ -1,18 +1,16 @@
 "use strict";
 
-/*eslint max-statements: 0*/
-
 //local imports
 
 const handlers = require("../../../../scripts/server/api/handlers/meta-handlers");
 
 const { newForm, newListParams, newPoll } = require("../../../../schemas");
-const { overlyLongInput } = require("../../test-helpers");
+const { overlyLongInput, testOptions, testTitle } = require("../../test-helpers");
 
 //global imports
 
 const { newIPUser, newUser } = require("schemas");
-const { testMock } = require("test-helpers/meta-tests");
+const { mockArgs, testMock } = require("test-helpers/meta-tests");
 const { initMockAPICall, mongoTests, testAuthFail } = require("test-helpers/server-tests");
 
 //utilities
@@ -36,15 +34,21 @@ describe("metaCreatePoll", () => {
 
   const getData = (form) => newForm(form);
 
-  const testError = async (error, data, docs = 0) => {
+  const testError = async (error, form, docs = 0) => {
 
-    const res = await mockAPICall(newUser(), getData(data));
+    const res = await mockAPICall(newUser(), getData(form));
 
-    expect(res.json.mock.calls[0][0].errors.includes(error)).toEqual(true);
+    const [a] = mockArgs(res.json);
+
+    expect(a[0].errors.includes(error)).toEqual(true);
 
     expect(await pollsCol().countDocuments()).toEqual(docs);
 
   };
+
+  testOptions((error, data, other) => testError(error, { options: [data, ...other || []] }));
+
+  testTitle((error, data, docs) => testError(error, { title: data }, docs), [null, null, [1]]);
 
   it("sends 401 if user is unauthenticated or restricted", async () => {
 
@@ -53,28 +57,6 @@ describe("metaCreatePoll", () => {
     expect(await pollsCol().countDocuments()).toEqual(0);
 
   });
-
-  it("sends errors if title is empty", () => testError("Title must not be empty"));
-
-  it("sends errors if title is too long", () => testError("Title must not exceed character limit", { title: overlyLongInput }));
-
-  it("sends errors if title is duplicate", async () => {
-
-    await pollsCol().insertOne(newPoll({ title: "Title A" }));
-
-    return testError("Title must be unique", { title: "Title A" }, 1);
-
-  });
-
-  it("sends errors if title is obscene", () => testError("Title must not be obscene", { title: "Fuck" }));
-
-  it("sends errors if option is empty", () => testError("Option must not be empty", { options: [""] }));
-
-  it("sends errors if option is too long", () => testError("Option must not exceed character limit", { options: [overlyLongInput] }));
-
-  it("sends errors if option is duplicate", () => testError("Option must be unique", { options: ["Option A", "Option A"] }));
-
-  it("sends errors if option is obscene", () => testError("Option must not be obscene", { options: ["Fuck"] }));
 
   it("sends object if poll is valid", async () => {
 

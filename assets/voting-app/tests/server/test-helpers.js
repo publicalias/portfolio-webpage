@@ -6,7 +6,7 @@ const { newPoll } = require("../../schemas");
 
 //global imports
 
-const { testMock } = require("test-helpers/meta-tests");
+const { testErrors, testMock } = require("test-helpers/meta-tests");
 
 //utilities
 
@@ -87,10 +87,35 @@ const overlyLongInput = Array(100 + 1)
   .fill("a")
   .join("");
 
+//test options
+
+const maxOptions = Array(20)
+  .fill(0)
+  .map((e, i) => `Option ${i}`);
+
+const testOptions = testErrors([
+  ["sends errors if option is empty", ["Option is empty", ""]],
+  ["sends errors if option exceeds character limit", ["Option exceeds character limit", overlyLongInput]],
+  ["sends errors if option already exists", ["Option already exists", "Option A", ["Option A"]]],
+  ["sends errors if option exceeds limit", ["Option exceeds limit", "Option A", maxOptions]]
+]);
+
+//test title
+
+const duplicate = () => pollsCol().insertOne(newPoll({ title: "Title A" }));
+
+const testTitle = testErrors([
+  ["sends errors if title is empty", ["Title is empty", ""]],
+  ["sends errors if title exceeds character limit", ["Title exceeds character limit", overlyLongInput]],
+  ["sends errors if title already exists", ["Title already exists", "Title A"], duplicate]
+]);
+
 //exports
 
 module.exports = {
   initTestVote,
   initTestToggle,
-  overlyLongInput
+  overlyLongInput,
+  testOptions,
+  testTitle
 };

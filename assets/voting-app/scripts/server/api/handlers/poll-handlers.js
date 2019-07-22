@@ -2,16 +2,11 @@
 
 //local imports
 
-const { findByID, handleOption, handleToggle } = require("../../app-logic");
+const { checkOptions, findByID, handleOption, handleToggle } = require("../../app-logic");
 
 //global imports
 
 const { getOrSetUser, retryWrite } = require("redux-utils/server-utils");
-const { checkErrors } = require("utilities");
-
-//node modules
-
-const { regex: obscene } = require("badwords-list");
 
 //utilities
 
@@ -33,19 +28,7 @@ const pollAddOption = async (req, res) => {
 
   const { options } = await findByID(id);
 
-  const errors = checkErrors([{
-    bool: !text.trim(),
-    text: "Option must not be empty"
-  }, {
-    bool: text.length > 100,
-    text: "Option must not exceed character limit"
-  }, {
-    bool: options.filter((e) => e.text === text).length,
-    text: "Option must be unique"
-  }, {
-    bool: obscene.test(text),
-    text: "Option must not be obscene"
-  }]);
+  const errors = checkOptions([text, ...options.map((e) => e.text)]);
 
   if (errors.length) {
     res.json({ errors });

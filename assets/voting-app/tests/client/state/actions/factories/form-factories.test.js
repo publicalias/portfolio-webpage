@@ -4,16 +4,6 @@
 
 const { actions } = require("../../../../../scripts/client/state/actions/actions");
 
-//form add option
-
-test("formAddOption creates FORM_ADD_OPTION actions", () => {
-
-  const { formAddOption } = actions;
-
-  expect(formAddOption()).toEqual({ type: "FORM_ADD_OPTION" });
-
-});
-
 //form clear state
 
 test("formClearState creates FORM_CLEAR_STATE actions", () => {
@@ -46,19 +36,6 @@ test("formSetAdd creates FORM_SET_ADD actions", () => {
   expect(formSetAdd("")).toEqual({
     type: "FORM_SET_ADD",
     add: ""
-  });
-
-});
-
-//form set title
-
-test("formSetTitle creates FORM_SET_TITLE actions", () => {
-
-  const { formSetTitle } = actions;
-
-  expect(formSetTitle("")).toEqual({
-    type: "FORM_SET_TITLE",
-    title: ""
   });
 
 });

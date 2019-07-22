@@ -6,6 +6,7 @@ const formFactories = require("./factories/form-factories");
 const listFactories = require("./factories/list-factories");
 const viewFactories = require("./factories/view-factories");
 
+const formThunks = require("./thunks/form-thunks");
 const metaThunks = require("./thunks/meta-thunks");
 const pollThunks = require("./thunks/poll-thunks");
 
@@ -22,6 +23,7 @@ const actions = Object.assign(
   metaFactories,
   viewFactories,
 
+  formThunks,
   metaThunks,
   pollThunks
 

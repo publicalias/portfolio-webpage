@@ -5,7 +5,7 @@
 const handlers = require("../../../../scripts/server/api/handlers/poll-handlers");
 
 const { newPoll } = require("../../../../schemas");
-const { initTestVote, initTestToggle, overlyLongInput } = require("../../test-helpers");
+const { initTestVote, initTestToggle, testOptions } = require("../../test-helpers");
 
 //global imports
 
@@ -37,9 +37,9 @@ describe("pollAddOption", () => {
     text
   });
 
-  const testError = async (error, text, data) => {
+  const testError = async (error, text, options = []) => {
 
-    const poll = newPoll(Object.assign({ id: "id-a" }, data));
+    const poll = newPoll(Object.assign({ id: "id-a" }, { options: options.map((e) => ({ text: e })) }));
 
     await pollsCol().insertOne(poll);
 
@@ -49,21 +49,9 @@ describe("pollAddOption", () => {
 
   };
 
+  testOptions(testError);
+
   it("sends 401 if user is unauthenticated or restricted", () => testAuthFail(mockAPICall, getData()));
-
-  it("sends errors if option is empty", () => testError("Option must not be empty", ""));
-
-  it("sends errors if option is too long", () => testError("Option must not exceed character limit", overlyLongInput));
-
-  it("sends errors if option is duplicate", () => {
-
-    const data = { options: [{ text: "Option A" }] };
-
-    return testError("Option must be unique", "Option A", data);
-
-  });
-
-  it("sends errors if option is obscene", () => testError("Option must not be obscene", "Fuck"));
 
   it("sends object if option is valid", async () => {
 

@@ -12,7 +12,7 @@ const PollTitle = (props) => {
 
   //events
 
-  const handleChange = (event) => {
+  const handleBlur = (event) => {
     formSetTitle(event.target.value);
   };
 
@@ -27,9 +27,8 @@ const PollTitle = (props) => {
       <input
         className="c-poll-display__input qa-title-input u-margin-half"
         maxLength="100"
-        onChange={handleChange}
+        onBlur={handleBlur}
         placeholder="Untitled"
-        value={poll.title}
       />
       {attribution}
     </div>

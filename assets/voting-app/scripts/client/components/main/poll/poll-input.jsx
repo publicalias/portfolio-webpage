@@ -38,8 +38,7 @@ const PollInput = (props) => {
 
   const handleSubmit = () => {
     if (role === "form") {
-      formAddOption();
-      formSetAdd("");
+      formAddOption(form.add, form.options);
     } else {
       handleReload(() => pollAddOption(poll.id, view.add), props);
       viewSetAdd("");
@@ -60,7 +59,7 @@ const PollInput = (props) => {
         className={`c-poll-options__input js-submit-input-${role} qa-option-input u-margin-right`}
         maxLength="100"
         onChange={handleChange}
-        placeholder="New Option"
+        placeholder="New Option (Up to 20)"
         value={value}
       />
       <button

@@ -29,13 +29,13 @@ describe("poll title (form)", () => {
   const testForm = initTestPoll(testSnapshot, "form");
   const testFormMount = initTestPoll(testMount, "form");
 
-  const testChange = initTestEvent(testFormMount, "change", { target: { value: "Title A" } });
+  const testBlur = initTestEvent(testFormMount, "blur", { target: { value: "Title A" } });
 
-  it("should match snapshot (default)", () => testForm(null, { title: "Title A" }));
+  it("should match snapshot (default)", () => testForm());
 
   it("should match snapshot (author)", () => testForm({ user: newUser({ name: "Author A" }) }));
 
-  it("should call formSetTitle on change", () => testChange(".qa-title-input", [], ["formSetTitle", ["Title A"]]));
+  it("should call formSetTitle on blur", () => testBlur(".qa-title-input", [], ["formSetTitle", ["Title A"]]));
 
 });
 

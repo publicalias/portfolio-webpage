@@ -7,7 +7,7 @@ const { newOption, newPoll } = require("../../schemas");
 //global imports
 
 const { getIPUser, retryWrite } = require("redux-utils/server-utils");
-const { deepCopy } = require("utilities");
+const { checkErrors, deepCopy } = require("utilities");
 
 //node modules
 
@@ -16,6 +16,35 @@ const uuid = require("uuid/v1");
 //utilities
 
 const pollsCol = () => db.collection("voting-app/polls");
+
+//check options
+
+const checkOptions = (options) => checkErrors([{
+  bool: options.filter((e) => !e.trim()).length,
+  text: "Option is empty"
+}, {
+  bool: options.filter((e) => e.length > 100).length,
+  text: "Option exceeds character limit"
+}, {
+  bool: options.filter((e, i, arr) => arr.lastIndexOf(e) !== i).length,
+  text: "Option already exists"
+}, {
+  bool: options.length > 20,
+  text: "Option exceeds limit"
+}]);
+
+//check title
+
+const checkTitle = (title, exists) => checkErrors([{
+  bool: !title.trim(),
+  text: "Title is empty"
+}, {
+  bool: title.length > 100,
+  text: "Title exceeds character limit"
+}, {
+  bool: exists,
+  text: "Title already exists"
+}]);
 
 //find by id
 
@@ -159,6 +188,8 @@ const handleToggle = (id, user, prop) => retryWrite(async () => {
 //exports
 
 module.exports = {
+  checkOptions,
+  checkTitle,
   findByID,
   findPolls,
   handleCreate,

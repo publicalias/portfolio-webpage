@@ -64,7 +64,7 @@ const mongoTests = {
 
       const mapAll = (fn) => Promise.all(args.map((e) => fn(e())));
 
-      await mapAll((e) => e.createIndex({ __qa: 1 })); //prevents error if no index exists
+      await mapAll((e) => e.createIndex({ __qa: 1 })); //prevents errors
 
       await Promise.all([
         mapAll((e) => e.deleteMany()),
@@ -82,7 +82,7 @@ bindObject(mongoTests);
 
 const testAuthFail = async (mockAPICall, data, other = []) => {
 
-  const users = [{}, newUser({ data: { restricted: true } })].concat(other);
+  const users = [{}, newUser({ data: { restricted: true } }), ...other];
 
   const res = await Promise.all(users.map((e) => mockAPICall(e, data)));
 

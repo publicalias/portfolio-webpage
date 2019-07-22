@@ -59,11 +59,11 @@ describe("poll input (form)", () => {
 
   it("should call formSetAdd on change", () => testChange(testFormMount, "formSetAdd"));
 
-  it("should call formAddOption and formSetAdd on submit", () => {
+  it("should call formAddOption on submit", () => {
 
     const dataList = [{ form: { add: "Option A" } }];
 
-    return testClick(".qa-option-submit", dataList, ["formAddOption", []], ["formSetAdd", [""]]);
+    testClick(".qa-option-submit", dataList, ["formAddOption", ["Option A", []]]);
 
   });
 
