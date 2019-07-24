@@ -9,35 +9,16 @@ const { testAPI } = require("../../../test-helpers");
 
 describe("pollAddOption", () => {
 
-  const { metaAddErrors, metaNoOp, pollAddOption } = actions;
+  const { pollAddOption } = actions;
 
-  const action = pollAddOption("", "");
-  const args = {
+  testAPI.default(pollAddOption("", ""), {
     path: "/voting-app/api/poll-add-option",
     method: "PATCH",
     data: {
       id: "",
       text: ""
     }
-  };
-
-  it("dispatches META_NO_OP action on success", () => {
-
-    const actionList = [metaNoOp()];
-
-    return testAPI.success(action, args, {}, actionList);
-
   });
-
-  it("dispatches META_ADD_ERRORS action on success (errors)", () => {
-
-    const actionList = [metaAddErrors([])];
-
-    return testAPI.success(action, args, { errors: [] }, actionList);
-
-  });
-
-  it("dispatches META_ADD_ERRORS action on failure", () => testAPI.failure(action, args));
 
 });
 
@@ -45,27 +26,16 @@ describe("pollAddOption", () => {
 
 describe("pollCastVote", () => {
 
-  const { metaNoOp, pollCastVote } = actions;
+  const { pollCastVote } = actions;
 
-  const action = pollCastVote("", "");
-  const args = {
+  testAPI.default(pollCastVote("", ""), {
     path: "/voting-app/api/poll-cast-vote",
     method: "PATCH",
     data: {
       id: "",
       text: ""
     }
-  };
-
-  it("dispatches META_NO_OP action on success", () => {
-
-    const actionList = [metaNoOp()];
-
-    return testAPI.success(action, args, {}, actionList);
-
   });
-
-  it("dispatches META_ADD_ERRORS action on failure", () => testAPI.failure(action, args));
 
 });
 
@@ -73,27 +43,16 @@ describe("pollCastVote", () => {
 
 describe("pollRemoveOption", () => {
 
-  const { metaNoOp, pollRemoveOption } = actions;
+  const { pollRemoveOption } = actions;
 
-  const action = pollRemoveOption("", "");
-  const args = {
+  testAPI.default(pollRemoveOption("", ""), {
     path: "/voting-app/api/poll-remove-option",
     method: "PATCH",
     data: {
       id: "",
       text: ""
     }
-  };
-
-  it("dispatches META_NO_OP action on success", () => {
-
-    const actionList = [metaNoOp()];
-
-    return testAPI.success(action, args, {}, actionList);
-
   });
-
-  it("dispatches META_ADD_ERRORS action on failure", () => testAPI.failure(action, args));
 
 });
 
@@ -101,24 +60,13 @@ describe("pollRemoveOption", () => {
 
 describe("pollToggleFlag", () => {
 
-  const { metaNoOp, pollToggleFlag } = actions;
+  const { pollToggleFlag } = actions;
 
-  const action = pollToggleFlag("");
-  const args = {
+  testAPI.default(pollToggleFlag(""), {
     path: "/voting-app/api/poll-toggle-flag",
     method: "PATCH",
     data: { id: "" }
-  };
-
-  it("dispatches META_NO_OP action on success", () => {
-
-    const actionList = [metaNoOp()];
-
-    return testAPI.success(action, args, {}, actionList);
-
   });
-
-  it("dispatches META_ADD_ERRORS action on failure", () => testAPI.failure(action, args));
 
 });
 
@@ -126,24 +74,13 @@ describe("pollToggleFlag", () => {
 
 describe("pollToggleHide", () => {
 
-  const { metaNoOp, pollToggleHide } = actions;
+  const { pollToggleHide } = actions;
 
-  const action = pollToggleHide("");
-  const args = {
+  testAPI.default(pollToggleHide(""), {
     path: "/voting-app/api/poll-toggle-hide",
     method: "PATCH",
     data: { id: "" }
-  };
-
-  it("dispatches META_NO_OP action on success", () => {
-
-    const actionList = [metaNoOp()];
-
-    return testAPI.success(action, args, {}, actionList);
-
   });
-
-  it("dispatches META_ADD_ERRORS action on failure", () => testAPI.failure(action, args));
 
 });
 
@@ -151,23 +88,12 @@ describe("pollToggleHide", () => {
 
 describe("pollToggleSecret", () => {
 
-  const { metaNoOp, pollToggleSecret } = actions;
+  const { pollToggleSecret } = actions;
 
-  const action = pollToggleSecret("");
-  const args = {
+  testAPI.default(pollToggleSecret(""), {
     path: "/voting-app/api/poll-toggle-secret",
     method: "PATCH",
     data: { id: "" }
-  };
-
-  it("dispatches META_NO_OP action on success", () => {
-
-    const actionList = [metaNoOp()];
-
-    return testAPI.success(action, args, {}, actionList);
-
   });
-
-  it("dispatches META_ADD_ERRORS action on failure", () => testAPI.failure(action, args));
 
 });

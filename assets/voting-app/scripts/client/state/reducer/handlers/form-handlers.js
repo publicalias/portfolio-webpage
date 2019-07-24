@@ -2,7 +2,7 @@
 
 //local imports
 
-const { newState } = require("../../../../../schemas");
+const { newForm } = require("../../../../../schemas");
 
 //global imports
 
@@ -10,7 +10,7 @@ const { deepCopy } = require("utilities");
 
 //form clear state
 
-const FORM_CLEAR_STATE = (state) => deepCopy(state, { form: newState().form });
+const FORM_CLEAR_STATE = (state) => deepCopy(state, { form: newForm() });
 
 //form remove option
 

@@ -4,7 +4,7 @@
 
 const { encodeAPICall } = require("../client-utils");
 const { testMock } = require("./meta-tests");
-const { metaAddErrors, metaSetLoading } = require("../redux-utils/meta-factories");
+const { metaAddErrors, metaNoOp, metaSetLoading, metaSetState } = require("../redux-utils/meta-factories");
 const { deepCopy } = require("../utilities");
 
 //node modules
@@ -42,39 +42,65 @@ const testAPIThunk = async (action, args, actionList, lastState, fetch) => {
 
 };
 
-const initTestAPI = (newState) => ({
+const initTestAPI = (newState) => {
 
-  success(action, args, res, actionList, lastState = newState()) {
+  const testAPI = {
 
-    const fetch = () => Promise.resolve({
-      ok: true,
-      json() {
-        return res;
-      }
-    });
+    success(action, args, res, actionList, lastState = newState()) {
 
-    return testAPIThunk(action, args, actionList, lastState, fetch);
+      const fetch = () => Promise.resolve({
+        ok: true,
+        json() {
+          return res;
+        }
+      });
 
-  },
+      return testAPIThunk(action, args, actionList, lastState, fetch);
 
-  failure(action, args, lastState = newState()) {
+    },
 
-    const status = 500;
-    const statusText = "Internal Server Error";
+    failure(action, args, lastState = newState()) {
 
-    const actionList = [metaAddErrors([`${status} ${statusText}`])];
+      const status = 500;
+      const statusText = "Internal Server Error";
 
-    const fetch = () => Promise.resolve({
-      ok: false,
-      status,
-      statusText
-    });
+      const actionList = [metaAddErrors([`${status} ${statusText}`])];
 
-    return testAPIThunk(action, args, actionList, lastState, fetch);
+      const fetch = () => Promise.resolve({
+        ok: false,
+        status,
+        statusText
+      });
 
-  }
+      return testAPIThunk(action, args, actionList, lastState, fetch);
 
-});
+    }
+
+  };
+
+  testAPI.default = (action, args) => {
+
+    const success = [
+      ["META_SET_STATE", { user: {} }, "res", [metaSetState({ user: {} })]], //order preserves formatting
+      ["META_NO_OP", {}, "no res", [metaNoOp()]],
+      ["META_ADD_ERRORS", { errors: [] }, "errors", [metaAddErrors([])]]
+    ];
+
+    for (const e of success) {
+
+      const [type, res, test, actionList] = e;
+
+      it(`dispatches ${type} action on success (${test})`, () => testAPI.success(action, args, res, actionList));
+
+    }
+
+    it("dispatches META_ADD_ERRORS on failure", () => testAPI.failure(action, args));
+
+  };
+
+  return testAPI;
+
+};
 
 //init test reducer
 

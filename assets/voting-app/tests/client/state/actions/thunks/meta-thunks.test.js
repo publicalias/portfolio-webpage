@@ -2,46 +2,21 @@
 
 //local imports
 
-const { newListParams, newState } = require("../../../../../schemas");
+const { newForm, newListParams } = require("../../../../../schemas");
 const { actions } = require("../../../../../scripts/client/state/actions/actions");
 const { testAPI } = require("../../../test-helpers");
-
-//global imports
-
-const { newUser } = require("schemas");
 
 //meta create poll
 
 describe("metaCreatePoll", () => {
 
-  const { metaAddErrors, metaCreatePoll, metaNoOp } = actions;
+  const { metaCreatePoll } = actions;
 
-  const getData = () => newState().form;
-
-  const action = metaCreatePoll(getData());
-  const args = {
+  testAPI.default(metaCreatePoll(newForm()), {
     path: "/voting-app/api/meta-create-poll",
     method: "POST",
-    data: getData()
-  };
-
-  it("dispatches META_NO_OP action on success", () => {
-
-    const actionList = [metaNoOp()];
-
-    return testAPI.success(action, args, {}, actionList);
-
+    data: newForm()
   });
-
-  it("dispatches META_ADD_ERRORS action on success (errors)", () => {
-
-    const actionList = [metaAddErrors([])];
-
-    return testAPI.success(action, args, { errors: [] }, actionList);
-
-  });
-
-  it("dispatches META_ADD_ERRORS action on failure", () => testAPI.failure(action, args));
 
 });
 
@@ -49,24 +24,13 @@ describe("metaCreatePoll", () => {
 
 describe("metaDeletePoll", () => {
 
-  const { metaDeletePoll, metaNoOp } = actions;
+  const { metaDeletePoll } = actions;
 
-  const action = metaDeletePoll("id-a");
-  const args = {
+  testAPI.default(metaDeletePoll("id-a"), {
     path: "/voting-app/api/meta-delete-poll",
     method: "DELETE",
     data: { id: "id-a" }
-  };
-
-  it("dispatches META_NO_OP action on success", () => {
-
-    const actionList = [metaNoOp()];
-
-    return testAPI.success(action, args, {}, actionList);
-
   });
-
-  it("dispatches META_ADD_ERRORS action on failure", () => testAPI.failure(action, args));
 
 });
 
@@ -74,32 +38,17 @@ describe("metaDeletePoll", () => {
 
 describe("metaGetPolls", () => {
 
-  const { metaGetPolls, metaSetState } = actions;
+  const { metaGetPolls } = actions;
 
-  const params = newListParams();
-
-  const action = metaGetPolls(params);
-  const args = {
+  testAPI.default(metaGetPolls(newListParams()), {
     path: "/voting-app/api/meta-get-polls",
     method: "GET",
     data: {
-      params,
+      params: newListParams(),
       id: undefined,
       length: undefined
     }
-  };
-
-  it("dispatches META_SET_STATE action on success", () => {
-
-    const res = { polls: [] };
-
-    const actionList = [metaSetState(res)];
-
-    return testAPI.success(action, args, res, actionList);
-
   });
-
-  it("dispatches META_ADD_ERRORS action on failure", () => testAPI.failure(action, args));
 
 });
 
@@ -107,24 +56,11 @@ describe("metaGetPolls", () => {
 
 describe("metaGetUser", () => {
 
-  const { metaGetUser, metaSetState } = actions;
+  const { metaGetUser } = actions;
 
-  const action = metaGetUser();
-  const args = {
+  testAPI.default(metaGetUser(), {
     path: "/voting-app/api/meta-get-user",
     method: "GET"
-  };
-
-  it("dispatches META_SET_STATE action on success", () => {
-
-    const res = { user: newUser() };
-
-    const actionList = [metaSetState(res)];
-
-    return testAPI.success(action, args, res, actionList);
-
   });
-
-  it("dispatches META_ADD_ERRORS action on failure", () => testAPI.failure(action, args));
 
 });

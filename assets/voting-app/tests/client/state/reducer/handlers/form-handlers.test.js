@@ -2,7 +2,7 @@
 
 //local imports
 
-const { newState } = require("../../../../../schemas");
+const { newForm } = require("../../../../../schemas");
 const { actions } = require("../../../../../scripts/client/state/actions/actions");
 const { testReducer } = require("../../../test-helpers");
 
@@ -12,7 +12,7 @@ test("reducer accepts FORM_CLEAR_STATE actions", () => {
 
   const { formClearState } = actions;
 
-  testReducer(formClearState(), { form: { title: "Title A" } }, { form: newState().form });
+  testReducer(formClearState(), { form: { title: "Title A" } }, { form: newForm() });
 
 });
 
