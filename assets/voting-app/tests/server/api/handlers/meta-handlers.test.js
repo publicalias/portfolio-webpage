@@ -10,7 +10,7 @@ const { overlyLongInput, testOptions, testTitle } = require("../../test-helpers"
 //global imports
 
 const { newIPUser, newUser } = require("schemas");
-const { mockArgs, testMock } = require("test-helpers/meta-tests");
+const { testMock } = require("test-helpers/meta-tests");
 const { initMockAPICall, mongoTests, testAuthFail } = require("test-helpers/server-tests");
 
 //utilities
@@ -38,9 +38,9 @@ describe("metaCreatePoll", () => {
 
     const res = await mockAPICall(newUser(), getData(form));
 
-    const [a] = mockArgs(res.json);
+    const args = res.json.mock.calls[0];
 
-    expect(a[0].errors.includes(error)).toEqual(true);
+    expect(args[0].errors.includes(error)).toEqual(true);
 
     expect(await pollsCol().countDocuments()).toEqual(docs);
 

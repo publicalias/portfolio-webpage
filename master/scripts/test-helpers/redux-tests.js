@@ -106,8 +106,8 @@ const initTestAPI = (newState) => {
 
 const initTestReducer = (newState, reducer) => (action, last, next) => {
 
-  const lastState = deepCopy(newState(), last);
-  const nextState = deepCopy(lastState, next);
+  const lastState = newState(last);
+  const nextState = deepCopy(lastState, newState(next));
 
   expect(reducer(lastState, action)).toEqual(nextState);
 

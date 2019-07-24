@@ -10,7 +10,7 @@ const { testWrapper } = require("../../../test-helpers");
 //global imports
 
 const { initSchema } = require("schemas");
-const { mockResults, testMock } = require("test-helpers/meta-tests");
+const { testMock } = require("test-helpers/meta-tests");
 const { initTestRef, initTestSnapshot, reactTests } = require("test-helpers/react-tests");
 const { deepCopy } = require("utilities");
 
@@ -46,15 +46,13 @@ describe("list", () => {
 
 describe("list (load and location.search)", () => {
 
-  const testEffect = async (fn) => {
+  const testEffect = (fn) => {
 
-    const { props, wrapper } = testMount(); //async
+    const { props, wrapper } = testMount();
 
     wrapper.setProps({ location: { search: "?sort=popular" } });
 
     wrapper.mount();
-
-    await Promise.resolve();
 
     fn(props);
 
@@ -62,28 +60,11 @@ describe("list (load and location.search)", () => {
 
   };
 
-  it("should reset scrollTop", () => {
-
-    const { lib: { select } } = List.injected;
-
-    return testEffect(() => {
-
-      const [a, b] = mockResults(select);
-
-      testMock(select, [".js-scroll-view"], [".js-scroll-view"]);
-
-      expect(a.scrollTop).toEqual(0);
-      expect(b.scrollTop).toEqual(0);
-
-    });
-
-  });
-
   it("should reset ref", () => {
 
     const { ref, useRef } = initTestRef(List);
 
-    return testEffect(() => {
+    testEffect(() => {
 
       testMock(useRef, [], [], []);
 
@@ -98,10 +79,11 @@ describe("list (load and location.search)", () => {
 
   it("should reset state", () => testEffect((props) => {
 
-    const { actions: { listClearState, metaGetPolls } } = props;
+    const { actions: { listClearState, metaGetPolls, metaSetState } } = props;
 
-    testMock(metaGetPolls, [newListParams()], [newListParams({ sort: "popular" })]);
     testMock(listClearState, [], []);
+    testMock(metaSetState, [{ polls: [] }], [{ polls: [] }]);
+    testMock(metaGetPolls, [newListParams()], [newListParams({ sort: "popular" })]);
 
   }));
 

@@ -8,35 +8,30 @@ const ListMenu = require("./list-menu");
 const { getListParams } = require("../../../app-logic");
 const { scrollInfo } = require("../../../view-logic");
 
-//global imports
-
-const { select } = require("dom-api");
-
 //node modules
 
 const React = require("react");
 
-const { useEffect, useRef } = React;
+const { useLayoutEffect, useRef } = React;
 
 //list
 
 const List = (props) => {
 
-  const { actions: { listClearState, metaGetPolls }, data: { polls }, location } = props;
+  const { actions: { listClearState, metaGetPolls, metaSetState }, data: { polls }, location } = props;
 
-  const { jsx: { ListBody, ListMenu }, lib: { scrollInfo, select, useRef } } = List.injected;
+  const { jsx: { ListBody, ListMenu }, lib: { scrollInfo, useRef } } = List.injected;
 
   //utilities
 
   const scrollRef = useRef();
 
-  const resetList = async () => {
-
-    await metaGetPolls(getListParams(location));
+  const resetList = () => {
 
     listClearState();
+    metaSetState({ polls: [] });
 
-    select(".js-scroll-view").scrollTop = 0;
+    metaGetPolls(getListParams(location));
 
     scrollRef.current = {
       end: false,
@@ -71,9 +66,7 @@ const List = (props) => {
 
   //lifecycle
 
-  useEffect(() => {
-    resetList(); //async
-  }, [location.search]);
+  useLayoutEffect(resetList, [location.search]);
 
   //render
 
@@ -93,7 +86,6 @@ List.injected = {
   },
   lib: {
     scrollInfo,
-    select,
     useRef
   }
 };
