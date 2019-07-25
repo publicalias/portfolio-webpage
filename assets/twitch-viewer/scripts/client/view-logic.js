@@ -4,7 +4,6 @@
 
 const { getJSON } = require("client-utils");
 const { select } = require("dom-api");
-const { truncate } = require("utilities");
 
 //get output
 
@@ -50,7 +49,7 @@ const parseStream = (id, res) => {
 
   select(`.js-edit-state-${id}`).class("is-offline is-online", true);
 
-  select(`.js-edit-status-${id}`).text(truncate(status, 30));
+  select(`.js-edit-status-${id}`).text(status);
 
 };
 

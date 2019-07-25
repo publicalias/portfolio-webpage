@@ -13,6 +13,7 @@
 
 @mixin grid-area {
   background-color: rgba(0, 0, 0, 0.75);
+  overflow: hidden;
   padding: 3vw 4.5vw;
 }
 
@@ -49,8 +50,15 @@
   height: calc(100vh - 9vw);
   max-height: 60vw;
 
+  &__col {
+    &--10 { width: 10%; }
+    &--80 { width: 80%; }
+    &--90 { width: 90%; }
+  }
+
   &__scroll-view {
     height: 100%;
+    overflow-x: hidden;
     overflow-y: scroll;
     padding-right: 4.5vw;
   }
@@ -110,6 +118,8 @@
   &__input-box { display: flex; }
 
   &__input { flex: 11; }
+
+  &__layout { display: flex; }
 
   &__option { display: inline; }
 

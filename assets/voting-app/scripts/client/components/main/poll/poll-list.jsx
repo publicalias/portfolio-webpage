@@ -64,16 +64,18 @@ const PollList = (props) => {
             key={keyGen(text)}
             onClick={handleVote(text)}
           >
-            {created ? (
-              <span className="c-poll-options__remove qa-option-remove" onClick={handleRemove(text)}>
-                <i className="fa fa-close" />
-              </span>
-            ) : (
-              <svg className="c-poll-options__color-box">
-                <rect className="c-poll-options__color-icon" fill={chartColor(i, poll.options)} />
-              </svg>
-            )}
-            <span>{text}</span>
+            <div className="c-poll-options__layout">
+              {created ? (
+                <span className="c-poll-options__remove qa-option-remove" onClick={handleRemove(text)}>
+                  <i className="fa fa-close" />
+                </span>
+              ) : (
+                <svg className="c-poll-options__color-box">
+                  <rect className="c-poll-options__color-icon" fill={chartColor(i, poll.options)} />
+                </svg>
+              )}
+              <span>{text}</span>
+            </div>
           </button>
         );
 

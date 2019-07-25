@@ -9,17 +9,21 @@ exports[`poll list (form) should match snapshot (authenticated) 1`] = `
     key="0-730"
     onClick={[Function]}
   >
-    <span
-      className="c-poll-options__remove qa-option-remove"
-      onClick={[Function]}
+    <div
+      className="c-poll-options__layout"
     >
-      <i
-        className="fa fa-close"
-      />
-    </span>
-    <span>
-      Option A
-    </span>
+      <span
+        className="c-poll-options__remove qa-option-remove"
+        onClick={[Function]}
+      >
+        <i
+          className="fa fa-close"
+        />
+      </span>
+      <span>
+        Option A
+      </span>
+    </div>
   </button>
 </div>
 `;
@@ -33,17 +37,21 @@ exports[`poll list (form) should match snapshot (default) 1`] = `
     key="0-730"
     onClick={[Function]}
   >
-    <span
-      className="c-poll-options__remove qa-option-remove"
-      onClick={[Function]}
+    <div
+      className="c-poll-options__layout"
     >
-      <i
-        className="fa fa-close"
-      />
-    </span>
-    <span>
-      Option A
-    </span>
+      <span
+        className="c-poll-options__remove qa-option-remove"
+        onClick={[Function]}
+      >
+        <i
+          className="fa fa-close"
+        />
+      </span>
+      <span>
+        Option A
+      </span>
+    </div>
   </button>
 </div>
 `;
@@ -57,17 +65,21 @@ exports[`poll list (view) should match snapshot (authenticated) 1`] = `
     key="0-730"
     onClick={[Function]}
   >
-    <span
-      className="c-poll-options__remove qa-option-remove"
-      onClick={[Function]}
+    <div
+      className="c-poll-options__layout"
     >
-      <i
-        className="fa fa-close"
-      />
-    </span>
-    <span>
-      Option A
-    </span>
+      <span
+        className="c-poll-options__remove qa-option-remove"
+        onClick={[Function]}
+      >
+        <i
+          className="fa fa-close"
+        />
+      </span>
+      <span>
+        Option A
+      </span>
+    </div>
   </button>
 </div>
 `;
@@ -81,17 +93,21 @@ exports[`poll list (view) should match snapshot (default) 1`] = `
     key="0-730"
     onClick={[Function]}
   >
-    <svg
-      className="c-poll-options__color-box"
+    <div
+      className="c-poll-options__layout"
     >
-      <rect
-        className="c-poll-options__color-icon"
-        fill="rgba(0, 0, 0, 0.75)"
-      />
-    </svg>
-    <span>
-      Option A
-    </span>
+      <svg
+        className="c-poll-options__color-box"
+      >
+        <rect
+          className="c-poll-options__color-icon"
+          fill="rgba(0, 0, 0, 0.75)"
+        />
+      </svg>
+      <span>
+        Option A
+      </span>
+    </div>
   </button>
 </div>
 `;
@@ -105,17 +121,21 @@ exports[`poll list (view) should match snapshot (options, created option) 1`] = 
     key="0-730"
     onClick={[Function]}
   >
-    <span
-      className="c-poll-options__remove qa-option-remove"
-      onClick={[Function]}
+    <div
+      className="c-poll-options__layout"
     >
-      <i
-        className="fa fa-close"
-      />
-    </span>
-    <span>
-      Option A
-    </span>
+      <span
+        className="c-poll-options__remove qa-option-remove"
+        onClick={[Function]}
+      >
+        <i
+          className="fa fa-close"
+        />
+      </span>
+      <span>
+        Option A
+      </span>
+    </div>
   </button>
 </div>
 `;
@@ -129,17 +149,21 @@ exports[`poll list (view) should match snapshot (options, created poll) 1`] = `
     key="0-730"
     onClick={[Function]}
   >
-    <span
-      className="c-poll-options__remove qa-option-remove"
-      onClick={[Function]}
+    <div
+      className="c-poll-options__layout"
     >
-      <i
-        className="fa fa-close"
-      />
-    </span>
-    <span>
-      Option A
-    </span>
+      <span
+        className="c-poll-options__remove qa-option-remove"
+        onClick={[Function]}
+      >
+        <i
+          className="fa fa-close"
+        />
+      </span>
+      <span>
+        Option A
+      </span>
+    </div>
   </button>
 </div>
 `;

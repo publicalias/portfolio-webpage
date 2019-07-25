@@ -32,15 +32,15 @@ const ListBody = (props) => {
         <table className="c-list-body__table js-scroll-content">
           <thead>
             <tr>
-              <td>
+              <td className="c-list-body__col--10">
                 <h5>Hide</h5>
               </td>
               {auth && (
-                <td>
+                <td className="c-list-body__col--10">
                   <h5>Flag</h5>
                 </td>
               )}
-              <td>
+              <td className={`c-list-body__col--${auth ? "80" : "90"}`}>
                 <h5>Description</h5>
               </td>
             </tr>

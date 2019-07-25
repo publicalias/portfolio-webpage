@@ -13,17 +13,23 @@ exports[`list body should match snapshot (authenticated) 1`] = `
     >
       <thead>
         <tr>
-          <td>
+          <td
+            className="c-list-body__col--10"
+          >
             <h5>
               Hide
             </h5>
           </td>
-          <td>
+          <td
+            className="c-list-body__col--10"
+          >
             <h5>
               Flag
             </h5>
           </td>
-          <td>
+          <td
+            className="c-list-body__col--80"
+          >
             <h5>
               Description
             </h5>
@@ -61,12 +67,16 @@ exports[`list body should match snapshot (default) 1`] = `
     >
       <thead>
         <tr>
-          <td>
+          <td
+            className="c-list-body__col--10"
+          >
             <h5>
               Hide
             </h5>
           </td>
-          <td>
+          <td
+            className="c-list-body__col--90"
+          >
             <h5>
               Description
             </h5>
@@ -101,12 +111,16 @@ exports[`list body should match snapshot (polls) 1`] = `
     >
       <thead>
         <tr>
-          <td>
+          <td
+            className="c-list-body__col--10"
+          >
             <h5>
               Hide
             </h5>
           </td>
-          <td>
+          <td
+            className="c-list-body__col--90"
+          >
             <h5>
               Description
             </h5>

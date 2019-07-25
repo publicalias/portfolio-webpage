@@ -57,6 +57,12 @@ $bg-input: rgba(64, 64, 64, 0.75);
   width: $width;
 }
 
+@mixin ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 @mixin font-body { font-family: "Raleway", sans-serif; }
 @mixin font-head { font-family: "Lobster", cursive; }
 
@@ -109,6 +115,7 @@ body {
   font-size: 1.6vw;
   line-height: 1.4;
   text-align: justify;
+  word-break: break-word;
 }
 
 button {

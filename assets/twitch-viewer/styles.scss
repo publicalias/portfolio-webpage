@@ -14,13 +14,18 @@ $margin: (6vw - 1.6vw * 1.4) / 2;
   }
 
   &__name {
+    @include ellipsis;
     float: left;
     margin: $margin 0 0 $margin;
+    width: 40%;
   }
 
   &__status {
+    @include ellipsis;
     float: right;
     margin-top: $margin;
+    text-align: right;
+    width: 40%;
   }
 
 }

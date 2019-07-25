@@ -157,10 +157,6 @@ const toPrecision = (n, sf = 15) => {
 
 };
 
-//truncate
-
-const truncate = (str, length) => str.length < length ? str : `${str.slice(0, length - 3)}...`;
-
 //exports
 
 module.exports = {
@@ -177,6 +173,5 @@ module.exports = {
   readDate,
   rngInt,
   roundTo,
-  toPrecision,
-  truncate
+  toPrecision
 };
