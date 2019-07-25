@@ -2,6 +2,7 @@
 
 @import "components/accordion";
 @import "components/cookie-banner";
+@import "components/legal-stuff";
 
 @mixin layer {
   @include square(100%);
@@ -35,17 +36,6 @@
   display: flex;
   &__btn { @include wide-btn; }
   &__link { flex: 1; }
-}
-
-.c-footer {
-
-  padding: 0 4.5vw;
-
-  &__link {
-    display: inline-block;
-    margin: 1.5vw 0;
-  }
-
 }
 
 .c-media-icons {

@@ -1,8 +1,7 @@
 @import "master";
 
-@import "components/cookie-banner";
 @import "components/delete-button";
-@import "components/error-message";
+@import "components/redux-app";
 @import "components/search-bar";
 
 @mixin grid {

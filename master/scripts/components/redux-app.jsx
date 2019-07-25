@@ -4,6 +4,7 @@
 
 const CookieBanner = require("./cookie-banner");
 const ErrorMessage = require("./error-message");
+const LegalStuff = require("./legal-stuff");
 
 const { checkInput } = require("../client-utils");
 const { initKeyGen } = require("../react-utils");
@@ -39,6 +40,7 @@ const App = (props) => {
   return [
     <ErrorMessage {...props} key={keyGen("error")} />,
     <UI {...props} key={keyGen("ui")} />,
+    <LegalStuff key={keyGen("legal")} />,
     <CookieBanner key={keyGen("cookie")} />
   ];
 
