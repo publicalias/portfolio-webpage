@@ -9,7 +9,7 @@ const { useInterval } = require("react-utils");
 
 const React = require("react");
 
-const { useEffect } = React;
+const { useEffect, useRef } = React;
 
 //error message
 
@@ -19,22 +19,39 @@ const ErrorMessage = (props) => {
 
   //utilities
 
+  const animated = useRef(false);
+
   const error = errors[0];
 
   const fadeIn = () => {
 
     const DOMError = select(".js-hide-error");
 
-    if (error && (DOMError.class("is-hidden") || DOMError.css().opacity === "0")) {
-      DOMError.class("is-hidden", true, false);
-      DOMError.animate({ opacity: 1 });
+    const visible = !DOMError.class("is-hidden") || DOMError.css().opacity !== "0";
+
+    if (animated.current || !error || visible) {
+      return;
     }
+
+    animated.current = true;
+
+    DOMError.class("is-hidden", true, false);
+
+    DOMError.animate({ opacity: 1 }, () => {
+      animated.current = false;
+    });
 
   };
 
   const fadeOut = () => {
 
     const DOMError = select(".js-hide-error");
+
+    if (animated.current) {
+      return;
+    }
+
+    animated.current = true;
 
     DOMError.animate({ opacity: 0 }, () => {
 
@@ -43,6 +60,8 @@ const ErrorMessage = (props) => {
       }
 
       metaCloseError();
+
+      animated.current = false;
 
     });
 
