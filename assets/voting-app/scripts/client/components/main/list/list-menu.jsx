@@ -32,7 +32,7 @@ const ListMenu = (props) => {
 
   //render
 
-  const childProps = {
+  const local = {
 
     handleChange(event) {
       listSetSearch(event.target.value);
@@ -55,7 +55,7 @@ const ListMenu = (props) => {
   return (
     <div className="c-list-menu">
       <div className="c-list-menu__search">
-        <SearchBar {...childProps} />
+        <SearchBar local={local} />
       </div>
       <div className="c-list-menu__sort">
         <button className="qa-sort-new u-hover" onClick={handleSortNew}>New</button>
@@ -67,6 +67,8 @@ const ListMenu = (props) => {
   );
 
 };
+
+ListMenu.propList = ["data.list", "location"];
 
 ListMenu.injected = { jsx: { SearchBar } };
 

@@ -1,9 +1,9 @@
 "use strict";
 
-//global imports
+//local imports
 
-const { select } = require("dom-api");
-const { useInterval } = require("react-utils");
+const { select } = require("../dom-api");
+const { useInterval } = require("../react-utils");
 
 //node modules
 
@@ -27,7 +27,7 @@ const ErrorMessage = (props) => {
 
     const DOMError = select(".js-hide-error");
 
-    const visible = !DOMError.class("is-hidden") || DOMError.css().opacity !== "0";
+    const visible = !DOMError.class("is-hidden") && DOMError.css().opacity !== "0";
 
     if (animated.current || !error || visible) {
       return;

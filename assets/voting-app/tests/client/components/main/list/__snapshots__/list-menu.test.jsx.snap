@@ -8,11 +8,15 @@ exports[`list menu should match snapshot 1`] = `
     className="c-list-menu__search"
   >
     <SearchBar
-      handleChange={[Function]}
-      handleClear={[Function]}
-      handleSubmit={[Function]}
-      id="search"
-      value="Apple"
+      local={
+        Object {
+          "handleChange": [Function],
+          "handleClear": [Function],
+          "handleSubmit": [Function],
+          "id": "search",
+          "value": "Apple",
+        }
+      }
     />
   </div>
   <div

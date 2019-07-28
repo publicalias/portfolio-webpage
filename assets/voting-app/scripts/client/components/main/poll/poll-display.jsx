@@ -25,6 +25,8 @@ const PollDisplay = (props) => {
 
 };
 
+PollDisplay.propList = [];
+
 PollDisplay.injected = {
   jsx: {
     PollChart,

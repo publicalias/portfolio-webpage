@@ -10,7 +10,7 @@ const { paintCanvas } = require("../view-logic");
 const { select } = require("dom-api");
 const { mouseYX } = require("react-projects/app-logic");
 const { hookEvent, useSetState } = require("react-utils");
-const { arrEqual } = require("utilities");
+const { objEqual } = require("utilities");
 
 //node modules
 
@@ -71,7 +71,7 @@ const ViewPort = (props) => {
 
     const newText = bool.sight[y][x] ? type[level[y][x]] : base;
 
-    if (!arrEqual(newText, text)) {
+    if (!objEqual(newText, text)) {
       fn(newText);
     }
 

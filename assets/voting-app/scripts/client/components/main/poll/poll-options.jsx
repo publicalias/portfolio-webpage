@@ -37,6 +37,8 @@ const PollOptions = (props) => {
 
 };
 
+PollOptions.propList = ["data.user", "data.polls", "local"];
+
 PollOptions.injected = {
   jsx: {
     PollInput,

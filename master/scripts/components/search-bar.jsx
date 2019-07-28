@@ -1,10 +1,10 @@
 "use strict";
 
-//global imports
+//local imports
 
-const { submitKeys } = require("client-utils");
-const { select } = require("dom-api");
-const { hookEvent, useTeardown } = require("react-utils");
+const { submitKeys } = require("../client-utils");
+const { select } = require("../dom-api");
+const { hookEvent, useTeardown } = require("../react-utils");
 
 //node modules
 
@@ -14,7 +14,7 @@ const React = require("react");
 
 const SearchBar = (props) => {
 
-  const { handleChange, handleClear, handleSubmit, id, value } = props;
+  const { local: { handleChange, handleClear, handleSubmit, id, value } } = props;
 
   //lifecycle
 
@@ -55,6 +55,8 @@ const SearchBar = (props) => {
   );
 
 };
+
+SearchBar.propList = ["local"];
 
 //exports
 

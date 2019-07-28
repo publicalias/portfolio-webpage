@@ -12,7 +12,7 @@ const React = require("react");
 
 const DeleteButton = (props) => {
 
-  const { data: { meta }, actions: { metaAddErrors, metaSetLoading, metaToggleDelete }, local: { root } } = props;
+  const { actions: { metaAddErrors, metaSetLoading, metaToggleDelete }, data: { meta }, local: { root } } = props;
 
   //events
 
@@ -57,6 +57,8 @@ const DeleteButton = (props) => {
   );
 
 };
+
+DeleteButton.propList = ["data.meta", "local"];
 
 //exports
 

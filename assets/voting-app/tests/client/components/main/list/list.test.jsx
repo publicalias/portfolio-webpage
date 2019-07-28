@@ -28,10 +28,7 @@ const newRef = initSchema({
 beforeAll(reactTests.setup);
 beforeEach(reactTests.inject(List, {
   jsx: { ListBody: "ignore" },
-  lib: {
-    select: jest.fn(() => ({})),
-    useRef: jest.fn(() => ({}))
-  }
+  lib: { useRef: jest.fn(() => ({})) }
 }));
 
 //list

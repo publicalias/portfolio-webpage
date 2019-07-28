@@ -6,7 +6,7 @@ const { nearbyCells, totalDist } = require("../../app-logic");
 
 //global imports
 
-const { arrEqual } = require("utilities");
+const { objEqual } = require("utilities");
 
 //viable pursuit
 
@@ -20,7 +20,7 @@ const moveIsViable = (params, actors, pursue) => ([y, x]) => {
   const viableDirection = pursue ? after < before : before < after;
 
   const val = level[y][x];
-  const viableCell = val === 0 || pursue && (val === 9 || val === 2) && arrEqual([y, x], target.stats.index);
+  const viableCell = val === 0 || pursue && (val === 9 || val === 2) && objEqual([y, x], target.stats.index);
 
   return viableDirection && viableCell;
 

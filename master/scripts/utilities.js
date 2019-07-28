@@ -4,10 +4,6 @@
 
 const alphabet = "abcdefghijklmnopqrstuvwxyz";
 
-//arr equal
-
-const arrEqual = (a, b) => a.toString() === b.toString();
-
 //bind object
 
 const bindObject = (to, from = to) => {
@@ -94,6 +90,16 @@ const initDeepCopy = (config) => (...args) => {
 
 const deepCopy = initDeepCopy();
 
+//get
+
+const get = (obj, key) => key.split(".").reduce((acc, e) => {
+
+  const valid = acc && typeof acc === "object" || typeof acc === "function";
+
+  return valid ? acc[e] : null;
+
+}, obj);
+
 //lead zero
 
 const leadZero = (int, digits = 2) => {
@@ -123,6 +129,10 @@ const months = [
   "November",
   "December"
 ];
+
+//obj equal
+
+const objEqual = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 
 //read date
 
@@ -161,15 +171,16 @@ const toPrecision = (n, sf = 15) => {
 
 module.exports = {
   alphabet,
-  arrEqual,
   bindObject,
   chance,
   checkErrors,
   cycleItems,
   deepCopy,
   initDeepCopy,
+  get,
   leadZero,
   months,
+  objEqual,
   readDate,
   rngInt,
   roundTo,

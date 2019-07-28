@@ -63,7 +63,7 @@ describe("poll input (form)", () => {
 
     const dataList = [{ form: { add: "Option A" } }];
 
-    testClick(".qa-option-submit", dataList, ["formAddOption", ["Option A", []]]);
+    return testClick(".qa-option-submit", dataList, ["formAddOption", ["Option A", []]]);
 
   });
 

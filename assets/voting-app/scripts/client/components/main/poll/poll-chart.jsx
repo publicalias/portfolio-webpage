@@ -38,6 +38,8 @@ const PollChart = (props) => {
 
 };
 
+PollChart.propList = ["local"];
+
 PollChart.injected = {
   lib: {
     renderChart,

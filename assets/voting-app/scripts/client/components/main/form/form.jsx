@@ -41,6 +41,8 @@ const Form = (props) => {
 
 };
 
+Form.propList = ["data.form"];
+
 Form.injected = {
   jsx: {
     FormMenu,

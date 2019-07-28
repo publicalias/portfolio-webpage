@@ -12,6 +12,7 @@ const { reducer } = require("./scripts/client/state/reducer/reducer");
 const ReduxApp = require("components/redux-app");
 
 const { select } = require("dom-api");
+const { optimize } = require("react-utils");
 
 //node modules
 
@@ -22,7 +23,7 @@ const ReactDOM = require("react-dom");
 
 ReactDOM.render((
   <ReduxApp
-    UI={UI}
+    UI={optimize(UI)}
     actions={actions}
     reducer={reducer}
     root="/voting-app"

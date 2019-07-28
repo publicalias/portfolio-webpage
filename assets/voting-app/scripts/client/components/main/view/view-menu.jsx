@@ -43,6 +43,8 @@ const ViewMenu = (props) => {
 
 };
 
+ViewMenu.propList = ["data.user", "data.view", "local"];
+
 ViewMenu.injected = {
   jsx: {
     ViewControls,

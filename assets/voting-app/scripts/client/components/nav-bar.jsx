@@ -60,6 +60,8 @@ const NavBar = (props) => {
 
 };
 
+NavBar.propList = ["data.user"];
+
 NavBar.injected = { jsx: { Link } };
 
 //exports

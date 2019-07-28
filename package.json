@@ -12,6 +12,7 @@
     "connect-mongodb-session": "^2.1.1",
     "express": "^4.17.1",
     "express-session": "^1.16.1",
+    "fast-deep-equal": "^2.0.1",
     "gulp": "^4.0.2",
     "gulp-clean-css": "^4.2.0",
     "gulp-sass": "^4.0.2",

@@ -65,6 +65,8 @@ const ListItem = (props) => {
 
 };
 
+ListItem.propList = ["data.user", "local"];
+
 ListItem.injected = {
   jsx: {
     Link,

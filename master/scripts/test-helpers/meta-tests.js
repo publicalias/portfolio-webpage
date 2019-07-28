@@ -1,5 +1,9 @@
 "use strict";
 
+//mock results
+
+const mockResults = (fn) => fn.mock.results.map((e) => e.value);
+
 //test errors
 
 const testErrors = (testData) => (fn, testArgs = []) => {
@@ -31,6 +35,7 @@ const testMock = (fn, ...calls) => {
 //exports
 
 module.exports = {
+  mockResults,
   testErrors,
   testMock
 };

@@ -85,6 +85,8 @@ const PollList = (props) => {
 
 };
 
+PollList.propList = ["data.user", "local"];
+
 PollList.injected = { lib: { chartColor } };
 
 //exports

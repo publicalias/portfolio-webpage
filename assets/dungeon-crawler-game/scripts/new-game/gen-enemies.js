@@ -2,7 +2,7 @@
 
 //global imports
 
-const { arrEqual, chance, rngInt } = require("utilities");
+const { objEqual, chance, rngInt } = require("utilities");
 
 //gen enemies
 
@@ -10,7 +10,7 @@ const enemyType = (params, enemy) => {
 
   const { depth, bossIndex } = params;
 
-  const boss = bossIndex && arrEqual(enemy.stats.index, bossIndex);
+  const boss = bossIndex && objEqual(enemy.stats.index, bossIndex);
 
   const typeSets = [{
     type: [0, 1],
@@ -54,7 +54,7 @@ const getEnemy = (params, index, count) => {
 
   const { depth, bossIndex } = params;
 
-  const boss = bossIndex && arrEqual(index, bossIndex);
+  const boss = bossIndex && objEqual(index, bossIndex);
 
   const enemy = {
 

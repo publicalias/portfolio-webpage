@@ -79,6 +79,8 @@ const List = (props) => {
 
 };
 
+List.propList = ["data.polls", "location"];
+
 List.injected = {
   jsx: {
     ListBody,

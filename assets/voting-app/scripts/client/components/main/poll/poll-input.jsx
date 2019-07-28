@@ -73,6 +73,8 @@ const PollInput = (props) => {
 
 };
 
+PollInput.propList = ["data.form", "data.view", "local"];
+
 PollInput.injected = { lib: { submitKeys } };
 
 //exports

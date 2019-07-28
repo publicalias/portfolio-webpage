@@ -66,6 +66,8 @@ const Sidebar = (props) => {
 
 };
 
+Sidebar.propList = ["data.user"];
+
 Sidebar.injected = { jsx: { DeleteButton } };
 
 //exports

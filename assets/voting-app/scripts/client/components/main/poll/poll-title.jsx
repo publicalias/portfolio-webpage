@@ -25,7 +25,7 @@ const PollTitle = (props) => {
   return role === "form" ? (
     <div className="u-align-center">
       <input
-        className="c-poll-display__input qa-title-input u-margin-half"
+        className="c-poll-display__input qa-title-input u-margin-half js-edit-title"
         maxLength="100"
         onBlur={handleBlur}
         placeholder="Untitled"
@@ -40,6 +40,8 @@ const PollTitle = (props) => {
   );
 
 };
+
+PollTitle.propList = ["data.user", "local"];
 
 //exports
 

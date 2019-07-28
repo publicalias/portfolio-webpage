@@ -67,6 +67,8 @@ const ListBody = (props) => {
 
 };
 
+ListBody.propList = ["data.user", "data.polls", "local"];
+
 ListBody.injected = { jsx: { ListItem } };
 
 //exports

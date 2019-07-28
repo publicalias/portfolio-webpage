@@ -49,6 +49,8 @@ const UI = (props) => {
 
 };
 
+UI.propList = [];
+
 UI.injected = {
   jsx: {
     Form,

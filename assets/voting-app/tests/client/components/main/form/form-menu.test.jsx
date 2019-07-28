@@ -9,6 +9,7 @@ const { testCreateDelete, testWrapper } = require("../../../test-helpers");
 
 //global imports
 
+const { mockResults, testMock } = require("test-helpers/meta-tests");
 const { initTestEvent, initTestSnapshot, reactTests } = require("test-helpers/react-tests");
 
 //utilities
@@ -18,7 +19,7 @@ const { testMount, testShallow } = testWrapper(FormMenu);
 //setup
 
 beforeAll(reactTests.setup);
-beforeEach(reactTests.inject(FormMenu));
+beforeEach(reactTests.inject(FormMenu, { lib: { select: jest.fn(() => ({})) } }));
 
 //form menu
 
@@ -50,11 +51,21 @@ describe("form menu (click)", () => {
 
   const testClick = initTestEvent(testMount, "click");
 
+  const testSelect = () => {
+
+    const { lib: { select } } = FormMenu.injected;
+
+    testMock(select, [".js-edit-title"]);
+
+    expect(mockResults(select)[0].value).toEqual("");
+
+  };
+
   const dataList = [{ form: { delete: true } }];
 
   it("should call formToggleDelete on click (discard)", () => testClick(".qa-confirm-true", [], ["formToggleDelete", []]));
 
-  it("should call formClearState on click (yes)", () => testClick(".qa-discard-poll", dataList, ["formClearState", []]));
+  it("should call formClearState on click (yes)", () => testClick(".qa-discard-poll", dataList, ["formClearState", []], testSelect));
 
   it("should call formToggleDelete on click (no)", () => testClick(".qa-confirm-false", dataList, ["formToggleDelete", []]));
 

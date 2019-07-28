@@ -1,5 +1,9 @@
 "use strict";
 
+//global imports
+
+const { select } = require("dom-api");
+
 //node modules
 
 const React = require("react");
@@ -13,6 +17,8 @@ const FormMenu = (props) => {
     data: { form },
     history
   } = props;
+
+  const { lib: { select } } = FormMenu.injected;
 
   //events
 
@@ -32,6 +38,7 @@ const FormMenu = (props) => {
 
   const handleDiscard = () => {
     formClearState();
+    select(".js-edit-title").value = "";
   };
 
   const handleSecret = () => {
@@ -60,6 +67,10 @@ const FormMenu = (props) => {
   );
 
 };
+
+FormMenu.propList = ["data.form"];
+
+FormMenu.injected = { lib: { select } };
 
 //exports
 

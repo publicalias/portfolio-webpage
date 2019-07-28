@@ -3,7 +3,7 @@
 //global imports
 
 const { storageKey } = require("client-utils");
-const { arrEqual, rngInt } = require("utilities");
+const { objEqual, rngInt } = require("utilities");
 
 //add hostile
 
@@ -30,7 +30,7 @@ const checkIndex = (arr, [y, x]) => arr[y] && arr[y][x];
 
 //find enemy
 
-const findEnemy = (enemies, index) => enemies.find((e) => arrEqual(e.stats.index, index));
+const findEnemy = (enemies, index) => enemies.find((e) => objEqual(e.stats.index, index));
 
 //find range
 

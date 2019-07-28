@@ -54,6 +54,8 @@ const ViewControls = (props) => {
 
 };
 
+ViewControls.propList = ["data.user", "local"];
+
 ViewControls.injected = { jsx: { PollToggle } };
 
 //exports

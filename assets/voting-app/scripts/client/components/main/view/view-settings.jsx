@@ -61,6 +61,8 @@ const ViewSettings = (props) => {
 
 };
 
+ViewSettings.propList = ["data.view", "local"];
+
 //exports
 
 module.exports = ViewSettings;

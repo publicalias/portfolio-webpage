@@ -57,6 +57,8 @@ const View = (props) => {
 
 };
 
+View.propList = ["data.polls", "location"];
+
 View.injected = {
   jsx: {
     PollDisplay,

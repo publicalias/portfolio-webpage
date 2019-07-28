@@ -43,6 +43,8 @@ const PollToggle = (props) => {
 
 };
 
+PollToggle.propList = ["data.user", "local"];
+
 //exports
 
 module.exports = PollToggle;

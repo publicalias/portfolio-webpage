@@ -1,8 +1,15 @@
 "use strict";
 
+//local imports
+
+const { get } = require("./utilities");
+
 //node modules
 
-const { useEffect, useLayoutEffect, useRef, useState } = require("react");
+const equal = require("fast-deep-equal");
+const React = require("react");
+
+const { useEffect, useLayoutEffect, useRef, useState } = React;
 
 //handle teardown
 
@@ -51,6 +58,47 @@ const initKeyGen = () => {
     return checkKey(sum);
 
   };
+
+};
+
+//optimize
+
+const optimize = (Component) => {
+
+  if (!Component.propList || Component.memoized) {
+    return Component;
+  }
+
+  const getJSX = (next, list = []) => {
+
+    const jsx = next.map((e) => Object.values(get(e, "injected.jsx") || {}));
+
+    return next.length ? getJSX(jsx.flat(), list.concat(jsx)) : list;
+
+  };
+
+  const all = getJSX([Component]);
+  const first = all[0] || [];
+
+  const wrapper = React.memo(Component, (prev, next) => {
+
+    const match = (key) => equal(get(prev, key), get(next, key));
+
+    const propList = all.flat()
+      .reduce((acc, e) => acc.concat(e.propList || []), Component.propList)
+      .filter((e, i, arr) => arr.lastIndexOf(e) === i);
+
+    return propList.reduce((acc, e) => match(e) ? acc : false, true);
+
+  });
+
+  Component.memoized = true;
+
+  first.forEach((e) => {
+    Component.injected.jsx[e.name] = optimize(e);
+  });
+
+  return wrapper;
 
 };
 
@@ -120,6 +168,7 @@ module.exports = {
   handleTeardown,
   hookEvent,
   initKeyGen,
+  optimize,
   useInterval,
   useSetState,
   useTeardown
