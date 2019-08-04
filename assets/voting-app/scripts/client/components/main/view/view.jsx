@@ -18,24 +18,15 @@ const { useLayoutEffect } = React;
 
 const View = (props) => {
 
-  const { actions: { metaGetPolls, viewClearState }, data: { polls }, location } = props;
+  const { actions: { metaGetPolls, viewClearState }, data: { polls }, local: { id } } = props;
 
   const { jsx: { PollDisplay, PollOptions, ViewMenu } } = View.injected;
-
-  //utilities
-
-  const id = new URLSearchParams(location.search).get("id");
 
   //lifecycle
 
   useLayoutEffect(() => {
-
     viewClearState();
-
-    if (id) {
-      metaGetPolls(null, id);
-    }
-
+    metaGetPolls(null, id);
   }, []);
 
   //render
@@ -57,7 +48,7 @@ const View = (props) => {
 
 };
 
-View.propList = ["data.polls", "location"];
+View.propList = ["data.polls", "local"];
 
 View.injected = {
   jsx: {

@@ -26,33 +26,19 @@ describe("view", () => {
 
   const testSnapshot = initTestSnapshot(testShallow);
 
-  it("should match snapshot (default)", () => testSnapshot());
+  it("should match snapshot (default)", () => testSnapshot(null, { id: "id-a" }));
 
   it("should match snapshot (id)", () => {
 
-    const dataList = [{ polls: [{ id: "id-a" }] }, null, { location: { search: "?id=id-a" } }];
+    const dataList = [{ polls: [{ id: "id-a" }] }, { id: "id-a" }];
 
     testSnapshot(...dataList);
 
   });
 
-  it("should call viewClearState on load (default)", () => {
+  it("should call viewClearState and metaGetPolls on load", () => {
 
-    const { props, wrapper } = testMount();
-
-    const { actions: { viewClearState } } = props;
-
-    wrapper.mount();
-
-    testMock(viewClearState, []);
-
-    wrapper.unmount();
-
-  });
-
-  it("should call viewClearState and metaGetPolls on load (id)", () => {
-
-    const { props, wrapper } = testMount(null, null, { location: { search: "?id=id-a" } });
+    const { props, wrapper } = testMount(null, { id: "id-a" });
 
     const { actions: { metaGetPolls, viewClearState } } = props;
 

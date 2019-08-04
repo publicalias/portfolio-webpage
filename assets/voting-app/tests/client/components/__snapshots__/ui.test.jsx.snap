@@ -150,15 +150,15 @@ exports[`ui should match snapshot 1`] = `
     render={[Function]}
   />
   <Route
-    path="/list"
-    render={[Function]}
-  />
-  <Route
     path="/form"
     render={[Function]}
   />
   <Route
-    path="/view"
+    path="/list"
+    render={[Function]}
+  />
+  <Route
+    path="/view/:id"
     render={[Function]}
   />
 </div>

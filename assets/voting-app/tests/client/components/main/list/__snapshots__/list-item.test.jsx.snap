@@ -212,7 +212,7 @@ exports[`list item should match snapshot (authenticated) 1`] = `
     className="u-cursor-pointer"
   >
     <Link
-      to="/view?id=id-a"
+      to="/view/id-a"
     >
       <p>
         Title A
@@ -325,7 +325,7 @@ exports[`list item should match snapshot (default) 1`] = `
     className="u-cursor-pointer"
   >
     <Link
-      to="/view?id=id-a"
+      to="/view/id-a"
     >
       <p>
         Title A

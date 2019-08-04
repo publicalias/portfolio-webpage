@@ -28,11 +28,16 @@ router.use("/api", apiRouter);
 
 //react router
 
-const pages = ["/", "/form", "/list", "/view"];
+const pages = ["/", "/form", "/list", "/view/:id"];
+const gated = ["/form"];
 
 router.get(pages, (req, res) => {
-  req.session.redirect = "/voting-app";
-  res.sendFile(`${__build}/voting-app/view.html`);
+  if (gated.includes(req.path) && !req.user) {
+    res.redirect(`/voting-app?errors=${JSON.stringify(["401 Unauthorized"])}`);
+  } else {
+    req.session.redirect = "/voting-app";
+    res.sendFile(`${__build}/voting-app/view.html`);
+  }
 });
 
 //exports

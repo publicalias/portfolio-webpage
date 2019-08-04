@@ -376,11 +376,7 @@ exports[`view should match snapshot (id) 1`] = `
         },
       }
     }
-    location={
-      Object {
-        "search": "?id=id-a",
-      }
-    }
+    location={Object {}}
     match={Object {}}
     staticContext={Object {}}
   />
@@ -484,11 +480,7 @@ exports[`view should match snapshot (id) 1`] = `
         "role": "view",
       }
     }
-    location={
-      Object {
-        "search": "?id=id-a",
-      }
-    }
+    location={Object {}}
     match={Object {}}
     staticContext={Object {}}
   />
@@ -592,11 +584,7 @@ exports[`view should match snapshot (id) 1`] = `
         "role": "view",
       }
     }
-    location={
-      Object {
-        "search": "?id=id-a",
-      }
-    }
+    location={Object {}}
     match={Object {}}
     staticContext={Object {}}
   />

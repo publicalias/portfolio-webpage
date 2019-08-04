@@ -41,9 +41,9 @@ const UI = (props) => {
         path="/"
         render={() => <List {...props} />}
       />
-      <Route path="/list" render={() => <List {...props} />} />
       <Route path="/form" render={() => <Form {...props} />} />
-      <Route path="/view" render={() => <View {...props} />} />
+      <Route path="/list" render={() => <List {...props} />} />
+      <Route path="/view/:id" render={({ match }) => <View {...props} local={{ id: match.params.id }} />} />
     </div>
   );
 
