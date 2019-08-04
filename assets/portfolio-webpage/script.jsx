@@ -33,9 +33,9 @@ const App = (props) => {
 
   //lifecycle
 
-  useEffect(checkInput, []);
-
   useLayoutEffect(initPanel, []);
+
+  useEffect(checkInput, []);
 
   //render
 

@@ -12,7 +12,7 @@ const { newPoll } = require("../../../../../schemas");
 
 const React = require("react");
 
-const { useEffect } = React;
+const { useLayoutEffect } = React;
 
 //view
 
@@ -28,7 +28,7 @@ const View = (props) => {
 
   //lifecycle
 
-  useEffect(() => {
+  useLayoutEffect(() => {
 
     viewClearState();
 

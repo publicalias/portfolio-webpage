@@ -10,7 +10,7 @@ const PollOptions = require("../poll/poll-options");
 
 const React = require("react");
 
-const { useEffect } = React;
+const { useLayoutEffect } = React;
 
 //form
 
@@ -22,7 +22,7 @@ const Form = (props) => {
 
   //lifecycle
 
-  useEffect(formClearState, []);
+  useLayoutEffect(formClearState, []);
 
   //render
 

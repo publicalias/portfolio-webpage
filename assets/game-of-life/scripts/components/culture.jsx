@@ -65,12 +65,6 @@ const Culture = (props) => {
 
   //lifecycle
 
-  useEffect(() => hookEvent(select(".js-ref-canvas"), "mousedown", (event) => {
-    if (event.detail > 1) {
-      event.preventDefault(); //ignore select
-    }
-  }), []);
-
   useLayoutEffect(() => {
 
     handleResize();
@@ -80,6 +74,12 @@ const Culture = (props) => {
   }, []);
 
   useLayoutEffect(updateDisplay);
+
+  useEffect(() => hookEvent(select(".js-ref-canvas"), "mousedown", (event) => {
+    if (event.detail > 1) {
+      event.preventDefault(); //ignore select
+    }
+  }), []);
 
   //render
 

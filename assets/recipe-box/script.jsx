@@ -103,12 +103,12 @@ const App = () => {
 
   //lifecycle
 
+  useLayoutEffect(initPanel);
+
   useTeardown(() => [
     checkInput(),
     modalEvents()
   ], []);
-
-  useLayoutEffect(initPanel);
 
   //render
 
