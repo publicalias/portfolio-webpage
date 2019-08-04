@@ -53,6 +53,25 @@ exports[`view settings should match snapshot (default) 1`] = `
 </div>
 `;
 
+exports[`view settings should match snapshot (flagged) 1`] = `
+<div
+  className="c-view-menu__display-box u-flex-1"
+>
+  <button
+    className="c-view-menu__control-btn qa-confirm-true"
+    onClick={[Function]}
+  >
+    Delete
+  </button>
+  <button
+    className="c-view-menu__toggle-btn qa-toggle-secret u-flex-right"
+    onClick={[Function]}
+  >
+    Private
+  </button>
+</div>
+`;
+
 exports[`view settings should match snapshot (secret) 1`] = `
 <div
   className="c-view-menu__display-box u-flex-1"

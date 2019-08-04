@@ -32,6 +32,8 @@ describe("view settings", () => {
 
   it("should match snapshot (secret)", () => testSnapshot(null, { poll: { secret: true } }));
 
+  it("should match snapshot (flagged)", () => testSnapshot(null, { poll: { users: { flagged: Array(5).fill("") } } }));
+
 });
 
 describe("view settings (delete)", () => {
@@ -71,6 +73,21 @@ describe("view settings (click)", () => {
     const dataList = [null, { poll: newPoll({ id: "id-a" }) }];
 
     return testReload(testMount, dataList, ".qa-toggle-secret", "id-a", ["pollToggleSecret", ["id-a"]]);
+
+  });
+
+  it("should call metaAddErrors on click (secret, flagged)", () => {
+
+    const dataList = [null, {
+      poll: newPoll({
+        id: "id-a",
+        users: { flagged: Array(5).fill("") }
+      })
+    }];
+
+    return testClick(".qa-toggle-secret", dataList, ["metaAddErrors", [
+      ["Poll has been flagged too many times"]
+    ]]);
 
   });
 

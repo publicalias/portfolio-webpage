@@ -218,11 +218,11 @@ describe("metaGetPolls (search)", () => {
 
   };
 
-  it("sends errors if search is too long", async () => {
+  it("sends errors if search exceeds character limit", async () => {
 
     const res = await mockAPICall({}, getData(overlyLongInput));
 
-    testMock(res.json, [{ errors: ["Search must not exceed character limit"] }]);
+    testMock(res.json, [{ errors: ["Search exceeds character limit"] }]);
 
   });
 
@@ -270,7 +270,7 @@ describe("metaGetPolls (filter)", () => {
 
   it("sends polls if filter is all", () => {
 
-    const polls = [{}, { users: { hidden: ["id-a"] } }, { secret: true }];
+    const polls = [{}, { users: { hidden: ["id-a"] } }, { secret: true }, { users: { flagged: Array(5).fill("") } }];
 
     return testPolls(polls, "all", [1, 1, 2]);
 

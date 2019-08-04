@@ -78,7 +78,7 @@ const metaGetPolls = async (req, res) => {
 
   const errors = checkErrors([{
     bool: params.search.length > 100,
-    text: "Search must not exceed character limit"
+    text: "Search exceeds character limit"
   }]);
 
   if ((!req.user || req.user.data.restricted) && params.filter === "created") {

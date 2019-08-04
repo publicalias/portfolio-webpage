@@ -55,7 +55,7 @@ const findByID = (id) => pollsCol().findOne({ id });
 const getQuery = (user, { filter }) => {
 
   const types = {
-    all: { $nor: [{ secret: true }, { "users.hidden": user.id }] },
+    all: { $nor: [{ secret: true }, { "users.hidden": user.id }, { $expr: { $gte: [{ $size: "$users.flagged" }, 5] } }] },
     created: { $or: [{ "users.created": user.id }, { "options.created": user.id }] },
     voted: { "options.voted": user.id },
     hidden: { "users.hidden": user.id }

@@ -170,13 +170,13 @@ const pollToggleSecret = async (req, res) => {
 
   await retryWrite(async () => {
 
-    const { secret: bool } = await findByID(id);
+    const { secret } = await findByID(id);
 
     const { matchedCount } = await pollsCol().updateOne({
       id,
-      secret: bool
+      secret
     }, {
-      $set: { secret: !bool }
+      $set: { secret: !secret }
     });
 
     return matchedCount;

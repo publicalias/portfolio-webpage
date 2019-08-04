@@ -212,7 +212,7 @@ describe("pollToggleSecret", () => {
 
   const testToggle = async (user) => {
 
-    const { secret: bool } = await pollsCol().findOne();
+    const { secret } = await pollsCol().findOne();
 
     const res = await mockAPICall(user, getData());
 
@@ -220,7 +220,7 @@ describe("pollToggleSecret", () => {
 
     testMock(res.json, [{}]);
 
-    expect(update.secret).toEqual(!bool);
+    expect(update.secret).toEqual(!secret);
 
   };
 

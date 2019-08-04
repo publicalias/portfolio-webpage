@@ -13,7 +13,7 @@ const React = require("react");
 const ViewSettings = (props) => {
 
   const {
-    actions: { metaDeletePoll, pollToggleSecret, viewToggleDelete },
+    actions: { metaAddErrors, metaDeletePoll, pollToggleSecret, viewToggleDelete },
     data: { view },
     history,
     local: { poll }
@@ -36,7 +36,11 @@ const ViewSettings = (props) => {
   };
 
   const handleSecret = () => {
-    handleReload(() => pollToggleSecret(poll.id), props);
+    if (poll.users.flagged.length >= 5) {
+      metaAddErrors(["Poll has been flagged too many times"]);
+    } else {
+      handleReload(() => pollToggleSecret(poll.id), props);
+    }
   };
 
   //render
@@ -54,7 +58,7 @@ const ViewSettings = (props) => {
         className="c-view-menu__toggle-btn qa-toggle-secret u-flex-right"
         onClick={handleSecret}
       >
-        {poll.secret ? "Private" : "Public"}
+        {poll.secret || poll.users.flagged.length >= 5 ? "Private" : "Public"}
       </button>
     </div>
   );
