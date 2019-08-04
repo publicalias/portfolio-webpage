@@ -1,15 +1,43 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`poll chart (form) should match snapshot 1`] = `
-<svg
-  className="js-render-chart"
-  viewBox="0 0 450 450"
-/>
+Array [
+  <svg
+    className="c-poll-display__chart js-render-chart"
+    key="0-530"
+    viewBox="0 0 450 450"
+  />,
+  <div
+    className="c-poll-display__tooltip js-fade-tooltip"
+    key="0-779"
+  >
+    <p
+      className="js-edit-label"
+    />
+    <p
+      className="js-edit-count u-no-margin"
+    />
+  </div>,
+]
 `;
 
 exports[`poll chart (view) should match snapshot 1`] = `
-<svg
-  className="js-render-chart"
-  viewBox="0 0 450 450"
-/>
+Array [
+  <svg
+    className="c-poll-display__chart js-render-chart"
+    key="0-530"
+    viewBox="0 0 450 450"
+  />,
+  <div
+    className="c-poll-display__tooltip js-fade-tooltip"
+    key="0-779"
+  >
+    <p
+      className="js-edit-label"
+    />
+    <p
+      className="js-edit-count u-no-margin"
+    />
+  </div>,
+]
 `;

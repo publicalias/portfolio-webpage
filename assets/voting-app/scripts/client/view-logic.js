@@ -1,5 +1,9 @@
 "use strict";
 
+//local imports
+
+const { updateTooltip } = require("./event-handlers");
+
 //global imports
 
 const { select } = require("dom-api");
@@ -38,30 +42,11 @@ const getVotes = (n) => {
 
 //render chart
 
-const renderChart = (counts) => {
+const renderChart = (counts, labels) => {
 
   //scale
 
   const r = 450 / 2;
-
-  //reset
-
-  const chart = d3.select(".js-render-chart")
-    .html("")
-    .append("g")
-    .attr("transform", `translate(${r}, ${r})`);
-
-  //votes
-
-  chart.append("text").attr("class", "c-poll-display__votes js-toggle-votes");
-
-  const DOMVotes = select(".js-toggle-votes");
-
-  if (counts.reduce((acc, e) => acc + e, 0) === 0) {
-    DOMVotes.css({ opacity: 1 }).text(counts.length === 0 ? "No Options" : "No Votes");
-  }
-
-  //data
 
   const pieFn = d3.pie().sort(null);
 
@@ -71,7 +56,24 @@ const renderChart = (counts) => {
 
   const data = pieFn(counts);
 
+  //reset
+
+  const empty = counts.reduce((acc, e) => acc + e, 0) === 0;
+
+  const chart = d3.select(".js-render-chart")
+    .html("")
+    .append("g")
+    .attr("transform", `translate(${r}, ${r})`);
+
+  if (empty) {
+    chart.append("text")
+      .attr("class", "c-poll-display__empty")
+      .text(counts.length ? "No Votes" : "No Options");
+  }
+
   //chart
+
+  const DOMTooltip = select(".js-fade-tooltip");
 
   chart.selectAll("path")
     .data(data)
@@ -81,10 +83,14 @@ const renderChart = (counts) => {
     .attr("d", (d) => arcFn(d))
     .attr("fill", (d) => chartColor(d.index, data))
     .on("mouseenter", (d) => {
-      DOMVotes.animate({ opacity: 1 }).text(getVotes(d.value));
+
+      updateTooltip(labels[d.index], getVotes(d.value), r, arcFn.centroid(d));
+
+      DOMTooltip.animate({ opacity: 1 });
+
     })
     .on("mouseleave", () => {
-      DOMVotes.animate({ opacity: 0 });
+      DOMTooltip.animate({ opacity: 0 });
     });
 
 };

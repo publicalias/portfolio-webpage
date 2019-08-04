@@ -87,15 +87,20 @@
   @include grid-area;
   grid-area: 2 / 1 / 2 / 13;
 
+  &__empty { text-anchor: middle; }
+
   &__input {
     @include font-head;
     font-size: 2.8vw;
     text-align: center;
   }
 
-  &__votes {
+  &__tooltip {
+    background: rgba(0, 0, 0, 0.75);
     opacity: 0;
-    text-anchor: middle;
+    padding: 1.5vw;
+    position: absolute;
+    width: 18vw;
   }
 
 }

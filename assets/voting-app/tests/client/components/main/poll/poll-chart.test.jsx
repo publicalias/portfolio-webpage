@@ -21,7 +21,7 @@ const testLoad = (render, role) => {
 
   const { lib: { renderChart, rngInt } } = PollChart.injected;
 
-  const { wrapper } = render(null, { options: [role === "form" ? "Option A" : {}] });
+  const { wrapper } = render(null, { options: [role === "form" ? "Option A" : { text: "Option A" }] });
 
   wrapper.mount();
 
@@ -30,7 +30,8 @@ const testLoad = (render, role) => {
   }
 
   testMock(renderChart, [
-    [0]
+    [0],
+    ["Option A"]
   ]);
 
   wrapper.unmount();
