@@ -19,7 +19,7 @@ const createAudio = () => {
     btn: []
   };
 
-  const files = ["piano-a", "piano-b", "piano-c", "piano-d"];
+  const files = ["piano-c", "piano-d", "piano-e", "piano-f"];
 
   for (let i = 0; i < btnIDs.length; i++) {
 
