@@ -14,7 +14,6 @@ const router = express.Router();
 //middleware
 
 router.use(bodyParser.json());
-router.use(express.static("build"));
 
 //home page
 

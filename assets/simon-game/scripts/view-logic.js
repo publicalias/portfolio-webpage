@@ -14,8 +14,8 @@ const btnIDs = ["tl", "tr", "br", "bl"];
 const createAudio = () => {
 
   const audio = {
-    win: new Audio("media/clapping.wav"),
-    lose: new Audio("media/booing.wav"),
+    win: new Audio("/simon-game/media/clapping.wav"),
+    lose: new Audio("/simon-game/media/booing.wav"),
     btn: []
   };
 
@@ -30,7 +30,7 @@ const createAudio = () => {
     };
 
     for (let j = 0; j < 3; j++) {
-      btn.sound.push(new Audio(`media/${files[i]}.wav`)); //allows layered playback
+      btn.sound.push(new Audio(`/simon-game/media/${files[i]}.wav`)); //allows layered playback
     }
 
     audio.btn.push(btn);

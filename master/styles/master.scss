@@ -1,7 +1,7 @@
 @import "https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css";
 @import "https://fonts.googleapis.com/css?family=Lobster|Raleway";
 
-$bg: rgb(21, 21, 21) url("../master/media/background.jpg") no-repeat fixed;
+$bg: rgb(21, 21, 21) url("/master/media/background.jpg") no-repeat fixed;
 $bg-input: rgba(64, 64, 64, 0.75);
 
 @mixin offset-top($font-size) { margin-top: ($font-size * 1.4 - $font-size) / 2 * -1; } //negates line height

@@ -24,7 +24,7 @@ const frontEnd = {
       links: {
         page: "/tribute-page",
         code: "https://github.com/publicalias/portfolio-webpage/tree/master/assets/tribute-page",
-        view: "media/screenshots/tribute-page.jpg"
+        view: "/portfolio-webpage/media/screenshots/tribute-page.jpg"
       }
     }, {
       name: "Portfolio Webpage",
@@ -89,7 +89,7 @@ const frontEnd = {
       links: {
         page: "/random-quote-machine",
         code: "https://github.com/publicalias/portfolio-webpage/tree/master/assets/random-quote-machine",
-        view: "media/screenshots/random-quote-machine.jpg"
+        view: "/portfolio-webpage/media/screenshots/random-quote-machine.jpg"
       }
     }, {
       name: "Weather App",
@@ -111,7 +111,7 @@ const frontEnd = {
           client: "https://github.com/publicalias/portfolio-webpage/tree/master/assets/weather-app",
           server: "https://github.com/publicalias/portfolio-webpage/tree/master/routes/weather-app"
         },
-        view: "media/screenshots/weather-app.jpg"
+        view: "/portfolio-webpage/media/screenshots/weather-app.jpg"
       }
     }, {
       name: "Wikipedia Viewer",
@@ -129,7 +129,7 @@ const frontEnd = {
       links: {
         page: "/wikipedia-viewer",
         code: "https://github.com/publicalias/portfolio-webpage/tree/master/assets/wikipedia-viewer",
-        view: "media/screenshots/wikipedia-viewer.jpg"
+        view: "/portfolio-webpage/media/screenshots/wikipedia-viewer.jpg"
       }
     }, {
       name: "Twitch Viewer",
@@ -152,7 +152,7 @@ const frontEnd = {
           client: "https://github.com/publicalias/portfolio-webpage/tree/master/assets/twitch-viewer",
           server: "https://github.com/publicalias/portfolio-webpage/tree/master/routes/twitch-viewer"
         },
-        view: "media/screenshots/twitch-viewer.jpg"
+        view: "/portfolio-webpage/media/screenshots/twitch-viewer.jpg"
       }
     }]
   }, {
@@ -172,7 +172,7 @@ const frontEnd = {
       links: {
         page: "/javascript-calculator",
         code: "https://github.com/publicalias/portfolio-webpage/tree/master/assets/javascript-calculator",
-        view: "media/screenshots/javascript-calculator.jpg"
+        view: "/portfolio-webpage/media/screenshots/javascript-calculator.jpg"
       }
     }, {
       name: "Pomodoro Clock",
@@ -190,7 +190,7 @@ const frontEnd = {
       links: {
         page: "/pomodoro-clock",
         code: "https://github.com/publicalias/portfolio-webpage/tree/master/assets/pomodoro-clock",
-        view: "media/screenshots/pomodoro-clock.jpg"
+        view: "/portfolio-webpage/media/screenshots/pomodoro-clock.jpg"
       }
     }, {
       name: "Tic Tac Toe Game",
@@ -209,7 +209,7 @@ const frontEnd = {
       links: {
         page: "/tic-tac-toe-game",
         code: "https://github.com/publicalias/portfolio-webpage/tree/master/assets/tic-tac-toe-game",
-        view: "media/screenshots/tic-tac-toe-game.jpg"
+        view: "/portfolio-webpage/media/screenshots/tic-tac-toe-game.jpg"
       }
     }, {
       name: "Simon Game",
@@ -239,7 +239,7 @@ const frontEnd = {
       links: {
         page: "/simon-game",
         code: "https://github.com/publicalias/portfolio-webpage/tree/master/assets/simon-game",
-        view: "media/screenshots/simon-game.jpg"
+        view: "/portfolio-webpage/media/screenshots/simon-game.jpg"
       }
     }]
   }]

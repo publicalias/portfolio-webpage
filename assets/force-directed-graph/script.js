@@ -141,7 +141,7 @@ const svg = {
       .attr("class", "c-node")
       .attr("height", nh)
       .attr("width", nw)
-      .attr("xlink:href", (d) => `media/${d.code}.svg`)
+      .attr("xlink:href", (d) => `/force-directed-graph/media/${d.code}.svg`)
       .on("mouseenter", app.handleMouseEnter)
       .on("mouseleave", app.handleMouseLeave)
       .on("touchstart", checkTooltip(app), { passive: true });

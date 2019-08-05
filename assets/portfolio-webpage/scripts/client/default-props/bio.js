@@ -9,7 +9,7 @@ const bio = {
     "---",
     "Tip: Projects are in chronological order, so skip to the end of each section to see the most interesting ones."
   ],
-  avatar: "portfolio-webpage/media/avatar.jpg"
+  avatar: "/portfolio-webpage/media/avatar.jpg"
 };
 
 //exports

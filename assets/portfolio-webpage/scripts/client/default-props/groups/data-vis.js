@@ -24,7 +24,7 @@ const dataVis = {
       links: {
         page: "/markdown-previewer",
         code: "https://github.com/publicalias/portfolio-webpage/tree/master/assets/markdown-previewer",
-        view: "media/screenshots/markdown-previewer.jpg"
+        view: "/portfolio-webpage/media/screenshots/markdown-previewer.jpg"
       }
     }, {
       name: "Camper Leaderboard",
@@ -72,7 +72,7 @@ const dataVis = {
       links: {
         page: "/recipe-box",
         code: "https://github.com/publicalias/portfolio-webpage/tree/master/assets/recipe-box",
-        view: "media/screenshots/recipe-box.jpg"
+        view: "/portfolio-webpage/media/screenshots/recipe-box.jpg"
       }
     }, {
       name: "Game of Life",
@@ -91,7 +91,7 @@ const dataVis = {
       links: {
         page: "/game-of-life",
         code: "https://github.com/publicalias/portfolio-webpage/tree/master/assets/game-of-life",
-        view: "media/screenshots/game-of-life.jpg"
+        view: "/portfolio-webpage/media/screenshots/game-of-life.jpg"
       }
     }, {
       name: "Dungeon Crawler Game",
@@ -119,7 +119,7 @@ const dataVis = {
       links: {
         page: "/dungeon-crawler-game",
         code: "https://github.com/publicalias/portfolio-webpage/tree/master/assets/dungeon-crawler-game",
-        view: "media/screenshots/dungeon-crawler-game.jpg"
+        view: "/portfolio-webpage/media/screenshots/dungeon-crawler-game.jpg"
       }
     }]
   }, {
@@ -141,7 +141,7 @@ const dataVis = {
       links: {
         page: "/bar-chart",
         code: "https://github.com/publicalias/portfolio-webpage/tree/master/assets/bar-chart",
-        view: "media/screenshots/bar-chart.jpg"
+        view: "/portfolio-webpage/media/screenshots/bar-chart.jpg"
       }
     }, {
       name: "Scatterplot Graph",
@@ -159,7 +159,7 @@ const dataVis = {
       links: {
         page: "/scatterplot-graph",
         code: "https://github.com/publicalias/portfolio-webpage/tree/master/assets/scatterplot-graph",
-        view: "media/screenshots/scatterplot-graph.jpg"
+        view: "/portfolio-webpage/media/screenshots/scatterplot-graph.jpg"
       }
     }, {
       name: "Heat Map",
@@ -178,7 +178,7 @@ const dataVis = {
       links: {
         page: "/heat-map",
         code: "https://github.com/publicalias/portfolio-webpage/tree/master/assets/heat-map",
-        view: "media/screenshots/heat-map.jpg"
+        view: "/portfolio-webpage/media/screenshots/heat-map.jpg"
       }
     }, {
       name: "Force-directed Graph",
@@ -202,7 +202,7 @@ const dataVis = {
       links: {
         page: "/force-directed-graph",
         code: "https://github.com/publicalias/portfolio-webpage/tree/master/assets/force-directed-graph",
-        view: "media/screenshots/force-directed-graph.jpg"
+        view: "/portfolio-webpage/media/screenshots/force-directed-graph.jpg"
       }
     }, {
       name: "Orthographic Projection",
@@ -230,7 +230,7 @@ const dataVis = {
           client: "https://github.com/publicalias/portfolio-webpage/tree/master/assets/orthographic-projection",
           server: "https://github.com/publicalias/portfolio-webpage/tree/master/routes/orthographic-projection"
         },
-        view: "media/screenshots/orthographic-projection.jpg"
+        view: "/portfolio-webpage/media/screenshots/orthographic-projection.jpg"
       }
     }]
   }]

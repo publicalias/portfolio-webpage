@@ -68,7 +68,7 @@ const app = {
 
 bindObject(app);
 
-getJSON("media/quotes.json").then((res) => {
+getJSON("/random-quote-machine/media/quotes.json").then((res) => { //source doesn't support https
 
   app.data = res;
 

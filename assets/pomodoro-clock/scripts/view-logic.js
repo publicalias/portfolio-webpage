@@ -13,7 +13,7 @@ const emptyBar = () => {
 
 //play sound
 
-const sound = new Audio("media/squawk.wav");
+const sound = new Audio("/pomodoro-clock/media/squawk.wav");
 
 const playSound = () => {
   sound.play();
