@@ -134,11 +134,16 @@ const reactTests = {
 
       const w = overwrite[k] && overwrite[k][l];
 
-      const stub = nameFn(() => null, l);
-
-      if (w !== "ignore") {
-        v[l] = w || (k === "jsx" ? stub : jest.fn());
+      if (w === "ignore") {
+        return;
       }
+
+      const special = {
+        jsx: nameFn(() => null, l),
+        lib: w && w.mockClear() //custom mocks are reused
+      };
+
+      v[l] = special[k] || w || jest.fn();
 
     };
 

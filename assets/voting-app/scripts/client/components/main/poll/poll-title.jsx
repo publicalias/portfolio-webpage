@@ -8,12 +8,17 @@ const React = require("react");
 
 const PollTitle = (props) => {
 
-  const { actions: { formSetTitle }, data: { user }, local: { poll, role } } = props;
+  const { actions: { formSetTitle, formCheckTitle }, data: { user }, local: { poll, role } } = props;
 
   //events
 
   const handleBlur = (event) => {
-    formSetTitle(event.target.value);
+
+    const title = event.target.value;
+
+    formSetTitle(title);
+    formCheckTitle(title);
+
   };
 
   //render

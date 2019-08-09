@@ -22,14 +22,14 @@ describe("formAddOption", () => {
 
 });
 
-//form set title
+//form check title
 
-describe("formSetTitle", () => {
+describe("formCheckTitle", () => {
 
-  const { formSetTitle } = actions;
+  const { formCheckTitle } = actions;
 
-  testAPI.default(formSetTitle(""), {
-    path: "/voting-app/api/form-set-title",
+  testAPI.default(formCheckTitle(""), {
+    path: "/voting-app/api/form-check-title",
     method: "GET",
     data: { title: "" }
   });

@@ -18,7 +18,7 @@ const { useLayoutEffect, useRef } = React;
 
 const List = (props) => {
 
-  const { actions: { listClearState, metaGetPolls, metaSetState }, data: { polls }, location } = props;
+  const { actions: { listClearState, metaGetPolls }, data: { polls }, location } = props;
 
   const { jsx: { ListBody, ListMenu }, lib: { scrollInfo, useRef } } = List.injected;
 
@@ -29,7 +29,6 @@ const List = (props) => {
   const resetList = () => {
 
     listClearState();
-    metaSetState({ polls: [] });
 
     metaGetPolls(getListParams(location));
 

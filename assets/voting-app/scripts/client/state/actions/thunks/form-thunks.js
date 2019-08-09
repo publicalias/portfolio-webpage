@@ -21,12 +21,12 @@ const formAddOption = (add, options) => (dispatch) => {
 
 };
 
-//form set title
+//form check title
 
-const formSetTitle = (title) => (dispatch) => {
+const formCheckTitle = (title) => (dispatch) => {
 
   const args = {
-    path: "/voting-app/api/form-set-title",
+    path: "/voting-app/api/form-check-title",
     method: "GET",
     data: { title }
   };
@@ -39,5 +39,5 @@ const formSetTitle = (title) => (dispatch) => {
 
 module.exports = {
   formAddOption,
-  formSetTitle
+  formCheckTitle
 };

@@ -8,6 +8,7 @@ exports[`view should match snapshot (default) 1`] = `
     actions={
       Object {
         "formAddOption": [MockFunction],
+        "formCheckTitle": [MockFunction],
         "formClearState": [MockFunction],
         "formRemoveOption": [MockFunction],
         "formSetAdd": [MockFunction],
@@ -96,6 +97,7 @@ exports[`view should match snapshot (default) 1`] = `
     actions={
       Object {
         "formAddOption": [MockFunction],
+        "formCheckTitle": [MockFunction],
         "formClearState": [MockFunction],
         "formRemoveOption": [MockFunction],
         "formSetAdd": [MockFunction],
@@ -185,6 +187,7 @@ exports[`view should match snapshot (default) 1`] = `
     actions={
       Object {
         "formAddOption": [MockFunction],
+        "formCheckTitle": [MockFunction],
         "formClearState": [MockFunction],
         "formRemoveOption": [MockFunction],
         "formSetAdd": [MockFunction],
@@ -281,6 +284,7 @@ exports[`view should match snapshot (id) 1`] = `
     actions={
       Object {
         "formAddOption": [MockFunction],
+        "formCheckTitle": [MockFunction],
         "formClearState": [MockFunction],
         "formRemoveOption": [MockFunction],
         "formSetAdd": [MockFunction],
@@ -384,6 +388,7 @@ exports[`view should match snapshot (id) 1`] = `
     actions={
       Object {
         "formAddOption": [MockFunction],
+        "formCheckTitle": [MockFunction],
         "formClearState": [MockFunction],
         "formRemoveOption": [MockFunction],
         "formSetAdd": [MockFunction],
@@ -488,6 +493,7 @@ exports[`view should match snapshot (id) 1`] = `
     actions={
       Object {
         "formAddOption": [MockFunction],
+        "formCheckTitle": [MockFunction],
         "formClearState": [MockFunction],
         "formRemoveOption": [MockFunction],
         "formSetAdd": [MockFunction],

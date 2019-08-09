@@ -36,6 +36,16 @@ test("reducer accepts FORM_SET_ADD actions", () => {
 
 });
 
+//form set title
+
+test("reducer accepts FORM_SET_TITLE actions", () => {
+
+  const { formSetTitle } = actions;
+
+  testReducer(formSetTitle("Option A"), null, { form: { title: "Option A" } });
+
+});
+
 //form toggle delete
 
 test("reducer accepts FORM_TOGGLE_DELETE actions", () => {

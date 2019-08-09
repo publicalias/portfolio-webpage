@@ -27,16 +27,16 @@ const formAddOption = (req, res) => {
 
 };
 
-//form set title
+//form check title
 
-const formSetTitle = async (req, res) => {
+const formCheckTitle = async (req, res) => {
 
   const { title } = JSON.parse(req.query.data);
 
   const exists = await pollsCol().findOne({ title });
   const errors = checkTitle(title, exists);
 
-  res.json(errors.length ? { errors } : { form: { title } });
+  res.json(errors.length ? { errors } : {});
 
 };
 
@@ -44,5 +44,5 @@ const formSetTitle = async (req, res) => {
 
 module.exports = {
   formAddOption,
-  formSetTitle
+  formCheckTitle
 };

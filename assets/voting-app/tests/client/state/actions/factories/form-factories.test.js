@@ -40,6 +40,19 @@ test("formSetAdd creates FORM_SET_ADD actions", () => {
 
 });
 
+//form set title
+
+test("formSetTitle creates FORM_SET_TITLE actions", () => {
+
+  const { formSetTitle } = actions;
+
+  expect(formSetTitle("")).toEqual({
+    type: "FORM_SET_TITLE",
+    title: ""
+  });
+
+});
+
 //form toggle delete
 
 test("formToggleDelete creates FORM_TOGGLE_DELETE actions", () => {

@@ -9,9 +9,12 @@ const { deepCopy, initDeepCopy } = require("../utilities");
 
 const META_ADD_ERRORS = (state, { errors }) => {
 
-  const mapFn = (e) => newError({ text: e });
+  const list = state.errors.concat(errors.map((e) => newError({ text: e }))).reverse();
+  const text = list.map((e) => e.text);
 
-  return deepCopy(state, { errors: state.errors.concat(errors.map(mapFn)) });
+  const next = list.filter((e, i) => text.lastIndexOf(e.text) === i).reverse();
+
+  return deepCopy(state, { errors: next });
 
 };
 
@@ -33,16 +36,12 @@ const META_SET_STATE = (state, { merge, config }) => initDeepCopy(config)(state,
 
 //meta timeout error
 
-const META_TIMEOUT_ERROR = (state) => {
-
-  const mapFn = (e, i) => i > 0 ? e : {
+const META_TIMEOUT_ERROR = (state) => deepCopy(state, {
+  errors: state.errors.map((e, i) => i > 0 ? e : {
     text: e.text,
     timer: e.timer - 100
-  };
-
-  return deepCopy(state, { errors: state.errors.map(mapFn) });
-
-};
+  })
+});
 
 //meta toggle delete
 

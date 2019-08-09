@@ -14,6 +14,7 @@ exports[`view menu should match snapshot (created) 1`] = `
     actions={
       Object {
         "formAddOption": [MockFunction],
+        "formCheckTitle": [MockFunction],
         "formClearState": [MockFunction],
         "formRemoveOption": [MockFunction],
         "formSetAdd": [MockFunction],
@@ -126,6 +127,7 @@ exports[`view menu should match snapshot (created, settings) 1`] = `
     actions={
       Object {
         "formAddOption": [MockFunction],
+        "formCheckTitle": [MockFunction],
         "formClearState": [MockFunction],
         "formRemoveOption": [MockFunction],
         "formSetAdd": [MockFunction],
@@ -232,6 +234,7 @@ exports[`view menu should match snapshot (default) 1`] = `
     actions={
       Object {
         "formAddOption": [MockFunction],
+        "formCheckTitle": [MockFunction],
         "formClearState": [MockFunction],
         "formRemoveOption": [MockFunction],
         "formSetAdd": [MockFunction],

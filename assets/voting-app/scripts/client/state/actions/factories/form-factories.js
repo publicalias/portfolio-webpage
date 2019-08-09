@@ -18,6 +18,13 @@ const formSetAdd = (add) => ({
   add
 });
 
+//form set title
+
+const formSetTitle = (title) => ({
+  type: "FORM_SET_TITLE",
+  title
+});
+
 //form toggle delete
 
 const formToggleDelete = () => ({ type: "FORM_TOGGLE_DELETE" });
@@ -32,6 +39,7 @@ module.exports = {
   formClearState,
   formRemoveOption,
   formSetAdd,
+  formSetTitle,
   formToggleDelete,
   formToggleSecret
 };

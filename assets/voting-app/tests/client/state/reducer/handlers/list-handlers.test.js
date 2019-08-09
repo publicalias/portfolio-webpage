@@ -12,7 +12,13 @@ test("reducer accepts LIST_CLEAR_STATE actions", () => {
 
   const { listClearState } = actions;
 
-  testReducer(listClearState(), { list: { search: "Apple" } }, { list: newState().list });
+  testReducer(listClearState(), {
+    polls: [{}],
+    list: { search: "Apple" }
+  }, {
+    polls: [],
+    list: newState().list
+  });
 
 });
 

@@ -81,6 +81,7 @@
     //warning
 
     "complexity": [1, 10],
+    "global-require": 1,
     "max-len": [1, 120],
     "max-lines": 1,
     "max-nested-callbacks": [1, 2],
@@ -106,7 +107,6 @@
     "callback-return": 0,
     "consistent-return": 0,
     "default-case": 0,
-    "global-require": 0,
     "guard-for-in": 0,
     "id-length": 0,
     "line-comment-position": 0,

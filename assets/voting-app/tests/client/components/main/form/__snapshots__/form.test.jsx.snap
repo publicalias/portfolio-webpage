@@ -8,6 +8,7 @@ exports[`form should match snapshot 1`] = `
     actions={
       Object {
         "formAddOption": [MockFunction],
+        "formCheckTitle": [MockFunction],
         "formClearState": [MockFunction],
         "formRemoveOption": [MockFunction],
         "formSetAdd": [MockFunction],
@@ -78,6 +79,7 @@ exports[`form should match snapshot 1`] = `
     actions={
       Object {
         "formAddOption": [MockFunction],
+        "formCheckTitle": [MockFunction],
         "formClearState": [MockFunction],
         "formRemoveOption": [MockFunction],
         "formSetAdd": [MockFunction],
@@ -160,6 +162,7 @@ exports[`form should match snapshot 1`] = `
     actions={
       Object {
         "formAddOption": [MockFunction],
+        "formCheckTitle": [MockFunction],
         "formClearState": [MockFunction],
         "formRemoveOption": [MockFunction],
         "formSetAdd": [MockFunction],

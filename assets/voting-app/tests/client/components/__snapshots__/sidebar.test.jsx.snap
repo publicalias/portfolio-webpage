@@ -19,6 +19,7 @@ exports[`sidebar should match snapshot (authenticated) 1`] = `
     actions={
       Object {
         "formAddOption": [MockFunction],
+        "formCheckTitle": [MockFunction],
         "formClearState": [MockFunction],
         "formRemoveOption": [MockFunction],
         "formSetAdd": [MockFunction],
@@ -155,6 +156,7 @@ exports[`sidebar should match snapshot (name) 1`] = `
     actions={
       Object {
         "formAddOption": [MockFunction],
+        "formCheckTitle": [MockFunction],
         "formClearState": [MockFunction],
         "formRemoveOption": [MockFunction],
         "formSetAdd": [MockFunction],

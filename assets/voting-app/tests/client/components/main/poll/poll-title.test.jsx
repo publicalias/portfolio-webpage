@@ -35,7 +35,16 @@ describe("poll title (form)", () => {
 
   it("should match snapshot (author)", () => testForm({ user: newUser({ name: "Author A" }) }));
 
-  it("should call formSetTitle on blur", () => testBlur(".qa-title-input", [], ["formSetTitle", ["Title A"]]));
+  it("should call formSetTitle and formCheckTitle on blur", () => {
+
+    const fnList = [
+      ["formSetTitle", ["Title A"]],
+      ["formCheckTitle", ["Title A"]]
+    ];
+
+    return testBlur(".qa-title-input", [], ...fnList);
+
+  });
 
 });
 

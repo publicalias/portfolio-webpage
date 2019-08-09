@@ -8,6 +8,7 @@ exports[`poll options (form) should match snapshot (authenticated) 1`] = `
     actions={
       Object {
         "formAddOption": [MockFunction],
+        "formCheckTitle": [MockFunction],
         "formClearState": [MockFunction],
         "formRemoveOption": [MockFunction],
         "formSetAdd": [MockFunction],
@@ -110,6 +111,7 @@ exports[`poll options (form) should match snapshot (options) 1`] = `
     actions={
       Object {
         "formAddOption": [MockFunction],
+        "formCheckTitle": [MockFunction],
         "formClearState": [MockFunction],
         "formRemoveOption": [MockFunction],
         "formSetAdd": [MockFunction],
@@ -203,6 +205,7 @@ exports[`poll options (view) should match snapshot (authenticated, right poll) 1
     actions={
       Object {
         "formAddOption": [MockFunction],
+        "formCheckTitle": [MockFunction],
         "formClearState": [MockFunction],
         "formRemoveOption": [MockFunction],
         "formSetAdd": [MockFunction],
@@ -329,6 +332,7 @@ exports[`poll options (view) should match snapshot (options) 1`] = `
     actions={
       Object {
         "formAddOption": [MockFunction],
+        "formCheckTitle": [MockFunction],
         "formClearState": [MockFunction],
         "formRemoveOption": [MockFunction],
         "formSetAdd": [MockFunction],

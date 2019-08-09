@@ -26,6 +26,10 @@ const FORM_REMOVE_OPTION = (state, { text }) => {
 
 const FORM_SET_ADD = (state, { add }) => deepCopy(state, { form: { add } });
 
+//form set title
+
+const FORM_SET_TITLE = (state, { title }) => deepCopy(state, { form: { title } });
+
 //form toggle delete
 
 const FORM_TOGGLE_DELETE = (state) => deepCopy(state, { form: { delete: !state.form.delete } });
@@ -40,6 +44,7 @@ module.exports = {
   FORM_CLEAR_STATE,
   FORM_REMOVE_OPTION,
   FORM_SET_ADD,
+  FORM_SET_TITLE,
   FORM_TOGGLE_DELETE,
   FORM_TOGGLE_SECRET
 };

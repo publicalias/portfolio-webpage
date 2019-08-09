@@ -76,10 +76,9 @@ describe("list (load and location.search)", () => {
 
   it("should reset state", () => testEffect((props) => {
 
-    const { actions: { listClearState, metaGetPolls, metaSetState } } = props;
+    const { actions: { listClearState, metaGetPolls } } = props;
 
     testMock(listClearState, [], []);
-    testMock(metaSetState, [{ polls: [] }], [{ polls: [] }]);
     testMock(metaGetPolls, [newListParams()], [newListParams({ sort: "popular" })]);
 
   }));

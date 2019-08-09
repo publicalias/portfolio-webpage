@@ -10,7 +10,10 @@ const { deepCopy } = require("utilities");
 
 //list clear state
 
-const LIST_CLEAR_STATE = (state) => deepCopy(state, { list: newState().list });
+const LIST_CLEAR_STATE = (state) => deepCopy(state, {
+  polls: [],
+  list: newState().list
+});
 
 //list set search
 

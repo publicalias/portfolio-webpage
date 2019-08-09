@@ -7,6 +7,7 @@ exports[`list item should match snapshot (authenticated) 1`] = `
       actions={
         Object {
           "formAddOption": [MockFunction],
+          "formCheckTitle": [MockFunction],
           "formClearState": [MockFunction],
           "formRemoveOption": [MockFunction],
           "formSetAdd": [MockFunction],
@@ -110,6 +111,7 @@ exports[`list item should match snapshot (authenticated) 1`] = `
       actions={
         Object {
           "formAddOption": [MockFunction],
+          "formCheckTitle": [MockFunction],
           "formClearState": [MockFunction],
           "formRemoveOption": [MockFunction],
           "formSetAdd": [MockFunction],
@@ -234,6 +236,7 @@ exports[`list item should match snapshot (default) 1`] = `
       actions={
         Object {
           "formAddOption": [MockFunction],
+          "formCheckTitle": [MockFunction],
           "formClearState": [MockFunction],
           "formRemoveOption": [MockFunction],
           "formSetAdd": [MockFunction],

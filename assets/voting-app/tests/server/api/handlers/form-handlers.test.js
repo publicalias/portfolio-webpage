@@ -59,13 +59,13 @@ describe("formAddOption", () => {
 
 });
 
-//form set title
+//form check title
 
-describe("formSetTitle", () => {
+describe("formCheckTitle", () => {
 
-  const { formSetTitle } = handlers;
+  const { formCheckTitle } = handlers;
 
-  const mockAPICall = initMockAPICall(formSetTitle, "GET");
+  const mockAPICall = initMockAPICall(formCheckTitle, "GET");
 
   const getData = (title) => ({ title });
 
@@ -79,11 +79,11 @@ describe("formSetTitle", () => {
 
   testTitle(testError);
 
-  it("sends form if title is valid", async () => {
+  it("sends object if title is valid", async () => {
 
     const res = await mockAPICall({}, getData("Title A"));
 
-    testMock(res.json, [{ form: { title: "Title A" } }]);
+    testMock(res.json, [{}]);
 
   });
 
