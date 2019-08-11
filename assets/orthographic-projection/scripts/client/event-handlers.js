@@ -22,6 +22,11 @@ const rotateHandlers = (params, tooltip) => {
     int: null,
     ids: ["up", "down", "left", "right", "reset"],
 
+    touch: {
+      start: null,
+      end: null
+    },
+
     xc: w / 2,
     yc: h / 2,
 
@@ -49,22 +54,22 @@ const rotateHandlers = (params, tooltip) => {
     //int
 
     up() {
-      this.yc += h * 0.02;
-      this.rotate();
-    },
-
-    down() {
       this.yc -= h * 0.02;
       this.rotate();
     },
 
+    down() {
+      this.yc += h * 0.02;
+      this.rotate();
+    },
+
     left() {
-      this.xc += w * 0.01;
+      this.xc -= w * 0.01;
       this.rotate();
     },
 
     right() {
-      this.xc -= w * 0.01;
+      this.xc += w * 0.01;
       this.rotate();
     },
 

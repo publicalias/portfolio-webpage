@@ -4,18 +4,14 @@
 
 const NavItem = require("./nav-item");
 
-const { positionMenu } = require("../../event-handlers");
-
 //global imports
 
 const { select } = require("dom-api");
-const { hookEvent, initKeyGen } = require("react-utils");
+const { initKeyGen } = require("react-utils");
 
 //node modules
 
 const React = require("react");
-
-const { useEffect } = React;
 
 //nav sublist
 
@@ -24,16 +20,8 @@ const NavSublist = (props) => {
   //events
 
   const handleClick = () => {
-
     select(".js-expand-sublist").class("is-open", true);
-
-    positionMenu();
-
   };
-
-  //lifecycle
-
-  useEffect(() => hookEvent(select(window), "resize scroll", positionMenu), []);
 
   //render
 

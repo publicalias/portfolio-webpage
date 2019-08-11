@@ -10,7 +10,7 @@ const { pointRadius, tooltipAddress } = require("./scripts/client/view-logic");
 
 //global imports
 
-const { getJSON } = require("client-utils");
+const { getJSON, swipeEvent } = require("client-utils");
 const { getSVG, tooltip } = require("d3-projects/app-logic");
 const { checkTooltip, globalEvents } = require("d3-projects/event-handlers");
 const { select } = require("dom-api");
@@ -182,9 +182,13 @@ const svg = {
 
   svgRotate(params) {
 
+    const DOMSVG = select(".js-ref-svg");
+
     const rotate = rotateHandlers(params, app.handleMouseLeave);
 
     bindObject(rotate);
+
+    //mouse events
 
     for (const e of rotate.ids) {
       select(`.js-click-${e}`).on("click", () => {
@@ -197,6 +201,38 @@ const svg = {
         }
       });
     }
+
+    //touch events
+
+    DOMSVG
+      .on("touchstart", (event) => {
+
+        if (rotate.int) {
+          rotate.pause();
+        } else if (rotate.touch.start && event.timeStamp - rotate.touch.start.timeStamp < 250) {
+          rotate.reset();
+        }
+
+        rotate.touch.start = event;
+
+      })
+      .on("click", () => {}) //prevents zoom
+      .on("touchmove", (event) => {
+        event.preventDefault();
+      })
+      .on("touchend", (event) => {
+
+        const { height, width } = DOMSVG.rect();
+
+        rotate.touch.end = event;
+
+        const swipe = swipeEvent(rotate.touch.start, rotate.touch.end, height, width);
+
+        if (swipe && !rotate.int) {
+          rotate.int = setInterval(rotate[swipe], 100);
+        }
+
+      });
 
   }
 

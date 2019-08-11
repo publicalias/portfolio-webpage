@@ -9,6 +9,8 @@
 
 //components
 
+.c-chart { touch-action: manipulation; }
+
 .c-land {
   &--back { @include path-color(lightgray); }
   &--front { @include path-color(white); }

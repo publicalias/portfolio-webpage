@@ -57,6 +57,10 @@ const Showcase = (props) => {
 
   const handleTurn = (delta) => () => {
 
+    if (!delta) {
+      return;
+    }
+
     const DOMShowcase = select(".js-toggle-showcase");
 
     const project = cycleItems(props.showcase.projects, state.project, delta);
@@ -103,7 +107,11 @@ const Showcase = (props) => {
           <h3 className="u-align-center">{name}</h3>
           <hr />
           {comments && <p className="u-margin-full">{comments}</p>}
-          <Carousel handleTurn={handleTurn} links={links} />
+          <Carousel
+            handlePause={handlePause}
+            handleTurn={handleTurn}
+            links={links}
+          />
         </div>
       </div>
     </div>

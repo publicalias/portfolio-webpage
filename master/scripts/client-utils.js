@@ -131,6 +131,36 @@ const submitKeys = (id) => {
 
 };
 
+//swipe event
+
+const swipeEvent = (start, end, height, width) => {
+
+  const touchStart = start.changedTouches[0];
+  const touchEnd = end.changedTouches[0];
+
+  const d = {
+    t: end.timeStamp - start.timeStamp,
+    x: touchStart.clientX - touchEnd.clientX,
+    y: touchStart.clientY - touchEnd.clientY
+  };
+
+  const v = {
+    absX: Math.abs(d.x),
+    absY: Math.abs(d.y),
+    w: width * 0.25,
+    h: height * 0.25
+  };
+
+  if (d.t < 250) {
+    if (v.absX > v.w && v.absY < v.h) {
+      return Math.sign(d.x) === 1 ? "left" : "right";
+    } else if (v.absX < v.w && v.absY > v.h) {
+      return Math.sign(d.y) === 1 ? "up" : "down";
+    }
+  }
+
+};
+
 //exports
 
 module.exports = {
@@ -139,5 +169,6 @@ module.exports = {
   getJSON,
   initStorageKey,
   storageKey,
-  submitKeys
+  submitKeys,
+  swipeEvent
 };

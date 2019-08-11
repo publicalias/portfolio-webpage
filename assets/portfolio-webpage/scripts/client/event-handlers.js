@@ -4,26 +4,6 @@
 
 const { select } = require("dom-api");
 
-//position menu
-
-const positionMenu = () => {
-
-  const DOMSublist = select(".js-expand-sublist");
-
-  if (DOMSublist.css().display === "none") {
-    return;
-  }
-
-  const DOMNavBar = select(".js-ref-nav-bar");
-
-  const windowTop = window.scrollY;
-  const navMargin = parseFloat(DOMNavBar.css().marginTop);
-  const offsetTop = windowTop < navMargin ? navMargin - windowTop : 0;
-
-  DOMSublist.css({ top: `${DOMNavBar.rect().height + offsetTop}px` });
-
-};
-
 //scroll to item
 
 const scrollToItem = (link) => () => {
@@ -44,7 +24,4 @@ const scrollToItem = (link) => () => {
 
 //exports
 
-module.exports = {
-  positionMenu,
-  scrollToItem
-};
+module.exports = { scrollToItem };
