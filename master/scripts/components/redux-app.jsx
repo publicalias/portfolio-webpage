@@ -1,5 +1,7 @@
 "use strict";
 
+/*eslint react/no-multi-comp: 0*/
+
 //local imports
 
 const CookieBanner = require("./cookie-banner");
@@ -8,7 +10,6 @@ const LegalStuff = require("./legal-stuff");
 
 const { checkInput } = require("../client-utils");
 const { select } = require("../dom-api");
-const { initKeyGen } = require("../react-utils");
 
 //node modules
 
@@ -47,15 +48,15 @@ const App = (props) => {
 
   //render
 
-  const keyGen = initKeyGen();
-
-  return [
-    <NavBar {...props} key={keyGen("nav-bar")} />,
-    <ErrorMessage {...props} key={keyGen("error")} />,
-    <UI {...props} key={keyGen("ui")} />,
-    <LegalStuff key={keyGen("legal")} />,
-    <CookieBanner key={keyGen("cookie")} />
-  ];
+  return (
+    <React.Fragment>
+      <NavBar {...props} />
+      <ErrorMessage {...props} />
+      <UI {...props} />
+      <LegalStuff />
+      <CookieBanner />
+    </React.Fragment>
+  );
 
 };
 

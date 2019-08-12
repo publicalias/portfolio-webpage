@@ -118,22 +118,23 @@ const App = () => {
 
   const entry = list[modalNum];
 
-  return [
-    <RecipeBox
-      displayModal={displayModal}
-      handleAdd={handleAdd}
-      key={keyGen("recipe-box")}
-      list={list}
-      updateList={updateList}
-    />,
-    <RecipeEditor
-      entry={entry}
-      key={keyGen(entry ? entry.name : `${Date.now()}`)}
-      modalNum={modalNum}
-      updateList={updateList}
-      used={list.map((e) => e.name)}
-    />
-  ];
+  return (
+    <React.Fragment>
+      <RecipeBox
+        displayModal={displayModal}
+        handleAdd={handleAdd}
+        list={list}
+        updateList={updateList}
+      />
+      <RecipeEditor
+        entry={entry}
+        key={keyGen(entry ? entry.name : `${Date.now()}`)}
+        modalNum={modalNum}
+        updateList={updateList}
+        used={list.map((e) => e.name)}
+      />
+    </React.Fragment>
+  );
 
 };
 

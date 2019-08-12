@@ -43,15 +43,17 @@ const App = (props) => {
 
   const keyGen = initKeyGen();
 
-  return [
-    <NavBar key={keyGen("nav-bar")} navBar={navBar} />,
-    <Bio bio={bio} key={keyGen("bio")} />,
-    <Showcase key={keyGen("showcase")} showcase={showcase} />,
-    groups.map((e) => <Group group={e} key={keyGen(e.id)} />),
-    <Contact contact={contact} key={keyGen("contact")} />,
-    <LegalStuff key={keyGen("legal")} />,
-    <CookieBanner key={keyGen("cookie")} />
-  ];
+  return (
+    <React.Fragment>
+      <NavBar navBar={navBar} />
+      <Bio bio={bio} />
+      <Showcase showcase={showcase} />
+      {groups.map((e) => <Group group={e} key={keyGen(e.id)} />)}
+      <Contact contact={contact} />
+      <LegalStuff />
+      <CookieBanner />
+    </React.Fragment>
+  );
 
 };
 

@@ -6,7 +6,6 @@ const { renderChart } = require("../../../view-logic");
 
 //global imports
 
-const { initKeyGen } = require("react-utils");
 const { rngInt } = require("utilities");
 
 //node modules
@@ -36,19 +35,15 @@ const PollChart = (props) => {
 
   //render
 
-  const keyGen = initKeyGen();
-
-  return [
-    <svg
-      className="c-poll-display__chart js-render-chart"
-      key={keyGen("chart")}
-      viewBox="0 0 450 450"
-    />,
-    <div className="c-poll-display__tooltip js-fade-tooltip" key={keyGen("tooltip")}>
-      <p className="js-edit-label" />
-      <p className="js-edit-count u-no-margin" />
-    </div>
-  ];
+  return (
+    <React.Fragment>
+      <svg className="c-poll-display__chart js-render-chart" viewBox="0 0 450 450" />
+      <div className="c-poll-display__tooltip js-fade-tooltip">
+        <p className="js-edit-label" />
+        <p className="js-edit-count u-no-margin" />
+      </div>
+    </React.Fragment>
+  );
 
 };
 
