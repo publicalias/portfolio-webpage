@@ -11,7 +11,7 @@
 }
 
 @mixin grid-area {
-  background-color: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.75);
   overflow: hidden;
   padding: 3vw 4.5vw;
 }
@@ -82,6 +82,17 @@
 
 }
 
+.c-nav-bar {
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  margin: 4.5vw;
+  padding: 0 4.5vw;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  &__text { padding: 1.5vw; }
+}
+
 .c-poll-display {
 
   @include grid-area;
@@ -145,21 +156,12 @@
 
   &__form, &__list, &__view {
     @include grid;
-    grid-area: 2 / 5 / 2 / 13;
+    grid-area: 1 / 5 / 1 / 13;
   }
-
-  &__nav-bar {
-    @include grid-area;
-    display: flex;
-    grid-area: 1 / 1 / 1 / 13;
-    padding: 0 4.5vw;
-  }
-
-  &__nav-item { padding: 1.5vw; }
 
   &__sidebar {
     @include grid-area;
-    grid-area: 2 / 1 / 2 / 5;
+    grid-area: 1 / 1 / 1 / 5;
   }
 
   &__sidebar-item {

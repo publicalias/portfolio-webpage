@@ -3,12 +3,7 @@
 //local imports
 
 const { encodeAPICall, getJSON } = require("../client-utils");
-const { select } = require("../dom-api");
 const { metaAddErrors, metaNoOp, metaSetLoading, metaSetState } = require("./meta-factories");
-
-//node modules
-
-const { useEffect } = require("react");
 
 //init reducer
 
@@ -91,25 +86,10 @@ const reduxAPICall = async (dispatch, args, successFn, failureFn) => {
 
 };
 
-//use loading
-
-const useLoading = (props) => {
-
-  const { data: { loading } } = props;
-
-  const bool = Boolean(loading);
-
-  useEffect(() => {
-    select(".js-loading-state").class("is-loading", true, bool);
-  }, [bool]);
-
-};
-
 //exports
 
 module.exports = {
   initReducer,
   parseQuery,
-  reduxAPICall,
-  useLoading
+  reduxAPICall
 };

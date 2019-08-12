@@ -23,6 +23,8 @@ const LegalStuff = () => (
   </div>
 );
 
+LegalStuff.propList = [];
+
 //exports
 
 module.exports = LegalStuff;

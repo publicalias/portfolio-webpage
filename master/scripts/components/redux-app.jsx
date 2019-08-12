@@ -7,8 +7,8 @@ const ErrorMessage = require("./error-message");
 const LegalStuff = require("./legal-stuff");
 
 const { checkInput } = require("../client-utils");
+const { select } = require("../dom-api");
 const { initKeyGen } = require("../react-utils");
-const { useLoading } = require("../redux-utils/client-utils");
 
 //node modules
 
@@ -25,19 +25,32 @@ const { useEffect } = React;
 
 const App = (props) => {
 
-  const { jsx: { UI } } = App.injected;
+  const { data: { loading }, location } = props;
+
+  const { jsx: { CookieBanner, ErrorMessage, LegalStuff, NavBar, UI } } = App.injected;
+
+  //utilities
+
+  const bool = Boolean(loading);
 
   //lifecycle
 
   useEffect(checkInput, []);
 
-  useLoading(props);
+  useEffect(() => {
+    select(".js-loading-state").class("is-loading", true, bool);
+  }, [bool]);
+
+  useEffect(() => {
+    select(document.scrollingElement).scrollTop = 0;
+  }, [location.key]);
 
   //render
 
   const keyGen = initKeyGen();
 
   return [
+    <NavBar {...props} key={keyGen("nav-bar")} />,
     <ErrorMessage {...props} key={keyGen("error")} />,
     <UI {...props} key={keyGen("ui")} />,
     <LegalStuff key={keyGen("legal")} />,
@@ -46,44 +59,55 @@ const App = (props) => {
 
 };
 
-App.injected = { jsx: { UI: null } };
+App.propList = ["data.loading", "location"];
 
-const getContext = (actions) => {
+App.injected = {
+  jsx: {
+    CookieBanner,
+    ErrorMessage,
+    LegalStuff,
+    NavBar: null,
+    UI: null
+  }
+};
 
-  const mapState = (state) => ({ data: state });
+const getContext = (Component, actions) => {
 
-  const mapDispatch = (dispatch) => ({
-    actions: Object.entries(actions).reduce((acc, [key, val]) => {
+  const withStore = connect(
+    (state) => ({ data: state }),
+    (dispatch) => ({
+      actions: Object.entries(actions).reduce((acc, [key, val]) => {
 
-      const thunk = typeof val() === "function";
+        const thunk = typeof val() === "function";
 
-      acc[key] = thunk ? (...args) => dispatch(val(...args)) : (...args) => {
-        dispatch(val(...args));
-      };
+        acc[key] = thunk ? (...args) => dispatch(val(...args)) : (...args) => {
+          dispatch(val(...args));
+        };
 
-      return acc;
+        return acc;
 
-    }, {})
-  });
+      }, {})
+    })
+  );
 
-  return withRouter(connect(mapState, mapDispatch)(App));
+  return withRouter(withStore(Component));
 
 };
 
 const ReduxApp = (props) => {
 
-  const { UI, actions, reducer, root } = props;
+  const { local: { actions, reducer, root } } = props;
+
+  const { jsx: { App, BrowserRouter, Provider } } = ReduxApp.injected;
 
   //utilities
 
   const middleware = applyMiddleware(ReduxThunk);
   const store = createStore(reducer, middleware);
 
-  App.injected.jsx.UI = UI;
+  const Connected = getContext(App, actions);
 
   //render
-
-  const Connected = getContext(actions);
 
   return (
     <BrowserRouter basename={root}>
@@ -95,6 +119,19 @@ const ReduxApp = (props) => {
 
 };
 
+ReduxApp.propList = [];
+
+ReduxApp.injected = {
+  jsx: {
+    App,
+    BrowserRouter,
+    Provider
+  }
+};
+
 //exports
 
-module.exports = ReduxApp;
+module.exports = {
+  App,
+  ReduxApp
+};

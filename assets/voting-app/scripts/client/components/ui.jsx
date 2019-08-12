@@ -2,7 +2,6 @@
 
 //local imports
 
-const NavBar = require("./nav-bar");
 const Sidebar = require("./sidebar");
 const Form = require("./main/form/form");
 const List = require("./main/list/list");
@@ -22,7 +21,7 @@ const UI = (props) => {
 
   const { actions: { metaGetUser } } = props;
 
-  const { jsx: { Form, List, NavBar, Route, Sidebar, View } } = UI.injected;
+  const { jsx: { Form, List, Route, Sidebar, View } } = UI.injected;
 
   //lifecycle
 
@@ -34,7 +33,6 @@ const UI = (props) => {
 
   return (
     <div className="c-ui">
-      <NavBar {...props} />
       <Sidebar {...props} />
       <Route
         exact
@@ -55,7 +53,6 @@ UI.injected = {
   jsx: {
     Form,
     List,
-    NavBar,
     Route,
     Sidebar,
     View

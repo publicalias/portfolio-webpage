@@ -112,6 +112,8 @@ const ErrorMessage = (props) => {
 
 };
 
+ErrorMessage.propList = ["data.errors", "location"];
+
 //exports
 
 module.exports = ErrorMessage;

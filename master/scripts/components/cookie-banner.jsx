@@ -40,6 +40,8 @@ const CookieBanner = () => {
 
 };
 
+CookieBanner.propList = [];
+
 //exports
 
 module.exports = CookieBanner;

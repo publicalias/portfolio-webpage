@@ -41,7 +41,7 @@ const NavBar = (props) => {
   const keyGen = initKeyGen();
 
   return (
-    <div className="c-ui__nav-bar">
+    <div className="c-nav-bar">
       {links.map((e) => {
 
         const [id, text, bool, link, util] = e;
@@ -49,7 +49,7 @@ const NavBar = (props) => {
         return bool && (
           <div className={util} key={keyGen(id)}>
             <Link to={link}>
-              <h3 className="c-ui__nav-item u-hover">{text}</h3>
+              <h3 className="c-nav-bar__text u-hover">{text}</h3>
             </Link>
           </div>
         );

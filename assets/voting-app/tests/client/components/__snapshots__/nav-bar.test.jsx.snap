@@ -2,7 +2,7 @@
 
 exports[`nav bar should match snapshot (authenticated) 1`] = `
 <div
-  className="c-ui__nav-bar"
+  className="c-nav-bar"
 >
   <div
     key="0-313"
@@ -11,7 +11,7 @@ exports[`nav bar should match snapshot (authenticated) 1`] = `
       to="/list?filter=all"
     >
       <h3
-        className="c-ui__nav-item u-hover"
+        className="c-nav-bar__text u-hover"
       >
         All Polls
       </h3>
@@ -24,7 +24,7 @@ exports[`nav bar should match snapshot (authenticated) 1`] = `
       to="/list?filter=created"
     >
       <h3
-        className="c-ui__nav-item u-hover"
+        className="c-nav-bar__text u-hover"
       >
         My Polls
       </h3>
@@ -37,7 +37,7 @@ exports[`nav bar should match snapshot (authenticated) 1`] = `
       to="/list?filter=voted"
     >
       <h3
-        className="c-ui__nav-item u-hover"
+        className="c-nav-bar__text u-hover"
       >
         Voted
       </h3>
@@ -50,7 +50,7 @@ exports[`nav bar should match snapshot (authenticated) 1`] = `
       to="/list?filter=hidden"
     >
       <h3
-        className="c-ui__nav-item u-hover"
+        className="c-nav-bar__text u-hover"
       >
         Hidden
       </h3>
@@ -64,7 +64,7 @@ exports[`nav bar should match snapshot (authenticated) 1`] = `
       to="/form"
     >
       <h3
-        className="c-ui__nav-item u-hover"
+        className="c-nav-bar__text u-hover"
       >
         New Poll
       </h3>
@@ -75,7 +75,7 @@ exports[`nav bar should match snapshot (authenticated) 1`] = `
 
 exports[`nav bar should match snapshot (default) 1`] = `
 <div
-  className="c-ui__nav-bar"
+  className="c-nav-bar"
 >
   <div
     key="0-313"
@@ -84,7 +84,7 @@ exports[`nav bar should match snapshot (default) 1`] = `
       to="/list?filter=all"
     >
       <h3
-        className="c-ui__nav-item u-hover"
+        className="c-nav-bar__text u-hover"
       >
         All Polls
       </h3>
@@ -97,7 +97,7 @@ exports[`nav bar should match snapshot (default) 1`] = `
       to="/list?filter=voted"
     >
       <h3
-        className="c-ui__nav-item u-hover"
+        className="c-nav-bar__text u-hover"
       >
         Voted
       </h3>
@@ -110,7 +110,7 @@ exports[`nav bar should match snapshot (default) 1`] = `
       to="/list?filter=hidden"
     >
       <h3
-        className="c-ui__nav-item u-hover"
+        className="c-nav-bar__text u-hover"
       >
         Hidden
       </h3>
