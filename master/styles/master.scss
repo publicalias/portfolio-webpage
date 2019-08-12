@@ -15,7 +15,7 @@ $bg-input: rgba(64, 64, 64, 0.75);
 @mixin btn-hover {
   &:not(.is-disabled) {
     &:hover {
-      background-color: white;
+      background: white;
       color: black;
       cursor: pointer;
       fill: white;
@@ -50,7 +50,7 @@ $bg-input: rgba(64, 64, 64, 0.75);
 }
 
 @mixin content($width) {
-  background-color: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.75);
   margin: 4.5vw auto;
   overflow: hidden;
   padding: 3vw 4.5vw;
@@ -76,7 +76,7 @@ $bg-input: rgba(64, 64, 64, 0.75);
 
 @mixin input {
 
-  background-color: $bg-input;
+  background: $bg-input;
   border: 0;
   border-radius: 0; //normalizes webkit
   color: inherit;
@@ -172,7 +172,7 @@ thead { @include font-head; }
 ::placeholder { color: lightgray; }
 
 ::selection {
-  background-color: white;
+  background: white;
   color: black;
   fill: black;
 }

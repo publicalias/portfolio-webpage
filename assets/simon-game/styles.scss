@@ -20,7 +20,7 @@ $offset: calc(50% + 1.5vw);
 .c-simon-game {
 
   @include circle(20, 1);
-  background-color: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.75);
   margin: 4.5vw auto;
 
   &__btn-path {

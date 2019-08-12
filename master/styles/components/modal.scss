@@ -15,7 +15,7 @@
 
   &__shadow {
     @include modal(100);
-    background-color: rgba(0, 0, 0, 0.75);
+    background: rgba(0, 0, 0, 0.75);
     display: none;
     opacity: 0;
   }
