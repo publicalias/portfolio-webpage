@@ -36,13 +36,18 @@ const PollInput = (props) => {
     }
   };
 
-  const handleSubmit = () => {
-    if (role === "form") {
-      formAddOption(form.add, form.options);
-    } else {
-      handleReload(() => pollAddOption(poll.id, view.add), props);
+  const handleSubmitForm = () => {
+    formAddOption(form.add, form.options);
+  };
+
+  const handleSubmitView = async () => {
+
+    const res = await handleReload(() => pollAddOption(poll.id, view.add), props);
+
+    if (res && !res.errors) {
       viewSetAdd("");
     }
+
   };
 
   //lifecycle
@@ -64,7 +69,7 @@ const PollInput = (props) => {
       />
       <button
         className={`c-poll-options__submit js-submit-button-${role} qa-option-submit`}
-        onClick={handleSubmit}
+        onClick={role === "form" ? handleSubmitForm : handleSubmitView}
       >
         Add
       </button>

@@ -71,7 +71,12 @@ const PollList = (props) => {
                 </span>
               ) : (
                 <svg className="c-poll-options__color-box">
-                  <rect className="c-poll-options__color-icon" fill={chartColor(i, poll.options)} />
+                  <rect
+                    className="c-poll-options__color-icon"
+                    fill={chartColor(i, poll.options)}
+                    height="100%"
+                    width="100%"
+                  />
                 </svg>
               )}
               <span>{text}</span>

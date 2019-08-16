@@ -61,28 +61,32 @@ const initTestSnapshot = (render) => (data, local, other) => {
 
 //init test wrapper
 
-const mockProps = (newState, actions, data, local, other) => ({
+const mockProps = (newState, actions, data, local, other) => {
 
-  actions: Object.keys(actions).reduce((acc, e) => {
+  const init = {
 
-    acc[e] = jest.fn();
+    actions: Object.keys(actions).reduce((acc, e) => {
 
-    return acc;
+      acc[e] = jest.fn();
 
-  }, {}),
+      return acc;
 
-  data: newState(data),
+    }, {}),
 
-  local,
+    data: newState(data),
 
-  history: { push: jest.fn() },
-  location: {},
-  match: {},
-  staticContext: {},
+    local,
 
-  ...other
+    history: { push: jest.fn() },
+    location: {},
+    match: {},
+    staticContext: {}
 
-});
+  };
+
+  return deepCopy(init, other);
+
+};
 
 const initTestWrapper = (newState, actions) => (UUT, Context) => {
 

@@ -14,11 +14,17 @@ const { initTestAPI, initTestReducer } = require("test-helpers/redux-tests");
 
 //init test poll
 
-const initTestPoll = (render, role) => (data, pollData, list) => render(data, { //supports all poll components
-  poll: role === "form" ? newForm(pollData) : newPoll(pollData),
-  role,
-  list
-});
+const initTestPoll = (render, role) => (data, pollData, other, list) => { //supports all poll components
+
+  const local = {
+    poll: role === "form" ? newForm(pollData) : newPoll(pollData),
+    role,
+    list
+  };
+
+  return render(data, local, other);
+
+};
 
 //test api
 

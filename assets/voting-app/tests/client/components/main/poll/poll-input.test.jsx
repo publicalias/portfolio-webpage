@@ -74,22 +74,28 @@ describe("poll input (view)", () => {
   const testView = initTestPoll(testSnapshot, "view");
   const testViewMount = initTestPoll(testMount, "view");
 
+  const testSubmit = (res) => {
+
+    const dataList = [{ view: { add: "Option A" } }, { id: "id-a" }, { actions: { pollAddOption: jest.fn(() => res) } }];
+    const fnList = [
+      ["pollAddOption", ["id-a", "Option A"]],
+      ["viewSetAdd", res && !res.errors ? [""] : undefined]
+    ];
+
+    return testReload(testViewMount, dataList, ".qa-option-submit", "id-a", ...fnList);
+
+  };
+
   it("should match snapshot", () => testView({ view: { add: "Option A" } }));
 
   it("should call submitKeys on load", () => testLoad(testViewMount, ["view"]));
 
   it("should call viewSetAdd on change", () => testChange(testViewMount, "viewSetAdd"));
 
-  it("should call pollAddOption and viewSetAdd on submit", () => {
+  it("should call pollAddOption on submit (failure)", () => testSubmit());
 
-    const dataList = [{ view: { add: "Option A" } }, { id: "id-a" }];
-    const fnList = [
-      ["pollAddOption", ["id-a", "Option A"]],
-      ["viewSetAdd", [""]]
-    ];
+  it("should call pollAddOption on submit (errors)", () => testSubmit({ errors: [] }));
 
-    return testReload(testViewMount, dataList, ".qa-option-submit", "id-a", ...fnList);
-
-  });
+  it("should call pollAddOption and viewSetAdd on submit (success)", () => testSubmit({}));
 
 });

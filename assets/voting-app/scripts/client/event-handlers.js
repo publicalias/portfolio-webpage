@@ -16,10 +16,12 @@ const handleReload = async (fn, props, list) => {
 
   const args = list ? [getListParams(location), null, polls.length] : [null, poll.id];
 
-  await fn();
+  const res = await fn();
 
   metaGetUser();
   metaGetPolls(...args);
+
+  return res;
 
 };
 

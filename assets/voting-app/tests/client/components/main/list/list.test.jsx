@@ -43,13 +43,15 @@ describe("list", () => {
 
 describe("list (load and location.search)", () => {
 
-  const testEffect = (fn) => {
+  const testEffect = async (pollData, fn) => {
 
-    const { props, wrapper } = testMount();
+    const { props, wrapper } = testMount(null, null, { actions: { metaGetPolls: jest.fn(() => ({ polls: pollData })) } });
 
-    wrapper.setProps({ location: { search: "?sort=popular" } });
+    wrapper.setProps({ location: { search: "?sort=popular" } }); //async
 
     wrapper.mount();
+
+    await Promise.resolve();
 
     fn(props);
 
@@ -57,24 +59,28 @@ describe("list (load and location.search)", () => {
 
   };
 
-  it("should reset ref", () => {
+  const testRef = (end, pollData) => {
 
     const { ref, useRef } = initTestRef(List);
 
-    testEffect(() => {
+    testEffect(pollData, () => {
 
       testMock(useRef, [], [], []);
 
       expect(ref.current).toEqual({
-        end: false,
+        end,
         pending: false
       });
 
     });
 
-  });
+  };
 
-  it("should reset state", () => testEffect((props) => {
+  it("should reset ref (end)", () => testRef(true, []));
+
+  it("should reset ref (not end)", () => testRef(false, Array(100).fill({})));
+
+  it("should reset state", () => testEffect([], (props) => {
 
     const { actions: { listClearState, metaGetPolls } } = props;
 
@@ -105,7 +111,7 @@ describe("list (scroll)", () => {
       bottom: 300
     });
 
-    const { props, wrapper } = testMount(); //async
+    const { props, wrapper } = testMount(null, null, { actions: { metaGetPolls: jest.fn(() => ({ polls: [] })) } }); //async
 
     const { actions: { metaGetPolls } } = props;
 

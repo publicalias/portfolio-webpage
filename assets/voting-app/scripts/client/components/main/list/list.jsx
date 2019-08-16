@@ -26,14 +26,14 @@ const List = (props) => {
 
   const scrollRef = useRef();
 
-  const resetList = () => {
+  const resetList = async () => {
 
     listClearState();
 
-    metaGetPolls(getListParams(location));
+    const { polls } = await metaGetPolls(getListParams(location));
 
     scrollRef.current = {
-      end: false,
+      end: polls.length < 100,
       pending: false
     };
 
@@ -65,7 +65,9 @@ const List = (props) => {
 
   //lifecycle
 
-  useLayoutEffect(resetList, [location.search]);
+  useLayoutEffect(() => {
+    resetList(); //async
+  }, [location.search]);
 
   //render
 

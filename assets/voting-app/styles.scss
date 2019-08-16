@@ -128,8 +128,6 @@
     top: 0.32vw;
   }
 
-  &__color-icon { @include square(100%) }
-
   &__input-box { display: flex; }
 
   &__input { flex: 11; }
