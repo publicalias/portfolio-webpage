@@ -24,11 +24,7 @@ const globalEvents = (app) => () => {
   app.ready++;
   app.getSVG();
 
-  select(window).on("resize scroll", () => {
-    app.handleMouseLeave();
-  });
-
-  select(".js-ref-svg").on("touchstart", app.handleMouseLeave, { passive: true }); //ensures mobile support
+  select(".js-ref-svg").on("touchstart", app.handleMouseLeave, { passive: true });
 
 };
 

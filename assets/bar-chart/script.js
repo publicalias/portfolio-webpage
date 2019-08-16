@@ -23,8 +23,8 @@ const app = {
   tooltip(bool) {
     if (bool) {
 
-      const thisRect = select(d3.event.target).getBoundingClientRect();
-      const svgRect = select(".js-ref-svg").getBoundingClientRect();
+      const thisRect = select(d3.event.target).rect();
+      const svgRect = select(".js-ref-svg").rect();
 
       tooltip(bool, null, thisRect.top + svgRect.height * 0.2);
 

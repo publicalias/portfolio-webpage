@@ -42,9 +42,7 @@ const getVotes = (n) => {
 
 //render chart
 
-const renderChart = (counts, labels) => {
-
-  //scale
+const chartProps = (counts, labels) => {
 
   const r = 450 / 2;
 
@@ -56,12 +54,43 @@ const renderChart = (counts, labels) => {
 
   const data = pieFn(counts);
 
+  const tooltip = (bool = false) => (d) => {
+
+    select(".js-toggle-tooltip").class("is-open", true, bool);
+    select(".js-toggle-hover").class("is-hovered", true, false);
+
+    if (!bool) {
+      return;
+    }
+
+    select(d3.event.target).class("is-hovered", true, true);
+
+    updateTooltip(labels[d.index], getVotes(d.value), r, arcFn.centroid(d));
+
+    d3.event.stopPropagation();
+
+  };
+
+  return {
+    arcFn,
+    data,
+    r,
+    tooltip
+  };
+
+};
+
+const renderChart = (counts, labels) => {
+
+  const { arcFn, data, tooltip, r } = chartProps(counts, labels);
+
   //reset
 
   const empty = counts.reduce((acc, e) => acc + e, 0) === 0;
 
   const chart = d3.select(".js-render-chart")
     .html("")
+    .on("touchstart", tooltip(), { passive: true })
     .append("g")
     .attr("transform", `translate(${r}, ${r})`);
 
@@ -71,27 +100,20 @@ const renderChart = (counts, labels) => {
       .text(counts.length ? "No Votes" : "No Options");
   }
 
-  //chart
+  tooltip()();
 
-  const DOMTooltip = select(".js-fade-tooltip");
+  //chart
 
   chart.selectAll("path")
     .data(data)
     .enter()
     .append("path")
-    .attr("class", "u-hover")
+    .attr("class", "js-toggle-hover")
     .attr("d", (d) => arcFn(d))
     .attr("fill", (d) => chartColor(d.index, data))
-    .on("mouseenter", (d) => {
-
-      updateTooltip(labels[d.index], getVotes(d.value), r, arcFn.centroid(d));
-
-      DOMTooltip.animate({ opacity: 1 });
-
-    })
-    .on("mouseleave", () => {
-      DOMTooltip.animate({ opacity: 0 });
-    });
+    .on("mouseenter", tooltip(true))
+    .on("mouseleave", tooltip())
+    .on("touchstart", tooltip(true), { passive: true });
 
 };
 

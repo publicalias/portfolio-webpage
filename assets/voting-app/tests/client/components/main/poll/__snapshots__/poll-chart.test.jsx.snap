@@ -7,7 +7,7 @@ exports[`poll chart (form) should match snapshot 1`] = `
     viewBox="0 0 450 450"
   />
   <div
-    className="c-poll-display__tooltip js-fade-tooltip"
+    className="c-poll-display__tooltip js-toggle-tooltip"
   >
     <p
       className="js-edit-label"
@@ -26,7 +26,7 @@ exports[`poll chart (view) should match snapshot 1`] = `
     viewBox="0 0 450 450"
   />
   <div
-    className="c-poll-display__tooltip js-fade-tooltip"
+    className="c-poll-display__tooltip js-toggle-tooltip"
   >
     <p
       className="js-edit-label"

@@ -108,7 +108,7 @@
 
   &__tooltip {
     background: rgba(0, 0, 0, 0.75);
-    opacity: 0;
+    display: none;
     padding: 1.5vw;
     position: absolute;
     width: 18vw;
@@ -170,6 +170,12 @@
   }
 
 }
+
+//states
+
+.js-toggle-hover { &.is-hovered { fill: white; } };
+
+.js-toggle-tooltip { &.is-open { display: block; } };
 
 //utilities
 

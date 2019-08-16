@@ -37,20 +37,21 @@ const tooltip = (bool = false, node, top, left) => {
 
   DOMTooltip.class("is-open", true, bool);
 
-  if (bool) {
-
-    const thisRect = select(node || d3.event.target).getBoundingClientRect(); //tooltip is fixed
-    const svgRect = select(".js-ref-svg").getBoundingClientRect();
-
-    const displayBelow = thisRect.top - svgRect.top < svgRect.height / 2;
-    const displayRight = thisRect.left - svgRect.left < svgRect.width / 2;
-
-    const p = getPosition(thisRect, DOMTooltip);
-
-    DOMTooltip.css({ top: `${top || (displayBelow ? p.below : p.above)}px` });
-    DOMTooltip.css({ left: `${left || (displayRight ? p.right : p.left)}px` });
-
+  if (!bool) {
+    return;
   }
+
+  const thisRect = select(node || d3.event.target).rect();
+  const svgRect = select(".js-ref-svg").rect();
+
+  const displayBelow = thisRect.top - svgRect.top < svgRect.height / 2;
+  const displayRight = thisRect.left - svgRect.left < svgRect.width / 2;
+
+  const p = getPosition(thisRect, DOMTooltip);
+
+  DOMTooltip
+    .css({ top: `${top || (displayBelow ? p.below : p.above)}px` })
+    .css({ left: `${left || (displayRight ? p.right : p.left)}px` });
 
 };
 

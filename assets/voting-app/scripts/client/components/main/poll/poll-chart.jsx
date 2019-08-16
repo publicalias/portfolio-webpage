@@ -38,7 +38,7 @@ const PollChart = (props) => {
   return (
     <React.Fragment>
       <svg className="c-poll-display__chart js-render-chart" viewBox="0 0 450 450" />
-      <div className="c-poll-display__tooltip js-fade-tooltip">
+      <div className="c-poll-display__tooltip js-toggle-tooltip">
         <p className="js-edit-label" />
         <p className="js-edit-count u-no-margin" />
       </div>

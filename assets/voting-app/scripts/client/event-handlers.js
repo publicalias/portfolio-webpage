@@ -27,7 +27,7 @@ const handleReload = async (fn, props, list) => {
 
 const updateTooltip = (label, count, r, [x, y]) => {
 
-  const DOMTooltip = select(".js-fade-tooltip");
+  const DOMTooltip = select(".js-toggle-tooltip");
 
   select(".js-edit-label").text(label);
   select(".js-edit-count").text(count);
