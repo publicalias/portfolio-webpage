@@ -4,7 +4,7 @@
 
 const handlers = require("../../../../scripts/server/api/handlers/poll-handlers");
 
-const { newPoll } = require("../../../../schemas");
+const { newOption, newPoll } = require("../../../../schemas");
 const { initTestVote, initTestToggle, testOptions } = require("../../test-helpers");
 
 //global imports
@@ -67,11 +67,10 @@ describe("pollAddOption", () => {
     testMock(res.json, [{}]);
 
     expect(update).toEqual(Object.assign(poll, {
-      options: [{
+      options: [newOption({
         text: "Option A",
-        created: "id-b",
-        voted: []
-      }]
+        created: "id-b"
+      })]
     }));
 
   });

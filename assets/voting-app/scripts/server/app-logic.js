@@ -17,6 +17,18 @@ const uuid = require("uuid/v1");
 
 const pollsCol = () => db.collection("voting-app/polls");
 
+const addVotes = {
+  $addFields: {
+    votes: {
+      $reduce: {
+        input: "$options",
+        initialValue: 0,
+        in: { $add: ["$$value", { $size: "$$this.voted" }] }
+      }
+    }
+  }
+};
+
 //check options
 
 const checkOptions = (options) => checkErrors([{
@@ -48,7 +60,15 @@ const checkTitle = (title, exists) => checkErrors([{
 
 //find by id
 
-const findByID = (id) => pollsCol().findOne({ id });
+const findByID = async (id) => {
+
+  const res = await pollsCol()
+    .aggregate([{ $match: { id } }, addVotes])
+    .toArray();
+
+  return res[0];
+
+};
 
 //find polls
 
@@ -69,7 +89,7 @@ const getSort = ({ sort }) => {
 
   const types = {
     new: { date: -1 },
-    popular: { "users.voted": -1 }
+    popular: { votes: -1 }
   };
 
   return types[sort];
@@ -82,22 +102,15 @@ const findPolls = async (req, params, length = 0) => {
 
   const user = req.user || await getIPUser(req.ip) || {};
 
-  const text = { $text: { $search: search } };
-  const meta = { score: { $meta: "textScore" } };
-
-  let args = {
+  const args = deepCopy({
     query: getQuery(user, params),
-    projection: {},
     sort: getSort(params)
-  };
-
-  if (search) {
-    args = deepCopy(args, {
-      query: text,
-      projection: meta,
-      sort: meta
-    });
-  }
+  }, search ? {
+    query: { $text: { $search: search } },
+    sort: { score: { $meta: "textScore" } }
+  } : null, {
+    sort: { _id: 1 } //ensures consistency in tests
+  });
 
   await pollsCol().createIndex({
     "title": "text",
@@ -106,8 +119,7 @@ const findPolls = async (req, params, length = 0) => {
   });
 
   return pollsCol()
-    .find(args.query, { projection: args.projection })
-    .sort(args.sort)
+    .aggregate([{ $match: args.query }, addVotes, { $sort: args.sort }])
     .limit(length + 100) //refreshes the whole list
     .toArray();
 

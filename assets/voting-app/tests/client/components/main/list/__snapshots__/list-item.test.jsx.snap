@@ -95,8 +95,8 @@ exports[`list item should match snapshot (authenticated) 1`] = `
               "created": "",
               "flagged": Array [],
               "hidden": Array [],
-              "voted": 0,
             },
+            "votes": 0,
           },
           "role": "hide",
         }
@@ -199,8 +199,8 @@ exports[`list item should match snapshot (authenticated) 1`] = `
               "created": "",
               "flagged": Array [],
               "hidden": Array [],
-              "voted": 0,
             },
+            "votes": 0,
           },
           "role": "flag",
         }
@@ -313,8 +313,8 @@ exports[`list item should match snapshot (default) 1`] = `
               "created": "",
               "flagged": Array [],
               "hidden": Array [],
-              "voted": 0,
             },
+            "votes": 0,
           },
           "role": "hide",
         }

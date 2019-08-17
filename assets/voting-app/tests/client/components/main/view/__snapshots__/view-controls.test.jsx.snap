@@ -104,8 +104,8 @@ exports[`view controls should match snapshot (authenticated) 1`] = `
               "created": "",
               "flagged": Array [],
               "hidden": Array [],
-              "voted": 0,
             },
+            "votes": 0,
           },
           "role": "hide",
         }
@@ -209,8 +209,8 @@ exports[`view controls should match snapshot (authenticated) 1`] = `
               "created": "",
               "flagged": Array [],
               "hidden": Array [],
-              "voted": 0,
             },
+            "votes": 0,
           },
           "role": "flag",
         }
@@ -316,8 +316,8 @@ exports[`view controls should match snapshot (default) 1`] = `
               "created": "",
               "flagged": Array [],
               "hidden": Array [],
-              "voted": 0,
             },
+            "votes": 0,
           },
           "role": "hide",
         }

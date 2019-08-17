@@ -46,29 +46,14 @@ const pollCastVote = async (req, res) => {
 
   const user = await getOrSetUser(req);
 
-  await retryWrite(async () => {
+  await pollsCol().updateOne({ id }, { $pull: { "options.$[].voted": user.id } });
 
-    const { value: { options } } = await pollsCol().findOneAndUpdate({
-      id
-    }, {
-      $inc: { "users.voted": -1 },
-      $pull: { "options.$[].voted": user.id }
-    }, {
-      returnOriginal: false
-    });
-
-    const { matchedCount } = await pollsCol().updateOne({
-      id,
-      options
-    }, {
-      $inc: { "users.voted": 1 },
-      $push: { "options.$[e].voted": user.id }
-    }, {
-      arrayFilters: [{ "e.text": text }]
-    });
-
-    return matchedCount;
-
+  await pollsCol().updateOne({
+    id
+  }, {
+    $push: { "options.$[e].voted": user.id }
+  }, {
+    arrayFilters: [{ "e.text": text }]
   });
 
   res.json({});
@@ -95,24 +80,7 @@ const pollRemoveOption = async (req, res) => {
 
   }
 
-  await retryWrite(async () => {
-
-    const { options } = await findByID(id);
-
-    const index = options.findIndex((e) => e.text === text);
-    const votes = options[index].voted.length;
-
-    const { matchedCount } = await pollsCol().updateOne({
-      id,
-      options
-    }, {
-      $inc: { "users.voted": votes * -1 },
-      $pull: { options: { text } }
-    });
-
-    return matchedCount;
-
-  });
+  await pollsCol().updateOne({ id }, { $pull: { options: { text } } });
 
   res.json({});
 

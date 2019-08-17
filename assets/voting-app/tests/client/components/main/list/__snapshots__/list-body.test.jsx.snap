@@ -193,8 +193,8 @@ exports[`list body should match snapshot (polls) 1`] = `
                     "created": "",
                     "flagged": Array [],
                     "hidden": Array [],
-                    "voted": 0,
                   },
+                  "votes": 0,
                 },
               ],
               "user": Object {},
@@ -224,8 +224,8 @@ exports[`list body should match snapshot (polls) 1`] = `
                   "created": "",
                   "flagged": Array [],
                   "hidden": Array [],
-                  "voted": 0,
                 },
+                "votes": 0,
               },
             }
           }

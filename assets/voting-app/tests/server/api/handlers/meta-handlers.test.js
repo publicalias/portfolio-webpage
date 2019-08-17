@@ -146,7 +146,7 @@ describe("metaGetPolls", () => {
 
   it("sends polls if length is 0", () => testPolls([{}]));
 
-  it("sends polls if length is 1", () => testPolls(Array(100 + 1).fill({}), null, 1));
+  it("sends polls if length is 1", () => testPolls(Array(1 + 100).fill({}), null, 1));
 
   it("sends polls if id exists", () => testPolls([{ id: "id-a" }, {}], "id-a"));
 
@@ -176,7 +176,7 @@ describe("metaGetPolls (sort)", () => {
 
   it("sends polls if sort is new", () => {
 
-    const polls = [{}, { date: 1 }];
+    const polls = [{}, { date: Date.now() }];
 
     return testPolls(polls, "new");
 
@@ -184,7 +184,10 @@ describe("metaGetPolls (sort)", () => {
 
   it("sends polls if sort is popular", () => {
 
-    const polls = [{}, { users: { voted: 1 } }];
+    const polls = [{}, {
+      votes: 1,
+      options: [{ voted: ["id-a"] }]
+    }];
 
     return testPolls(polls, "popular");
 
@@ -208,13 +211,7 @@ describe("metaGetPolls (search)", () => {
 
     const res = await mockAPICall({}, getData(search));
 
-    if (search) {
-      for (const e of res.json.mock.calls[0][0].polls) {
-        delete e.score;
-      }
-    }
-
-    testMock(res.json, [{ polls: polls.slice(0, count) }]);
+    testMock(res.json, [{ polls: polls.slice(0, count).reverse() }]);
 
   };
 
@@ -230,11 +227,11 @@ describe("metaGetPolls (search)", () => {
 
   it("sends polls if search is valid (non-empty)", () => {
 
-    const str = "Apple";
+    const t = "Apple";
 
-    const polls = [{ title: str }, { author: str }, { options: [{ text: str }] }, {}];
+    const polls = [{ title: t }, { author: `${t} ${t}` }, { options: [{ text: `${t} ${t} ${t}` }] }, {}];
 
-    return testPolls(polls, str, 3);
+    return testPolls(polls, t, 3);
 
   });
 
@@ -294,7 +291,10 @@ describe("metaGetPolls (filter)", () => {
 
   it("sends polls if filter is voted", () => {
 
-    const polls = [{ options: [{ voted: ["id-a"] }] }, {}];
+    const polls = [{
+      votes: 1,
+      options: [{ voted: ["id-a"] }]
+    }, {}];
 
     return testPolls(polls, "voted", [1, 1, 0]);
 

@@ -27,10 +27,10 @@ const newPoll = initSchema({
   author: "",
   id: "",
   date: 0,
+  votes: 0, //computed
   secret: false,
   users: {
     created: "",
-    voted: 0,
     hidden: [],
     flagged: []
   },

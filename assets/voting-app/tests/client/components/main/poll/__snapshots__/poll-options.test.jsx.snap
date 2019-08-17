@@ -266,8 +266,8 @@ exports[`poll options (view) should match snapshot (authenticated, right poll) 1
               "created": "",
               "flagged": Array [],
               "hidden": Array [],
-              "voted": 0,
             },
+            "votes": 0,
           },
         ],
         "user": Object {
@@ -307,8 +307,8 @@ exports[`poll options (view) should match snapshot (authenticated, right poll) 1
             "created": "",
             "flagged": Array [],
             "hidden": Array [],
-            "voted": 0,
           },
+          "votes": 0,
         },
         "role": "view",
       }
@@ -414,8 +414,8 @@ exports[`poll options (view) should match snapshot (options) 1`] = `
             "created": "",
             "flagged": Array [],
             "hidden": Array [],
-            "voted": 0,
           },
+          "votes": 0,
         },
         "role": "view",
       }
