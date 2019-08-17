@@ -6,7 +6,7 @@ const { newOption, newPoll } = require("../../schemas");
 
 //global imports
 
-const { getIPUser, retryWrite } = require("redux-utils/server-utils");
+const { getIPUser } = require("redux-utils/server-utils");
 const { checkErrors, deepCopy } = require("utilities");
 
 //node modules
@@ -178,24 +178,19 @@ const handleOption = async (req, res) => {
 
 //handle toggle
 
-const handleToggle = (id, user, prop) => retryWrite(async () => {
+const handleToggle = async (id, user, prop) => {
 
   const { users } = await findByID(id);
 
   const bool = users[prop].includes(user.id);
 
-  const { matchedCount } = await pollsCol().updateOne({
-    id,
-    [`users.${prop}`]: users[prop]
-  }, {
-    [bool ? "$pull" : "$push"]: {
+  await pollsCol().updateOne({ id }, {
+    [bool ? "$pull" : "$addToSet"]: {
       [`users.${prop}`]: user.id
     }
   });
 
-  return matchedCount;
-
-});
+};
 
 //exports
 

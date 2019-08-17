@@ -10,6 +10,8 @@ const usersCol = () => db.collection("auth/users");
 const deleteVotingApp = async (id) => {
   await Promise.all([
     pollsCol().deleteMany({ "users.created": id }),
+    pollsCol().updateMany({ "users.hidden": id }, { $pull: { "users.hidden": id } }),
+    pollsCol().updateMany({ "users.flagged": id }, { $pull: { "users.flagged": id } }),
     pollsCol().updateMany({ "options.created": id }, { $pull: { options: { created: id } } }),
     pollsCol().updateMany({ "options.voted": id }, { $pull: { "options.$[].voted": id } })
   ]);

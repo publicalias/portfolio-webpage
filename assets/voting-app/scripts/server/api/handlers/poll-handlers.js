@@ -6,7 +6,7 @@ const { checkOptions, findByID, handleOption, handleToggle } = require("../../ap
 
 //global imports
 
-const { getOrSetUser, retryWrite } = require("redux-utils/server-utils");
+const { getOrSetUser } = require("redux-utils/server-utils");
 
 //utilities
 
@@ -51,7 +51,7 @@ const pollCastVote = async (req, res) => {
   await pollsCol().updateOne({
     id
   }, {
-    $push: { "options.$[e].voted": user.id }
+    $addToSet: { "options.$[e].voted": user.id }
   }, {
     arrayFilters: [{ "e.text": text }]
   });
@@ -136,20 +136,9 @@ const pollToggleSecret = async (req, res) => {
 
   }
 
-  await retryWrite(async () => {
+  const { secret } = await findByID(id);
 
-    const { secret } = await findByID(id);
-
-    const { matchedCount } = await pollsCol().updateOne({
-      id,
-      secret
-    }, {
-      $set: { secret: !secret }
-    });
-
-    return matchedCount;
-
-  });
+  await pollsCol().updateOne({ id }, { $set: { secret: !secret } });
 
   res.json({});
 

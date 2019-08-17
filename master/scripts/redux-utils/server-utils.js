@@ -98,36 +98,11 @@ const handleSession = (router) => {
   router.use(passport.session());
 };
 
-//retry write
-
-const retryWrite = async (fn) => {
-
-  const tryWrite = async (tries = 3) => {
-
-    const success = await fn();
-
-    if (success) {
-      return;
-    }
-
-    if (tries) {
-      await tryWrite(tries - 1);
-    } else {
-      throw Error("500 Internal Server Error");
-    }
-
-  };
-
-  await tryWrite();
-
-};
-
 //exports
 
 module.exports = {
   apiHandler,
   getIPUser,
   getOrSetUser,
-  handleSession,
-  retryWrite
+  handleSession
 };
