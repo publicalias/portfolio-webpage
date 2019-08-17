@@ -6,7 +6,7 @@ const { checkOptions, findByID, handleOption, handleToggle } = require("../../ap
 
 //global imports
 
-const { getOrSetUser } = require("redux-utils/server-utils");
+const { getIPUser, getOrSetUser } = require("redux-utils/server-utils");
 
 //utilities
 
@@ -86,6 +86,20 @@ const pollRemoveOption = async (req, res) => {
 
 };
 
+//poll remove vote
+
+const pollRemoveVote = async (req, res) => {
+
+  const { id } = req.body.data;
+
+  const user = req.user || await getIPUser(req.ip) || {};
+
+  await pollsCol().updateOne({ id }, { $pull: { "options.$[].voted": user.id } });
+
+  res.json({});
+
+};
+
 //poll toggle flag
 
 const pollToggleFlag = async (req, res) => {
@@ -150,6 +164,7 @@ module.exports = {
   pollAddOption,
   pollCastVote,
   pollRemoveOption,
+  pollRemoveVote,
   pollToggleFlag,
   pollToggleHide,
   pollToggleSecret

@@ -55,6 +55,20 @@ const pollRemoveOption = (id, text) => (dispatch) => {
 
 };
 
+//poll remove vote
+
+const pollRemoveVote = (id) => (dispatch) => {
+
+  const args = {
+    path: "/voting-app/api/poll-remove-vote",
+    method: "PATCH",
+    data: { id }
+  };
+
+  return reduxAPICall(dispatch, args);
+
+};
+
 //poll toggle flag
 
 const pollToggleFlag = (id) => (dispatch) => {
@@ -103,6 +117,7 @@ module.exports = {
   pollAddOption,
   pollCastVote,
   pollRemoveOption,
+  pollRemoveVote,
   pollToggleFlag,
   pollToggleHide,
   pollToggleSecret

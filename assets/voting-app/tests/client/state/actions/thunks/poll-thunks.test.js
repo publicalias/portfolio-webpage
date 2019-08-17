@@ -56,6 +56,20 @@ describe("pollRemoveOption", () => {
 
 });
 
+//poll remove vote
+
+describe("pollRemoveVote", () => {
+
+  const { pollRemoveVote } = actions;
+
+  testAPI.default(pollRemoveVote(""), {
+    path: "/voting-app/api/poll-remove-vote",
+    method: "PATCH",
+    data: { id: "" }
+  });
+
+});
+
 //poll toggle flag
 
 describe("pollToggleFlag", () => {

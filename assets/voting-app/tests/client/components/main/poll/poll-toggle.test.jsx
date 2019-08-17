@@ -25,7 +25,7 @@ const initTestProp = (render) => (prop) => render({ user: newUser({ id: "id-a" }
 
 const initTestToggle = (render) => (qa, type, list) => {
 
-  const dataList = [null, { id: "id-a" }, null, list];
+  const dataList = [null, { id: "id-a" }, { list }];
 
   return testReload(render, dataList, qa, list ? null : "id-a", [type, ["id-a"]]);
 

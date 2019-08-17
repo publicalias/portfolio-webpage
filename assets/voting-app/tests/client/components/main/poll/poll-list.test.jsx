@@ -34,21 +34,13 @@ describe("poll list (form)", () => {
 
 });
 
-describe("poll list, (form, events)", () => {
+describe("poll list (form, events)", () => {
 
   const testFormMount = withDataList(initTestPoll(testMount, "form"), [null, { options: ["Option A"] }]);
 
   const testClick = initTestEvent(testFormMount, "click");
 
   it("should do nothing on click (vote)", () => testClick(".qa-option-vote", [], ["pollCastVote"]));
-
-  it("should call formRemoveOption on click (remove)", () => {
-
-    const fn = ["formRemoveOption", ["Option A"]];
-
-    return testClick(".qa-option-remove", [], fn);
-
-  });
 
 });
 
@@ -58,7 +50,7 @@ describe("poll list (view)", () => {
 
   it("should match snapshot (default)", () => testView());
 
-  it("should match snapshot (authenticated)", () => testView({ user: newUser() }));
+  it("should match snapshot (authenticated)", () => testView({ user: newUser({ id: "id-a" }) })); //not created
 
   it("should match snapshot (options, created poll)", () => {
 
@@ -76,6 +68,14 @@ describe("poll list (view)", () => {
 
   });
 
+  it("should match snapshot (options, voted)", () => {
+
+    const dataList = [{ user: newUser({ id: "id-a" }) }, { options: [{ voted: ["id-a"] }] }];
+
+    return testView(...dataList);
+
+  });
+
 });
 
 describe("poll list (view, events)", () => {
@@ -87,17 +87,6 @@ describe("poll list (view, events)", () => {
     const dataList = [null, { id: "id-a" }];
 
     return testReload(testViewMount, dataList, ".qa-option-vote", "id-a", ["pollCastVote", ["id-a", "Option A"]]);
-
-  });
-
-  it("should call pollRemoveOption on click (remove)", () => {
-
-    const dataList = [{ user: newUser({ id: "id-a" }) }, {
-      id: "id-b",
-      options: [{ created: "id-a" }]
-    }];
-
-    return testReload(testViewMount, dataList, ".qa-option-remove", "id-b", ["pollRemoveOption", ["id-b", "Option A"]]);
 
   });
 

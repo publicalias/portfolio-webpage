@@ -11,20 +11,37 @@ const { reducer } = require("../../scripts/client/state/reducer/reducer");
 const { testMock } = require("test-helpers/meta-tests");
 const { initTestEvent, initTestWrapper } = require("test-helpers/react-tests");
 const { initTestAPI, initTestReducer } = require("test-helpers/redux-tests");
+const { deepCopy } = require("utilities");
 
 //init test poll
 
-const initTestPoll = (render, role) => (data, pollData, other, list) => { //supports all poll components
+const initTestPoll = (render, role) => (data, pollData, local, other) => {
 
-  const local = {
+  const init = {
     poll: role === "form" ? newForm(pollData) : newPoll(pollData),
-    role,
-    list
+    role
   };
 
-  return render(data, local, other);
+  return render(data, deepCopy(init, local), other);
 
 };
+
+//init test reload / test reload
+
+const initTestReload = (type, event) => (render, dataList, qa, id, ...fnList) => {
+
+  const testClick = initTestEvent(render, type, event);
+
+  const fullList = fnList.concat([
+    ["metaGetUser", []],
+    ["metaGetPolls", id ? [null, id] : [newListParams(), null, 0]]
+  ]);
+
+  return testClick(qa, dataList, ...fullList);
+
+};
+
+const testReload = initTestReload("click");
 
 //test api
 
@@ -58,21 +75,6 @@ const testCreateDelete = async (render, dataList, qa, res, [type, args]) => {
 
 const testReducer = initTestReducer(newState, reducer);
 
-//test reload
-
-const testReload = (render, dataList, qa, id, ...fnList) => {
-
-  const testClick = initTestEvent(render, "click");
-
-  const fullList = fnList.concat([
-    ["metaGetUser", []],
-    ["metaGetPolls", id ? [null, id] : [newListParams(), null, 0]]
-  ]);
-
-  return testClick(qa, dataList, ...fullList);
-
-};
-
 //test wrapper
 
 const testWrapper = initTestWrapper(newState, actions);
@@ -81,6 +83,7 @@ const testWrapper = initTestWrapper(newState, actions);
 
 module.exports = {
   initTestPoll,
+  initTestReload,
   testAPI,
   testCreateDelete,
   testReducer,

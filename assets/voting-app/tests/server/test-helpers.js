@@ -42,6 +42,28 @@ const initTestToggle = (handler, getData, prop) => async (user) => {
 
 };
 
+//init test unvote
+
+const initTestUnvote = (handler, getData) => async (user) => {
+
+  await Promise.all([
+    pollsCol().insertOne(newPoll({
+      id: "id-a",
+      options: [{ voted: ["id-b"] }]
+    })),
+    user && "ip" in user && usersCol().insertOne(user)
+  ]);
+
+  const res = await handler(user || {}, getData());
+
+  const update = await pollsCol().findOne();
+
+  expect(update.options[0].voted).toEqual(user ? [] : ["id-b"]);
+
+  testMock(res.json, [{}]);
+
+};
+
 //init test vote
 
 const initTestVote = (handler, getData) => async (user) => {
@@ -113,6 +135,7 @@ const testTitle = testErrors([
 //exports
 
 module.exports = {
+  initTestUnvote,
   initTestVote,
   initTestToggle,
   overlyLongInput,

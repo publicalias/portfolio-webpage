@@ -5,7 +5,7 @@
 const handlers = require("../../../../scripts/server/api/handlers/poll-handlers");
 
 const { newOption, newPoll } = require("../../../../schemas");
-const { initTestVote, initTestToggle, testOptions } = require("../../test-helpers");
+const { initTestToggle, initTestUnvote, initTestVote, testOptions } = require("../../test-helpers");
 
 //global imports
 
@@ -153,6 +153,26 @@ describe("pollRemoveOption", () => {
   it("sends object if user is valid (poll)", () => testRemove("id-b"));
 
   it("sends object if user is valid (option)", () => testRemove("id-c"));
+
+});
+
+//poll remove vote
+
+describe("pollRemoveVote", () => {
+
+  const { pollRemoveVote } = handlers;
+
+  const mockAPICall = initMockAPICall(pollRemoveVote, "PATCH");
+
+  const getData = () => ({ id: "id-a" });
+
+  const testUnvote = initTestUnvote(mockAPICall, getData);
+
+  it("sends object if user is authenticated", () => testUnvote(newUser({ id: "id-b" })));
+
+  it("sends object if ip user exists", () => testUnvote(newIPUser({ id: "id-b" })));
+
+  it("sends object if no ip user exists", () => testUnvote());
 
 });
 

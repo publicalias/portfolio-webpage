@@ -14,11 +14,11 @@ const { configure, mount, shallow } = require("enzyme");
 
 //init test event
 
-const initTestEvent = (render, event, merge) => async (qa, dataList, ...fnList) => {
+const initTestEvent = (render, type, event) => async (qa, dataList, ...fnList) => {
 
   const { props, wrapper } = render(...dataList);
 
-  wrapper.find(qa).simulate(event, merge);
+  wrapper.find(qa).simulate(type, event);
 
   await Promise.resolve(); //supports simple async events
 

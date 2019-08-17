@@ -76,7 +76,7 @@ describe("poll input (view)", () => {
 
   const testSubmit = (res) => {
 
-    const dataList = [{ view: { add: "Option A" } }, { id: "id-a" }, { actions: { pollAddOption: jest.fn(() => res) } }];
+    const dataList = [{ view: { add: "Option A" } }, { id: "id-a" }, null, { actions: { pollAddOption: jest.fn(() => res) } }];
     const fnList = [
       ["pollAddOption", ["id-a", "Option A"]],
       ["viewSetAdd", res && !res.errors ? [""] : undefined]

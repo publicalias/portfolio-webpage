@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`poll icon (form) should match snapshot (created) 1`] = `
+<span
+  className="c-poll-options__remove qa-option-remove"
+  onClick={[Function]}
+>
+  <i
+    className="fa fa-trash"
+  />
+</span>
+`;
+
+exports[`poll icon (form) should match snapshot (default) 1`] = `
+<svg
+  className="c-poll-options__color-box"
+>
+  <rect
+    className="c-poll-options__color-icon"
+    fill="rgba(0, 0, 0, 0.75)"
+    height="100%"
+    width="100%"
+  />
+</svg>
+`;
+
+exports[`poll icon (form) should match snapshot (voted) 1`] = `
+<span
+  className="c-poll-options__remove qa-option-remove"
+  onClick={[Function]}
+>
+  <i
+    className="fa fa-close"
+  />
+</span>
+`;
+
+exports[`poll icon (view) should match snapshot (created) 1`] = `
+<span
+  className="c-poll-options__remove qa-option-remove"
+  onClick={[Function]}
+>
+  <i
+    className="fa fa-trash"
+  />
+</span>
+`;
+
+exports[`poll icon (view) should match snapshot (default) 1`] = `
+<svg
+  className="c-poll-options__color-box"
+>
+  <rect
+    className="c-poll-options__color-icon"
+    fill="rgba(0, 0, 0, 0.75)"
+    height="100%"
+    width="100%"
+  />
+</svg>
+`;
+
+exports[`poll icon (view) should match snapshot (voted) 1`] = `
+<span
+  className="c-poll-options__remove qa-option-remove"
+  onClick={[Function]}
+>
+  <i
+    className="fa fa-close"
+  />
+</span>
+`;

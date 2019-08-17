@@ -2,6 +2,8 @@
 
 //local imports
 
+const PollIcon = require("./poll-icon");
+
 const { handleReload } = require("../../../event-handlers");
 const { chartColor } = require("../../../view-logic");
 
@@ -17,11 +19,7 @@ const React = require("react");
 
 const PollList = (props) => {
 
-  const {
-    actions: { formRemoveOption, pollCastVote, pollRemoveOption },
-    data: { user },
-    local: { poll, role }
-  } = props;
+  const { actions: { pollCastVote }, data: { user }, local: { poll, role } } = props;
 
   const { lib: { chartColor } } = PollList.injected;
 
@@ -31,18 +29,6 @@ const PollList = (props) => {
     if (role === "view") {
       handleReload(() => pollCastVote(poll.id, text), props);
     }
-  };
-
-  const handleRemove = (text) => (event) => {
-
-    event.stopPropagation();
-
-    if (role === "form") {
-      formRemoveOption(text);
-    } else {
-      handleReload(() => pollRemoveOption(poll.id, text), props);
-    }
-
   };
 
   //render
@@ -55,8 +41,14 @@ const PollList = (props) => {
     <div className={`u-margin-half${auth ? "" : "--negative"}`}>
       {poll.options.map((e, i) => {
 
-        const created = role === "form" || user.id === poll.users.created || user.id === e.created;
         const text = role === "form" ? e : e.text;
+
+        const view = {
+          created: role === "form" || user.id === poll.users.created || user.id === e.created,
+          fill: chartColor(i, poll.options),
+          text,
+          voted: role === "view" && e.voted.includes(user.id)
+        };
 
         return (
           <button
@@ -65,20 +57,14 @@ const PollList = (props) => {
             onClick={handleVote(text)}
           >
             <div className="c-poll-options__layout">
-              {created ? (
-                <span className="c-poll-options__remove qa-option-remove" onClick={handleRemove(text)}>
-                  <i className="fa fa-close" />
-                </span>
-              ) : (
-                <svg className="c-poll-options__color-box">
-                  <rect
-                    className="c-poll-options__color-icon"
-                    fill={chartColor(i, poll.options)}
-                    height="100%"
-                    width="100%"
-                  />
-                </svg>
-              )}
+              <PollIcon
+                {...props}
+                local={{
+                  poll,
+                  role,
+                  view
+                }}
+              />
               <span>{text}</span>
             </div>
           </button>

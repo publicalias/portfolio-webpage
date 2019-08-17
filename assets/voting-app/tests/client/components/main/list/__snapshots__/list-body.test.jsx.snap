@@ -155,6 +155,7 @@ exports[`list body should match snapshot (polls) 1`] = `
               "pollAddOption": [MockFunction],
               "pollCastVote": [MockFunction],
               "pollRemoveOption": [MockFunction],
+              "pollRemoveVote": [MockFunction],
               "pollToggleFlag": [MockFunction],
               "pollToggleHide": [MockFunction],
               "pollToggleSecret": [MockFunction],
