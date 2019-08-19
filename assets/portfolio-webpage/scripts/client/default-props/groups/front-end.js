@@ -64,10 +64,7 @@ const frontEnd = {
       preview: "none",
       links: {
         page: "/portfolio-webpage",
-        code: {
-          client: "https://github.com/publicalias/portfolio-webpage/tree/master/assets/portfolio-webpage",
-          server: "https://github.com/publicalias/portfolio-webpage/tree/master/routes/portfolio-webpage"
-        }
+        code: "https://github.com/publicalias/portfolio-webpage/tree/master/assets/portfolio-webpage"
       }
     }]
   }, {
@@ -107,10 +104,7 @@ const frontEnd = {
       preview: "window",
       links: {
         page: "/weather-app",
-        code: {
-          client: "https://github.com/publicalias/portfolio-webpage/tree/master/assets/weather-app",
-          server: "https://github.com/publicalias/portfolio-webpage/tree/master/routes/weather-app"
-        },
+        code: "https://github.com/publicalias/portfolio-webpage/tree/master/assets/weather-app",
         view: "/portfolio-webpage/media/screenshots/weather-app.jpg"
       }
     }, {
@@ -148,10 +142,7 @@ const frontEnd = {
       preview: "window",
       links: {
         page: "/twitch-viewer",
-        code: {
-          client: "https://github.com/publicalias/portfolio-webpage/tree/master/assets/twitch-viewer",
-          server: "https://github.com/publicalias/portfolio-webpage/tree/master/routes/twitch-viewer"
-        },
+        code: "https://github.com/publicalias/portfolio-webpage/tree/master/assets/twitch-viewer",
         view: "/portfolio-webpage/media/screenshots/twitch-viewer.jpg"
       }
     }]

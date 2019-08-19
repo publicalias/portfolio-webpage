@@ -9,7 +9,7 @@ const { itemIsInView } = require("../../view-logic");
 //global imports
 
 const { select } = require("dom-api");
-const { useInterval, useSetState } = require("react-utils");
+const { initKeyGen, useInterval, useSetState } = require("react-utils");
 const { cycleItems } = require("utilities");
 
 //node modules
@@ -93,6 +93,8 @@ const Showcase = (props) => {
 
   const { project: { name, comments, links } } = state;
 
+  const keyGen = initKeyGen();
+
   return (
     <div className="c-content--xl js-scroll-showcase">
       <div className="c-row">
@@ -110,6 +112,7 @@ const Showcase = (props) => {
           <Carousel
             handlePause={handlePause}
             handleTurn={handleTurn}
+            key={keyGen(`${Date.now()}`)} //smooths transition
             links={links}
           />
         </div>

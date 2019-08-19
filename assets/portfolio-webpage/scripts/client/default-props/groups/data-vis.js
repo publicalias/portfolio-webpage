@@ -207,7 +207,7 @@ const dataVis = {
     }, {
       name: "Orthographic Projection",
       id: "orthographic-projection",
-      comments: "I chose a 3D globe for the world map. The buttons rotate it along its X and Y axes.",
+      comments: "I chose a 3D globe for the world map. The buttons rotate it along its X and Y axes. It also supports swipe events.",
       userStories: [
         "I can see where all meteorites landed on a world map.",
         "I can tell the relative size of the meteorite just by looking at the way it's represented on the map.",
@@ -226,10 +226,7 @@ const dataVis = {
       preview: "window",
       links: {
         page: "/orthographic-projection",
-        code: {
-          client: "https://github.com/publicalias/portfolio-webpage/tree/master/assets/orthographic-projection",
-          server: "https://github.com/publicalias/portfolio-webpage/tree/master/routes/orthographic-projection"
-        },
+        code: "https://github.com/publicalias/portfolio-webpage/tree/master/assets/orthographic-projection",
         view: "/portfolio-webpage/media/screenshots/orthographic-projection.jpg"
       }
     }]

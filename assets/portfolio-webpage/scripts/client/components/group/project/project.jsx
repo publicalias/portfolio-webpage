@@ -2,9 +2,10 @@
 
 //local imports
 
-const CodeBtn = require("./code-btn");
 const List = require("./list");
 const Preview = require("./preview");
+
+const { voidLink } = require("../../../app-logic");
 
 //node modules
 
@@ -27,7 +28,9 @@ const Project = (props) => {
       <List list={userStories} name="User stories" />
       <List list={resources} name="External resources" />
       {viewed && <Preview project={props.project} />}
-      <CodeBtn code={links.code} />
+      <a href={voidLink(links.code)}>
+        <button className="c-wide-btn">View code</button>
+      </a>
       {notLast && <hr />}
     </div>
   );

@@ -24,10 +24,7 @@ const backEnd = {
       preview: "button",
       links: {
         page: "/timestamp-api",
-        code: {
-          client: "https://github.com/publicalias/portfolio-webpage/tree/master/assets/timestamp-api",
-          server: "https://github.com/publicalias/portfolio-webpage/tree/master/routes/timestamp-api"
-        }
+        code: "https://github.com/publicalias/portfolio-webpage/tree/master/assets/timestamp-api"
       }
     }, {
       name: "Header Parser API",
@@ -41,10 +38,7 @@ const backEnd = {
       preview: "button",
       links: {
         page: "/header-parser-api",
-        code: {
-          client: "https://github.com/publicalias/portfolio-webpage/tree/master/assets/header-parser-api",
-          server: "https://github.com/publicalias/portfolio-webpage/tree/master/routes/header-parser-api"
-        }
+        code: "https://github.com/publicalias/portfolio-webpage/tree/master/assets/header-parser-api"
       }
     }, {
       name: "URL Shortener API",
@@ -62,10 +56,7 @@ const backEnd = {
       preview: "button",
       links: {
         page: "/url-shortener-api",
-        code: {
-          client: "https://github.com/publicalias/portfolio-webpage/tree/master/assets/url-shortener-api",
-          server: "https://github.com/publicalias/portfolio-webpage/tree/master/routes/url-shortener-api"
-        }
+        code: "https://github.com/publicalias/portfolio-webpage/tree/master/assets/url-shortener-api"
       }
     }, {
       name: "Image Search API",
@@ -83,10 +74,7 @@ const backEnd = {
       preview: "button",
       links: {
         page: "/image-search-api",
-        code: {
-          client: "https://github.com/publicalias/portfolio-webpage/tree/master/assets/image-search-api",
-          server: "https://github.com/publicalias/portfolio-webpage/tree/master/routes/image-search-api"
-        }
+        code: "https://github.com/publicalias/portfolio-webpage/tree/master/assets/image-search-api"
       }
     }, {
       name: "File Metadata API",
@@ -100,10 +88,7 @@ const backEnd = {
       preview: "button",
       links: {
         page: "/file-metadata-api",
-        code: {
-          client: "https://github.com/publicalias/portfolio-webpage/tree/master/assets/file-metadata-api",
-          server: "https://github.com/publicalias/portfolio-webpage/tree/master/routes/file-metadata-api"
-        }
+        code: "https://github.com/publicalias/portfolio-webpage/tree/master/assets/file-metadata-api"
       }
     }]
   }, {
@@ -112,7 +97,7 @@ const backEnd = {
     projects: [{
       name: "Voting App",
       id: "voting-app",
-      comments: "",
+      comments: "This app lets you create private polls, hide/flag polls, and search, sort, and filter the full list of polls. It also lets you log in with social media and delete your account (and all your data) in three clicks. It's the most painless trial experience imaginable.",
       userStories: [
         "As an authenticated user, I can keep my polls and come back later to access them.",
         "As an authenticated user, I can share my polls with my friends.",
@@ -123,15 +108,21 @@ const backEnd = {
         "As an unauthenticated or authenticated user, I can see the results of polls in chart form. (This could be implemented using Chart.js or Google Charts.)",
         "As an authenticated user, if I don't like the options on a poll, I can create a new option."
       ],
-      resources: [],
+      resources: [{
+        text: "Facebook Login",
+        link: "https://developers.facebook.com/docs/facebook-login"
+      }, {
+        text: "GitHub Login",
+        link: "https://developer.github.com/apps/building-oauth-apps/"
+      }, {
+        text: "Twitter Login",
+        link: "https://developer.twitter.com/en/docs/twitter-for-websites/log-in-with-twitter/login-in-with-twitter"
+      }],
       preview: "window",
       links: {
-        page: "",
-        code: {
-          client: "",
-          server: ""
-        },
-        view: ""
+        page: "/voting-app",
+        code: "https://github.com/publicalias/portfolio-webpage/tree/master/assets/voting-app",
+        view: "/portfolio-webpage/media/screenshots/voting-app.jpg"
       }
     }, {
       name: "Nightlife App",
@@ -147,10 +138,7 @@ const backEnd = {
       preview: "window",
       links: {
         page: "",
-        code: {
-          client: "",
-          server: ""
-        },
+        code: "",
         view: ""
       }
     }, {
@@ -167,10 +155,7 @@ const backEnd = {
       preview: "window",
       links: {
         page: "",
-        code: {
-          client: "",
-          server: ""
-        },
+        code: "",
         view: ""
       }
     }, {
@@ -187,10 +172,7 @@ const backEnd = {
       preview: "window",
       links: {
         page: "",
-        code: {
-          client: "",
-          server: ""
-        },
+        code: "",
         view: ""
       }
     }, {
@@ -209,10 +191,7 @@ const backEnd = {
       preview: "window",
       links: {
         page: "",
-        code: {
-          client: "",
-          server: ""
-        },
+        code: "",
         view: ""
       }
     }]
