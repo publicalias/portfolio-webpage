@@ -111,7 +111,7 @@ const overlyLongInput = Array(100 + 1)
 
 //test options
 
-const maxOptions = Array(20)
+const maxOptions = Array(100)
   .fill(0)
   .map((e, i) => `Option ${i}`);
 

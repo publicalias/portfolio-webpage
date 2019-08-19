@@ -41,7 +41,7 @@ const checkOptions = (options) => checkErrors([{
   bool: options.filter((e, i, arr) => arr.lastIndexOf(e) !== i).length,
   text: "Option already exists"
 }, {
-  bool: options.length > 20,
+  bool: options.length > 100,
   text: "Option exceeds limit"
 }]);
 
