@@ -7,6 +7,7 @@ const { updateTooltip } = require("./event-handlers");
 //global imports
 
 const { select } = require("dom-api");
+const { hookEvent } = require("react-utils");
 const { toPrecision } = require("utilities");
 
 //chart color
@@ -42,6 +43,53 @@ const getVotes = (n) => {
 
 //render chart
 
+const tooltipHandler = (update) => {
+
+  const DOMTooltip = select(".js-toggle-tooltip");
+
+  const state = { timeout: null };
+
+  const tooltip = (bool = false) => (d) => {
+
+    const event = d3.event;
+
+    if (bool) {
+      event.stopPropagation();
+    }
+
+    state.timeout = setTimeout(() => {
+
+      DOMTooltip.class("is-open", true, bool);
+
+      select(".js-toggle-hover").class("is-hovered", true, false);
+
+      if (!bool) {
+        return;
+      }
+
+      select(event.target).class("is-hovered", true, true);
+
+      update(d);
+
+    });
+
+  };
+
+  const cleanup = hookEvent(DOMTooltip, "mouseenter mouseleave", (event) => {
+    if (event.type === "mouseenter") {
+      clearTimeout(state.timeout);
+    } else {
+      tooltip()();
+    }
+  });
+
+  return {
+    cleanup,
+    tooltip
+  };
+
+};
+
 const chartProps = (counts, labels) => {
 
   const r = 450 / 2;
@@ -54,25 +102,18 @@ const chartProps = (counts, labels) => {
 
   const data = pieFn(counts);
 
-  const tooltip = (bool = false) => (d) => {
+  const update = (d) => updateTooltip(
+    labels[d.index],
+    getVotes(d.value),
+    r,
+    arcFn.centroid(d)
+  );
 
-    select(".js-toggle-tooltip").class("is-open", true, bool);
-    select(".js-toggle-hover").class("is-hovered", true, false);
-
-    if (!bool) {
-      return;
-    }
-
-    select(d3.event.target).class("is-hovered", true, true);
-
-    updateTooltip(labels[d.index], getVotes(d.value), r, arcFn.centroid(d));
-
-    d3.event.stopPropagation();
-
-  };
+  const { cleanup, tooltip } = tooltipHandler(update);
 
   return {
     arcFn,
+    cleanup,
     data,
     r,
     tooltip
@@ -82,7 +123,7 @@ const chartProps = (counts, labels) => {
 
 const renderChart = (counts, labels) => {
 
-  const { arcFn, data, tooltip, r } = chartProps(counts, labels);
+  const { arcFn, cleanup, data, r, tooltip } = chartProps(counts, labels);
 
   //reset
 
@@ -114,6 +155,8 @@ const renderChart = (counts, labels) => {
     .on("mouseenter", tooltip(true))
     .on("mouseleave", tooltip())
     .on("touchstart", tooltip(true), { passive: true });
+
+  return cleanup;
 
 };
 

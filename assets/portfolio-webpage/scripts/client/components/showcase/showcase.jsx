@@ -112,7 +112,7 @@ const Showcase = (props) => {
           <Carousel
             handlePause={handlePause}
             handleTurn={handleTurn}
-            key={keyGen(`${Date.now()}`)} //smooths transition
+            key={keyGen(name)} //smooths transition
             links={links}
           />
         </div>

@@ -29,7 +29,7 @@ const PollChart = (props) => {
     const counts = poll.options.map((e) => role === "form" ? rngInt(0, 9, true) : e.voted.length);
     const labels = poll.options.map((e) => role === "form" ? e : e.text);
 
-    renderChart(counts, labels);
+    return renderChart(counts, labels);
 
   }, [JSON.stringify(poll.options)]);
 
