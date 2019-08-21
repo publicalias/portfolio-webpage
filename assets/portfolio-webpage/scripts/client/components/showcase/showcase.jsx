@@ -9,7 +9,7 @@ const { itemIsInView } = require("../../view-logic");
 //global imports
 
 const { select } = require("dom-api");
-const { initKeyGen, useInterval, useSetState } = require("react-utils");
+const { hookEvent, initKeyGen, useInterval, useSetState } = require("react-utils");
 const { cycleItems } = require("utilities");
 
 //node modules
@@ -77,15 +77,7 @@ const Showcase = (props) => {
 
   useEffect(handleInit, []);
 
-  useEffect(() => {
-
-    select(window).on("resize scroll", handleInit);
-
-    return () => {
-      select(window).off("resize scroll", handleInit);
-    };
-
-  });
+  useEffect(() => hookEvent(select(window), "resize scroll", handleInit));
 
   useInterval(handleTurn(1), state.start && !state.pause && 5000);
 

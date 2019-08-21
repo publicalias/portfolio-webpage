@@ -12,7 +12,7 @@ const getListing = (id, name) => {
   const html = `
     <div class="is-closed js-edit-state-${id} js-filter-output">
       <hr>
-      <a class="c-channel js-edit-link-${id}" href="javascript:void(0)">
+      <a class="c-channel js-edit-link-${id}">
         <img alt="Avatar" class="c-channel__avatar js-edit-avatar-${id}" src="https://via.placeholder.com/100x100?text=undefined">
         <p class="c-channel__name">${name}</p>
         <p class="c-channel__status js-edit-status-${id}">Closed</p>

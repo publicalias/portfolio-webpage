@@ -5,7 +5,7 @@
 const List = require("./list");
 const Preview = require("./preview");
 
-const { voidLink } = require("../../../app-logic");
+const { safeLink } = require("../../../app-logic");
 
 //node modules
 
@@ -28,7 +28,7 @@ const Project = (props) => {
       <List list={userStories} name="User stories" />
       <List list={resources} name="External resources" />
       {viewed && <Preview project={props.project} />}
-      <a href={voidLink(links.code)}>
+      <a {...safeLink(links.code)}>
         <button className="c-wide-btn">View code</button>
       </a>
       {notLast && <hr />}

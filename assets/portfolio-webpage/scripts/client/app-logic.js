@@ -49,14 +49,14 @@ const useReCaptcha = (fn) => {
 
 };
 
-//void link
+//safe link
 
-const voidLink = (link) => link || "javascript:void(0)";
+const safeLink = (href) => href ? { href } : {};
 
 //exports
 
 module.exports = {
   resetForm,
-  useReCaptcha,
-  voidLink
+  safeLink,
+  useReCaptcha
 };

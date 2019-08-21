@@ -47,7 +47,12 @@ for (const e of projects) {
 
 //initialize server
 
-MongoClient.connect(process.env.DB_URL, { useNewUrlParser: true })
+const config = {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+};
+
+MongoClient.connect(process.env.DB_URL, config)
   .then((client) => {
     global.db = client.db();
     app.listen(process.env.PORT || 3000);

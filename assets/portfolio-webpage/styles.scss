@@ -98,6 +98,7 @@
 
     &--top {
       @include layer;
+      cursor: pointer;
       z-index: 1;
     }
 

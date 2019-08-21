@@ -2,7 +2,7 @@
 
 //local imports
 
-const { voidLink } = require("../../../app-logic");
+const { safeLink } = require("../../../app-logic");
 
 //node modules
 
@@ -14,13 +14,13 @@ const Preview = (props) => {
 
   const { project: { preview, links: { page, view } } } = props;
 
-  const pageLink = voidLink(page);
+  const pageLink = safeLink(page);
 
   switch (preview) {
     case "window":
       return (
         <div className="c-preview u-margin-half">
-          <a className="c-preview__layer--top" href={pageLink}>
+          <a {...pageLink} className="c-preview__layer--top">
             <div className="c-preview__clear" />
           </a>
           <img
@@ -32,7 +32,7 @@ const Preview = (props) => {
       );
     case "button":
       return (
-        <a href={pageLink}>
+        <a {...pageLink}>
           <button className="c-wide-btn u-margin-half">View page</button>
         </a>
       );

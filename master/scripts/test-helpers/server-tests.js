@@ -42,10 +42,15 @@ const mongoTests = {
 
   async setup() {
 
+    const config = {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    };
+
     this.mongoServer = new MongoMemoryServer();
 
     const mongoURI = await this.mongoServer.getConnectionString();
-    const client = await MongoClient.connect(mongoURI, { useNewUrlParser: true });
+    const client = await MongoClient.connect(mongoURI, config);
 
     global.db = client.db();
 

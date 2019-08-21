@@ -53,7 +53,7 @@ const CharInfo = (props) => {
     if (!props.bool.start) {
       setTime(0);
     }
-  });
+  }, [props.bool.start]);
 
   useInterval(timeInt, 1000);
 

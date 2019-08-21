@@ -4,7 +4,7 @@
 
 const SwipeBtn = require("./swipe-btn");
 
-const { voidLink } = require("../../app-logic");
+const { safeLink } = require("../../app-logic");
 
 //global imports
 
@@ -77,7 +77,7 @@ const Carousel = (props) => {
     >
       <SwipeBtn handleClick={handleTurn(-1)} mod="left" />
       <SwipeBtn handleClick={handleTurn(1)} mod="right" />
-      <a className="c-preview__layer--top" href={voidLink(page)}>
+      <a {...safeLink(page)} className="c-preview__layer--top">
         <div className="c-preview__clear" />
       </a>
       <img

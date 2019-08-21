@@ -71,7 +71,6 @@ const delegate = (fn, parent, child) => (event) => {
   const list = getNodeList(child);
 
   for (let i = 0; i < path.indexOf(parent); i++) {
-
     if (list.includes(path[i])) {
 
       fn(event);
