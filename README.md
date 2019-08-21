@@ -1,6 +1,6 @@
 # Projects by Ethan Frost
 
-This is a hub for the projects I'm developing while earning [Free Code Camp](https://about.freecodecamp.org/)'s front-end, data visualization, and back-end certifications. You can check them out on [my website](https://www.ethan-frost.com/). It works on Windows and iOS and most modern browsers (not IE). I've included comments, user stories, and external resources with each project.
+This is a hub for the projects I'm developing while earning [freeCodeCamp](https://about.freecodecamp.org/)'s front-end, data visualization, and back-end certifications. You can check them out on [my website](https://www.ethan-frost.com/). It works on Windows and iOS and most modern browsers (not IE). I've included comments, user stories, and external resources with each project.
 
 Regrettably, a large part of this project's history is not available on GitHub. I did the front-end projects on [CodePen](https://codepen.io/), then moved to [VS Code](https://code.visualstudio.com/) and [Heroku](https://www.heroku.com/) for the back-end projects. The only metric I cared about was "does it solve the problem," so my code was a mess. I created this repository after I'd cleaned it up a bit.
 
