@@ -20,7 +20,13 @@ router.get("/", (req, res) => {
 
 router.get("/:type", (req, res) => {
 
-  const twitchAPI = (type) => `https://api.twitch.tv/kraken/${type}/${req.query[type]}?client_id=${process.env.API_TW_ID}`;
+  const twitchAPI = (type) => ({
+    headers: { "Client-ID": process.env.API_TW_ID },
+    qs: {
+      [type === "users" ? "login" : "user_login"]: JSON.parse(req.query[type])
+    },
+    uri: `https://api.twitch.tv/helix/${type}`
+  });
 
   sendData(twitchAPI(req.params.type), res);
 

@@ -3,7 +3,7 @@
 //local imports
 
 const { filterEvents, submitEvents } = require("./scripts/client/event-handlers");
-const { getOutput } = require("./scripts/client/view-logic");
+const { renderOutput } = require("./scripts/client/view-logic");
 
 //global imports
 
@@ -12,14 +12,13 @@ const { select } = require("dom-api");
 
 //app logic
 
-const search = (channels = "ESL_SC2, OgamingSC2, RobotCaleb, brunofin, comster404, cretetion, freecodecamp, habathcx, noobs2ninjas, storbeck") => {
+const search = async (channels = "brunofin, comster404, cretetion, esl_sc2, freecodecamp, habathcx, noobs2ninjas, ogamingsc2, robotcaleb, storbeck") => {
+
+  const list = await renderOutput(channels.split(", "));
 
   storageKey("channels", channels);
 
-  select(".js-submit-input").value = channels;
-  select(".js-render-output").html("");
-
-  channels.split(", ").forEach(getOutput);
+  select(".js-submit-input").value = list.map((e) => e.name).join(", ");
 
 };
 
@@ -31,7 +30,8 @@ const submit = () => {
     return;
   }
 
-  channels = channels.split(", ")
+  channels = channels.toLowerCase()
+    .split(", ")
     .filter((e, i, arr) => arr.indexOf(e) === i)
     .sort()
     .join(", ");
@@ -42,9 +42,12 @@ const submit = () => {
 
   const DOMOutput = select(".js-render-output");
 
-  DOMOutput.animate({ opacity: 0 }, () => {
-    search(channels);
+  DOMOutput.animate({ opacity: 0 }, async () => {
+
+    await search(channels);
+
     DOMOutput.animate({ opacity: 1 });
+
   });
 
 };

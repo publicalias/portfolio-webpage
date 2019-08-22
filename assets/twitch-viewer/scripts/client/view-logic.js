@@ -5,17 +5,55 @@
 const { getJSON } = require("client-utils");
 const { select } = require("dom-api");
 
-//get output
+//render output
 
-const getListing = (id, name) => {
+const parseData = (users, streams) => (item) => {
+
+  const match = (list, prop) => list.data.find((f) => item.name === f[prop].toLowerCase());
+
+  const user = match(users, "display_name");
+  const stream = match(streams, "user_name");
+
+  Object.assign(
+    item,
+    user && {
+      avatar: user.profile_image_url,
+      name: user.display_name,
+      link: `href="https://www.twitch.tv/${user.display_name}"`,
+      state: "is-offline",
+      status: "Offline"
+    },
+    stream && {
+      state: "is-online",
+      status: stream.title
+    }
+  );
+
+};
+
+const sortFn = (a, b) => {
+
+  if (a.name > b.name) {
+    return 1;
+  } else if (a.name < b.name) {
+    return -1;
+  }
+
+  return 0;
+
+};
+
+const writeData = (item) => {
+
+  const { avatar, link, name, state, status } = item;
 
   const html = `
-    <div class="is-closed js-edit-state-${id} js-filter-output">
+    <div class="${state} js-filter-output">
       <hr>
-      <a class="c-channel js-edit-link-${id}">
-        <img alt="Avatar" class="c-channel__avatar js-edit-avatar-${id}" src="https://via.placeholder.com/100x100?text=undefined">
+      <a class="c-channel" ${link}>
+        <img alt="Avatar" class="c-channel__avatar" src=${avatar}>
         <p class="c-channel__name">${name}</p>
-        <p class="c-channel__status js-edit-status-${id}">Closed</p>
+        <p class="c-channel__status">${status}</p>
       </a>
     </div>
   `;
@@ -24,51 +62,33 @@ const getListing = (id, name) => {
 
 };
 
-const parseChannel = (id, res) => {
+const renderOutput = async (channels) => {
 
-  if (!res.name) {
-    return;
-  }
+  const list = channels.map((e) => ({
+    avatar: "https://via.placeholder.com/100x100?text=undefined",
+    link: "",
+    name: e,
+    state: "is-closed",
+    status: "Closed"
+  }));
 
-  select(`.js-edit-state-${id}`).class("is-closed is-offline", true);
+  const json = JSON.stringify(channels);
 
-  select(`.js-edit-link-${id}`).href = res.url;
-  select(`.js-edit-avatar-${id}`).src = res.logo || undefined;
-
-  select(`.js-edit-status-${id}`).text("Offline");
-
-};
-
-const parseStream = (id, res) => {
-
-  if (!res.stream) {
-    return;
-  }
-
-  const status = `${res.stream.channel.game}: ${res.stream.channel.status}`;
-
-  select(`.js-edit-state-${id}`).class("is-offline is-online", true);
-
-  select(`.js-edit-status-${id}`).text(status);
-
-};
-
-const getOutput = async (name) => {
-
-  const id = name.toLowerCase();
-
-  getListing(id, name);
-
-  const [channel, stream] = await Promise.all([
-    getJSON(`/twitch-viewer/channels?channels=${name}`),
-    getJSON(`/twitch-viewer/streams?streams=${id}`)
+  const [users, streams] = await Promise.all([
+    getJSON(`/twitch-viewer/users?users=${json}`),
+    getJSON(`/twitch-viewer/streams?streams=${json}`)
   ]);
 
-  parseChannel(id, channel);
-  parseStream(id, stream);
+  select(".js-render-output").html("");
+
+  list.forEach(parseData(users, streams));
+
+  list.sort(sortFn).forEach(writeData);
+
+  return list;
 
 };
 
 //exports
 
-module.exports = { getOutput };
+module.exports = { renderOutput };
