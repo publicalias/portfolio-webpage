@@ -34,7 +34,6 @@ router.get(pages, (req, res) => {
   if (gated.includes(req.path) && !req.user) {
     res.redirect(`/voting-app?errors=${JSON.stringify(["401 Unauthorized"])}`);
   } else {
-    req.session.redirect = "/voting-app";
     res.sendFile(`${__build}/voting-app/view.html`);
   }
 });

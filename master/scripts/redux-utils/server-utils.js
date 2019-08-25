@@ -78,8 +78,13 @@ const getOrSetUser = async (req) => {
 //handle session
 
 const sessionConfig = () => session({
-  resave: true,
-  saveUninitialized: true,
+  cookie: {
+    maxAge: 24 * 60 * 60 * 1000,
+    secure: "auto"
+  },
+  httpOnly: true,
+  resave: false,
+  saveUninitialized: false,
   secret: process.env.OA_ES_SECRET,
   store: new MongoDBStore({
     uri: process.env.DB_URL,

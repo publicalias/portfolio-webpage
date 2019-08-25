@@ -31,7 +31,11 @@ router.use("/delete", (req, res, next) => {
 
 for (const e of providers) {
 
-  router.get(`/${e}`, passport.authenticate(e));
+  router.get(`/${e}`, (req, res) => {
+    req.session.redirect = req.query.redirect;
+    passport.authenticate(e)(req, res);
+  });
+
   router.get(`/${e}/callback`, passport.authenticate(e, {
     successRedirect: "/auth/redirect",
     failureRedirect: "/auth/redirect?status=401"

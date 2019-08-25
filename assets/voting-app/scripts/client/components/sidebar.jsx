@@ -45,7 +45,7 @@ const Sidebar = (props) => {
 
           metaSetLoading(true);
 
-          location.assign(`/auth/${id}`);
+          location.assign(`/auth/${id}?redirect=/voting-app`);
 
         };
 
