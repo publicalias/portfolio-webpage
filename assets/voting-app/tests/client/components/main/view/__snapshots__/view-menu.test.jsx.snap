@@ -49,6 +49,9 @@ exports[`view menu should match snapshot (created) 1`] = `
     }
     data={
       Object {
+        "account": Object {
+          "delete": false,
+        },
         "errors": Array [],
         "form": Object {
           "add": "",
@@ -61,9 +64,6 @@ exports[`view menu should match snapshot (created) 1`] = `
           "search": "",
         },
         "loading": 0,
-        "meta": Object {
-          "delete": false,
-        },
         "polls": Array [],
         "user": Object {
           "auth": Object {
@@ -163,6 +163,9 @@ exports[`view menu should match snapshot (created, settings) 1`] = `
     }
     data={
       Object {
+        "account": Object {
+          "delete": false,
+        },
         "errors": Array [],
         "form": Object {
           "add": "",
@@ -175,9 +178,6 @@ exports[`view menu should match snapshot (created, settings) 1`] = `
           "search": "",
         },
         "loading": 0,
-        "meta": Object {
-          "delete": false,
-        },
         "polls": Array [],
         "user": Object {
           "auth": Object {
@@ -271,6 +271,9 @@ exports[`view menu should match snapshot (default) 1`] = `
     }
     data={
       Object {
+        "account": Object {
+          "delete": false,
+        },
         "errors": Array [],
         "form": Object {
           "add": "",
@@ -283,9 +286,6 @@ exports[`view menu should match snapshot (default) 1`] = `
           "search": "",
         },
         "loading": 0,
-        "meta": Object {
-          "delete": false,
-        },
         "polls": Array [],
         "user": Object {},
         "view": Object {

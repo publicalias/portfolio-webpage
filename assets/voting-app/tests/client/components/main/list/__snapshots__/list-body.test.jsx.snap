@@ -167,6 +167,9 @@ exports[`list body should match snapshot (polls) 1`] = `
           }
           data={
             Object {
+              "account": Object {
+                "delete": false,
+              },
               "errors": Array [],
               "form": Object {
                 "add": "",
@@ -179,9 +182,6 @@ exports[`list body should match snapshot (polls) 1`] = `
                 "search": "",
               },
               "loading": 0,
-              "meta": Object {
-                "delete": false,
-              },
               "polls": Array [
                 Object {
                   "author": "",

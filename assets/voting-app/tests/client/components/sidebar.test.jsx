@@ -44,7 +44,7 @@ describe("sidebar (auth)", () => {
     location.assign = jest.fn();
 
     return testClick(`.qa-auth-${id}`, dataList, ["metaSetLoading", [true]], () => {
-      testMock(location.assign, [`/auth/${id}`]);
+      testMock(location.assign, [`/auth/${id}?redirect=/voting-app`]);
     });
 
   };

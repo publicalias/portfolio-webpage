@@ -48,9 +48,9 @@ const newState = initSchema({
   //meta
 
   user: {},
+  account: { delete: false },
   errors: [],
   loading: 0,
-  meta: { delete: false },
 
   polls: [],
 

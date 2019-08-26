@@ -54,6 +54,9 @@ exports[`sidebar should match snapshot (authenticated) 1`] = `
     }
     data={
       Object {
+        "account": Object {
+          "delete": false,
+        },
         "errors": Array [],
         "form": Object {
           "add": "",
@@ -66,9 +69,6 @@ exports[`sidebar should match snapshot (authenticated) 1`] = `
           "search": "",
         },
         "loading": 0,
-        "meta": Object {
-          "delete": false,
-        },
         "polls": Array [],
         "user": Object {
           "auth": Object {
@@ -192,6 +192,9 @@ exports[`sidebar should match snapshot (name) 1`] = `
     }
     data={
       Object {
+        "account": Object {
+          "delete": false,
+        },
         "errors": Array [],
         "form": Object {
           "add": "",
@@ -204,9 +207,6 @@ exports[`sidebar should match snapshot (name) 1`] = `
           "search": "",
         },
         "loading": 0,
-        "meta": Object {
-          "delete": false,
-        },
         "polls": Array [],
         "user": Object {
           "auth": Object {

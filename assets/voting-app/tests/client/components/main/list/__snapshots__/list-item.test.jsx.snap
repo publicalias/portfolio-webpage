@@ -42,6 +42,9 @@ exports[`list item should match snapshot (authenticated) 1`] = `
       }
       data={
         Object {
+          "account": Object {
+            "delete": false,
+          },
           "errors": Array [],
           "form": Object {
             "add": "",
@@ -54,9 +57,6 @@ exports[`list item should match snapshot (authenticated) 1`] = `
             "search": "",
           },
           "loading": 0,
-          "meta": Object {
-            "delete": false,
-          },
           "polls": Array [],
           "user": Object {
             "auth": Object {
@@ -147,6 +147,9 @@ exports[`list item should match snapshot (authenticated) 1`] = `
       }
       data={
         Object {
+          "account": Object {
+            "delete": false,
+          },
           "errors": Array [],
           "form": Object {
             "add": "",
@@ -159,9 +162,6 @@ exports[`list item should match snapshot (authenticated) 1`] = `
             "search": "",
           },
           "loading": 0,
-          "meta": Object {
-            "delete": false,
-          },
           "polls": Array [],
           "user": Object {
             "auth": Object {
@@ -273,6 +273,9 @@ exports[`list item should match snapshot (default) 1`] = `
       }
       data={
         Object {
+          "account": Object {
+            "delete": false,
+          },
           "errors": Array [],
           "form": Object {
             "add": "",
@@ -285,9 +288,6 @@ exports[`list item should match snapshot (default) 1`] = `
             "search": "",
           },
           "loading": 0,
-          "meta": Object {
-            "delete": false,
-          },
           "polls": Array [],
           "user": Object {},
           "view": Object {

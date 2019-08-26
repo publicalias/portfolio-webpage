@@ -12,7 +12,7 @@ const React = require("react");
 
 const DeleteButton = (props) => {
 
-  const { actions: { metaAddErrors, metaSetLoading, metaToggleDelete }, data: { meta }, local: { root } } = props;
+  const { actions: { metaAddErrors, metaSetLoading, metaToggleDelete }, data: { account }, local: { root } } = props;
 
   //events
 
@@ -44,7 +44,7 @@ const DeleteButton = (props) => {
 
   return (
     <div className="c-delete-button">
-      {meta.delete ? (
+      {account.delete ? (
         <div>
           <p className="c-delete-button__dialog">This will delete your account and any data associated with it, including any content you have created and any interactions with other users' content. It will be like you never existed. Are you sure you want to do this?</p>
           <div className="c-delete-button__choice-box">
@@ -58,7 +58,7 @@ const DeleteButton = (props) => {
 
 };
 
-DeleteButton.propList = ["data.meta", "local"];
+DeleteButton.propList = ["data.account", "local"];
 
 //exports
 

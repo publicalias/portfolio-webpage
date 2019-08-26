@@ -45,7 +45,7 @@ const META_TIMEOUT_ERROR = (state) => deepCopy(state, {
 
 //meta toggle delete
 
-const META_TOGGLE_DELETE = (state) => deepCopy(state, { meta: { delete: !state.meta.delete } });
+const META_TOGGLE_DELETE = (state) => deepCopy(state, { account: { delete: !state.account.delete } });
 
 //exports
 

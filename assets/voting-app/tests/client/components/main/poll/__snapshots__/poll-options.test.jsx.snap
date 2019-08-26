@@ -43,6 +43,9 @@ exports[`poll options (form) should match snapshot (authenticated) 1`] = `
     }
     data={
       Object {
+        "account": Object {
+          "delete": false,
+        },
         "errors": Array [],
         "form": Object {
           "add": "",
@@ -55,9 +58,6 @@ exports[`poll options (form) should match snapshot (authenticated) 1`] = `
           "search": "",
         },
         "loading": 0,
-        "meta": Object {
-          "delete": false,
-        },
         "polls": Array [],
         "user": Object {
           "auth": Object {
@@ -147,6 +147,9 @@ exports[`poll options (form) should match snapshot (options) 1`] = `
     }
     data={
       Object {
+        "account": Object {
+          "delete": false,
+        },
         "errors": Array [],
         "form": Object {
           "add": "",
@@ -159,9 +162,6 @@ exports[`poll options (form) should match snapshot (options) 1`] = `
           "search": "",
         },
         "loading": 0,
-        "meta": Object {
-          "delete": false,
-        },
         "polls": Array [],
         "user": Object {},
         "view": Object {
@@ -242,6 +242,9 @@ exports[`poll options (view) should match snapshot (authenticated, right poll) 1
     }
     data={
       Object {
+        "account": Object {
+          "delete": false,
+        },
         "errors": Array [],
         "form": Object {
           "add": "",
@@ -254,9 +257,6 @@ exports[`poll options (view) should match snapshot (authenticated, right poll) 1
           "search": "",
         },
         "loading": 0,
-        "meta": Object {
-          "delete": false,
-        },
         "polls": Array [
           Object {
             "author": "",
@@ -370,6 +370,9 @@ exports[`poll options (view) should match snapshot (options) 1`] = `
     }
     data={
       Object {
+        "account": Object {
+          "delete": false,
+        },
         "errors": Array [],
         "form": Object {
           "add": "",
@@ -382,9 +385,6 @@ exports[`poll options (view) should match snapshot (options) 1`] = `
           "search": "",
         },
         "loading": 0,
-        "meta": Object {
-          "delete": false,
-        },
         "polls": Array [],
         "user": Object {},
         "view": Object {

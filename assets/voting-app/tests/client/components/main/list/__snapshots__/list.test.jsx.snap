@@ -43,6 +43,9 @@ exports[`list should match snapshot 1`] = `
     }
     data={
       Object {
+        "account": Object {
+          "delete": false,
+        },
         "errors": Array [],
         "form": Object {
           "add": "",
@@ -55,9 +58,6 @@ exports[`list should match snapshot 1`] = `
           "search": "",
         },
         "loading": 0,
-        "meta": Object {
-          "delete": false,
-        },
         "polls": Array [],
         "user": Object {},
         "view": Object {
@@ -115,6 +115,9 @@ exports[`list should match snapshot 1`] = `
     }
     data={
       Object {
+        "account": Object {
+          "delete": false,
+        },
         "errors": Array [],
         "form": Object {
           "add": "",
@@ -127,9 +130,6 @@ exports[`list should match snapshot 1`] = `
           "search": "",
         },
         "loading": 0,
-        "meta": Object {
-          "delete": false,
-        },
         "polls": Array [],
         "user": Object {},
         "view": Object {

@@ -43,6 +43,9 @@ exports[`view should match snapshot (default) 1`] = `
     }
     data={
       Object {
+        "account": Object {
+          "delete": false,
+        },
         "errors": Array [],
         "form": Object {
           "add": "",
@@ -55,9 +58,6 @@ exports[`view should match snapshot (default) 1`] = `
           "search": "",
         },
         "loading": 0,
-        "meta": Object {
-          "delete": false,
-        },
         "polls": Array [],
         "user": Object {},
         "view": Object {
@@ -133,6 +133,9 @@ exports[`view should match snapshot (default) 1`] = `
     }
     data={
       Object {
+        "account": Object {
+          "delete": false,
+        },
         "errors": Array [],
         "form": Object {
           "add": "",
@@ -145,9 +148,6 @@ exports[`view should match snapshot (default) 1`] = `
           "search": "",
         },
         "loading": 0,
-        "meta": Object {
-          "delete": false,
-        },
         "polls": Array [],
         "user": Object {},
         "view": Object {
@@ -224,6 +224,9 @@ exports[`view should match snapshot (default) 1`] = `
     }
     data={
       Object {
+        "account": Object {
+          "delete": false,
+        },
         "errors": Array [],
         "form": Object {
           "add": "",
@@ -236,9 +239,6 @@ exports[`view should match snapshot (default) 1`] = `
           "search": "",
         },
         "loading": 0,
-        "meta": Object {
-          "delete": false,
-        },
         "polls": Array [],
         "user": Object {},
         "view": Object {
@@ -322,6 +322,9 @@ exports[`view should match snapshot (id) 1`] = `
     }
     data={
       Object {
+        "account": Object {
+          "delete": false,
+        },
         "errors": Array [],
         "form": Object {
           "add": "",
@@ -334,9 +337,6 @@ exports[`view should match snapshot (id) 1`] = `
           "search": "",
         },
         "loading": 0,
-        "meta": Object {
-          "delete": false,
-        },
         "polls": Array [
           Object {
             "author": "",
@@ -427,6 +427,9 @@ exports[`view should match snapshot (id) 1`] = `
     }
     data={
       Object {
+        "account": Object {
+          "delete": false,
+        },
         "errors": Array [],
         "form": Object {
           "add": "",
@@ -439,9 +442,6 @@ exports[`view should match snapshot (id) 1`] = `
           "search": "",
         },
         "loading": 0,
-        "meta": Object {
-          "delete": false,
-        },
         "polls": Array [
           Object {
             "author": "",
@@ -533,6 +533,9 @@ exports[`view should match snapshot (id) 1`] = `
     }
     data={
       Object {
+        "account": Object {
+          "delete": false,
+        },
         "errors": Array [],
         "form": Object {
           "add": "",
@@ -545,9 +548,6 @@ exports[`view should match snapshot (id) 1`] = `
           "search": "",
         },
         "loading": 0,
-        "meta": Object {
-          "delete": false,
-        },
         "polls": Array [
           Object {
             "author": "",
