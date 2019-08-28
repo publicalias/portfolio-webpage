@@ -30,7 +30,7 @@ exports[`list menu should match snapshot 1`] = `
     </button>
   </div>
   <div
-    className="c-list-menu__sort u-no-margin"
+    className="c-list-menu__sort u-margin-none"
   >
     <button
       className="qa-sort-popular u-hover"

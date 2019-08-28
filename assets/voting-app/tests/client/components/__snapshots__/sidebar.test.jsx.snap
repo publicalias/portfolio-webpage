@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`sidebar should match snapshot (authenticated) 1`] = `
+exports[`sidebar should match snapshot (default) 1`] = `
 <div
   className="c-ui__sidebar"
 >
@@ -8,14 +8,7 @@ exports[`sidebar should match snapshot (authenticated) 1`] = `
     Hi, Anonymous!
   </p>
   <hr />
-  <button
-    className="c-ui__sidebar-item qa-auth-logout "
-    key="0-666"
-    onClick={[Function]}
-  >
-    Logout
-  </button>
-  <DeleteButton
+  <AuthButtons
     actions={
       Object {
         "formAddOption": [MockFunction],
@@ -70,18 +63,7 @@ exports[`sidebar should match snapshot (authenticated) 1`] = `
         },
         "loading": 0,
         "polls": Array [],
-        "user": Object {
-          "auth": Object {
-            "id": "",
-            "provider": "",
-          },
-          "data": Object {
-            "restricted": false,
-          },
-          "id": "",
-          "name": "",
-          "type": "auth",
-        },
+        "user": Object {},
         "view": Object {
           "add": "",
           "delete": false,
@@ -94,47 +76,10 @@ exports[`sidebar should match snapshot (authenticated) 1`] = `
         "push": [MockFunction],
       }
     }
-    local={
-      Object {
-        "root": "/voting-app",
-      }
-    }
     location={Object {}}
     match={Object {}}
     staticContext={Object {}}
   />
-</div>
-`;
-
-exports[`sidebar should match snapshot (default) 1`] = `
-<div
-  className="c-ui__sidebar"
->
-  <p>
-    Hi, Anonymous!
-  </p>
-  <hr />
-  <button
-    className="c-ui__sidebar-item qa-auth-facebook "
-    key="0-826"
-    onClick={[Function]}
-  >
-    Facebook Login
-  </button>
-  <button
-    className="c-ui__sidebar-item qa-auth-github "
-    key="0-643"
-    onClick={[Function]}
-  >
-    GitHub Login
-  </button>
-  <button
-    className="c-ui__sidebar-item qa-auth-twitter u-no-margin"
-    key="0-787"
-    onClick={[Function]}
-  >
-    Twitter Login
-  </button>
 </div>
 `;
 
@@ -146,14 +91,7 @@ exports[`sidebar should match snapshot (name) 1`] = `
     Hi, Ethan Frost!
   </p>
   <hr />
-  <button
-    className="c-ui__sidebar-item qa-auth-logout "
-    key="0-666"
-    onClick={[Function]}
-  >
-    Logout
-  </button>
-  <DeleteButton
+  <AuthButtons
     actions={
       Object {
         "formAddOption": [MockFunction],
@@ -230,11 +168,6 @@ exports[`sidebar should match snapshot (name) 1`] = `
     history={
       Object {
         "push": [MockFunction],
-      }
-    }
-    local={
-      Object {
-        "root": "/voting-app",
       }
     }
     location={Object {}}

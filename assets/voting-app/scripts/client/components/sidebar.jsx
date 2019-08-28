@@ -2,9 +2,7 @@
 
 //global imports
 
-const DeleteButton = require("components/delete-button");
-
-const { initKeyGen } = require("react-utils");
+const AuthButtons = require("components/auth-buttons");
 
 //node modules
 
@@ -14,53 +12,17 @@ const React = require("react");
 
 const Sidebar = (props) => {
 
-  const { actions: { metaSetLoading }, data: { user } } = props;
+  const { data: { user } } = props;
 
-  const { jsx: { DeleteButton } } = Sidebar.injected;
-
-  //utilities
-
-  const auth = user.type === "auth";
-
-  const buttons = [
-    ["facebook", "Facebook Login", !auth],
-    ["github", "GitHub Login", !auth],
-    ["twitter", "Twitter Login", !auth, "u-no-margin"],
-    ["logout", "Logout", auth]
-  ];
+  const { jsx: { AuthButtons } } = Sidebar.injected;
 
   //render
-
-  const keyGen = initKeyGen();
 
   return (
     <div className="c-ui__sidebar">
       <p>{`Hi, ${user.name || "Anonymous"}!`}</p>
       <hr />
-      {buttons.map((e) => {
-
-        const [id, text, bool, mod = ""] = e;
-
-        const handleClick = () => {
-
-          metaSetLoading(true);
-
-          location.assign(`/auth/${id}?redirect=/voting-app`);
-
-        };
-
-        return bool && (
-          <button
-            className={`c-ui__sidebar-item qa-auth-${id} ${mod}`}
-            key={keyGen(id)}
-            onClick={handleClick}
-          >
-            {text}
-          </button>
-        );
-
-      })}
-      {auth && <DeleteButton {...props} local={{ root: "/voting-app" }} />}
+      <AuthButtons {...props} />
     </div>
   );
 
@@ -68,7 +30,7 @@ const Sidebar = (props) => {
 
 Sidebar.propList = ["data.user"];
 
-Sidebar.injected = { jsx: { DeleteButton } };
+Sidebar.injected = { jsx: { AuthButtons } };
 
 //exports
 

@@ -9,12 +9,11 @@ const { testWrapper } = require("../test-helpers");
 //global imports
 
 const { newUser } = require("schemas");
-const { testMock } = require("test-helpers/meta-tests");
-const { initTestEvent, initTestSnapshot, reactTests } = require("test-helpers/react-tests");
+const { initTestSnapshot, reactTests } = require("test-helpers/react-tests");
 
 //utilities
 
-const { testMount, testShallow } = testWrapper(Sidebar);
+const { testShallow } = testWrapper(Sidebar);
 
 //setup
 
@@ -29,32 +28,6 @@ describe("sidebar", () => {
 
   it("should match snapshot (default)", () => testSnapshot());
 
-  it("should match snapshot (authenticated)", () => testSnapshot({ user: newUser() }));
-
   it("should match snapshot (name)", () => testSnapshot({ user: newUser({ name: "Ethan Frost" }) }));
-
-});
-
-describe("sidebar (auth)", () => {
-
-  const testClick = initTestEvent(testMount, "click");
-
-  const testAuth = (id, dataList = []) => {
-
-    location.assign = jest.fn();
-
-    return testClick(`.qa-auth-${id}`, dataList, ["metaSetLoading", [true]], () => {
-      testMock(location.assign, [`/auth/${id}?redirect=/voting-app`]);
-    });
-
-  };
-
-  it("should call location.assign on click (facebook)", () => testAuth("facebook"));
-
-  it("should call location.assign on click (github)", () => testAuth("github"));
-
-  it("should call location.assign on click (twitter)", () => testAuth("twitter"));
-
-  it("should call location.assign on click (logout)", () => testAuth("logout", [{ user: newUser() }]));
 
 });

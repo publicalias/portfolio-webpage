@@ -1,0 +1,7 @@
+//components
+
+.c-auth-buttons {
+  &__button, &__choice { width: 100%; }
+  &__button, &__dialog { margin-bottom: 1.5vw; }
+  &__choice-box { display: flex; }
+}

@@ -39,7 +39,6 @@ rules:
   no-empty-rulesets: 2
   no-extends: 2
   no-ids: 2
-  no-important: 2
   no-invalid-hex: 2
   no-mergeable-selectors: 2
   no-qualifying-elements: 2
@@ -77,6 +76,7 @@ rules:
   max-line-length:
     - 1
     - length: 120
+  no-important: 1
   no-duplicate-properties: 1
   no-universal-selectors: 1
 

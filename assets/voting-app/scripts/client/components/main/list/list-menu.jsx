@@ -60,7 +60,7 @@ const ListMenu = (props) => {
       <div className="c-list-menu__sort">
         <button className="qa-sort-new u-hover" onClick={handleSortNew}>New</button>
       </div>
-      <div className="c-list-menu__sort u-no-margin">
+      <div className="c-list-menu__sort u-margin-none">
         <button className="qa-sort-popular u-hover" onClick={handleSortPopular}>Popular</button>
       </div>
     </div>

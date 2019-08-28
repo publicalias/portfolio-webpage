@@ -13,7 +13,7 @@ exports[`poll chart (form) should match snapshot 1`] = `
       className="js-edit-label"
     />
     <p
-      className="js-edit-count u-no-margin"
+      className="js-edit-count u-margin-none"
     />
   </div>
 </Fragment>
@@ -32,7 +32,7 @@ exports[`poll chart (view) should match snapshot 1`] = `
       className="js-edit-label"
     />
     <p
-      className="js-edit-count u-no-margin"
+      className="js-edit-count u-margin-none"
     />
   </div>
 </Fragment>

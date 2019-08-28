@@ -1,6 +1,6 @@
 @import "master";
 
-@import "components/delete-button";
+@import "components/auth-buttons";
 @import "components/redux-app";
 @import "components/search-bar";
 
@@ -163,11 +163,6 @@
     grid-area: 1 / 1 / 1 / 5;
   }
 
-  &__sidebar-item {
-    margin-bottom: 1.5vw;
-    width: 100%;
-  }
-
 }
 
 //states
@@ -181,5 +176,3 @@
 .u-flex-right { margin-left: auto; }
 
 .u-margin-half--negative { margin-bottom: -1.5vw; }
-
-.u-no-margin { margin: 0; }

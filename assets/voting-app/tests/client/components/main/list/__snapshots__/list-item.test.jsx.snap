@@ -222,7 +222,7 @@ exports[`list item should match snapshot (authenticated) 1`] = `
         Title A
       </p>
       <p
-        className="u-no-margin"
+        className="u-margin-none"
       >
         0 Votes — 31 December 1969
       </p>
@@ -337,7 +337,7 @@ exports[`list item should match snapshot (default) 1`] = `
         Title A
       </p>
       <p
-        className="u-no-margin"
+        className="u-margin-none"
       >
         0 Votes — 31 December 1969
       </p>

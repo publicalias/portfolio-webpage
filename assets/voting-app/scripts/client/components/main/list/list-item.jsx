@@ -57,7 +57,7 @@ const ListItem = (props) => {
       <td className="u-cursor-pointer">
         <Link to={`/view/${poll.id}`}>
           <p>{poll.title}</p>
-          <p className="u-no-margin">{stats}</p>
+          <p className="u-margin-none">{stats}</p>
         </Link>
       </td>
     </tr>
