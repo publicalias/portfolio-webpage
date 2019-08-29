@@ -56,15 +56,15 @@ const Recipe = (props) => {
   const { entry: { num, name, com, ingr, inst } } = props;
 
   return (
-    <div className="c-panel">
+    <div className="c-accordion">
       <h3
-        className={`c-panel__toggle js-toggle-panel-${num}`}
+        className={`c-accordion__panel-toggle js-toggle-panel-${num}`}
         onClick={handleClick}
       >
         {`${num + 1}. ${name}`}
       </h3>
       <hr />
-      <div className={`c-panel__expand js-expand-panel js-expand-panel-${num}`}>
+      <div className={`c-accordion__panel js-expand-panel js-expand-panel-${num}`}>
         <h4 className="u-margin-full">Comments:</h4>
         <p>{com.trim() || "N/A"}</p>
         <hr />

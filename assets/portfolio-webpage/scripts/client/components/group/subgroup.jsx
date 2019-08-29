@@ -43,10 +43,10 @@ const Subgroup = (props) => {
   const keyGen = initKeyGen();
 
   return (
-    <div className="c-panel">
-      <h3 className={`c-panel__toggle js-toggle-panel-${id}`} onClick={handleClick}>{name}</h3>
+    <div className="c-accordion">
+      <h3 className={`c-accordion__panel-toggle js-toggle-panel-${id}`} onClick={handleClick}>{name}</h3>
       {!props.isLastSubgroup && <hr />}
-      <div className={`c-panel__expand js-expand-panel js-expand-panel-${id}`}>
+      <div className={`c-accordion__panel js-expand-panel js-expand-panel-${id}`}>
         {projects.map((e, i, arr) => (
           <Project
             isFirstProject={i === 0}

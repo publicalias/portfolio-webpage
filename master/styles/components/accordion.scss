@@ -1,13 +1,13 @@
 //components
 
-.c-panel {
+.c-accordion {
 
-  &__expand {
+  &__panel {
     display: none;
     overflow: hidden;
   }
 
-  &__toggle { cursor: pointer; }
+  &__panel-toggle { cursor: pointer; }
 
 }
 

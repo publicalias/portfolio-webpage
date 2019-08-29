@@ -62,9 +62,9 @@ const RecipeEditor = (props) => {
   const { name, com, ingr, inst } = state;
 
   return (
-    <div className="c-modal-show">
-      <div className="c-modal-show__shadow js-fade-modal" />
-      <div className="c-modal-show__window js-show-modal" >
+    <div className="c-modal--show">
+      <div className="c-modal--show__shadow js-fade-modal" />
+      <div className="c-modal--show__window js-show-modal" >
         <div className="c-content--sm u-inset-modal">
           <h3>{props.entry ? "Change Recipe" : "Add Recipe"}</h3>
           <hr />
