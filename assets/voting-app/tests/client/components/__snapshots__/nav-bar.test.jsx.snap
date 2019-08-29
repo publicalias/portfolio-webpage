@@ -1,120 +1,85 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`nav bar should match snapshot (authenticated) 1`] = `
-<div
-  className="c-nav-bar"
->
-  <div
-    key="0-313"
-  >
-    <Link
-      to="/list?filter=all"
-    >
-      <h3
-        className="c-nav-bar__text u-hover"
-      >
-        All Polls
-      </h3>
-    </Link>
-  </div>
-  <div
-    key="0-728"
-  >
-    <Link
-      to="/list?filter=created"
-    >
-      <h3
-        className="c-nav-bar__text u-hover"
-      >
-        My Polls
-      </h3>
-    </Link>
-  </div>
-  <div
-    key="0-546"
-  >
-    <Link
-      to="/list?filter=voted"
-    >
-      <h3
-        className="c-nav-bar__text u-hover"
-      >
-        Voted
-      </h3>
-    </Link>
-  </div>
-  <div
-    key="0-620"
-  >
-    <Link
-      to="/list?filter=hidden"
-    >
-      <h3
-        className="c-nav-bar__text u-hover"
-      >
-        Hidden
-      </h3>
-    </Link>
-  </div>
-  <div
-    className="u-flex-right"
-    key="0-436"
-  >
-    <Link
-      to="/form"
-    >
-      <h3
-        className="c-nav-bar__text u-hover"
-      >
-        New Poll
-      </h3>
-    </Link>
-  </div>
-</div>
+<NavBar
+  local={
+    Object {
+      "list": Array [
+        Array [
+          "all",
+          "All Polls",
+          true,
+          "/list?filter=all",
+        ],
+        Array [
+          "created",
+          "My Polls",
+          true,
+          "/list?filter=created",
+        ],
+        Array [
+          "voted",
+          "Voted",
+          true,
+          "/list?filter=voted",
+        ],
+        Array [
+          "hidden",
+          "Hidden",
+          true,
+          "/list?filter=hidden",
+        ],
+        Array [
+          "form",
+          "New Poll",
+          true,
+          "/form",
+          "u-flex-right",
+        ],
+      ],
+    }
+  }
+/>
 `;
 
 exports[`nav bar should match snapshot (default) 1`] = `
-<div
-  className="c-nav-bar"
->
-  <div
-    key="0-313"
-  >
-    <Link
-      to="/list?filter=all"
-    >
-      <h3
-        className="c-nav-bar__text u-hover"
-      >
-        All Polls
-      </h3>
-    </Link>
-  </div>
-  <div
-    key="0-546"
-  >
-    <Link
-      to="/list?filter=voted"
-    >
-      <h3
-        className="c-nav-bar__text u-hover"
-      >
-        Voted
-      </h3>
-    </Link>
-  </div>
-  <div
-    key="0-620"
-  >
-    <Link
-      to="/list?filter=hidden"
-    >
-      <h3
-        className="c-nav-bar__text u-hover"
-      >
-        Hidden
-      </h3>
-    </Link>
-  </div>
-</div>
+<NavBar
+  local={
+    Object {
+      "list": Array [
+        Array [
+          "all",
+          "All Polls",
+          true,
+          "/list?filter=all",
+        ],
+        Array [
+          "created",
+          "My Polls",
+          false,
+          "/list?filter=created",
+        ],
+        Array [
+          "voted",
+          "Voted",
+          true,
+          "/list?filter=voted",
+        ],
+        Array [
+          "hidden",
+          "Hidden",
+          true,
+          "/list?filter=hidden",
+        ],
+        Array [
+          "form",
+          "New Poll",
+          false,
+          "/form",
+          "u-flex-right",
+        ],
+      ],
+    }
+  }
+/>
 `;

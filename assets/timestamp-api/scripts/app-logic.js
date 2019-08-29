@@ -41,7 +41,7 @@ const parseDate = (input) => {
       date: unix
     }].map(mapFn);
 
-    return createRes(input, "natural", results);
+    return createRes(input, "unix", results);
 
   }
 
