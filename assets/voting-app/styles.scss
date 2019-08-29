@@ -1,6 +1,7 @@
 @import "master";
 
 @import "components/auth-buttons";
+@import "components/nav-bar";
 @import "components/redux-app";
 @import "components/search-bar";
 
@@ -82,17 +83,6 @@
 
 }
 
-.c-nav-bar {
-  background: rgba(0, 0, 0, 0.75);
-  display: flex;
-  margin: 4.5vw;
-  padding: 0 4.5vw;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  &__text { padding: 1.5vw; }
-}
-
 .c-poll-display {
 
   @include grid-area;
@@ -172,7 +162,5 @@
 .js-toggle-tooltip { &.is-open { display: block; } };
 
 //utilities
-
-.u-flex-right { margin-left: auto; }
 
 .u-margin-half--negative { margin-bottom: -1.5vw; }

@@ -2,27 +2,25 @@
 
 //global imports
 
-const { initKeyGen } = require("react-utils");
+const NavBar = require("components/nav-bar");
 
 //node modules
 
 const React = require("react");
 
-const { Link } = require("react-router-dom");
+//wrap nav bar
 
-//nav bar
-
-const NavBar = (props) => {
+const WrapNavBar = (props) => {
 
   const { data: { user } } = props;
 
-  const { jsx: { Link } } = NavBar.injected;
+  const { jsx: { NavBar } } = WrapNavBar.injected;
 
   //utilities
 
   const auth = user.type === "auth";
 
-  const links = [
+  const list = [
     ["all", "All Polls", true],
     ["created", "My Polls", auth],
     ["voted", "Voted", true],
@@ -30,40 +28,22 @@ const NavBar = (props) => {
     ["form", "New Poll", auth, "/form", "u-flex-right"]
   ];
 
-  for (const e of links) {
-    if (e.length === 3) {
-      e.push(`/list?filter=${e[0]}`);
+  for (const e of list) {
+    if (!e[3]) {
+      e[3] = `/list?filter=${e[0]}`;
     }
   }
 
   //render
 
-  const keyGen = initKeyGen();
-
-  return (
-    <div className="c-nav-bar">
-      {links.map((e) => {
-
-        const [id, text, bool, link, util] = e;
-
-        return bool && (
-          <div className={util} key={keyGen(id)}>
-            <Link to={link}>
-              <h3 className="c-nav-bar__text u-hover">{text}</h3>
-            </Link>
-          </div>
-        );
-
-      })}
-    </div>
-  );
+  return <NavBar local={{ list }} />;
 
 };
 
-NavBar.propList = ["data.user"];
+WrapNavBar.propList = ["data.user"];
 
-NavBar.injected = { jsx: { Link } };
+WrapNavBar.injected = { jsx: { NavBar } };
 
 //exports
 
-module.exports = NavBar;
+module.exports = WrapNavBar;

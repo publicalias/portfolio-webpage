@@ -242,6 +242,8 @@ thead { @include font-head; }
 .u-flex-2 { flex: 2; }
 .u-flex-3 { flex: 3; }
 
+.u-flex-right { margin-left: auto !important; }
+
 .u-float-left { float: left; }
 .u-float-right { float: right; }
 
@@ -254,7 +256,8 @@ thead { @include font-head; }
 
 .u-margin-full { margin-bottom: 3vw; }
 .u-margin-half { margin-bottom: 1.5vw; }
+
 .u-margin-none { margin: 0 !important; }
-.u-margin-right { margin-right: 1.5vw; }
+.u-margin-right { margin-right: 1.5vw !important; }
 
 .u-underline { text-decoration: underline; }

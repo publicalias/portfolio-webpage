@@ -1,0 +1,12 @@
+//components
+
+.c-nav-bar {
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  margin: 4.5vw;
+  padding: 0 4.5vw;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  &__text { padding: 1.5vw; }
+}
