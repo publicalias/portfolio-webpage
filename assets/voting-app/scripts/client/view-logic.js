@@ -6,9 +6,9 @@ const { updateTooltip } = require("./event-handlers");
 
 //global imports
 
-const { select } = require("dom-api");
-const { hookEvent } = require("react-utils");
-const { toPrecision } = require("utilities");
+const { select } = require("all/dom-api");
+const { hookEvent } = require("all/react-utils");
+const { toPrecision } = require("all/utilities");
 
 //chart color
 

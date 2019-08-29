@@ -4,8 +4,8 @@
 
 //global imports
 
-const { select } = require("dom-api");
-const { useSetState } = require("react-utils");
+const { select } = require("all/dom-api");
+const { useSetState } = require("all/react-utils");
 
 //node modules
 

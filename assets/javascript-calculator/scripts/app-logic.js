@@ -2,7 +2,7 @@
 
 //global imports
 
-const { toPrecision } = require("utilities");
+const { toPrecision } = require("all/utilities");
 
 //parse arith
 

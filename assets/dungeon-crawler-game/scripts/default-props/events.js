@@ -6,7 +6,7 @@ const { enemyTypes, weapon } = require("./type-data");
 
 //global imports
 
-const { roundTo } = require("utilities");
+const { roundTo } = require("all/utilities");
 
 //events
 

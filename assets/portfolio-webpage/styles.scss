@@ -1,8 +1,8 @@
-@import "master";
+@import "all/styles";
 
-@import "components/accordion";
-@import "components/cookie-banner";
-@import "components/legal-stuff";
+@import "all/components/accordion";
+@import "all/components/cookie-banner";
+@import "all/components/legal-stuff";
 
 @mixin layer {
   @include square(100%);

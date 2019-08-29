@@ -9,7 +9,7 @@ const { chartColor } = require("../../../view-logic");
 
 //global imports
 
-const { initKeyGen } = require("react-utils");
+const { initKeyGen } = require("all/react-utils");
 
 //node modules
 

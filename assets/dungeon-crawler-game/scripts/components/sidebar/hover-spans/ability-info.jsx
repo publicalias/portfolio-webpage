@@ -6,7 +6,7 @@ const HoverSpan = require("./hover-span");
 
 //global imports
 
-const { initKeyGen } = require("react-utils");
+const { initKeyGen } = require("all/react-utils");
 
 //node modules
 

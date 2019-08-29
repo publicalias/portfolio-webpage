@@ -7,9 +7,9 @@ const List = require("./list");
 
 //global imports
 
-const { togglePanel } = require("components/accordion");
-const { select } = require("dom-api");
-const { useSetState } = require("react-utils");
+const { togglePanel } = require("all/components/accordion");
+const { select } = require("all/dom-api");
+const { useSetState } = require("all/react-utils");
 
 //node modules
 

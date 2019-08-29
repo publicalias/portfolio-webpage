@@ -6,7 +6,7 @@ const { newForm } = require("../../../../../schemas");
 
 //global imports
 
-const { deepCopy } = require("utilities");
+const { deepCopy } = require("all/utilities");
 
 //form clear state
 

@@ -10,11 +10,11 @@ const { pointRadius, tooltipAddress } = require("./scripts/client/view-logic");
 
 //global imports
 
-const { getJSON, swipeEvent } = require("client-utils");
-const { getSVG, tooltip } = require("d3-projects/app-logic");
-const { checkTooltip, globalEvents } = require("d3-projects/event-handlers");
-const { select } = require("dom-api");
-const { bindObject } = require("utilities");
+const { getJSON, swipeEvent } = require("all/client-utils");
+const { select } = require("all/dom-api");
+const { bindObject } = require("all/utilities");
+const { getSVG, tooltip } = require("d3/app-logic");
+const { checkTooltip, globalEvents } = require("d3/event-handlers");
 
 //app logic
 

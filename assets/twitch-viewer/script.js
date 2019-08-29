@@ -7,8 +7,8 @@ const { renderOutput } = require("./scripts/client/view-logic");
 
 //global imports
 
-const { checkInput, storageKey } = require("client-utils");
-const { select } = require("dom-api");
+const { checkInput, storageKey } = require("all/client-utils");
+const { select } = require("all/dom-api");
 
 //app logic
 

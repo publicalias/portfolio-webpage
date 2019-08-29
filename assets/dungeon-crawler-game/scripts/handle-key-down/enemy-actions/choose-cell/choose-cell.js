@@ -7,7 +7,7 @@ const { handleCombat } = require("./handle-combat");
 
 //global imports
 
-const { rngInt } = require("utilities");
+const { rngInt } = require("all/utilities");
 
 //choose cell
 

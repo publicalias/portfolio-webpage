@@ -2,7 +2,7 @@
 
 //global imports
 
-const { select } = require("dom-api");
+const { select } = require("all/dom-api");
 
 //init display
 

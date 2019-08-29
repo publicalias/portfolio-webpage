@@ -6,8 +6,8 @@ const { checkIndex, nearbyCells } = require("../app-logic");
 
 //global imports
 
-const { array2D } = require("react-projects/app-logic");
-const { rngInt } = require("utilities");
+const { rngInt } = require("all/utilities");
+const { array2D } = require("react/app-logic");
 
 //gen maze
 

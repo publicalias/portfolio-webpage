@@ -13,9 +13,9 @@ const { childProps } = require("./scripts/view-logic");
 
 //global imports
 
-const { checkInput, storageKey } = require("client-utils");
-const { select } = require("dom-api");
-const { useSetState } = require("react-utils");
+const { checkInput, storageKey } = require("all/client-utils");
+const { select } = require("all/dom-api");
+const { useSetState } = require("all/react-utils");
 
 //node modules
 

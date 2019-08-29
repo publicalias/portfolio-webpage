@@ -2,7 +2,7 @@
 
 //global imports
 
-const AuthButtons = require("components/auth-buttons");
+const AuthButtons = require("redux/components/auth-buttons");
 
 //node modules
 

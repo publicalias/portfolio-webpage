@@ -12,13 +12,13 @@ const { defaultProps } = require("./scripts/client/default-props/default-props")
 
 //global imports
 
-const CookieBanner = require("components/cookie-banner");
-const LegalStuff = require("components/legal-stuff");
+const CookieBanner = require("all/components/cookie-banner");
+const LegalStuff = require("all/components/legal-stuff");
 
-const { checkInput } = require("client-utils");
-const { initPanel } = require("components/accordion");
-const { select } = require("dom-api");
-const { initKeyGen } = require("react-utils");
+const { checkInput } = require("all/client-utils");
+const { initPanel } = require("all/components/accordion");
+const { select } = require("all/dom-api");
+const { initKeyGen } = require("all/react-utils");
 
 //node modules
 

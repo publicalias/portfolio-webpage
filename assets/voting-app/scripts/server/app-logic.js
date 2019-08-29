@@ -6,8 +6,8 @@ const { newOption, newPoll } = require("../../schemas");
 
 //global imports
 
-const { getIPUser } = require("redux-utils/server-utils");
-const { checkErrors, deepCopy } = require("utilities");
+const { checkErrors, deepCopy } = require("all/utilities");
+const { getIPUser } = require("redux/server-utils");
 
 //node modules
 

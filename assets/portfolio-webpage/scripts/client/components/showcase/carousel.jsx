@@ -8,8 +8,8 @@ const { safeLink } = require("../../app-logic");
 
 //global imports
 
-const { swipeEvent } = require("client-utils");
-const { select } = require("dom-api");
+const { swipeEvent } = require("all/client-utils");
+const { select } = require("all/dom-api");
 
 //node modules
 

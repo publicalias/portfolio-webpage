@@ -9,9 +9,9 @@ const { testWrapper } = require("../../../test-helpers");
 
 //global imports
 
-const { newUser } = require("schemas");
-const { initTestEvent, initTestSnapshot, reactTests } = require("test-helpers/react-tests");
-const { deepCopy } = require("utilities");
+const { deepCopy } = require("all/utilities");
+const { newUser } = require("redux/schemas");
+const { initTestEvent, initTestSnapshot, reactTests } = require("redux/tests/react-tests");
 
 //utilities
 

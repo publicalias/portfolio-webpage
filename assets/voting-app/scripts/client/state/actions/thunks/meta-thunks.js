@@ -2,7 +2,7 @@
 
 //global imports
 
-const { reduxAPICall } = require("redux-utils/client-utils");
+const { reduxAPICall } = require("redux/client-utils");
 
 //meta create poll
 

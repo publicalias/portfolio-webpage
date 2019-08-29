@@ -1,9 +1,6 @@
-@import "master";
+@import "redux/styles";
 
-@import "components/auth-buttons";
-@import "components/nav-bar";
-@import "components/redux-app";
-@import "components/search-bar";
+@import "all/components/search-bar";
 
 @mixin grid {
   display: grid;

@@ -6,7 +6,7 @@ const { nearbyCells, totalDist } = require("../../app-logic");
 
 //global imports
 
-const { objEqual } = require("utilities");
+const { objEqual } = require("all/utilities");
 
 //viable pursuit
 

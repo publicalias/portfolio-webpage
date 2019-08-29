@@ -6,7 +6,7 @@ const { newPoll } = require("../../schemas");
 
 //global imports
 
-const { testErrors, testMock } = require("test-helpers/meta-tests");
+const { testErrors, testMock } = require("redux/tests/meta-tests");
 
 //utilities
 

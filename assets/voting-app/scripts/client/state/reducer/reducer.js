@@ -10,9 +10,9 @@ const { newState } = require("../../../../schemas");
 
 //global imports
 
-const metaHandlers = require("redux-utils/meta-handlers");
+const metaHandlers = require("redux/meta-handlers");
 
-const { initReducer } = require("redux-utils/client-utils");
+const { initReducer } = require("redux/client-utils");
 
 //reducer
 

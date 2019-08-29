@@ -9,9 +9,9 @@ const { overlyLongInput, testOptions, testTitle } = require("../../test-helpers"
 
 //global imports
 
-const { newIPUser, newUser } = require("schemas");
-const { testMock } = require("test-helpers/meta-tests");
-const { initMockAPICall, mongoTests, testAuthFail } = require("test-helpers/server-tests");
+const { newIPUser, newUser } = require("redux/schemas");
+const { testMock } = require("redux/tests/meta-tests");
+const { initMockAPICall, mongoTests, testAuthFail } = require("redux/tests/server-tests");
 
 //utilities
 

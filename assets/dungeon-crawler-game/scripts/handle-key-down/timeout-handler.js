@@ -6,7 +6,7 @@ const { handleDeath } = require("../app-logic");
 
 //global imports
 
-const { storageKey } = require("client-utils");
+const { storageKey } = require("all/client-utils");
 
 //timeout handler
 

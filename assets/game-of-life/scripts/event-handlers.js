@@ -6,9 +6,9 @@ const { getPopulation, validRules } = require("./app-logic");
 
 //global imports
 
-const { storageKey } = require("client-utils");
-const { mouseYX } = require("react-projects/app-logic");
-const { cycleItems, deepCopy } = require("utilities");
+const { storageKey } = require("all/client-utils");
+const { cycleItems, deepCopy } = require("all/utilities");
+const { mouseYX } = require("react/app-logic");
 
 //node modules
 

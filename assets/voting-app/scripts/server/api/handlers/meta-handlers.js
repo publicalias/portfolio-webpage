@@ -6,8 +6,8 @@ const { checkOptions, checkTitle, findByID, findPolls, handleCreate } = require(
 
 //global imports
 
-const { getIPUser } = require("redux-utils/server-utils");
-const { checkErrors } = require("utilities");
+const { checkErrors } = require("all/utilities");
+const { getIPUser } = require("redux/server-utils");
 
 //utilities
 

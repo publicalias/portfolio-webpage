@@ -1,6 +1,4 @@
-@import "master";
-
-@import "d3-projects/master";
+@import "d3/styles";
 
 @mixin bar { fill: url("#css-ref-gradient"); }
 

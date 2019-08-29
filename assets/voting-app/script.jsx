@@ -10,10 +10,10 @@ const { reducer } = require("./scripts/client/state/reducer/reducer");
 
 //global imports
 
-const { App, ReduxApp } = require("components/redux-app");
+const { App, ReduxApp } = require("redux/components/redux-app");
 
-const { select } = require("dom-api");
-const { optimize } = require("react-utils");
+const { select } = require("all/dom-api");
+const { optimize } = require("all/react-utils");
 
 //node modules
 

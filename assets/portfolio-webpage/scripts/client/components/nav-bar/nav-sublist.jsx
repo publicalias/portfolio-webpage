@@ -6,8 +6,8 @@ const NavItem = require("./nav-item");
 
 //global imports
 
-const { select } = require("dom-api");
-const { initKeyGen } = require("react-utils");
+const { select } = require("all/dom-api");
+const { initKeyGen } = require("all/react-utils");
 
 //node modules
 

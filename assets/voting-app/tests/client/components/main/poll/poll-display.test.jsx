@@ -8,7 +8,7 @@ const { testWrapper } = require("../../../test-helpers");
 
 //global imports
 
-const { initTestSnapshot, reactTests } = require("test-helpers/react-tests");
+const { initTestSnapshot, reactTests } = require("redux/tests/react-tests");
 
 //utilities
 

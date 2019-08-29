@@ -9,10 +9,10 @@ const { testWrapper } = require("../../../test-helpers");
 
 //global imports
 
-const { initSchema } = require("schemas");
-const { testMock } = require("test-helpers/meta-tests");
-const { initTestRef, initTestSnapshot, reactTests } = require("test-helpers/react-tests");
-const { deepCopy } = require("utilities");
+const { deepCopy } = require("all/utilities");
+const { initSchema } = require("redux/schemas");
+const { testMock } = require("redux/tests/meta-tests");
+const { initTestRef, initTestSnapshot, reactTests } = require("redux/tests/react-tests");
 
 //utilities
 

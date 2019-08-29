@@ -8,9 +8,9 @@ const { itemIsInView } = require("../../view-logic");
 
 //global imports
 
-const { select } = require("dom-api");
-const { hookEvent, initKeyGen, useInterval, useSetState } = require("react-utils");
-const { cycleItems } = require("utilities");
+const { select } = require("all/dom-api");
+const { hookEvent, initKeyGen, useInterval, useSetState } = require("all/react-utils");
+const { cycleItems } = require("all/utilities");
 
 //node modules
 

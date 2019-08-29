@@ -7,10 +7,10 @@ const { paintCanvas } = require("../view-logic");
 
 //global imports
 
-const { select } = require("dom-api");
-const { mouseYX } = require("react-projects/app-logic");
-const { hookEvent, useSetState } = require("react-utils");
-const { objEqual } = require("utilities");
+const { select } = require("all/dom-api");
+const { hookEvent, useSetState } = require("all/react-utils");
+const { objEqual } = require("all/utilities");
+const { mouseYX } = require("react/app-logic");
 
 //node modules
 

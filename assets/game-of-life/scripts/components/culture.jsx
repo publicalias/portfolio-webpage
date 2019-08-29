@@ -6,8 +6,8 @@ const { clearCanvas, paintCanvas } = require("../view-logic");
 
 //global imports
 
-const { select } = require("dom-api");
-const { hookEvent, useSetState } = require("react-utils");
+const { select } = require("all/dom-api");
+const { hookEvent, useSetState } = require("all/react-utils");
 
 //node modules
 

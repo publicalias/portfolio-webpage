@@ -11,7 +11,7 @@ const { timeoutHandler } = require("./timeout-handler");
 
 //global imports
 
-const { deepCopy } = require("utilities");
+const { deepCopy } = require("all/utilities");
 
 //handle gameplay
 

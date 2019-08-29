@@ -2,9 +2,9 @@
 
 //global imports
 
-const { array2D, array2DEach } = require("react-projects/app-logic");
-const { storageKey } = require("client-utils");
-const { bindObject, chance, initDeepCopy, rngInt } = require("utilities");
+const { storageKey } = require("all/client-utils");
+const { bindObject, chance, initDeepCopy, rngInt } = require("all/utilities");
+const { array2D, array2DEach } = require("react/app-logic");
 
 //create cell
 

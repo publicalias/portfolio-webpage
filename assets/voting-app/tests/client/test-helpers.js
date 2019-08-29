@@ -8,10 +8,10 @@ const { reducer } = require("../../scripts/client/state/reducer/reducer");
 
 //global imports
 
-const { testMock } = require("test-helpers/meta-tests");
-const { initTestEvent, initTestWrapper } = require("test-helpers/react-tests");
-const { initTestAPI, initTestReducer } = require("test-helpers/redux-tests");
-const { deepCopy } = require("utilities");
+const { deepCopy } = require("all/utilities");
+const { testMock } = require("redux/tests/meta-tests");
+const { initTestEvent, initTestWrapper } = require("redux/tests/react-tests");
+const { initTestAPI, initTestReducer } = require("redux/tests/redux-tests");
 
 //init test poll
 

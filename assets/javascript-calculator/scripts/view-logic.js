@@ -2,8 +2,8 @@
 
 //global imports
 
-const { select } = require("dom-api");
-const { toPrecision } = require("utilities");
+const { select } = require("all/dom-api");
+const { toPrecision } = require("all/utilities");
 
 //read output
 

@@ -6,7 +6,7 @@ const { isCellFree } = require("../app-logic");
 
 //global imports
 
-const { rngInt } = require("utilities");
+const { rngInt } = require("all/utilities");
 
 //populate level
 

@@ -2,7 +2,7 @@
 
 //global imports
 
-const { alphabet, rngInt } = require("utilities");
+const { alphabet, rngInt } = require("all/utilities");
 
 //node modules
 

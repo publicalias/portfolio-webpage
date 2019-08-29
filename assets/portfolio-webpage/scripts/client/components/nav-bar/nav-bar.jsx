@@ -7,7 +7,7 @@ const NavSublist = require("./nav-sublist");
 
 //global imports
 
-const { initKeyGen } = require("react-utils");
+const { initKeyGen } = require("all/react-utils");
 
 //node modules
 

@@ -2,7 +2,7 @@
 
 //global imports
 
-const NavBar = require("components/nav-bar");
+const NavBar = require("redux/components/nav-bar");
 
 //node modules
 

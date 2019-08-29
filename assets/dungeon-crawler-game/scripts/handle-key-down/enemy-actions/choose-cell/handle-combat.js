@@ -7,7 +7,7 @@ const { handleNgPlus } = require("./handle-ng-plus");
 
 //global imports
 
-const { chance } = require("utilities");
+const { chance } = require("all/utilities");
 
 //handle combat
 

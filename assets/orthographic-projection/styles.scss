@@ -1,6 +1,4 @@
-@import "master";
-
-@import "d3-projects/master";
+@import "d3/styles";
 
 @mixin path-color($color) {
   fill: $color;

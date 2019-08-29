@@ -8,7 +8,7 @@ const { handleExpGain, lootItems } = require("./generic-events");
 
 //global imports
 
-const { chance } = require("utilities");
+const { chance } = require("all/utilities");
 
 //handle kill
 

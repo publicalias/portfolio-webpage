@@ -11,8 +11,8 @@ const { resetForm, useReCaptcha } = require("../../app-logic");
 
 //global imports
 
-const { encodeAPICall } = require("client-utils");
-const { useSetState } = require("react-utils");
+const { encodeAPICall } = require("all/client-utils");
+const { useSetState } = require("all/react-utils");
 
 //node modules
 

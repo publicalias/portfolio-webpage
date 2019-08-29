@@ -10,9 +10,9 @@ const UtilityBtn = require("./utility-btn");
 
 //global imports
 
-const { storageKey } = require("client-utils");
-const { useInterval, useSetState } = require("react-utils");
-const { roundTo } = require("utilities");
+const { storageKey } = require("all/client-utils");
+const { useInterval, useSetState } = require("all/react-utils");
+const { roundTo } = require("all/utilities");
 
 //node modules
 

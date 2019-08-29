@@ -7,12 +7,12 @@ const RecipeEditor = require("./scripts/components/recipe-editor");
 
 //global imports
 
-const { checkInput, storageKey } = require("client-utils");
-const { closePanel, initPanel } = require("components/accordion");
-const { modalEvents, toggleModal } = require("components/modal");
-const { select } = require("dom-api");
-const { initKeyGen, useSetState, useTeardown } = require("react-utils");
-const { deepCopy } = require("utilities");
+const { checkInput, storageKey } = require("all/client-utils");
+const { closePanel, initPanel } = require("all/components/accordion");
+const { modalEvents, toggleModal } = require("all/components/modal");
+const { select } = require("all/dom-api");
+const { initKeyGen, useSetState, useTeardown } = require("all/react-utils");
+const { deepCopy } = require("all/utilities");
 
 //node modules
 

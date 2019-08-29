@@ -2,7 +2,7 @@
 
 //global imports
 
-const { array2DEach } = require("react-projects/app-logic");
+const { array2DEach } = require("react/app-logic");
 
 //child props
 

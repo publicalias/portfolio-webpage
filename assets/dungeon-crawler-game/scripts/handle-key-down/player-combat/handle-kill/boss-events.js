@@ -6,7 +6,7 @@ const { isCellFree } = require("../../../app-logic");
 
 //global imports
 
-const { chance, rngInt } = require("utilities");
+const { chance, rngInt } = require("all/utilities");
 
 //enemy morale
 

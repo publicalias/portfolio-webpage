@@ -8,8 +8,8 @@ const { initTestPoll, initTestReload, testWrapper } = require("../../../test-hel
 
 //global imports
 
-const { testMock } = require("test-helpers/meta-tests");
-const { initTestEvent, initTestSnapshot, reactTests } = require("test-helpers/react-tests");
+const { testMock } = require("redux/tests/meta-tests");
+const { initTestEvent, initTestSnapshot, reactTests } = require("redux/tests/react-tests");
 
 //utilities
 

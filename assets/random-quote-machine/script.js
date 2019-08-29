@@ -2,9 +2,9 @@
 
 //global imports
 
-const { checkInput, getJSON } = require("client-utils");
-const { select } = require("dom-api");
-const { bindObject, rngInt } = require("utilities");
+const { checkInput, getJSON } = require("all/client-utils");
+const { select } = require("all/dom-api");
+const { bindObject, rngInt } = require("all/utilities");
 
 //utilities
 

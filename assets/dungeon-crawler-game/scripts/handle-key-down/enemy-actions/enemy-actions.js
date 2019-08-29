@@ -9,7 +9,7 @@ const { viablePursuit } = require("./viable-pursuit");
 
 //global imports
 
-const { chance } = require("utilities");
+const { chance } = require("all/utilities");
 
 //enemy actions
 

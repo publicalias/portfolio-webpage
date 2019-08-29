@@ -6,7 +6,7 @@ const { handleUpdate } = require("../app-logic");
 
 //global imports
 
-const { newUser } = require("schemas");
+const { newUser } = require("redux/schemas");
 
 //node modules
 

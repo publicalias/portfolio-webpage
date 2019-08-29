@@ -8,7 +8,7 @@ const { getVotes } = require("../../../view-logic");
 
 //global imports
 
-const { readDate } = require("utilities");
+const { readDate } = require("all/utilities");
 
 //node modules
 

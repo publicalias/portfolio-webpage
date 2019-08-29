@@ -2,12 +2,12 @@
 
 //global imports
 
-const { getJSON } = require("client-utils");
-const { getSVG, tooltip } = require("d3-projects/app-logic");
-const { checkTooltip, globalEvents } = require("d3-projects/event-handlers");
-const { svgChart, svgParams, svgMargin } = require("d3-projects/view-logic");
-const { select } = require("dom-api");
-const { bindObject } = require("utilities");
+const { getJSON } = require("all/client-utils");
+const { select } = require("all/dom-api");
+const { bindObject } = require("all/utilities");
+const { getSVG, tooltip } = require("d3/app-logic");
+const { checkTooltip, globalEvents } = require("d3/event-handlers");
+const { svgChart, svgParams, svgMargin } = require("d3/view-logic");
 
 //utilities
 

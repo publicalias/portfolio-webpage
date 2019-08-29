@@ -8,8 +8,8 @@ const { initTestPoll, testReload, testWrapper } = require("../../../test-helpers
 
 //global imports
 
-const { newUser } = require("schemas");
-const { initTestEvent, initTestSnapshot, reactTests, withDataList } = require("test-helpers/react-tests");
+const { newUser } = require("redux/schemas");
+const { initTestEvent, initTestSnapshot, reactTests, withDataList } = require("redux/tests/react-tests");
 
 //utilities
 

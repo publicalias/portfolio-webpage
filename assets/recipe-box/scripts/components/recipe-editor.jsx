@@ -6,9 +6,9 @@ const { cancelSubmit, populateModal } = require("../app-logic");
 
 //global imports
 
-const { toggleModal } = require("components/modal");
-const { useSetState } = require("react-utils");
-const { deepCopy } = require("utilities");
+const { toggleModal } = require("all/components/modal");
+const { useSetState } = require("all/react-utils");
+const { deepCopy } = require("all/utilities");
 
 //node modules
 

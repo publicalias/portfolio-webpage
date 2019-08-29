@@ -2,8 +2,8 @@
 
 //global imports
 
-const { getJSON } = require("client-utils");
-const { select } = require("dom-api");
+const { getJSON } = require("all/client-utils");
+const { select } = require("all/dom-api");
 
 //render output
 

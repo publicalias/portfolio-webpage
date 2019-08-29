@@ -2,7 +2,7 @@
 
 //global imports
 
-const { objEqual, chance, rngInt } = require("utilities");
+const { objEqual, chance, rngInt } = require("all/utilities");
 
 //gen enemies
 

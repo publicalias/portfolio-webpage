@@ -6,7 +6,7 @@ const { setListParams } = require("../../../app-logic");
 
 //global imports
 
-const SearchBar = require("components/search-bar");
+const SearchBar = require("all/components/search-bar");
 
 //node modules
 

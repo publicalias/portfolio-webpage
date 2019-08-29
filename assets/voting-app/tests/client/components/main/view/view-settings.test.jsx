@@ -9,7 +9,7 @@ const { testCreateDelete, testReload, testWrapper } = require("../../../test-hel
 
 //global imports
 
-const { initTestEvent, initTestSnapshot, reactTests, withDataList } = require("test-helpers/react-tests");
+const { initTestEvent, initTestSnapshot, reactTests, withDataList } = require("redux/tests/react-tests");
 
 //utilities
 

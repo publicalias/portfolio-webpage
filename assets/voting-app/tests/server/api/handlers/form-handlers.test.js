@@ -8,8 +8,8 @@ const { testOptions, testTitle } = require("../../test-helpers");
 
 //global imports
 
-const { testMock } = require("test-helpers/meta-tests");
-const { initMockAPICall, mongoTests } = require("test-helpers/server-tests");
+const { testMock } = require("redux/tests/meta-tests");
+const { initMockAPICall, mongoTests } = require("redux/tests/server-tests");
 
 //utilities
 

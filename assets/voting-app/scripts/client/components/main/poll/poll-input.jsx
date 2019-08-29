@@ -6,7 +6,7 @@ const { handleReload } = require("../../../event-handlers");
 
 //global imports
 
-const { submitKeys } = require("client-utils");
+const { submitKeys } = require("all/client-utils");
 
 //node modules
 

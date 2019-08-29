@@ -6,7 +6,7 @@ const { newState } = require("../../../../../schemas");
 
 //global imports
 
-const { deepCopy } = require("utilities");
+const { deepCopy } = require("all/utilities");
 
 //list clear state
 

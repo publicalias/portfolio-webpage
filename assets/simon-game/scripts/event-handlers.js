@@ -6,7 +6,7 @@ const { btnIDs } = require("./view-logic");
 
 //global imports
 
-const { select } = require("dom-api");
+const { select } = require("all/dom-api");
 
 //gameplay events
 

@@ -12,7 +12,7 @@ const pollThunks = require("./thunks/poll-thunks");
 
 //global imports
 
-const metaFactories = require("redux-utils/meta-factories");
+const metaFactories = require("redux/meta-factories");
 
 //actions
 

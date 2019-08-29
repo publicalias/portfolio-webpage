@@ -7,9 +7,9 @@ const { newGame } = require("./new-game/new-game");
 
 //global imports
 
-const { select } = require("dom-api");
-const { hookEvent } = require("react-utils");
-const { cycleItems, deepCopy } = require("utilities");
+const { select } = require("all/dom-api");
+const { hookEvent } = require("all/react-utils");
+const { cycleItems, deepCopy } = require("all/utilities");
 
 //node modules
 

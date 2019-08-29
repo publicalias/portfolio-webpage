@@ -6,7 +6,7 @@ const { checkOptions, findByID, handleOption, handleToggle } = require("../../ap
 
 //global imports
 
-const { getIPUser, getOrSetUser } = require("redux-utils/server-utils");
+const { getIPUser, getOrSetUser } = require("redux/server-utils");
 
 //utilities
 

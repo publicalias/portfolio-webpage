@@ -2,7 +2,7 @@
 
 //global imports
 
-const { toPromise } = require("server-utils");
+const { toPromise } = require("all/server-utils");
 
 //node modules
 

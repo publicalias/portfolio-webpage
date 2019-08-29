@@ -8,7 +8,7 @@ const pollHandlers = require("./handlers/poll-handlers");
 
 //global imports
 
-const { apiHandler } = require("redux-utils/server-utils");
+const { apiHandler } = require("redux/server-utils");
 
 //handle actions
 

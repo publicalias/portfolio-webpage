@@ -2,8 +2,8 @@
 
 //global imports
 
-const { select } = require("dom-api");
-const { leadZero } = require("utilities");
+const { select } = require("all/dom-api");
+const { leadZero } = require("all/utilities");
 
 //empty bar
 

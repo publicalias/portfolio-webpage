@@ -2,7 +2,7 @@
 
 //global imports
 
-const { initSchema, newError, newIPUser, newUser } = require("schemas");
+const { initSchema, newError, newIPUser, newUser } = require("redux/schemas");
 
 //new option
 

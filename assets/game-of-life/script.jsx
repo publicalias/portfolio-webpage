@@ -11,10 +11,10 @@ const { childProps } = require("./scripts/view-logic");
 
 //global imports
 
-const { checkInput, submitKeys } = require("client-utils");
-const { select } = require("dom-api");
-const { array2D } = require("react-projects/app-logic");
-const { useSetState, useTeardown } = require("react-utils");
+const { checkInput, submitKeys } = require("all/client-utils");
+const { select } = require("all/dom-api");
+const { useSetState, useTeardown } = require("all/react-utils");
+const { array2D } = require("react/app-logic");
 
 //node modules
 

@@ -6,7 +6,7 @@ const { renderChart } = require("../../../view-logic");
 
 //global imports
 
-const { rngInt } = require("utilities");
+const { rngInt } = require("all/utilities");
 
 //node modules
 
