@@ -19,7 +19,7 @@ const Sidebar = (props) => {
   //render
 
   return (
-    <div className="c-ui__sidebar">
+    <div className="c-sidebar">
       <p>{`Hi, ${user.name || "Anonymous"}!`}</p>
       <hr />
       <AuthButtons {...props} />

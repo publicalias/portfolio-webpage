@@ -2,7 +2,7 @@
 
 exports[`sidebar should match snapshot (default) 1`] = `
 <div
-  className="c-ui__sidebar"
+  className="c-sidebar"
 >
   <p>
     Hi, Anonymous!
@@ -85,7 +85,7 @@ exports[`sidebar should match snapshot (default) 1`] = `
 
 exports[`sidebar should match snapshot (name) 1`] = `
 <div
-  className="c-ui__sidebar"
+  className="c-sidebar"
 >
   <p>
     Hi, Ethan Frost!

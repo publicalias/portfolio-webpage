@@ -32,11 +32,11 @@ const Form = (props) => {
   };
 
   return (
-    <div className="c-ui__form">
+    <React.Fragment>
       <FormMenu {...props} />
       <PollDisplay {...props} local={local} />
       <PollOptions {...props} local={local} />
-    </div>
+    </React.Fragment>
   );
 
 };

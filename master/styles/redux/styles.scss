@@ -7,6 +7,27 @@
 @import "redux/components/error-message";
 @import "redux/components/nav-bar";
 
+@mixin grid {
+  display: grid;
+  grid-gap: 4.5vw;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+@mixin grid-item($rs, $cs, $re, $ce) {
+  background: rgba(0, 0, 0, 0.75);
+  grid-area: #{$rs} / #{$cs} / #{$re} / #{$ce};
+  overflow: hidden;
+  padding: 3vw 4.5vw;
+}
+
+//components
+
+.c-ui {
+  @include grid;
+  margin: 4.5vw auto;
+  width: 91%;
+}
+
 //states
 
 .js-loading-state { &.is-loading { cursor: wait; } }

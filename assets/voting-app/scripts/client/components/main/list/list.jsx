@@ -72,10 +72,10 @@ const List = (props) => {
   //render
 
   return (
-    <div className="c-ui__list">
+    <React.Fragment>
       <ListMenu {...props} />
       <ListBody {...props} local={{ handleScroll }} />
-    </div>
+    </React.Fragment>
   );
 
 };

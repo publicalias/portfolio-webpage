@@ -39,11 +39,11 @@ const View = (props) => {
   };
 
   return (
-    <div className="c-ui__view">
+    <React.Fragment>
       <ViewMenu {...props} local={{ poll }} />
       <PollDisplay {...props} local={local} />
       <PollOptions {...props} local={local} />
-    </div>
+    </React.Fragment>
   );
 
 };
