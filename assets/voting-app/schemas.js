@@ -2,7 +2,7 @@
 
 //global imports
 
-const { initSchema, newError, newIPUser, newUser } = require("redux/schemas");
+const { initSchema, listReplacer, newError, newIPUser, newUser } = require("redux/schemas");
 
 //new option
 
@@ -36,9 +36,7 @@ const newPoll = initSchema({
   },
   options: []
 }, {
-  options(val) {
-    return val.map(newOption);
-  }
+  options: listReplacer(newOption)
 });
 
 //new state / new form
@@ -51,6 +49,8 @@ const newState = initSchema({
   account: { delete: false },
   errors: [],
   loading: 0,
+
+  //data
 
   polls: [],
 
@@ -85,13 +85,9 @@ const newState = initSchema({
     }
   },
 
-  errors(val) {
-    return val.map(newError);
-  },
+  errors: listReplacer(newError),
 
-  polls(val) {
-    return val.map(newPoll);
-  }
+  polls: listReplacer(newPoll)
 
 });
 

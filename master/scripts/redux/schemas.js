@@ -6,19 +6,33 @@ const { deepCopy } = require("all/utilities");
 
 //init schema
 
-const initSchema = (schema, replace = {}) => (data) => {
+const initSchema = (init, replacers = {}) => (...data) => deepCopy(
 
-  if (data) {
-    for (const p in replace) {
-      if (p in data) {
-        data[p] = replace[p](data[p]);
+  init,
+
+  ...data.map((e) => e && Object.keys(e).reduce((acc, f) => {
+
+    const [i, r, d] = [init[f], replacers[f], e[f]];
+
+    if (i !== undefined) {
+      if (typeof r === "function") {
+        acc[f] = r(d);
+      } else if (i && typeof i === "object" && !Array.isArray(i)) {
+        acc[f] = initSchema(i, r)(d);
+      } else {
+        acc[f] = d;
       }
     }
-  }
 
-  return deepCopy(schema, data);
+    return acc;
 
-};
+  }, {}))
+
+);
+
+//list replacer
+
+const listReplacer = (newSchema) => (val) => val.map((e) => newSchema(e));
 
 //new error
 
@@ -52,6 +66,7 @@ const newUser = initSchema({
 
 module.exports = {
   initSchema,
+  listReplacer,
   newError,
   newIPUser,
   newUser
