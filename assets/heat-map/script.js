@@ -9,6 +9,10 @@ const { getSVG, tooltip } = require("d3/app-logic");
 const { checkTooltip, globalEvents } = require("d3/event-handlers");
 const { svgChart, svgParams, svgMargin } = require("d3/view-logic");
 
+//node modules
+
+const d3 = require("d3");
+
 //utilities
 
 const calcMeanTemp = (data) => {

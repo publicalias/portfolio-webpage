@@ -1,7 +1,5 @@
 "use strict";
 
-/*global marked*/
-
 //global imports
 
 const { select } = require("all/dom-api");
@@ -9,12 +7,14 @@ const { useSetState } = require("all/react-utils");
 
 //node modules
 
+const DOMPurify = require("dompurify");
+const marked = require("marked");
 const React = require("react");
 const ReactDOM = require("react-dom");
 
 const { useLayoutEffect } = React;
 
-//utilities
+//setup
 
 marked.setOptions({ breaks: true });
 
@@ -35,7 +35,11 @@ const App = () => {
   //lifecycle
 
   useLayoutEffect(() => {
-    select(".js-render-preview").html(marked(state.text));
+
+    const html = marked(DOMPurify.sanitize(state.text, { ALLOWED_TAGS: [] }));
+
+    select(".js-render-preview").html(html);
+
   });
 
   //render

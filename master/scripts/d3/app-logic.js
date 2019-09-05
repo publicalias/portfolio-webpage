@@ -4,6 +4,10 @@
 
 const { select } = require("all/dom-api");
 
+//node modules
+
+const d3 = require("d3");
+
 //get svg
 
 const getSVG = (app, svg, ready, steps) => () => {

@@ -1,5 +1,9 @@
 "use strict";
 
+//node modules
+
+const d3 = require("d3");
+
 //svg chart
 
 const svgChart = (textX, textY, scaleX = [1, 1], scaleY = [1, 1]) => (params) => {

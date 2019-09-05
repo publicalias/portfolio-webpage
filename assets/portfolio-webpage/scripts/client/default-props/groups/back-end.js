@@ -17,10 +17,7 @@ const backEnd = {
         "If it does, it returns both the Unix timestamp and the natural language form of that date.",
         "If it does not contain a date or Unix timestamp, it returns null for those properties."
       ],
-      resources: [{
-        text: "Natural Date Parser",
-        link: "https://github.com/wanasit/chrono"
-      }],
+      resources: [],
       preview: "button",
       links: {
         page: "/timestamp-api",
@@ -31,10 +28,7 @@ const backEnd = {
       id: "header-parser-api",
       comments: "",
       userStories: ["I can get the IP address, language, and operating system for my browser."],
-      resources: [{
-        text: "User Agent Parser",
-        link: "https://github.com/faisalman/ua-parser-js"
-      }],
+      resources: [],
       preview: "button",
       links: {
         page: "/header-parser-api",
@@ -49,10 +43,7 @@ const backEnd = {
         "If I pass an URL that doesn't follow the valid http://www.example.com format, the JSON response will contain an error instead.",
         "When I visit that shortened URL, it will redirect me to my original link."
       ],
-      resources: [{
-        text: "URL Validator",
-        link: "https://github.com/ogt/valid-url"
-      }],
+      resources: [],
       preview: "button",
       links: {
         page: "/url-shortener-api",

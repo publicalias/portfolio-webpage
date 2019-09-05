@@ -16,10 +16,7 @@ const dataVis = {
         "I can type GitHub-flavored Markdown into a text area.",
         "I can see a preview of the output of my markdown that is updated as I type."
       ],
-      resources: [{
-        text: "Markdown Parser",
-        link: "https://github.com/markedjs/marked"
-      }],
+      resources: [],
       preview: "window",
       links: {
         page: "/markdown-previewer",
@@ -109,11 +106,11 @@ const dataVis = {
         "The game should be challenging but theoretically winnable."
       ],
       resources: [{
-        text: "Maze Generation Algorithm",
-        link: "https://en.wikipedia.org/wiki/Maze_generation_algorithm#Recursive_backtracker"
-      }, {
         text: "Circle Reference",
         link: "https://donatstudios.com/PixelCircleGenerator"
+      }, {
+        text: "Maze Generation Algorithm",
+        link: "https://en.wikipedia.org/wiki/Maze_generation_algorithm#Recursive_backtracker"
       }],
       preview: "window",
       links: {
@@ -192,11 +189,11 @@ const dataVis = {
         text: "Country Data Set",
         link: "https://github.com/DealPete/forceDirected/blob/master/countries.json"
       }, {
-        text: "Most Country Flags",
-        link: "https://github.com/hjnilsson/country-flags"
-      }, {
         text: "Kosovo Flag",
         link: "https://commons.wikimedia.org/wiki/File:Flag_of_Kosovo.svg"
+      }, {
+        text: "Other Country Flags",
+        link: "https://github.com/hjnilsson/country-flags"
       }],
       preview: "window",
       links: {

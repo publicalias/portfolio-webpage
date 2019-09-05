@@ -6,6 +6,7 @@ const compression = require("compression");
 const express = require("express");
 const fs = require("fs");
 
+const { addPath } = require("app-module-path");
 const { MongoClient } = require("mongodb");
 
 const app = express();
@@ -14,7 +15,7 @@ const app = express();
 
 global.__build = `${__dirname}/build`;
 
-require("app-module-path").addPath("master/scripts");
+addPath("master/scripts");
 
 //middleware
 

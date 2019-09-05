@@ -4,6 +4,10 @@
 
 const { select } = require("all/dom-api");
 
+//node modules
+
+const d3 = require("d3");
+
 //rotate handlers
 
 const rotateHandlers = (params, tooltip) => {

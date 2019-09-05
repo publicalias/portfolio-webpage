@@ -1,6 +1,8 @@
 "use strict";
 
-/*global TweenMax*/
+//node modules
+
+const { TweenMax } = require("gsap/umd/TweenMax");
 
 //utilities
 

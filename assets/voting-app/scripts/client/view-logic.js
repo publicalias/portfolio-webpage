@@ -10,6 +10,10 @@ const { select } = require("all/dom-api");
 const { hookEvent } = require("all/react-utils");
 const { toPrecision } = require("all/utilities");
 
+//node modules
+
+const d3 = require("d3");
+
 //chart color
 
 const chartColor = (i, arr) => {

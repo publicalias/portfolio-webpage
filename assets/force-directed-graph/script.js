@@ -12,6 +12,10 @@ const { bindObject } = require("all/utilities");
 const { getSVG, tooltip } = require("d3/app-logic");
 const { checkTooltip, globalEvents } = require("d3/event-handlers");
 
+//node modules
+
+const d3 = require("d3");
+
 //app logic
 
 const app = {

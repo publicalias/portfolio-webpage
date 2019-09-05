@@ -1,7 +1,5 @@
 "use strict";
 
-/*global topojson*/
-
 //local imports
 
 const { scrubData } = require("./scripts/client/app-logic");
@@ -15,6 +13,11 @@ const { select } = require("all/dom-api");
 const { bindObject } = require("all/utilities");
 const { getSVG, tooltip } = require("d3/app-logic");
 const { checkTooltip, globalEvents } = require("d3/event-handlers");
+
+//node modules
+
+const d3 = require("d3");
+const topojson = require("topojson");
 
 //app logic
 

@@ -6,8 +6,8 @@ const { get } = require("all/utilities");
 
 //node modules
 
-const React = require("react");
 const equal = require("fast-deep-equal");
+const React = require("react");
 
 const { useEffect, useLayoutEffect, useRef, useState } = React;
 

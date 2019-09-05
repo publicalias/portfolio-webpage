@@ -40,9 +40,6 @@ const frontEnd = {
         text: "Background",
         link: "https://www.pexels.com/photo/art-backlit-black-and-white-bulb-286908/"
       }, {
-        text: "Email Handler",
-        link: "https://nodemailer.com/about/"
-      }, {
         text: "Favicon",
         link: "https://www.freefavicon.com/"
       }, {
