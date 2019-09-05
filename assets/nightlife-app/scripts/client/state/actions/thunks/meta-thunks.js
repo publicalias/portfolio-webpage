@@ -10,58 +10,34 @@ const { reduxAPICall } = require("redux/client-utils");
 
 //meta add app data
 
-const metaAddAppData = () => (dispatch) => {
-
-  const args = {
-    path: "/nightlife-app/api/meta-add-app-data",
-    method: "PATCH",
-    data: newUserData()
-  };
-
-  return reduxAPICall(dispatch, args);
-
-};
+const metaAddAppData = () => (dispatch) => reduxAPICall(dispatch, {
+  path: "/nightlife-app/api/meta-add-app-data",
+  method: "PATCH",
+  data: newUserData()
+});
 
 //meta get user
 
-const metaGetUser = () => (dispatch) => {
-
-  const args = {
-    path: "/nightlife-app/api/meta-get-user",
-    method: "GET"
-  };
-
-  return reduxAPICall(dispatch, args);
-
-};
+const metaGetUser = () => (dispatch) => reduxAPICall(dispatch, {
+  path: "/nightlife-app/api/meta-get-user",
+  method: "GET"
+});
 
 //meta save avatar
 
-const metaSaveAvatar = (avatar) => (dispatch) => {
-
-  const args = {
-    path: "/nightlife-app/api/meta-save-avatar",
-    method: "PATCH",
-    data: { avatar }
-  };
-
-  return reduxAPICall(dispatch, args);
-
-};
+const metaSaveAvatar = (avatar) => (dispatch) => reduxAPICall(dispatch, {
+  path: "/nightlife-app/api/meta-save-avatar",
+  method: "PATCH",
+  data: { avatar }
+});
 
 //meta save zip code
 
-const metaSaveZipCode = (zipCode) => (dispatch) => {
-
-  const args = {
-    path: "/nightlife-app/api/meta-save-zip-code",
-    method: "PATCH",
-    data: { zipCode }
-  };
-
-  return reduxAPICall(dispatch, args);
-
-};
+const metaSaveZipCode = (zipCode) => (dispatch) => reduxAPICall(dispatch, {
+  path: "/nightlife-app/api/meta-save-zip-code",
+  method: "PATCH",
+  data: { zipCode }
+});
 
 module.exports = {
   metaAddAppData,

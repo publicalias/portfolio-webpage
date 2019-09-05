@@ -6,34 +6,22 @@ const { reduxAPICall } = require("redux/client-utils");
 
 //form add option
 
-const formAddOption = (add, options) => (dispatch) => {
-
-  const args = {
-    path: "/voting-app/api/form-add-option",
-    method: "GET",
-    data: {
-      add,
-      options
-    }
-  };
-
-  return reduxAPICall(dispatch, args);
-
-};
+const formAddOption = (add, options) => (dispatch) => reduxAPICall(dispatch, {
+  path: "/voting-app/api/form-add-option",
+  method: "GET",
+  data: {
+    add,
+    options
+  }
+});
 
 //form check title
 
-const formCheckTitle = (title) => (dispatch) => {
-
-  const args = {
-    path: "/voting-app/api/form-check-title",
-    method: "GET",
-    data: { title }
-  };
-
-  return reduxAPICall(dispatch, args);
-
-};
+const formCheckTitle = (title) => (dispatch) => reduxAPICall(dispatch, {
+  path: "/voting-app/api/form-check-title",
+  method: "GET",
+  data: { title }
+});
 
 //exports
 

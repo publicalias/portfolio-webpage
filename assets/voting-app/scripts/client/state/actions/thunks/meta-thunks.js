@@ -6,62 +6,38 @@ const { reduxAPICall } = require("redux/client-utils");
 
 //meta create poll
 
-const metaCreatePoll = (data) => (dispatch) => {
-
-  const args = {
-    path: "/voting-app/api/meta-create-poll",
-    method: "POST",
-    data
-  };
-
-  return reduxAPICall(dispatch, args);
-
-};
+const metaCreatePoll = (data) => (dispatch) => reduxAPICall(dispatch, {
+  path: "/voting-app/api/meta-create-poll",
+  method: "POST",
+  data
+});
 
 //meta delete poll
 
-const metaDeletePoll = (id) => (dispatch) => {
-
-  const args = {
-    path: "/voting-app/api/meta-delete-poll",
-    method: "DELETE",
-    data: { id }
-  };
-
-  return reduxAPICall(dispatch, args);
-
-};
+const metaDeletePoll = (id) => (dispatch) => reduxAPICall(dispatch, {
+  path: "/voting-app/api/meta-delete-poll",
+  method: "DELETE",
+  data: { id }
+});
 
 //meta get polls
 
-const metaGetPolls = (params, id, length) => (dispatch) => {
-
-  const args = {
-    path: "/voting-app/api/meta-get-polls",
-    method: "GET",
-    data: {
-      params,
-      id,
-      length
-    }
-  };
-
-  return reduxAPICall(dispatch, args);
-
-};
+const metaGetPolls = (params, id, length) => (dispatch) => reduxAPICall(dispatch, {
+  path: "/voting-app/api/meta-get-polls",
+  method: "GET",
+  data: {
+    params,
+    id,
+    length
+  }
+});
 
 //meta get user
 
-const metaGetUser = () => (dispatch) => {
-
-  const args = {
-    path: "/voting-app/api/meta-get-user",
-    method: "GET"
-  };
-
-  return reduxAPICall(dispatch, args);
-
-};
+const metaGetUser = () => (dispatch) => reduxAPICall(dispatch, {
+  path: "/voting-app/api/meta-get-user",
+  method: "GET"
+});
 
 //exports
 

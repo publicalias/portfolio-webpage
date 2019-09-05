@@ -6,35 +6,23 @@ const { reduxAPICall } = require("redux/client-utils");
 
 //user get data
 
-const userGetData = (params, id, length) => (dispatch) => {
-
-  const args = {
-    path: "/nightlife-app/api/user-get-data",
-    method: "GET",
-    data: {
-      params,
-      id,
-      length
-    }
-  };
-
-  return reduxAPICall(dispatch, args);
-
-};
+const userGetData = (params, id, length) => (dispatch) => reduxAPICall(dispatch, {
+  path: "/nightlife-app/api/user-get-data",
+  method: "GET",
+  data: {
+    params,
+    id,
+    length
+  }
+});
 
 //user toggle block
 
-const userToggleBlock = (id) => (dispatch) => {
-
-  const args = {
-    path: "/nightlife-app/api/user-toggle-block",
-    method: "PATCH",
-    data: { id }
-  };
-
-  return reduxAPICall(dispatch, args);
-
-};
+const userToggleBlock = (id) => (dispatch) => reduxAPICall(dispatch, {
+  path: "/nightlife-app/api/user-toggle-block",
+  method: "PATCH",
+  data: { id }
+});
 
 //exports
 
