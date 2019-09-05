@@ -65,13 +65,9 @@ const mockProps = (newState, actions, data, local, other) => {
 
   const init = {
 
-    actions: Object.keys(actions).reduce((acc, e) => {
-
-      acc[e] = jest.fn();
-
-      return acc;
-
-    }, {}),
+    actions: Object.keys(actions).reduce((acc, e) => Object.assign(acc, {
+      [e]: jest.fn()
+    }), {}),
 
     data: newState(data),
 

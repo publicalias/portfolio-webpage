@@ -77,17 +77,11 @@ const getContext = (Component, actions) => {
   const withStore = connect(
     (state) => ({ data: state }),
     (dispatch) => ({
-      actions: Object.entries(actions).reduce((acc, [key, val]) => {
-
-        const thunk = typeof val() === "function";
-
-        acc[key] = thunk ? (...args) => dispatch(val(...args)) : (...args) => {
+      actions: Object.entries(actions).reduce((acc, [key, val]) => Object.assign(acc, {
+        [key]: typeof val() === "function" ? (...args) => dispatch(val(...args)) : (...args) => {
           dispatch(val(...args));
-        };
-
-        return acc;
-
-      }, {})
+        }
+      }), {})
     })
   );
 

@@ -26,10 +26,10 @@ describe("metaDeletePoll", () => {
 
   const { metaDeletePoll } = actions;
 
-  testAPI.default(metaDeletePoll("id-a"), {
+  testAPI.default(metaDeletePoll(""), {
     path: "/voting-app/api/meta-delete-poll",
     method: "DELETE",
-    data: { id: "id-a" }
+    data: { id: "" }
   });
 
 });
