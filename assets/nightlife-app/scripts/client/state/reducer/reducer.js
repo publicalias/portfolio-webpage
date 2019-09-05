@@ -3,6 +3,7 @@
 //local imports
 
 const metaHandlers = require("./handlers/meta-handlers");
+const userHandlers = require("./handlers/user-handlers");
 
 const { newState } = require("../../../../schemas");
 
@@ -16,7 +17,8 @@ const { initReducer } = require("redux/client-utils");
 
 const reducer = initReducer(newState(), Object.assign(
   metaHandlers,
-  metaHandlersAll
+  metaHandlersAll,
+  userHandlers
 ));
 
 //exports

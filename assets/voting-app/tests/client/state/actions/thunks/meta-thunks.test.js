@@ -40,11 +40,13 @@ describe("metaGetPolls", () => {
 
   const { metaGetPolls } = actions;
 
-  testAPI.default(metaGetPolls(newListParams()), {
+  const params = newListParams();
+
+  testAPI.default(metaGetPolls(params), {
     path: "/voting-app/api/meta-get-polls",
     method: "GET",
     data: {
-      params: newListParams(),
+      params,
       id: undefined,
       length: undefined
     }
