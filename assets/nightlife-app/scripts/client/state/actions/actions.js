@@ -7,6 +7,7 @@ const userFactories = require("./factories/user-factories");
 const venueFactories = require("./factories/venue-factories");
 
 const favoriteThunks = require("./thunks/favorite-thunks");
+const friendThunks = require("./thunks/friend-thunks");
 const metaThunks = require("./thunks/meta-thunks");
 const userThunks = require("./thunks/user-thunks");
 const venueThunks = require("./thunks/venue-thunks");
@@ -25,6 +26,7 @@ const actions = Object.assign(
   venueFactories,
 
   favoriteThunks,
+  friendThunks,
   metaThunks,
   userThunks,
   venueThunks
