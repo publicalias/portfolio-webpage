@@ -32,8 +32,7 @@ describe("favoriteGetData", () => {
 
   testAPI.default(favoriteGetData(), {
     path: "/nightlife-app/api/favorite-get-data",
-    method: "GET",
-    data: { length: undefined }
+    method: "GET"
   });
 
 });

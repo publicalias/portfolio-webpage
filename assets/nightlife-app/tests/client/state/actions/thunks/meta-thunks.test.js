@@ -2,7 +2,6 @@
 
 //local imports
 
-const { newUserData } = require("../../../../../schemas");
 const { actions } = require("../../../../../scripts/client/state/actions/actions");
 const { testAPI } = require("../../../test-helpers");
 
@@ -14,8 +13,7 @@ describe("metaAddAppData", () => {
 
   testAPI.default(metaAddAppData(), {
     path: "/nightlife-app/api/meta-add-app-data",
-    method: "PATCH",
-    data: newUserData()
+    method: "PATCH"
   });
 
 });

@@ -1,9 +1,5 @@
 "use strict";
 
-//local imports
-
-const { newUserData } = require("../../../../../schemas");
-
 //global imports
 
 const { reduxAPICall } = require("redux/client-utils");
@@ -12,8 +8,7 @@ const { reduxAPICall } = require("redux/client-utils");
 
 const metaAddAppData = () => (dispatch) => reduxAPICall(dispatch, {
   path: "/nightlife-app/api/meta-add-app-data",
-  method: "PATCH",
-  data: newUserData()
+  method: "PATCH"
 });
 
 //meta get user

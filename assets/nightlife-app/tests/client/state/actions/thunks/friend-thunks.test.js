@@ -72,8 +72,7 @@ describe("friendGetData", () => {
 
   testAPI.default(friendGetData(), {
     path: "/nightlife-app/api/friend-get-data",
-    method: "GET",
-    data: { length: undefined }
+    method: "GET"
   });
 
 });

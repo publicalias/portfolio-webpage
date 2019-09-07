@@ -41,10 +41,9 @@ const friendDismiss = (id) => (dispatch) => reduxAPICall(dispatch, {
 
 //friend get data
 
-const friendGetData = (length) => (dispatch) => reduxAPICall(dispatch, {
+const friendGetData = () => (dispatch) => reduxAPICall(dispatch, {
   path: "/nightlife-app/api/friend-get-data",
-  method: "GET",
-  data: { length }
+  method: "GET"
 });
 
 //friend reject

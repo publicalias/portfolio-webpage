@@ -19,10 +19,9 @@ const favoriteAdd = (name, id) => (dispatch) => reduxAPICall(dispatch, {
 
 //favorite get data
 
-const favoriteGetData = (length) => (dispatch) => reduxAPICall(dispatch, {
+const favoriteGetData = () => (dispatch) => reduxAPICall(dispatch, {
   path: "/nightlife-app/api/favorite-get-data",
-  method: "GET",
-  data: { length }
+  method: "GET"
 });
 
 //favorite remove
