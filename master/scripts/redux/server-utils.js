@@ -45,6 +45,18 @@ const apiHandler = (handlers) => {
 
 };
 
+//auth fail
+
+const authFail = (req, res, forbid) => {
+  if (!req.user || req.user.data.restricted || forbid && forbid(req.user.id)) {
+
+    res.sendStatus(401);
+
+    return true;
+
+  }
+};
+
 //get ip user
 
 const getIPUser = (ip) => usersCol().findOne({
@@ -107,6 +119,7 @@ const handleSession = (router) => {
 
 module.exports = {
   apiHandler,
+  authFail,
   getIPUser,
   getOrSetUser,
   handleSession
