@@ -4,6 +4,19 @@
 
 const { actions } = require("../../../../../scripts/client/state/actions/actions");
 
+//meta set address
+
+test("metaSetAddress creates META_SET_ADDRESS actions", () => {
+
+  const { metaSetAddress } = actions;
+
+  expect(metaSetAddress("")).toEqual({
+    type: "META_SET_ADDRESS",
+    address: ""
+  });
+
+});
+
 //meta set avatar
 
 test("metaSetAvatar creates META_SET_AVATAR actions", () => {
@@ -13,19 +26,6 @@ test("metaSetAvatar creates META_SET_AVATAR actions", () => {
   expect(metaSetAvatar("")).toEqual({
     type: "META_SET_AVATAR",
     avatar: ""
-  });
-
-});
-
-//meta set zip code
-
-test("metaSetZipCode creates META_SET_ZIP_CODE actions", () => {
-
-  const { metaSetZipCode } = actions;
-
-  expect(metaSetZipCode("")).toEqual({
-    type: "META_SET_ZIP_CODE",
-    zipCode: ""
   });
 
 });

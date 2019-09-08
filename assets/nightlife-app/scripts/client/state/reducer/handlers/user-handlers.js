@@ -15,18 +15,13 @@ const USER_CLEAR_STATE = (state) => deepCopy(state, {
   users: newState().users
 });
 
-//user set name
+//user set search
 
-const USER_SET_NAME = (state, { name }) => deepCopy(state, { users: { list: { name } } });
-
-//user set zip code
-
-const USER_SET_ZIP_CODE = (state, { zipCode }) => deepCopy(state, { users: { list: { zipCode } } });
+const USER_SET_SEARCH = (state, { search }) => deepCopy(state, { users: { list: { search } } });
 
 //exports
 
 module.exports = {
   USER_CLEAR_STATE,
-  USER_SET_NAME,
-  USER_SET_ZIP_CODE
+  USER_SET_SEARCH
 };

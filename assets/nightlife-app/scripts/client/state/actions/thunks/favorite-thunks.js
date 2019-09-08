@@ -17,13 +17,6 @@ const favoriteAdd = (name, id) => (dispatch) => reduxAPICall(dispatch, {
   }
 });
 
-//favorite get data
-
-const favoriteGetData = () => (dispatch) => reduxAPICall(dispatch, {
-  path: "/nightlife-app/api/favorite-get-data",
-  method: "GET"
-});
-
 //favorite remove
 
 const favoriteRemove = (id) => (dispatch) => reduxAPICall(dispatch, {
@@ -36,6 +29,5 @@ const favoriteRemove = (id) => (dispatch) => reduxAPICall(dispatch, {
 
 module.exports = {
   favoriteAdd,
-  favoriteGetData,
   favoriteRemove
 };

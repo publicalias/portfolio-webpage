@@ -14,28 +14,15 @@ test("userClearState creates USER_CLEAR_STATE actions", () => {
 
 });
 
-//user set name
+//user set search
 
-test("userSetName creates USER_SET_NAME actions", () => {
+test("userSetSearch creates USER_SET_SEARCH actions", () => {
 
-  const { userSetName } = actions;
+  const { userSetSearch } = actions;
 
-  expect(userSetName("")).toEqual({
-    type: "USER_SET_NAME",
-    name: ""
-  });
-
-});
-
-//user set zip code
-
-test("userSetZipCode creates USER_SET_ZIP_CODE actions", () => {
-
-  const { userSetZipCode } = actions;
-
-  expect(userSetZipCode("")).toEqual({
-    type: "USER_SET_ZIP_CODE",
-    zipCode: ""
+  expect(userSetSearch("")).toEqual({
+    type: "USER_SET_SEARCH",
+    search: ""
   });
 
 });

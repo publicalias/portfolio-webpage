@@ -2,8 +2,7 @@
 
 //global imports
 
-const { deepCopy } = require("all/utilities");
-const { initSchema, listReplacer, newError, newUser } = require("redux/schemas");
+const { copySchema, initSchema, listReplacer, newError, newUser } = require("redux/schemas");
 
 //new favorite
 
@@ -36,11 +35,18 @@ const newFriend = initSchema({
   hidden: []
 });
 
+//new geo point
+
+const newGeoPoint = initSchema({
+  type: "Point",
+  coordinates: []
+});
+
 //new list params users
 
 const newListParamsUsers = initSchema({
-  name: "",
-  zipCode: ""
+  range: 5,
+  search: ""
 });
 
 //new list params venues
@@ -72,19 +78,38 @@ const newRSVP = initSchema({
 //new user data
 
 const newUserData = initSchema({
+
+  name: "",
+  id: "",
+
   data: {
-    nightlifeApp: {
-      avatar: "",
-      zipCode: "",
-      auto: false,
-      blocks: []
-    }
+
+    app: "nightlife-app",
+
+    avatar: "",
+    location: null,
+    distance: 0, //computed
+    blocks: [],
+
+    favorites: [], //computed
+    friends: [] //computed
+
+  }
+
+}, {
+  data: {
+
+    location: newGeoPoint,
+
+    favorites: listReplacer(newFavorite),
+    friends: listReplacer(newFriend)
+
   }
 });
 
 //new user with data
 
-const newUserWithData = initSchema(deepCopy(newUser(), newUserData()));
+const newUserWithData = copySchema(newUser, newUserData);
 
 //new venue
 
@@ -97,6 +122,10 @@ const newOpen = initSchema({
 const newHours = initSchema({ open: [] }, { open: listReplacer(newOpen) });
 
 const newVenue = initSchema({ //uses the yelp api
+
+  //meta
+
+  favorites: [], //computed
 
   //list
 
@@ -115,7 +144,11 @@ const newVenue = initSchema({ //uses the yelp api
   url: ""
 
 }, {
+
+  favorites: listReplacer(newFavorite),
+
   hours: listReplacer(newHours)
+
 });
 
 //new state
@@ -128,7 +161,7 @@ const newState = initSchema({
   account: {
     settings: false,
     avatar: "",
-    zipCode: "",
+    address: "",
     delete: false
   },
   errors: [],
@@ -136,8 +169,7 @@ const newState = initSchema({
 
   //data
 
-  meta: {
-    favorites: [],
+  notifications: {
     friends: [],
     rsvps: []
   },
@@ -149,12 +181,7 @@ const newState = initSchema({
 
   //page
 
-  users: {
-    list: {
-      name: "",
-      zipCode: ""
-    }
-  },
+  users: { list: { search: "" } },
 
   venues: {
     list: { search: "" },
@@ -173,14 +200,13 @@ const newState = initSchema({
 
   errors: listReplacer(newError),
 
-  meta: {
-    favorites: listReplacer(newFavorite),
+  notifications: {
     friends: listReplacer(newFriend),
     rsvps: listReplacer(newRSVP)
   },
 
   page: {
-    users: listReplacer(newUserWithData),
+    users: listReplacer(newUserData),
     venues: listReplacer(newVenue)
   }
 
@@ -191,6 +217,7 @@ const newState = initSchema({
 module.exports = {
   newFavorite,
   newFriend,
+  newGeoPoint,
   newListParamsUsers,
   newListParamsVenues,
   newRSVP,

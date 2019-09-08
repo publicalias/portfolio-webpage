@@ -24,19 +24,6 @@ describe("favorite add", () => {
 
 });
 
-//favorite get data
-
-describe("favoriteGetData", () => {
-
-  const { favoriteGetData } = actions;
-
-  testAPI.default(favoriteGetData(), {
-    path: "/nightlife-app/api/favorite-get-data",
-    method: "GET"
-  });
-
-});
-
 //favorite remove
 
 describe("favoriteRemove", () => {

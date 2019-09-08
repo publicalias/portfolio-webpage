@@ -4,30 +4,44 @@
 
 const { deepCopy } = require("all/utilities");
 
-//init schema
+//init schema / copy schema
 
-const initSchema = (init, replacers = {}) => (...data) => deepCopy(
+const initSchema = (init, replacers = {}) => {
 
-  init,
+  const newSchema = (...data) => deepCopy(
 
-  ...data.map((e) => e && Object.keys(e).reduce((acc, f) => {
+    init,
 
-    const [i, r, d] = [init[f], replacers[f], e[f]];
+    ...data.map((e) => e && Object.keys(e).reduce((acc, f) => {
 
-    if (i !== undefined) {
-      if (typeof r === "function") {
-        acc[f] = r(d);
-      } else if (i && typeof i === "object" && !Array.isArray(i)) {
-        acc[f] = initSchema(i, r)(d);
-      } else {
-        acc[f] = d;
+      const [i, r, d] = [init[f], replacers[f], e[f]];
+
+      if (i !== undefined) {
+        if (typeof r === "function") {
+          acc[f] = r(d);
+        } else if (i && typeof i === "object" && !Array.isArray(i)) {
+          acc[f] = initSchema(i, r)(d);
+        } else {
+          acc[f] = d;
+        }
       }
-    }
 
-    return acc;
+      return acc;
 
-  }, {}))
+    }, {}))
 
+  );
+
+  return Object.assign(newSchema, {
+    init,
+    replacers
+  });
+
+};
+
+const copySchema = (...args) => initSchema(
+  deepCopy(...args.map((e) => e.init)),
+  deepCopy(...args.map((e) => e.replacers))
 );
 
 //list replacer
@@ -65,6 +79,7 @@ const newUser = initSchema({
 //exports
 
 module.exports = {
+  copySchema,
   initSchema,
   listReplacer,
   newError,

@@ -14,12 +14,7 @@ test("reducer accepts USER_CLEAR_STATE actions", () => {
 
   testReducer(userClearState(), {
     page: { users: [{}] },
-    users: {
-      list: {
-        name: "User A",
-        zipCode: "12345"
-      }
-    }
+    users: { list: { search: "User A" } }
   }, {
     page: { users: [] },
     users: newState().users
@@ -27,22 +22,12 @@ test("reducer accepts USER_CLEAR_STATE actions", () => {
 
 });
 
-//user set name
+//user set search
 
-test("reducer accepts USER_SET_NAME actions", () => {
+test("reducer accepts USER_SET_SEARCH actions", () => {
 
-  const { userSetName } = actions;
+  const { userSetSearch } = actions;
 
-  testReducer(userSetName("User A"), null, { users: { list: { name: "User A" } } });
-
-});
-
-//user set zip code
-
-test("reducer accepts USER_SET_ZIP_CODE actions", () => {
-
-  const { userSetZipCode } = actions;
-
-  testReducer(userSetZipCode("12345"), null, { users: { list: { zipCode: "12345" } } });
+  testReducer(userSetSearch("User A"), null, { users: { list: { search: "User A" } } });
 
 });

@@ -5,6 +5,16 @@
 const { actions } = require("../../../../../scripts/client/state/actions/actions");
 const { testReducer } = require("../../../test-helpers");
 
+//meta set address
+
+test("reducer accepts META_SET_ADDRESS actions", () => {
+
+  const { metaSetAddress } = actions;
+
+  testReducer(metaSetAddress("12345"), null, { account: { address: "12345" } });
+
+});
+
 //meta set avatar
 
 test("reducer accepts META_SET_AVATAR actions", () => {
@@ -14,16 +24,6 @@ test("reducer accepts META_SET_AVATAR actions", () => {
   const avatar = "https://www.example.com/avatar.jpg";
 
   testReducer(metaSetAvatar(avatar), null, { account: { avatar } });
-
-});
-
-//meta set zip code
-
-test("reducer accepts META_SET_ZIP_CODE actions", () => {
-
-  const { metaSetZipCode } = actions;
-
-  testReducer(metaSetZipCode("12345"), null, { account: { zipCode: "12345" } });
 
 });
 

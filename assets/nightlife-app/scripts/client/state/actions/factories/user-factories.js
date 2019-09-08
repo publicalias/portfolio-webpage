@@ -4,24 +4,16 @@
 
 const userClearState = () => ({ type: "USER_CLEAR_STATE" });
 
-//user set name
+//user set search
 
-const userSetName = (name) => ({
-  type: "USER_SET_NAME",
-  name
-});
-
-//user set zip code
-
-const userSetZipCode = (zipCode) => ({
-  type: "USER_SET_ZIP_CODE",
-  zipCode
+const userSetSearch = (search) => ({
+  type: "USER_SET_SEARCH",
+  search
 });
 
 //exports
 
 module.exports = {
   userClearState,
-  userSetName,
-  userSetZipCode
+  userSetSearch
 };
