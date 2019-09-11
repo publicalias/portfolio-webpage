@@ -11,7 +11,7 @@ const { initTestToggle, initTestUnvote, initTestVote, testOptions } = require(".
 
 const { newIPUser, newUser } = require("redux/schemas");
 const { testMock } = require("redux/tests/meta-tests");
-const { initMockAPICall, mongoTests, testAuthFail } = require("redux/tests/server-tests");
+const { initMockAPICall, mongoTests, testAuthFail, testInsert } = require("redux/tests/server-tests");
 
 //utilities
 
@@ -39,9 +39,10 @@ describe("pollAddOption", () => {
 
   const testError = async (error, text, options = []) => {
 
-    const poll = newPoll(Object.assign({ id: "id-a" }, { options: options.map((e) => ({ text: e })) }));
-
-    await pollsCol().insertOne(poll);
+    await pollsCol().insertOne(newPoll({
+      id: "id-a",
+      options: options.map((e) => ({ text: e }))
+    }));
 
     const res = await mockAPICall(newUser(), getData(text));
 
@@ -56,11 +57,10 @@ describe("pollAddOption", () => {
   it("sends object if option is valid", async () => {
 
     const poll = newPoll({ id: "id-a" });
-    const user = newUser({ id: "id-b" });
 
     await pollsCol().insertOne(poll);
 
-    const res = await mockAPICall(user, getData("Option A"));
+    const res = await mockAPICall(newUser({ id: "id-b" }), getData("Option A"));
 
     const update = await pollsCol().findOne();
 
@@ -96,7 +96,13 @@ describe("pollCastVote", () => {
 
   it("sends object if ip user exists", () => testVote(newIPUser({ id: "id-b" })));
 
-  it("sends object if no ip user exists", () => testVote());
+  it("sends object if no ip user exists", async () => {
+
+    await testVote();
+
+    await testInsert(usersCol);
+
+  });
 
 });
 
@@ -113,23 +119,11 @@ describe("pollRemoveOption", () => {
     text
   });
 
-  const getPoll = () => newPoll({
-    id: "id-a",
-    users: { created: "id-b" },
-    options: [{
-      text: "Option A",
-      created: "id-c"
-    }]
-  });
-
   const testRemove = async (id) => {
 
-    const poll = getPoll();
-    const user = newUser({ id });
+    const poll = await pollsCol().findOne();
 
-    await pollsCol().insertOne(poll);
-
-    const res = await mockAPICall(user, getData("Option A"));
+    const res = await mockAPICall(newUser({ id }), getData("Option A"));
 
     const update = await pollsCol().findOne();
 
@@ -139,14 +133,20 @@ describe("pollRemoveOption", () => {
 
   };
 
-  it("sends 401 if user is unauthenticated, restricted, or not the creator", async () => {
+  beforeEach(() => pollsCol().insertOne(newPoll({
+    id: "id-a",
+    users: { created: "id-b" },
+    options: [{
+      text: "Option A",
+      created: "id-c"
+    }]
+  })));
 
-    const user = newUser({ id: "id-d" });
-    const data = getData("Option A");
+  it("sends 401 if user is unauthenticated, restricted, or not the creator", () => {
 
-    await pollsCol().insertOne(getPoll());
+    const args = [mockAPICall, getData("Option A"), [newUser({ id: "id-d" })]];
 
-    return testAuthFail(mockAPICall, data, [user]);
+    return testAuthFail(...args);
 
   });
 
@@ -210,7 +210,13 @@ describe("pollToggleHide", () => {
 
   it("sends object if ip user exists", () => testToggle(newIPUser({ id: "id-b" })));
 
-  it("sends object if no ip user exists", () => testToggle());
+  it("sends object if no ip user exists", async () => {
+
+    await testToggle();
+
+    await testInsert(usersCol);
+
+  });
 
 });
 
@@ -224,44 +230,40 @@ describe("pollToggleSecret", () => {
 
   const getData = () => ({ id: "id-a" });
 
-  const getPoll = () => newPoll({
-    id: "id-a",
-    users: { created: "id-b" }
-  });
+  const testSecret = async (user) => {
 
-  const testToggle = async (user) => {
+    const toggle = async () => {
 
-    const { secret } = await pollsCol().findOne();
+      const { secret } = await pollsCol().findOne();
 
-    const res = await mockAPICall(user, getData());
+      const res = await mockAPICall(user, getData());
 
-    const update = await pollsCol().findOne();
+      const update = await pollsCol().findOne();
 
-    testMock(res.json, [{}]);
+      testMock(res.json, [{}]);
 
-    expect(update.secret).toEqual(!secret);
+      expect(update.secret).toEqual(!secret);
+
+    };
+
+    await toggle();
+    await toggle();
 
   };
 
-  it("sends 401 if user is unauthenticated, restricted, or not the creator", async () => {
+  beforeEach(() => pollsCol().insertOne(newPoll({
+    id: "id-a",
+    users: { created: "id-b" }
+  })));
 
-    const user = newUser({ id: "id-c" });
+  it("sends 401 if user is unauthenticated, restricted, or not the creator", () => {
 
-    await pollsCol().insertOne(getPoll());
+    const args = [mockAPICall, getData(), [newUser({ id: "id-c" })]];
 
-    return testAuthFail(mockAPICall, getData(), [user]);
-
-  });
-
-  it("sends object if user is valid", async () => {
-
-    const user = newUser({ id: "id-b" });
-
-    await pollsCol().insertOne(getPoll());
-
-    await testToggle(user);
-    await testToggle(user);
+    return testAuthFail(...args);
 
   });
+
+  it("sends object if user is valid", () => testSecret(newUser({ id: "id-b" })));
 
 });

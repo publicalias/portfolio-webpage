@@ -89,7 +89,7 @@ exports[`sidebar should match snapshot (name) 1`] = `
   className="c-sidebar"
 >
   <p>
-    Hi, Ethan Frost!
+    Hi, User A!
   </p>
   <hr />
   <AuthButtons
@@ -157,7 +157,7 @@ exports[`sidebar should match snapshot (name) 1`] = `
             "restricted": false,
           },
           "id": "",
-          "name": "Ethan Frost",
+          "name": "User A",
           "type": "auth",
         },
         "view": Object {

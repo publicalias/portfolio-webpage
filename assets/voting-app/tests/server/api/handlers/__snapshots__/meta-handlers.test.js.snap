@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`metaCreatePoll sends object if poll is valid 1`] = `
+Object {
+  "_id": "[CENSORED]",
+  "author": "User A",
+  "date": "[CENSORED]",
+  "id": "[CENSORED]",
+  "options": Array [
+    Object {
+      "created": "id-a",
+      "text": "Option A",
+      "voted": Array [],
+    },
+  ],
+  "secret": true,
+  "title": "Title A",
+  "users": Object {
+    "created": "id-a",
+    "flagged": Array [],
+    "hidden": Array [],
+  },
+  "votes": 0,
+}
+`;

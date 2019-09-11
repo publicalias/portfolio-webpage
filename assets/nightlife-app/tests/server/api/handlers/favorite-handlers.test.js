@@ -10,7 +10,7 @@ const { newFavorite } = require("../../../../schemas");
 
 const { newUser } = require("redux/schemas");
 const { testMock } = require("redux/tests/meta-tests");
-const { initMockAPICall, mongoTests, testAuthFail } = require("redux/tests/server-tests");
+const { initMockAPICall, mongoTests, testAuthFail, testInsert } = require("redux/tests/server-tests");
 
 //utilities
 
@@ -31,8 +31,8 @@ describe("favoriteAdd", () => {
   const mockAPICall = initMockAPICall(favoriteAdd, "POST");
 
   const getData = () => ({
-    name: "Coffee",
-    id: "coffee"
+    name: "Venue A",
+    id: "id-a"
   });
 
   it("sends 401 if user is unauthenticated or restricted", async () => {
@@ -45,11 +45,17 @@ describe("favoriteAdd", () => {
 
   it("sends object if user is authenticated", async () => {
 
-    const res = await mockAPICall(newUser(), getData());
+    const res = await mockAPICall(
+      newUser({
+        name: "User A",
+        id: "id-a"
+      }),
+      getData()
+    );
 
     testMock(res.json, [{}]);
 
-    expect(await favoritesCol().countDocuments()).toEqual(1);
+    await testInsert(favoritesCol);
 
   });
 

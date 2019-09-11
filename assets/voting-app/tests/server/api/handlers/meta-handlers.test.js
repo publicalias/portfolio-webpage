@@ -11,7 +11,7 @@ const { overlyLongInput, testOptions, testTitle } = require("../../test-helpers"
 
 const { newIPUser, newUser } = require("redux/schemas");
 const { testMock } = require("redux/tests/meta-tests");
-const { initMockAPICall, mongoTests, testAuthFail } = require("redux/tests/server-tests");
+const { initMockAPICall, mongoTests, testAuthFail, testInsert } = require("redux/tests/server-tests");
 
 //utilities
 
@@ -34,7 +34,7 @@ describe("metaCreatePoll", () => {
 
   const getData = (form) => newForm(form);
 
-  const testError = async (error, form, docs = 0) => {
+  const testError = async (error, form, count = 0) => {
 
     const res = await mockAPICall(newUser(), getData(form));
 
@@ -42,13 +42,13 @@ describe("metaCreatePoll", () => {
 
     expect(args[0].errors.includes(error)).toEqual(true);
 
-    expect(await pollsCol().countDocuments()).toEqual(docs);
+    expect(await pollsCol().countDocuments()).toEqual(count);
 
   };
 
   testOptions((error, data, other) => testError(error, { options: [data, ...other || []] }));
 
-  testTitle((error, data, docs) => testError(error, { title: data }, docs), [null, null, [1]]);
+  testTitle((error, data, count) => testError(error, { title: data }, count), [null, null, [1]]);
 
   it("sends 401 if user is unauthenticated or restricted", async () => {
 
@@ -60,14 +60,21 @@ describe("metaCreatePoll", () => {
 
   it("sends object if poll is valid", async () => {
 
-    const res = await mockAPICall(newUser(), getData({
-      title: "Title A",
-      options: ["Option A"]
-    }));
+    const res = await mockAPICall(
+      newUser({
+        name: "User A",
+        id: "id-a"
+      }),
+      getData({
+        title: "Title A",
+        options: ["Option A"],
+        secret: true
+      })
+    );
 
     testMock(res.json, [{}]);
 
-    expect(await pollsCol().countDocuments()).toEqual(1);
+    await testInsert(pollsCol);
 
   });
 
@@ -83,18 +90,14 @@ describe("metaDeletePoll", () => {
 
   const getData = () => ({ id: "id-a" });
 
-  const getPoll = () => newPoll({
+  beforeEach(() => pollsCol().insertOne(newPoll({
     id: "id-a",
     users: { created: "id-b" }
-  });
+  })));
 
   it("sends 401 if user is unauthenticated, restricted, or not the creator", async () => {
 
-    const user = newUser({ id: "id-c" });
-
-    await pollsCol().insertOne(getPoll());
-
-    await testAuthFail(mockAPICall, getData(), [user]);
+    await testAuthFail(mockAPICall, getData(), [newUser({ id: "id-c" })]);
 
     expect(await pollsCol().countDocuments()).toEqual(1);
 
@@ -102,11 +105,7 @@ describe("metaDeletePoll", () => {
 
   it("sends object if user is valid", async () => {
 
-    const user = newUser({ id: "id-b" });
-
-    await pollsCol().insertOne(getPoll());
-
-    const res = await mockAPICall(user, getData());
+    const res = await mockAPICall(newUser({ id: "id-b" }), getData());
 
     testMock(res.json, [{}]);
 
@@ -195,13 +194,7 @@ describe("metaGetPollList (sort)", () => {
 
   };
 
-  it("sends polls if sort is new", () => {
-
-    const polls = [{}, { date: Date.now() }];
-
-    return testPolls(polls, "new");
-
-  });
+  it("sends polls if sort is new", () => testPolls([{}, { date: Date.now() }], "new"));
 
   it("sends polls if sort is popular", () => {
 
@@ -301,9 +294,9 @@ describe("metaGetPollList (filter)", () => {
 
   it("sends 401 if filter is created and user is unauthenticated or restricted", () => {
 
-    const data = getData("created");
+    const args = [mockAPICall, getData("created")];
 
-    return testAuthFail(mockAPICall, data);
+    return testAuthFail(...args);
 
   });
 
@@ -360,7 +353,7 @@ describe("metaGetUser", () => {
 
     await usersCol().insertOne(user);
 
-    return testUser(user);
+    await testUser(user);
 
   });
 

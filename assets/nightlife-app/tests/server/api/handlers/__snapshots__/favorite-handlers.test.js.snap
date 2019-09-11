@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`favoriteAdd sends object if user is authenticated 1`] = `
+Object {
+  "_id": "[CENSORED]",
+  "id": "[CENSORED]",
+  "user": Object {
+    "id": "id-a",
+    "name": "User A",
+  },
+  "venue": Object {
+    "id": "id-a",
+    "name": "Venue A",
+  },
+}
+`;

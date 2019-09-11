@@ -17,7 +17,12 @@ const usersCol = () => db.collection("auth/users");
 
 const initTestToggle = (handler, getData, prop) => async (user) => {
 
-  const toggleProp = async (bool) => {
+  await Promise.all([
+    pollsCol().insertOne(newPoll({ id: "id-a" })),
+    user && usersCol().insertOne(user)
+  ]);
+
+  const toggleProp = async (bool = false) => {
 
     const res = await handler(user || {}, getData());
 
@@ -32,13 +37,10 @@ const initTestToggle = (handler, getData, prop) => async (user) => {
 
   };
 
-  await Promise.all([
-    pollsCol().insertOne(newPoll({ id: "id-a" })),
-    user && "ip" in user && usersCol().insertOne(user)
-  ]);
-
   await toggleProp(true);
-  await toggleProp(false);
+  await toggleProp();
+
+  expect(await usersCol().countDocuments()).toEqual(1);
 
 };
 
@@ -78,6 +80,14 @@ const initTestVote = (handler, getData) => async (user) => {
 
   const options = [{ text: "Option A" }, { text: "Option B" }];
 
+  await Promise.all([
+    pollsCol().insertOne(newPoll({
+      id: "id-a",
+      options
+    })),
+    user && usersCol().insertOne(user)
+  ]);
+
   const castVote = async (index) => {
 
     const res = await handler(user || {}, getData(options[index].text));
@@ -98,16 +108,10 @@ const initTestVote = (handler, getData) => async (user) => {
 
   };
 
-  await Promise.all([
-    pollsCol().insertOne(newPoll({
-      id: "id-a",
-      options
-    })),
-    user && "ip" in user && usersCol().insertOne(user)
-  ]);
-
   await castVote(0);
   await castVote(1);
+
+  expect(await usersCol().countDocuments()).toEqual(1);
 
 };
 

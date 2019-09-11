@@ -17,19 +17,19 @@ const initMockAPICall = (fn, method) => async (user, data) => {
 
   const isQuery = method === "GET" || method === "DELETE";
 
-  const reqUser = user.auth ? { user } : { ip: user.ip };
+  const reqUser = user.auth ? { user } : { ip: "ip" in user ? user.ip : "0.0.0.0" };
   const reqData = isQuery ? { query: { data: JSON.stringify(data) } } : { body: { data } };
-  const resSent = { headersSent: false };
 
-  const resMock = () => jest.fn(() => {
+  const resSent = { headersSent: false };
+  const resMock = ((fn) => ({
+    json: fn,
+    sendStatus: fn
+  }))(jest.fn(() => {
     resSent.headersSent = true;
-  });
+  }));
 
   const req = Object.assign(reqUser, reqData);
-  const res = Object.assign(resSent, {
-    json: resMock(),
-    sendStatus: resMock()
-  });
+  const res = Object.assign(resSent, resMock);
 
   await fn(req, res);
 
@@ -104,10 +104,31 @@ const testAuthFail = async (mockAPICall, data, other = []) => {
 
 };
 
+//test insert
+
+const omitKeys = (obj, keys) => Object.entries(obj)
+  .map(([key, val]) => [key, keys.includes(key) ? "[CENSORED]" : val])
+  .reduce((acc, [key, val]) => Object.assign(acc, {
+    [key]: val
+  }), {});
+
+const testInsert = async (collection, keys = []) => {
+
+  const [count, document] = await Promise.all([
+    collection().countDocuments(),
+    collection().findOne()
+  ]);
+
+  expect(count).toEqual(1);
+  expect(omitKeys(document, ["_id", "id", "date", ...keys])).toMatchSnapshot();
+
+};
+
 //exports
 
 module.exports = {
   initMockAPICall,
   mongoTests,
-  testAuthFail
+  testAuthFail,
+  testInsert
 };

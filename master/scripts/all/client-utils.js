@@ -16,7 +16,7 @@ const checkInput = () => {
     blocked: false
   };
 
-  const setClass = (touch) => {
+  const setClass = (touch = false) => {
     DOMInput.class("is-touch", true, touch).class("is-mouse", true, !touch);
   };
 
@@ -36,7 +36,7 @@ const checkInput = () => {
 
   const isMouse = () => {
     if (!state.blocked) {
-      setClass(false);
+      setClass();
     }
   };
 

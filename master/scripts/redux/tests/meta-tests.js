@@ -13,7 +13,7 @@ const testErrors = (testData) => (fn, testArgs = []) => {
 
     it(description, async () => {
 
-      const thisArgs = args.concat(testArgs[i] || undefined);
+      const thisArgs = args.concat(testArgs[i] || []);
 
       if (setup) {
         await setup();
