@@ -4,14 +4,21 @@
 
 const { reduxAPICall } = require("redux/client-utils");
 
-//user get data
+//user get item
 
-const userGetData = (params, id, length) => (dispatch) => reduxAPICall(dispatch, {
-  path: "/nightlife-app/api/user-get-data",
+const userGetItem = (id) => (dispatch) => reduxAPICall(dispatch, {
+  path: "/nightlife-app/api/user-get-item",
+  method: "GET",
+  data: { id }
+});
+
+//user get list
+
+const userGetList = (params, length) => (dispatch) => reduxAPICall(dispatch, {
+  path: "/nightlife-app/api/user-get-list",
   method: "GET",
   data: {
     params,
-    id,
     length
   }
 });
@@ -27,6 +34,7 @@ const userToggleBlock = (id) => (dispatch) => reduxAPICall(dispatch, {
 //exports
 
 module.exports = {
-  userGetData,
+  userGetItem,
+  userGetList,
   userToggleBlock
 };

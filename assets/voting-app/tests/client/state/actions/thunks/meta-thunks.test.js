@@ -34,20 +34,33 @@ describe("metaDeletePoll", () => {
 
 });
 
-//meta get polls
+//meta get poll item
 
-describe("metaGetPolls", () => {
+describe("metaGetPollItem", () => {
 
-  const { metaGetPolls } = actions;
+  const { metaGetPollItem } = actions;
+
+  testAPI.default(metaGetPollItem(""), {
+    path: "/voting-app/api/meta-get-poll-item",
+    method: "GET",
+    data: { id: "" }
+  });
+
+});
+
+//meta get poll list
+
+describe("metaGetPollList", () => {
+
+  const { metaGetPollList } = actions;
 
   const params = newListParams();
 
-  testAPI.default(metaGetPolls(params), {
-    path: "/voting-app/api/meta-get-polls",
+  testAPI.default(metaGetPollList(params), {
+    path: "/voting-app/api/meta-get-poll-list",
     method: "GET",
     data: {
       params,
-      id: undefined,
       length: undefined
     }
   });

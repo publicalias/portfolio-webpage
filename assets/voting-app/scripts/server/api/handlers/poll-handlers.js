@@ -2,11 +2,12 @@
 
 //local imports
 
-const { checkOptions, findByID, handleOption, handleToggle } = require("../../app-logic");
+const { checkOptions, findByID, handleToggle } = require("../../app-logic");
+const { newOption } = require("../../../../schemas");
 
 //global imports
 
-const { getIPUser, getOrSetUser } = require("redux/server-utils");
+const { getIPUser, getOrSetUser, handleAPICall, handleAuthFail, handleErrors } = require("redux/server-utils");
 
 //utilities
 
@@ -14,29 +15,45 @@ const pollsCol = () => db.collection("voting-app/polls");
 
 //poll add option
 
-const pollAddOption = async (req, res) => {
+const pollAddOption = handleAPICall({
 
-  if (!req.user || req.user.data.restricted) {
+  failure: handleAuthFail,
 
-    res.sendStatus(401);
+  async errors(req, res) {
 
-    return;
+    const { id, text } = req.body.data;
+
+    const { options } = await findByID(id);
+
+    handleErrors(res, checkOptions([text, ...options.map((e) => e.text)]));
+
+  },
+
+  async success(req, res) {
+
+    const { id, text } = req.body.data;
+
+    const { matchedCount } = await pollsCol().updateOne({
+      id,
+      "options.text": { $ne: text }
+    }, {
+      $push: {
+        options: newOption({
+          text,
+          created: req.user.id
+        })
+      }
+    });
+
+    if (matchedCount) {
+      res.json({});
+    } else {
+      res.sendStatus(500);
+    }
 
   }
 
-  const { id, text } = req.body.data;
-
-  const { options } = await findByID(id);
-
-  const errors = checkOptions([text, ...options.map((e) => e.text)]);
-
-  if (errors.length) {
-    res.json({ errors });
-  } else {
-    await handleOption(req, res);
-  }
-
-};
+});
 
 //poll cast vote
 
@@ -44,10 +61,9 @@ const pollCastVote = async (req, res) => {
 
   const { id, text } = req.body.data;
 
-  const user = await getOrSetUser(req);
+  const user = await getOrSetUser(req.user, req.ip);
 
   await pollsCol().updateOne({ id }, { $pull: { "options.$[].voted": user.id } });
-
   await pollsCol().updateOne({
     id
   }, {
@@ -62,63 +78,81 @@ const pollCastVote = async (req, res) => {
 
 //poll remove option
 
-const pollRemoveOption = async (req, res) => {
+const pollRemoveOption = handleAPICall({
 
-  const { id, text } = req.body.data;
+  async failure(req, res) {
 
-  const { users, options } = await findByID(id);
+    const { id, text } = req.body.data;
 
-  const index = options.findIndex((e) => e.text === text);
+    const { users, options } = await findByID(id);
 
-  const created = (id) => id === users.created || id === options[index].created;
+    handleAuthFail(req, res, (id) => {
 
-  if (!req.user || req.user.data.restricted || !created(req.user.id)) {
+      const index = options.findIndex((e) => e.text === text);
 
-    res.sendStatus(401);
+      return id !== users.created && id !== options[index].created;
 
-    return;
+    });
+
+  },
+
+  async success(req, res) {
+
+    const { id, text } = req.body.data;
+
+    await pollsCol().updateOne({ id }, { $pull: { options: { text } } });
+
+    res.json({});
 
   }
 
-  await pollsCol().updateOne({ id }, { $pull: { options: { text } } });
-
-  res.json({});
-
-};
+});
 
 //poll remove vote
 
-const pollRemoveVote = async (req, res) => {
+const pollRemoveVote = handleAPICall({
 
-  const { id } = req.body.data;
+  async failure(req, res) {
 
-  const user = req.user || await getIPUser(req.ip) || {};
+    const user = req.user || await getIPUser(req.ip);
 
-  await pollsCol().updateOne({ id }, { $pull: { "options.$[].voted": user.id } });
+    if (!user) {
+      res.sendStatus(401);
+    }
 
-  res.json({});
+    return user;
 
-};
+  },
 
-//poll toggle flag
+  async success(req, res, user) {
 
-const pollToggleFlag = async (req, res) => {
+    const { id } = req.body.data;
 
-  if (!req.user || req.user.data.restricted) {
+    await pollsCol().updateOne({ id }, { $pull: { "options.$[].voted": user.id } });
 
-    res.sendStatus(401);
-
-    return;
+    res.json({});
 
   }
 
-  const { id } = req.body.data;
+});
 
-  await handleToggle(id, req.user, "flagged");
+//poll toggle flag
 
-  res.json({});
+const pollToggleFlag = handleAPICall({
 
-};
+  failure: handleAuthFail,
+
+  async success(req, res) {
+
+    const { id } = req.body.data;
+
+    await handleToggle(id, req.user, "flagged");
+
+    res.json({});
+
+  }
+
+});
 
 //poll toggle hide
 
@@ -126,7 +160,7 @@ const pollToggleHide = async (req, res) => {
 
   const { id } = req.body.data;
 
-  await handleToggle(id, await getOrSetUser(req), "hidden");
+  await handleToggle(id, await getOrSetUser(req.user, req.ip), "hidden");
 
   res.json({});
 
@@ -134,29 +168,31 @@ const pollToggleHide = async (req, res) => {
 
 //poll toggle secret
 
-const pollToggleSecret = async (req, res) => {
+const pollToggleSecret = handleAPICall({
 
-  const { id } = req.body.data;
+  async failure(req, res) {
 
-  const { users } = await findByID(id);
+    const { id } = req.body.data;
 
-  const created = (id) => id === users.created;
+    const { secret, users } = await findByID(id);
 
-  if (!req.user || req.user.data.restricted || !created(req.user.id)) {
+    handleAuthFail(req, res, (id) => id !== users.created);
 
-    res.sendStatus(401);
+    return secret;
 
-    return;
+  },
+
+  async success(req, res, secret) {
+
+    const { id } = req.body.data;
+
+    await pollsCol().updateOne({ id }, { $set: { secret: !secret } });
+
+    res.json({});
 
   }
 
-  const { secret } = await findByID(id);
-
-  await pollsCol().updateOne({ id }, { $set: { secret: !secret } });
-
-  res.json({});
-
-};
+});
 
 //exports
 

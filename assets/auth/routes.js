@@ -7,7 +7,7 @@ const { passport, providers } = require("./scripts/passport/passport-config");
 
 //global imports
 
-const { handleSession } = require("redux/server-utils");
+const { handleAuthFail, handleSession } = require("redux/server-utils");
 
 //node modules
 
@@ -20,11 +20,13 @@ const router = express.Router();
 handleSession(router);
 
 router.use("/delete", (req, res, next) => {
-  if (req.user && !req.user.data.restricted) {
+
+  handleAuthFail(req, res);
+
+  if (!res.headersSent) {
     next();
-  } else {
-    res.sendStatus(401);
   }
+
 });
 
 //handle login

@@ -18,7 +18,7 @@ const { useLayoutEffect, useRef } = React;
 
 const List = (props) => {
 
-  const { actions: { listClearState, metaGetPolls }, data: { polls }, location } = props;
+  const { actions: { listClearState, metaGetPollList }, data: { polls }, location } = props;
 
   const { jsx: { ListBody, ListMenu }, lib: { scrollInfo, useRef } } = List.injected;
 
@@ -30,7 +30,7 @@ const List = (props) => {
 
     listClearState();
 
-    const { polls } = await metaGetPolls(getListParams(location));
+    const { polls } = await metaGetPollList(getListParams(location));
 
     scrollRef.current = {
       end: polls.length < 100,
@@ -53,7 +53,7 @@ const List = (props) => {
 
     scrollRef.current.pending = true;
 
-    const res = await metaGetPolls(getListParams(location), null, polls.length);
+    const res = await metaGetPollList(getListParams(location), polls.length);
 
     if (res.polls.length - polls.length < 100) {
       scrollRef.current.end = true;

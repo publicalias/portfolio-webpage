@@ -18,7 +18,7 @@ const { useLayoutEffect } = React;
 
 const View = (props) => {
 
-  const { actions: { metaGetPolls, viewClearState }, data: { polls }, local: { id } } = props;
+  const { actions: { metaGetPollItem, viewClearState }, data: { polls }, local: { id } } = props;
 
   const { jsx: { PollDisplay, PollOptions, ViewMenu } } = View.injected;
 
@@ -26,7 +26,7 @@ const View = (props) => {
 
   useLayoutEffect(() => {
     viewClearState();
-    metaGetPolls(null, id);
+    metaGetPollItem(id);
   }, []);
 
   //render

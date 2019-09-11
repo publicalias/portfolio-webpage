@@ -6,7 +6,7 @@ const { newFavorite } = require("../../../../schemas");
 
 //global imports
 
-const { authFail } = require("redux/server-utils");
+const { handleAPICall, handleAuthFail } = require("redux/server-utils");
 
 //node modules
 
@@ -18,47 +18,57 @@ const favoritesCol = () => db.collection("nightlife-app/favorites");
 
 //favorite add
 
-const favoriteAdd = async (req, res) => {
+const favoriteAdd = handleAPICall({
 
-  if (authFail(req, res)) {
-    return;
+  failure: handleAuthFail,
+
+  async success(req, res) {
+
+    const { name, id } = req.body.data;
+
+    await favoritesCol().insertOne(newFavorite({
+      id: uuid(),
+      user: {
+        name: req.user.name,
+        id: req.user.id
+      },
+      venue: {
+        name,
+        id
+      }
+    }));
+
+    res.json({});
+
   }
 
-  const { name, id } = req.body.data;
-
-  await favoritesCol().insertOne(newFavorite({
-    id: uuid(),
-    user: {
-      name: req.user.name,
-      id: req.user.id
-    },
-    venue: {
-      name,
-      id
-    }
-  }));
-
-  res.json({});
-
-};
+});
 
 //favorite remove
 
-const favoriteRemove = async (req, res) => {
+const favoriteRemove = handleAPICall({
 
-  const { id } = JSON.parse(req.query.data);
+  async failure(req, res) {
 
-  const { user } = await favoritesCol().findOne({ id });
+    const { id } = JSON.parse(req.query.data);
 
-  if (authFail(req, res, (id) => id !== user.id)) {
-    return;
+    const { user } = await favoritesCol().findOne({ id });
+
+    handleAuthFail(req, res, (id) => id !== user.id);
+
+  },
+
+  async success(req, res) {
+
+    const { id } = JSON.parse(req.query.data);
+
+    await favoritesCol().deleteOne({ id });
+
+    res.json({});
+
   }
 
-  await favoritesCol().deleteOne({ id });
-
-  res.json({});
-
-};
+});
 
 //exports
 

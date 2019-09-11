@@ -34,7 +34,7 @@ const initTestReload = (type, event) => (render, dataList, qa, id, ...fnList) =>
 
   const fullList = fnList.concat([
     ["metaGetUser", []],
-    ["metaGetPolls", id ? [null, id] : [newListParams(), null, 0]]
+    id ? ["metaGetPollItem", [id]] : ["metaGetPollList", [newListParams(), 0]]
   ]);
 
   return testClick(qa, dataList, ...fullList);

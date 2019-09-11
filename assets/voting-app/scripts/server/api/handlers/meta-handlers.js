@@ -2,12 +2,17 @@
 
 //local imports
 
-const { checkOptions, checkTitle, findByID, findPolls, handleCreate } = require("../../app-logic");
+const { checkOptions, checkTitle, findByID, findPolls } = require("../../app-logic");
+const { newPoll } = require("../../../../schemas");
 
 //global imports
 
 const { checkErrors } = require("all/utilities");
-const { getIPUser } = require("redux/server-utils");
+const { getIPUser, handleAPICall, handleAuthFail, handleErrors } = require("redux/server-utils");
+
+//node modules
+
+const uuid = require("uuid/v1");
 
 //utilities
 
@@ -15,81 +20,118 @@ const pollsCol = () => db.collection("voting-app/polls");
 
 //meta create poll
 
-const metaCreatePoll = async (req, res) => {
+const metaCreatePoll = handleAPICall({
 
-  if (!req.user || req.user.data.restricted) {
+  failure: handleAuthFail,
 
-    res.sendStatus(401);
+  async errors(req, res) {
 
-    return;
+    const { title, options } = req.body.data;
+
+    const exists = await pollsCol().findOne({ title });
+    const errors = checkOptions(options).concat(checkTitle(title, exists));
+
+    handleErrors(res, errors);
+
+  },
+
+  async success(req, res) {
+
+    const { title, options, secret } = req.body.data;
+
+    await pollsCol().createIndex({ title: 1 }, { unique: true });
+
+    await pollsCol().insertOne(newPoll({
+      title: title.trim(),
+      author: req.user.name,
+      id: uuid(),
+      date: Date.now(),
+      secret,
+      users: { created: req.user.id },
+      options: options.map((e) => ({
+        text: e.trim(),
+        created: req.user.id
+      }))
+    }));
+
+    res.json({});
 
   }
 
-  const { title, options } = req.body.data;
-
-  const exists = await pollsCol().findOne({ title });
-  const errors = checkOptions(options).concat(checkTitle(title, exists));
-
-  if (errors.length) {
-    res.json({ errors });
-  } else {
-    await handleCreate(req, res);
-  }
-
-};
+});
 
 //meta delete poll
 
-const metaDeletePoll = async (req, res) => {
+const metaDeletePoll = handleAPICall({
+
+  async failure(req, res) {
+
+    const { id } = JSON.parse(req.query.data);
+
+    const { users } = await findByID(id);
+
+    handleAuthFail(req, res, (id) => id !== users.created);
+
+  },
+
+  async success(req, res) {
+
+    const { id } = JSON.parse(req.query.data);
+
+    await pollsCol().deleteOne({ id });
+
+    res.json({});
+
+  }
+
+});
+
+//meta get poll item
+
+const metaGetPollItem = async (req, res) => {
 
   const { id } = JSON.parse(req.query.data);
 
-  const { users } = await findByID(id);
-
-  const created = (id) => id === users.created;
-
-  if (!req.user || req.user.data.restricted || !created(req.user.id)) {
-
-    res.sendStatus(401);
-
-    return;
-
-  }
-
-  await pollsCol().deleteOne({ id });
-
-  res.json({});
+  res.json({ polls: [await findByID(id)].filter((e) => e) });
 
 };
 
-//meta get polls
+//meta get poll list
 
-const metaGetPolls = async (req, res) => {
+const metaGetPollList = handleAPICall({
 
-  const { params, id, length } = JSON.parse(req.query.data);
+  failure(req, res) {
 
-  if (id) {
+    const { params } = JSON.parse(req.query.data);
 
-    res.json({ polls: [await findByID(id)].filter((e) => e) });
+    if (params.filter === "created") {
+      handleAuthFail(req, res);
+    }
 
-    return;
+  },
+
+  errors(req, res) {
+
+    const { params } = JSON.parse(req.query.data);
+
+    handleErrors(res, checkErrors([{
+      bool: params.search.length > 100,
+      text: "Search exceeds character limit"
+    }]));
+
+  },
+
+  async success(req, res) {
+
+    const { params, length } = JSON.parse(req.query.data);
+
+    const user = req.user || await getIPUser(req.ip) || {};
+
+    res.json({ polls: await findPolls(user, params, length) });
 
   }
 
-  const errors = checkErrors([{
-    bool: params.search.length > 100,
-    text: "Search exceeds character limit"
-  }]);
-
-  if ((!req.user || req.user.data.restricted) && params.filter === "created") {
-    res.sendStatus(401);
-  } else if (errors.length) {
-    res.json({ errors });
-  } else {
-    res.json({ polls: await findPolls(req, params, length) });
-  }
-
-};
+});
 
 //menu get user
 
@@ -106,6 +148,7 @@ const metaGetUser = async (req, res) => {
 module.exports = {
   metaCreatePoll,
   metaDeletePoll,
-  metaGetPolls,
+  metaGetPollItem,
+  metaGetPollList,
   metaGetUser
 };

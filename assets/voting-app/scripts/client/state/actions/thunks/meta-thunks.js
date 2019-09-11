@@ -20,14 +20,21 @@ const metaDeletePoll = (id) => (dispatch) => reduxAPICall(dispatch, {
   data: { id }
 });
 
-//meta get polls
+//meta get poll item
 
-const metaGetPolls = (params, id, length) => (dispatch) => reduxAPICall(dispatch, {
-  path: "/voting-app/api/meta-get-polls",
+const metaGetPollItem = (id) => (dispatch) => reduxAPICall(dispatch, {
+  path: "/voting-app/api/meta-get-poll-item",
+  method: "GET",
+  data: { id }
+});
+
+//meta get poll list
+
+const metaGetPollList = (params, length) => (dispatch) => reduxAPICall(dispatch, {
+  path: "/voting-app/api/meta-get-poll-list",
   method: "GET",
   data: {
     params,
-    id,
     length
   }
 });
@@ -44,6 +51,7 @@ const metaGetUser = () => (dispatch) => reduxAPICall(dispatch, {
 module.exports = {
   metaCreatePoll,
   metaDeletePoll,
-  metaGetPolls,
+  metaGetPollItem,
+  metaGetPollList,
   metaGetUser
 };

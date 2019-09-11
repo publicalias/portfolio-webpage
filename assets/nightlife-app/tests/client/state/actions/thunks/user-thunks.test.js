@@ -6,20 +6,33 @@ const { newListParamsUsers } = require("../../../../../schemas");
 const { actions } = require("../../../../../scripts/client/state/actions/actions");
 const { testAPI } = require("../../../test-helpers");
 
-//user get data
+//user get item
 
-describe("userGetData", () => {
+describe("userGetItem", () => {
 
-  const { userGetData } = actions;
+  const { userGetItem } = actions;
+
+  testAPI.default(userGetItem(""), {
+    path: "/nightlife-app/api/user-get-item",
+    method: "GET",
+    data: { id: "" }
+  });
+
+});
+
+//user get list
+
+describe("userGetList", () => {
+
+  const { userGetList } = actions;
 
   const params = newListParamsUsers();
 
-  testAPI.default(userGetData(params), {
-    path: "/nightlife-app/api/user-get-data",
+  testAPI.default(userGetList(params), {
+    path: "/nightlife-app/api/user-get-list",
     method: "GET",
     data: {
       params,
-      id: undefined,
       length: undefined
     }
   });

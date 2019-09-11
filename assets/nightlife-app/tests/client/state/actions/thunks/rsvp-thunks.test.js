@@ -36,14 +36,14 @@ describe("rsvpDismiss", () => {
 
 });
 
-//rsvp get data
+//rsvp get list
 
-describe("rsvpGetData", () => {
+describe("rsvpGetList", () => {
 
-  const { rsvpGetData } = actions;
+  const { rsvpGetList } = actions;
 
-  testAPI.default(rsvpGetData(), {
-    path: "nightlife-app/api/rsvp-get-data",
+  testAPI.default(rsvpGetList(), {
+    path: "nightlife-app/api/rsvp-get-list",
     method: "GET"
   });
 

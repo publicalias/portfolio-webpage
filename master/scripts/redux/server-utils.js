@@ -16,9 +16,9 @@ const uuid = require("uuid/v1");
 
 const usersCol = () => db.collection("auth/users");
 
-//api handler
+//api router
 
-const apiHandler = (handlers) => {
+const apiRouter = (handlers) => {
 
   const router = express.Router();
 
@@ -45,18 +45,6 @@ const apiHandler = (handlers) => {
 
 };
 
-//auth fail
-
-const authFail = (req, res, forbid) => {
-  if (!req.user || req.user.data.restricted || forbid && forbid(req.user.id)) {
-
-    res.sendStatus(401);
-
-    return true;
-
-  }
-};
-
 //get ip user
 
 const getIPUser = (ip) => usersCol().findOne({
@@ -79,12 +67,32 @@ const setIPUser = async (ip) => {
 
 };
 
-const getOrSetUser = async (req) => {
+const getOrSetUser = async (user, ip) => user || await getIPUser(ip) || setIPUser(ip);
 
-  const user = req.user || await getIPUser(req.ip) || await setIPUser(req.ip);
+//handle api call
 
-  return user;
+const handleAPICall = (handlers) => (req, res) => Object.values(handlers).reduce(async (acc, e) => {
 
+  const output = await acc; //sends res
+
+  return !res.headersSent && e(req, res, output);
+
+}, null);
+
+//handle auth fail
+
+const handleAuthFail = (req, res, forbidden) => {
+  if (!req.user || req.user.data.restricted || forbidden && forbidden(req.user.id)) {
+    res.sendStatus(401);
+  }
+};
+
+//handle errors
+
+const handleErrors = (res, errors) => {
+  if (errors.length) {
+    res.json({ errors });
+  }
 };
 
 //handle session
@@ -118,9 +126,11 @@ const handleSession = (router) => {
 //exports
 
 module.exports = {
-  apiHandler,
-  authFail,
+  apiRouter,
   getIPUser,
   getOrSetUser,
+  handleAPICall,
+  handleAuthFail,
+  handleErrors,
   handleSession
 };

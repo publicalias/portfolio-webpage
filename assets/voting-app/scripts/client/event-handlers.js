@@ -12,14 +12,22 @@ const { select } = require("all/dom-api");
 
 const handleReload = async (fn, props, list) => {
 
-  const { actions: { metaGetPolls, metaGetUser }, data: { polls }, local: { poll }, location } = props;
-
-  const args = list ? [getListParams(location), null, polls.length] : [null, poll.id];
+  const {
+    actions: { metaGetPollItem, metaGetPollList, metaGetUser },
+    data: { polls },
+    local: { poll },
+    location
+  } = props;
 
   const res = await fn();
 
   metaGetUser();
-  metaGetPolls(...args);
+
+  if (list) {
+    metaGetPollList(getListParams(location), polls.length);
+  } else {
+    metaGetPollItem(poll.id);
+  }
 
   return res;
 

@@ -4,18 +4,28 @@
 
 const { reduxAPICall } = require("redux/client-utils");
 
-//venue get data
+//venue get item
 
-const venueGetData = (params, id, length) => (dispatch) => reduxAPICall(dispatch, {
-  path: "/nightlife-app/api/venue-get-data",
+const venueGetItem = (id) => (dispatch) => reduxAPICall(dispatch, {
+  path: "/nightlife-app/api/venue-get-item",
+  method: "GET",
+  data: { id }
+});
+
+//venue get list
+
+const venueGetList = (params, length) => (dispatch) => reduxAPICall(dispatch, {
+  path: "/nightlife-app/api/venue-get-list",
   method: "GET",
   data: {
     params,
-    id,
     length
   }
 });
 
 //exports
 
-module.exports = { venueGetData };
+module.exports = {
+  venueGetItem,
+  venueGetList
+};

@@ -54,8 +54,8 @@ const config = {
 };
 
 MongoClient.connect(process.env.DB_URL, config)
-  .then((client) => {
-    global.db = client.db();
+  .then((res) => {
+    global.db = res.db();
     app.listen(process.env.PORT || 3000);
   })
   .catch((err) => {

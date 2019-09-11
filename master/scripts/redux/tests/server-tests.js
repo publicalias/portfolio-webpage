@@ -19,12 +19,17 @@ const initMockAPICall = (fn, method) => async (user, data) => {
 
   const reqUser = user.auth ? { user } : { ip: user.ip };
   const reqData = isQuery ? { query: { data: JSON.stringify(data) } } : { body: { data } };
+  const resSent = { headersSent: false };
+
+  const resMock = () => jest.fn(() => {
+    resSent.headersSent = true;
+  });
 
   const req = Object.assign(reqUser, reqData);
-  const res = {
-    json: jest.fn(),
-    sendStatus: jest.fn()
-  };
+  const res = Object.assign(resSent, {
+    json: resMock(),
+    sendStatus: resMock()
+  });
 
   await fn(req, res);
 
@@ -36,30 +41,32 @@ const initMockAPICall = (fn, method) => async (user, data) => {
 
 const mongoTests = {
 
-  mongoServer: null,
+  client: null,
+  server: null,
 
   //setup
 
   async setup() {
 
+    this.server = new MongoMemoryServer();
+
+    const uri = await this.server.getConnectionString();
     const config = {
       useNewUrlParser: true,
       useUnifiedTopology: true
     };
 
-    this.mongoServer = new MongoMemoryServer();
+    this.client = await MongoClient.connect(uri, config);
 
-    const mongoURI = await this.mongoServer.getConnectionString();
-    const client = await MongoClient.connect(mongoURI, config);
-
-    global.db = client.db();
+    global.db = this.client.db();
 
   },
 
   //teardown
 
-  teardown() {
-    this.mongoServer.stop();
+  async teardown() {
+    await this.client.close();
+    await this.server.stop();
   },
 
   //reset

@@ -24,7 +24,7 @@ router.get("/search/:term", async (req, res) => {
 
     const [data] = await Promise.all([
       request(`https://www.googleapis.com/customsearch/v1?cx=${process.env.API_CS_ID}&key=${process.env.API_CS_KEY}&searchType=image&fields=items(title%2Clink%2Cimage%2FcontextLink)&q=${encodeURIComponent(req.params.term)}${startParam(req.query.offset)}`),
-      upsertLog(req, res)
+      upsertLog(req.params.term)
     ]);
 
     apiHandler(req, res, data);

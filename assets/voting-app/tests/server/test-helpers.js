@@ -58,9 +58,17 @@ const initTestUnvote = (handler, getData) => async (user) => {
 
   const update = await pollsCol().findOne();
 
-  expect(update.options[0].voted).toEqual(user ? [] : ["id-b"]);
+  const checkVote = (val) => {
+    expect(update.options[0].voted).toEqual(val);
+  };
 
-  testMock(res.json, [{}]);
+  if (user) {
+    testMock(res.json, [{}]);
+    checkVote([]);
+  } else {
+    testMock(res.sendStatus, [401]);
+    checkVote(["id-b"]);
+  }
 
 };
 

@@ -6,20 +6,33 @@ const { newListParamsVenues } = require("../../../../../schemas");
 const { actions } = require("../../../../../scripts/client/state/actions/actions");
 const { testAPI } = require("../../../test-helpers");
 
-//venue get data
+//venue get item
 
-describe("venueGetData", () => {
+describe("venueGetItem", () => {
 
-  const { venueGetData } = actions;
+  const { venueGetItem } = actions;
+
+  testAPI.default(venueGetItem(""), {
+    path: "/nightlife-app/api/venue-get-item",
+    method: "GET",
+    data: { id: "" }
+  });
+
+});
+
+//venue get list
+
+describe("venueGetList", () => {
+
+  const { venueGetList } = actions;
 
   const params = newListParamsVenues();
 
-  testAPI.default(venueGetData(params), {
-    path: "/nightlife-app/api/venue-get-data",
+  testAPI.default(venueGetList(params), {
+    path: "/nightlife-app/api/venue-get-list",
     method: "GET",
     data: {
       params,
-      id: undefined,
       length: undefined
     }
   });

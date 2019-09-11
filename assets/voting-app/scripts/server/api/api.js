@@ -8,11 +8,11 @@ const pollHandlers = require("./handlers/poll-handlers");
 
 //global imports
 
-const { apiHandler } = require("redux/server-utils");
+const { apiRouter } = require("redux/server-utils");
 
-//handle actions
+//router
 
-const router = apiHandler(Object.assign(
+const router = apiRouter(Object.assign(
   formHandlers,
   metaHandlers,
   pollHandlers

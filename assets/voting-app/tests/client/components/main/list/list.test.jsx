@@ -45,7 +45,7 @@ describe("list (load and location.search)", () => {
 
   const testEffect = async (pollData, fn) => {
 
-    const { props, wrapper } = testMount(null, null, { actions: { metaGetPolls: jest.fn(() => ({ polls: pollData })) } });
+    const { props, wrapper } = testMount(null, null, { actions: { metaGetPollList: jest.fn(() => ({ polls: pollData })) } });
 
     wrapper.setProps({ location: { search: "?sort=popular" } }); //async
 
@@ -82,10 +82,10 @@ describe("list (load and location.search)", () => {
 
   it("should reset state", () => testEffect([], (props) => {
 
-    const { actions: { listClearState, metaGetPolls } } = props;
+    const { actions: { listClearState, metaGetPollList } } = props;
 
     testMock(listClearState, [], []);
-    testMock(metaGetPolls, [newListParams()], [newListParams({ sort: "popular" })]);
+    testMock(metaGetPollList, [newListParams()], [newListParams({ sort: "popular" })]);
 
   }));
 
@@ -93,9 +93,9 @@ describe("list (load and location.search)", () => {
 
 describe("list (scroll)", () => {
 
-  const initTestFn = (refOneVal, refTwoVal, call) => (metaGetPolls, refOne, refTwo) => {
+  const initTestFn = (refOneVal, refTwoVal, call) => (metaGetPollList, refOne, refTwo) => {
 
-    testMock(metaGetPolls, call);
+    testMock(metaGetPollList, call);
 
     expect(refOne.current).toEqual(newRef(refOneVal));
     expect(refTwo.current).toEqual(newRef(refTwoVal));
@@ -111,13 +111,13 @@ describe("list (scroll)", () => {
       bottom: 300
     });
 
-    const { props, wrapper } = testMount(null, null, { actions: { metaGetPolls: jest.fn(() => ({ polls: [] })) } }); //async
+    const { props, wrapper } = testMount(null, null, { actions: { metaGetPollList: jest.fn(() => ({ polls: [] })) } }); //async
 
-    const { actions: { metaGetPolls } } = props;
+    const { actions: { metaGetPollList } } = props;
 
     await Promise.resolve();
 
-    metaGetPolls.mockClear().mockReturnValueOnce(res);
+    metaGetPollList.mockClear().mockReturnValueOnce(res);
 
     ref.current = newRef(refVal);
 
@@ -133,7 +133,7 @@ describe("list (scroll)", () => {
 
     const { ref, props, wrapper } = await setupList(scrollVal, refVal, res);
 
-    const { actions: { metaGetPolls } } = props;
+    const { actions: { metaGetPollList } } = props;
 
     wrapper.find(".qa-scroll-view").simulate("scroll"); //async
 
@@ -143,7 +143,7 @@ describe("list (scroll)", () => {
 
     const refTwo = deepCopy(ref);
 
-    fn(metaGetPolls, refOne, refTwo);
+    fn(metaGetPollList, refOne, refTwo);
 
     wrapper.unmount();
 
@@ -170,17 +170,17 @@ describe("list (scroll)", () => {
 
   });
 
-  it("should call metaGetPolls if allowed (end)", () => {
+  it("should call metaGetPollList if allowed (end)", () => {
 
-    const testFn = initTestFn({ pending: true }, { end: true }, [newListParams(), null, 0]);
+    const testFn = initTestFn({ pending: true }, { end: true }, [newListParams(), 0]);
 
     return testScroll(testFn, null, null, { polls: Array(0).fill({}) });
 
   });
 
-  it("should call metaGetPolls if allowed (not end)", () => {
+  it("should call metaGetPollList if allowed (not end)", () => {
 
-    const testFn = initTestFn({ pending: true }, null, [newListParams(), null, 0]);
+    const testFn = initTestFn({ pending: true }, null, [newListParams(), 0]);
 
     return testScroll(testFn, null, null, { polls: Array(100).fill({}) });
 

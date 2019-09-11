@@ -116,37 +116,27 @@ describe("metaDeletePoll", () => {
 
 });
 
-//meta get polls
+//meta get poll item
 
-describe("metaGetPolls", () => {
+describe("metaGetPollItem", () => {
 
-  const { metaGetPolls } = handlers;
+  const { metaGetPollItem } = handlers;
 
-  const mockAPICall = initMockAPICall(metaGetPolls, "GET");
+  const mockAPICall = initMockAPICall(metaGetPollItem, "GET");
 
-  const getData = (id, length) => ({
-    params: id ? null : newListParams(),
-    id,
-    length
-  });
+  const getData = (id) => ({ id });
 
-  const testPolls = async (pollData, id, length = 0) => {
+  const testPolls = async (pollData, id) => {
 
-    let polls = pollData.map(newPoll);
+    const polls = pollData.map(newPoll);
 
     await pollsCol().insertMany(polls);
 
-    const res = await mockAPICall({}, getData(id, length));
+    const res = await mockAPICall({}, getData(id));
 
-    polls = id ? polls.filter((e) => e.id === id) : polls;
-
-    testMock(res.json, [{ polls }]);
+    testMock(res.json, [{ polls: polls.filter((e) => e.id === id) }]);
 
   };
-
-  it("sends polls if length is 0", () => testPolls([{}]));
-
-  it("sends polls if length is 1", () => testPolls(Array(1 + 100).fill({}), null, 1));
 
   it("sends polls if id exists", () => testPolls([{ id: "id-a" }, {}], "id-a"));
 
@@ -154,11 +144,42 @@ describe("metaGetPolls", () => {
 
 });
 
-describe("metaGetPolls (sort)", () => {
+//meta get poll list
 
-  const { metaGetPolls } = handlers;
+describe("metaGetPollList", () => {
 
-  const mockAPICall = initMockAPICall(metaGetPolls, "GET");
+  const { metaGetPollList } = handlers;
+
+  const mockAPICall = initMockAPICall(metaGetPollList, "GET");
+
+  const getData = (length) => ({
+    params: newListParams(),
+    length
+  });
+
+  const testPolls = async (pollData, length = 0) => {
+
+    const polls = pollData.map(newPoll);
+
+    await pollsCol().insertMany(polls);
+
+    const res = await mockAPICall({}, getData(length));
+
+    testMock(res.json, [{ polls }]);
+
+  };
+
+  it("sends polls if length is 0", () => testPolls([{}]));
+
+  it("sends polls if length is 1", () => testPolls(Array(1 + 100).fill({}), 1));
+
+});
+
+describe("metaGetPollList (sort)", () => {
+
+  const { metaGetPollList } = handlers;
+
+  const mockAPICall = initMockAPICall(metaGetPollList, "GET");
 
   const getData = (sort) => ({ params: newListParams({ sort }) });
 
@@ -195,11 +216,11 @@ describe("metaGetPolls (sort)", () => {
 
 });
 
-describe("metaGetPolls (search)", () => {
+describe("metaGetPollList (search)", () => {
 
-  const { metaGetPolls } = handlers;
+  const { metaGetPollList } = handlers;
 
-  const mockAPICall = initMockAPICall(metaGetPolls, "GET");
+  const mockAPICall = initMockAPICall(metaGetPollList, "GET");
 
   const getData = (search) => ({ params: newListParams({ search }) });
 
@@ -227,21 +248,26 @@ describe("metaGetPolls (search)", () => {
 
   it("sends polls if search is valid (non-empty)", () => {
 
-    const t = "Apple";
+    const text = "Apple";
 
-    const polls = [{ title: t }, { author: `${t} ${t}` }, { options: [{ text: `${t} ${t} ${t}` }] }, {}];
+    const polls = [
+      { title: text },
+      { author: `${text} ${text}` },
+      { options: [{ text: `${text} ${text} ${text}` }] },
+      {}
+    ];
 
-    return testPolls(polls, t, 3);
+    return testPolls(polls, text, 3);
 
   });
 
 });
 
-describe("metaGetPolls (filter)", () => {
+describe("metaGetPollList (filter)", () => {
 
-  const { metaGetPolls } = handlers;
+  const { metaGetPollList } = handlers;
 
-  const mockAPICall = initMockAPICall(metaGetPolls, "GET");
+  const mockAPICall = initMockAPICall(metaGetPollList, "GET");
 
   const getData = (filter) => ({ params: newListParams({ filter }) });
 

@@ -168,11 +168,11 @@ describe("pollRemoveVote", () => {
 
   const testUnvote = initTestUnvote(mockAPICall, getData);
 
+  it("sends 401 if no ip user exists", () => testUnvote());
+
   it("sends object if user is authenticated", () => testUnvote(newUser({ id: "id-b" })));
 
   it("sends object if ip user exists", () => testUnvote(newIPUser({ id: "id-b" })));
-
-  it("sends object if no ip user exists", () => testUnvote());
 
 });
 

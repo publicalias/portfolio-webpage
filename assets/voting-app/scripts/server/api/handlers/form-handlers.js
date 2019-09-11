@@ -4,41 +4,60 @@
 
 const { checkOptions, checkTitle } = require("../../app-logic");
 
+//global imports
+
+const { handleAPICall, handleErrors } = require("redux/server-utils");
+
 //utilities
 
 const pollsCol = () => db.collection("voting-app/polls");
 
 //form add option
 
-const formAddOption = (req, res) => {
+const formAddOption = handleAPICall({
 
-  const { add, options } = JSON.parse(req.query.data);
+  errors(req, res) {
 
-  const next = options.concat(add);
+    const { add, options } = JSON.parse(req.query.data);
 
-  const errors = checkOptions(next);
+    const all = options.concat(add);
 
-  res.json(errors.length ? { errors } : {
-    form: {
-      options: next,
-      add: ""
-    }
-  });
+    handleErrors(res, checkOptions(all));
 
-};
+    return all;
+
+  },
+
+  success(req, res, all) {
+    res.json({
+      form: {
+        options: all,
+        add: ""
+      }
+    });
+  }
+
+});
 
 //form check title
 
-const formCheckTitle = async (req, res) => {
+const formCheckTitle = handleAPICall({
 
-  const { title } = JSON.parse(req.query.data);
+  async errors(req, res) {
 
-  const exists = await pollsCol().findOne({ title });
-  const errors = checkTitle(title, exists);
+    const { title } = JSON.parse(req.query.data);
 
-  res.json(errors.length ? { errors } : {});
+    const exists = await pollsCol().findOne({ title });
 
-};
+    handleErrors(res, checkTitle(title, exists));
+
+  },
+
+  success(req, res) {
+    res.json({});
+  }
+
+});
 
 //exports
 

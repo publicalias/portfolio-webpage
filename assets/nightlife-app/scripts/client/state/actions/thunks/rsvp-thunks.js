@@ -25,10 +25,10 @@ const rsvpDismiss = (id) => (dispatch) => reduxAPICall(dispatch, {
   data: { id }
 });
 
-//rsvp get data
+//rsvp get list
 
-const rsvpGetData = () => (dispatch) => reduxAPICall(dispatch, {
-  path: "nightlife-app/api/rsvp-get-data",
+const rsvpGetList = () => (dispatch) => reduxAPICall(dispatch, {
+  path: "nightlife-app/api/rsvp-get-list",
   method: "GET"
 });
 
@@ -45,6 +45,6 @@ const rsvpRemove = (id) => (dispatch) => reduxAPICall(dispatch, {
 module.exports = {
   rsvpAdd,
   rsvpDismiss,
-  rsvpGetData,
+  rsvpGetList,
   rsvpRemove
 };

@@ -36,16 +36,16 @@ describe("view", () => {
 
   });
 
-  it("should call viewClearState and metaGetPolls on load", () => {
+  it("should call viewClearState and metaGetPollItem on load", () => {
 
     const { props, wrapper } = testMount(null, { id: "id-a" });
 
-    const { actions: { metaGetPolls, viewClearState } } = props;
+    const { actions: { metaGetPollItem, viewClearState } } = props;
 
     wrapper.mount();
 
     testMock(viewClearState, []);
-    testMock(metaGetPolls, [null, "id-a"]);
+    testMock(metaGetPollItem, ["id-a"]);
 
     wrapper.unmount();
 

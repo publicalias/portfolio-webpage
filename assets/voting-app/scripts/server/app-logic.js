@@ -1,17 +1,8 @@
 "use strict";
 
-//local imports
-
-const { newOption, newPoll } = require("../../schemas");
-
 //global imports
 
 const { checkErrors, deepCopy } = require("all/utilities");
-const { getIPUser } = require("redux/server-utils");
-
-//node modules
-
-const uuid = require("uuid/v1");
 
 //utilities
 
@@ -96,11 +87,9 @@ const getSort = ({ sort }) => {
 
 };
 
-const findPolls = async (req, params, length = 0) => {
+const findPolls = async (user, params, length = 0) => {
 
   const { search } = params;
-
-  const user = req.user || await getIPUser(req.ip) || {};
 
   const args = deepCopy({
     query: getQuery(user, params),
@@ -122,57 +111,6 @@ const findPolls = async (req, params, length = 0) => {
     .aggregate([{ $match: args.query }, addVotes, { $sort: args.sort }])
     .limit(length + 100) //refreshes the whole list
     .toArray();
-
-};
-
-//handle create
-
-const handleCreate = async (req, res) => {
-
-  const { title, options, secret } = req.body.data;
-
-  await pollsCol().createIndex({ title: 1 }, { unique: true });
-
-  await pollsCol().insertOne(newPoll({
-    title: title.trim(),
-    author: req.user.name,
-    id: uuid(),
-    date: Date.now(),
-    secret,
-    users: { created: req.user.id },
-    options: options.map((e) => ({
-      text: e.trim(),
-      created: req.user.id
-    }))
-  }));
-
-  res.json({});
-
-};
-
-//handle option
-
-const handleOption = async (req, res) => {
-
-  const { id, text } = req.body.data;
-
-  const { matchedCount } = await pollsCol().updateOne({
-    id,
-    "options.text": { $ne: text }
-  }, {
-    $push: {
-      options: newOption({
-        text,
-        created: req.user.id
-      })
-    }
-  });
-
-  if (matchedCount) {
-    res.json({});
-  } else {
-    res.sendStatus(500);
-  }
 
 };
 
@@ -199,7 +137,5 @@ module.exports = {
   checkTitle,
   findByID,
   findPolls,
-  handleCreate,
-  handleOption,
   handleToggle
 };

@@ -39,10 +39,10 @@ const friendDismiss = (id) => (dispatch) => reduxAPICall(dispatch, {
   data: { id }
 });
 
-//friend get data
+//friend get list
 
-const friendGetData = () => (dispatch) => reduxAPICall(dispatch, {
-  path: "/nightlife-app/api/friend-get-data",
+const friendGetList = () => (dispatch) => reduxAPICall(dispatch, {
+  path: "/nightlife-app/api/friend-get-list",
   method: "GET"
 });
 
@@ -69,7 +69,7 @@ module.exports = {
   friendAdd,
   friendCancel,
   friendDismiss,
-  friendGetData,
+  friendGetList,
   friendReject,
   friendRemove
 };

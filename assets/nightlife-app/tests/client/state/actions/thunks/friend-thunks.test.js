@@ -64,14 +64,14 @@ describe("friendDismiss", () => {
 
 });
 
-//friend get data
+//friend get list
 
-describe("friendGetData", () => {
+describe("friendGetList", () => {
 
-  const { friendGetData } = actions;
+  const { friendGetList } = actions;
 
-  testAPI.default(friendGetData(), {
-    path: "/nightlife-app/api/friend-get-data",
+  testAPI.default(friendGetList(), {
+    path: "/nightlife-app/api/friend-get-list",
     method: "GET"
   });
 
