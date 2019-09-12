@@ -104,9 +104,9 @@ const testAuthFail = async (mockAPICall, data, other = []) => {
 
   const res = await Promise.all(users.map((e) => mockAPICall(e, data)));
 
-  for (const e of res) {
-    testMock(e.sendStatus, [401]);
-  }
+  res.forEach((e, i) => {
+    testMock(e.sendStatus, [i === 0 ? 401 : 403]);
+  });
 
 };
 

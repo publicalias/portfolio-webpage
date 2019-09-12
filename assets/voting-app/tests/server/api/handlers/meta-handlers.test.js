@@ -50,7 +50,7 @@ describe("metaCreatePoll", () => {
 
   testTitle((error, data, count) => testError(error, { title: data }, count), [null, null, [1]]);
 
-  it("sends 401 if authentication fails", async () => {
+  it("sends status if authentication fails", async () => {
 
     await testAuthFail(mockAPICall, getData());
 
@@ -95,7 +95,7 @@ describe("metaDeletePoll", () => {
     users: { created: "id-b" }
   })));
 
-  it("sends 401 if authentication fails", async () => {
+  it("sends status if authentication fails", async () => {
 
     await testAuthFail(mockAPICall, getData(), [newUser({ id: "id-c" })]);
 
@@ -292,7 +292,7 @@ describe("metaGetPollList (filter)", () => {
 
   });
 
-  it("sends 401 if authentication fails (filter, created)", () => {
+  it("sends status if authentication fails (filter, created)", () => {
 
     const args = [mockAPICall, getData("created")];
 

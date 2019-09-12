@@ -52,7 +52,7 @@ describe("pollAddOption", () => {
 
   testOptions(testError);
 
-  it("sends 401 if authentication fails", () => testAuthFail(mockAPICall, getData()));
+  it("sends status if authentication fails", () => testAuthFail(mockAPICall, getData()));
 
   it("sends noop if successful", async () => {
 
@@ -142,7 +142,7 @@ describe("pollRemoveOption", () => {
     }]
   })));
 
-  it("sends 401 if authentication fails", () => {
+  it("sends status if authentication fails", () => {
 
     const args = [mockAPICall, getData("Option A"), [newUser({ id: "id-d" })]];
 
@@ -172,7 +172,7 @@ describe("pollRemoveVote", () => {
 
   it("sends noop if successful (ip user exists)", () => testUnvote(newIPUser({ id: "id-b" })));
 
-  it("sends 401 if authentication fails (no ip user exists)", () => testUnvote());
+  it("sends status if authentication fails (no ip user exists)", () => testUnvote());
 
 });
 
@@ -188,7 +188,7 @@ describe("pollToggleFlag", () => {
 
   const testToggle = initTestToggle(mockAPICall, getData, "flagged");
 
-  it("sends 401 if authentication fails", () => testAuthFail(mockAPICall, getData()));
+  it("sends status if authentication fails", () => testAuthFail(mockAPICall, getData()));
 
   it("sends noop if successful", () => testToggle(newUser({ id: "id-b" })));
 
@@ -256,7 +256,7 @@ describe("pollToggleSecret", () => {
     users: { created: "id-b" }
   })));
 
-  it("sends 401 if authentication fails", () => {
+  it("sends status if authentication fails", () => {
 
     const args = [mockAPICall, getData(), [newUser({ id: "id-c" })]];
 

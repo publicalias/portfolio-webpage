@@ -35,7 +35,7 @@ describe("favoriteAdd", () => {
     id: "id-a"
   });
 
-  it("sends 401 if authentication fails", async () => {
+  it("sends status if authentication fails", async () => {
 
     await testAuthFail(mockAPICall, getData());
 
@@ -76,7 +76,7 @@ describe("favoriteRemove", () => {
     user: { id: "id-b" }
   })));
 
-  it("sends 401 if authentication fails", async () => {
+  it("sends status if authentication fails", async () => {
 
     await testAuthFail(mockAPICall, getData(), [newUser({ id: "id-c" })]);
 

@@ -81,9 +81,11 @@ const handleAPICall = (handlers) => (req, res) => Object.values(handlers).reduce
 
 //handle auth fail
 
-const handleAuthFail = (req, res, forbidden) => {
-  if (!req.user || req.user.data.restricted || forbidden && forbidden(req.user.id)) {
+const handleAuthFail = (req, res, forbid) => {
+  if (!req.user) {
     res.sendStatus(401);
+  } else if (req.user.data.restricted || forbid && forbid(req.user.id)) {
+    res.sendStatus(403);
   }
 };
 

@@ -42,7 +42,7 @@ describe("friendAdd", () => {
     data: { blocks: ["id-b"] }
   })));
 
-  it("sends 401 if authentication fails", () => {
+  it("sends status if authentication fails", () => {
 
     const args = [mockAPICall, getData(), [newUser({ id: "id-b" })]];
 
@@ -80,7 +80,7 @@ describe("friendConfirm", () => {
 
   beforeEach(initFriendsCol());
 
-  it("sends 401 if authentication fails", () => testAuthFail(mockAPICall, getData(), [newUser()]));
+  it("sends status if authentication fails", () => testAuthFail(mockAPICall, getData(), [newUser()]));
 
   it("sends noop if successful", async () => {
 
@@ -112,7 +112,7 @@ describe("friendDismiss", () => {
 
   beforeEach(initFriendsCol(true));
 
-  it("sends 401 if authentication fails", () => testAuthFail(mockAPICall, getData(), [newUser()]));
+  it("sends status if authentication fails", () => testAuthFail(mockAPICall, getData(), [newUser()]));
 
   it("sends noop if successful (from)", () => testDismiss("id-b"));
 
@@ -128,7 +128,7 @@ describe("friendGetList", () => {
 
   const mockAPICall = initMockAPICall(friendGetList, "GET");
 
-  it("sends 401 if authentication fails", () => testAuthFail(mockAPICall));
+  it("sends status if authentication fails", () => testAuthFail(mockAPICall));
 
   it("sends data if successful", async () => {
 
@@ -178,7 +178,7 @@ describe("friendRemove", () => {
 
   };
 
-  it("sends 401 if authentication fails", () => testAuthFail(mockAPICall, getData(), [newUser()]));
+  it("sends status if authentication fails", () => testAuthFail(mockAPICall, getData(), [newUser()]));
 
   it("sends noop if successful (from)", () => testRemove("id-b"));
 
