@@ -194,11 +194,11 @@ describe("metaGetPollList (sort)", () => {
 
   };
 
-  it("sends data if successful (sort, new)", () => testPolls([{}, { date: Date.now() }], "new"));
+  it("sends data if successful (sort, new)", () => testPolls([{ date: 0 }, { date: 1 }], "new"));
 
   it("sends data if successful (sort, popular)", () => {
 
-    const polls = [{}, {
+    const polls = [{ votes: 0 }, {
       votes: 1,
       options: [{ voted: ["id-a"] }]
     }];

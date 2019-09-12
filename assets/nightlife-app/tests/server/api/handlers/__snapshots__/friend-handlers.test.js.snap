@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`friendAdd sends noop if successful 1`] = `
+Object {
+  "_id": "[CENSORED]",
+  "confirmed": false,
+  "date": "[CENSORED]",
+  "from": Object {
+    "id": "id-c",
+    "name": "User C",
+  },
+  "hidden": Array [],
+  "id": "[CENSORED]",
+  "to": Object {
+    "id": "id-a",
+    "name": "User A",
+  },
+}
+`;

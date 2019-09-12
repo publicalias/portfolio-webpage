@@ -93,9 +93,9 @@ describe("list (load and location.search)", () => {
 
 describe("list (scroll)", () => {
 
-  const initTestFn = (refOneVal, refTwoVal, call) => (metaGetPollList, refOne, refTwo) => {
+  const initTestFn = (refOneVal, refTwoVal, args) => (metaGetPollList, refOne, refTwo) => {
 
-    testMock(metaGetPollList, call);
+    testMock(metaGetPollList, args);
 
     expect(refOne.current).toEqual(newRef(refOneVal));
     expect(refTwo.current).toEqual(newRef(refTwoVal));

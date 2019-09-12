@@ -4,14 +4,6 @@
 
 const { reduxAPICall } = require("redux/client-utils");
 
-//friend accept
-
-const friendAccept = (id) => (dispatch) => reduxAPICall(dispatch, {
-  path: "/nightlife-app/api/friend-accept",
-  method: "PATCH",
-  data: { id }
-});
-
 //friend add
 
 const friendAdd = (name, id) => (dispatch) => reduxAPICall(dispatch, {
@@ -23,11 +15,11 @@ const friendAdd = (name, id) => (dispatch) => reduxAPICall(dispatch, {
   }
 });
 
-//friend cancel
+//friend confirm
 
-const friendCancel = (id) => (dispatch) => reduxAPICall(dispatch, {
-  path: "/nightlife-app/api/friend-cancel",
-  method: "DELETE",
+const friendConfirm = (id) => (dispatch) => reduxAPICall(dispatch, {
+  path: "/nightlife-app/api/friend-confirm",
+  method: "PATCH",
   data: { id }
 });
 
@@ -46,14 +38,6 @@ const friendGetList = () => (dispatch) => reduxAPICall(dispatch, {
   method: "GET"
 });
 
-//friend reject
-
-const friendReject = (id) => (dispatch) => reduxAPICall(dispatch, {
-  path: "/nightlife-app/api/friend-reject",
-  method: "DELETE",
-  data: { id }
-});
-
 //friend remove
 
 const friendRemove = (id) => (dispatch) => reduxAPICall(dispatch, {
@@ -65,11 +49,9 @@ const friendRemove = (id) => (dispatch) => reduxAPICall(dispatch, {
 //exports
 
 module.exports = {
-  friendAccept,
   friendAdd,
-  friendCancel,
+  friendConfirm,
   friendDismiss,
   friendGetList,
-  friendReject,
   friendRemove
 };

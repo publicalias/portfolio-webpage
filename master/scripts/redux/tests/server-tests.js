@@ -18,7 +18,13 @@ const initMockAPICall = (fn, method) => async (user, data) => {
   const isQuery = method === "GET" || method === "DELETE";
 
   const reqUser = user.auth ? { user } : { ip: "ip" in user ? user.ip : "0.0.0.0" };
-  const reqData = isQuery ? { query: { data: JSON.stringify(data) } } : { body: { data } };
+  const reqData = isQuery ? {
+    query: { data: JSON.stringify(data) },
+    body: {}
+  } : {
+    query: {},
+    body: { data }
+  };
 
   const resSent = { headersSent: false };
   const resMock = ((fn) => ({

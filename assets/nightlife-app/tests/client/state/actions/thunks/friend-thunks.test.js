@@ -5,20 +5,6 @@
 const { actions } = require("../../../../../scripts/client/state/actions/actions");
 const { testAPI } = require("../../../test-helpers");
 
-//friend accept
-
-describe("friendAccept", () => {
-
-  const { friendAccept } = actions;
-
-  testAPI.default(friendAccept(""), {
-    path: "/nightlife-app/api/friend-accept",
-    method: "PATCH",
-    data: { id: "" }
-  });
-
-});
-
 //friend add
 
 describe("friendAdd", () => {
@@ -36,15 +22,15 @@ describe("friendAdd", () => {
 
 });
 
-//friend cancel
+//friend confirm
 
-describe("friendCancel", () => {
+describe("friendConfirm", () => {
 
-  const { friendCancel } = actions;
+  const { friendConfirm } = actions;
 
-  testAPI.default(friendCancel(""), {
-    path: "/nightlife-app/api/friend-cancel",
-    method: "DELETE",
+  testAPI.default(friendConfirm(""), {
+    path: "/nightlife-app/api/friend-confirm",
+    method: "PATCH",
     data: { id: "" }
   });
 
@@ -73,20 +59,6 @@ describe("friendGetList", () => {
   testAPI.default(friendGetList(), {
     path: "/nightlife-app/api/friend-get-list",
     method: "GET"
-  });
-
-});
-
-//friend reject
-
-describe("friendReject", () => {
-
-  const { friendReject } = actions;
-
-  testAPI.default(friendReject(""), {
-    path: "/nightlife-app/api/friend-reject",
-    method: "DELETE",
-    data: { id: "" }
   });
 
 });

@@ -26,6 +26,13 @@ const favoriteAdd = handleAPICall({
 
     const { name, id } = req.body.data;
 
+    await favoritesCol().createIndex({
+      "user.id": 1,
+      "venue.id": 1
+    }, {
+      unique: true
+    });
+
     await favoritesCol().insertOne(newFavorite({
       id: uuid(),
       user: {
