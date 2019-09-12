@@ -33,9 +33,9 @@ const pollAddOption = handleAPICall({
 
     const { id, text } = req.body.data;
 
-    const { matchedCount } = await pollsCol().updateOne({
+    await pollsCol().updateOne({
       id,
-      "options.text": { $ne: text }
+      "options.text": { $ne: text } //possible race condition is tolerable
     }, {
       $push: {
         options: newOption({
@@ -45,11 +45,7 @@ const pollAddOption = handleAPICall({
       }
     });
 
-    if (matchedCount) {
-      res.json({});
-    } else {
-      res.sendStatus(500);
-    }
+    res.json({});
 
   }
 
@@ -65,7 +61,8 @@ const pollCastVote = async (req, res) => {
 
   await pollsCol().updateOne({ id }, { $pull: { "options.$[].voted": user.id } });
   await pollsCol().updateOne({
-    id
+    id,
+    "options.voted": { $ne: user.id }
   }, {
     $addToSet: { "options.$[e].voted": user.id }
   }, {

@@ -35,7 +35,7 @@ describe("favoriteAdd", () => {
     id: "id-a"
   });
 
-  it("sends 401 if user is unauthenticated or restricted", async () => {
+  it("sends 401 if authentication fails", async () => {
 
     await testAuthFail(mockAPICall, getData());
 
@@ -43,7 +43,7 @@ describe("favoriteAdd", () => {
 
   });
 
-  it("sends object if user is authenticated", async () => {
+  it("sends noop if successful", async () => {
 
     const res = await mockAPICall(
       newUser({
@@ -76,7 +76,7 @@ describe("favoriteRemove", () => {
     user: { id: "id-b" }
   })));
 
-  it("sends 401 if user is unauthenticated, restricted, or not the creator", async () => {
+  it("sends 401 if authentication fails", async () => {
 
     await testAuthFail(mockAPICall, getData(), [newUser({ id: "id-c" })]);
 
@@ -84,7 +84,7 @@ describe("favoriteRemove", () => {
 
   });
 
-  it("sends object if user is valid", async () => {
+  it("sends noop if successful", async () => {
 
     const res = await mockAPICall(newUser({ id: "id-b" }), getData());
 

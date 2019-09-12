@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`metaCreatePoll sends object if poll is valid 1`] = `
+exports[`metaCreatePoll sends noop if successful 1`] = `
 Object {
   "_id": "[CENSORED]",
   "author": "User A",

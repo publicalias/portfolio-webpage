@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`pollCastVote sends object if no ip user exists 1`] = `
+exports[`pollCastVote sends noop if successful (no ip user exists) 1`] = `
 Object {
   "_id": "[CENSORED]",
   "id": "[CENSORED]",
@@ -9,7 +9,7 @@ Object {
 }
 `;
 
-exports[`pollToggleHide sends object if no ip user exists 1`] = `
+exports[`pollToggleHide sends noop if successful (no ip user exists) 1`] = `
 Object {
   "_id": "[CENSORED]",
   "id": "[CENSORED]",

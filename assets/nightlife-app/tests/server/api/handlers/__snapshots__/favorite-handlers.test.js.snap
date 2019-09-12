@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`favoriteAdd sends object if user is authenticated 1`] = `
+exports[`favoriteAdd sends noop if successful 1`] = `
 Object {
   "_id": "[CENSORED]",
   "id": "[CENSORED]",

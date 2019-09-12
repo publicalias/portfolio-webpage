@@ -50,7 +50,7 @@ describe("metaCreatePoll", () => {
 
   testTitle((error, data, count) => testError(error, { title: data }, count), [null, null, [1]]);
 
-  it("sends 401 if user is unauthenticated or restricted", async () => {
+  it("sends 401 if authentication fails", async () => {
 
     await testAuthFail(mockAPICall, getData());
 
@@ -58,7 +58,7 @@ describe("metaCreatePoll", () => {
 
   });
 
-  it("sends object if poll is valid", async () => {
+  it("sends noop if successful", async () => {
 
     const res = await mockAPICall(
       newUser({
@@ -95,7 +95,7 @@ describe("metaDeletePoll", () => {
     users: { created: "id-b" }
   })));
 
-  it("sends 401 if user is unauthenticated, restricted, or not the creator", async () => {
+  it("sends 401 if authentication fails", async () => {
 
     await testAuthFail(mockAPICall, getData(), [newUser({ id: "id-c" })]);
 
@@ -103,7 +103,7 @@ describe("metaDeletePoll", () => {
 
   });
 
-  it("sends object if user is valid", async () => {
+  it("sends noop if successful", async () => {
 
     const res = await mockAPICall(newUser({ id: "id-b" }), getData());
 
@@ -137,9 +137,9 @@ describe("metaGetPollItem", () => {
 
   };
 
-  it("sends polls if id exists", () => testPolls([{ id: "id-a" }, {}], "id-a"));
+  it("sends data if successful (id exists)", () => testPolls([{ id: "id-a" }, {}], "id-a"));
 
-  it("sends polls if id does not exist", () => testPolls([{}], "id-a"));
+  it("sends data if successful (id does not exist)", () => testPolls([{}], "id-a"));
 
 });
 
@@ -168,9 +168,9 @@ describe("metaGetPollList", () => {
 
   };
 
-  it("sends polls if length is 0", () => testPolls([{}]));
+  it("sends data if successful (length, 0)", () => testPolls([{}]));
 
-  it("sends polls if length is 1", () => testPolls(Array(1 + 100).fill({}), 1));
+  it("sends data if successful (length, 1)", () => testPolls(Array(1 + 100).fill({}), 1));
 
 });
 
@@ -194,9 +194,9 @@ describe("metaGetPollList (sort)", () => {
 
   };
 
-  it("sends polls if sort is new", () => testPolls([{}, { date: Date.now() }], "new"));
+  it("sends data if successful (sort, new)", () => testPolls([{}, { date: Date.now() }], "new"));
 
-  it("sends polls if sort is popular", () => {
+  it("sends data if successful (sort, popular)", () => {
 
     const polls = [{}, {
       votes: 1,
@@ -237,9 +237,9 @@ describe("metaGetPollList (search)", () => {
 
   });
 
-  it("sends polls if search is valid (empty)", () => testPolls([{}], "", 1));
+  it("sends data if successful (search, empty)", () => testPolls([{}], "", 1));
 
-  it("sends polls if search is valid (non-empty)", () => {
+  it("sends data if successful (search, non-empty)", () => {
 
     const text = "Apple";
 
@@ -284,7 +284,7 @@ describe("metaGetPollList (filter)", () => {
 
   };
 
-  it("sends polls if filter is all", () => {
+  it("sends data if successful (filter, all)", () => {
 
     const polls = [{}, { users: { hidden: ["id-a"] } }, { secret: true }, { users: { flagged: Array(5).fill("") } }];
 
@@ -292,7 +292,7 @@ describe("metaGetPollList (filter)", () => {
 
   });
 
-  it("sends 401 if filter is created and user is unauthenticated or restricted", () => {
+  it("sends 401 if authentication fails (filter, created)", () => {
 
     const args = [mockAPICall, getData("created")];
 
@@ -300,7 +300,7 @@ describe("metaGetPollList (filter)", () => {
 
   });
 
-  it("sends polls if filter is created and user is valid", () => {
+  it("sends data if successful (filter, created)", () => {
 
     const polls = [{ users: { created: "id-a" } }, { options: [{ created: "id-a" }] }, {}];
 
@@ -308,7 +308,7 @@ describe("metaGetPollList (filter)", () => {
 
   });
 
-  it("sends polls if filter is voted", () => {
+  it("sends data if successful (filter, voted)", () => {
 
     const polls = [{
       votes: 1,
@@ -319,7 +319,7 @@ describe("metaGetPollList (filter)", () => {
 
   });
 
-  it("sends polls if filter is hidden", () => {
+  it("sends data if successful (filter, hidden)", () => {
 
     const polls = [{ users: { hidden: ["id-a"] } }, {}];
 
@@ -345,9 +345,9 @@ describe("metaGetUser", () => {
 
   };
 
-  it("sends user if user is authenticated", () => testUser(newUser()));
+  it("sends data if successful (user is authenticated)", () => testUser(newUser()));
 
-  it("sends user if ip user exists", async () => {
+  it("sends data if successful (ip user exists)", async () => {
 
     const user = newIPUser();
 
@@ -357,6 +357,6 @@ describe("metaGetUser", () => {
 
   });
 
-  it("sends user if no ip user exists", () => testUser({}));
+  it("sends data if successful (no ip user exists)", () => testUser({}));
 
 });

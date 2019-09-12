@@ -44,7 +44,7 @@ describe("formAddOption", () => {
 
   testOptions(testError);
 
-  it("sends form if option is valid", async () => {
+  it("sends data if successful", async () => {
 
     const res = await mockAPICall({}, getData("Option A"));
 
@@ -79,7 +79,7 @@ describe("formCheckTitle", () => {
 
   testTitle(testError);
 
-  it("sends object if title is valid", async () => {
+  it("sends noop if successful", async () => {
 
     const res = await mockAPICall({}, getData("Title A"));
 

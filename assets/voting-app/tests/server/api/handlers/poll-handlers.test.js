@@ -52,9 +52,9 @@ describe("pollAddOption", () => {
 
   testOptions(testError);
 
-  it("sends 401 if user is unauthenticated or restricted", () => testAuthFail(mockAPICall, getData()));
+  it("sends 401 if authentication fails", () => testAuthFail(mockAPICall, getData()));
 
-  it("sends object if option is valid", async () => {
+  it("sends noop if successful", async () => {
 
     const poll = newPoll({ id: "id-a" });
 
@@ -92,11 +92,11 @@ describe("pollCastVote", () => {
 
   const testVote = initTestVote(mockAPICall, getData);
 
-  it("sends object if user is authenticated", () => testVote(newUser({ id: "id-b" })));
+  it("sends noop if successful (user is authenticated)", () => testVote(newUser({ id: "id-b" })));
 
-  it("sends object if ip user exists", () => testVote(newIPUser({ id: "id-b" })));
+  it("sends noop if successful (ip user exists)", () => testVote(newIPUser({ id: "id-b" })));
 
-  it("sends object if no ip user exists", async () => {
+  it("sends noop if successful (no ip user exists)", async () => {
 
     await testVote();
 
@@ -142,7 +142,7 @@ describe("pollRemoveOption", () => {
     }]
   })));
 
-  it("sends 401 if user is unauthenticated, restricted, or not the creator", () => {
+  it("sends 401 if authentication fails", () => {
 
     const args = [mockAPICall, getData("Option A"), [newUser({ id: "id-d" })]];
 
@@ -150,9 +150,9 @@ describe("pollRemoveOption", () => {
 
   });
 
-  it("sends object if user is valid (poll)", () => testRemove("id-b"));
+  it("sends noop if successful (poll)", () => testRemove("id-b"));
 
-  it("sends object if user is valid (option)", () => testRemove("id-c"));
+  it("sends noop if successful (option)", () => testRemove("id-c"));
 
 });
 
@@ -168,11 +168,11 @@ describe("pollRemoveVote", () => {
 
   const testUnvote = initTestUnvote(mockAPICall, getData);
 
-  it("sends 401 if no ip user exists", () => testUnvote());
+  it("sends noop if successful (user is authenticated)", () => testUnvote(newUser({ id: "id-b" })));
 
-  it("sends object if user is authenticated", () => testUnvote(newUser({ id: "id-b" })));
+  it("sends noop if successful (ip user exists)", () => testUnvote(newIPUser({ id: "id-b" })));
 
-  it("sends object if ip user exists", () => testUnvote(newIPUser({ id: "id-b" })));
+  it("sends 401 if authentication fails (no ip user exists)", () => testUnvote());
 
 });
 
@@ -188,9 +188,9 @@ describe("pollToggleFlag", () => {
 
   const testToggle = initTestToggle(mockAPICall, getData, "flagged");
 
-  it("sends 401 if user is unauthenticated or restricted", () => testAuthFail(mockAPICall, getData()));
+  it("sends 401 if authentication fails", () => testAuthFail(mockAPICall, getData()));
 
-  it("sends object if user is valid", () => testToggle(newUser({ id: "id-b" })));
+  it("sends noop if successful", () => testToggle(newUser({ id: "id-b" })));
 
 });
 
@@ -206,11 +206,11 @@ describe("pollToggleHide", () => {
 
   const testToggle = initTestToggle(mockAPICall, getData, "hidden");
 
-  it("sends object if user is authenticated", () => testToggle(newUser({ id: "id-b" })));
+  it("sends noop if successful (user is authenticated)", () => testToggle(newUser({ id: "id-b" })));
 
-  it("sends object if ip user exists", () => testToggle(newIPUser({ id: "id-b" })));
+  it("sends noop if successful (ip user exists)", () => testToggle(newIPUser({ id: "id-b" })));
 
-  it("sends object if no ip user exists", async () => {
+  it("sends noop if successful (no ip user exists)", async () => {
 
     await testToggle();
 
@@ -256,7 +256,7 @@ describe("pollToggleSecret", () => {
     users: { created: "id-b" }
   })));
 
-  it("sends 401 if user is unauthenticated, restricted, or not the creator", () => {
+  it("sends 401 if authentication fails", () => {
 
     const args = [mockAPICall, getData(), [newUser({ id: "id-c" })]];
 
@@ -264,6 +264,6 @@ describe("pollToggleSecret", () => {
 
   });
 
-  it("sends object if user is valid", () => testSecret(newUser({ id: "id-b" })));
+  it("sends noop if successful", () => testSecret(newUser({ id: "id-b" })));
 
 });
