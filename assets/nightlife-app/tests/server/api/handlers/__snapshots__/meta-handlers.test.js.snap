@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`metaGetUser sends data if successful (no user data exists) 1`] = `
+Object {
+  "_id": "[CENSORED]",
+  "data": Object {
+    "app": "nightlife-app",
+    "avatar": "",
+    "blocks": Array [],
+    "distance": 0,
+    "favorites": Array [],
+    "friends": Array [],
+    "location": null,
+  },
+  "id": "[CENSORED]",
+  "name": "User A",
+}
+`;

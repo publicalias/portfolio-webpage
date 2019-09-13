@@ -4,6 +4,7 @@
 
 const favoriteHandlers = require("./handlers/favorite-handlers");
 const friendHandlers = require("./handlers/friend-handlers");
+const metaHandlers = require("./handlers/meta-handlers");
 
 //global imports
 
@@ -13,7 +14,8 @@ const { apiRouter } = require("redux/server-utils");
 
 const router = apiRouter(Object.assign(
   favoriteHandlers,
-  friendHandlers
+  friendHandlers,
+  metaHandlers
 ));
 
 //exports

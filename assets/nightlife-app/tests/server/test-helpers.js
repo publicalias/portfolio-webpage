@@ -2,21 +2,30 @@
 
 //local imports
 
-const { newFriend } = require("../../schemas");
+const { newFriend, newUserData } = require("../../schemas");
 
 //utilities
 
 const friendsCol = () => db.collection("nightlife-app/friends");
+const userDataCol = () => db.collection("nightlife-app/user-data");
+
+const initCol = (collection, newSchema, init) => (data) => () => collection().insertOne(newSchema(init, data));
 
 //init friends col
 
-const initFriendsCol = (confirmed = false) => () => friendsCol().insertOne(newFriend({
+const initFriendsCol = initCol(friendsCol, newFriend, {
   id: "id-a",
   from: { id: "id-b" },
-  to: { id: "id-c" },
-  confirmed
-}));
+  to: { id: "id-c" }
+});
+
+//init user data col
+
+const initUserDataCol = initCol(userDataCol, newUserData, { id: "id-a" });
 
 //exports
 
-module.exports = { initFriendsCol };
+module.exports = {
+  initFriendsCol,
+  initUserDataCol
+};

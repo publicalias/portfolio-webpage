@@ -12,9 +12,9 @@ const initSchema = (init, replacers = {}) => {
 
     init,
 
-    ...data.map((e) => e && Object.keys(e).reduce((acc, f) => {
+    ((data) => Object.keys(data).reduce((acc, f) => {
 
-      const [i, r, d] = [init[f], replacers[f], e[f]];
+      const [i, r, d] = [init[f], replacers[f], data[f]];
 
       if (i !== undefined) {
         if (typeof r === "function") {
@@ -28,7 +28,7 @@ const initSchema = (init, replacers = {}) => {
 
       return acc;
 
-    }, {}))
+    }, {}))(deepCopy(...data))
 
   );
 

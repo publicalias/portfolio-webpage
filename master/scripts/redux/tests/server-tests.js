@@ -13,7 +13,7 @@ const { MongoMemoryServer } = require("mongodb-memory-server");
 
 //init mock api call
 
-const initMockAPICall = (fn, method) => async (user, data) => {
+const initMockAPICall = (fn, method) => async (user = {}, data = null) => {
 
   const isQuery = method === "GET" || method === "DELETE";
 

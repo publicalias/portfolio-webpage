@@ -110,7 +110,7 @@ describe("friendDismiss", () => {
 
   };
 
-  beforeEach(initFriendsCol(true));
+  beforeEach(initFriendsCol());
 
   it("sends status if authentication fails", () => testAuthFail(mockAPICall, getData(), [newUser()]));
 
@@ -133,10 +133,7 @@ describe("friendGetList", () => {
   it("sends data if successful", async () => {
 
     const friends = [
-      newFriend({
-        date: 0,
-        from: { id: "id-a" }
-      }),
+      newFriend({ from: { id: "id-a" } }),
       newFriend({
         date: 1,
         to: { id: "id-a" }

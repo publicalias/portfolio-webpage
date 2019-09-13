@@ -20,7 +20,7 @@ router.get("/", (req, res) => {
 
 router.get("/address", (req, res) => {
 
-  const api = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${req.query.lat},${req.query.lon}&key=${process.env.API_GC_KEY}`;
+  const api = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${req.query.lat},${req.query.lon}&key=${process.env.API_GC_KEY_1}`;
 
   sendData(api, res);
 
