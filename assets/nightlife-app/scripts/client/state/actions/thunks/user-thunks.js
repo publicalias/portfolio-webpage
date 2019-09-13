@@ -6,20 +6,24 @@ const { reduxAPICall } = require("redux/client-utils");
 
 //user get item
 
-const userGetItem = (id) => (dispatch) => reduxAPICall(dispatch, {
+const userGetItem = (id, location) => (dispatch) => reduxAPICall(dispatch, {
   path: "/nightlife-app/api/user-get-item",
   method: "GET",
-  data: { id }
+  data: {
+    id,
+    location
+  }
 });
 
 //user get list
 
-const userGetList = (params, length) => (dispatch) => reduxAPICall(dispatch, {
+const userGetList = (params, length, location) => (dispatch) => reduxAPICall(dispatch, {
   path: "/nightlife-app/api/user-get-list",
   method: "GET",
   data: {
     params,
-    length
+    length,
+    location
   }
 });
 

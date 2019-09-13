@@ -39,7 +39,7 @@ const newFriend = initSchema({
 
 const newGeoPoint = initSchema({
   type: "Point",
-  coordinates: []
+  coordinates: [] //longitude first
 });
 
 //new list params users

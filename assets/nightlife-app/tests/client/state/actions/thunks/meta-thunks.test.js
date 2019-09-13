@@ -29,7 +29,7 @@ describe("metaSaveAddress", () => {
     method: "PATCH",
     data: {
       address: "",
-      coordinates: undefined
+      location: undefined
     }
   });
 

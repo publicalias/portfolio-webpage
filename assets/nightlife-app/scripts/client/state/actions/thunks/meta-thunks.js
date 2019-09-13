@@ -13,12 +13,12 @@ const metaGetUser = () => (dispatch) => reduxAPICall(dispatch, {
 
 //meta save address
 
-const metaSaveAddress = (address, coordinates) => (dispatch) => reduxAPICall(dispatch, {
+const metaSaveAddress = (address, location) => (dispatch) => reduxAPICall(dispatch, {
   path: "/nightlife-app/api/meta-save-address",
   method: "PATCH",
   data: {
     address,
-    coordinates
+    location
   }
 });
 

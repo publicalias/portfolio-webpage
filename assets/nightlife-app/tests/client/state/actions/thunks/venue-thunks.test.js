@@ -15,7 +15,10 @@ describe("venueGetItem", () => {
   testAPI.default(venueGetItem(""), {
     path: "/nightlife-app/api/venue-get-item",
     method: "GET",
-    data: { id: "" }
+    data: {
+      id: "",
+      location: undefined
+    }
   });
 
 });
@@ -33,7 +36,8 @@ describe("venueGetList", () => {
     method: "GET",
     data: {
       params,
-      length: undefined
+      length: undefined,
+      location: undefined
     }
   });
 

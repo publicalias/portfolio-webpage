@@ -15,7 +15,10 @@ describe("userGetItem", () => {
   testAPI.default(userGetItem(""), {
     path: "/nightlife-app/api/user-get-item",
     method: "GET",
-    data: { id: "" }
+    data: {
+      id: "",
+      location: undefined
+    }
   });
 
 });
@@ -33,7 +36,8 @@ describe("userGetList", () => {
     method: "GET",
     data: {
       params,
-      length: undefined
+      length: undefined,
+      location: undefined
     }
   });
 
