@@ -4,6 +4,7 @@
 
 const { select } = require("all/dom-api");
 const { handleTeardown, hookEvent } = require("all/react-utils");
+const { cycleItems } = require("all/utilities");
 
 //check input
 
@@ -102,6 +103,52 @@ const initStorageKey = (path) => (key, val, session) => {
 
 const storageKey = initStorageKey();
 
+//init tab group
+
+const initTabGroup = (group) => {
+
+  const DOMGroup = select(group);
+
+  const handleFocus = (delta, value) => {
+
+    const list = DOMGroup.all;
+
+    const last = list.find((e) => e.getAttribute("tabindex") === "0");
+    const next = value || cycleItems(list, last, delta);
+
+    last.setAttribute("tabindex", "-1");
+
+    next.focus();
+    next.setAttribute("tabindex", "0");
+
+  };
+
+  DOMGroup.all.forEach((e, i) => {
+    e.setAttribute("tabindex", i === 0 ? "0" : "-1");
+  });
+
+  return handleTeardown([
+
+    hookEvent(DOMGroup, "click", (event) => {
+      handleFocus(null, event.target);
+    }),
+
+    hookEvent(DOMGroup, "keydown", (event) => {
+      switch (event.key) {
+        case "ArrowDown":
+        case "ArrowRight":
+          handleFocus(1);
+          break;
+        case "ArrowLeft":
+        case "ArrowUp":
+          handleFocus(-1);
+      }
+    })
+
+  ]);
+
+};
+
 //submit keys
 
 const submitKeys = (id) => {
@@ -168,6 +215,7 @@ module.exports = {
   encodeAPICall,
   getJSON,
   initStorageKey,
+  initTabGroup,
   storageKey,
   submitKeys,
   swipeEvent

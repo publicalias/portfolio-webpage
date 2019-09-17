@@ -35,7 +35,7 @@ const cycleItems = (arr, val, delta = 1) => {
   const i = arr.indexOf(val);
   const l = arr.length;
 
-  const next = (i + delta) % l;
+  const next = ((i === -1 && Math.sign(delta) !== 1 ? 0 : i) + delta) % l;
 
   return arr[next >= 0 ? next : l + next];
 
