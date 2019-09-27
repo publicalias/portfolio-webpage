@@ -12,12 +12,12 @@ describe("userGetItem", () => {
 
   const { userGetItem } = actions;
 
-  testAPI.default(userGetItem(""), {
+  testAPI.default(userGetItem("", null), {
     path: "/nightlife-app/api/user-get-item",
     method: "GET",
     data: {
       id: "",
-      location: undefined
+      location: null
     }
   });
 
@@ -31,13 +31,13 @@ describe("userGetList", () => {
 
   const params = newListParamsUsers();
 
-  testAPI.default(userGetList(params), {
+  testAPI.default(userGetList(params, 0, null), {
     path: "/nightlife-app/api/user-get-list",
     method: "GET",
     data: {
       params,
-      length: undefined,
-      location: undefined
+      length: 0,
+      location: null
     }
   }, {
     array: false
