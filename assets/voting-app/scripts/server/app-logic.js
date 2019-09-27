@@ -8,18 +8,6 @@ const { checkErrors, deepCopy } = require("all/utilities");
 
 const pollsCol = () => db.collection("voting-app/polls");
 
-const addVotes = {
-  $addFields: {
-    votes: {
-      $reduce: {
-        input: "$options",
-        initialValue: 0,
-        in: { $add: ["$$value", { $size: "$$this.voted" }] }
-      }
-    }
-  }
-};
-
 //check options
 
 const checkOptions = (options) => checkErrors([{
@@ -49,19 +37,29 @@ const checkTitle = (title, exists) => checkErrors([{
   text: "Title already exists"
 }]);
 
-//find by id
+//find item / find list
 
-const findByID = async (id) => {
+const addVotes = () => [{
+  $addFields: {
+    votes: {
+      $reduce: {
+        input: "$options",
+        initialValue: 0,
+        in: { $add: ["$$value", { $size: "$$this.voted" }] }
+      }
+    }
+  }
+}];
 
-  const res = await pollsCol()
-    .aggregate([{ $match: { id } }, addVotes])
+const findItem = async (id) => {
+
+  const [item] = await pollsCol()
+    .aggregate([{ $match: { id } }, ...addVotes()])
     .toArray();
 
-  return res[0];
+  return item;
 
 };
-
-//find polls
 
 const getQuery = (user, { filter }) => {
 
@@ -87,18 +85,18 @@ const getSort = ({ sort }) => {
 
 };
 
-const findPolls = async (user, params, length = 0) => {
+const findList = async (user, params, length = 0) => {
 
   const { search } = params;
 
-  const args = deepCopy({
-    query: getQuery(user, params),
-    sort: getSort(params)
+  const { $match, $sort } = deepCopy({
+    $match: getQuery(user, params),
+    $sort: getSort(params)
   }, search ? {
-    query: { $text: { $search: search } },
-    sort: { score: { $meta: "textScore" } }
+    $match: { $text: { $search: search } },
+    $sort: { score: { $meta: "textScore" } }
   } : null, {
-    sort: { _id: 1 } //ensures consistency in tests
+    $sort: { _id: 1 } //ensures consistency in tests
   });
 
   await pollsCol().createIndex({
@@ -108,7 +106,7 @@ const findPolls = async (user, params, length = 0) => {
   });
 
   return pollsCol()
-    .aggregate([{ $match: args.query }, addVotes, { $sort: args.sort }])
+    .aggregate([{ $match }, ...addVotes(), { $sort }])
     .limit(length + 100) //refreshes the whole list
     .toArray();
 
@@ -118,7 +116,7 @@ const findPolls = async (user, params, length = 0) => {
 
 const handleToggle = async (id, user, prop) => {
 
-  const { users } = await findByID(id);
+  const { users } = await findItem(id);
 
   const bool = users[prop].includes(user.id);
 
@@ -135,7 +133,7 @@ const handleToggle = async (id, user, prop) => {
 module.exports = {
   checkOptions,
   checkTitle,
-  findByID,
-  findPolls,
+  findItem,
+  findList,
   handleToggle
 };

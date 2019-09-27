@@ -2,7 +2,7 @@
 
 //local imports
 
-const { checkOptions, findByID, handleToggle } = require("../../app-logic");
+const { checkOptions, findItem, handleToggle } = require("../../app-logic");
 const { newOption } = require("../../../../schemas");
 
 //global imports
@@ -23,7 +23,7 @@ const pollAddOption = handleAPICall({
 
     const { id, text } = req.body.data;
 
-    const { options } = await findByID(id);
+    const { options } = await findItem(id);
 
     handleErrors(res, checkOptions([text, ...options.map((e) => e.text)]));
 
@@ -81,7 +81,7 @@ const pollRemoveOption = handleAPICall({
 
     const { id, text } = req.body.data;
 
-    const { users, options } = await findByID(id);
+    const { users, options } = await findItem(id);
 
     handleAuthFail(req, res, (id) => {
 
@@ -171,7 +171,7 @@ const pollToggleSecret = handleAPICall({
 
     const { id } = req.body.data;
 
-    const { secret, users } = await findByID(id);
+    const { secret, users } = await findItem(id);
 
     handleAuthFail(req, res, (id) => id !== users.created);
 

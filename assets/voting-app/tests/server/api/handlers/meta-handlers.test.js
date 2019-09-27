@@ -5,12 +5,12 @@
 const handlers = require("../../../../scripts/server/api/handlers/meta-handlers");
 
 const { newForm, newListParams, newPoll } = require("../../../../schemas");
-const { overlyLongInput, testOptions, testTitle } = require("../../test-helpers");
+const { testOptions, testTitle } = require("../../test-helpers");
 
 //global imports
 
 const { newIPUser, newUser } = require("redux/schemas");
-const { testMock } = require("redux/tests/meta-tests");
+const { overlyLongInput, testMock } = require("redux/tests/meta-tests");
 const { initMockAPICall, mongoTests, testAuthFail, testInsert } = require("redux/tests/server-tests");
 
 //utilities
@@ -156,21 +156,23 @@ describe("metaGetPollList", () => {
     length
   });
 
-  const testPolls = async (pollData, length = 0) => {
+  const testPolls = async (length) => {
 
-    const polls = pollData.map(newPoll);
+    const polls = Array(1 + 100)
+      .fill({})
+      .map(newPoll);
 
     await pollsCol().insertMany(polls);
 
     const res = await mockAPICall({}, getData(length));
 
-    testMock(res.json, [{ polls }]);
+    testMock(res.json, [{ polls: polls.slice(0, length + 100) }]);
 
   };
 
-  it("sends data if successful (length, 0)", () => testPolls([{}]));
+  it("sends data if successful (length, 0)", () => testPolls(0));
 
-  it("sends data if successful (length, 1)", () => testPolls(Array(1 + 100).fill({}), 1));
+  it("sends data if successful (length, 1)", () => testPolls(1));
 
 });
 

@@ -56,9 +56,7 @@ describe("pollAddOption", () => {
 
   it("sends noop if successful", async () => {
 
-    const poll = newPoll({ id: "id-a" });
-
-    await pollsCol().insertOne(poll);
+    await pollsCol().insertOne(newPoll({ id: "id-a" }));
 
     const res = await mockAPICall(newUser({ id: "id-b" }), getData("Option A"));
 
@@ -66,12 +64,10 @@ describe("pollAddOption", () => {
 
     testMock(res.json, [{}]);
 
-    expect(update).toEqual(Object.assign(poll, {
-      options: [newOption({
-        text: "Option A",
-        created: "id-b"
-      })]
-    }));
+    expect(update.options).toEqual([newOption({
+      text: "Option A",
+      created: "id-b"
+    })]);
 
   });
 
@@ -121,15 +117,13 @@ describe("pollRemoveOption", () => {
 
   const testRemove = async (id) => {
 
-    const poll = await pollsCol().findOne();
-
     const res = await mockAPICall(newUser({ id }), getData("Option A"));
 
     const update = await pollsCol().findOne();
 
     testMock(res.json, [{}]);
 
-    expect(update).toEqual(Object.assign(poll, { options: [] }));
+    expect(update.options).toEqual([]);
 
   };
 

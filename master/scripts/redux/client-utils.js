@@ -15,24 +15,6 @@ const initReducer = (initialState, handlers) => (state = initialState, action) =
 
 };
 
-//parse query
-
-const parseQuery = (props) => {
-
-  const { location: { search } } = props;
-
-  const set = new URLSearchParams(search);
-
-  const obj = {};
-
-  for (const [key, val] of set) {
-    obj[key] = val;
-  }
-
-  return obj;
-
-};
-
 //redux api call
 
 const resHandlers = (dispatch, successFn, failureFn) => ({
@@ -90,6 +72,5 @@ const reduxAPICall = async (dispatch, args, successFn, failureFn) => {
 
 module.exports = {
   initReducer,
-  parseQuery,
   reduxAPICall
 };

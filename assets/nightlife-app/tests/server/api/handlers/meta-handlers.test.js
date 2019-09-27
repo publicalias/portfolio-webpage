@@ -4,8 +4,7 @@
 
 const handlers = require("../../../../scripts/server/api/handlers/meta-handlers");
 
-const { newUserWithData } = require("../../../../schemas");
-const { initUserDataCol } = require("../../test-helpers");
+const { newUserData, newUserWithData } = require("../../../../schemas");
 
 //global imports
 
@@ -16,6 +15,8 @@ const { initMockAPICall, mongoTests, testAuthFail, testInsert } = require("redux
 //utilities
 
 const userDataCol = () => db.collection("nightlife-app/user-data");
+
+const insertUserData = (data) => userDataCol().insertOne(newUserData({ id: "id-a" }, data));
 
 //setup
 
@@ -41,7 +42,7 @@ describe("metaGetUser", () => {
 
   it("sends data if successful (user data exists)", async () => {
 
-    await initUserDataCol({ data: { location: {} } })();
+    await insertUserData({ data: { location: {} } });
 
     const res = await mockAPICall(newUser({
       id: "id-a",
@@ -99,7 +100,7 @@ describe("metaSaveAddress", () => {
 
     const update = await userDataCol().findOne();
 
-    expect(update.data.location).toEqual(address || null);
+    expect(update.data.location).toEqual(address || location || null);
 
     testMock(res.json, [{}]);
 
@@ -109,7 +110,7 @@ describe("metaSaveAddress", () => {
 
     metaSaveAddress.injected.lib.geoCode = jest.fn((address) => address || null);
 
-    await initUserDataCol()();
+    await insertUserData();
 
   });
 
@@ -133,7 +134,7 @@ describe("metaSaveAvatar", () => {
 
   const getData = () => ({ avatar: "https://www.example.com/avatar.jpg" });
 
-  beforeEach(initUserDataCol());
+  beforeEach(() => insertUserData());
 
   it("sends status if authentication fails", () => testAuthFail(mockAPICall, getData()));
 

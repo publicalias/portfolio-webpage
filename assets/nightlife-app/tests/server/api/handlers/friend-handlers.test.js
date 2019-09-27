@@ -5,7 +5,6 @@
 const handlers = require("../../../../scripts/server/api/handlers/friend-handlers");
 
 const { newFriend, newUserData } = require("../../../../schemas");
-const { initFriendsCol } = require("../../test-helpers");
 
 //global imports
 
@@ -17,6 +16,12 @@ const { initMockAPICall, mongoTests, testAuthFail, testInsert } = require("redux
 
 const friendsCol = () => db.collection("nightlife-app/friends");
 const userDataCol = () => db.collection("nightlife-app/user-data");
+
+const insertFriend = () => friendsCol().insertOne(newFriend({
+  id: "id-a",
+  from: { id: "id-b" },
+  to: { id: "id-c" }
+}));
 
 //setup
 
@@ -42,11 +47,13 @@ describe("friendAdd", () => {
     data: { blocks: ["id-b"] }
   })));
 
-  it("sends status if authentication fails", () => {
+  it("sends status if authentication fails", async () => {
 
     const args = [mockAPICall, getData(), [newUser({ id: "id-b" })]];
 
-    return testAuthFail(...args);
+    await testAuthFail(...args);
+
+    expect(await friendsCol().countDocuments()).toEqual(0);
 
   });
 
@@ -78,7 +85,7 @@ describe("friendConfirm", () => {
 
   const getData = () => ({ id: "id-a" });
 
-  beforeEach(initFriendsCol());
+  beforeEach(insertFriend);
 
   it("sends status if authentication fails", () => testAuthFail(mockAPICall, getData(), [newUser()]));
 
@@ -110,7 +117,7 @@ describe("friendDismiss", () => {
 
   };
 
-  beforeEach(initFriendsCol());
+  beforeEach(insertFriend);
 
   it("sends status if authentication fails", () => testAuthFail(mockAPICall, getData(), [newUser()]));
 
@@ -165,7 +172,7 @@ describe("friendRemove", () => {
 
   const getData = () => ({ id: "id-a" });
 
-  beforeEach(initFriendsCol());
+  beforeEach(insertFriend);
 
   const testRemove = async (id) => {
 
@@ -173,9 +180,17 @@ describe("friendRemove", () => {
 
     testMock(res.json, [{}]);
 
+    expect(await friendsCol().countDocuments()).toEqual(0);
+
   };
 
-  it("sends status if authentication fails", () => testAuthFail(mockAPICall, getData(), [newUser()]));
+  it("sends status if authentication fails", async () => {
+
+    await testAuthFail(mockAPICall, getData(), [newUser()]);
+
+    expect(await friendsCol().countDocuments()).toEqual(1);
+
+  });
 
   it("sends noop if successful (from)", () => testRemove("id-b"));
 

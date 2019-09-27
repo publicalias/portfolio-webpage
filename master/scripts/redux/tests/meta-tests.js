@@ -1,12 +1,8 @@
 "use strict";
 
-//mock results
+//init test errors
 
-const mockResults = (fn) => fn.mock.results.map((e) => e.value);
-
-//test errors
-
-const testErrors = (testData) => (fn, testArgs = []) => {
+const initTestErrors = (testData) => (fn, testArgs = []) => {
   testData.forEach((e, i) => {
 
     const [description, args, setup] = e;
@@ -26,6 +22,16 @@ const testErrors = (testData) => (fn, testArgs = []) => {
   });
 };
 
+//mock results
+
+const mockResults = (fn) => fn.mock.results.map((e) => e.value);
+
+//overly long input
+
+const overlyLongInput = Array(100 + 1)
+  .fill("a")
+  .join("");
+
 //test mock
 
 const testMock = (fn, ...calls) => {
@@ -35,7 +41,8 @@ const testMock = (fn, ...calls) => {
 //exports
 
 module.exports = {
+  initTestErrors,
   mockResults,
-  testErrors,
+  overlyLongInput,
   testMock
 };

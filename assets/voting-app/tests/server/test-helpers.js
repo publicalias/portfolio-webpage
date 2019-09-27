@@ -6,7 +6,7 @@ const { newPoll } = require("../../schemas");
 
 //global imports
 
-const { testErrors, testMock } = require("redux/tests/meta-tests");
+const { initTestErrors, overlyLongInput, testMock } = require("redux/tests/meta-tests");
 
 //utilities
 
@@ -115,19 +115,13 @@ const initTestVote = (handler, getData) => async (user) => {
 
 };
 
-//overly long input
-
-const overlyLongInput = Array(100 + 1)
-  .fill("a")
-  .join("");
-
 //test options
 
 const maxOptions = Array(100)
   .fill(0)
   .map((e, i) => `Option ${i}`);
 
-const testOptions = testErrors([
+const testOptions = initTestErrors([
   ["sends errors if option is empty", ["Option is empty", ""]],
   ["sends errors if option exceeds character limit", ["Option exceeds character limit", overlyLongInput]],
   ["sends errors if option already exists", ["Option already exists", "Option A", ["Option A"]]],
@@ -138,7 +132,7 @@ const testOptions = testErrors([
 
 const duplicate = () => pollsCol().insertOne(newPoll({ title: "Title A" }));
 
-const testTitle = testErrors([
+const testTitle = initTestErrors([
   ["sends errors if title is empty", ["Title is empty", ""]],
   ["sends errors if title exceeds character limit", ["Title exceeds character limit", overlyLongInput]],
   ["sends errors if title already exists", ["Title already exists", "Title A"], duplicate]
@@ -150,7 +144,6 @@ module.exports = {
   initTestUnvote,
   initTestVote,
   initTestToggle,
-  overlyLongInput,
   testOptions,
   testTitle
 };

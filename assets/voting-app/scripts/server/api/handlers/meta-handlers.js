@@ -2,7 +2,7 @@
 
 //local imports
 
-const { checkOptions, checkTitle, findByID, findPolls } = require("../../app-logic");
+const { checkOptions, checkTitle, findItem, findList } = require("../../app-logic");
 const { newPoll } = require("../../../../schemas");
 
 //global imports
@@ -68,7 +68,7 @@ const metaDeletePoll = handleAPICall({
 
     const { id } = JSON.parse(req.query.data);
 
-    const { users } = await findByID(id);
+    const { users } = await findItem(id);
 
     handleAuthFail(req, res, (id) => id !== users.created);
 
@@ -92,7 +92,9 @@ const metaGetPollItem = async (req, res) => {
 
   const { id } = JSON.parse(req.query.data);
 
-  res.json({ polls: [await findByID(id)].filter((e) => e) });
+  const poll = await findItem(id);
+
+  res.json({ polls: poll ? [poll] : [] });
 
 };
 
@@ -127,7 +129,7 @@ const metaGetPollList = handleAPICall({
 
     const user = req.user || await getIPUser(req.ip) || {};
 
-    res.json({ polls: await findPolls(user, params, length) });
+    res.json({ polls: await findList(user, params, length) });
 
   }
 
