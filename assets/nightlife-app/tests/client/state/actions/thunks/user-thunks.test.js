@@ -39,6 +39,8 @@ describe("userGetList", () => {
       length: undefined,
       location: undefined
     }
+  }, {
+    array: false
   });
 
 });

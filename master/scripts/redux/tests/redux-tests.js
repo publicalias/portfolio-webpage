@@ -78,10 +78,10 @@ const initTestAPI = (newState) => {
 
   };
 
-  testAPI.default = (action, args) => {
+  testAPI.default = (action, args, config) => {
 
     const success = [
-      ["META_SET_STATE", { user: {} }, "res", [metaSetState({ user: {} })]], //order preserves formatting
+      ["META_SET_STATE", { user: {} }, "res", [metaSetState({ user: {} }, config)]], //order preserves formatting
       ["META_NO_OP", {}, "no res", [metaNoOp()]],
       ["META_ADD_ERRORS", { errors: [] }, "errors", [metaAddErrors([])]]
     ];

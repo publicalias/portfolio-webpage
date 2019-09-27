@@ -17,7 +17,7 @@ const initReducer = (initialState, handlers) => (state = initialState, action) =
 
 //redux api call
 
-const resHandlers = (dispatch, successFn, failureFn) => ({
+const resHandlers = (dispatch, config, successFn, failureFn) => ({
 
   success: successFn || ((res) => {
 
@@ -27,7 +27,7 @@ const resHandlers = (dispatch, successFn, failureFn) => ({
     if (errors) {
       dispatch(metaAddErrors(errors));
     } else if (length) {
-      dispatch(metaSetState(res));
+      dispatch(metaSetState(res, config));
     } else {
       dispatch(metaNoOp());
     }
@@ -44,11 +44,11 @@ const resHandlers = (dispatch, successFn, failureFn) => ({
 
 });
 
-const reduxAPICall = async (dispatch, args, successFn, failureFn) => {
+const reduxAPICall = async (dispatch, args, config, successFn, failureFn) => {
 
   const { path, init } = encodeAPICall(args);
 
-  const { success, failure, loading } = resHandlers(dispatch, successFn, failureFn);
+  const { success, failure, loading } = resHandlers(dispatch, config, successFn, failureFn);
 
   loading(true);
 
