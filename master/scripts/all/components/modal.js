@@ -7,7 +7,7 @@ const { handleTeardown, hookEvent } = require("all/react-utils");
 
 //toggle modal
 
-const toggleState = (bool = false, DOMHide, DOMShow) => {
+const toggleState = (DOMHide, DOMShow, bool = false) => {
   DOMHide.class("is-open", true, bool);
   DOMShow.class("is-open", true, bool);
 };
@@ -32,12 +32,12 @@ const toggleModal = (bool) => {
       backgroundSize: "100%",
       width: "auto"
     });
-    toggleState(bool, DOMHide, DOMShow);
+    toggleState(DOMHide, DOMShow, bool);
   }
 
   DOMShow.animate({ top: bool ? 0 : "100vh" }, () => {
     if (bool) {
-      toggleState(bool, DOMHide, DOMShow);
+      toggleState(DOMHide, DOMShow, bool);
       DOMShow.scrollTop = 0;
     }
   });
