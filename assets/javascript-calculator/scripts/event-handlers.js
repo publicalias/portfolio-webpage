@@ -66,7 +66,7 @@ const keyEvents = (app) => {
         app.equals(true);
         break;
       default:
-        if (/\d/u.test(event.key)) {
+        if (/\d/.test(event.key)) {
           app.num(event.key, true);
         }
     }

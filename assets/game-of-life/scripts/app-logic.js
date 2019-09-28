@@ -245,7 +245,7 @@ const getUtils = (state, setState) => {
 
 const validRules = (str) => {
 
-  if (/^B[0-8]*\/S[0-8]*$/u.test(str)) {
+  if (/^B[0-8]*\/S[0-8]*$/.test(str)) {
 
     const [ba, sa] = str.split("/").map((e) => e.slice(1));
     const [bb, sb] = [ba, sa].map((e) => e.split("")

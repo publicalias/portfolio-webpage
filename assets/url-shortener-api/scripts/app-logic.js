@@ -97,7 +97,7 @@ const parseInput = (req, res) => {
 
   if (valid.isWebUri(input)) {
     parseURL(res, input);
-  } else if (/^[a-z]{3}$/iu.test(input)) {
+  } else if (/^[a-z]{3}$/i.test(input)) {
     parseCode(res, input);
   } else {
     res.sendStatus(400);

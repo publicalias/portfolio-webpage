@@ -134,7 +134,7 @@ const geoCode = async (address) => {
 
     if (address) {
 
-      const res = await request(`https://maps.googleapis.com/maps/api/geocode/json?address=${address.replace(/\s/gu, "+")}&key=${process.env.API_GC_KEY_2}`);
+      const res = await request(`https://maps.googleapis.com/maps/api/geocode/json?address=${address.replace(/\s/g, "+")}&key=${process.env.API_GC_KEY_2}`);
 
       const { lat, lng } = JSON.parse(res).results[0].geometry.location;
 

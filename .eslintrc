@@ -136,6 +136,7 @@
     "prefer-destructuring": 0,
     "prefer-named-capture-group": 0,
     "prefer-object-spread": 0,
+    "require-unicode-regexp": 0,
     "sort-keys": 0,
     "wrap-regex": 0,
 

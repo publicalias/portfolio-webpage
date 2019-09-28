@@ -27,7 +27,7 @@ const wpOptions = {
   mode: process.env.NODE_ENV,
   module: {
     rules: [{
-      test: /(\.js|\.jsx)$/u,
+      test: /(\.js|\.jsx)$/,
       use: {
         loader: "babel-loader",
         options: { presets: ["@babel/preset-react"] }

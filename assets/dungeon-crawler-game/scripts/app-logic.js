@@ -164,10 +164,10 @@ const playerWins = (params, type, subtype) => {
 
 //scramble
 
-const scramble = (str) => str.split(/\b/u)
+const scramble = (str) => str.split(/\b/)
   .map((e) => {
 
-    if (e.length < 4 || /[^a-z0-9]/iu.test(e)) {
+    if (e.length < 4 || /[^a-z0-9]/i.test(e)) {
       return e;
     }
 

@@ -9,11 +9,11 @@ const { toPrecision } = require("all/utilities");
 
 const readOutput = () => select(".js-edit-val")
   .text()
-  .replace(/,/gu, "");
+  .replace(/,/g, "");
 
 //update view
 
-const format = (n) => n.replace(/\d+/u, (match) => {
+const format = (n) => n.replace(/\d+/, (match) => {
 
   const x = match.split("");
 
@@ -28,8 +28,8 @@ const format = (n) => n.replace(/\d+/u, (match) => {
 const updateView = (that, id, manual) => {
 
   const val = format(manual ? that.val : toPrecision(that.val, 14));
-  const chain = that.chain.split(/(\s[+\-*/]\s*)/u)
-    .map((e) => /\d+/u.test(e) ? toPrecision(e, 14) : e)
+  const chain = that.chain.split(/(\s[+\-*/]\s*)/)
+    .map((e) => /\d+/.test(e) ? toPrecision(e, 14) : e)
     .map(format)
     .join("");
 
