@@ -24,11 +24,19 @@ const rsvpAdd = handleAPICall({
 
   failure: handleAuthFail,
 
-  errors(req, res) {
+  async errors(req, res) {
 
-    const { time } = req.body.data;
+    const { id, time } = req.body.data;
+
+    const exists = await rsvpCol().findOne({
+      "user.id": req.user.id,
+      "venue.id": id
+    });
 
     handleErrors(res, checkErrors([{
+      bool: exists,
+      text: "RSVP already exists"
+    }, {
       bool: !isValidTime(time),
       text: "Time is incorrectly formatted"
     }]));
@@ -38,13 +46,6 @@ const rsvpAdd = handleAPICall({
   async success(req, res) {
 
     const { name, id, time, message } = req.body.data;
-
-    await rsvpCol().createIndex({
-      "user.id": 1,
-      "venue.id": 1
-    }, {
-      unique: true
-    });
 
     await rsvpCol().insertOne(newRSVP({
       id: uuid(),

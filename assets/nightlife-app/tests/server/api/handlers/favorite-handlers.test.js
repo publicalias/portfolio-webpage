@@ -43,12 +43,27 @@ describe("favoriteAdd", () => {
 
   });
 
+  it("sends errors if favorite already exists", async () => {
+
+    await favoritesCol().insertOne(newFavorite({
+      user: { id: "id-b" },
+      venue: { id: "id-a" }
+    }));
+
+    const res = await mockAPICall(newUser({ id: "id-b" }), getData());
+
+    testMock(res.json, [{ errors: ["Favorite already exists"] }]);
+
+    expect(await favoritesCol().countDocuments()).toEqual(1);
+
+  });
+
   it("sends noop if successful", async () => {
 
     const res = await mockAPICall(
       newUser({
-        name: "User A",
-        id: "id-a"
+        name: "User B",
+        id: "id-b"
       }),
       getData()
     );

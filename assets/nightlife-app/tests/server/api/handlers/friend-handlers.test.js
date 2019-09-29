@@ -42,6 +42,21 @@ describe("friendAdd", () => {
     id: "id-a"
   });
 
+  const testError = async (from, to) => {
+
+    await friendsCol().insertOne(newFriend({
+      from: { id: from },
+      to: { id: to }
+    }));
+
+    const res = await mockAPICall(newUser({ id: "id-c" }), getData());
+
+    testMock(res.json, [{ errors: ["Friend request already exists"] }]);
+
+    expect(await friendsCol().countDocuments()).toEqual(1);
+
+  };
+
   beforeEach(() => userDataCol().insertOne(newUserData({
     id: "id-a",
     data: { blocks: ["id-b"] }
@@ -56,6 +71,10 @@ describe("friendAdd", () => {
     expect(await friendsCol().countDocuments()).toEqual(0);
 
   });
+
+  it("sends errors if friend request already exists (from)", () => testError("id-a", "id-c"));
+
+  it("sends errors if friend request already exists (to)", () => testError("id-c", "id-a"));
 
   it("sends noop if successful", async () => {
 

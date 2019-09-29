@@ -31,7 +31,7 @@ describe("rsvpAdd", () => {
 
   const mockAPICall = initMockAPICall(rsvpAdd, "POST");
 
-  const getData = (time) => ({
+  const getData = (time = "9:00 PM") => ({
     name: "Venue A",
     id: "id-a",
     time,
@@ -43,6 +43,21 @@ describe("rsvpAdd", () => {
     await testAuthFail(mockAPICall, getData());
 
     expect(await rsvpCol().countDocuments()).toEqual(0);
+
+  });
+
+  it("sends errors if RSVP already exists", async () => {
+
+    await rsvpCol().insertOne(newRSVP({
+      user: { id: "id-b" },
+      venue: { id: "id-a" }
+    }));
+
+    const res = await mockAPICall(newUser({ id: "id-b" }), getData());
+
+    testMock(res.json, [{ errors: ["RSVP already exists"] }]);
+
+    expect(await rsvpCol().countDocuments()).toEqual(1);
 
   });
 
@@ -63,7 +78,7 @@ describe("rsvpAdd", () => {
         name: "User B",
         id: "id-b"
       }),
-      getData("9:00 PM")
+      getData()
     );
 
     testMock(res.json, [{}]);

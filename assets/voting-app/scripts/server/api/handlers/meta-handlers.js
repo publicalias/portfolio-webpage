@@ -39,8 +39,6 @@ const metaCreatePoll = handleAPICall({
 
     const { title, options, secret } = req.body.data;
 
-    await pollsCol().createIndex({ title: 1 }, { unique: true });
-
     await pollsCol().insertOne(newPoll({
       title: title.trim(),
       author: req.user.name,

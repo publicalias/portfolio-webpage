@@ -5,8 +5,8 @@ Object {
   "_id": "[CENSORED]",
   "id": "[CENSORED]",
   "user": Object {
-    "id": "id-a",
-    "name": "User A",
+    "id": "id-b",
+    "name": "User B",
   },
   "venue": Object {
     "id": "id-a",

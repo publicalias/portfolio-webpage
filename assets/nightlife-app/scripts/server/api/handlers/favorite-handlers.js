@@ -6,7 +6,8 @@ const { newFavorite } = require("../../../../schemas");
 
 //global imports
 
-const { handleAPICall, handleAuthFail } = require("redux/server-utils");
+const { checkErrors } = require("all/utilities");
+const { handleAPICall, handleAuthFail, handleErrors } = require("redux/server-utils");
 
 //node modules
 
@@ -22,16 +23,25 @@ const favoriteAdd = handleAPICall({
 
   failure: handleAuthFail,
 
+  async errors(req, res) {
+
+    const { id } = req.body.data;
+
+    const exists = await favoritesCol().findOne({
+      "user.id": req.user.id,
+      "venue.id": id
+    });
+
+    handleErrors(res, checkErrors([{
+      bool: exists,
+      text: "Favorite already exists"
+    }]));
+
+  },
+
   async success(req, res) {
 
     const { name, id } = req.body.data;
-
-    await favoritesCol().createIndex({
-      "user.id": 1,
-      "venue.id": 1
-    }, {
-      unique: true
-    });
 
     await favoritesCol().insertOne(newFavorite({
       id: uuid(),

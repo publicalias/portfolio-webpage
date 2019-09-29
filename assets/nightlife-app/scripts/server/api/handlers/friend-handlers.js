@@ -7,7 +7,8 @@ const { newFriend } = require("../../../../schemas");
 
 //global imports
 
-const { handleAPICall, handleAuthFail } = require("redux/server-utils");
+const { checkErrors } = require("all/utilities");
+const { handleAPICall, handleAuthFail, handleErrors } = require("redux/server-utils");
 
 //node modules
 
@@ -32,16 +33,30 @@ const friendAdd = handleAPICall({
 
   },
 
+  async errors(req, res) {
+
+    const { id } = req.body.data;
+
+    const exists = await friendsCol().findOne({
+      $or: [{
+        "from.id": req.user.id,
+        "to.id": id
+      }, {
+        "from.id": id,
+        "to.id": req.user.id
+      }]
+    });
+
+    handleErrors(res, checkErrors([{
+      bool: exists,
+      text: "Friend request already exists"
+    }]));
+
+  },
+
   async success(req, res) {
 
     const { name, id } = req.body.data;
-
-    await friendsCol().createIndex({
-      "from.id": 1,
-      "to.id": 1
-    }, {
-      unique: true
-    });
 
     await friendsCol().insertOne(newFriend({
       id: uuid(),
