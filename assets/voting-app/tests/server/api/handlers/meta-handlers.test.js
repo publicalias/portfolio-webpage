@@ -97,7 +97,7 @@ describe("metaDeletePoll", () => {
 
   it("sends status if authentication fails", async () => {
 
-    await testAuthFail(mockAPICall, getData(), [newUser({ id: "id-c" })]);
+    await testAuthFail(mockAPICall, getData(), [newUser()]);
 
     expect(await pollsCol().countDocuments()).toEqual(1);
 
@@ -123,23 +123,23 @@ describe("metaGetPollItem", () => {
 
   const mockAPICall = initMockAPICall(metaGetPollItem, "GET");
 
-  const getData = (id) => ({ id });
+  const getData = () => ({ id: "id-a" });
 
-  const testPolls = async (pollData, id) => {
+  const testPolls = async (pollData) => {
 
     const polls = pollData.map(newPoll);
 
     await pollsCol().insertMany(polls);
 
-    const res = await mockAPICall({}, getData(id));
+    const res = await mockAPICall({}, getData());
 
-    testMock(res.json, [{ polls: polls.filter((e) => e.id === id) }]);
+    testMock(res.json, [{ polls: polls.filter((e) => e.id) }]);
 
   };
 
-  it("sends data if successful (id exists)", () => testPolls([{ id: "id-a" }, {}], "id-a"));
+  it("sends data if successful (id exists)", () => testPolls([{ id: "id-a" }, {}]));
 
-  it("sends data if successful (id does not exist)", () => testPolls([{}], "id-a"));
+  it("sends data if successful (id does not exist)", () => testPolls([{}]));
 
 });
 

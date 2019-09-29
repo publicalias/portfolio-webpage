@@ -127,6 +127,38 @@ const findUserList = async (params, length, location) => {
 
 };
 
+//friend id list
+
+const friendIDList = async (id) => {
+
+  const data = await friendsCol()
+    .aggregate([{
+      $match: {
+        $and: [
+          { $or: [{ "from.id": id }, { "to.id": id }] },
+          { confirmed: true }
+        ]
+      }
+    }, {
+      $group: {
+        _id: null,
+        friends: {
+          $push: {
+            $cond: {
+              if: { $eq: ["$from.id", id] },
+              then: "$to.id",
+              else: "$from.id"
+            }
+          }
+        }
+      }
+    }])
+    .next();
+
+  return (data ? data.friends : []).concat(id);
+
+};
+
 //geo code
 
 const geoCode = async (address) => {
@@ -171,11 +203,17 @@ const handleAuthFriend = (allowFrom, allowTo) => async (req, res) => {
 
 };
 
+//is valid time
+
+const isValidTime = (time) => /^(1[0-2]|[1-9]):[0-5][0-9]\s[AP]M$/.test(time);
+
 //exports
 
 module.exports = {
   findUserItem,
   findUserList,
+  friendIDList,
   geoCode,
-  handleAuthFriend
+  handleAuthFriend,
+  isValidTime
 };

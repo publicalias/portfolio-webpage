@@ -5,6 +5,7 @@
 const favoriteHandlers = require("./handlers/favorite-handlers");
 const friendHandlers = require("./handlers/friend-handlers");
 const metaHandlers = require("./handlers/meta-handlers");
+const rsvpHandlers = require("./handlers/rsvp-handlers");
 const userHandlers = require("./handlers/user-handlers");
 
 //global imports
@@ -17,6 +18,7 @@ const router = apiRouter(Object.assign(
   favoriteHandlers,
   friendHandlers,
   metaHandlers,
+  rsvpHandlers,
   userHandlers
 ));
 

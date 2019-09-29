@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rsvpAdd sends noop if successful 1`] = `
+Object {
+  "_id": "[CENSORED]",
+  "date": "[CENSORED]",
+  "hidden": Array [],
+  "id": "[CENSORED]",
+  "message": "Message",
+  "time": "9:00 PM",
+  "user": Object {
+    "id": "id-b",
+    "name": "User B",
+  },
+  "venue": Object {
+    "id": "id-a",
+    "name": "Venue A",
+  },
+}
+`;

@@ -110,14 +110,14 @@ describe("pollRemoveOption", () => {
 
   const mockAPICall = initMockAPICall(pollRemoveOption, "PATCH");
 
-  const getData = (text) => ({
+  const getData = () => ({
     id: "id-a",
-    text
+    text: "Option A"
   });
 
   const testRemove = async (id) => {
 
-    const res = await mockAPICall(newUser({ id }), getData("Option A"));
+    const res = await mockAPICall(newUser({ id }), getData());
 
     const update = await pollsCol().findOne();
 
@@ -136,13 +136,7 @@ describe("pollRemoveOption", () => {
     }]
   })));
 
-  it("sends status if authentication fails", () => {
-
-    const args = [mockAPICall, getData("Option A"), [newUser({ id: "id-d" })]];
-
-    return testAuthFail(...args);
-
-  });
+  it("sends status if authentication fails", () => testAuthFail(mockAPICall, getData(), [newUser()]));
 
   it("sends noop if successful (poll)", () => testRemove("id-b"));
 
@@ -250,13 +244,7 @@ describe("pollToggleSecret", () => {
     users: { created: "id-b" }
   })));
 
-  it("sends status if authentication fails", () => {
-
-    const args = [mockAPICall, getData(), [newUser({ id: "id-c" })]];
-
-    return testAuthFail(...args);
-
-  });
+  it("sends status if authentication fails", () => testAuthFail(mockAPICall, getData(), [newUser()]));
 
   it("sends noop if successful", () => testSecret(newUser({ id: "id-b" })));
 

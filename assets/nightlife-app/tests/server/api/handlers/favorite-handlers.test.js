@@ -78,7 +78,7 @@ describe("favoriteRemove", () => {
 
   it("sends status if authentication fails", async () => {
 
-    await testAuthFail(mockAPICall, getData(), [newUser({ id: "id-c" })]);
+    await testAuthFail(mockAPICall, getData(), [newUser()]);
 
     expect(await favoritesCol().countDocuments()).toEqual(1);
 
