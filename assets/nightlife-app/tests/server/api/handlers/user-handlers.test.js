@@ -4,13 +4,13 @@
 
 const handlers = require("../../../../scripts/server/api/handlers/user-handlers");
 
-const { newFriend, newGeoPoint, newListParamsUsers, newUserData } = require("../../../../schemas");
-const { initTestGetItem } = require("../../test-helpers");
+const { newFriend, newListParamsUsers, newUserData } = require("../../../../schemas");
+const { initTestGetItem, geoPoint, testSearch } = require("../../test-helpers");
 
 //global imports
 
 const { newUser } = require("redux/schemas");
-const { initTestErrors, overlyLongInput, testMock } = require("redux/tests/meta-tests");
+const { testMock } = require("redux/tests/meta-tests");
 const { initMockAPICall, mongoTests, testAuthFail } = require("redux/tests/server-tests");
 
 //utilities
@@ -18,8 +18,6 @@ const { initMockAPICall, mongoTests, testAuthFail } = require("redux/tests/serve
 const favoritesCol = () => db.collection("nightlife-app/favorites");
 const friendsCol = () => db.collection("nightlife-app/friends");
 const userDataCol = () => db.collection("nightlife-app/user-data");
-
-const point = (x, y = x) => newGeoPoint({ coordinates: [x, y] });
 
 const insertFriend = (from, to) => friendsCol().insertOne(newFriend({
   from: { id: from },
@@ -41,7 +39,7 @@ describe("userGetItem (no data)", () => {
 
   const mockAPICall = initMockAPICall(userGetItem, "GET");
 
-  const getData = (location = point(0.05)) => ({
+  const getData = (location = geoPoint(0.05)) => ({
     id: "id-a",
     location
   });
@@ -60,7 +58,7 @@ describe("userGetItem (no data)", () => {
 
   it("sends data if successful (id exists, no location, user)", () => testGetItem({
     id: "id-a",
-    data: { location: point(0) }
+    data: { location: geoPoint(0) }
   }, null));
 
   it("sends data if successful (id exists, no location, item)", () => testGetItem({ id: "id-a" }));
@@ -77,7 +75,7 @@ describe("userGetItem (data)", () => {
 
   const getData = () => ({
     id: "id-a",
-    location: point(0.05)
+    location: geoPoint(0.05)
   });
 
   const testGetItem = initTestGetItem(mockAPICall, getData, () => ({ distance: 4.9 }));
@@ -107,7 +105,7 @@ describe("userGetItem (data and friends)", () => {
 
   const getData = () => ({
     id: "id-a",
-    location: point(0.05)
+    location: geoPoint(0.05)
   });
 
   const testGetItem = initTestGetItem(mockAPICall, getData, async () => ({
@@ -148,17 +146,11 @@ describe("userGetList (no data)", () => {
 
   const mockAPICall = initMockAPICall(userGetList, "GET");
 
-  const getData = (params, location = point(0)) => ({
+  const getData = (params, location = geoPoint(0)) => ({
     params: newListParamsUsers(params),
     length: 0,
     location
   });
-
-  const testErrors = initTestErrors([
-    ["sends errors if range is out of bounds (above)", ["Range is out of bounds", { range: 30 }]],
-    ["sends errors if range is out of bounds (below)", ["Range is out of bounds", { range: 0 }]],
-    ["sends errors if search exceeds character limit", ["Search exceeds character limit", { search: overlyLongInput }]]
-  ]);
 
   const testLocation = async (...args) => {
 
@@ -168,9 +160,9 @@ describe("userGetList (no data)", () => {
 
   };
 
-  beforeEach(() => userDataCol().insertOne(newUserData({ data: { location: point(0) } })));
+  beforeEach(() => userDataCol().insertOne(newUserData({ data: { location: geoPoint(0) } })));
 
-  testErrors(async (error, params) => {
+  testSearch(async (error, params) => {
 
     const res = await mockAPICall({}, getData(params));
 
@@ -199,13 +191,13 @@ describe("userGetList (data)", () => {
   const getData = (params, length = 0) => ({
     params: newListParamsUsers(params),
     length,
-    location: point(0)
+    location: geoPoint(0)
   });
 
   const testLength = async (length) => {
 
     const users = Array(1 + 50)
-      .fill({ data: { location: point(0) } })
+      .fill({ data: { location: geoPoint(0) } })
       .map(newUserData);
 
     await userDataCol().insertMany(users);
@@ -237,7 +229,7 @@ describe("userGetList (data)", () => {
     const users = seeds.map(([coor, dist], i) => newUserData({
       data: {
         distance: dist * (i + 1),
-        location: point(coor * (i + 1))
+        location: geoPoint(coor * (i + 1))
       }
     }));
 
@@ -251,7 +243,7 @@ describe("userGetList (data)", () => {
 
     const users = seeds.map((e) => newUserData({
       name: e,
-      data: { location: point(0) }
+      data: { location: geoPoint(0) }
     }));
 
     return testParams(users, { search: "Last" }, (users) => users.slice(0, 2));

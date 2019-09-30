@@ -2,11 +2,10 @@
 
 //local imports
 
-const { findUserItem, findUserList } = require("../../app-logic");
+const { checkSearch, findUserItem, findUserList } = require("../../app-logic");
 
 //global imports
 
-const { checkErrors } = require("all/utilities");
 const { handleAPICall, handleAuthFail, handleErrors } = require("redux/server-utils");
 
 //utilities
@@ -34,13 +33,7 @@ const userGetList = handleAPICall({
 
     const { params } = JSON.parse(req.query.data);
 
-    handleErrors(res, checkErrors([{
-      bool: params.range < 5 || params.range > 25,
-      text: "Range is out of bounds"
-    }, {
-      bool: params.search.length > 100,
-      text: "Search exceeds character limit"
-    }]));
+    handleErrors(res, checkSearch(params));
 
   },
 

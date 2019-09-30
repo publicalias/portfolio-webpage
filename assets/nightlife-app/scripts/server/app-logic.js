@@ -6,6 +6,7 @@ const { newGeoPoint } = require("../../schemas");
 
 //global imports
 
+const { checkErrors } = require("all/utilities");
 const { handleAuthFail } = require("redux/server-utils");
 
 //node modules
@@ -17,6 +18,16 @@ const request = require("request-promise-native");
 
 const friendsCol = () => db.collection("nightlife-app/friends");
 const userDataCol = () => db.collection("nightlife-app/user-data");
+
+//check search
+
+const checkSearch = (params) => checkErrors([{
+  bool: params.range < 5 || params.range > 25,
+  text: "Range is out of bounds"
+}, {
+  bool: params.search.length > 100,
+  text: "Search exceeds character limit"
+}]);
 
 //find user item / find user list
 
@@ -210,6 +221,7 @@ const isValidTime = (time) => /^(1[0-2]|[1-9]):[0-5][0-9]\s[AP]M$/.test(time);
 //exports
 
 module.exports = {
+  checkSearch,
   findUserItem,
   findUserList,
   friendIDList,
