@@ -25,9 +25,11 @@ handleSession(router);
 
 router.use("/api", apiRouter);
 
-//home page
+//react router
 
-router.get("/", (req, res) => {
+const pages = ["/", "/users/list", "/users/page/:id", "/venues/list", "/venues/page/:id"];
+
+router.get(pages, (req, res) => {
   res.sendFile(`${__build}/nightlife-app/view.html`);
 });
 

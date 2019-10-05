@@ -2,10 +2,10 @@
 
 //local imports
 
-const Sidebar = require("./sidebar");
 const Form = require("./main/form/form");
 const List = require("./main/list/list");
 const View = require("./main/view/view");
+const Sidebar = require("./sidebar");
 
 //node modules
 
