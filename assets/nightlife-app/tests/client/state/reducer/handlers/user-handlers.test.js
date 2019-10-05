@@ -13,10 +13,10 @@ test("reducer accepts USER_CLEAR_STATE actions", () => {
   const { userClearState } = actions;
 
   testReducer(userClearState(), {
-    page: { users: [{}] },
+    data: { users: [{}] },
     users: { list: { search: "User A" } }
   }, {
-    page: { users: [] },
+    data: { users: [] },
     users: newState().users
   });
 

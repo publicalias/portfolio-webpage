@@ -139,7 +139,7 @@ const newVenue = initSchema({ //uses the yelp api
 
   image_url: "",
 
-  //view
+  //page
 
   display_phone: "",
   hours: [],
@@ -176,23 +176,23 @@ const newState = initSchema({
 
   //data
 
+  data: {
+    users: [],
+    venues: []
+  },
+
   notifications: {
     friends: [],
     rsvps: []
   },
 
-  page: {
-    users: [],
-    venues: []
-  },
-
-  //page
+  //view
 
   users: { list: { search: "" } },
 
   venues: {
     list: { search: "" },
-    view: {
+    page: {
       form: false,
       time: "",
       message: ""

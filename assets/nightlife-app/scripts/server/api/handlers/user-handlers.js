@@ -21,7 +21,7 @@ const userGetItem = async (req, res) => {
 
   const user = location && await findUserItem(req.user, id, location);
 
-  res.json({ page: { users: user ? [user] : [] } });
+  res.json({ data: { users: user ? [user] : [] } });
 
 };
 
@@ -43,7 +43,7 @@ const userGetList = handleAPICall({
 
     const users = location && Array(length).concat(await findUserList(params, length, location));
 
-    res.json({ page: { users: users || [] } });
+    res.json({ data: { users: users || [] } });
 
   }
 

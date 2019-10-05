@@ -11,7 +11,7 @@ const { deepCopy } = require("all/utilities");
 //user clear state
 
 const USER_CLEAR_STATE = (state) => deepCopy(state, {
-  page: { users: [] },
+  data: { users: [] },
   users: newState().users
 });
 

@@ -13,7 +13,7 @@ test("reducer accepts VENUE_CLEAR_STATE actions", () => {
   const { venueClearState } = actions;
 
   testReducer(venueClearState(), {
-    page: { venues: [{}] },
+    data: { venues: [{}] },
     venues: {
       list: { search: "Coffee" },
       view: {
@@ -23,7 +23,7 @@ test("reducer accepts VENUE_CLEAR_STATE actions", () => {
       }
     }
   }, {
-    page: { venues: [] },
+    data: { venues: [] },
     venues: newState().venues
   });
 
@@ -45,7 +45,7 @@ test("reducer accepts VENUE_SET_TIME actions", () => {
 
   const { venueSetTime } = actions;
 
-  testReducer(venueSetTime("9:00 PM"), null, { venues: { view: { time: "9:00 PM" } } });
+  testReducer(venueSetTime("9:00 PM"), null, { venues: { page: { time: "9:00 PM" } } });
 
 });
 
@@ -55,7 +55,7 @@ test("reducer accepts VENUE_SET_MESSAGE actions", () => {
 
   const { venueSetMessage } = actions;
 
-  testReducer(venueSetMessage("Message"), null, { venues: { view: { message: "Message" } } });
+  testReducer(venueSetMessage("Message"), null, { venues: { page: { message: "Message" } } });
 
 });
 
@@ -65,6 +65,6 @@ test("reducer accepts VENUE_TOGGLE_FORM actions", () => {
 
   const { venueToggleForm } = actions;
 
-  testReducer(venueToggleForm(), null, { venues: { view: { form: true } } });
+  testReducer(venueToggleForm(), null, { venues: { page: { form: true } } });
 
 });
