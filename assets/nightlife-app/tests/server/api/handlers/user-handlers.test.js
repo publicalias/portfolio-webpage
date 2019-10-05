@@ -248,14 +248,14 @@ describe("userGetList (data, params)", () => {
 
   it("sends data if successful (search)", () => {
 
-    const seeds = ["First Last", "First Last", "First"];
+    const seeds = ["User A", "User A", "User B"];
 
     const users = seeds.map((e) => newUserData({
       name: e,
       data: { location: geoPoint(0) }
     }));
 
-    return testGetList(users, { search: "Last" }, (users) => users.slice(0, 2));
+    return testGetList(users, { search: "User A" }, (users) => users.slice(0, 2));
 
   });
 

@@ -22,7 +22,7 @@ test("reducer accepts FORM_REMOVE_OPTION actions", () => {
 
   const { formRemoveOption } = actions;
 
-  testReducer(formRemoveOption(""), { form: { options: [""] } }, { form: { options: [] } });
+  testReducer(formRemoveOption("Option A"), { form: { options: ["Option A"] } }, { form: { options: [] } });
 
 });
 

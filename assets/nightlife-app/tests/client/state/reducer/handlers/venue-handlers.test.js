@@ -18,8 +18,8 @@ test("reducer accepts VENUE_CLEAR_STATE actions", () => {
       list: { search: "Coffee" },
       view: {
         form: true,
-        time: "12:00",
-        message: "N/A"
+        time: "9:00 PM",
+        message: "Message"
       }
     }
   }, {
@@ -45,7 +45,7 @@ test("reducer accepts VENUE_SET_TIME actions", () => {
 
   const { venueSetTime } = actions;
 
-  testReducer(venueSetTime("12:00"), null, { venues: { view: { time: "12:00" } } });
+  testReducer(venueSetTime("9:00 PM"), null, { venues: { view: { time: "9:00 PM" } } });
 
 });
 
@@ -55,7 +55,7 @@ test("reducer accepts VENUE_SET_MESSAGE actions", () => {
 
   const { venueSetMessage } = actions;
 
-  testReducer(venueSetMessage("N/A"), null, { venues: { view: { message: "N/A" } } });
+  testReducer(venueSetMessage("Message"), null, { venues: { view: { message: "Message" } } });
 
 });
 
