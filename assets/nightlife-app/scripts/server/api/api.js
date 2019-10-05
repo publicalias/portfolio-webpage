@@ -7,6 +7,7 @@ const friendHandlers = require("./handlers/friend-handlers");
 const metaHandlers = require("./handlers/meta-handlers");
 const rsvpHandlers = require("./handlers/rsvp-handlers");
 const userHandlers = require("./handlers/user-handlers");
+const venueHandlers = require("./handlers/venue-handlers");
 
 //global imports
 
@@ -19,7 +20,8 @@ const router = apiRouter(Object.assign(
   friendHandlers,
   metaHandlers,
   rsvpHandlers,
-  userHandlers
+  userHandlers,
+  venueHandlers
 ));
 
 //exports

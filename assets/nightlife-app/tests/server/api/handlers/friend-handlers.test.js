@@ -17,7 +17,7 @@ const { initMockAPICall, mongoTests, testAuthFail, testInsert } = require("redux
 const friendsCol = () => db.collection("nightlife-app/friends");
 const userDataCol = () => db.collection("nightlife-app/user-data");
 
-const insertFriend = () => friendsCol().insertOne(newFriend({
+const insertRequest = () => friendsCol().insertOne(newFriend({
   id: "id-a",
   from: { id: "id-b" },
   to: { id: "id-c" }
@@ -104,7 +104,7 @@ describe("friendConfirm", () => {
 
   const getData = () => ({ id: "id-a" });
 
-  beforeEach(insertFriend);
+  beforeEach(insertRequest);
 
   it("sends status if authentication fails", () => testAuthFail(mockAPICall, getData(), [newUser()]));
 
@@ -136,7 +136,7 @@ describe("friendDismiss", () => {
 
   };
 
-  beforeEach(insertFriend);
+  beforeEach(insertRequest);
 
   it("sends status if authentication fails", () => testAuthFail(mockAPICall, getData(), [newUser()]));
 
@@ -191,7 +191,7 @@ describe("friendRemove", () => {
 
   const getData = () => ({ id: "id-a" });
 
-  beforeEach(insertFriend);
+  beforeEach(insertRequest);
 
   const testRemove = async (id) => {
 

@@ -54,7 +54,7 @@ const newListParamsUsers = initSchema({
 const newListParamsVenues = initSchema({
   range: 5,
   search: "",
-  sort: "match"
+  sort: "best_match"
 });
 
 //new rsvp
@@ -123,31 +123,38 @@ const newHours = initSchema({ open: [] }, { open: listReplacer(newOpen) });
 
 const newVenue = initSchema({ //uses the yelp api
 
-  //meta
+  //both
 
-  favorites: [], //computed
+  coordinates: {
+    latitude: 0,
+    longitude: 0
+  },
+  id: "",
+  name: "",
+  rating: 0,
+
+  distance: 0, //computed
 
   //list
 
-  alias: "",
-  distance: 0,
   image_url: "",
-  location: { display_address: [] },
-  name: "",
-  rating: 0,
 
   //view
 
   display_phone: "",
   hours: [],
   is_closed: false,
-  url: ""
+  location: { display_address: [] },
+  photos: [],
+  url: "",
+
+  favorites: [] //computed
 
 }, {
 
-  favorites: listReplacer(newFavorite),
+  hours: listReplacer(newHours),
 
-  hours: listReplacer(newHours)
+  favorites: listReplacer(newFavorite)
 
 });
 
@@ -212,6 +219,18 @@ const newState = initSchema({
 
 });
 
+//new yelp params
+
+const newYelpParams = initSchema({
+  latitude: 0,
+  limit: 50,
+  longitude: 0,
+  offset: 0,
+  radius: 8045,
+  sort_by: "best_match",
+  term: ""
+});
+
 //exports
 
 module.exports = {
@@ -224,5 +243,6 @@ module.exports = {
   newState,
   newUserData,
   newUserWithData,
-  newVenue
+  newVenue,
+  newYelpParams
 };

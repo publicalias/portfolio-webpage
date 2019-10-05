@@ -39,6 +39,8 @@ describe("venueGetList", () => {
       length: 0,
       location: null
     }
+  }, {
+    array: false
   });
 
 });

@@ -2,7 +2,9 @@
 
 //local imports
 
-const { newFavorite, newFriend, newGeoPoint, newUserData } = require("../../schemas");
+const handlers = require("../../scripts/server/api/handlers/venue-handlers");
+
+const { newFavorite, newFriend, newGeoPoint, newUserData, newVenue } = require("../../schemas");
 
 //global imports
 
@@ -19,9 +21,9 @@ const userDataCol = () => db.collection("nightlife-app/user-data");
 
 const geoPoint = (x, y = x) => newGeoPoint({ coordinates: [x, y] });
 
-//init test get item
+//init test user item
 
-const initTestGetItem = (mockAPICall, getData, getItemData) => async (id) => {
+const initTestUserItem = (mockAPICall, getData, getItemData) => async (id) => {
 
   await Promise.all([
     favoritesCol().insertOne(newFavorite({ user: { id: "id-a" } })),
@@ -35,9 +37,7 @@ const initTestGetItem = (mockAPICall, getData, getItemData) => async (id) => {
     }))
   ]);
 
-  const user = id ? newUser({ id }) : {};
-
-  const res = await mockAPICall(user, getData());
+  const res = await mockAPICall(id ? newUser({ id }) : {}, getData());
 
   const item = await userDataCol().findOne();
 
@@ -46,6 +46,57 @@ const initTestGetItem = (mockAPICall, getData, getItemData) => async (id) => {
   testMock(res.json, [{ page: { users: [item] } }]);
 
 };
+
+//inject handler
+
+const injectHandler = (action, data) => {
+
+  const handler = jest.fn(() => data);
+
+  action.injected.lib.handler = handler;
+
+  return {
+    data,
+    handler
+  };
+
+};
+
+//init test venue item
+
+const initTestVenueItem = (mockAPICall, getData, getItemData) => async (id) => {
+
+  const { venueGetItem } = handlers;
+
+  const { data, handler } = injectHandler(venueGetItem, {
+    coordinates: {
+      latitude: 0,
+      longitude: 0
+    },
+    id: "id-a"
+  });
+
+  await favoritesCol().insertOne(newFavorite({
+    user: { id: "id-c" },
+    venue: { id: "id-a" }
+  }));
+
+  const res = await mockAPICall(id ? newUser({ id }) : {}, getData());
+
+  const item = newVenue(data, await getItemData());
+
+  testMock(handler, ["id-a"]);
+  testMock(res.json, [{ page: { venues: [item] } }]);
+
+};
+
+//insert friend
+
+const insertFriend = (from, to) => friendsCol().insertOne(newFriend({
+  from: { id: from },
+  to: { id: to },
+  confirmed: true
+}));
 
 //test search
 
@@ -59,6 +110,9 @@ const testSearch = initTestErrors([
 
 module.exports = {
   geoPoint,
-  initTestGetItem,
+  initTestUserItem,
+  initTestVenueItem,
+  injectHandler,
+  insertFriend,
   testSearch
 };

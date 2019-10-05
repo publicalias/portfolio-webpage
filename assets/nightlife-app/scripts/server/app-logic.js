@@ -2,20 +2,22 @@
 
 //local imports
 
-const { newGeoPoint } = require("../../schemas");
+const { newGeoPoint, newVenue, newYelpParams } = require("../../schemas");
 
 //global imports
 
-const { checkErrors } = require("all/utilities");
+const { checkErrors, roundTo } = require("all/utilities");
 const { handleAuthFail } = require("redux/server-utils");
 
 //node modules
 
+const haversine = require("haversine");
 const round = require("mongo-round");
 const request = require("request-promise-native");
 
 //utilities
 
+const favoritesCol = () => db.collection("nightlife-app/favorites");
 const friendsCol = () => db.collection("nightlife-app/friends");
 const userDataCol = () => db.collection("nightlife-app/user-data");
 
@@ -31,7 +33,7 @@ const checkSearch = (params) => checkErrors([{
 
 //find user item / find user list
 
-const addDistance = async (location, max = Infinity) => {
+const addDistUser = async (location, max = Infinity) => {
 
   await userDataCol().createIndex({ "data.location": "2dsphere" });
 
@@ -53,7 +55,7 @@ const addDistance = async (location, max = Infinity) => {
 
 };
 
-const addLists = (user) => {
+const addListUser = (user) => {
 
   if (!user) {
     return [];
@@ -107,7 +109,7 @@ const addLists = (user) => {
 const findUserItem = async (user, id, location) => {
 
   const [item] = await userDataCol()
-    .aggregate([...await addDistance(location), { $match: { id } }, ...addLists(user)])
+    .aggregate([...await addDistUser(location), { $match: { id } }, ...addListUser(user)])
     .toArray();
 
   return item;
@@ -131,7 +133,7 @@ const findUserList = async (params, length, location) => {
   };
 
   return userDataCol()
-    .aggregate([...await addDistance(location, range), { $match }, { $sort }])
+    .aggregate([...await addDistUser(location, range), { $match }, { $sort }])
     .skip(length)
     .limit(50)
     .toArray();
@@ -167,6 +169,68 @@ const friendIDList = async (id) => {
     .next();
 
   return (data ? data.friends : []).concat(id);
+
+};
+
+//find venue item / find venue list
+
+const addDistVenue = (item, location) => {
+
+  const { coordinates: [lon, lat] } = location;
+
+  const coordinates = {
+    latitude: lat,
+    longitude: lon
+  };
+
+  const distance = roundTo(haversine(coordinates, item.coordinates, { unit: "mile" }), 1);
+
+  return { distance };
+
+};
+
+const addListVenue = async (item, user) => {
+
+  if (!user) {
+    return [];
+  }
+
+  const friends = await friendIDList(user.id);
+
+  return {
+    favorites: await favoritesCol()
+      .find({
+        "user.id": { $in: friends },
+        "venue.id": item.id
+      })
+      .toArray()
+  };
+
+};
+
+const findVenueItem = async (handler, user, id, location) => {
+
+  const item = await handler(id);
+
+  return item && newVenue(item, addDistVenue(item, location), await addListVenue(item, user));
+
+};
+
+const findVenueList = async (handler, params, length, location) => {
+
+  const { range, search, sort } = params;
+  const { coordinates: [lat, lon] } = location;
+
+  const list = await handler(null, newYelpParams({
+    latitude: lat,
+    longitude: lon,
+    offset: length,
+    radius: Math.min(range * 1609, 40000), //miles to meters
+    sort_by: sort,
+    term: search
+  }));
+
+  return list.map((e) => newVenue(e, addDistVenue(e, location)));
 
 };
 
@@ -214,6 +278,33 @@ const handleAuthFriend = (allowFrom, allowTo) => async (req, res) => {
 
 };
 
+//handle yelp api
+
+const handleYelpAPI = async (id, params) => {
+  try {
+
+    const headers = { Authorization: `Bearer ${process.env.API_YP_KEY}` };
+
+    if (id) {
+      return JSON.parse(await request({
+        headers,
+        uri: `https://api.yelp.com/v3/businesses/${id}`
+      }));
+    }
+
+    const { businesses: list } = JSON.parse(await request({
+      headers,
+      qs: params,
+      uri: "https://api.yelp.com/v3/businesses/search"
+    }));
+
+    return list;
+
+  } catch {
+    return id ? null : [];
+  }
+};
+
 //is valid time
 
 const isValidTime = (time) => /^(1[0-2]|[1-9]):[0-5][0-9]\s[AP]M$/.test(time);
@@ -224,8 +315,11 @@ module.exports = {
   checkSearch,
   findUserItem,
   findUserList,
+  findVenueItem,
+  findVenueList,
   friendIDList,
   geoCode,
   handleAuthFriend,
+  handleYelpAPI,
   isValidTime
 };

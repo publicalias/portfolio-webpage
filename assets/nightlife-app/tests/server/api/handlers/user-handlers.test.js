@@ -5,10 +5,11 @@
 const handlers = require("../../../../scripts/server/api/handlers/user-handlers");
 
 const { newFriend, newListParamsUsers, newUserData } = require("../../../../schemas");
-const { initTestGetItem, geoPoint, testSearch } = require("../../test-helpers");
+const { geoPoint, initTestUserItem, insertFriend, testSearch } = require("../../test-helpers");
 
 //global imports
 
+const { roundTo } = require("all/utilities");
 const { newUser } = require("redux/schemas");
 const { testMock } = require("redux/tests/meta-tests");
 const { initMockAPICall, mongoTests, testAuthFail } = require("redux/tests/server-tests");
@@ -18,12 +19,6 @@ const { initMockAPICall, mongoTests, testAuthFail } = require("redux/tests/serve
 const favoritesCol = () => db.collection("nightlife-app/favorites");
 const friendsCol = () => db.collection("nightlife-app/friends");
 const userDataCol = () => db.collection("nightlife-app/user-data");
-
-const insertFriend = (from, to) => friendsCol().insertOne(newFriend({
-  from: { id: from },
-  to: { id: to },
-  confirmed: true
-}));
 
 //setup
 
@@ -78,7 +73,7 @@ describe("userGetItem (data)", () => {
     location: geoPoint(0.05)
   });
 
-  const testGetItem = initTestGetItem(mockAPICall, getData, () => ({ distance: 4.9 }));
+  const testGetItem = initTestUserItem(mockAPICall, getData, () => ({ distance: 4.9 }));
 
   it("sends data if successful (id exists, no user)", () => testGetItem());
 
@@ -97,7 +92,7 @@ describe("userGetItem (data)", () => {
 
 });
 
-describe("userGetItem (data and friends)", () => {
+describe("userGetItem (data, friends)", () => {
 
   const { userGetItem } = handlers;
 
@@ -108,7 +103,7 @@ describe("userGetItem (data and friends)", () => {
     location: geoPoint(0.05)
   });
 
-  const testGetItem = initTestGetItem(mockAPICall, getData, async () => ({
+  const testGetItem = initTestUserItem(mockAPICall, getData, async () => ({
     distance: 4.9,
     favorites: await favoritesCol()
       .find()
@@ -152,7 +147,7 @@ describe("userGetList (no data)", () => {
     location
   });
 
-  const testLocation = async (...args) => {
+  const testGetList = async (...args) => {
 
     const res = await mockAPICall({}, getData(...args));
 
@@ -170,31 +165,31 @@ describe("userGetList (no data)", () => {
 
   });
 
-  it("sends data if successful (no location, user)", () => testLocation(null, null));
+  it("sends data if successful (no location, user)", () => testGetList(null, null));
 
   it("sends data if successful (no location, item)", async () => {
 
     await userDataCol().updateOne({}, { $set: { "data.location": null } });
 
-    await testLocation();
+    await testGetList();
 
   });
 
 });
 
-describe("userGetList (data)", () => {
+describe("userGetList (data, length)", () => {
 
   const { userGetList } = handlers;
 
   const mockAPICall = initMockAPICall(userGetList, "GET");
 
-  const getData = (params, length = 0) => ({
-    params: newListParamsUsers(params),
+  const getData = (length) => ({
+    params: newListParamsUsers(),
     length,
     location: geoPoint(0)
   });
 
-  const testLength = async (length) => {
+  const testGetList = async (length) => {
 
     const users = Array(1 + 50)
       .fill({ data: { location: geoPoint(0) } })
@@ -202,13 +197,31 @@ describe("userGetList (data)", () => {
 
     await userDataCol().insertMany(users);
 
-    const res = await mockAPICall({}, getData(null, length));
+    const res = await mockAPICall({}, getData(length));
 
     testMock(res.json, [{ page: { users: Array(length).concat(users.slice(length, length + 50)) } }]);
 
   };
 
-  const testParams = async (users, params, fn) => {
+  it("sends data if successful (length, 0)", () => testGetList(0));
+
+  it("sends data if successful (length, 1)", () => testGetList(1));
+
+});
+
+describe("userGetList (data, params)", () => {
+
+  const { userGetList } = handlers;
+
+  const mockAPICall = initMockAPICall(userGetList, "GET");
+
+  const getData = (params) => ({
+    params: newListParamsUsers(params),
+    length: 0,
+    location: geoPoint(0)
+  });
+
+  const testGetList = async (users, params, fn) => {
 
     await userDataCol().insertMany(users);
 
@@ -218,22 +231,18 @@ describe("userGetList (data)", () => {
 
   };
 
-  it("sends data if successful (length, 0)", () => testLength(0));
-
-  it("sends data if successful (length, 1)", () => testLength(1));
-
   it("sends data if successful (range)", () => {
 
-    const seeds = Array(3).fill([0.05, 4.9]);
+    const seeds = Array(6).fill([0.05, 4.9]);
 
     const users = seeds.map(([coor, dist], i) => newUserData({
       data: {
-        distance: dist * (i + 1),
-        location: geoPoint(coor * (i + 1))
+        distance: roundTo(dist * (i + 1), 1),
+        location: geoPoint(roundTo(coor * (i + 1), 2))
       }
     }));
 
-    return testParams(users, { range: 10 }, (users) => users.slice(0, 2).reverse());
+    return testGetList(users, { range: 25 }, (users) => users.slice(0, 5).reverse());
 
   });
 
@@ -246,7 +255,7 @@ describe("userGetList (data)", () => {
       data: { location: geoPoint(0) }
     }));
 
-    return testParams(users, { search: "Last" }, (users) => users.slice(0, 2));
+    return testGetList(users, { search: "Last" }, (users) => users.slice(0, 2));
 
   });
 
