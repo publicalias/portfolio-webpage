@@ -43,13 +43,13 @@ const SearchBar = (props) => {
         className={`c-search-bar__submit js-get-outline js-submit-button-${id} qa-search-submit u-no-hover`}
         onClick={handleSubmit}
       >
-        <i className="fa fa-search" />
+        <i className="fas fa-search" />
       </button>
       <button
         className="c-search-bar__clear js-get-outline qa-search-clear u-no-hover"
         onClick={handleClear}
       >
-        <i className="fa fa-close" />
+        <i className="fas fa-times" />
       </button>
     </div>
   );

@@ -38,7 +38,7 @@ const PollIcon = (props) => {
 
   return created || voted ? (
     <span className="c-poll-options__remove qa-option-remove" onClick={handleRemove(text, voted)}>
-      <i className={voted ? "fa fa-close" : "fa fa-trash"} />
+      <i className={voted ? "fas fa-times" : "fas fa-trash-alt"} />
     </span>
   ) : (
     <svg className="c-poll-options__color-box">

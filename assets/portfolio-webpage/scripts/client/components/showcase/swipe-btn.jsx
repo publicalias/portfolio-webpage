@@ -15,7 +15,7 @@ const SwipeBtn = (props) => {
       className={`c-preview__swipe-btn--${mod}`}
       onClick={handleClick}
     >
-      <i className={`fa fa-chevron-${mod}`} />
+      <i className={`fas fa-chevron-${mod}`} />
     </button>
   );
 

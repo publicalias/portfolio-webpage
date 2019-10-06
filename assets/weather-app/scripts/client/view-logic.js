@@ -8,25 +8,25 @@ const { select } = require("all/dom-api");
 
 const thermoClass = (temp) => {
 
-  let thermo = "0";
+  let thermo = "empty";
 
   if (temp > 30) {
-    thermo = "4";
+    thermo = "full";
   } else if (temp > 20) {
-    thermo = "3";
+    thermo = "three-quarters";
   } else if (temp > 10) {
-    thermo = "2";
+    thermo = "half";
   } else if (temp > 0) {
-    thermo = "1";
+    thermo = "quarter";
   }
 
-  return `fa-thermometer-${thermo}`;
+  return `fas fa-thermometer-${thermo}`;
 
 };
 
 const initDisplay = (res, temp) => {
 
-  select(".js-edit-thermo").class(`fa-thermometer-0 ${thermoClass(temp)}`, true);
+  select(".js-edit-thermo").class(`fas fa-thermometer-empty ${thermoClass(temp)}`, true);
 
   select(".js-edit-city").text(res.name);
   select(".js-edit-country").text(res.sys.country);
@@ -43,7 +43,7 @@ const toggleMetric = (temp, unit) => {
   select(".js-edit-temp").text(temp);
   select(".js-edit-unit").text(unit);
 
-  select(".js-edit-toggle").class("fa-toggle-off fa-toggle-on", true);
+  select(".js-edit-toggle").class("fas fa-toggle-off fas fa-toggle-on", true);
 
 };
 

@@ -3,10 +3,10 @@
 //contact
 
 const contact = [{
-  iconClass: "fa fa-free-code-camp",
+  iconClass: "fab fa-free-code-camp",
   link: "https://www.freecodecamp.com/publicalias"
 }, {
-  iconClass: "fa fa-github",
+  iconClass: "fab fa-github",
   link: "https://github.com/publicalias"
 }];
 

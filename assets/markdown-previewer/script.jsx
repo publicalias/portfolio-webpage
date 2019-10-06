@@ -48,7 +48,7 @@ const App = () => {
     <div className="c-content--xl">
       <div className="c-row">
         <div className="c-row__col--12">
-          <h1 className="u-align-center">Markdown &agrave; la <a href="https://github.com/"><i className="fa fa-github" /></a></h1>
+          <h1 className="u-align-center">Markdown &agrave; la <a href="https://github.com/"><i className="fab fa-github" /></a></h1>
           <hr />
         </div>
         <div className="c-row__col--6">

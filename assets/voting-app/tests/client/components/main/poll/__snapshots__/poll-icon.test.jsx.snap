@@ -6,7 +6,7 @@ exports[`poll icon (form) should match snapshot (created) 1`] = `
   onClick={[Function]}
 >
   <i
-    className="fa fa-trash"
+    className="fas fa-trash-alt"
   />
 </span>
 `;
@@ -30,7 +30,7 @@ exports[`poll icon (form) should match snapshot (voted) 1`] = `
   onClick={[Function]}
 >
   <i
-    className="fa fa-close"
+    className="fas fa-times"
   />
 </span>
 `;
@@ -41,7 +41,7 @@ exports[`poll icon (view) should match snapshot (created) 1`] = `
   onClick={[Function]}
 >
   <i
-    className="fa fa-trash"
+    className="fas fa-trash-alt"
   />
 </span>
 `;
@@ -65,7 +65,7 @@ exports[`poll icon (view) should match snapshot (voted) 1`] = `
   onClick={[Function]}
 >
   <i
-    className="fa fa-close"
+    className="fas fa-times"
   />
 </span>
 `;

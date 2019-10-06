@@ -42,7 +42,7 @@ const RecipeBox = (props) => {
           <button onClick={handleAdd}>Add Recipe</button>
         </div>
         <div className="c-row__col--8">
-          <h3 className="u-float-right">Recipe <i className="fa fa-archive" /> 2.0</h3>
+          <h3 className="u-float-right">Recipe <i className="fas fa-archive" /> 2.0</h3>
         </div>
       </div>
     </div>

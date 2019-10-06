@@ -67,7 +67,7 @@ const App = () => {
 
   return (
     <div className="c-content--md">
-      <h1 className="u-align-center">new Leaderboard <a href="https://www.freecodecamp.org/"><i className="fa fa-free-code-camp" /></a></h1>
+      <h1 className="u-align-center">new Leaderboard <a href="https://www.freecodecamp.org/"><i className="fab fa-free-code-camp" /></a></h1>
       <hr />
       <div className="c-campers">
         {data ? (

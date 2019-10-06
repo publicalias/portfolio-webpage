@@ -28,8 +28,8 @@ const PollToggle = (props) => {
 
   const toggled = (prop) => poll.users[prop].includes(user.id);
 
-  const hideIcon = toggled("hidden") ? "fa fa-eye-slash" : "fa fa-eye";
-  const flagIcon = toggled("flagged") ? "fa fa-flag" : "fa fa-flag-o";
+  const hideIcon = toggled("hidden") ? "far fa-eye-slash" : "far fa-eye";
+  const flagIcon = toggled("flagged") ? "fas fa-flag" : "far fa-flag";
 
   return role === "flag" ? (
     <button className="qa-toggle-flag" onClick={handleFlag}>
