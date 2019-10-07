@@ -83,11 +83,9 @@ const mongoTests = {
       const mapAll = (fn) => Promise.all(args.map((e) => fn(e())));
 
       await mapAll((e) => e.createIndex({ __qa: 1 })); //prevents errors
+      await mapAll((e) => e.dropIndexes());
 
-      await Promise.all([
-        mapAll((e) => e.deleteMany()),
-        mapAll((e) => e.dropIndexes())
-      ]);
+      await mapAll((e) => e.deleteMany());
 
     };
   }
