@@ -16,7 +16,7 @@ const uuid = require("uuid/v1");
 
 //utilities
 
-const rsvpCol = () => db.collection("nightlife-app/rsvps");
+const rsvpsCol = () => db.collection("nightlife-app/rsvps");
 
 //rsvp add
 
@@ -28,7 +28,7 @@ const rsvpAdd = handleAPICall({
 
     const { id, time } = req.body.data;
 
-    const exists = await rsvpCol().findOne({
+    const exists = await rsvpsCol().findOne({
       "user.id": req.user.id,
       "venue.id": id
     });
@@ -47,7 +47,7 @@ const rsvpAdd = handleAPICall({
 
     const { name, id, time, message } = req.body.data;
 
-    await rsvpCol().insertOne(newRSVP({
+    await rsvpsCol().insertOne(newRSVP({
       id: uuid(),
       date: Date.now(),
       user: {
@@ -76,7 +76,7 @@ const rsvpDismiss = handleAPICall({
 
     const { id } = req.body.data;
 
-    const { user } = await rsvpCol().findOne({ id });
+    const { user } = await rsvpsCol().findOne({ id });
 
     const friends = await friendIDList(user.id);
 
@@ -88,7 +88,7 @@ const rsvpDismiss = handleAPICall({
 
     const { id } = req.body.data;
 
-    await rsvpCol().updateOne({ id }, { $addToSet: { hidden: req.user.id } });
+    await rsvpsCol().updateOne({ id }, { $addToSet: { hidden: req.user.id } });
 
     res.json({});
 
@@ -106,7 +106,7 @@ const rsvpGetList = handleAPICall({
 
     const friends = await friendIDList(req.user.id);
 
-    const rsvps = await rsvpCol()
+    const rsvps = await rsvpsCol()
       .find({
         "user.id": { $in: friends },
         "hidden": { $ne: req.user.id }
@@ -128,7 +128,7 @@ const rsvpRemove = handleAPICall({
 
     const { id } = JSON.parse(req.query.data);
 
-    const { user } = await rsvpCol().findOne({ id });
+    const { user } = await rsvpsCol().findOne({ id });
 
     handleAuthFail(req, res, (id) => id !== user.id);
 
@@ -138,7 +138,7 @@ const rsvpRemove = handleAPICall({
 
     const { id } = JSON.parse(req.query.data);
 
-    await rsvpCol().deleteOne({ id });
+    await rsvpsCol().deleteOne({ id });
 
     res.json({});
 

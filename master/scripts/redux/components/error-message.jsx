@@ -75,15 +75,19 @@ const ErrorMessage = (props) => {
 
   useEffect(() => {
 
-    const errors = new URLSearchParams(location.search).get("errors");
+    const { hash, pathname, search } = location;
 
-    if (errors) {
+    const params = new URLSearchParams(search);
+    const errors = params.get("errors");
 
-      history.replace("/");
-
-      metaAddErrors(JSON.parse(errors));
-
+    if (!errors) {
+      return;
     }
+
+    params.delete("errors");
+    history.replace(`${pathname}?${params}${hash}`);
+
+    metaAddErrors(JSON.parse(errors));
 
   }, []);
 

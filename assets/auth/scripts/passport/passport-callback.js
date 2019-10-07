@@ -2,7 +2,7 @@
 
 //local imports
 
-const { handleUpdate } = require("../app-logic");
+const { updateUserData } = require("../app-logic");
 
 //global imports
 
@@ -24,7 +24,7 @@ const updateUser = async (profile, fn, id) => {
 
   const { value: user } = await usersCol().findOneAndUpdate({ id }, { $set: { name: displayName || "" } });
 
-  await handleUpdate(user);
+  await updateUserData(user);
 
   fn(null, user);
 

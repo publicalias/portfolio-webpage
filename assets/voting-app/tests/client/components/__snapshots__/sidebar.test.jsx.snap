@@ -77,6 +77,11 @@ exports[`sidebar should match snapshot (default) 1`] = `
         "push": [MockFunction],
       }
     }
+    local={
+      Object {
+        "redirect": "/voting-app",
+      }
+    }
     location={Object {}}
     match={Object {}}
     staticContext={Object {}}
@@ -170,6 +175,11 @@ exports[`sidebar should match snapshot (name) 1`] = `
     history={
       Object {
         "push": [MockFunction],
+      }
+    }
+    local={
+      Object {
+        "redirect": "/voting-app",
       }
     }
     location={Object {}}

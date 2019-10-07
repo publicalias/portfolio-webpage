@@ -15,7 +15,11 @@ const React = require("react");
 
 const DeleteButton = (props) => {
 
-  const { actions: { metaAddErrors, metaSetLoading, metaToggleDelete }, data: { account } } = props;
+  const {
+    actions: { metaAddErrors, metaSetLoading, metaToggleDelete },
+    data: { account },
+    local: { redirect }
+  } = props;
 
   //events
 
@@ -35,7 +39,7 @@ const DeleteButton = (props) => {
     const res = await fetch(path, init);
 
     if (res.ok) {
-      location.reload();
+      location.assign(redirect);
     } else {
       metaAddErrors([`${res.status} ${res.statusText}`]);
       metaSetLoading();
@@ -57,11 +61,11 @@ const DeleteButton = (props) => {
 
 };
 
-DeleteButton.propList = ["data.account"];
+DeleteButton.propList = ["data.account", "local"];
 
 const AuthButtons = (props) => {
 
-  const { actions: { metaSetLoading }, data: { user } } = props;
+  const { actions: { metaSetLoading }, data: { user }, local: { redirect } } = props;
 
   const { jsx: { DeleteButton } } = AuthButtons.injected;
 
@@ -84,7 +88,7 @@ const AuthButtons = (props) => {
 
     metaSetLoading(true);
 
-    location.assign(`/auth/${id}?redirect=/voting-app`);
+    location.assign(`/auth/${id}?redirect=${redirect}`);
 
   };
 
@@ -114,7 +118,7 @@ const AuthButtons = (props) => {
 
 };
 
-AuthButtons.propList = ["data.user"];
+AuthButtons.propList = ["data.user", "local"];
 
 AuthButtons.injected = { jsx: { DeleteButton } };
 

@@ -15,12 +15,12 @@ const { initMockAPICall, mongoTests, testAuthFail, testInsert } = require("redux
 //utilities
 
 const friendsCol = () => db.collection("nightlife-app/friends");
-const rsvpCol = () => db.collection("nightlife-app/rsvps");
+const rsvpsCol = () => db.collection("nightlife-app/rsvps");
 
 //setup
 
 beforeAll(mongoTests.setup);
-beforeEach(mongoTests.reset(friendsCol, rsvpCol));
+beforeEach(mongoTests.reset(friendsCol, rsvpsCol));
 afterAll(mongoTests.teardown);
 
 //rsvp add
@@ -42,13 +42,13 @@ describe("rsvpAdd", () => {
 
     await testAuthFail(mockAPICall, getData());
 
-    expect(await rsvpCol().countDocuments()).toEqual(0);
+    expect(await rsvpsCol().countDocuments()).toEqual(0);
 
   });
 
   it("sends errors if RSVP already exists", async () => {
 
-    await rsvpCol().insertOne(newRSVP({
+    await rsvpsCol().insertOne(newRSVP({
       user: { id: "id-b" },
       venue: { id: "id-a" }
     }));
@@ -57,7 +57,7 @@ describe("rsvpAdd", () => {
 
     testMock(res.json, [{ errors: ["RSVP already exists"] }]);
 
-    expect(await rsvpCol().countDocuments()).toEqual(1);
+    expect(await rsvpsCol().countDocuments()).toEqual(1);
 
   });
 
@@ -67,7 +67,7 @@ describe("rsvpAdd", () => {
 
     testMock(res.json, [{ errors: ["Time is incorrectly formatted"] }]);
 
-    expect(await rsvpCol().countDocuments()).toEqual(0);
+    expect(await rsvpsCol().countDocuments()).toEqual(0);
 
   });
 
@@ -83,7 +83,7 @@ describe("rsvpAdd", () => {
 
     testMock(res.json, [{}]);
 
-    await testInsert(rsvpCol);
+    await testInsert(rsvpsCol);
 
   });
 
@@ -110,7 +110,7 @@ describe("rsvpDismiss", () => {
         to: { id: "id-b" }
       })
     ]),
-    rsvpCol().insertOne(newRSVP({
+    rsvpsCol().insertOne(newRSVP({
       id: "id-a",
       user: { id: "id-b" }
     }))
@@ -122,7 +122,7 @@ describe("rsvpDismiss", () => {
 
     const res = await mockAPICall(newUser({ id }), getData());
 
-    const update = await rsvpCol().findOne();
+    const update = await rsvpsCol().findOne();
 
     expect(update.hidden).toEqual([id]);
 
@@ -195,7 +195,7 @@ describe("rsvpGetList", () => {
 
     await Promise.all([
       friendsCol().insertMany(friends),
-      rsvpCol().insertMany(rsvps)
+      rsvpsCol().insertMany(rsvps)
     ]);
 
     const res = await mockAPICall(newUser({ id: "id-a" }));
@@ -216,7 +216,7 @@ describe("rsvpRemove", () => {
 
   const getData = () => ({ id: "id-a" });
 
-  beforeEach(() => rsvpCol().insertOne(newRSVP({
+  beforeEach(() => rsvpsCol().insertOne(newRSVP({
     id: "id-a",
     user: { id: "id-b" }
   })));
@@ -225,7 +225,7 @@ describe("rsvpRemove", () => {
 
     await testAuthFail(mockAPICall, getData(), [newUser()]);
 
-    expect(await rsvpCol().countDocuments()).toEqual(1);
+    expect(await rsvpsCol().countDocuments()).toEqual(1);
 
   });
 
@@ -235,7 +235,7 @@ describe("rsvpRemove", () => {
 
     testMock(res.json, [{}]);
 
-    expect(await rsvpCol().countDocuments()).toEqual(0);
+    expect(await rsvpsCol().countDocuments()).toEqual(0);
 
   });
 

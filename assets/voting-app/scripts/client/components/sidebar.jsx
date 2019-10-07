@@ -22,7 +22,7 @@ const Sidebar = (props) => {
     <div className="c-sidebar">
       <p>{`Hi, ${user.name || "Anonymous"}!`}</p>
       <hr />
-      <AuthButtons {...props} />
+      <AuthButtons {...props} local={{ redirect: "/voting-app" }} />
     </div>
   );
 

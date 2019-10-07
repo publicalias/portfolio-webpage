@@ -2,7 +2,7 @@
 
 //local imports
 
-const { handleDelete } = require("./scripts/app-logic");
+const { deleteUserData } = require("./scripts/app-logic");
 const { passport, providers } = require("./scripts/passport/passport-config");
 
 //global imports
@@ -14,6 +14,10 @@ const { handleAuthFail, handleSession } = require("redux/server-utils");
 const express = require("express");
 
 const router = express.Router();
+
+//utilities
+
+const usersCol = () => db.collection("auth/users");
 
 //middleware
 
@@ -34,8 +38,11 @@ router.use("/delete", (req, res, next) => {
 for (const e of providers) {
 
   router.get(`/${e}`, (req, res) => {
+
     req.session.redirect = req.query.redirect;
+
     passport.authenticate(e)(req, res);
+
   });
 
   router.get(`/${e}/callback`, passport.authenticate(e, {
@@ -56,20 +63,26 @@ for (const e of providers) {
 //handle logout
 
 router.get("/logout", (req, res) => {
+
+  req.session.redirect = req.query.redirect;
+
   req.logout();
   res.redirect("/auth/redirect");
+
 });
 
 //redirect
 
 router.get("/redirect", (req, res) => {
 
-  const status = {
+  const { query: { status } } = req;
+
+  const errors = ((errors) => JSON.stringify([errors[status]]))({
     401: "401 Unauthorized",
     500: "500 Internal Server Error"
-  };
+  });
 
-  const search = req.query.status ? `?errors=${JSON.stringify([status[req.query.status]])}` : "";
+  const search = status ? `?errors=${errors}` : "";
 
   res.redirect(`${req.session.redirect}${search}`);
 
@@ -77,7 +90,20 @@ router.get("/redirect", (req, res) => {
 
 //delete user
 
-router.delete("/delete", handleDelete);
+router.delete("/delete", async (req, res) => {
+  try {
+
+    await deleteUserData(req.user.id);
+
+    await usersCol().deleteOne({ id: req.user.id });
+
+    req.logout();
+    res.sendStatus(200);
+
+  } catch {
+    res.sendStatus(500);
+  }
+});
 
 //exports
 
