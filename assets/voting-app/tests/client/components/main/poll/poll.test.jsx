@@ -2,7 +2,7 @@
 
 //local imports
 
-const PollOptions = require("../../../../../scripts/client/components/main/poll/poll-options");
+const Poll = require("../../../../../scripts/client/components/main/poll/poll");
 
 const { initTestPoll, testWrapper } = require("../../../test-helpers");
 
@@ -13,18 +13,18 @@ const { initTestSnapshot, reactTests, withDataList } = require("redux/tests/reac
 
 //utilities
 
-const { testShallow } = testWrapper(PollOptions);
+const { testShallow } = testWrapper(Poll);
 
 const testSnapshot = initTestSnapshot(testShallow);
 
 //setup
 
 beforeAll(reactTests.setup);
-beforeEach(reactTests.inject(PollOptions));
+beforeEach(reactTests.inject(Poll));
 
-//poll options
+//poll
 
-describe("poll options (form)", () => {
+describe("poll (form)", () => {
 
   const testForm = initTestPoll(testSnapshot, "form");
 
@@ -36,7 +36,7 @@ describe("poll options (form)", () => {
 
 });
 
-describe("poll options (view)", () => {
+describe("poll (view)", () => {
 
   const testView = initTestPoll(testSnapshot, "view");
 

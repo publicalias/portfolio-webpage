@@ -1,0 +1,2090 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`poll (form) should match snapshot (authenticated) 1`] = `
+<Fragment>
+  <div
+    className="c-poll-display"
+  >
+    <PollTitle
+      actions={
+        Object {
+          "formAddOption": [MockFunction],
+          "formCheckTitle": [MockFunction],
+          "formClearState": [MockFunction],
+          "formRemoveOption": [MockFunction],
+          "formSetAdd": [MockFunction],
+          "formSetTitle": [MockFunction],
+          "formToggleDelete": [MockFunction],
+          "formToggleSecret": [MockFunction],
+          "listClearState": [MockFunction],
+          "listSetSearch": [MockFunction],
+          "metaAddErrors": [MockFunction],
+          "metaCloseError": [MockFunction],
+          "metaCreatePoll": [MockFunction],
+          "metaDeletePoll": [MockFunction],
+          "metaGetPollItem": [MockFunction],
+          "metaGetPollList": [MockFunction],
+          "metaGetUser": [MockFunction],
+          "metaNoOp": [MockFunction],
+          "metaSetLoading": [MockFunction],
+          "metaSetState": [MockFunction],
+          "metaTimeoutError": [MockFunction],
+          "metaToggleDelete": [MockFunction],
+          "pollAddOption": [MockFunction],
+          "pollCastVote": [MockFunction],
+          "pollRemoveOption": [MockFunction],
+          "pollRemoveVote": [MockFunction],
+          "pollToggleFlag": [MockFunction],
+          "pollToggleHide": [MockFunction],
+          "pollToggleSecret": [MockFunction],
+          "viewClearState": [MockFunction],
+          "viewSetAdd": [MockFunction],
+          "viewToggleDelete": [MockFunction],
+          "viewToggleSettings": [MockFunction],
+        }
+      }
+      data={
+        Object {
+          "account": Object {
+            "delete": false,
+          },
+          "errors": Array [],
+          "form": Object {
+            "add": "",
+            "delete": false,
+            "options": Array [],
+            "secret": false,
+            "title": "",
+          },
+          "list": Object {
+            "search": "",
+          },
+          "loading": 0,
+          "polls": Array [],
+          "user": Object {
+            "auth": Object {
+              "id": "",
+              "provider": "",
+            },
+            "data": Object {
+              "restricted": false,
+            },
+            "id": "",
+            "name": "",
+            "type": "auth",
+          },
+          "view": Object {
+            "add": "",
+            "delete": false,
+            "settings": false,
+          },
+        }
+      }
+      history={
+        Object {
+          "push": [MockFunction],
+        }
+      }
+      local={
+        Object {
+          "poll": Object {
+            "add": "",
+            "delete": false,
+            "options": Array [],
+            "secret": false,
+            "title": "",
+          },
+          "role": "form",
+        }
+      }
+      location={Object {}}
+      match={Object {}}
+      staticContext={Object {}}
+    />
+    <hr />
+    <PollChart
+      actions={
+        Object {
+          "formAddOption": [MockFunction],
+          "formCheckTitle": [MockFunction],
+          "formClearState": [MockFunction],
+          "formRemoveOption": [MockFunction],
+          "formSetAdd": [MockFunction],
+          "formSetTitle": [MockFunction],
+          "formToggleDelete": [MockFunction],
+          "formToggleSecret": [MockFunction],
+          "listClearState": [MockFunction],
+          "listSetSearch": [MockFunction],
+          "metaAddErrors": [MockFunction],
+          "metaCloseError": [MockFunction],
+          "metaCreatePoll": [MockFunction],
+          "metaDeletePoll": [MockFunction],
+          "metaGetPollItem": [MockFunction],
+          "metaGetPollList": [MockFunction],
+          "metaGetUser": [MockFunction],
+          "metaNoOp": [MockFunction],
+          "metaSetLoading": [MockFunction],
+          "metaSetState": [MockFunction],
+          "metaTimeoutError": [MockFunction],
+          "metaToggleDelete": [MockFunction],
+          "pollAddOption": [MockFunction],
+          "pollCastVote": [MockFunction],
+          "pollRemoveOption": [MockFunction],
+          "pollRemoveVote": [MockFunction],
+          "pollToggleFlag": [MockFunction],
+          "pollToggleHide": [MockFunction],
+          "pollToggleSecret": [MockFunction],
+          "viewClearState": [MockFunction],
+          "viewSetAdd": [MockFunction],
+          "viewToggleDelete": [MockFunction],
+          "viewToggleSettings": [MockFunction],
+        }
+      }
+      data={
+        Object {
+          "account": Object {
+            "delete": false,
+          },
+          "errors": Array [],
+          "form": Object {
+            "add": "",
+            "delete": false,
+            "options": Array [],
+            "secret": false,
+            "title": "",
+          },
+          "list": Object {
+            "search": "",
+          },
+          "loading": 0,
+          "polls": Array [],
+          "user": Object {
+            "auth": Object {
+              "id": "",
+              "provider": "",
+            },
+            "data": Object {
+              "restricted": false,
+            },
+            "id": "",
+            "name": "",
+            "type": "auth",
+          },
+          "view": Object {
+            "add": "",
+            "delete": false,
+            "settings": false,
+          },
+        }
+      }
+      history={
+        Object {
+          "push": [MockFunction],
+        }
+      }
+      local={
+        Object {
+          "poll": Object {
+            "add": "",
+            "delete": false,
+            "options": Array [],
+            "secret": false,
+            "title": "",
+          },
+          "role": "form",
+        }
+      }
+      location={Object {}}
+      match={Object {}}
+      staticContext={Object {}}
+    />
+  </div>
+  <div
+    className="c-poll-options"
+  >
+    <PollInput
+      actions={
+        Object {
+          "formAddOption": [MockFunction],
+          "formCheckTitle": [MockFunction],
+          "formClearState": [MockFunction],
+          "formRemoveOption": [MockFunction],
+          "formSetAdd": [MockFunction],
+          "formSetTitle": [MockFunction],
+          "formToggleDelete": [MockFunction],
+          "formToggleSecret": [MockFunction],
+          "listClearState": [MockFunction],
+          "listSetSearch": [MockFunction],
+          "metaAddErrors": [MockFunction],
+          "metaCloseError": [MockFunction],
+          "metaCreatePoll": [MockFunction],
+          "metaDeletePoll": [MockFunction],
+          "metaGetPollItem": [MockFunction],
+          "metaGetPollList": [MockFunction],
+          "metaGetUser": [MockFunction],
+          "metaNoOp": [MockFunction],
+          "metaSetLoading": [MockFunction],
+          "metaSetState": [MockFunction],
+          "metaTimeoutError": [MockFunction],
+          "metaToggleDelete": [MockFunction],
+          "pollAddOption": [MockFunction],
+          "pollCastVote": [MockFunction],
+          "pollRemoveOption": [MockFunction],
+          "pollRemoveVote": [MockFunction],
+          "pollToggleFlag": [MockFunction],
+          "pollToggleHide": [MockFunction],
+          "pollToggleSecret": [MockFunction],
+          "viewClearState": [MockFunction],
+          "viewSetAdd": [MockFunction],
+          "viewToggleDelete": [MockFunction],
+          "viewToggleSettings": [MockFunction],
+        }
+      }
+      data={
+        Object {
+          "account": Object {
+            "delete": false,
+          },
+          "errors": Array [],
+          "form": Object {
+            "add": "",
+            "delete": false,
+            "options": Array [],
+            "secret": false,
+            "title": "",
+          },
+          "list": Object {
+            "search": "",
+          },
+          "loading": 0,
+          "polls": Array [],
+          "user": Object {
+            "auth": Object {
+              "id": "",
+              "provider": "",
+            },
+            "data": Object {
+              "restricted": false,
+            },
+            "id": "",
+            "name": "",
+            "type": "auth",
+          },
+          "view": Object {
+            "add": "",
+            "delete": false,
+            "settings": false,
+          },
+        }
+      }
+      history={
+        Object {
+          "push": [MockFunction],
+        }
+      }
+      local={
+        Object {
+          "poll": Object {
+            "add": "",
+            "delete": false,
+            "options": Array [],
+            "secret": false,
+            "title": "",
+          },
+          "role": "form",
+        }
+      }
+      location={Object {}}
+      match={Object {}}
+      staticContext={Object {}}
+    />
+  </div>
+</Fragment>
+`;
+
+exports[`poll (form) should match snapshot (default) 1`] = `
+<Fragment>
+  <div
+    className="c-poll-display--tall"
+  >
+    <PollTitle
+      actions={
+        Object {
+          "formAddOption": [MockFunction],
+          "formCheckTitle": [MockFunction],
+          "formClearState": [MockFunction],
+          "formRemoveOption": [MockFunction],
+          "formSetAdd": [MockFunction],
+          "formSetTitle": [MockFunction],
+          "formToggleDelete": [MockFunction],
+          "formToggleSecret": [MockFunction],
+          "listClearState": [MockFunction],
+          "listSetSearch": [MockFunction],
+          "metaAddErrors": [MockFunction],
+          "metaCloseError": [MockFunction],
+          "metaCreatePoll": [MockFunction],
+          "metaDeletePoll": [MockFunction],
+          "metaGetPollItem": [MockFunction],
+          "metaGetPollList": [MockFunction],
+          "metaGetUser": [MockFunction],
+          "metaNoOp": [MockFunction],
+          "metaSetLoading": [MockFunction],
+          "metaSetState": [MockFunction],
+          "metaTimeoutError": [MockFunction],
+          "metaToggleDelete": [MockFunction],
+          "pollAddOption": [MockFunction],
+          "pollCastVote": [MockFunction],
+          "pollRemoveOption": [MockFunction],
+          "pollRemoveVote": [MockFunction],
+          "pollToggleFlag": [MockFunction],
+          "pollToggleHide": [MockFunction],
+          "pollToggleSecret": [MockFunction],
+          "viewClearState": [MockFunction],
+          "viewSetAdd": [MockFunction],
+          "viewToggleDelete": [MockFunction],
+          "viewToggleSettings": [MockFunction],
+        }
+      }
+      data={
+        Object {
+          "account": Object {
+            "delete": false,
+          },
+          "errors": Array [],
+          "form": Object {
+            "add": "",
+            "delete": false,
+            "options": Array [],
+            "secret": false,
+            "title": "",
+          },
+          "list": Object {
+            "search": "",
+          },
+          "loading": 0,
+          "polls": Array [],
+          "user": Object {},
+          "view": Object {
+            "add": "",
+            "delete": false,
+            "settings": false,
+          },
+        }
+      }
+      history={
+        Object {
+          "push": [MockFunction],
+        }
+      }
+      local={
+        Object {
+          "poll": Object {
+            "add": "",
+            "delete": false,
+            "options": Array [],
+            "secret": false,
+            "title": "",
+          },
+          "role": "form",
+        }
+      }
+      location={Object {}}
+      match={Object {}}
+      staticContext={Object {}}
+    />
+    <hr />
+    <PollChart
+      actions={
+        Object {
+          "formAddOption": [MockFunction],
+          "formCheckTitle": [MockFunction],
+          "formClearState": [MockFunction],
+          "formRemoveOption": [MockFunction],
+          "formSetAdd": [MockFunction],
+          "formSetTitle": [MockFunction],
+          "formToggleDelete": [MockFunction],
+          "formToggleSecret": [MockFunction],
+          "listClearState": [MockFunction],
+          "listSetSearch": [MockFunction],
+          "metaAddErrors": [MockFunction],
+          "metaCloseError": [MockFunction],
+          "metaCreatePoll": [MockFunction],
+          "metaDeletePoll": [MockFunction],
+          "metaGetPollItem": [MockFunction],
+          "metaGetPollList": [MockFunction],
+          "metaGetUser": [MockFunction],
+          "metaNoOp": [MockFunction],
+          "metaSetLoading": [MockFunction],
+          "metaSetState": [MockFunction],
+          "metaTimeoutError": [MockFunction],
+          "metaToggleDelete": [MockFunction],
+          "pollAddOption": [MockFunction],
+          "pollCastVote": [MockFunction],
+          "pollRemoveOption": [MockFunction],
+          "pollRemoveVote": [MockFunction],
+          "pollToggleFlag": [MockFunction],
+          "pollToggleHide": [MockFunction],
+          "pollToggleSecret": [MockFunction],
+          "viewClearState": [MockFunction],
+          "viewSetAdd": [MockFunction],
+          "viewToggleDelete": [MockFunction],
+          "viewToggleSettings": [MockFunction],
+        }
+      }
+      data={
+        Object {
+          "account": Object {
+            "delete": false,
+          },
+          "errors": Array [],
+          "form": Object {
+            "add": "",
+            "delete": false,
+            "options": Array [],
+            "secret": false,
+            "title": "",
+          },
+          "list": Object {
+            "search": "",
+          },
+          "loading": 0,
+          "polls": Array [],
+          "user": Object {},
+          "view": Object {
+            "add": "",
+            "delete": false,
+            "settings": false,
+          },
+        }
+      }
+      history={
+        Object {
+          "push": [MockFunction],
+        }
+      }
+      local={
+        Object {
+          "poll": Object {
+            "add": "",
+            "delete": false,
+            "options": Array [],
+            "secret": false,
+            "title": "",
+          },
+          "role": "form",
+        }
+      }
+      location={Object {}}
+      match={Object {}}
+      staticContext={Object {}}
+    />
+  </div>
+</Fragment>
+`;
+
+exports[`poll (form) should match snapshot (options) 1`] = `
+<Fragment>
+  <div
+    className="c-poll-display"
+  >
+    <PollTitle
+      actions={
+        Object {
+          "formAddOption": [MockFunction],
+          "formCheckTitle": [MockFunction],
+          "formClearState": [MockFunction],
+          "formRemoveOption": [MockFunction],
+          "formSetAdd": [MockFunction],
+          "formSetTitle": [MockFunction],
+          "formToggleDelete": [MockFunction],
+          "formToggleSecret": [MockFunction],
+          "listClearState": [MockFunction],
+          "listSetSearch": [MockFunction],
+          "metaAddErrors": [MockFunction],
+          "metaCloseError": [MockFunction],
+          "metaCreatePoll": [MockFunction],
+          "metaDeletePoll": [MockFunction],
+          "metaGetPollItem": [MockFunction],
+          "metaGetPollList": [MockFunction],
+          "metaGetUser": [MockFunction],
+          "metaNoOp": [MockFunction],
+          "metaSetLoading": [MockFunction],
+          "metaSetState": [MockFunction],
+          "metaTimeoutError": [MockFunction],
+          "metaToggleDelete": [MockFunction],
+          "pollAddOption": [MockFunction],
+          "pollCastVote": [MockFunction],
+          "pollRemoveOption": [MockFunction],
+          "pollRemoveVote": [MockFunction],
+          "pollToggleFlag": [MockFunction],
+          "pollToggleHide": [MockFunction],
+          "pollToggleSecret": [MockFunction],
+          "viewClearState": [MockFunction],
+          "viewSetAdd": [MockFunction],
+          "viewToggleDelete": [MockFunction],
+          "viewToggleSettings": [MockFunction],
+        }
+      }
+      data={
+        Object {
+          "account": Object {
+            "delete": false,
+          },
+          "errors": Array [],
+          "form": Object {
+            "add": "",
+            "delete": false,
+            "options": Array [],
+            "secret": false,
+            "title": "",
+          },
+          "list": Object {
+            "search": "",
+          },
+          "loading": 0,
+          "polls": Array [],
+          "user": Object {},
+          "view": Object {
+            "add": "",
+            "delete": false,
+            "settings": false,
+          },
+        }
+      }
+      history={
+        Object {
+          "push": [MockFunction],
+        }
+      }
+      local={
+        Object {
+          "poll": Object {
+            "add": "",
+            "delete": false,
+            "options": Array [
+              "Option A",
+            ],
+            "secret": false,
+            "title": "",
+          },
+          "role": "form",
+        }
+      }
+      location={Object {}}
+      match={Object {}}
+      staticContext={Object {}}
+    />
+    <hr />
+    <PollChart
+      actions={
+        Object {
+          "formAddOption": [MockFunction],
+          "formCheckTitle": [MockFunction],
+          "formClearState": [MockFunction],
+          "formRemoveOption": [MockFunction],
+          "formSetAdd": [MockFunction],
+          "formSetTitle": [MockFunction],
+          "formToggleDelete": [MockFunction],
+          "formToggleSecret": [MockFunction],
+          "listClearState": [MockFunction],
+          "listSetSearch": [MockFunction],
+          "metaAddErrors": [MockFunction],
+          "metaCloseError": [MockFunction],
+          "metaCreatePoll": [MockFunction],
+          "metaDeletePoll": [MockFunction],
+          "metaGetPollItem": [MockFunction],
+          "metaGetPollList": [MockFunction],
+          "metaGetUser": [MockFunction],
+          "metaNoOp": [MockFunction],
+          "metaSetLoading": [MockFunction],
+          "metaSetState": [MockFunction],
+          "metaTimeoutError": [MockFunction],
+          "metaToggleDelete": [MockFunction],
+          "pollAddOption": [MockFunction],
+          "pollCastVote": [MockFunction],
+          "pollRemoveOption": [MockFunction],
+          "pollRemoveVote": [MockFunction],
+          "pollToggleFlag": [MockFunction],
+          "pollToggleHide": [MockFunction],
+          "pollToggleSecret": [MockFunction],
+          "viewClearState": [MockFunction],
+          "viewSetAdd": [MockFunction],
+          "viewToggleDelete": [MockFunction],
+          "viewToggleSettings": [MockFunction],
+        }
+      }
+      data={
+        Object {
+          "account": Object {
+            "delete": false,
+          },
+          "errors": Array [],
+          "form": Object {
+            "add": "",
+            "delete": false,
+            "options": Array [],
+            "secret": false,
+            "title": "",
+          },
+          "list": Object {
+            "search": "",
+          },
+          "loading": 0,
+          "polls": Array [],
+          "user": Object {},
+          "view": Object {
+            "add": "",
+            "delete": false,
+            "settings": false,
+          },
+        }
+      }
+      history={
+        Object {
+          "push": [MockFunction],
+        }
+      }
+      local={
+        Object {
+          "poll": Object {
+            "add": "",
+            "delete": false,
+            "options": Array [
+              "Option A",
+            ],
+            "secret": false,
+            "title": "",
+          },
+          "role": "form",
+        }
+      }
+      location={Object {}}
+      match={Object {}}
+      staticContext={Object {}}
+    />
+  </div>
+  <div
+    className="c-poll-options"
+  >
+    <PollList
+      actions={
+        Object {
+          "formAddOption": [MockFunction],
+          "formCheckTitle": [MockFunction],
+          "formClearState": [MockFunction],
+          "formRemoveOption": [MockFunction],
+          "formSetAdd": [MockFunction],
+          "formSetTitle": [MockFunction],
+          "formToggleDelete": [MockFunction],
+          "formToggleSecret": [MockFunction],
+          "listClearState": [MockFunction],
+          "listSetSearch": [MockFunction],
+          "metaAddErrors": [MockFunction],
+          "metaCloseError": [MockFunction],
+          "metaCreatePoll": [MockFunction],
+          "metaDeletePoll": [MockFunction],
+          "metaGetPollItem": [MockFunction],
+          "metaGetPollList": [MockFunction],
+          "metaGetUser": [MockFunction],
+          "metaNoOp": [MockFunction],
+          "metaSetLoading": [MockFunction],
+          "metaSetState": [MockFunction],
+          "metaTimeoutError": [MockFunction],
+          "metaToggleDelete": [MockFunction],
+          "pollAddOption": [MockFunction],
+          "pollCastVote": [MockFunction],
+          "pollRemoveOption": [MockFunction],
+          "pollRemoveVote": [MockFunction],
+          "pollToggleFlag": [MockFunction],
+          "pollToggleHide": [MockFunction],
+          "pollToggleSecret": [MockFunction],
+          "viewClearState": [MockFunction],
+          "viewSetAdd": [MockFunction],
+          "viewToggleDelete": [MockFunction],
+          "viewToggleSettings": [MockFunction],
+        }
+      }
+      data={
+        Object {
+          "account": Object {
+            "delete": false,
+          },
+          "errors": Array [],
+          "form": Object {
+            "add": "",
+            "delete": false,
+            "options": Array [],
+            "secret": false,
+            "title": "",
+          },
+          "list": Object {
+            "search": "",
+          },
+          "loading": 0,
+          "polls": Array [],
+          "user": Object {},
+          "view": Object {
+            "add": "",
+            "delete": false,
+            "settings": false,
+          },
+        }
+      }
+      history={
+        Object {
+          "push": [MockFunction],
+        }
+      }
+      local={
+        Object {
+          "poll": Object {
+            "add": "",
+            "delete": false,
+            "options": Array [
+              "Option A",
+            ],
+            "secret": false,
+            "title": "",
+          },
+          "role": "form",
+        }
+      }
+      location={Object {}}
+      match={Object {}}
+      staticContext={Object {}}
+    />
+  </div>
+</Fragment>
+`;
+
+exports[`poll (view) should match snapshot (authenticated) 1`] = `
+<Fragment>
+  <div
+    className="c-poll-display--tall"
+  >
+    <PollTitle
+      actions={
+        Object {
+          "formAddOption": [MockFunction],
+          "formCheckTitle": [MockFunction],
+          "formClearState": [MockFunction],
+          "formRemoveOption": [MockFunction],
+          "formSetAdd": [MockFunction],
+          "formSetTitle": [MockFunction],
+          "formToggleDelete": [MockFunction],
+          "formToggleSecret": [MockFunction],
+          "listClearState": [MockFunction],
+          "listSetSearch": [MockFunction],
+          "metaAddErrors": [MockFunction],
+          "metaCloseError": [MockFunction],
+          "metaCreatePoll": [MockFunction],
+          "metaDeletePoll": [MockFunction],
+          "metaGetPollItem": [MockFunction],
+          "metaGetPollList": [MockFunction],
+          "metaGetUser": [MockFunction],
+          "metaNoOp": [MockFunction],
+          "metaSetLoading": [MockFunction],
+          "metaSetState": [MockFunction],
+          "metaTimeoutError": [MockFunction],
+          "metaToggleDelete": [MockFunction],
+          "pollAddOption": [MockFunction],
+          "pollCastVote": [MockFunction],
+          "pollRemoveOption": [MockFunction],
+          "pollRemoveVote": [MockFunction],
+          "pollToggleFlag": [MockFunction],
+          "pollToggleHide": [MockFunction],
+          "pollToggleSecret": [MockFunction],
+          "viewClearState": [MockFunction],
+          "viewSetAdd": [MockFunction],
+          "viewToggleDelete": [MockFunction],
+          "viewToggleSettings": [MockFunction],
+        }
+      }
+      data={
+        Object {
+          "account": Object {
+            "delete": false,
+          },
+          "errors": Array [],
+          "form": Object {
+            "add": "",
+            "delete": false,
+            "options": Array [],
+            "secret": false,
+            "title": "",
+          },
+          "list": Object {
+            "search": "",
+          },
+          "loading": 0,
+          "polls": Array [],
+          "user": Object {
+            "auth": Object {
+              "id": "",
+              "provider": "",
+            },
+            "data": Object {
+              "restricted": false,
+            },
+            "id": "",
+            "name": "",
+            "type": "auth",
+          },
+          "view": Object {
+            "add": "",
+            "delete": false,
+            "settings": false,
+          },
+        }
+      }
+      history={
+        Object {
+          "push": [MockFunction],
+        }
+      }
+      local={
+        Object {
+          "poll": Object {
+            "author": "",
+            "date": 0,
+            "id": "",
+            "options": Array [],
+            "secret": false,
+            "title": "",
+            "users": Object {
+              "created": "",
+              "flagged": Array [],
+              "hidden": Array [],
+            },
+            "votes": 0,
+          },
+          "role": "view",
+        }
+      }
+      location={Object {}}
+      match={Object {}}
+      staticContext={Object {}}
+    />
+    <hr />
+    <PollChart
+      actions={
+        Object {
+          "formAddOption": [MockFunction],
+          "formCheckTitle": [MockFunction],
+          "formClearState": [MockFunction],
+          "formRemoveOption": [MockFunction],
+          "formSetAdd": [MockFunction],
+          "formSetTitle": [MockFunction],
+          "formToggleDelete": [MockFunction],
+          "formToggleSecret": [MockFunction],
+          "listClearState": [MockFunction],
+          "listSetSearch": [MockFunction],
+          "metaAddErrors": [MockFunction],
+          "metaCloseError": [MockFunction],
+          "metaCreatePoll": [MockFunction],
+          "metaDeletePoll": [MockFunction],
+          "metaGetPollItem": [MockFunction],
+          "metaGetPollList": [MockFunction],
+          "metaGetUser": [MockFunction],
+          "metaNoOp": [MockFunction],
+          "metaSetLoading": [MockFunction],
+          "metaSetState": [MockFunction],
+          "metaTimeoutError": [MockFunction],
+          "metaToggleDelete": [MockFunction],
+          "pollAddOption": [MockFunction],
+          "pollCastVote": [MockFunction],
+          "pollRemoveOption": [MockFunction],
+          "pollRemoveVote": [MockFunction],
+          "pollToggleFlag": [MockFunction],
+          "pollToggleHide": [MockFunction],
+          "pollToggleSecret": [MockFunction],
+          "viewClearState": [MockFunction],
+          "viewSetAdd": [MockFunction],
+          "viewToggleDelete": [MockFunction],
+          "viewToggleSettings": [MockFunction],
+        }
+      }
+      data={
+        Object {
+          "account": Object {
+            "delete": false,
+          },
+          "errors": Array [],
+          "form": Object {
+            "add": "",
+            "delete": false,
+            "options": Array [],
+            "secret": false,
+            "title": "",
+          },
+          "list": Object {
+            "search": "",
+          },
+          "loading": 0,
+          "polls": Array [],
+          "user": Object {
+            "auth": Object {
+              "id": "",
+              "provider": "",
+            },
+            "data": Object {
+              "restricted": false,
+            },
+            "id": "",
+            "name": "",
+            "type": "auth",
+          },
+          "view": Object {
+            "add": "",
+            "delete": false,
+            "settings": false,
+          },
+        }
+      }
+      history={
+        Object {
+          "push": [MockFunction],
+        }
+      }
+      local={
+        Object {
+          "poll": Object {
+            "author": "",
+            "date": 0,
+            "id": "",
+            "options": Array [],
+            "secret": false,
+            "title": "",
+            "users": Object {
+              "created": "",
+              "flagged": Array [],
+              "hidden": Array [],
+            },
+            "votes": 0,
+          },
+          "role": "view",
+        }
+      }
+      location={Object {}}
+      match={Object {}}
+      staticContext={Object {}}
+    />
+  </div>
+</Fragment>
+`;
+
+exports[`poll (view) should match snapshot (authenticated, right poll) 1`] = `
+<Fragment>
+  <div
+    className="c-poll-display"
+  >
+    <PollTitle
+      actions={
+        Object {
+          "formAddOption": [MockFunction],
+          "formCheckTitle": [MockFunction],
+          "formClearState": [MockFunction],
+          "formRemoveOption": [MockFunction],
+          "formSetAdd": [MockFunction],
+          "formSetTitle": [MockFunction],
+          "formToggleDelete": [MockFunction],
+          "formToggleSecret": [MockFunction],
+          "listClearState": [MockFunction],
+          "listSetSearch": [MockFunction],
+          "metaAddErrors": [MockFunction],
+          "metaCloseError": [MockFunction],
+          "metaCreatePoll": [MockFunction],
+          "metaDeletePoll": [MockFunction],
+          "metaGetPollItem": [MockFunction],
+          "metaGetPollList": [MockFunction],
+          "metaGetUser": [MockFunction],
+          "metaNoOp": [MockFunction],
+          "metaSetLoading": [MockFunction],
+          "metaSetState": [MockFunction],
+          "metaTimeoutError": [MockFunction],
+          "metaToggleDelete": [MockFunction],
+          "pollAddOption": [MockFunction],
+          "pollCastVote": [MockFunction],
+          "pollRemoveOption": [MockFunction],
+          "pollRemoveVote": [MockFunction],
+          "pollToggleFlag": [MockFunction],
+          "pollToggleHide": [MockFunction],
+          "pollToggleSecret": [MockFunction],
+          "viewClearState": [MockFunction],
+          "viewSetAdd": [MockFunction],
+          "viewToggleDelete": [MockFunction],
+          "viewToggleSettings": [MockFunction],
+        }
+      }
+      data={
+        Object {
+          "account": Object {
+            "delete": false,
+          },
+          "errors": Array [],
+          "form": Object {
+            "add": "",
+            "delete": false,
+            "options": Array [],
+            "secret": false,
+            "title": "",
+          },
+          "list": Object {
+            "search": "",
+          },
+          "loading": 0,
+          "polls": Array [
+            Object {
+              "author": "",
+              "date": 0,
+              "id": "id-a",
+              "options": Array [],
+              "secret": false,
+              "title": "",
+              "users": Object {
+                "created": "",
+                "flagged": Array [],
+                "hidden": Array [],
+              },
+              "votes": 0,
+            },
+          ],
+          "user": Object {
+            "auth": Object {
+              "id": "",
+              "provider": "",
+            },
+            "data": Object {
+              "restricted": false,
+            },
+            "id": "",
+            "name": "",
+            "type": "auth",
+          },
+          "view": Object {
+            "add": "",
+            "delete": false,
+            "settings": false,
+          },
+        }
+      }
+      history={
+        Object {
+          "push": [MockFunction],
+        }
+      }
+      local={
+        Object {
+          "poll": Object {
+            "author": "",
+            "date": 0,
+            "id": "id-a",
+            "options": Array [],
+            "secret": false,
+            "title": "",
+            "users": Object {
+              "created": "",
+              "flagged": Array [],
+              "hidden": Array [],
+            },
+            "votes": 0,
+          },
+          "role": "view",
+        }
+      }
+      location={Object {}}
+      match={Object {}}
+      staticContext={Object {}}
+    />
+    <hr />
+    <PollChart
+      actions={
+        Object {
+          "formAddOption": [MockFunction],
+          "formCheckTitle": [MockFunction],
+          "formClearState": [MockFunction],
+          "formRemoveOption": [MockFunction],
+          "formSetAdd": [MockFunction],
+          "formSetTitle": [MockFunction],
+          "formToggleDelete": [MockFunction],
+          "formToggleSecret": [MockFunction],
+          "listClearState": [MockFunction],
+          "listSetSearch": [MockFunction],
+          "metaAddErrors": [MockFunction],
+          "metaCloseError": [MockFunction],
+          "metaCreatePoll": [MockFunction],
+          "metaDeletePoll": [MockFunction],
+          "metaGetPollItem": [MockFunction],
+          "metaGetPollList": [MockFunction],
+          "metaGetUser": [MockFunction],
+          "metaNoOp": [MockFunction],
+          "metaSetLoading": [MockFunction],
+          "metaSetState": [MockFunction],
+          "metaTimeoutError": [MockFunction],
+          "metaToggleDelete": [MockFunction],
+          "pollAddOption": [MockFunction],
+          "pollCastVote": [MockFunction],
+          "pollRemoveOption": [MockFunction],
+          "pollRemoveVote": [MockFunction],
+          "pollToggleFlag": [MockFunction],
+          "pollToggleHide": [MockFunction],
+          "pollToggleSecret": [MockFunction],
+          "viewClearState": [MockFunction],
+          "viewSetAdd": [MockFunction],
+          "viewToggleDelete": [MockFunction],
+          "viewToggleSettings": [MockFunction],
+        }
+      }
+      data={
+        Object {
+          "account": Object {
+            "delete": false,
+          },
+          "errors": Array [],
+          "form": Object {
+            "add": "",
+            "delete": false,
+            "options": Array [],
+            "secret": false,
+            "title": "",
+          },
+          "list": Object {
+            "search": "",
+          },
+          "loading": 0,
+          "polls": Array [
+            Object {
+              "author": "",
+              "date": 0,
+              "id": "id-a",
+              "options": Array [],
+              "secret": false,
+              "title": "",
+              "users": Object {
+                "created": "",
+                "flagged": Array [],
+                "hidden": Array [],
+              },
+              "votes": 0,
+            },
+          ],
+          "user": Object {
+            "auth": Object {
+              "id": "",
+              "provider": "",
+            },
+            "data": Object {
+              "restricted": false,
+            },
+            "id": "",
+            "name": "",
+            "type": "auth",
+          },
+          "view": Object {
+            "add": "",
+            "delete": false,
+            "settings": false,
+          },
+        }
+      }
+      history={
+        Object {
+          "push": [MockFunction],
+        }
+      }
+      local={
+        Object {
+          "poll": Object {
+            "author": "",
+            "date": 0,
+            "id": "id-a",
+            "options": Array [],
+            "secret": false,
+            "title": "",
+            "users": Object {
+              "created": "",
+              "flagged": Array [],
+              "hidden": Array [],
+            },
+            "votes": 0,
+          },
+          "role": "view",
+        }
+      }
+      location={Object {}}
+      match={Object {}}
+      staticContext={Object {}}
+    />
+  </div>
+  <div
+    className="c-poll-options"
+  >
+    <PollInput
+      actions={
+        Object {
+          "formAddOption": [MockFunction],
+          "formCheckTitle": [MockFunction],
+          "formClearState": [MockFunction],
+          "formRemoveOption": [MockFunction],
+          "formSetAdd": [MockFunction],
+          "formSetTitle": [MockFunction],
+          "formToggleDelete": [MockFunction],
+          "formToggleSecret": [MockFunction],
+          "listClearState": [MockFunction],
+          "listSetSearch": [MockFunction],
+          "metaAddErrors": [MockFunction],
+          "metaCloseError": [MockFunction],
+          "metaCreatePoll": [MockFunction],
+          "metaDeletePoll": [MockFunction],
+          "metaGetPollItem": [MockFunction],
+          "metaGetPollList": [MockFunction],
+          "metaGetUser": [MockFunction],
+          "metaNoOp": [MockFunction],
+          "metaSetLoading": [MockFunction],
+          "metaSetState": [MockFunction],
+          "metaTimeoutError": [MockFunction],
+          "metaToggleDelete": [MockFunction],
+          "pollAddOption": [MockFunction],
+          "pollCastVote": [MockFunction],
+          "pollRemoveOption": [MockFunction],
+          "pollRemoveVote": [MockFunction],
+          "pollToggleFlag": [MockFunction],
+          "pollToggleHide": [MockFunction],
+          "pollToggleSecret": [MockFunction],
+          "viewClearState": [MockFunction],
+          "viewSetAdd": [MockFunction],
+          "viewToggleDelete": [MockFunction],
+          "viewToggleSettings": [MockFunction],
+        }
+      }
+      data={
+        Object {
+          "account": Object {
+            "delete": false,
+          },
+          "errors": Array [],
+          "form": Object {
+            "add": "",
+            "delete": false,
+            "options": Array [],
+            "secret": false,
+            "title": "",
+          },
+          "list": Object {
+            "search": "",
+          },
+          "loading": 0,
+          "polls": Array [
+            Object {
+              "author": "",
+              "date": 0,
+              "id": "id-a",
+              "options": Array [],
+              "secret": false,
+              "title": "",
+              "users": Object {
+                "created": "",
+                "flagged": Array [],
+                "hidden": Array [],
+              },
+              "votes": 0,
+            },
+          ],
+          "user": Object {
+            "auth": Object {
+              "id": "",
+              "provider": "",
+            },
+            "data": Object {
+              "restricted": false,
+            },
+            "id": "",
+            "name": "",
+            "type": "auth",
+          },
+          "view": Object {
+            "add": "",
+            "delete": false,
+            "settings": false,
+          },
+        }
+      }
+      history={
+        Object {
+          "push": [MockFunction],
+        }
+      }
+      local={
+        Object {
+          "poll": Object {
+            "author": "",
+            "date": 0,
+            "id": "id-a",
+            "options": Array [],
+            "secret": false,
+            "title": "",
+            "users": Object {
+              "created": "",
+              "flagged": Array [],
+              "hidden": Array [],
+            },
+            "votes": 0,
+          },
+          "role": "view",
+        }
+      }
+      location={Object {}}
+      match={Object {}}
+      staticContext={Object {}}
+    />
+  </div>
+</Fragment>
+`;
+
+exports[`poll (view) should match snapshot (authenticated, wrong poll) 1`] = `
+<Fragment>
+  <div
+    className="c-poll-display--tall"
+  >
+    <PollTitle
+      actions={
+        Object {
+          "formAddOption": [MockFunction],
+          "formCheckTitle": [MockFunction],
+          "formClearState": [MockFunction],
+          "formRemoveOption": [MockFunction],
+          "formSetAdd": [MockFunction],
+          "formSetTitle": [MockFunction],
+          "formToggleDelete": [MockFunction],
+          "formToggleSecret": [MockFunction],
+          "listClearState": [MockFunction],
+          "listSetSearch": [MockFunction],
+          "metaAddErrors": [MockFunction],
+          "metaCloseError": [MockFunction],
+          "metaCreatePoll": [MockFunction],
+          "metaDeletePoll": [MockFunction],
+          "metaGetPollItem": [MockFunction],
+          "metaGetPollList": [MockFunction],
+          "metaGetUser": [MockFunction],
+          "metaNoOp": [MockFunction],
+          "metaSetLoading": [MockFunction],
+          "metaSetState": [MockFunction],
+          "metaTimeoutError": [MockFunction],
+          "metaToggleDelete": [MockFunction],
+          "pollAddOption": [MockFunction],
+          "pollCastVote": [MockFunction],
+          "pollRemoveOption": [MockFunction],
+          "pollRemoveVote": [MockFunction],
+          "pollToggleFlag": [MockFunction],
+          "pollToggleHide": [MockFunction],
+          "pollToggleSecret": [MockFunction],
+          "viewClearState": [MockFunction],
+          "viewSetAdd": [MockFunction],
+          "viewToggleDelete": [MockFunction],
+          "viewToggleSettings": [MockFunction],
+        }
+      }
+      data={
+        Object {
+          "account": Object {
+            "delete": false,
+          },
+          "errors": Array [],
+          "form": Object {
+            "add": "",
+            "delete": false,
+            "options": Array [],
+            "secret": false,
+            "title": "",
+          },
+          "list": Object {
+            "search": "",
+          },
+          "loading": 0,
+          "polls": Array [
+            Object {
+              "author": "",
+              "date": 0,
+              "id": "id-a",
+              "options": Array [],
+              "secret": false,
+              "title": "",
+              "users": Object {
+                "created": "",
+                "flagged": Array [],
+                "hidden": Array [],
+              },
+              "votes": 0,
+            },
+          ],
+          "user": Object {
+            "auth": Object {
+              "id": "",
+              "provider": "",
+            },
+            "data": Object {
+              "restricted": false,
+            },
+            "id": "",
+            "name": "",
+            "type": "auth",
+          },
+          "view": Object {
+            "add": "",
+            "delete": false,
+            "settings": false,
+          },
+        }
+      }
+      history={
+        Object {
+          "push": [MockFunction],
+        }
+      }
+      local={
+        Object {
+          "poll": Object {
+            "author": "",
+            "date": 0,
+            "id": "id-b",
+            "options": Array [],
+            "secret": false,
+            "title": "",
+            "users": Object {
+              "created": "",
+              "flagged": Array [],
+              "hidden": Array [],
+            },
+            "votes": 0,
+          },
+          "role": "view",
+        }
+      }
+      location={Object {}}
+      match={Object {}}
+      staticContext={Object {}}
+    />
+    <hr />
+    <PollChart
+      actions={
+        Object {
+          "formAddOption": [MockFunction],
+          "formCheckTitle": [MockFunction],
+          "formClearState": [MockFunction],
+          "formRemoveOption": [MockFunction],
+          "formSetAdd": [MockFunction],
+          "formSetTitle": [MockFunction],
+          "formToggleDelete": [MockFunction],
+          "formToggleSecret": [MockFunction],
+          "listClearState": [MockFunction],
+          "listSetSearch": [MockFunction],
+          "metaAddErrors": [MockFunction],
+          "metaCloseError": [MockFunction],
+          "metaCreatePoll": [MockFunction],
+          "metaDeletePoll": [MockFunction],
+          "metaGetPollItem": [MockFunction],
+          "metaGetPollList": [MockFunction],
+          "metaGetUser": [MockFunction],
+          "metaNoOp": [MockFunction],
+          "metaSetLoading": [MockFunction],
+          "metaSetState": [MockFunction],
+          "metaTimeoutError": [MockFunction],
+          "metaToggleDelete": [MockFunction],
+          "pollAddOption": [MockFunction],
+          "pollCastVote": [MockFunction],
+          "pollRemoveOption": [MockFunction],
+          "pollRemoveVote": [MockFunction],
+          "pollToggleFlag": [MockFunction],
+          "pollToggleHide": [MockFunction],
+          "pollToggleSecret": [MockFunction],
+          "viewClearState": [MockFunction],
+          "viewSetAdd": [MockFunction],
+          "viewToggleDelete": [MockFunction],
+          "viewToggleSettings": [MockFunction],
+        }
+      }
+      data={
+        Object {
+          "account": Object {
+            "delete": false,
+          },
+          "errors": Array [],
+          "form": Object {
+            "add": "",
+            "delete": false,
+            "options": Array [],
+            "secret": false,
+            "title": "",
+          },
+          "list": Object {
+            "search": "",
+          },
+          "loading": 0,
+          "polls": Array [
+            Object {
+              "author": "",
+              "date": 0,
+              "id": "id-a",
+              "options": Array [],
+              "secret": false,
+              "title": "",
+              "users": Object {
+                "created": "",
+                "flagged": Array [],
+                "hidden": Array [],
+              },
+              "votes": 0,
+            },
+          ],
+          "user": Object {
+            "auth": Object {
+              "id": "",
+              "provider": "",
+            },
+            "data": Object {
+              "restricted": false,
+            },
+            "id": "",
+            "name": "",
+            "type": "auth",
+          },
+          "view": Object {
+            "add": "",
+            "delete": false,
+            "settings": false,
+          },
+        }
+      }
+      history={
+        Object {
+          "push": [MockFunction],
+        }
+      }
+      local={
+        Object {
+          "poll": Object {
+            "author": "",
+            "date": 0,
+            "id": "id-b",
+            "options": Array [],
+            "secret": false,
+            "title": "",
+            "users": Object {
+              "created": "",
+              "flagged": Array [],
+              "hidden": Array [],
+            },
+            "votes": 0,
+          },
+          "role": "view",
+        }
+      }
+      location={Object {}}
+      match={Object {}}
+      staticContext={Object {}}
+    />
+  </div>
+</Fragment>
+`;
+
+exports[`poll (view) should match snapshot (default) 1`] = `
+<Fragment>
+  <div
+    className="c-poll-display--tall"
+  >
+    <PollTitle
+      actions={
+        Object {
+          "formAddOption": [MockFunction],
+          "formCheckTitle": [MockFunction],
+          "formClearState": [MockFunction],
+          "formRemoveOption": [MockFunction],
+          "formSetAdd": [MockFunction],
+          "formSetTitle": [MockFunction],
+          "formToggleDelete": [MockFunction],
+          "formToggleSecret": [MockFunction],
+          "listClearState": [MockFunction],
+          "listSetSearch": [MockFunction],
+          "metaAddErrors": [MockFunction],
+          "metaCloseError": [MockFunction],
+          "metaCreatePoll": [MockFunction],
+          "metaDeletePoll": [MockFunction],
+          "metaGetPollItem": [MockFunction],
+          "metaGetPollList": [MockFunction],
+          "metaGetUser": [MockFunction],
+          "metaNoOp": [MockFunction],
+          "metaSetLoading": [MockFunction],
+          "metaSetState": [MockFunction],
+          "metaTimeoutError": [MockFunction],
+          "metaToggleDelete": [MockFunction],
+          "pollAddOption": [MockFunction],
+          "pollCastVote": [MockFunction],
+          "pollRemoveOption": [MockFunction],
+          "pollRemoveVote": [MockFunction],
+          "pollToggleFlag": [MockFunction],
+          "pollToggleHide": [MockFunction],
+          "pollToggleSecret": [MockFunction],
+          "viewClearState": [MockFunction],
+          "viewSetAdd": [MockFunction],
+          "viewToggleDelete": [MockFunction],
+          "viewToggleSettings": [MockFunction],
+        }
+      }
+      data={
+        Object {
+          "account": Object {
+            "delete": false,
+          },
+          "errors": Array [],
+          "form": Object {
+            "add": "",
+            "delete": false,
+            "options": Array [],
+            "secret": false,
+            "title": "",
+          },
+          "list": Object {
+            "search": "",
+          },
+          "loading": 0,
+          "polls": Array [],
+          "user": Object {},
+          "view": Object {
+            "add": "",
+            "delete": false,
+            "settings": false,
+          },
+        }
+      }
+      history={
+        Object {
+          "push": [MockFunction],
+        }
+      }
+      local={
+        Object {
+          "poll": Object {
+            "author": "",
+            "date": 0,
+            "id": "",
+            "options": Array [],
+            "secret": false,
+            "title": "",
+            "users": Object {
+              "created": "",
+              "flagged": Array [],
+              "hidden": Array [],
+            },
+            "votes": 0,
+          },
+          "role": "view",
+        }
+      }
+      location={Object {}}
+      match={Object {}}
+      staticContext={Object {}}
+    />
+    <hr />
+    <PollChart
+      actions={
+        Object {
+          "formAddOption": [MockFunction],
+          "formCheckTitle": [MockFunction],
+          "formClearState": [MockFunction],
+          "formRemoveOption": [MockFunction],
+          "formSetAdd": [MockFunction],
+          "formSetTitle": [MockFunction],
+          "formToggleDelete": [MockFunction],
+          "formToggleSecret": [MockFunction],
+          "listClearState": [MockFunction],
+          "listSetSearch": [MockFunction],
+          "metaAddErrors": [MockFunction],
+          "metaCloseError": [MockFunction],
+          "metaCreatePoll": [MockFunction],
+          "metaDeletePoll": [MockFunction],
+          "metaGetPollItem": [MockFunction],
+          "metaGetPollList": [MockFunction],
+          "metaGetUser": [MockFunction],
+          "metaNoOp": [MockFunction],
+          "metaSetLoading": [MockFunction],
+          "metaSetState": [MockFunction],
+          "metaTimeoutError": [MockFunction],
+          "metaToggleDelete": [MockFunction],
+          "pollAddOption": [MockFunction],
+          "pollCastVote": [MockFunction],
+          "pollRemoveOption": [MockFunction],
+          "pollRemoveVote": [MockFunction],
+          "pollToggleFlag": [MockFunction],
+          "pollToggleHide": [MockFunction],
+          "pollToggleSecret": [MockFunction],
+          "viewClearState": [MockFunction],
+          "viewSetAdd": [MockFunction],
+          "viewToggleDelete": [MockFunction],
+          "viewToggleSettings": [MockFunction],
+        }
+      }
+      data={
+        Object {
+          "account": Object {
+            "delete": false,
+          },
+          "errors": Array [],
+          "form": Object {
+            "add": "",
+            "delete": false,
+            "options": Array [],
+            "secret": false,
+            "title": "",
+          },
+          "list": Object {
+            "search": "",
+          },
+          "loading": 0,
+          "polls": Array [],
+          "user": Object {},
+          "view": Object {
+            "add": "",
+            "delete": false,
+            "settings": false,
+          },
+        }
+      }
+      history={
+        Object {
+          "push": [MockFunction],
+        }
+      }
+      local={
+        Object {
+          "poll": Object {
+            "author": "",
+            "date": 0,
+            "id": "",
+            "options": Array [],
+            "secret": false,
+            "title": "",
+            "users": Object {
+              "created": "",
+              "flagged": Array [],
+              "hidden": Array [],
+            },
+            "votes": 0,
+          },
+          "role": "view",
+        }
+      }
+      location={Object {}}
+      match={Object {}}
+      staticContext={Object {}}
+    />
+  </div>
+</Fragment>
+`;
+
+exports[`poll (view) should match snapshot (options) 1`] = `
+<Fragment>
+  <div
+    className="c-poll-display"
+  >
+    <PollTitle
+      actions={
+        Object {
+          "formAddOption": [MockFunction],
+          "formCheckTitle": [MockFunction],
+          "formClearState": [MockFunction],
+          "formRemoveOption": [MockFunction],
+          "formSetAdd": [MockFunction],
+          "formSetTitle": [MockFunction],
+          "formToggleDelete": [MockFunction],
+          "formToggleSecret": [MockFunction],
+          "listClearState": [MockFunction],
+          "listSetSearch": [MockFunction],
+          "metaAddErrors": [MockFunction],
+          "metaCloseError": [MockFunction],
+          "metaCreatePoll": [MockFunction],
+          "metaDeletePoll": [MockFunction],
+          "metaGetPollItem": [MockFunction],
+          "metaGetPollList": [MockFunction],
+          "metaGetUser": [MockFunction],
+          "metaNoOp": [MockFunction],
+          "metaSetLoading": [MockFunction],
+          "metaSetState": [MockFunction],
+          "metaTimeoutError": [MockFunction],
+          "metaToggleDelete": [MockFunction],
+          "pollAddOption": [MockFunction],
+          "pollCastVote": [MockFunction],
+          "pollRemoveOption": [MockFunction],
+          "pollRemoveVote": [MockFunction],
+          "pollToggleFlag": [MockFunction],
+          "pollToggleHide": [MockFunction],
+          "pollToggleSecret": [MockFunction],
+          "viewClearState": [MockFunction],
+          "viewSetAdd": [MockFunction],
+          "viewToggleDelete": [MockFunction],
+          "viewToggleSettings": [MockFunction],
+        }
+      }
+      data={
+        Object {
+          "account": Object {
+            "delete": false,
+          },
+          "errors": Array [],
+          "form": Object {
+            "add": "",
+            "delete": false,
+            "options": Array [],
+            "secret": false,
+            "title": "",
+          },
+          "list": Object {
+            "search": "",
+          },
+          "loading": 0,
+          "polls": Array [],
+          "user": Object {},
+          "view": Object {
+            "add": "",
+            "delete": false,
+            "settings": false,
+          },
+        }
+      }
+      history={
+        Object {
+          "push": [MockFunction],
+        }
+      }
+      local={
+        Object {
+          "poll": Object {
+            "author": "",
+            "date": 0,
+            "id": "",
+            "options": Array [
+              Object {
+                "created": "",
+                "text": "",
+                "voted": Array [],
+              },
+            ],
+            "secret": false,
+            "title": "",
+            "users": Object {
+              "created": "",
+              "flagged": Array [],
+              "hidden": Array [],
+            },
+            "votes": 0,
+          },
+          "role": "view",
+        }
+      }
+      location={Object {}}
+      match={Object {}}
+      staticContext={Object {}}
+    />
+    <hr />
+    <PollChart
+      actions={
+        Object {
+          "formAddOption": [MockFunction],
+          "formCheckTitle": [MockFunction],
+          "formClearState": [MockFunction],
+          "formRemoveOption": [MockFunction],
+          "formSetAdd": [MockFunction],
+          "formSetTitle": [MockFunction],
+          "formToggleDelete": [MockFunction],
+          "formToggleSecret": [MockFunction],
+          "listClearState": [MockFunction],
+          "listSetSearch": [MockFunction],
+          "metaAddErrors": [MockFunction],
+          "metaCloseError": [MockFunction],
+          "metaCreatePoll": [MockFunction],
+          "metaDeletePoll": [MockFunction],
+          "metaGetPollItem": [MockFunction],
+          "metaGetPollList": [MockFunction],
+          "metaGetUser": [MockFunction],
+          "metaNoOp": [MockFunction],
+          "metaSetLoading": [MockFunction],
+          "metaSetState": [MockFunction],
+          "metaTimeoutError": [MockFunction],
+          "metaToggleDelete": [MockFunction],
+          "pollAddOption": [MockFunction],
+          "pollCastVote": [MockFunction],
+          "pollRemoveOption": [MockFunction],
+          "pollRemoveVote": [MockFunction],
+          "pollToggleFlag": [MockFunction],
+          "pollToggleHide": [MockFunction],
+          "pollToggleSecret": [MockFunction],
+          "viewClearState": [MockFunction],
+          "viewSetAdd": [MockFunction],
+          "viewToggleDelete": [MockFunction],
+          "viewToggleSettings": [MockFunction],
+        }
+      }
+      data={
+        Object {
+          "account": Object {
+            "delete": false,
+          },
+          "errors": Array [],
+          "form": Object {
+            "add": "",
+            "delete": false,
+            "options": Array [],
+            "secret": false,
+            "title": "",
+          },
+          "list": Object {
+            "search": "",
+          },
+          "loading": 0,
+          "polls": Array [],
+          "user": Object {},
+          "view": Object {
+            "add": "",
+            "delete": false,
+            "settings": false,
+          },
+        }
+      }
+      history={
+        Object {
+          "push": [MockFunction],
+        }
+      }
+      local={
+        Object {
+          "poll": Object {
+            "author": "",
+            "date": 0,
+            "id": "",
+            "options": Array [
+              Object {
+                "created": "",
+                "text": "",
+                "voted": Array [],
+              },
+            ],
+            "secret": false,
+            "title": "",
+            "users": Object {
+              "created": "",
+              "flagged": Array [],
+              "hidden": Array [],
+            },
+            "votes": 0,
+          },
+          "role": "view",
+        }
+      }
+      location={Object {}}
+      match={Object {}}
+      staticContext={Object {}}
+    />
+  </div>
+  <div
+    className="c-poll-options"
+  >
+    <PollList
+      actions={
+        Object {
+          "formAddOption": [MockFunction],
+          "formCheckTitle": [MockFunction],
+          "formClearState": [MockFunction],
+          "formRemoveOption": [MockFunction],
+          "formSetAdd": [MockFunction],
+          "formSetTitle": [MockFunction],
+          "formToggleDelete": [MockFunction],
+          "formToggleSecret": [MockFunction],
+          "listClearState": [MockFunction],
+          "listSetSearch": [MockFunction],
+          "metaAddErrors": [MockFunction],
+          "metaCloseError": [MockFunction],
+          "metaCreatePoll": [MockFunction],
+          "metaDeletePoll": [MockFunction],
+          "metaGetPollItem": [MockFunction],
+          "metaGetPollList": [MockFunction],
+          "metaGetUser": [MockFunction],
+          "metaNoOp": [MockFunction],
+          "metaSetLoading": [MockFunction],
+          "metaSetState": [MockFunction],
+          "metaTimeoutError": [MockFunction],
+          "metaToggleDelete": [MockFunction],
+          "pollAddOption": [MockFunction],
+          "pollCastVote": [MockFunction],
+          "pollRemoveOption": [MockFunction],
+          "pollRemoveVote": [MockFunction],
+          "pollToggleFlag": [MockFunction],
+          "pollToggleHide": [MockFunction],
+          "pollToggleSecret": [MockFunction],
+          "viewClearState": [MockFunction],
+          "viewSetAdd": [MockFunction],
+          "viewToggleDelete": [MockFunction],
+          "viewToggleSettings": [MockFunction],
+        }
+      }
+      data={
+        Object {
+          "account": Object {
+            "delete": false,
+          },
+          "errors": Array [],
+          "form": Object {
+            "add": "",
+            "delete": false,
+            "options": Array [],
+            "secret": false,
+            "title": "",
+          },
+          "list": Object {
+            "search": "",
+          },
+          "loading": 0,
+          "polls": Array [],
+          "user": Object {},
+          "view": Object {
+            "add": "",
+            "delete": false,
+            "settings": false,
+          },
+        }
+      }
+      history={
+        Object {
+          "push": [MockFunction],
+        }
+      }
+      local={
+        Object {
+          "poll": Object {
+            "author": "",
+            "date": 0,
+            "id": "",
+            "options": Array [
+              Object {
+                "created": "",
+                "text": "",
+                "voted": Array [],
+              },
+            ],
+            "secret": false,
+            "title": "",
+            "users": Object {
+              "created": "",
+              "flagged": Array [],
+              "hidden": Array [],
+            },
+            "votes": 0,
+          },
+          "role": "view",
+        }
+      }
+      location={Object {}}
+      match={Object {}}
+      staticContext={Object {}}
+    />
+  </div>
+</Fragment>
+`;

@@ -69,6 +69,8 @@
 
   @include grid-item(2, 5, 3, 13);
 
+  &--tall { @include grid-item(2, 5, 4, 13); }
+
   &__empty { text-anchor: middle; }
 
   &__input {

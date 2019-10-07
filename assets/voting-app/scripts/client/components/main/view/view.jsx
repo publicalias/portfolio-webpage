@@ -2,8 +2,7 @@
 
 //local imports
 
-const PollDisplay = require("../poll/poll-display");
-const PollOptions = require("../poll/poll-options");
+const Poll = require("../poll/poll");
 const ViewMenu = require("./view-menu");
 
 const { newPoll } = require("../../../../../schemas");
@@ -20,7 +19,7 @@ const View = (props) => {
 
   const { actions: { metaGetPollItem, viewClearState }, data: { polls }, local: { id } } = props;
 
-  const { jsx: { PollDisplay, PollOptions, ViewMenu } } = View.injected;
+  const { jsx: { Poll, ViewMenu } } = View.injected;
 
   //lifecycle
 
@@ -41,8 +40,7 @@ const View = (props) => {
   return (
     <React.Fragment>
       <ViewMenu {...props} local={{ poll }} />
-      <PollDisplay {...props} local={local} />
-      <PollOptions {...props} local={local} />
+      <Poll {...props} local={local} />
     </React.Fragment>
   );
 
@@ -52,8 +50,7 @@ View.propList = ["data.polls", "local"];
 
 View.injected = {
   jsx: {
-    PollDisplay,
-    PollOptions,
+    Poll,
     ViewMenu
   }
 };

@@ -11,22 +11,16 @@
 
 .c-modal {
 
-  &--hide { overflow-y: scroll; }
+  &__shadow {
+    @include modal(100);
+    background: rgba(0, 0, 0, 0.75);
+    display: none;
+    opacity: 0;
+  }
 
-  &--show {
-
-    &__shadow {
-      @include modal(100);
-      background: rgba(0, 0, 0, 0.75);
-      display: none;
-      opacity: 0;
-    }
-
-    &__window {
-      @include modal(101);
-      top: 100vh;
-    }
-
+  &__window {
+    @include modal(101);
+    top: 100vh;
   }
 
 }
@@ -34,7 +28,12 @@
 //states
 
 .js-fade-modal { &.is-open { display: block; } }
-.js-hide-modal { &.is-open { overflow: hidden; } }
+
+.js-hide-modal {
+  overflow-y: scroll;
+  &.is-open { overflow: hidden; }
+}
+
 .js-show-modal { &.is-open { overflow-y: scroll; } }
 
 //utilities
