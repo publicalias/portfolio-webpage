@@ -8,13 +8,16 @@ const { testWrapper } = require("../test-helpers");
 
 //global imports
 
+const { testMock } = require("redux/tests/meta-tests");
 const { initTestSnapshot, reactTests } = require("redux/tests/react-tests");
+
+//node modules
+
+const { MemoryRouter } = require("react-router-dom");
 
 //utilities
 
-const { testShallow } = testWrapper(UI);
-
-const testSnapshot = initTestSnapshot(testShallow);
+const { testMount, testShallow } = testWrapper(UI, MemoryRouter);
 
 //setup
 
@@ -23,4 +26,24 @@ beforeEach(reactTests.inject(UI));
 
 //ui
 
-test("ui should match snapshot", () => testSnapshot());
+describe("ui", () => {
+
+  const testSnapshot = initTestSnapshot(testShallow);
+
+  it("should match snapshot", () => testSnapshot());
+
+  it("should call metaGetUser on load", () => {
+
+    const { props, wrapper } = testMount();
+
+    const { actions: { metaGetUser } } = props;
+
+    wrapper.mount();
+
+    testMock(metaGetUser, []);
+
+    wrapper.unmount();
+
+  });
+
+});
