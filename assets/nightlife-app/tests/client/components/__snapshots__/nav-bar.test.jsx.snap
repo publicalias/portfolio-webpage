@@ -1,3 +1,61 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`nav bar should match snapshot 1`] = `""`;
+exports[`nav bar should match snapshot (authenticated) 1`] = `
+<NavBar
+  local={
+    Object {
+      "list": Array [
+        Array [
+          "venues",
+          "Venues",
+          true,
+          "/venues/list",
+        ],
+        Array [
+          "users",
+          "Users",
+          true,
+          "/users/list",
+        ],
+        Array [
+          "my-page",
+          "My Page",
+          true,
+          "/users/page/id-a",
+          "u-flex-right",
+        ],
+      ],
+    }
+  }
+/>
+`;
+
+exports[`nav bar should match snapshot (default) 1`] = `
+<NavBar
+  local={
+    Object {
+      "list": Array [
+        Array [
+          "venues",
+          "Venues",
+          true,
+          "/venues/list",
+        ],
+        Array [
+          "users",
+          "Users",
+          true,
+          "/users/list",
+        ],
+        Array [
+          "my-page",
+          "My Page",
+          false,
+          "/users/page/undefined",
+          "u-flex-right",
+        ],
+      ],
+    }
+  }
+/>
+`;

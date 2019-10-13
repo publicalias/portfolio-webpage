@@ -8,13 +8,12 @@ const { testWrapper } = require("../test-helpers");
 
 //global imports
 
+const { newUser } = require("redux/schemas");
 const { initTestSnapshot, reactTests } = require("redux/tests/react-tests");
 
 //utilities
 
 const { testShallow } = testWrapper(NavBar);
-
-const testSnapshot = initTestSnapshot(testShallow);
 
 //setup
 
@@ -23,4 +22,12 @@ beforeEach(reactTests.inject(NavBar));
 
 //nav bar
 
-test("nav bar should match snapshot", () => testSnapshot());
+describe("nav bar", () => {
+
+  const testSnapshot = initTestSnapshot(testShallow);
+
+  it("should match snapshot (default)", () => testSnapshot());
+
+  it("should match snapshot (authenticated)", () => testSnapshot({ user: newUser({ id: "id-a" }) }));
+
+});
