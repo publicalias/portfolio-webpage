@@ -10,7 +10,7 @@ const VenuePage = require("./main/venue/page/page");
 const FriendList = require("./notifications/friend/list");
 const RSVPList = require("./notifications/rsvp/list");
 
-const Sidebar = require("./sidebar");
+const Sidebar = require("./sidebar/sidebar");
 
 //node modules
 

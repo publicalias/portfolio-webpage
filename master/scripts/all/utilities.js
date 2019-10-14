@@ -20,6 +20,10 @@ const bindObject = (to, from = to) => {
   }
 };
 
+//capitalize
+
+const capitalize = (str) => `${str[0].toUpperCase()}${str.slice(1)}`;
+
 //chance
 
 const chance = (val) => Math.random() >= (100 - val) / 100;
@@ -172,6 +176,7 @@ const toPrecision = (n, sf = 15) => {
 module.exports = {
   alphabet,
   bindObject,
+  capitalize,
   chance,
   checkErrors,
   cycleItems,

@@ -17,14 +17,14 @@ const List = (props) => {
   const keyGen = initKeyGen();
 
   return (
-    <div>
-      <h4 className="u-margin-full" key={keyGen(name)}>{name}</h4>
+    <React.Fragment>
+      <h4 className="u-margin-full">{name}</h4>
       {text.length ? (
         <ol>
           {text.split("\n").map((e) => <li key={keyGen(e)}>{e}</li>)}
         </ol>
-      ) : <p key={keyGen("N/A")}>N/A</p>}
-    </div>
+      ) : <p>N/A</p>}
+    </React.Fragment>
   );
 
 };

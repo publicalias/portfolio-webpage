@@ -4,11 +4,11 @@
 
 const NavBar = require("../../../scripts/client/components/nav-bar");
 
+const { newUserWithData } = require("../../../schemas");
 const { testWrapper } = require("../test-helpers");
 
 //global imports
 
-const { newUser } = require("redux/schemas");
 const { initTestSnapshot, reactTests } = require("redux/tests/react-tests");
 
 //utilities
@@ -28,6 +28,6 @@ describe("nav bar", () => {
 
   it("should match snapshot (default)", () => testSnapshot());
 
-  it("should match snapshot (authenticated)", () => testSnapshot({ user: newUser({ id: "id-a" }) }));
+  it("should match snapshot (authenticated)", () => testSnapshot({ user: newUserWithData({ id: "id-a" }) }));
 
 });

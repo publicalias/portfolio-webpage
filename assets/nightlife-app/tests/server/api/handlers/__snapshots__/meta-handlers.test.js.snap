@@ -4,6 +4,7 @@ exports[`metaGetUser sends data if successful (no user data exists) 1`] = `
 Object {
   "_id": "[CENSORED]",
   "data": Object {
+    "address": "",
     "app": "nightlife-app",
     "avatar": "",
     "blocks": Array [],

@@ -86,6 +86,7 @@ const newUserData = initSchema({
 
     app: "nightlife-app",
 
+    address: "",
     avatar: "",
     location: null,
     distance: 0, //computed
@@ -99,7 +100,9 @@ const newUserData = initSchema({
 }, {
   data: {
 
-    location: newGeoPoint,
+    location(val) {
+      return val ? newGeoPoint(val) : null;
+    },
 
     favorites: listReplacer(newFavorite),
     friends: listReplacer(newFriend)

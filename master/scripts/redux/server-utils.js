@@ -2,6 +2,7 @@
 
 //global imports
 
+const { capitalize } = require("all/utilities");
 const { newIPUser } = require("redux/schemas");
 
 //node modules
@@ -25,7 +26,7 @@ const apiRouter = (handlers) => {
   const apiRequest = async (req, res) => {
 
     const handler = req.params.action.split("-")
-      .map((e, i) => i === 0 ? e : `${e[0].toUpperCase()}${e.slice(1)}`)
+      .map((e, i) => i === 0 ? e : `${capitalize(e)}`)
       .join("");
 
     try {

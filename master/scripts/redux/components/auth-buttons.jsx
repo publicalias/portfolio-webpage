@@ -51,7 +51,7 @@ const DeleteButton = (props) => {
 
   return account.delete ? (
     <React.Fragment>
-      <p className="c-auth-buttons__dialog">This will delete your account and any data associated with it, including any content you have created and any interactions with other users' content. It will be like you never existed. Are you sure you want to do this?</p>
+      <p className="c-auth-buttons__dialog">This will delete your account and any data associated with it, including any content you have created and any interactions with other users or their content. It will be like you never existed. Are you sure you want to do this?</p>
       <div className="c-auth-buttons__choice-box">
         <button className="c-auth-buttons__choice u-margin-right" onClick={handleDelete}>Yes</button>
         <button className="c-auth-buttons__choice" onClick={handleToggle}>No</button>

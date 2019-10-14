@@ -1,0 +1,704 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`sidebar should match snapshot (authenticated) 1`] = `
+<div
+  className="c-sidebar"
+>
+  <p>
+    Hi, Anonymous!
+  </p>
+  <hr />
+  <button
+    className="c-sidebar__toggle qa-toggle-settings"
+    onClick={[Function]}
+  >
+    Settings
+  </button>
+  <AuthButtons
+    actions={
+      Object {
+        "favoriteAdd": [MockFunction],
+        "favoriteRemove": [MockFunction],
+        "friendAdd": [MockFunction],
+        "friendConfirm": [MockFunction],
+        "friendDismiss": [MockFunction],
+        "friendGetList": [MockFunction],
+        "friendRemove": [MockFunction],
+        "metaAddErrors": [MockFunction],
+        "metaCloseError": [MockFunction],
+        "metaGetUser": [MockFunction],
+        "metaNoOp": [MockFunction],
+        "metaSaveAddress": [MockFunction],
+        "metaSaveAvatar": [MockFunction],
+        "metaSetAddress": [MockFunction],
+        "metaSetAvatar": [MockFunction],
+        "metaSetLoading": [MockFunction],
+        "metaSetState": [MockFunction],
+        "metaTimeoutError": [MockFunction],
+        "metaToggleDelete": [MockFunction],
+        "metaToggleSettings": [MockFunction],
+        "rsvpAdd": [MockFunction],
+        "rsvpDismiss": [MockFunction],
+        "rsvpGetList": [MockFunction],
+        "rsvpRemove": [MockFunction],
+        "userClearState": [MockFunction],
+        "userGetItem": [MockFunction],
+        "userGetList": [MockFunction],
+        "userSetSearch": [MockFunction],
+        "userToggleBlock": [MockFunction],
+        "venueClearState": [MockFunction],
+        "venueGetItem": [MockFunction],
+        "venueGetList": [MockFunction],
+        "venueSetMessage": [MockFunction],
+        "venueSetSearch": [MockFunction],
+        "venueSetTime": [MockFunction],
+        "venueToggleForm": [MockFunction],
+      }
+    }
+    data={
+      Object {
+        "account": Object {
+          "address": "",
+          "avatar": "",
+          "delete": false,
+          "settings": false,
+        },
+        "data": Object {
+          "users": Array [],
+          "venues": Array [],
+        },
+        "errors": Array [],
+        "loading": false,
+        "notifications": Object {
+          "friends": Array [],
+          "rsvps": Array [],
+        },
+        "user": Object {
+          "auth": Object {
+            "id": "",
+            "provider": "",
+          },
+          "data": Object {
+            "address": "",
+            "app": "nightlife-app",
+            "avatar": "",
+            "blocks": Array [],
+            "distance": 0,
+            "favorites": Array [],
+            "friends": Array [],
+            "location": null,
+            "restricted": false,
+          },
+          "id": "",
+          "name": "",
+          "type": "auth",
+        },
+        "users": Object {
+          "list": Object {
+            "search": "",
+          },
+        },
+        "venues": Object {
+          "list": Object {
+            "search": "",
+          },
+          "page": Object {
+            "form": false,
+            "message": "",
+            "time": "",
+          },
+        },
+      }
+    }
+    history={
+      Object {
+        "push": [MockFunction],
+      }
+    }
+    local={
+      Object {
+        "redirect": "/nightlife-app",
+      }
+    }
+    location={Object {}}
+    match={Object {}}
+    staticContext={Object {}}
+  />
+</div>
+`;
+
+exports[`sidebar should match snapshot (default) 1`] = `
+<div
+  className="c-sidebar"
+>
+  <p>
+    Hi, Anonymous!
+  </p>
+  <hr />
+  <AuthButtons
+    actions={
+      Object {
+        "favoriteAdd": [MockFunction],
+        "favoriteRemove": [MockFunction],
+        "friendAdd": [MockFunction],
+        "friendConfirm": [MockFunction],
+        "friendDismiss": [MockFunction],
+        "friendGetList": [MockFunction],
+        "friendRemove": [MockFunction],
+        "metaAddErrors": [MockFunction],
+        "metaCloseError": [MockFunction],
+        "metaGetUser": [MockFunction],
+        "metaNoOp": [MockFunction],
+        "metaSaveAddress": [MockFunction],
+        "metaSaveAvatar": [MockFunction],
+        "metaSetAddress": [MockFunction],
+        "metaSetAvatar": [MockFunction],
+        "metaSetLoading": [MockFunction],
+        "metaSetState": [MockFunction],
+        "metaTimeoutError": [MockFunction],
+        "metaToggleDelete": [MockFunction],
+        "metaToggleSettings": [MockFunction],
+        "rsvpAdd": [MockFunction],
+        "rsvpDismiss": [MockFunction],
+        "rsvpGetList": [MockFunction],
+        "rsvpRemove": [MockFunction],
+        "userClearState": [MockFunction],
+        "userGetItem": [MockFunction],
+        "userGetList": [MockFunction],
+        "userSetSearch": [MockFunction],
+        "userToggleBlock": [MockFunction],
+        "venueClearState": [MockFunction],
+        "venueGetItem": [MockFunction],
+        "venueGetList": [MockFunction],
+        "venueSetMessage": [MockFunction],
+        "venueSetSearch": [MockFunction],
+        "venueSetTime": [MockFunction],
+        "venueToggleForm": [MockFunction],
+      }
+    }
+    data={
+      Object {
+        "account": Object {
+          "address": "",
+          "avatar": "",
+          "delete": false,
+          "settings": false,
+        },
+        "data": Object {
+          "users": Array [],
+          "venues": Array [],
+        },
+        "errors": Array [],
+        "loading": false,
+        "notifications": Object {
+          "friends": Array [],
+          "rsvps": Array [],
+        },
+        "user": Object {},
+        "users": Object {
+          "list": Object {
+            "search": "",
+          },
+        },
+        "venues": Object {
+          "list": Object {
+            "search": "",
+          },
+          "page": Object {
+            "form": false,
+            "message": "",
+            "time": "",
+          },
+        },
+      }
+    }
+    history={
+      Object {
+        "push": [MockFunction],
+      }
+    }
+    local={
+      Object {
+        "redirect": "/nightlife-app",
+      }
+    }
+    location={Object {}}
+    match={Object {}}
+    staticContext={Object {}}
+  />
+</div>
+`;
+
+exports[`sidebar should match snapshot (name) 1`] = `
+<div
+  className="c-sidebar"
+>
+  <p>
+    Hi, User A!
+  </p>
+  <hr />
+  <button
+    className="c-sidebar__toggle qa-toggle-settings"
+    onClick={[Function]}
+  >
+    Settings
+  </button>
+  <AuthButtons
+    actions={
+      Object {
+        "favoriteAdd": [MockFunction],
+        "favoriteRemove": [MockFunction],
+        "friendAdd": [MockFunction],
+        "friendConfirm": [MockFunction],
+        "friendDismiss": [MockFunction],
+        "friendGetList": [MockFunction],
+        "friendRemove": [MockFunction],
+        "metaAddErrors": [MockFunction],
+        "metaCloseError": [MockFunction],
+        "metaGetUser": [MockFunction],
+        "metaNoOp": [MockFunction],
+        "metaSaveAddress": [MockFunction],
+        "metaSaveAvatar": [MockFunction],
+        "metaSetAddress": [MockFunction],
+        "metaSetAvatar": [MockFunction],
+        "metaSetLoading": [MockFunction],
+        "metaSetState": [MockFunction],
+        "metaTimeoutError": [MockFunction],
+        "metaToggleDelete": [MockFunction],
+        "metaToggleSettings": [MockFunction],
+        "rsvpAdd": [MockFunction],
+        "rsvpDismiss": [MockFunction],
+        "rsvpGetList": [MockFunction],
+        "rsvpRemove": [MockFunction],
+        "userClearState": [MockFunction],
+        "userGetItem": [MockFunction],
+        "userGetList": [MockFunction],
+        "userSetSearch": [MockFunction],
+        "userToggleBlock": [MockFunction],
+        "venueClearState": [MockFunction],
+        "venueGetItem": [MockFunction],
+        "venueGetList": [MockFunction],
+        "venueSetMessage": [MockFunction],
+        "venueSetSearch": [MockFunction],
+        "venueSetTime": [MockFunction],
+        "venueToggleForm": [MockFunction],
+      }
+    }
+    data={
+      Object {
+        "account": Object {
+          "address": "",
+          "avatar": "",
+          "delete": false,
+          "settings": false,
+        },
+        "data": Object {
+          "users": Array [],
+          "venues": Array [],
+        },
+        "errors": Array [],
+        "loading": false,
+        "notifications": Object {
+          "friends": Array [],
+          "rsvps": Array [],
+        },
+        "user": Object {
+          "auth": Object {
+            "id": "",
+            "provider": "",
+          },
+          "data": Object {
+            "address": "",
+            "app": "nightlife-app",
+            "avatar": "",
+            "blocks": Array [],
+            "distance": 0,
+            "favorites": Array [],
+            "friends": Array [],
+            "location": null,
+            "restricted": false,
+          },
+          "id": "",
+          "name": "User A",
+          "type": "auth",
+        },
+        "users": Object {
+          "list": Object {
+            "search": "",
+          },
+        },
+        "venues": Object {
+          "list": Object {
+            "search": "",
+          },
+          "page": Object {
+            "form": false,
+            "message": "",
+            "time": "",
+          },
+        },
+      }
+    }
+    history={
+      Object {
+        "push": [MockFunction],
+      }
+    }
+    local={
+      Object {
+        "redirect": "/nightlife-app",
+      }
+    }
+    location={Object {}}
+    match={Object {}}
+    staticContext={Object {}}
+  />
+</div>
+`;
+
+exports[`sidebar should match snapshot (settings) 1`] = `
+<div
+  className="c-sidebar"
+>
+  <p>
+    Hi, Anonymous!
+  </p>
+  <hr />
+  <button
+    className="c-sidebar__toggle qa-toggle-settings"
+    onClick={[Function]}
+  >
+    Settings
+  </button>
+  <Input
+    actions={
+      Object {
+        "favoriteAdd": [MockFunction],
+        "favoriteRemove": [MockFunction],
+        "friendAdd": [MockFunction],
+        "friendConfirm": [MockFunction],
+        "friendDismiss": [MockFunction],
+        "friendGetList": [MockFunction],
+        "friendRemove": [MockFunction],
+        "metaAddErrors": [MockFunction],
+        "metaCloseError": [MockFunction],
+        "metaGetUser": [MockFunction],
+        "metaNoOp": [MockFunction],
+        "metaSaveAddress": [MockFunction],
+        "metaSaveAvatar": [MockFunction],
+        "metaSetAddress": [MockFunction],
+        "metaSetAvatar": [MockFunction],
+        "metaSetLoading": [MockFunction],
+        "metaSetState": [MockFunction],
+        "metaTimeoutError": [MockFunction],
+        "metaToggleDelete": [MockFunction],
+        "metaToggleSettings": [MockFunction],
+        "rsvpAdd": [MockFunction],
+        "rsvpDismiss": [MockFunction],
+        "rsvpGetList": [MockFunction],
+        "rsvpRemove": [MockFunction],
+        "userClearState": [MockFunction],
+        "userGetItem": [MockFunction],
+        "userGetList": [MockFunction],
+        "userSetSearch": [MockFunction],
+        "userToggleBlock": [MockFunction],
+        "venueClearState": [MockFunction],
+        "venueGetItem": [MockFunction],
+        "venueGetList": [MockFunction],
+        "venueSetMessage": [MockFunction],
+        "venueSetSearch": [MockFunction],
+        "venueSetTime": [MockFunction],
+        "venueToggleForm": [MockFunction],
+      }
+    }
+    data={
+      Object {
+        "account": Object {
+          "address": "",
+          "avatar": "",
+          "delete": false,
+          "settings": true,
+        },
+        "data": Object {
+          "users": Array [],
+          "venues": Array [],
+        },
+        "errors": Array [],
+        "loading": false,
+        "notifications": Object {
+          "friends": Array [],
+          "rsvps": Array [],
+        },
+        "user": Object {
+          "auth": Object {
+            "id": "",
+            "provider": "",
+          },
+          "data": Object {
+            "address": "",
+            "app": "nightlife-app",
+            "avatar": "",
+            "blocks": Array [],
+            "distance": 0,
+            "favorites": Array [],
+            "friends": Array [],
+            "location": null,
+            "restricted": false,
+          },
+          "id": "",
+          "name": "",
+          "type": "auth",
+        },
+        "users": Object {
+          "list": Object {
+            "search": "",
+          },
+        },
+        "venues": Object {
+          "list": Object {
+            "search": "",
+          },
+          "page": Object {
+            "form": false,
+            "message": "",
+            "time": "",
+          },
+        },
+      }
+    }
+    history={
+      Object {
+        "push": [MockFunction],
+      }
+    }
+    local={
+      Object {
+        "type": "address",
+      }
+    }
+    location={Object {}}
+    match={Object {}}
+    staticContext={Object {}}
+  />
+  <Input
+    actions={
+      Object {
+        "favoriteAdd": [MockFunction],
+        "favoriteRemove": [MockFunction],
+        "friendAdd": [MockFunction],
+        "friendConfirm": [MockFunction],
+        "friendDismiss": [MockFunction],
+        "friendGetList": [MockFunction],
+        "friendRemove": [MockFunction],
+        "metaAddErrors": [MockFunction],
+        "metaCloseError": [MockFunction],
+        "metaGetUser": [MockFunction],
+        "metaNoOp": [MockFunction],
+        "metaSaveAddress": [MockFunction],
+        "metaSaveAvatar": [MockFunction],
+        "metaSetAddress": [MockFunction],
+        "metaSetAvatar": [MockFunction],
+        "metaSetLoading": [MockFunction],
+        "metaSetState": [MockFunction],
+        "metaTimeoutError": [MockFunction],
+        "metaToggleDelete": [MockFunction],
+        "metaToggleSettings": [MockFunction],
+        "rsvpAdd": [MockFunction],
+        "rsvpDismiss": [MockFunction],
+        "rsvpGetList": [MockFunction],
+        "rsvpRemove": [MockFunction],
+        "userClearState": [MockFunction],
+        "userGetItem": [MockFunction],
+        "userGetList": [MockFunction],
+        "userSetSearch": [MockFunction],
+        "userToggleBlock": [MockFunction],
+        "venueClearState": [MockFunction],
+        "venueGetItem": [MockFunction],
+        "venueGetList": [MockFunction],
+        "venueSetMessage": [MockFunction],
+        "venueSetSearch": [MockFunction],
+        "venueSetTime": [MockFunction],
+        "venueToggleForm": [MockFunction],
+      }
+    }
+    data={
+      Object {
+        "account": Object {
+          "address": "",
+          "avatar": "",
+          "delete": false,
+          "settings": true,
+        },
+        "data": Object {
+          "users": Array [],
+          "venues": Array [],
+        },
+        "errors": Array [],
+        "loading": false,
+        "notifications": Object {
+          "friends": Array [],
+          "rsvps": Array [],
+        },
+        "user": Object {
+          "auth": Object {
+            "id": "",
+            "provider": "",
+          },
+          "data": Object {
+            "address": "",
+            "app": "nightlife-app",
+            "avatar": "",
+            "blocks": Array [],
+            "distance": 0,
+            "favorites": Array [],
+            "friends": Array [],
+            "location": null,
+            "restricted": false,
+          },
+          "id": "",
+          "name": "",
+          "type": "auth",
+        },
+        "users": Object {
+          "list": Object {
+            "search": "",
+          },
+        },
+        "venues": Object {
+          "list": Object {
+            "search": "",
+          },
+          "page": Object {
+            "form": false,
+            "message": "",
+            "time": "",
+          },
+        },
+      }
+    }
+    history={
+      Object {
+        "push": [MockFunction],
+      }
+    }
+    local={
+      Object {
+        "type": "avatar",
+      }
+    }
+    location={Object {}}
+    match={Object {}}
+    staticContext={Object {}}
+  />
+  <AuthButtons
+    actions={
+      Object {
+        "favoriteAdd": [MockFunction],
+        "favoriteRemove": [MockFunction],
+        "friendAdd": [MockFunction],
+        "friendConfirm": [MockFunction],
+        "friendDismiss": [MockFunction],
+        "friendGetList": [MockFunction],
+        "friendRemove": [MockFunction],
+        "metaAddErrors": [MockFunction],
+        "metaCloseError": [MockFunction],
+        "metaGetUser": [MockFunction],
+        "metaNoOp": [MockFunction],
+        "metaSaveAddress": [MockFunction],
+        "metaSaveAvatar": [MockFunction],
+        "metaSetAddress": [MockFunction],
+        "metaSetAvatar": [MockFunction],
+        "metaSetLoading": [MockFunction],
+        "metaSetState": [MockFunction],
+        "metaTimeoutError": [MockFunction],
+        "metaToggleDelete": [MockFunction],
+        "metaToggleSettings": [MockFunction],
+        "rsvpAdd": [MockFunction],
+        "rsvpDismiss": [MockFunction],
+        "rsvpGetList": [MockFunction],
+        "rsvpRemove": [MockFunction],
+        "userClearState": [MockFunction],
+        "userGetItem": [MockFunction],
+        "userGetList": [MockFunction],
+        "userSetSearch": [MockFunction],
+        "userToggleBlock": [MockFunction],
+        "venueClearState": [MockFunction],
+        "venueGetItem": [MockFunction],
+        "venueGetList": [MockFunction],
+        "venueSetMessage": [MockFunction],
+        "venueSetSearch": [MockFunction],
+        "venueSetTime": [MockFunction],
+        "venueToggleForm": [MockFunction],
+      }
+    }
+    data={
+      Object {
+        "account": Object {
+          "address": "",
+          "avatar": "",
+          "delete": false,
+          "settings": true,
+        },
+        "data": Object {
+          "users": Array [],
+          "venues": Array [],
+        },
+        "errors": Array [],
+        "loading": false,
+        "notifications": Object {
+          "friends": Array [],
+          "rsvps": Array [],
+        },
+        "user": Object {
+          "auth": Object {
+            "id": "",
+            "provider": "",
+          },
+          "data": Object {
+            "address": "",
+            "app": "nightlife-app",
+            "avatar": "",
+            "blocks": Array [],
+            "distance": 0,
+            "favorites": Array [],
+            "friends": Array [],
+            "location": null,
+            "restricted": false,
+          },
+          "id": "",
+          "name": "",
+          "type": "auth",
+        },
+        "users": Object {
+          "list": Object {
+            "search": "",
+          },
+        },
+        "venues": Object {
+          "list": Object {
+            "search": "",
+          },
+          "page": Object {
+            "form": false,
+            "message": "",
+            "time": "",
+          },
+        },
+      }
+    }
+    history={
+      Object {
+        "push": [MockFunction],
+      }
+    }
+    local={
+      Object {
+        "redirect": "/nightlife-app",
+      }
+    }
+    location={Object {}}
+    match={Object {}}
+    staticContext={Object {}}
+  />
+</div>
+`;
