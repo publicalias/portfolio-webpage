@@ -11,15 +11,17 @@ const { childProps } = require("./scripts/view-logic");
 
 //global imports
 
-const { checkInput, submitKeys } = require("all/client-utils");
+const { checkInput } = require("all/client-utils");
 const { select } = require("all/dom-api");
-const { useSetState, useTeardown } = require("all/react-utils");
+const { useSetState } = require("all/react-utils");
 const { array2D } = require("react/app-logic");
 
 //node modules
 
 const React = require("react");
 const ReactDOM = require("react-dom");
+
+const { useEffect } = React;
 
 //app logic
 
@@ -65,14 +67,7 @@ const App = () => {
 
   //lifecycle
 
-  useTeardown(() => [
-
-    checkInput(),
-
-    submitKeys("rules"),
-    submitKeys("scale")
-
-  ], []);
+  useEffect(checkInput, []);
 
   useFastInterval(utils.updateCulture, state.start && state.speed);
 

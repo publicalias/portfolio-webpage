@@ -53,7 +53,6 @@ const childProps = (state, handlers) => {
     }]
   }, {
     setType: "input",
-    jsID: "rules",
     content: [{
       flex: "u-flex-2",
       fn: handlers.input("rulesText"),
@@ -74,7 +73,6 @@ const childProps = (state, handlers) => {
     }]
   }, {
     setType: "input",
-    jsID: "scale",
     content: [{
       flex: "u-flex-2",
       fn: handlers.input("scaleText"),

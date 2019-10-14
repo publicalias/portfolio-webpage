@@ -149,35 +149,6 @@ const initTabGroup = (group) => {
 
 };
 
-//submit keys
-
-const submitKeys = (id) => {
-
-  const pairID = id ? `-${id}` : "";
-
-  const DOMInput = select(`.js-submit-input${pairID}`);
-  const DOMButton = select(`.js-submit-button${pairID}`);
-
-  const ignore = ["Enter", "Tab", "Shift"];
-
-  return handleTeardown([
-
-    hookEvent(DOMInput, "keydown", (event) => {
-      if (event.key === "Enter") {
-        DOMButton.focus(); //fires event
-      }
-    }),
-
-    hookEvent(DOMButton, "keydown", (event) => {
-      if (!ignore.includes(event.key)) {
-        DOMInput.focus();
-      }
-    })
-
-  ]);
-
-};
-
 //swipe event
 
 const swipeEvent = (start, end, height, width) => {
@@ -217,6 +188,5 @@ module.exports = {
   initStorageKey,
   initTabGroup,
   storageKey,
-  submitKeys,
   swipeEvent
 };

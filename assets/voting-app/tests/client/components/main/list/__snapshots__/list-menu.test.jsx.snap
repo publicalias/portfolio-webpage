@@ -13,7 +13,6 @@ exports[`list menu should match snapshot 1`] = `
           "handleChange": [Function],
           "handleClear": [Function],
           "handleSubmit": [Function],
-          "id": "search",
           "value": "Apple",
         }
       }

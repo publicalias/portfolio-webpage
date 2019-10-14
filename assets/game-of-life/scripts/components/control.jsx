@@ -19,7 +19,7 @@ const Control = (props) => {
       {props.display.map((e) => <p className="c-control__text" key={keyGen(e)}>{e}</p>)}
       {props.control.map((e) => {
 
-        const { setType, jsID, content: [a, b] } = e;
+        const { setType, content: [a, b] } = e;
 
         const [{ fn: handleEventA }, { fn: handleEventB } = {}] = [a, b];
 
@@ -43,14 +43,14 @@ const Control = (props) => {
             return (
               <div className="c-control__btn-set" key={keyGen(a.text)}>
                 <input
-                  className={`c-control__input--first js-submit-input-${jsID} u-align-center ${flex(a)}`}
+                  className={`c-control__input--first u-align-center ${flex(a)}`}
                   maxLength="100"
                   onChange={handleEventA}
                   placeholder={a.text}
                   value={a.val}
                 />
                 <button
-                  className={`c-control__btn js-submit-button-${jsID} ${flex(b)}`}
+                  className={`c-control__btn ${flex(b)}`}
                   onClick={handleEventB}
                 >
                   {b.text}

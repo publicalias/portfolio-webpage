@@ -2,7 +2,6 @@
 
 //global imports
 
-const { submitKeys } = require("all/client-utils");
 const { select } = require("all/dom-api");
 
 //filter events
@@ -50,7 +49,6 @@ const filterEvents = () => {
 
 const submitEvents = (submit) => {
   select(".js-submit-button").on("click", submit);
-  submitKeys();
 };
 
 //exports

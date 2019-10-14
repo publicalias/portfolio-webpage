@@ -6,7 +6,7 @@ const { renderResults, toggleOutline } = require("./scripts/view-logic");
 
 //global imports
 
-const { checkInput, getJSON, submitKeys } = require("all/client-utils");
+const { checkInput, getJSON } = require("all/client-utils");
 const { modalEvents, toggleModal } = require("all/components/modal");
 const { select } = require("all/dom-api");
 
@@ -39,8 +39,6 @@ select(document).on("DOMContentLoaded", () => {
   select(".js-get-outline").on("blur focus", toggleOutline);
 
   select(".js-submit-button").on("click", search);
-
-  submitKeys();
 
   select(".js-render-output").on("click", ".js-close-modal", () => {
     toggleModal();

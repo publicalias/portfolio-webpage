@@ -8,7 +8,6 @@ const { initTestPoll, testReload, testWrapper } = require("../../../test-helpers
 
 //global imports
 
-const { testMock } = require("redux/tests/meta-tests");
 const { initTestEvent, initTestSnapshot, reactTests } = require("redux/tests/react-tests");
 
 //utilities
@@ -16,20 +15,6 @@ const { initTestEvent, initTestSnapshot, reactTests } = require("redux/tests/rea
 const { testMount, testShallow } = testWrapper(PollInput);
 
 const testSnapshot = initTestSnapshot(testShallow);
-
-const testLoad = (render, args) => {
-
-  const { lib: { submitKeys } } = PollInput.injected;
-
-  const { wrapper } = render();
-
-  wrapper.mount();
-
-  testMock(submitKeys, args);
-
-  wrapper.unmount();
-
-};
 
 const testChange = (render, type) => {
 
@@ -54,8 +39,6 @@ describe("poll input (form)", () => {
   const testClick = initTestEvent(testFormMount, "click");
 
   it("should match snapshot", () => testForm({ form: { add: "Option A" } }));
-
-  it("should call submitKeys on load", () => testLoad(testFormMount, ["form"]));
 
   it("should call formSetAdd on change", () => testChange(testFormMount, "formSetAdd"));
 
@@ -87,8 +70,6 @@ describe("poll input (view)", () => {
   };
 
   it("should match snapshot", () => testView({ view: { add: "Option A" } }));
-
-  it("should call submitKeys on load", () => testLoad(testViewMount, ["view"]));
 
   it("should call viewSetAdd on change", () => testChange(testViewMount, "viewSetAdd"));
 
