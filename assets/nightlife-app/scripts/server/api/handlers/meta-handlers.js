@@ -7,6 +7,7 @@ const { newUserData, newUserWithData } = require("../../../../schemas");
 
 //global imports
 
+const { deepCopy } = require("all/utilities");
 const { handleAPICall, handleAuthFail } = require("redux/server-utils");
 
 //utilities
@@ -51,7 +52,13 @@ const metaSaveAddress = handleAPICall({
 
     const data = await geoCode(address) || location || null;
 
-    await userDataCol().updateOne({ id: req.user.id }, { $set: { "data.location": data } });
+    const setAddress = address || !address && !location;
+
+    await userDataCol().updateOne({ id: req.user.id }, deepCopy({
+      $set: { "data.location": data }
+    }, setAddress && {
+      $set: { "data.address": address }
+    }));
 
     res.json({});
 

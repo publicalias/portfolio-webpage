@@ -12,6 +12,8 @@ const RSVPList = require("./notifications/rsvp/list");
 
 const Sidebar = require("./sidebar/sidebar");
 
+const { getLocation } = require("../app-logic");
+
 //node modules
 
 const React = require("react");
@@ -24,14 +26,33 @@ const { useEffect } = React;
 
 const UI = (props) => {
 
-  const { actions: { metaGetUser } } = props;
+  const { actions: { metaGetUser, metaSaveAddress } } = props;
 
-  const { jsx: { FriendList, Route, RSVPList, Sidebar, UserList, UserPage, VenueList, VenuePage } } = UI.injected;
+  const {
+    jsx: { FriendList, Route, RSVPList, Sidebar, UserList, UserPage, VenueList, VenuePage },
+    lib: { getLocation }
+  } = UI.injected;
+
+  //utilities
+
+  const initUser = async () => {
+
+    const res = await metaGetUser();
+
+    if (res.user.type === "auth") {
+
+      await metaSaveAddress(null, await getLocation(res.user));
+
+      metaGetUser();
+
+    }
+
+  };
 
   //lifecycle
 
   useEffect(() => {
-    metaGetUser(); //async
+    initUser(); //async
   }, []);
 
   //render
@@ -67,6 +88,9 @@ UI.injected = {
     UserPage,
     VenueList,
     VenuePage
+  },
+  lib: {
+    getLocation
   }
 };
 

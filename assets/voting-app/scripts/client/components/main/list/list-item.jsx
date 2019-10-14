@@ -72,7 +72,9 @@ ListItem.injected = {
     Link,
     PollToggle
   },
-  lib: { getVotes }
+  lib: {
+    getVotes
+  }
 };
 
 //exports

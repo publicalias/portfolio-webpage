@@ -5,6 +5,7 @@
 const handlers = require("../../../../scripts/server/api/handlers/meta-handlers");
 
 const { newUserData, newUserWithData } = require("../../../../schemas");
+const { geoPoint } = require("../../test-helpers");
 
 //global imports
 
@@ -94,12 +95,17 @@ describe("metaSaveAddress", () => {
     location
   });
 
-  const testSave = async (address, location) => {
+  const testSave = async (address = null, location) => {
+
+    const former = await userDataCol().findOne();
 
     const res = await mockAPICall(newUser({ id: "id-a" }), getData(address, location));
 
     const update = await userDataCol().findOne();
 
+    const setAddress = address || !address && !location;
+
+    expect(update.data.address).toEqual(setAddress ? address : former.data.address);
     expect(update.data.location).toEqual(address || location || null);
 
     testMock(res.json, [{}]);
@@ -110,17 +116,22 @@ describe("metaSaveAddress", () => {
 
     metaSaveAddress.injected.lib.geoCode = jest.fn((address) => address || null);
 
-    await insertUserData();
+    await insertUserData({
+      data: {
+        address: "12345",
+        location: geoPoint(0)
+      }
+    });
 
   });
 
   it("sends status if authentication fails", () => testAuthFail(mockAPICall, getData()));
 
-  it("sends noop if successful (address)", () => testSave("12345"));
+  it("sends noop if successful (address)", () => testSave("67890"));
 
-  it("sends noop if successful (location)", () => testSave(null, {}));
+  it("sends noop if successful (location)", () => testSave(null, geoPoint(1)));
 
-  it("sends noop if successful (null)", () => testSave());
+  it("sends noop if successful (neither)", () => testSave());
 
 });
 
