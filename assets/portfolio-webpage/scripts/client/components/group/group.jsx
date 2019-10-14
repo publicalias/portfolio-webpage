@@ -22,11 +22,11 @@ const Group = (props) => {
 
   return (
     <div className={`c-content--xl js-scroll-${id}`}>
-      <div className="c-row">
-        <div className="c-row__col--4">
+      <div className="c-grid">
+        <div className="c-grid__item--4">
           <h1>{name}</h1>
         </div>
-        <div className="c-row__col--8">
+        <div className="c-grid__item--8">
           {subgroups.map((e, i, arr) => (
             <Subgroup
               groupId={id}

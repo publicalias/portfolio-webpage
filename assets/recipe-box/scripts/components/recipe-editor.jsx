@@ -64,7 +64,7 @@ const RecipeEditor = (props) => {
   return (
     <div className="c-modal">
       <div className="c-modal__shadow js-fade-modal" />
-      <div className="c-modal__window js-show-modal" >
+      <div className="c-modal__window js-show-modal">
         <div className="c-content--sm u-inset-modal">
           <h3>{props.entry ? "Change Recipe" : "Add Recipe"}</h3>
           <hr />

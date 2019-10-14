@@ -18,14 +18,14 @@ const Bio = (props) => {
 
   return (
     <div className="c-content--xl js-scroll-bio">
-      <div className="c-row">
-        <div className="c-row__col--2">
+      <div className="c-grid">
+        <div className="c-grid__item--2">
           <h1>Bio</h1>
         </div>
-        <div className="c-row__col--5">
+        <div className="c-grid__item--5">
           {text.map((e) => e === "---" ? <hr key={keyGen(e)} /> : <p key={keyGen(e)}>{e}</p>)}
         </div>
-        <div className="c-row__col--5">
+        <div className="c-grid__item--5">
           <img
             alt="Ethan Frost"
             className="u-padding-left"

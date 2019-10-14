@@ -21,9 +21,9 @@ const NavBar = (props) => {
 
   return (
     <div className="c-content--xl c-nav-bar js-ref-nav-bar">
-      <div className="c-row">
-        <div className="c-row__col--4" />
-        <div className="c-row__col--8" >
+      <div className="c-grid">
+        <div className="c-grid__item--4" />
+        <div className="c-grid__item--8">
           <ul className="c-nav-bar__list">
             {props.navBar.map((e) => e.type === "item" ? (
               <NavItem

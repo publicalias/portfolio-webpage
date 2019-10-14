@@ -83,11 +83,11 @@ const Contact = (props) => {
 
   return (
     <div className="c-content--xl js-scroll-contact">
-      <div className="c-row">
-        <div className="c-row__col--4">
+      <div className="c-grid">
+        <div className="c-grid__item--4">
           <h1>Contact</h1>
         </div>
-        <div className="c-row__col--8">
+        <div className="c-grid__item--8">
           <ContactForm
             {...state}
             handleChange={handleChange}

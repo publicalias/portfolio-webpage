@@ -62,21 +62,17 @@ const App = (props) => {
 
   return (
     <div className="c-content--lg">
-      <div className="c-row">
-        <div className="c-row__col--12">
-          <h1 className="u-align-center">Roguelike</h1>
-          <hr />
-        </div>
-        <div className="c-row__col--8">
+      <h1 className="u-align-center">Roguelike</h1>
+      <hr />
+      <div className="c-grid">
+        <div className="c-grid__item--8">
           <ViewPort {...child.viewPort} />
         </div>
-        <div className="c-row__col--4">
+        <div className="c-grid__item--4">
           <Sidebar charInfo={child.charInfo} hoverBox={child.hoverBox} />
         </div>
-        <div className="c-row__col--12">
-          <EventLog text={state.eventLog} />
-        </div>
       </div>
+      <EventLog text={state.eventLog} />
     </div>
   );
 

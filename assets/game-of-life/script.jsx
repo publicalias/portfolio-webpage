@@ -77,15 +77,13 @@ const App = () => {
 
   return (
     <div className="c-content--md">
-      <div className="c-row">
-        <div className="c-row__col--12">
-          <h2 className="u-align-center">Conway's Game of Life</h2>
-          <hr />
-        </div>
-        <div className="c-row__col--4">
+      <h2 className="u-align-center">Conway's Game of Life</h2>
+      <hr />
+      <div className="c-grid">
+        <div className="c-grid__item--4">
           <Control control={child.control} display={child.display} />
         </div>
-        <div className="c-row__col--8">
+        <div className="c-grid__item--8">
           <Culture
             culture={state.culture}
             modify={handlers.modify}

@@ -22,26 +22,24 @@ const RecipeBox = (props) => {
 
   return (
     <div className="c-content--md js-scroll-recipe-box">
-      <div className="c-row">
-        <div className="c-row__col--12">
-          {list.length ? list.map((e) => (
-            <Recipe
-              displayModal={displayModal}
-              entry={e}
-              key={keyGen(e.name)}
-              updateList={updateList}
-            />
-          )) : (
-            <div>
-              <h3 key={keyGen("N/A")}>N/A</h3>
-              <hr />
-            </div>
-          )}
+      {list.length ? list.map((e) => (
+        <Recipe
+          displayModal={displayModal}
+          entry={e}
+          key={keyGen(e.name)}
+          updateList={updateList}
+        />
+      )) : (
+        <div>
+          <h3 key={keyGen("N/A")}>N/A</h3>
+          <hr />
         </div>
-        <div className="c-row__col--4">
+      )}
+      <div className="c-grid">
+        <div className="c-grid__item--4">
           <button onClick={handleAdd}>Add Recipe</button>
         </div>
-        <div className="c-row__col--8">
+        <div className="c-grid__item--8">
           <h3 className="u-float-right">Recipe <i className="fas fa-archive" /> 2.0</h3>
         </div>
       </div>

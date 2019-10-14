@@ -46,12 +46,10 @@ const App = () => {
 
   return (
     <div className="c-content--xl">
-      <div className="c-row">
-        <div className="c-row__col--12">
-          <h1 className="u-align-center">Markdown &agrave; la <a href="https://github.com/"><i className="fab fa-github" /></a></h1>
-          <hr />
-        </div>
-        <div className="c-row__col--6">
+      <h1 className="u-align-center">Markdown &agrave; la <a href="https://github.com/"><i className="fab fa-github" /></a></h1>
+      <hr />
+      <div className="c-grid">
+        <div className="c-grid__item--6">
           <textarea
             className="c-md-preview"
             maxLength="3000"
@@ -59,7 +57,7 @@ const App = () => {
             value={state.text}
           />
         </div>
-        <div className="c-row__col--6">
+        <div className="c-grid__item--6">
           <div className="c-md-preview js-render-preview u-emulate-md" />
         </div>
       </div>

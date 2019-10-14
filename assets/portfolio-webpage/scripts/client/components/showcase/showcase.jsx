@@ -89,12 +89,12 @@ const Showcase = (props) => {
 
   return (
     <div className="c-content--xl js-scroll-showcase">
-      <div className="c-row">
-        <div className="c-row__col--4">
+      <div className="c-grid">
+        <div className="c-grid__item--4">
           <h1>Showcase</h1>
         </div>
         <div
-          className="c-row__col--8 js-toggle-showcase"
+          className="c-grid__item--8 js-toggle-showcase"
           onMouseEnter={handlePause(true)}
           onMouseLeave={handlePause()}
         >
