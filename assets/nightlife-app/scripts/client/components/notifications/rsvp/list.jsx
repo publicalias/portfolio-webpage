@@ -3,6 +3,7 @@
 //local imports
 
 const Item = require("./item");
+const List = require("../meta/list");
 
 //global imports
 
@@ -12,62 +13,48 @@ const { initKeyGen } = require("all/react-utils");
 
 const React = require("react");
 
-const { useEffect } = React;
+//wrap list
 
-//list
-
-const List = (props) => {
+const WrapList = (props) => {
 
   const { actions: { rsvpGetList }, data: { notifications: { rsvps } } } = props;
 
-  const { jsx: { Item } } = List.injected;
-
-  //events
-
-  const handleClick = () => {
-    rsvpGetList();
-  };
-
-  //lifecycle
-
-  useEffect(() => {
-    rsvpGetList(); //async
-  }, []);
+  const { jsx: { Item, List } } = WrapList.injected;
 
   //render
 
   const keyGen = initKeyGen();
 
+  const list = rsvps.map((e) => (
+    <Item
+      {...props}
+      key={keyGen(e.id)}
+      local={{ rsvp: e }}
+    />
+  ));
+
   return (
-    <div className="c-rsvp-list">
-      <div className="c-rsvp-list__head">
-        <h3>RSVPs</h3>
-        <button
-          className="c-rsvp-list__sync qa-sync-rsvp"
-          onClick={handleClick}
-        >
-          <i className="fas fa-sync" />
-        </button>
-      </div>
-      <hr />
-      <div className="c-rsvp-list__body">
-        {rsvps.length ? rsvps.map((e) => (
-          <Item
-            {...props}
-            key={keyGen(e.id)}
-            local={{ rsvp: e }}
-          />
-        )) : <p className="u-margin-none">No notifications</p>}
-      </div>
-    </div>
+    <List
+      local={{
+        handler: rsvpGetList,
+        heading: "RSVPs",
+        list,
+        type: "rsvp"
+      }}
+    />
   );
 
 };
 
-List.propList = ["data.notifications.rsvps"];
+WrapList.propList = ["data.notifications.rsvps"];
 
-List.injected = { jsx: { Item } };
+WrapList.injected = {
+  jsx: {
+    Item,
+    List
+  }
+};
 
 //exports
 
-module.exports = List;
+module.exports = WrapList;
