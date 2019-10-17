@@ -1,0 +1,253 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`item (self) should match snapshot (default) 1`] = `
+<div
+  className="c-rsvp-item"
+>
+  <div
+    className="c-rsvp-item__info"
+  >
+    <p>
+      You are going to 
+      <Link
+        to="/venues/page/id-c"
+      >
+        <span
+          className="u-underline"
+        >
+          Venue C
+        </span>
+      </Link>
+       at 
+      9:00 PM
+      .
+    </p>
+    <p
+      className="u-margin-none"
+    >
+      31 December 1969
+    </p>
+  </div>
+  <div
+    className="c-rsvp-item__actions"
+  >
+    <button
+      className="c-rsvp-item__dismiss qa-dismiss-rsvp"
+      onClick={[Function]}
+    >
+      <i
+        className="fas fa-ban"
+      />
+    </button>
+  </div>
+</div>
+`;
+
+exports[`item (self) should match snapshot (message) 1`] = `
+<div
+  className="c-rsvp-item"
+>
+  <div
+    className="c-rsvp-item__info"
+  >
+    <p>
+      You are going to 
+      <Link
+        to="/venues/page/id-c"
+      >
+        <span
+          className="u-underline"
+        >
+          Venue C
+        </span>
+      </Link>
+       at 
+      9:00 PM
+      .
+    </p>
+    <p>
+      "
+      Message
+      "
+    </p>
+    <p
+      className="u-margin-none"
+    >
+      31 December 1969
+    </p>
+  </div>
+  <div
+    className="c-rsvp-item__actions"
+  >
+    <button
+      className="c-rsvp-item__dismiss qa-dismiss-rsvp"
+      onClick={[Function]}
+    >
+      <i
+        className="fas fa-ban"
+      />
+    </button>
+  </div>
+</div>
+`;
+
+exports[`item (user) should match snapshot (default) 1`] = `
+<div
+  className="c-rsvp-item"
+>
+  <div
+    className="c-rsvp-item__info"
+  >
+    <p>
+      <Link
+        to="/users/page/id-b"
+      >
+        <span
+          className="u-underline"
+        >
+          Anonymous
+        </span>
+      </Link>
+       is going to 
+      <Link
+        to="/venues/page/id-c"
+      >
+        <span
+          className="u-underline"
+        >
+          Venue C
+        </span>
+      </Link>
+       at 
+      9:00 PM
+      .
+    </p>
+    <p
+      className="u-margin-none"
+    >
+      31 December 1969
+    </p>
+  </div>
+  <div
+    className="c-rsvp-item__actions"
+  >
+    <button
+      className="c-rsvp-item__dismiss qa-dismiss-rsvp"
+      onClick={[Function]}
+    >
+      <i
+        className="fas fa-times"
+      />
+    </button>
+  </div>
+</div>
+`;
+
+exports[`item (user) should match snapshot (message) 1`] = `
+<div
+  className="c-rsvp-item"
+>
+  <div
+    className="c-rsvp-item__info"
+  >
+    <p>
+      <Link
+        to="/users/page/id-b"
+      >
+        <span
+          className="u-underline"
+        >
+          Anonymous
+        </span>
+      </Link>
+       is going to 
+      <Link
+        to="/venues/page/id-c"
+      >
+        <span
+          className="u-underline"
+        >
+          Venue C
+        </span>
+      </Link>
+       at 
+      9:00 PM
+      .
+    </p>
+    <p>
+      "
+      Message
+      "
+    </p>
+    <p
+      className="u-margin-none"
+    >
+      31 December 1969
+    </p>
+  </div>
+  <div
+    className="c-rsvp-item__actions"
+  >
+    <button
+      className="c-rsvp-item__dismiss qa-dismiss-rsvp"
+      onClick={[Function]}
+    >
+      <i
+        className="fas fa-times"
+      />
+    </button>
+  </div>
+</div>
+`;
+
+exports[`item (user) should match snapshot (name) 1`] = `
+<div
+  className="c-rsvp-item"
+>
+  <div
+    className="c-rsvp-item__info"
+  >
+    <p>
+      <Link
+        to="/users/page/id-b"
+      >
+        <span
+          className="u-underline"
+        >
+          User B
+        </span>
+      </Link>
+       is going to 
+      <Link
+        to="/venues/page/id-c"
+      >
+        <span
+          className="u-underline"
+        >
+          Venue C
+        </span>
+      </Link>
+       at 
+      9:00 PM
+      .
+    </p>
+    <p
+      className="u-margin-none"
+    >
+      31 December 1969
+    </p>
+  </div>
+  <div
+    className="c-rsvp-item__actions"
+  >
+    <button
+      className="c-rsvp-item__dismiss qa-dismiss-rsvp"
+      onClick={[Function]}
+    >
+      <i
+        className="fas fa-times"
+      />
+    </button>
+  </div>
+</div>
+`;

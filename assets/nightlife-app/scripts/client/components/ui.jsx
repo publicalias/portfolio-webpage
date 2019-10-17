@@ -26,7 +26,7 @@ const { useEffect } = React;
 
 const UI = (props) => {
 
-  const { actions: { metaGetUser, metaSaveAddress } } = props;
+  const { actions: { metaGetUser, metaSaveAddress }, data: { user } } = props;
 
   const {
     jsx: { FriendList, Route, RSVPList, Sidebar, UserList, UserPage, VenueList, VenuePage },
@@ -57,6 +57,8 @@ const UI = (props) => {
 
   //render
 
+  const auth = user.type === "auth";
+
   return (
     <div className="c-ui">
       <Sidebar {...props} />
@@ -69,14 +71,14 @@ const UI = (props) => {
       <Route path="/user/page/:id" render={({ match }) => <UserPage {...props} local={{ id: match.params.id }} />} />
       <Route path="/venue/list" render={() => <VenueList {...props} />} />
       <Route path="/venue/page/:id" render={({ match }) => <VenuePage {...props} local={{ id: match.params.id }} />} />
-      <FriendList {...props} />
-      <RSVPList {...props} />
+      {auth && <RSVPList {...props} />}
+      {auth && <FriendList {...props} />}
     </div>
   );
 
 };
 
-UI.propList = [];
+UI.propList = ["data.user"];
 
 UI.injected = {
   jsx: {

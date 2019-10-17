@@ -1,5 +1,48 @@
 @import "redux/styles";
 
+@mixin grid-list($gp) {
+  display: grid;
+  grid-auto-rows: max-content;
+  grid-gap: $gp;
+}
+
+//components
+
+.c-rsvp-list {
+
+  @include grid-item(3, 1, 4, 7);
+
+  &__body {
+    @include grid-list(1.5vw);
+    @include scroll-box(30vw);
+    padding-right: 3vw;
+  }
+
+  &__head {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__sync { width: 3.2vw; }
+
+}
+
+.c-rsvp-item {
+
+  display: flex;
+  justify-content: space-between;
+
+  &__actions {
+    align-items: center;
+    display: flex;
+  }
+
+  &__dismiss { width: 3.2vw; }
+
+  &__info { margin-right: 3vw; }
+
+}
+
 .c-sidebar {
 
   @include grid-item(1, 1, 3, 5);

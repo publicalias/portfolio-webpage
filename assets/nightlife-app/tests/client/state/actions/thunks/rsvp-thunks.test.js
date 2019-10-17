@@ -12,7 +12,7 @@ describe("rsvpAdd", () => {
   const { rsvpAdd } = actions;
 
   testAPI.default(rsvpAdd("", "", "", ""), {
-    path: "nightlife-app/api/rsvp-add",
+    path: "/nightlife-app/api/rsvp-add",
     method: "POST",
     data: {
       name: "",
@@ -31,7 +31,7 @@ describe("rsvpDismiss", () => {
   const { rsvpDismiss } = actions;
 
   testAPI.default(rsvpDismiss(""), {
-    path: "nightlife-app/api/rsvp-dismiss",
+    path: "/nightlife-app/api/rsvp-dismiss",
     method: "PATCH",
     data: { id: "" }
   });
@@ -45,7 +45,7 @@ describe("rsvpGetList", () => {
   const { rsvpGetList } = actions;
 
   testAPI.default(rsvpGetList(), {
-    path: "nightlife-app/api/rsvp-get-list",
+    path: "/nightlife-app/api/rsvp-get-list",
     method: "GET"
   });
 
@@ -58,7 +58,7 @@ describe("rsvpRemove", () => {
   const { rsvpRemove } = actions;
 
   testAPI.default(rsvpRemove(""), {
-    path: "nightlife-app/api/rsvp-remove",
+    path: "/nightlife-app/api/rsvp-remove",
     method: "DELETE",
     data: { id: "" }
   });

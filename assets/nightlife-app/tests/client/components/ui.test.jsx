@@ -53,7 +53,9 @@ describe("ui", () => {
 
   };
 
-  it("should match snapshot", () => testSnapshot());
+  it("should match snapshot (default)", () => testSnapshot());
+
+  it("should match snapshot (authenticated)", () => testSnapshot({ user: newUserWithData() }));
 
   it("should call initUser on load (default)", () => testLoad({}, (metaGetUser, getLocation, metaSaveAddress) => {
     testMock(metaGetUser, []);

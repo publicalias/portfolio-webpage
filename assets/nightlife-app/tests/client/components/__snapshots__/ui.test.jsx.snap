@@ -1,6 +1,349 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ui should match snapshot 1`] = `
+exports[`ui should match snapshot (authenticated) 1`] = `
+<div
+  className="c-ui"
+>
+  <Sidebar
+    actions={
+      Object {
+        "favoriteAdd": [MockFunction],
+        "favoriteRemove": [MockFunction],
+        "friendAdd": [MockFunction],
+        "friendConfirm": [MockFunction],
+        "friendDismiss": [MockFunction],
+        "friendGetList": [MockFunction],
+        "friendRemove": [MockFunction],
+        "metaAddErrors": [MockFunction],
+        "metaCloseError": [MockFunction],
+        "metaGetUser": [MockFunction],
+        "metaNoOp": [MockFunction],
+        "metaSaveAddress": [MockFunction],
+        "metaSaveAvatar": [MockFunction],
+        "metaSetAddress": [MockFunction],
+        "metaSetAvatar": [MockFunction],
+        "metaSetLoading": [MockFunction],
+        "metaSetState": [MockFunction],
+        "metaTimeoutError": [MockFunction],
+        "metaToggleDelete": [MockFunction],
+        "metaToggleSettings": [MockFunction],
+        "rsvpAdd": [MockFunction],
+        "rsvpDismiss": [MockFunction],
+        "rsvpGetList": [MockFunction],
+        "rsvpRemove": [MockFunction],
+        "userClearState": [MockFunction],
+        "userGetItem": [MockFunction],
+        "userGetList": [MockFunction],
+        "userSetSearch": [MockFunction],
+        "userToggleBlock": [MockFunction],
+        "venueClearState": [MockFunction],
+        "venueGetItem": [MockFunction],
+        "venueGetList": [MockFunction],
+        "venueSetMessage": [MockFunction],
+        "venueSetSearch": [MockFunction],
+        "venueSetTime": [MockFunction],
+        "venueToggleForm": [MockFunction],
+      }
+    }
+    data={
+      Object {
+        "account": Object {
+          "address": "",
+          "avatar": "",
+          "delete": false,
+          "settings": false,
+        },
+        "data": Object {
+          "users": Array [],
+          "venues": Array [],
+        },
+        "errors": Array [],
+        "loading": false,
+        "notifications": Object {
+          "friends": Array [],
+          "rsvps": Array [],
+        },
+        "user": Object {
+          "auth": Object {
+            "id": "",
+            "provider": "",
+          },
+          "data": Object {
+            "address": "",
+            "app": "nightlife-app",
+            "avatar": "",
+            "blocks": Array [],
+            "distance": 0,
+            "favorites": Array [],
+            "friends": Array [],
+            "location": null,
+            "restricted": false,
+          },
+          "id": "",
+          "name": "",
+          "type": "auth",
+        },
+        "users": Object {
+          "list": Object {
+            "search": "",
+          },
+        },
+        "venues": Object {
+          "list": Object {
+            "search": "",
+          },
+          "page": Object {
+            "form": false,
+            "message": "",
+            "time": "",
+          },
+        },
+      }
+    }
+    history={
+      Object {
+        "push": [MockFunction],
+      }
+    }
+    location={Object {}}
+    match={Object {}}
+    staticContext={Object {}}
+  />
+  <Route
+    exact={true}
+    path="/"
+    render={[Function]}
+  />
+  <Route
+    path="/user/list"
+    render={[Function]}
+  />
+  <Route
+    path="/user/page/:id"
+    render={[Function]}
+  />
+  <Route
+    path="/venue/list"
+    render={[Function]}
+  />
+  <Route
+    path="/venue/page/:id"
+    render={[Function]}
+  />
+  <RSVPList
+    actions={
+      Object {
+        "favoriteAdd": [MockFunction],
+        "favoriteRemove": [MockFunction],
+        "friendAdd": [MockFunction],
+        "friendConfirm": [MockFunction],
+        "friendDismiss": [MockFunction],
+        "friendGetList": [MockFunction],
+        "friendRemove": [MockFunction],
+        "metaAddErrors": [MockFunction],
+        "metaCloseError": [MockFunction],
+        "metaGetUser": [MockFunction],
+        "metaNoOp": [MockFunction],
+        "metaSaveAddress": [MockFunction],
+        "metaSaveAvatar": [MockFunction],
+        "metaSetAddress": [MockFunction],
+        "metaSetAvatar": [MockFunction],
+        "metaSetLoading": [MockFunction],
+        "metaSetState": [MockFunction],
+        "metaTimeoutError": [MockFunction],
+        "metaToggleDelete": [MockFunction],
+        "metaToggleSettings": [MockFunction],
+        "rsvpAdd": [MockFunction],
+        "rsvpDismiss": [MockFunction],
+        "rsvpGetList": [MockFunction],
+        "rsvpRemove": [MockFunction],
+        "userClearState": [MockFunction],
+        "userGetItem": [MockFunction],
+        "userGetList": [MockFunction],
+        "userSetSearch": [MockFunction],
+        "userToggleBlock": [MockFunction],
+        "venueClearState": [MockFunction],
+        "venueGetItem": [MockFunction],
+        "venueGetList": [MockFunction],
+        "venueSetMessage": [MockFunction],
+        "venueSetSearch": [MockFunction],
+        "venueSetTime": [MockFunction],
+        "venueToggleForm": [MockFunction],
+      }
+    }
+    data={
+      Object {
+        "account": Object {
+          "address": "",
+          "avatar": "",
+          "delete": false,
+          "settings": false,
+        },
+        "data": Object {
+          "users": Array [],
+          "venues": Array [],
+        },
+        "errors": Array [],
+        "loading": false,
+        "notifications": Object {
+          "friends": Array [],
+          "rsvps": Array [],
+        },
+        "user": Object {
+          "auth": Object {
+            "id": "",
+            "provider": "",
+          },
+          "data": Object {
+            "address": "",
+            "app": "nightlife-app",
+            "avatar": "",
+            "blocks": Array [],
+            "distance": 0,
+            "favorites": Array [],
+            "friends": Array [],
+            "location": null,
+            "restricted": false,
+          },
+          "id": "",
+          "name": "",
+          "type": "auth",
+        },
+        "users": Object {
+          "list": Object {
+            "search": "",
+          },
+        },
+        "venues": Object {
+          "list": Object {
+            "search": "",
+          },
+          "page": Object {
+            "form": false,
+            "message": "",
+            "time": "",
+          },
+        },
+      }
+    }
+    history={
+      Object {
+        "push": [MockFunction],
+      }
+    }
+    location={Object {}}
+    match={Object {}}
+    staticContext={Object {}}
+  />
+  <FriendList
+    actions={
+      Object {
+        "favoriteAdd": [MockFunction],
+        "favoriteRemove": [MockFunction],
+        "friendAdd": [MockFunction],
+        "friendConfirm": [MockFunction],
+        "friendDismiss": [MockFunction],
+        "friendGetList": [MockFunction],
+        "friendRemove": [MockFunction],
+        "metaAddErrors": [MockFunction],
+        "metaCloseError": [MockFunction],
+        "metaGetUser": [MockFunction],
+        "metaNoOp": [MockFunction],
+        "metaSaveAddress": [MockFunction],
+        "metaSaveAvatar": [MockFunction],
+        "metaSetAddress": [MockFunction],
+        "metaSetAvatar": [MockFunction],
+        "metaSetLoading": [MockFunction],
+        "metaSetState": [MockFunction],
+        "metaTimeoutError": [MockFunction],
+        "metaToggleDelete": [MockFunction],
+        "metaToggleSettings": [MockFunction],
+        "rsvpAdd": [MockFunction],
+        "rsvpDismiss": [MockFunction],
+        "rsvpGetList": [MockFunction],
+        "rsvpRemove": [MockFunction],
+        "userClearState": [MockFunction],
+        "userGetItem": [MockFunction],
+        "userGetList": [MockFunction],
+        "userSetSearch": [MockFunction],
+        "userToggleBlock": [MockFunction],
+        "venueClearState": [MockFunction],
+        "venueGetItem": [MockFunction],
+        "venueGetList": [MockFunction],
+        "venueSetMessage": [MockFunction],
+        "venueSetSearch": [MockFunction],
+        "venueSetTime": [MockFunction],
+        "venueToggleForm": [MockFunction],
+      }
+    }
+    data={
+      Object {
+        "account": Object {
+          "address": "",
+          "avatar": "",
+          "delete": false,
+          "settings": false,
+        },
+        "data": Object {
+          "users": Array [],
+          "venues": Array [],
+        },
+        "errors": Array [],
+        "loading": false,
+        "notifications": Object {
+          "friends": Array [],
+          "rsvps": Array [],
+        },
+        "user": Object {
+          "auth": Object {
+            "id": "",
+            "provider": "",
+          },
+          "data": Object {
+            "address": "",
+            "app": "nightlife-app",
+            "avatar": "",
+            "blocks": Array [],
+            "distance": 0,
+            "favorites": Array [],
+            "friends": Array [],
+            "location": null,
+            "restricted": false,
+          },
+          "id": "",
+          "name": "",
+          "type": "auth",
+        },
+        "users": Object {
+          "list": Object {
+            "search": "",
+          },
+        },
+        "venues": Object {
+          "list": Object {
+            "search": "",
+          },
+          "page": Object {
+            "form": false,
+            "message": "",
+            "time": "",
+          },
+        },
+      }
+    }
+    history={
+      Object {
+        "push": [MockFunction],
+      }
+    }
+    location={Object {}}
+    match={Object {}}
+    staticContext={Object {}}
+  />
+</div>
+`;
+
+exports[`ui should match snapshot (default) 1`] = `
 <div
   className="c-ui"
 >
@@ -110,178 +453,6 @@ exports[`ui should match snapshot 1`] = `
   <Route
     path="/venue/page/:id"
     render={[Function]}
-  />
-  <FriendList
-    actions={
-      Object {
-        "favoriteAdd": [MockFunction],
-        "favoriteRemove": [MockFunction],
-        "friendAdd": [MockFunction],
-        "friendConfirm": [MockFunction],
-        "friendDismiss": [MockFunction],
-        "friendGetList": [MockFunction],
-        "friendRemove": [MockFunction],
-        "metaAddErrors": [MockFunction],
-        "metaCloseError": [MockFunction],
-        "metaGetUser": [MockFunction],
-        "metaNoOp": [MockFunction],
-        "metaSaveAddress": [MockFunction],
-        "metaSaveAvatar": [MockFunction],
-        "metaSetAddress": [MockFunction],
-        "metaSetAvatar": [MockFunction],
-        "metaSetLoading": [MockFunction],
-        "metaSetState": [MockFunction],
-        "metaTimeoutError": [MockFunction],
-        "metaToggleDelete": [MockFunction],
-        "metaToggleSettings": [MockFunction],
-        "rsvpAdd": [MockFunction],
-        "rsvpDismiss": [MockFunction],
-        "rsvpGetList": [MockFunction],
-        "rsvpRemove": [MockFunction],
-        "userClearState": [MockFunction],
-        "userGetItem": [MockFunction],
-        "userGetList": [MockFunction],
-        "userSetSearch": [MockFunction],
-        "userToggleBlock": [MockFunction],
-        "venueClearState": [MockFunction],
-        "venueGetItem": [MockFunction],
-        "venueGetList": [MockFunction],
-        "venueSetMessage": [MockFunction],
-        "venueSetSearch": [MockFunction],
-        "venueSetTime": [MockFunction],
-        "venueToggleForm": [MockFunction],
-      }
-    }
-    data={
-      Object {
-        "account": Object {
-          "address": "",
-          "avatar": "",
-          "delete": false,
-          "settings": false,
-        },
-        "data": Object {
-          "users": Array [],
-          "venues": Array [],
-        },
-        "errors": Array [],
-        "loading": false,
-        "notifications": Object {
-          "friends": Array [],
-          "rsvps": Array [],
-        },
-        "user": Object {},
-        "users": Object {
-          "list": Object {
-            "search": "",
-          },
-        },
-        "venues": Object {
-          "list": Object {
-            "search": "",
-          },
-          "page": Object {
-            "form": false,
-            "message": "",
-            "time": "",
-          },
-        },
-      }
-    }
-    history={
-      Object {
-        "push": [MockFunction],
-      }
-    }
-    location={Object {}}
-    match={Object {}}
-    staticContext={Object {}}
-  />
-  <RSVPList
-    actions={
-      Object {
-        "favoriteAdd": [MockFunction],
-        "favoriteRemove": [MockFunction],
-        "friendAdd": [MockFunction],
-        "friendConfirm": [MockFunction],
-        "friendDismiss": [MockFunction],
-        "friendGetList": [MockFunction],
-        "friendRemove": [MockFunction],
-        "metaAddErrors": [MockFunction],
-        "metaCloseError": [MockFunction],
-        "metaGetUser": [MockFunction],
-        "metaNoOp": [MockFunction],
-        "metaSaveAddress": [MockFunction],
-        "metaSaveAvatar": [MockFunction],
-        "metaSetAddress": [MockFunction],
-        "metaSetAvatar": [MockFunction],
-        "metaSetLoading": [MockFunction],
-        "metaSetState": [MockFunction],
-        "metaTimeoutError": [MockFunction],
-        "metaToggleDelete": [MockFunction],
-        "metaToggleSettings": [MockFunction],
-        "rsvpAdd": [MockFunction],
-        "rsvpDismiss": [MockFunction],
-        "rsvpGetList": [MockFunction],
-        "rsvpRemove": [MockFunction],
-        "userClearState": [MockFunction],
-        "userGetItem": [MockFunction],
-        "userGetList": [MockFunction],
-        "userSetSearch": [MockFunction],
-        "userToggleBlock": [MockFunction],
-        "venueClearState": [MockFunction],
-        "venueGetItem": [MockFunction],
-        "venueGetList": [MockFunction],
-        "venueSetMessage": [MockFunction],
-        "venueSetSearch": [MockFunction],
-        "venueSetTime": [MockFunction],
-        "venueToggleForm": [MockFunction],
-      }
-    }
-    data={
-      Object {
-        "account": Object {
-          "address": "",
-          "avatar": "",
-          "delete": false,
-          "settings": false,
-        },
-        "data": Object {
-          "users": Array [],
-          "venues": Array [],
-        },
-        "errors": Array [],
-        "loading": false,
-        "notifications": Object {
-          "friends": Array [],
-          "rsvps": Array [],
-        },
-        "user": Object {},
-        "users": Object {
-          "list": Object {
-            "search": "",
-          },
-        },
-        "venues": Object {
-          "list": Object {
-            "search": "",
-          },
-          "page": Object {
-            "form": false,
-            "message": "",
-            "time": "",
-          },
-        },
-      }
-    }
-    history={
-      Object {
-        "push": [MockFunction],
-      }
-    }
-    location={Object {}}
-    match={Object {}}
-    staticContext={Object {}}
   />
 </div>
 `;

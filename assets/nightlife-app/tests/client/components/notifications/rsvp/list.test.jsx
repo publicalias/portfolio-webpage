@@ -8,13 +8,12 @@ const { testWrapper } = require("../../../test-helpers");
 
 //global imports
 
-const { initTestSnapshot, reactTests } = require("redux/tests/react-tests");
+const { testMock } = require("redux/tests/meta-tests");
+const { initTestEvent, initTestSnapshot, reactTests } = require("redux/tests/react-tests");
 
 //utilities
 
-const { testShallow } = testWrapper(List);
-
-const testSnapshot = initTestSnapshot(testShallow);
+const { testMount, testShallow } = testWrapper(List);
 
 //setup
 
@@ -23,4 +22,34 @@ beforeEach(reactTests.inject(List));
 
 //list
 
-test("list should match snapshot", () => testSnapshot());
+describe("list", () => {
+
+  const testSnapshot = initTestSnapshot(testShallow);
+
+  const testClick = initTestEvent(testMount, "click");
+
+  it("should match snapshot (default)", () => testSnapshot());
+
+  it("should match snapshot (rsvps)", () => testSnapshot({ notifications: { rsvps: [{}] } }));
+
+  it("should call rsvpGetList on load", () => {
+
+    const { props, wrapper } = testMount();
+
+    const { actions: { rsvpGetList } } = props;
+
+    wrapper.mount();
+
+    testMock(rsvpGetList, []);
+
+    wrapper.unmount();
+
+  });
+
+  it("should call rsvpGetList on click", () => testClick(".qa-sync-rsvp", [], [
+    "rsvpGetList",
+    [], //on load
+    []
+  ]));
+
+});

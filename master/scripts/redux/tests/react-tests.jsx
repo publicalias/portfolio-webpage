@@ -26,7 +26,9 @@ const initTestEvent = (render, type, event) => async (qa, dataList, ...fnList) =
     if (typeof e === "function") {
       e(props);
     } else {
-      testMock(props.actions[e[0]], e[1]);
+      (([type, ...calls]) => {
+        testMock(props.actions[type], ...calls);
+      })(e);
     }
   }
 
