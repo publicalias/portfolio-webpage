@@ -29,8 +29,6 @@
 .c-list-body {
 
   @include grid-item(2, 5, 4, 13);
-  height: calc(100vh - 9vw);
-  max-height: 60vw;
 
   &__col {
     &--10 { width: 10%; }
@@ -39,9 +37,8 @@
   }
 
   &__scroll-view {
-    height: 100%;
+    @include scroll-box(60vw);
     overflow-x: hidden;
-    overflow-y: scroll;
     padding-right: 4.5vw;
   }
 

@@ -86,6 +86,12 @@ $bg-input: rgba(64, 64, 64, 0.75);
 
 }
 
+@mixin scroll-box($max) {
+  height: calc(100vh - 9vw);
+  max-height: $max;
+  overflow-y: scroll;
+}
+
 @mixin square($side) {
   height: $side;
   width: $side;

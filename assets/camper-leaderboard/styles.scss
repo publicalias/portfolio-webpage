@@ -6,9 +6,7 @@
 
 .c-campers {
 
-  height: calc(100vh - 9vw);
-  max-height: 60vw;
-  overflow-y: scroll;
+  @include scroll-box(60vw);
   padding-right: 4.5vw;
 
   &__avatar { @include square(4.5vw); }
