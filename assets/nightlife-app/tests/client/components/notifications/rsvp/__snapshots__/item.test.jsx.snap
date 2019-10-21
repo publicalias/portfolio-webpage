@@ -13,28 +13,28 @@ exports[`item (self) should match snapshot (default) 1`] = `
       "item": Object {
         "date": 0,
         "hidden": Array [],
-        "id": "id-a",
+        "id": "",
         "message": "",
         "time": "9:00 PM",
         "user": Object {
-          "id": "id-b",
+          "id": "id-a",
           "name": "",
         },
         "venue": Object {
-          "id": "id-c",
-          "name": "Venue C",
+          "id": "id-b",
+          "name": "Venue B",
         },
       },
       "notification": <React.Fragment>
         <p>
           You are going to 
           <Link
-            to="/venues/page/id-c"
+            to="/venues/page/id-b"
           >
             <span
               className="u-underline"
             >
-              Venue C
+              Venue B
             </span>
           </Link>
            at 
@@ -62,28 +62,28 @@ exports[`item (self) should match snapshot (message) 1`] = `
       "item": Object {
         "date": 0,
         "hidden": Array [],
-        "id": "id-a",
+        "id": "",
         "message": "Message",
         "time": "9:00 PM",
         "user": Object {
-          "id": "id-b",
+          "id": "id-a",
           "name": "",
         },
         "venue": Object {
-          "id": "id-c",
-          "name": "Venue C",
+          "id": "id-b",
+          "name": "Venue B",
         },
       },
       "notification": <React.Fragment>
         <p>
           You are going to 
           <Link
-            to="/venues/page/id-c"
+            to="/venues/page/id-b"
           >
             <span
               className="u-underline"
             >
-              Venue C
+              Venue B
             </span>
           </Link>
            at 
@@ -115,22 +115,22 @@ exports[`item (user) should match snapshot (default) 1`] = `
       "item": Object {
         "date": 0,
         "hidden": Array [],
-        "id": "id-a",
+        "id": "",
         "message": "",
         "time": "9:00 PM",
         "user": Object {
-          "id": "id-b",
+          "id": "id-a",
           "name": "",
         },
         "venue": Object {
-          "id": "id-c",
-          "name": "Venue C",
+          "id": "id-b",
+          "name": "Venue B",
         },
       },
       "notification": <React.Fragment>
         <p>
           <Link
-            to="/users/page/id-b"
+            to="/users/page/id-a"
           >
             <span
               className="u-underline"
@@ -140,12 +140,12 @@ exports[`item (user) should match snapshot (default) 1`] = `
           </Link>
            is going to 
           <Link
-            to="/venues/page/id-c"
+            to="/venues/page/id-b"
           >
             <span
               className="u-underline"
             >
-              Venue C
+              Venue B
             </span>
           </Link>
            at 
@@ -173,22 +173,22 @@ exports[`item (user) should match snapshot (message) 1`] = `
       "item": Object {
         "date": 0,
         "hidden": Array [],
-        "id": "id-a",
+        "id": "",
         "message": "Message",
         "time": "9:00 PM",
         "user": Object {
-          "id": "id-b",
+          "id": "id-a",
           "name": "",
         },
         "venue": Object {
-          "id": "id-c",
-          "name": "Venue C",
+          "id": "id-b",
+          "name": "Venue B",
         },
       },
       "notification": <React.Fragment>
         <p>
           <Link
-            to="/users/page/id-b"
+            to="/users/page/id-a"
           >
             <span
               className="u-underline"
@@ -198,12 +198,12 @@ exports[`item (user) should match snapshot (message) 1`] = `
           </Link>
            is going to 
           <Link
-            to="/venues/page/id-c"
+            to="/venues/page/id-b"
           >
             <span
               className="u-underline"
             >
-              Venue C
+              Venue B
             </span>
           </Link>
            at 
@@ -235,37 +235,37 @@ exports[`item (user) should match snapshot (name) 1`] = `
       "item": Object {
         "date": 0,
         "hidden": Array [],
-        "id": "id-a",
+        "id": "",
         "message": "",
         "time": "9:00 PM",
         "user": Object {
-          "id": "id-b",
-          "name": "User B",
+          "id": "id-a",
+          "name": "User A",
         },
         "venue": Object {
-          "id": "id-c",
-          "name": "Venue C",
+          "id": "id-b",
+          "name": "Venue B",
         },
       },
       "notification": <React.Fragment>
         <p>
           <Link
-            to="/users/page/id-b"
+            to="/users/page/id-a"
           >
             <span
               className="u-underline"
             >
-              User B
+              User A
             </span>
           </Link>
            is going to 
           <Link
-            to="/venues/page/id-c"
+            to="/venues/page/id-b"
           >
             <span
               className="u-underline"
             >
-              Venue C
+              Venue B
             </span>
           </Link>
            at 

@@ -15,12 +15,11 @@ const { initTestSnapshot, reactTests, withDataList } = require("redux/tests/reac
 
 const { testShallow } = testWrapper(Item);
 
-const rsvp = newRSVP({
-  id: "id-a",
-  user: { id: "id-b" },
+const getRSVP = () => newRSVP({
+  user: { id: "id-a" },
   venue: {
-    name: "Venue C",
-    id: "id-c"
+    name: "Venue B",
+    id: "id-b"
   },
   time: "9:00 PM"
 });
@@ -34,7 +33,7 @@ beforeEach(reactTests.inject(Item));
 
 describe("item (self)", () => {
 
-  const dataList = [{ user: newUserWithData({ id: "id-b" }) }, { rsvp }];
+  const dataList = [{ user: newUserWithData({ id: "id-a" }) }, { rsvp: getRSVP() }];
 
   const testSnapshot = withDataList(initTestSnapshot(testShallow), dataList);
 
@@ -46,13 +45,13 @@ describe("item (self)", () => {
 
 describe("item (user)", () => {
 
-  const dataList = [null, { rsvp }];
+  const dataList = [null, { rsvp: getRSVP() }];
 
   const testSnapshot = withDataList(initTestSnapshot(testShallow), dataList);
 
   it("should match snapshot (default)", () => testSnapshot());
 
-  it("should match snapshot (name)", () => testSnapshot(null, { rsvp: { user: { name: "User B" } } }));
+  it("should match snapshot (name)", () => testSnapshot(null, { rsvp: { user: { name: "User A" } } }));
 
   it("should match snapshot (message)", () => testSnapshot(null, { rsvp: { message: "Message" } }));
 

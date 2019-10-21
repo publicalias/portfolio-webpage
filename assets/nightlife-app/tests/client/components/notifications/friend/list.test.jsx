@@ -14,8 +14,6 @@ const { initTestSnapshot, reactTests } = require("redux/tests/react-tests");
 
 const { testShallow } = testWrapper(List);
 
-const testSnapshot = initTestSnapshot(testShallow);
-
 //setup
 
 beforeAll(reactTests.setup);
@@ -23,4 +21,12 @@ beforeEach(reactTests.inject(List));
 
 //list
 
-test("list should match snapshot", () => testSnapshot());
+describe("list", () => {
+
+  const testSnapshot = initTestSnapshot(testShallow);
+
+  it("should match snapshot (default)", () => testSnapshot());
+
+  it("should match snapshot (list)", () => testSnapshot({ notifications: { friends: [{}] } }));
+
+});
