@@ -2,13 +2,13 @@
 
 //local imports
 
-const UserList = require("./main/user/list/list");
-const UserPage = require("./main/user/page/page");
-const VenueList = require("./main/venue/list/list");
-const VenuePage = require("./main/venue/page/page");
+const UserList = require("./main/user/list/user-list");
+const UserPage = require("./main/user/page/user-page");
+const VenueList = require("./main/venue/list/venue-list");
+const VenuePage = require("./main/venue/page/venue-page");
 
-const FriendList = require("./notifications/friend/list");
-const RSVPList = require("./notifications/rsvp/list");
+const FriendList = require("./notifications/friend/friend-list");
+const RSVPList = require("./notifications/rsvp/rsvp-list");
 
 const Sidebar = require("./sidebar/sidebar");
 

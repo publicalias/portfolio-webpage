@@ -370,7 +370,7 @@ exports[`sidebar should match snapshot (settings) 1`] = `
   >
     Settings
   </button>
-  <Input
+  <SidebarInput
     actions={
       Object {
         "favoriteAdd": [MockFunction],
@@ -480,7 +480,7 @@ exports[`sidebar should match snapshot (settings) 1`] = `
     match={Object {}}
     staticContext={Object {}}
   />
-  <Input
+  <SidebarInput
     actions={
       Object {
         "favoriteAdd": [MockFunction],

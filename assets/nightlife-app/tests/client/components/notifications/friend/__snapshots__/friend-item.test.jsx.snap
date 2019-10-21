@@ -1,0 +1,349 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`friend item (confirmed, from) should match snapshot (default) 1`] = `
+<MetaItem
+  local={
+    Object {
+      "buttons": Array [
+        Object {
+          "handler": [MockFunction],
+          "icon": "fas fa-times",
+        },
+      ],
+      "item": Object {
+        "confirmed": true,
+        "date": 0,
+        "from": Object {
+          "id": "id-a",
+          "name": "",
+        },
+        "hidden": Array [],
+        "id": "",
+        "to": Object {
+          "id": "id-b",
+          "name": "",
+        },
+      },
+      "notification": <p>
+        <Link
+          to="/users/page/id-b"
+        >
+          <span
+            className="u-underline"
+          >
+            Anonymous
+          </span>
+        </Link>
+         accepted your friend request.
+      </p>,
+      "refresh": [MockFunction],
+    }
+  }
+/>
+`;
+
+exports[`friend item (confirmed, from) should match snapshot (name) 1`] = `
+<MetaItem
+  local={
+    Object {
+      "buttons": Array [
+        Object {
+          "handler": [MockFunction],
+          "icon": "fas fa-times",
+        },
+      ],
+      "item": Object {
+        "confirmed": true,
+        "date": 0,
+        "from": Object {
+          "id": "id-a",
+          "name": "",
+        },
+        "hidden": Array [],
+        "id": "",
+        "to": Object {
+          "id": "id-b",
+          "name": "User B",
+        },
+      },
+      "notification": <p>
+        <Link
+          to="/users/page/id-b"
+        >
+          <span
+            className="u-underline"
+          >
+            User B
+          </span>
+        </Link>
+         accepted your friend request.
+      </p>,
+      "refresh": [MockFunction],
+    }
+  }
+/>
+`;
+
+exports[`friend item (confirmed, to) should match snapshot (default) 1`] = `
+<MetaItem
+  local={
+    Object {
+      "buttons": Array [
+        Object {
+          "handler": [MockFunction],
+          "icon": "fas fa-times",
+        },
+      ],
+      "item": Object {
+        "confirmed": true,
+        "date": 0,
+        "from": Object {
+          "id": "id-a",
+          "name": "",
+        },
+        "hidden": Array [],
+        "id": "",
+        "to": Object {
+          "id": "id-b",
+          "name": "",
+        },
+      },
+      "notification": <p>
+        You accepted 
+        <Link
+          to="/users/page/id-a"
+        >
+          <span
+            className="u-underline"
+          >
+            Anonymous
+          </span>
+        </Link>
+        's friend request.
+      </p>,
+      "refresh": [MockFunction],
+    }
+  }
+/>
+`;
+
+exports[`friend item (confirmed, to) should match snapshot (name) 1`] = `
+<MetaItem
+  local={
+    Object {
+      "buttons": Array [
+        Object {
+          "handler": [MockFunction],
+          "icon": "fas fa-times",
+        },
+      ],
+      "item": Object {
+        "confirmed": true,
+        "date": 0,
+        "from": Object {
+          "id": "id-a",
+          "name": "User A",
+        },
+        "hidden": Array [],
+        "id": "",
+        "to": Object {
+          "id": "id-b",
+          "name": "",
+        },
+      },
+      "notification": <p>
+        You accepted 
+        <Link
+          to="/users/page/id-a"
+        >
+          <span
+            className="u-underline"
+          >
+            User A
+          </span>
+        </Link>
+        's friend request.
+      </p>,
+      "refresh": [MockFunction],
+    }
+  }
+/>
+`;
+
+exports[`friend item (unconfirmed, from) should match snapshot (default) 1`] = `
+<MetaItem
+  local={
+    Object {
+      "buttons": Array [
+        Object {
+          "handler": [MockFunction],
+          "icon": "fas fa-ban",
+        },
+      ],
+      "item": Object {
+        "confirmed": false,
+        "date": 0,
+        "from": Object {
+          "id": "id-a",
+          "name": "",
+        },
+        "hidden": Array [],
+        "id": "",
+        "to": Object {
+          "id": "id-b",
+          "name": "",
+        },
+      },
+      "notification": <p>
+        You sent 
+        <Link
+          to="/users/page/id-b"
+        >
+          <span
+            className="u-underline"
+          >
+            Anonymous
+          </span>
+        </Link>
+         a friend request.
+      </p>,
+      "refresh": [MockFunction],
+    }
+  }
+/>
+`;
+
+exports[`friend item (unconfirmed, from) should match snapshot (name) 1`] = `
+<MetaItem
+  local={
+    Object {
+      "buttons": Array [
+        Object {
+          "handler": [MockFunction],
+          "icon": "fas fa-ban",
+        },
+      ],
+      "item": Object {
+        "confirmed": false,
+        "date": 0,
+        "from": Object {
+          "id": "id-a",
+          "name": "",
+        },
+        "hidden": Array [],
+        "id": "",
+        "to": Object {
+          "id": "id-b",
+          "name": "User B",
+        },
+      },
+      "notification": <p>
+        You sent 
+        <Link
+          to="/users/page/id-b"
+        >
+          <span
+            className="u-underline"
+          >
+            User B
+          </span>
+        </Link>
+         a friend request.
+      </p>,
+      "refresh": [MockFunction],
+    }
+  }
+/>
+`;
+
+exports[`friend item (unconfirmed, to) should match snapshot (default) 1`] = `
+<MetaItem
+  local={
+    Object {
+      "buttons": Array [
+        Object {
+          "handler": [MockFunction],
+          "icon": "fas fa-check",
+        },
+        Object {
+          "handler": [MockFunction],
+          "icon": "fas fa-ban",
+        },
+      ],
+      "item": Object {
+        "confirmed": false,
+        "date": 0,
+        "from": Object {
+          "id": "id-a",
+          "name": "",
+        },
+        "hidden": Array [],
+        "id": "",
+        "to": Object {
+          "id": "id-b",
+          "name": "",
+        },
+      },
+      "notification": <p>
+        <Link
+          to="/users/page/id-a"
+        >
+          <span
+            className="u-underline"
+          >
+            Anonymous
+          </span>
+        </Link>
+         sent you a friend request.
+      </p>,
+      "refresh": [MockFunction],
+    }
+  }
+/>
+`;
+
+exports[`friend item (unconfirmed, to) should match snapshot (name) 1`] = `
+<MetaItem
+  local={
+    Object {
+      "buttons": Array [
+        Object {
+          "handler": [MockFunction],
+          "icon": "fas fa-check",
+        },
+        Object {
+          "handler": [MockFunction],
+          "icon": "fas fa-ban",
+        },
+      ],
+      "item": Object {
+        "confirmed": false,
+        "date": 0,
+        "from": Object {
+          "id": "id-a",
+          "name": "User A",
+        },
+        "hidden": Array [],
+        "id": "",
+        "to": Object {
+          "id": "id-b",
+          "name": "",
+        },
+      },
+      "notification": <p>
+        <Link
+          to="/users/page/id-a"
+        >
+          <span
+            className="u-underline"
+          >
+            User A
+          </span>
+        </Link>
+         sent you a friend request.
+      </p>,
+      "refresh": [MockFunction],
+    }
+  }
+/>
+`;

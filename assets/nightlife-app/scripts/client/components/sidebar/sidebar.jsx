@@ -2,7 +2,7 @@
 
 //local imports
 
-const Input = require("./input");
+const SidebarInput = require("./sidebar-input");
 
 //global imports
 
@@ -18,7 +18,7 @@ const Sidebar = (props) => {
 
   const { actions: { metaToggleSettings }, data: { user, account } } = props;
 
-  const { jsx: { AuthButtons, Input } } = Sidebar.injected;
+  const { jsx: { AuthButtons, SidebarInput } } = Sidebar.injected;
 
   //events
 
@@ -39,11 +39,11 @@ const Sidebar = (props) => {
           <button className="c-sidebar__toggle qa-toggle-settings" onClick={handleClick}>Settings</button>
           {account.settings && (
             <React.Fragment>
-              <Input
+              <SidebarInput
                 {...props}
                 local={{ type: "address" }}
               />
-              <Input
+              <SidebarInput
                 {...props}
                 local={{ type: "avatar" }}
               />
@@ -62,7 +62,7 @@ Sidebar.propList = ["data.user", "data.account"];
 Sidebar.injected = {
   jsx: {
     AuthButtons,
-    Input
+    SidebarInput
   }
 };
 

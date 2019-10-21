@@ -2,19 +2,19 @@
 
 //global imports
 
-const NavBar = require("redux/components/nav-bar");
+const MetaNavBar = require("redux/components/meta-nav-bar");
 
 //node modules
 
 const React = require("react");
 
-//wrap nav bar
+//nav bar
 
-const WrapNavBar = (props) => {
+const NavBar = (props) => {
 
   const { data: { user } } = props;
 
-  const { jsx: { NavBar } } = WrapNavBar.injected;
+  const { jsx: { MetaNavBar } } = NavBar.injected;
 
   //utilities
 
@@ -28,14 +28,14 @@ const WrapNavBar = (props) => {
 
   //render
 
-  return <NavBar local={{ list }} />;
+  return <MetaNavBar local={{ list }} />;
 
 };
 
-WrapNavBar.propList = ["data.user"];
+NavBar.propList = ["data.user"];
 
-WrapNavBar.injected = { jsx: { NavBar } };
+NavBar.injected = { jsx: { MetaNavBar } };
 
 //exports
 
-module.exports = WrapNavBar;
+module.exports = NavBar;

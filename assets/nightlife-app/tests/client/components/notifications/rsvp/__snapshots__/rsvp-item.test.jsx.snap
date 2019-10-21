@@ -1,0 +1,281 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rsvp item (self) should match snapshot (default) 1`] = `
+<MetaItem
+  local={
+    Object {
+      "buttons": Array [
+        Object {
+          "handler": [MockFunction],
+          "icon": "fas fa-ban",
+        },
+      ],
+      "item": Object {
+        "date": 0,
+        "hidden": Array [],
+        "id": "",
+        "message": "",
+        "time": "9:00 PM",
+        "user": Object {
+          "id": "id-a",
+          "name": "",
+        },
+        "venue": Object {
+          "id": "id-b",
+          "name": "Venue B",
+        },
+      },
+      "notification": <React.Fragment>
+        <p>
+          You are going to 
+          <Link
+            to="/venues/page/id-b"
+          >
+            <span
+              className="u-underline"
+            >
+              Venue B
+            </span>
+          </Link>
+           at 
+          9:00 PM
+          .
+        </p>
+        
+      </React.Fragment>,
+      "refresh": [MockFunction],
+    }
+  }
+/>
+`;
+
+exports[`rsvp item (self) should match snapshot (message) 1`] = `
+<MetaItem
+  local={
+    Object {
+      "buttons": Array [
+        Object {
+          "handler": [MockFunction],
+          "icon": "fas fa-ban",
+        },
+      ],
+      "item": Object {
+        "date": 0,
+        "hidden": Array [],
+        "id": "",
+        "message": "Message",
+        "time": "9:00 PM",
+        "user": Object {
+          "id": "id-a",
+          "name": "",
+        },
+        "venue": Object {
+          "id": "id-b",
+          "name": "Venue B",
+        },
+      },
+      "notification": <React.Fragment>
+        <p>
+          You are going to 
+          <Link
+            to="/venues/page/id-b"
+          >
+            <span
+              className="u-underline"
+            >
+              Venue B
+            </span>
+          </Link>
+           at 
+          9:00 PM
+          .
+        </p>
+        <p>
+          "
+          Message
+          "
+        </p>
+      </React.Fragment>,
+      "refresh": [MockFunction],
+    }
+  }
+/>
+`;
+
+exports[`rsvp item (user) should match snapshot (default) 1`] = `
+<MetaItem
+  local={
+    Object {
+      "buttons": Array [
+        Object {
+          "handler": [MockFunction],
+          "icon": "fas fa-times",
+        },
+      ],
+      "item": Object {
+        "date": 0,
+        "hidden": Array [],
+        "id": "",
+        "message": "",
+        "time": "9:00 PM",
+        "user": Object {
+          "id": "id-a",
+          "name": "",
+        },
+        "venue": Object {
+          "id": "id-b",
+          "name": "Venue B",
+        },
+      },
+      "notification": <React.Fragment>
+        <p>
+          <Link
+            to="/users/page/id-a"
+          >
+            <span
+              className="u-underline"
+            >
+              Anonymous
+            </span>
+          </Link>
+           is going to 
+          <Link
+            to="/venues/page/id-b"
+          >
+            <span
+              className="u-underline"
+            >
+              Venue B
+            </span>
+          </Link>
+           at 
+          9:00 PM
+          .
+        </p>
+        
+      </React.Fragment>,
+      "refresh": [MockFunction],
+    }
+  }
+/>
+`;
+
+exports[`rsvp item (user) should match snapshot (message) 1`] = `
+<MetaItem
+  local={
+    Object {
+      "buttons": Array [
+        Object {
+          "handler": [MockFunction],
+          "icon": "fas fa-times",
+        },
+      ],
+      "item": Object {
+        "date": 0,
+        "hidden": Array [],
+        "id": "",
+        "message": "Message",
+        "time": "9:00 PM",
+        "user": Object {
+          "id": "id-a",
+          "name": "",
+        },
+        "venue": Object {
+          "id": "id-b",
+          "name": "Venue B",
+        },
+      },
+      "notification": <React.Fragment>
+        <p>
+          <Link
+            to="/users/page/id-a"
+          >
+            <span
+              className="u-underline"
+            >
+              Anonymous
+            </span>
+          </Link>
+           is going to 
+          <Link
+            to="/venues/page/id-b"
+          >
+            <span
+              className="u-underline"
+            >
+              Venue B
+            </span>
+          </Link>
+           at 
+          9:00 PM
+          .
+        </p>
+        <p>
+          "
+          Message
+          "
+        </p>
+      </React.Fragment>,
+      "refresh": [MockFunction],
+    }
+  }
+/>
+`;
+
+exports[`rsvp item (user) should match snapshot (name) 1`] = `
+<MetaItem
+  local={
+    Object {
+      "buttons": Array [
+        Object {
+          "handler": [MockFunction],
+          "icon": "fas fa-times",
+        },
+      ],
+      "item": Object {
+        "date": 0,
+        "hidden": Array [],
+        "id": "",
+        "message": "",
+        "time": "9:00 PM",
+        "user": Object {
+          "id": "id-a",
+          "name": "User A",
+        },
+        "venue": Object {
+          "id": "id-b",
+          "name": "Venue B",
+        },
+      },
+      "notification": <React.Fragment>
+        <p>
+          <Link
+            to="/users/page/id-a"
+          >
+            <span
+              className="u-underline"
+            >
+              User A
+            </span>
+          </Link>
+           is going to 
+          <Link
+            to="/venues/page/id-b"
+          >
+            <span
+              className="u-underline"
+            >
+              Venue B
+            </span>
+          </Link>
+           at 
+          9:00 PM
+          .
+        </p>
+        
+      </React.Fragment>,
+      "refresh": [MockFunction],
+    }
+  }
+/>
+`;
