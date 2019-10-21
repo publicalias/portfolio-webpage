@@ -36,9 +36,9 @@ const WrapList = (props) => {
   return (
     <List
       local={{
-        handler: rsvpGetList,
         heading: "RSVPs",
         list,
+        refresh: rsvpGetList,
         type: "rsvp"
       }}
     />

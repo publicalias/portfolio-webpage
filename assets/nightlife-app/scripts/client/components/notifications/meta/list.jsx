@@ -10,35 +10,35 @@ const { useEffect } = React;
 
 const List = (props) => {
 
-  const { local: { handler, heading, list, type } } = props;
+  const { local: { heading, list, refresh, type } } = props;
 
   //events
 
   const handleClick = () => {
-    handler();
+    refresh();
   };
 
   //lifecycle
 
   useEffect(() => {
-    handler(); //async
+    refresh(); //async
   }, []);
 
   //render
 
   return (
-    <div className={`c-${type}-list`}>
-      <div className={`c-${type}-list__head`}>
+    <div className={`c-note-list--${type}`}>
+      <div className="c-note-list__head">
         <h3>{heading}</h3>
         <button
-          className={`c-${type}-list__sync qa-sync-${type}`}
+          className="c-note-list__button qa-refresh-list"
           onClick={handleClick}
         >
           <i className="fas fa-sync" />
         </button>
       </div>
       <hr />
-      <div className={`c-${type}-list__body`}>
+      <div className="c-note-list__body">
         {list.length ? list : <p className="u-margin-none">No notifications</p>}
       </div>
     </div>

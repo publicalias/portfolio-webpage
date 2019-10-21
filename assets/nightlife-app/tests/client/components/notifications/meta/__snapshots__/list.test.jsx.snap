@@ -2,16 +2,16 @@
 
 exports[`list should match snapshot (default) 1`] = `
 <div
-  className="c-meta-list"
+  className="c-note-list--meta"
 >
   <div
-    className="c-meta-list__head"
+    className="c-note-list__head"
   >
     <h3>
       Meta
     </h3>
     <button
-      className="c-meta-list__sync qa-sync-meta"
+      className="c-note-list__button qa-refresh-list"
       onClick={[Function]}
     >
       <i
@@ -21,7 +21,7 @@ exports[`list should match snapshot (default) 1`] = `
   </div>
   <hr />
   <div
-    className="c-meta-list__body"
+    className="c-note-list__body"
   >
     <p
       className="u-margin-none"
@@ -34,16 +34,16 @@ exports[`list should match snapshot (default) 1`] = `
 
 exports[`list should match snapshot (list) 1`] = `
 <div
-  className="c-meta-list"
+  className="c-note-list--meta"
 >
   <div
-    className="c-meta-list__head"
+    className="c-note-list__head"
   >
     <h3>
       Meta
     </h3>
     <button
-      className="c-meta-list__sync qa-sync-meta"
+      className="c-note-list__button qa-refresh-list"
       onClick={[Function]}
     >
       <i
@@ -53,9 +53,11 @@ exports[`list should match snapshot (list) 1`] = `
   </div>
   <hr />
   <div
-    className="c-meta-list__body"
+    className="c-note-list__body"
   >
-    <Component />
+    <div
+      key=""
+    />
   </div>
 </div>
 `;

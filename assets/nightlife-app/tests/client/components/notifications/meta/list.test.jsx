@@ -11,6 +11,10 @@ const { testWrapper } = require("../../../test-helpers");
 const { testMock } = require("redux/tests/meta-tests");
 const { initTestEvent, initTestSnapshot, reactTests, withDataList } = require("redux/tests/react-tests");
 
+//node modules
+
+const React = require("react");
+
 //utilities
 
 const { testMount, testShallow } = testWrapper(List);
@@ -37,28 +41,28 @@ describe("list", () => {
 
   it("should match snapshot (default)", () => testList());
 
-  it("should match snapshot (list)", () => testList(null, { list: [{}] }));
+  it("should match snapshot (list)", () => testList(null, { list: [<div key="" />] }));
 
-  it("should call handler on load", () => {
+  it("should call refresh on load", () => {
 
-    const handler = jest.fn();
+    const refresh = jest.fn();
 
-    const { wrapper } = testListMount(null, { handler });
+    const { wrapper } = testListMount(null, { refresh });
 
     wrapper.mount();
 
-    testMock(handler, []);
+    testMock(refresh, []);
 
     wrapper.unmount();
 
   });
 
-  it("should call handler on click", () => {
+  it("should call refresh on click", () => {
 
-    const handler = jest.fn();
+    const refresh = jest.fn();
 
-    return testClick(".qa-sync-meta", [null, { handler }], () => {
-      testMock(handler, [], []);
+    return testClick(".qa-refresh-list", [null, { refresh }], () => {
+      testMock(refresh, [], []);
     });
 
   });

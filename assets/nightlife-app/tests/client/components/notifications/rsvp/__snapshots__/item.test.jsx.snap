@@ -1,253 +1,281 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`item (self) should match snapshot (default) 1`] = `
-<div
-  className="c-rsvp-item"
->
-  <div
-    className="c-rsvp-item__info"
-  >
-    <p>
-      You are going to 
-      <Link
-        to="/venues/page/id-c"
-      >
-        <span
-          className="u-underline"
-        >
-          Venue C
-        </span>
-      </Link>
-       at 
-      9:00 PM
-      .
-    </p>
-    <p
-      className="u-margin-none"
-    >
-      31 December 1969
-    </p>
-  </div>
-  <div
-    className="c-rsvp-item__actions"
-  >
-    <button
-      className="c-rsvp-item__dismiss qa-dismiss-rsvp"
-      onClick={[Function]}
-    >
-      <i
-        className="fas fa-ban"
-      />
-    </button>
-  </div>
-</div>
+<Item
+  local={
+    Object {
+      "buttons": Array [
+        Object {
+          "handler": [MockFunction],
+          "icon": "fas fa-ban",
+        },
+      ],
+      "item": Object {
+        "date": 0,
+        "hidden": Array [],
+        "id": "id-a",
+        "message": "",
+        "time": "9:00 PM",
+        "user": Object {
+          "id": "id-b",
+          "name": "",
+        },
+        "venue": Object {
+          "id": "id-c",
+          "name": "Venue C",
+        },
+      },
+      "notification": <React.Fragment>
+        <p>
+          You are going to 
+          <Link
+            to="/venues/page/id-c"
+          >
+            <span
+              className="u-underline"
+            >
+              Venue C
+            </span>
+          </Link>
+           at 
+          9:00 PM
+          .
+        </p>
+        
+      </React.Fragment>,
+      "refresh": [MockFunction],
+    }
+  }
+/>
 `;
 
 exports[`item (self) should match snapshot (message) 1`] = `
-<div
-  className="c-rsvp-item"
->
-  <div
-    className="c-rsvp-item__info"
-  >
-    <p>
-      You are going to 
-      <Link
-        to="/venues/page/id-c"
-      >
-        <span
-          className="u-underline"
-        >
-          Venue C
-        </span>
-      </Link>
-       at 
-      9:00 PM
-      .
-    </p>
-    <p>
-      "
-      Message
-      "
-    </p>
-    <p
-      className="u-margin-none"
-    >
-      31 December 1969
-    </p>
-  </div>
-  <div
-    className="c-rsvp-item__actions"
-  >
-    <button
-      className="c-rsvp-item__dismiss qa-dismiss-rsvp"
-      onClick={[Function]}
-    >
-      <i
-        className="fas fa-ban"
-      />
-    </button>
-  </div>
-</div>
+<Item
+  local={
+    Object {
+      "buttons": Array [
+        Object {
+          "handler": [MockFunction],
+          "icon": "fas fa-ban",
+        },
+      ],
+      "item": Object {
+        "date": 0,
+        "hidden": Array [],
+        "id": "id-a",
+        "message": "Message",
+        "time": "9:00 PM",
+        "user": Object {
+          "id": "id-b",
+          "name": "",
+        },
+        "venue": Object {
+          "id": "id-c",
+          "name": "Venue C",
+        },
+      },
+      "notification": <React.Fragment>
+        <p>
+          You are going to 
+          <Link
+            to="/venues/page/id-c"
+          >
+            <span
+              className="u-underline"
+            >
+              Venue C
+            </span>
+          </Link>
+           at 
+          9:00 PM
+          .
+        </p>
+        <p>
+          "
+          Message
+          "
+        </p>
+      </React.Fragment>,
+      "refresh": [MockFunction],
+    }
+  }
+/>
 `;
 
 exports[`item (user) should match snapshot (default) 1`] = `
-<div
-  className="c-rsvp-item"
->
-  <div
-    className="c-rsvp-item__info"
-  >
-    <p>
-      <Link
-        to="/users/page/id-b"
-      >
-        <span
-          className="u-underline"
-        >
-          Anonymous
-        </span>
-      </Link>
-       is going to 
-      <Link
-        to="/venues/page/id-c"
-      >
-        <span
-          className="u-underline"
-        >
-          Venue C
-        </span>
-      </Link>
-       at 
-      9:00 PM
-      .
-    </p>
-    <p
-      className="u-margin-none"
-    >
-      31 December 1969
-    </p>
-  </div>
-  <div
-    className="c-rsvp-item__actions"
-  >
-    <button
-      className="c-rsvp-item__dismiss qa-dismiss-rsvp"
-      onClick={[Function]}
-    >
-      <i
-        className="fas fa-times"
-      />
-    </button>
-  </div>
-</div>
+<Item
+  local={
+    Object {
+      "buttons": Array [
+        Object {
+          "handler": [MockFunction],
+          "icon": "fas fa-times",
+        },
+      ],
+      "item": Object {
+        "date": 0,
+        "hidden": Array [],
+        "id": "id-a",
+        "message": "",
+        "time": "9:00 PM",
+        "user": Object {
+          "id": "id-b",
+          "name": "",
+        },
+        "venue": Object {
+          "id": "id-c",
+          "name": "Venue C",
+        },
+      },
+      "notification": <React.Fragment>
+        <p>
+          <Link
+            to="/users/page/id-b"
+          >
+            <span
+              className="u-underline"
+            >
+              Anonymous
+            </span>
+          </Link>
+           is going to 
+          <Link
+            to="/venues/page/id-c"
+          >
+            <span
+              className="u-underline"
+            >
+              Venue C
+            </span>
+          </Link>
+           at 
+          9:00 PM
+          .
+        </p>
+        
+      </React.Fragment>,
+      "refresh": [MockFunction],
+    }
+  }
+/>
 `;
 
 exports[`item (user) should match snapshot (message) 1`] = `
-<div
-  className="c-rsvp-item"
->
-  <div
-    className="c-rsvp-item__info"
-  >
-    <p>
-      <Link
-        to="/users/page/id-b"
-      >
-        <span
-          className="u-underline"
-        >
-          Anonymous
-        </span>
-      </Link>
-       is going to 
-      <Link
-        to="/venues/page/id-c"
-      >
-        <span
-          className="u-underline"
-        >
-          Venue C
-        </span>
-      </Link>
-       at 
-      9:00 PM
-      .
-    </p>
-    <p>
-      "
-      Message
-      "
-    </p>
-    <p
-      className="u-margin-none"
-    >
-      31 December 1969
-    </p>
-  </div>
-  <div
-    className="c-rsvp-item__actions"
-  >
-    <button
-      className="c-rsvp-item__dismiss qa-dismiss-rsvp"
-      onClick={[Function]}
-    >
-      <i
-        className="fas fa-times"
-      />
-    </button>
-  </div>
-</div>
+<Item
+  local={
+    Object {
+      "buttons": Array [
+        Object {
+          "handler": [MockFunction],
+          "icon": "fas fa-times",
+        },
+      ],
+      "item": Object {
+        "date": 0,
+        "hidden": Array [],
+        "id": "id-a",
+        "message": "Message",
+        "time": "9:00 PM",
+        "user": Object {
+          "id": "id-b",
+          "name": "",
+        },
+        "venue": Object {
+          "id": "id-c",
+          "name": "Venue C",
+        },
+      },
+      "notification": <React.Fragment>
+        <p>
+          <Link
+            to="/users/page/id-b"
+          >
+            <span
+              className="u-underline"
+            >
+              Anonymous
+            </span>
+          </Link>
+           is going to 
+          <Link
+            to="/venues/page/id-c"
+          >
+            <span
+              className="u-underline"
+            >
+              Venue C
+            </span>
+          </Link>
+           at 
+          9:00 PM
+          .
+        </p>
+        <p>
+          "
+          Message
+          "
+        </p>
+      </React.Fragment>,
+      "refresh": [MockFunction],
+    }
+  }
+/>
 `;
 
 exports[`item (user) should match snapshot (name) 1`] = `
-<div
-  className="c-rsvp-item"
->
-  <div
-    className="c-rsvp-item__info"
-  >
-    <p>
-      <Link
-        to="/users/page/id-b"
-      >
-        <span
-          className="u-underline"
-        >
-          User B
-        </span>
-      </Link>
-       is going to 
-      <Link
-        to="/venues/page/id-c"
-      >
-        <span
-          className="u-underline"
-        >
-          Venue C
-        </span>
-      </Link>
-       at 
-      9:00 PM
-      .
-    </p>
-    <p
-      className="u-margin-none"
-    >
-      31 December 1969
-    </p>
-  </div>
-  <div
-    className="c-rsvp-item__actions"
-  >
-    <button
-      className="c-rsvp-item__dismiss qa-dismiss-rsvp"
-      onClick={[Function]}
-    >
-      <i
-        className="fas fa-times"
-      />
-    </button>
-  </div>
-</div>
+<Item
+  local={
+    Object {
+      "buttons": Array [
+        Object {
+          "handler": [MockFunction],
+          "icon": "fas fa-times",
+        },
+      ],
+      "item": Object {
+        "date": 0,
+        "hidden": Array [],
+        "id": "id-a",
+        "message": "",
+        "time": "9:00 PM",
+        "user": Object {
+          "id": "id-b",
+          "name": "User B",
+        },
+        "venue": Object {
+          "id": "id-c",
+          "name": "Venue C",
+        },
+      },
+      "notification": <React.Fragment>
+        <p>
+          <Link
+            to="/users/page/id-b"
+          >
+            <span
+              className="u-underline"
+            >
+              User B
+            </span>
+          </Link>
+           is going to 
+          <Link
+            to="/venues/page/id-c"
+          >
+            <span
+              className="u-underline"
+            >
+              Venue C
+            </span>
+          </Link>
+           at 
+          9:00 PM
+          .
+        </p>
+        
+      </React.Fragment>,
+      "refresh": [MockFunction],
+    }
+  }
+/>
 `;

@@ -1,8 +1,8 @@
 "use strict";
 
-//global imports
+//local imports
 
-const { readDate } = require("all/utilities");
+const Item = require("../meta/item");
 
 //node modules
 
@@ -10,13 +10,13 @@ const React = require("react");
 
 const { Link } = require("react-router-dom");
 
-//item
+//wrap item
 
-const Item = (props) => {
+const WrapItem = (props) => {
 
   const { actions: { rsvpGetList, rsvpDismiss, rsvpRemove }, data: { user }, local: { rsvp } } = props;
 
-  const { jsx: { Link } } = Item.injected;
+  const { jsx: { Item, Link } } = WrapItem.injected;
 
   //utilities
 
@@ -42,55 +42,52 @@ const Item = (props) => {
     </Link>
   );
 
-  const { handler, icon, notification } = ((data) => data[type])({
+  const { buttons, notification } = ((data) => data[type])({
     self: {
-      handler: rsvpRemove,
-      icon: "fas fa-ban",
+      buttons: [{
+        handler: rsvpRemove,
+        icon: "fas fa-ban"
+      }],
       notification: <p>You are going to {venueLink} at {rsvp.time}.</p>
     },
     user: {
-      handler: rsvpDismiss,
-      icon: "fas fa-times",
+      buttons: [{
+        handler: rsvpDismiss,
+        icon: "fas fa-times"
+      }],
       notification: <p>{userLink} is going to {venueLink} at {rsvp.time}.</p>
     }
   });
 
-  //events
-
-  const handleClick = async () => {
-
-    await handler(rsvp.id);
-
-    rsvpGetList();
-
-  };
-
-  //render
+  const fragment = (
+    <React.Fragment>
+      {notification}
+      {rsvp.message && <p>"{rsvp.message}"</p>}
+    </React.Fragment>
+  );
 
   return (
-    <div className="c-rsvp-item">
-      <div className="c-rsvp-item__info">
-        {notification}
-        {rsvp.message && <p>"{rsvp.message}"</p>}
-        <p className="u-margin-none">{readDate(rsvp.date)}</p>
-      </div>
-      <div className="c-rsvp-item__actions">
-        <button
-          className="c-rsvp-item__dismiss qa-dismiss-rsvp"
-          onClick={handleClick}
-        >
-          <i className={icon} />
-        </button>
-      </div>
-    </div>
+    <Item
+      local={{
+        buttons,
+        item: rsvp,
+        notification: fragment,
+        refresh: rsvpGetList
+      }}
+    />
   );
 
 };
 
-Item.propList = ["data.user", "local"];
+WrapItem.propList = ["data.user", "local"];
 
-Item.injected = { jsx: { Link } };
+WrapItem.injected = {
+  jsx: {
+    Item,
+    Link
+  }
+};
 
 //exports
 
-module.exports = Item;
+module.exports = WrapItem;
