@@ -164,30 +164,10 @@ const renderChart = (counts, labels) => {
 
 };
 
-//scroll info
-
-const scrollInfo = () => {
-
-  const DOMView = select(".js-scroll-view");
-
-  const view = DOMView.rect().height;
-  const content = DOMView.scrollHeight;
-  const top = DOMView.scrollTop;
-
-  return {
-    view,
-    content,
-    top,
-    bottom: content - view - top
-  };
-
-};
-
 //exports
 
 module.exports = {
   chartColor,
   getVotes,
-  renderChart,
-  scrollInfo
+  renderChart
 };

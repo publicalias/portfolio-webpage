@@ -6,13 +6,14 @@ const ListBody = require("./list-body");
 const ListMenu = require("./list-menu");
 
 const { getListParams } = require("../../../app-logic");
-const { scrollInfo } = require("../../../view-logic");
+
+//global imports
+
+const { useInfiniteScroll } = require("redux/client-utils");
 
 //node modules
 
 const React = require("react");
-
-const { useLayoutEffect, useRef } = React;
 
 //list
 
@@ -20,54 +21,20 @@ const List = (props) => {
 
   const { actions: { listClearState, metaGetPollList }, data: { polls }, location } = props;
 
-  const { jsx: { ListBody, ListMenu }, lib: { scrollInfo, useRef } } = List.injected;
+  const { jsx: { ListBody, ListMenu }, lib: { useInfiniteScroll } } = List.injected;
 
   //utilities
 
-  const scrollRef = useRef();
+  const fetch = (length) => metaGetPollList(getListParams(location), length);
 
-  const resetList = async () => {
-
-    listClearState();
-
-    const { polls } = await metaGetPollList(getListParams(location));
-
-    scrollRef.current = {
-      end: polls.length < 100,
-      pending: false
-    };
-
-  };
-
-  //events
-
-  const handleScroll = async () => {
-
-    const { current: { end, pending } } = scrollRef;
-
-    const { view, bottom } = scrollInfo();
-
-    if (bottom > view * 3 || end || pending) {
-      return;
-    }
-
-    scrollRef.current.pending = true;
-
-    const res = await metaGetPollList(getListParams(location), polls.length);
-
-    if (res.polls.length - polls.length < 100) {
-      scrollRef.current.end = true;
-    }
-
-    scrollRef.current.pending = false;
-
-  };
-
-  //lifecycle
-
-  useLayoutEffect(() => {
-    resetList(); //async
-  }, [location.search]);
+  const { handleScroll } = useInfiniteScroll(
+    location.search,
+    polls,
+    "polls",
+    100,
+    listClearState,
+    fetch
+  );
 
   //render
 
@@ -87,10 +54,7 @@ List.injected = {
     ListBody,
     ListMenu
   },
-  lib: {
-    scrollInfo,
-    useRef
-  }
+  lib: { useInfiniteScroll }
 };
 
 //exports

@@ -5,11 +5,11 @@ exports[`list body should match snapshot (authenticated) 1`] = `
   className="c-list-body"
 >
   <div
-    className="c-list-body__scroll-view js-scroll-view qa-scroll-view"
-    onScroll={[MockFunction]}
+    className="c-list-body__scroll-view js-infinite-scroll qa-infinite-scroll"
+    onScroll={[Function]}
   >
     <table
-      className="c-list-body__table js-scroll-content"
+      className="c-list-body__table"
     >
       <thead>
         <tr>
@@ -59,11 +59,11 @@ exports[`list body should match snapshot (default) 1`] = `
   className="c-list-body"
 >
   <div
-    className="c-list-body__scroll-view js-scroll-view qa-scroll-view"
-    onScroll={[MockFunction]}
+    className="c-list-body__scroll-view js-infinite-scroll qa-infinite-scroll"
+    onScroll={[Function]}
   >
     <table
-      className="c-list-body__table js-scroll-content"
+      className="c-list-body__table"
     >
       <thead>
         <tr>
@@ -98,16 +98,16 @@ exports[`list body should match snapshot (default) 1`] = `
 </div>
 `;
 
-exports[`list body should match snapshot (polls) 1`] = `
+exports[`list body should match snapshot (list) 1`] = `
 <div
   className="c-list-body"
 >
   <div
-    className="c-list-body__scroll-view js-scroll-view qa-scroll-view"
-    onScroll={[MockFunction]}
+    className="c-list-body__scroll-view js-infinite-scroll qa-infinite-scroll"
+    onScroll={[Function]}
   >
     <table
-      className="c-list-body__table js-scroll-content"
+      className="c-list-body__table"
     >
       <thead>
         <tr>

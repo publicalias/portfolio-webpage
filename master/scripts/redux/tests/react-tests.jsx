@@ -36,21 +36,6 @@ const initTestEvent = (render, type, event) => async (qa, dataList, ...fnList) =
 
 };
 
-//init test ref
-
-const initTestRef = (Component, init) => {
-
-  const spied = {
-    ref: { current: init },
-    useRef: jest.fn(() => spied.ref)
-  };
-
-  Component.injected.lib.useRef = spied.useRef;
-
-  return spied;
-
-};
-
 //init test snapshot
 
 const initTestSnapshot = (render) => (data, local, other) => {
@@ -188,7 +173,6 @@ const withDataList = (render, dataList) => (...args) => {
 
 module.exports = {
   initTestEvent,
-  initTestRef,
   initTestSnapshot,
   initTestWrapper,
   reactTests,

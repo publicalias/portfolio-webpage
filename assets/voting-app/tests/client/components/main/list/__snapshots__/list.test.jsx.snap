@@ -146,7 +146,7 @@ exports[`list should match snapshot 1`] = `
     }
     local={
       Object {
-        "handleScroll": [Function],
+        "handleScroll": [MockFunction],
       }
     }
     location={Object {}}

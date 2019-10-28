@@ -9,11 +9,12 @@ const { testWrapper } = require("../../../test-helpers");
 //global imports
 
 const { newUser } = require("redux/schemas");
-const { initTestSnapshot, reactTests, withDataList } = require("redux/tests/react-tests");
+const { testMock } = require("redux/tests/meta-tests");
+const { initTestEvent, initTestSnapshot, reactTests, withDataList } = require("redux/tests/react-tests");
 
 //utilities
 
-const { testShallow } = testWrapper(ListBody);
+const { testMount, testShallow } = testWrapper(ListBody);
 
 //setup
 
@@ -24,12 +25,24 @@ beforeEach(reactTests.inject(ListBody));
 
 describe("list body", () => {
 
-  const testSnapshot = withDataList(initTestSnapshot(testShallow), [null, { handleScroll: jest.fn() }]);
+  const dataList = [null, { handleScroll: jest.fn() }];
+
+  const testSnapshot = withDataList(initTestSnapshot(testShallow), dataList);
+
+  const testScroll = initTestEvent(testMount, "scroll");
 
   it("should match snapshot (default)", () => testSnapshot());
 
   it("should match snapshot (authenticated)", () => testSnapshot({ user: newUser() }));
 
-  it("should match snapshot (polls)", () => testSnapshot({ polls: [{}] }));
+  it("should match snapshot (list)", () => testSnapshot({ polls: [{}] }));
+
+  it("should call handleScroll on scroll", () => testScroll(".qa-infinite-scroll", dataList, (props) => {
+
+    const { local: { handleScroll } } = props;
+
+    testMock(handleScroll, []);
+
+  }));
 
 });
