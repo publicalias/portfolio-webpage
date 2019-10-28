@@ -26,3 +26,13 @@ test("userSetSearch creates USER_SET_SEARCH actions", () => {
   });
 
 });
+
+//user toggle range
+
+test("userToggleRange creates USER_TOGGLE_RANGE actions", () => {
+
+  const { userToggleRange } = actions;
+
+  expect(userToggleRange()).toEqual({ type: "USER_TOGGLE_RANGE" });
+
+});

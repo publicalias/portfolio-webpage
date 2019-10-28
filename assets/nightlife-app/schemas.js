@@ -191,10 +191,19 @@ const newState = initSchema({
 
   //view
 
-  users: { list: { search: "" } },
+  users: {
+    list: {
+      range: false,
+      search: ""
+    }
+  },
 
   venues: {
-    list: { search: "" },
+    list: {
+      range: false,
+      search: "",
+      sort: false
+    },
     page: {
       form: false,
       time: "",

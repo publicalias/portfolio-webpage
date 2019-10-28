@@ -68,3 +68,37 @@ test("reducer accepts VENUE_TOGGLE_FORM actions", () => {
   testReducer(venueToggleForm(), null, { venues: { page: { form: true } } });
 
 });
+
+//venue toggle range
+
+test("reducer accepts VENUE_TOGGLE_RANGE actions", () => {
+
+  const { venueToggleRange } = actions;
+
+  testReducer(venueToggleRange(), { venues: { list: { sort: true } } }, {
+    venues: {
+      list: {
+        range: true,
+        sort: false
+      }
+    }
+  });
+
+});
+
+//venue toggle sort
+
+test("reducer accepts VENUE_TOGGLE_SORT actions", () => {
+
+  const { venueToggleSort } = actions;
+
+  testReducer(venueToggleSort(), { venues: { list: { range: true } } }, {
+    venues: {
+      list: {
+        range: false,
+        sort: true
+      }
+    }
+  });
+
+});

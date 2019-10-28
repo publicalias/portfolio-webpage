@@ -19,9 +19,14 @@ const USER_CLEAR_STATE = (state) => deepCopy(state, {
 
 const USER_SET_SEARCH = (state, { search }) => deepCopy(state, { users: { list: { search } } });
 
+//user toggle range
+
+const USER_TOGGLE_RANGE = (state) => deepCopy(state, { users: { list: { range: !state.users.list.range } } });
+
 //exports
 
 module.exports = {
   USER_CLEAR_STATE,
-  USER_SET_SEARCH
+  USER_SET_SEARCH,
+  USER_TOGGLE_RANGE
 };

@@ -29,6 +29,14 @@ const venueSetMessage = (message) => ({
 
 const venueToggleForm = () => ({ type: "VENUE_TOGGLE_FORM" });
 
+//venue toggle range
+
+const venueToggleRange = () => ({ type: "VENUE_TOGGLE_RANGE" });
+
+//venue toggle sort
+
+const venueToggleSort = () => ({ type: "VENUE_TOGGLE_SORT" });
+
 //exports
 
 module.exports = {
@@ -36,5 +44,7 @@ module.exports = {
   venueSetSearch,
   venueSetTime,
   venueSetMessage,
-  venueToggleForm
+  venueToggleForm,
+  venueToggleRange,
+  venueToggleSort
 };

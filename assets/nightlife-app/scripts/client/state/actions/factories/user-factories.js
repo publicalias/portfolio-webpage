@@ -11,9 +11,14 @@ const userSetSearch = (search) => ({
   search
 });
 
+//user toggle range
+
+const userToggleRange = () => ({ type: "USER_TOGGLE_RANGE" });
+
 //exports
 
 module.exports = {
   userClearState,
-  userSetSearch
+  userSetSearch,
+  userToggleRange
 };

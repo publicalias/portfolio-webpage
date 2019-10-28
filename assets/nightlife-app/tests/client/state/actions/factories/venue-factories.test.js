@@ -62,3 +62,23 @@ test("venueToggleForm creates VENUE_TOGGLE_FORM actions", () => {
   expect(venueToggleForm()).toEqual({ type: "VENUE_TOGGLE_FORM" });
 
 });
+
+//venue toggle range
+
+test("venueToggleRange creates VENUE_TOGGLE_RANGE actions", () => {
+
+  const { venueToggleRange } = actions;
+
+  expect(venueToggleRange()).toEqual({ type: "VENUE_TOGGLE_RANGE" });
+
+});
+
+//venue toggle sort
+
+test("venueToggleSort creates VENUE_TOGGLE_SORT actions", () => {
+
+  const { venueToggleSort } = actions;
+
+  expect(venueToggleSort()).toEqual({ type: "VENUE_TOGGLE_SORT" });
+
+});

@@ -31,6 +31,28 @@ const VENUE_SET_MESSAGE = (state, { message }) => deepCopy(state, { venues: { pa
 
 const VENUE_TOGGLE_FORM = (state) => deepCopy(state, { venues: { page: { form: !state.venues.page.form } } });
 
+//venue toggle range
+
+const VENUE_TOGGLE_RANGE = (state) => deepCopy(state, {
+  venues: {
+    list: {
+      range: !state.venues.list.range,
+      sort: false
+    }
+  }
+});
+
+//venue toggle sort
+
+const VENUE_TOGGLE_SORT = (state) => deepCopy(state, {
+  venues: {
+    list: {
+      range: false,
+      sort: !state.venues.list.sort
+    }
+  }
+});
+
 //exports
 
 module.exports = {
@@ -38,5 +60,7 @@ module.exports = {
   VENUE_SET_SEARCH,
   VENUE_SET_TIME,
   VENUE_SET_MESSAGE,
-  VENUE_TOGGLE_FORM
+  VENUE_TOGGLE_FORM,
+  VENUE_TOGGLE_RANGE,
+  VENUE_TOGGLE_SORT
 };

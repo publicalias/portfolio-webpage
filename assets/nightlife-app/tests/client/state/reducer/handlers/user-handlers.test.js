@@ -31,3 +31,13 @@ test("reducer accepts USER_SET_SEARCH actions", () => {
   testReducer(userSetSearch("User A"), null, { users: { list: { search: "User A" } } });
 
 });
+
+//user toggle range
+
+test("reducer accepts USER_TOGGLE_RANGE actions", () => {
+
+  const { userToggleRange } = actions;
+
+  testReducer(userToggleRange(), null, { users: { list: { range: true } } });
+
+});
