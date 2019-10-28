@@ -47,6 +47,10 @@ const newGeoPoint = initSchema({
 const newListParamsUsers = initSchema({
   range: 5,
   search: ""
+}, {
+  range(val) {
+    return Number(val);
+  }
 });
 
 //new list params venues
@@ -55,6 +59,10 @@ const newListParamsVenues = initSchema({
   range: 5,
   search: "",
   sort: "best_match"
+}, {
+  range(val) {
+    return Number(val);
+  }
 });
 
 //new rsvp
@@ -177,21 +185,15 @@ const newState = initSchema({
   errors: [],
   loading: false,
 
-  //data
-
-  data: {
-    users: [],
-    venues: []
-  },
+  //view
 
   notifications: {
     friends: [],
     rsvps: []
   },
 
-  //view
-
   users: {
+    data: [],
     list: {
       range: false,
       search: ""
@@ -199,6 +201,7 @@ const newState = initSchema({
   },
 
   venues: {
+    data: [],
     list: {
       range: false,
       search: "",
@@ -224,10 +227,9 @@ const newState = initSchema({
     rsvps: listReplacer(newRSVP)
   },
 
-  page: {
-    users: listReplacer(newUserData),
-    venues: listReplacer(newVenue)
-  }
+  users: { data: listReplacer(newUserData) },
+
+  venues: { data: listReplacer(newVenue) }
 
 });
 

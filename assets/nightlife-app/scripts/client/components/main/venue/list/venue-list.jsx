@@ -19,7 +19,7 @@ const React = require("react");
 
 const VenueList = (props) => {
 
-  const { actions: { venueClearState, venueGetList }, data: { user, data }, location } = props;
+  const { actions: { venueClearState, venueGetList }, data: { user, venues }, location } = props;
 
   const {
     jsx: { VenueBody, VenueMenu },
@@ -28,12 +28,12 @@ const VenueList = (props) => {
 
   //utilities
 
-  const fetch = (length) => venueGetList(getVenueParams(location), length, getLocation(user));
+  const fetch = async (length) => venueGetList(getVenueParams(location), length, await getLocation(user));
 
   const { handleScroll } = useInfiniteScroll(
     location.search,
-    data.venues,
-    "data.venues",
+    venues.data,
+    "venues.data",
     50,
     venueClearState,
     fetch
@@ -50,7 +50,7 @@ const VenueList = (props) => {
 
 };
 
-VenueList.propList = ["data.user", "data.data", "location"];
+VenueList.propList = ["data.user", "data.venues", "location"];
 
 VenueList.injected = {
   jsx: {

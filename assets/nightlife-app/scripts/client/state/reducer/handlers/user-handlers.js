@@ -10,10 +10,7 @@ const { deepCopy } = require("all/utilities");
 
 //user clear state
 
-const USER_CLEAR_STATE = (state) => deepCopy(state, {
-  data: { users: [] },
-  users: newState().users
-});
+const USER_CLEAR_STATE = (state) => deepCopy(state, { users: newState().users });
 
 //user set search
 

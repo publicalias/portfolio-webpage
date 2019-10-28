@@ -34,6 +34,7 @@ exports[`venue list should match snapshot 1`] = `
         "userGetList": [MockFunction],
         "userSetSearch": [MockFunction],
         "userToggleBlock": [MockFunction],
+        "userToggleRange": [MockFunction],
         "venueClearState": [MockFunction],
         "venueGetItem": [MockFunction],
         "venueGetList": [MockFunction],
@@ -41,6 +42,8 @@ exports[`venue list should match snapshot 1`] = `
         "venueSetSearch": [MockFunction],
         "venueSetTime": [MockFunction],
         "venueToggleForm": [MockFunction],
+        "venueToggleRange": [MockFunction],
+        "venueToggleSort": [MockFunction],
       }
     }
     data={
@@ -51,10 +54,6 @@ exports[`venue list should match snapshot 1`] = `
           "delete": false,
           "settings": false,
         },
-        "data": Object {
-          "users": Array [],
-          "venues": Array [],
-        },
         "errors": Array [],
         "loading": false,
         "notifications": Object {
@@ -63,13 +62,18 @@ exports[`venue list should match snapshot 1`] = `
         },
         "user": Object {},
         "users": Object {
+          "data": Array [],
           "list": Object {
+            "range": false,
             "search": "",
           },
         },
         "venues": Object {
+          "data": Array [],
           "list": Object {
+            "range": false,
             "search": "",
+            "sort": false,
           },
           "page": Object {
             "form": false,
@@ -120,6 +124,7 @@ exports[`venue list should match snapshot 1`] = `
         "userGetList": [MockFunction],
         "userSetSearch": [MockFunction],
         "userToggleBlock": [MockFunction],
+        "userToggleRange": [MockFunction],
         "venueClearState": [MockFunction],
         "venueGetItem": [MockFunction],
         "venueGetList": [MockFunction],
@@ -127,6 +132,8 @@ exports[`venue list should match snapshot 1`] = `
         "venueSetSearch": [MockFunction],
         "venueSetTime": [MockFunction],
         "venueToggleForm": [MockFunction],
+        "venueToggleRange": [MockFunction],
+        "venueToggleSort": [MockFunction],
       }
     }
     data={
@@ -137,10 +144,6 @@ exports[`venue list should match snapshot 1`] = `
           "delete": false,
           "settings": false,
         },
-        "data": Object {
-          "users": Array [],
-          "venues": Array [],
-        },
         "errors": Array [],
         "loading": false,
         "notifications": Object {
@@ -149,13 +152,18 @@ exports[`venue list should match snapshot 1`] = `
         },
         "user": Object {},
         "users": Object {
+          "data": Array [],
           "list": Object {
+            "range": false,
             "search": "",
           },
         },
         "venues": Object {
+          "data": Array [],
           "list": Object {
+            "range": false,
             "search": "",
+            "sort": false,
           },
           "page": Object {
             "form": false,

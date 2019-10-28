@@ -36,6 +36,7 @@ exports[`ui should match snapshot (authenticated) 1`] = `
         "userGetList": [MockFunction],
         "userSetSearch": [MockFunction],
         "userToggleBlock": [MockFunction],
+        "userToggleRange": [MockFunction],
         "venueClearState": [MockFunction],
         "venueGetItem": [MockFunction],
         "venueGetList": [MockFunction],
@@ -43,6 +44,8 @@ exports[`ui should match snapshot (authenticated) 1`] = `
         "venueSetSearch": [MockFunction],
         "venueSetTime": [MockFunction],
         "venueToggleForm": [MockFunction],
+        "venueToggleRange": [MockFunction],
+        "venueToggleSort": [MockFunction],
       }
     }
     data={
@@ -52,10 +55,6 @@ exports[`ui should match snapshot (authenticated) 1`] = `
           "avatar": "",
           "delete": false,
           "settings": false,
-        },
-        "data": Object {
-          "users": Array [],
-          "venues": Array [],
         },
         "errors": Array [],
         "loading": false,
@@ -84,13 +83,18 @@ exports[`ui should match snapshot (authenticated) 1`] = `
           "type": "auth",
         },
         "users": Object {
+          "data": Array [],
           "list": Object {
+            "range": false,
             "search": "",
           },
         },
         "venues": Object {
+          "data": Array [],
           "list": Object {
+            "range": false,
             "search": "",
+            "sort": false,
           },
           "page": Object {
             "form": false,
@@ -162,6 +166,7 @@ exports[`ui should match snapshot (authenticated) 1`] = `
         "userGetList": [MockFunction],
         "userSetSearch": [MockFunction],
         "userToggleBlock": [MockFunction],
+        "userToggleRange": [MockFunction],
         "venueClearState": [MockFunction],
         "venueGetItem": [MockFunction],
         "venueGetList": [MockFunction],
@@ -169,6 +174,8 @@ exports[`ui should match snapshot (authenticated) 1`] = `
         "venueSetSearch": [MockFunction],
         "venueSetTime": [MockFunction],
         "venueToggleForm": [MockFunction],
+        "venueToggleRange": [MockFunction],
+        "venueToggleSort": [MockFunction],
       }
     }
     data={
@@ -178,10 +185,6 @@ exports[`ui should match snapshot (authenticated) 1`] = `
           "avatar": "",
           "delete": false,
           "settings": false,
-        },
-        "data": Object {
-          "users": Array [],
-          "venues": Array [],
         },
         "errors": Array [],
         "loading": false,
@@ -210,13 +213,18 @@ exports[`ui should match snapshot (authenticated) 1`] = `
           "type": "auth",
         },
         "users": Object {
+          "data": Array [],
           "list": Object {
+            "range": false,
             "search": "",
           },
         },
         "venues": Object {
+          "data": Array [],
           "list": Object {
+            "range": false,
             "search": "",
+            "sort": false,
           },
           "page": Object {
             "form": false,
@@ -267,6 +275,7 @@ exports[`ui should match snapshot (authenticated) 1`] = `
         "userGetList": [MockFunction],
         "userSetSearch": [MockFunction],
         "userToggleBlock": [MockFunction],
+        "userToggleRange": [MockFunction],
         "venueClearState": [MockFunction],
         "venueGetItem": [MockFunction],
         "venueGetList": [MockFunction],
@@ -274,6 +283,8 @@ exports[`ui should match snapshot (authenticated) 1`] = `
         "venueSetSearch": [MockFunction],
         "venueSetTime": [MockFunction],
         "venueToggleForm": [MockFunction],
+        "venueToggleRange": [MockFunction],
+        "venueToggleSort": [MockFunction],
       }
     }
     data={
@@ -283,10 +294,6 @@ exports[`ui should match snapshot (authenticated) 1`] = `
           "avatar": "",
           "delete": false,
           "settings": false,
-        },
-        "data": Object {
-          "users": Array [],
-          "venues": Array [],
         },
         "errors": Array [],
         "loading": false,
@@ -315,13 +322,18 @@ exports[`ui should match snapshot (authenticated) 1`] = `
           "type": "auth",
         },
         "users": Object {
+          "data": Array [],
           "list": Object {
+            "range": false,
             "search": "",
           },
         },
         "venues": Object {
+          "data": Array [],
           "list": Object {
+            "range": false,
             "search": "",
+            "sort": false,
           },
           "page": Object {
             "form": false,
@@ -379,6 +391,7 @@ exports[`ui should match snapshot (default) 1`] = `
         "userGetList": [MockFunction],
         "userSetSearch": [MockFunction],
         "userToggleBlock": [MockFunction],
+        "userToggleRange": [MockFunction],
         "venueClearState": [MockFunction],
         "venueGetItem": [MockFunction],
         "venueGetList": [MockFunction],
@@ -386,6 +399,8 @@ exports[`ui should match snapshot (default) 1`] = `
         "venueSetSearch": [MockFunction],
         "venueSetTime": [MockFunction],
         "venueToggleForm": [MockFunction],
+        "venueToggleRange": [MockFunction],
+        "venueToggleSort": [MockFunction],
       }
     }
     data={
@@ -396,10 +411,6 @@ exports[`ui should match snapshot (default) 1`] = `
           "delete": false,
           "settings": false,
         },
-        "data": Object {
-          "users": Array [],
-          "venues": Array [],
-        },
         "errors": Array [],
         "loading": false,
         "notifications": Object {
@@ -408,13 +419,18 @@ exports[`ui should match snapshot (default) 1`] = `
         },
         "user": Object {},
         "users": Object {
+          "data": Array [],
           "list": Object {
+            "range": false,
             "search": "",
           },
         },
         "venues": Object {
+          "data": Array [],
           "list": Object {
+            "range": false,
             "search": "",
+            "sort": false,
           },
           "page": Object {
             "form": false,

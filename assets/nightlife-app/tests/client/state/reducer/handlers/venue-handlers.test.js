@@ -13,8 +13,8 @@ test("reducer accepts VENUE_CLEAR_STATE actions", () => {
   const { venueClearState } = actions;
 
   testReducer(venueClearState(), {
-    data: { venues: [{}] },
     venues: {
+      data: [{}],
       list: { search: "Coffee" },
       view: {
         form: true,
@@ -23,7 +23,6 @@ test("reducer accepts VENUE_CLEAR_STATE actions", () => {
       }
     }
   }, {
-    data: { venues: [] },
     venues: newState().venues
   });
 

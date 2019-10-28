@@ -10,10 +10,7 @@ const { deepCopy } = require("all/utilities");
 
 //venue clear state
 
-const VENUE_CLEAR_STATE = (state) => deepCopy(state, {
-  data: { venues: [] },
-  venues: newState().venues
-});
+const VENUE_CLEAR_STATE = (state) => deepCopy(state, { venues: newState().venues });
 
 //venue set search
 

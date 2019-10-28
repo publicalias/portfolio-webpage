@@ -57,7 +57,7 @@ describe("venueGetItem (no data)", () => {
     const res = await mockAPICall({}, data);
 
     testMock(handler, args);
-    testMock(res.json, [{ data: { venues: [] } }]);
+    testMock(res.json, [{ venues: { data: [] } }]);
 
   };
 
@@ -156,7 +156,7 @@ describe("venueGetList (no data)", () => {
     const res = await mockAPICall({}, data);
 
     testMock(handler, args);
-    testMock(res.json, [{ data: { venues: [] } }]);
+    testMock(res.json, [{ venues: { data: [] } }]);
 
   };
 
@@ -198,7 +198,7 @@ describe("venueGetList (data, length)", () => {
     const venues = Array(length).concat(data.map(newVenue));
 
     testMock(handler, [null, newYelpParams({ offset: length })]);
-    testMock(res.json, [{ data: { venues } }]);
+    testMock(res.json, [{ venues: { data: venues } }]);
 
   };
 
@@ -229,7 +229,7 @@ describe("venueGetList (data, params)", () => {
     const venues = data.map((e) => newVenue(e, distance));
 
     testMock(handler, [null, newYelpParams(output, coordinates)]);
-    testMock(res.json, [{ data: { venues } }]);
+    testMock(res.json, [{ venues: { data: venues } }]);
 
   };
 
