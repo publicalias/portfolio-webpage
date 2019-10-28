@@ -19,7 +19,7 @@ const testSnapshot = initTestSnapshot(testShallow);
 //setup
 
 beforeAll(reactTests.setup);
-beforeEach(reactTests.inject(VenueList));
+beforeEach(reactTests.inject(VenueList, { lib: { useInfiniteScroll: jest.fn(() => ({ handleScroll: jest.fn() })) } }));
 
 //venue list
 
