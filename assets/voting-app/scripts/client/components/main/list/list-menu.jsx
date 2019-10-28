@@ -22,44 +22,31 @@ const ListMenu = (props) => {
 
   //events
 
-  const handleSortNew = () => {
-    history.push(`/list${setListParams(location, "sort", "new")}`);
+  const handleChange = (event) => {
+    listSetSearch(event.target.value);
   };
 
-  const handleSortPopular = () => {
-    history.push(`/list${setListParams(location, "sort", "popular")}`);
+  const handleSearch = (key, val) => () => {
+    history.push(`/list${setListParams(location, key, val)}`);
   };
 
   //render
 
-  const local = {
-
-    handleChange(event) {
-      listSetSearch(event.target.value);
-    },
-
-    handleClear() {
-      history.push(`/list${setListParams(location, "search", "")}`);
-    },
-
-    handleSubmit() {
-      history.push(`/list${setListParams(location, "search", list.search)}`);
-    },
-
-    value: list.search
-
-  };
-
   return (
     <div className="c-list-menu">
       <div className="c-list-menu__search">
-        <SearchBar local={local} />
+        <SearchBar
+          local={{
+            handleChange,
+            handleClear: handleSearch("search", ""),
+            handleSubmit: handleSearch("search", list.search),
+            value: list.search
+          }}
+        />
       </div>
       <div className="c-list-menu__sort">
-        <button className="qa-sort-new u-hover" onClick={handleSortNew}>New</button>
-      </div>
-      <div className="c-list-menu__sort u-margin-none">
-        <button className="qa-sort-popular u-hover" onClick={handleSortPopular}>Popular</button>
+        <button className="qa-sort-new" onClick={handleSearch("sort", "new")}>New</button>
+        <button className="qa-sort-popular" onClick={handleSearch("sort", "popular")}>Popular</button>
       </div>
     </div>
   );

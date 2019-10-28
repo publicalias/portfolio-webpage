@@ -38,7 +38,7 @@ describe("poll input (form)", () => {
 
   const testClick = initTestEvent(testFormMount, "click");
 
-  it("should match snapshot", () => testForm({ form: { add: "Option A" } }));
+  it("should match snapshot", () => testForm());
 
   it("should call formSetAdd on change", () => testChange(testFormMount, "formSetAdd"));
 

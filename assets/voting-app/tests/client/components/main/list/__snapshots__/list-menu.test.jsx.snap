@@ -22,17 +22,13 @@ exports[`list menu should match snapshot 1`] = `
     className="c-list-menu__sort"
   >
     <button
-      className="qa-sort-new u-hover"
+      className="qa-sort-new"
       onClick={[Function]}
     >
       New
     </button>
-  </div>
-  <div
-    className="c-list-menu__sort u-margin-none"
-  >
     <button
-      className="qa-sort-popular u-hover"
+      className="qa-sort-popular"
       onClick={[Function]}
     >
       Popular

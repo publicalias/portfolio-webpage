@@ -67,10 +67,10 @@ const UI = (props) => {
         path="/"
         render={() => <VenueList {...props} />}
       />
-      <Route path="/user/list" render={() => <UserList {...props} />} />
-      <Route path="/user/page/:id" render={({ match }) => <UserPage {...props} local={{ id: match.params.id }} />} />
-      <Route path="/venue/list" render={() => <VenueList {...props} />} />
-      <Route path="/venue/page/:id" render={({ match }) => <VenuePage {...props} local={{ id: match.params.id }} />} />
+      <Route path="/users/list" render={() => <UserList {...props} />} />
+      <Route path="/users/page/:id" render={({ match }) => <UserPage {...props} local={{ id: match.params.id }} />} />
+      <Route path="/venues/list" render={() => <VenueList {...props} />} />
+      <Route path="/venues/page/:id" render={({ match }) => <VenuePage {...props} local={{ id: match.params.id }} />} />
       {auth && <RSVPList {...props} />}
       {auth && <FriendList {...props} />}
     </div>

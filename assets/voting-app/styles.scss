@@ -58,7 +58,11 @@
     margin-right: 3vw;
   }
 
-  &__sort { margin-right: 1.5vw; }
+  &__sort {
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 1.5vw;
+  }
 
 }
 

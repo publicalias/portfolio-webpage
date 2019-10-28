@@ -7,11 +7,7 @@ const { newGeoPoint, newListParamsVenues } = require("../../schemas");
 //global imports
 
 const { get } = require("all/utilities");
-const { getSearchParams } = require("redux/client-utils");
-
-//get venue params
-
-const getVenueParams = (location) => getSearchParams(newListParamsVenues, location);
+const { getSearchParams, setSearchParams } = require("redux/client-utils");
 
 //get location
 
@@ -29,9 +25,18 @@ const getLocation = (user) => get(user, "data.address")
     });
   });
 
+//get venue params
+
+const getVenueParams = (location) => getSearchParams(newListParamsVenues, location);
+
+//set venue params
+
+const setVenueParams = setSearchParams;
+
 //exports
 
 module.exports = {
   getLocation,
-  getVenueParams
+  getVenueParams,
+  setVenueParams
 };

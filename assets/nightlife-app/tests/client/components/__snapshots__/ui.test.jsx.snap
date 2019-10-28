@@ -119,19 +119,19 @@ exports[`ui should match snapshot (authenticated) 1`] = `
     render={[Function]}
   />
   <Route
-    path="/user/list"
+    path="/users/list"
     render={[Function]}
   />
   <Route
-    path="/user/page/:id"
+    path="/users/page/:id"
     render={[Function]}
   />
   <Route
-    path="/venue/list"
+    path="/venues/list"
     render={[Function]}
   />
   <Route
-    path="/venue/page/:id"
+    path="/venues/page/:id"
     render={[Function]}
   />
   <RSVPList
@@ -455,19 +455,19 @@ exports[`ui should match snapshot (default) 1`] = `
     render={[Function]}
   />
   <Route
-    path="/user/list"
+    path="/users/list"
     render={[Function]}
   />
   <Route
-    path="/user/page/:id"
+    path="/users/page/:id"
     render={[Function]}
   />
   <Route
-    path="/venue/list"
+    path="/venues/list"
     render={[Function]}
   />
   <Route
-    path="/venue/page/:id"
+    path="/venues/page/:id"
     render={[Function]}
   />
 </div>

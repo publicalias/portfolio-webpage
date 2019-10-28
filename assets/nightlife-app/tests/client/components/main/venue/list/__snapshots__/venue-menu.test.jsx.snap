@@ -1,3 +1,82 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`venue menu should match snapshot 1`] = `""`;
+exports[`venue menu should match snapshot 1`] = `
+<div
+  className="c-list-menu"
+>
+  <SearchBar
+    local={
+      Object {
+        "handleChange": [Function],
+        "handleClear": [Function],
+        "handleSubmit": [Function],
+        "value": "",
+      }
+    }
+  />
+  <MetaDropdown
+    local={
+      Object {
+        "bool": false,
+        "handleSelect": [Function],
+        "handleToggle": [MockFunction],
+        "list": Array [
+          Array [
+            "05",
+            "range",
+            "05",
+          ],
+          Array [
+            "10",
+            "range",
+            "10",
+          ],
+          Array [
+            "15",
+            "range",
+            "15",
+          ],
+          Array [
+            "20",
+            "range",
+            "20",
+          ],
+          Array [
+            "25",
+            "range",
+            "25",
+          ],
+        ],
+        "name": "Range",
+      }
+    }
+  />
+  <MetaDropdown
+    local={
+      Object {
+        "bool": false,
+        "handleSelect": [Function],
+        "handleToggle": [MockFunction],
+        "list": Array [
+          Array [
+            "Match",
+            "sort",
+            "best_match",
+          ],
+          Array [
+            "Distance",
+            "sort",
+            "distance",
+          ],
+          Array [
+            "Rating",
+            "sort",
+            "rating",
+          ],
+        ],
+        "name": "Sort By",
+      }
+    }
+  />
+</div>
+`;

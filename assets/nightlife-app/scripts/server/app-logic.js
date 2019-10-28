@@ -219,7 +219,7 @@ const findVenueItem = async (handler, user, id, location) => {
 const findVenueList = async (handler, params, length, location) => {
 
   const { range, search, sort } = params;
-  const { coordinates: [lat, lon] } = location;
+  const { coordinates: [lon, lat] } = location;
 
   const list = await handler(null, newYelpParams({
     latitude: lat,

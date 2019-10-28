@@ -121,10 +121,6 @@ const reactTests = {
 
       const w = overwrite[k] && overwrite[k][l];
 
-      if (w === "ignore") {
-        return;
-      }
-
       const special = {
         jsx: nameFn(() => null, l),
         lib: w && w.mockClear() //custom mocks are reused
