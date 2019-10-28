@@ -30,9 +30,7 @@ const ListBody = (props) => {
     <div className="c-list-body">
       <div
         className="c-list-body__scroll-view js-infinite-scroll qa-infinite-scroll"
-        onScroll={() => {
-          handleScroll();
-        }}
+        onScroll={handleScroll}
       >
         <table className="c-list-body__table">
           <thead>

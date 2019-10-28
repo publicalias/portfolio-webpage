@@ -14,7 +14,7 @@ const { initTestEvent, initTestSnapshot, reactTests, withDataList } = require("r
 
 //utilities
 
-const { testMount, testShallow } = testWrapper(ListBody);
+const { testShallow } = testWrapper(ListBody);
 
 //setup
 
@@ -29,7 +29,7 @@ describe("list body", () => {
 
   const testSnapshot = withDataList(initTestSnapshot(testShallow), dataList);
 
-  const testScroll = initTestEvent(testMount, "scroll");
+  const testScroll = initTestEvent(testShallow, "scroll", {});
 
   it("should match snapshot (default)", () => testSnapshot());
 
@@ -37,12 +37,14 @@ describe("list body", () => {
 
   it("should match snapshot (list)", () => testSnapshot({ polls: [{}] }));
 
-  it("should call handleScroll on scroll", () => testScroll(".qa-infinite-scroll", dataList, (props) => {
+  it("should call handleScroll on scroll", () => {
 
-    const { local: { handleScroll } } = props;
+    const handleScroll = jest.fn();
 
-    testMock(handleScroll, []);
+    return testScroll(".qa-infinite-scroll", [null, { handleScroll }], () => {
+      testMock(handleScroll, [{}]);
+    });
 
-  }));
+  });
 
 });

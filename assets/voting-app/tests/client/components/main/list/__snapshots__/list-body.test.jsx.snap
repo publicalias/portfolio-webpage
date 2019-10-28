@@ -6,7 +6,7 @@ exports[`list body should match snapshot (authenticated) 1`] = `
 >
   <div
     className="c-list-body__scroll-view js-infinite-scroll qa-infinite-scroll"
-    onScroll={[Function]}
+    onScroll={[MockFunction]}
   >
     <table
       className="c-list-body__table"
@@ -60,7 +60,7 @@ exports[`list body should match snapshot (default) 1`] = `
 >
   <div
     className="c-list-body__scroll-view js-infinite-scroll qa-infinite-scroll"
-    onScroll={[Function]}
+    onScroll={[MockFunction]}
   >
     <table
       className="c-list-body__table"
@@ -104,7 +104,7 @@ exports[`list body should match snapshot (list) 1`] = `
 >
   <div
     className="c-list-body__scroll-view js-infinite-scroll qa-infinite-scroll"
-    onScroll={[Function]}
+    onScroll={[MockFunction]}
   >
     <table
       className="c-list-body__table"
