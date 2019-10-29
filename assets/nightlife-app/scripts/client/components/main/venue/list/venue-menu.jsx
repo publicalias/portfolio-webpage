@@ -2,12 +2,11 @@
 
 //local imports
 
-const MetaDropdown = require("../../meta/meta-dropdown");
-
 const { setVenueParams } = require("../../../../app-logic");
 
 //global imports
 
+const Dropdown = require("all/components/dropdown");
 const SearchBar = require("all/components/search-bar");
 
 //node modules
@@ -25,7 +24,7 @@ const VenueMenu = (props) => {
     location
   } = props;
 
-  const { jsx: { MetaDropdown, SearchBar } } = VenueMenu.injected;
+  const { jsx: { Dropdown, SearchBar } } = VenueMenu.injected;
 
   //events
 
@@ -39,6 +38,25 @@ const VenueMenu = (props) => {
 
   //render
 
+  const initList = (list) => list.map(([text, key, val]) => ({
+    handleClick: handleSearch(key, val),
+    text
+  }));
+
+  const rangeList = initList([
+    ["5 Miles", "range", "5"],
+    ["10 Miles", "range", "10"],
+    ["15 Miles", "range", "15"],
+    ["20 Miles", "range", "20"],
+    ["25 Miles", "range", "25"]
+  ]);
+
+  const sortList = initList([
+    ["Match", "sort", "best_match"],
+    ["Distance", "sort", "distance"],
+    ["Rating", "sort", "rating"]
+  ]);
+
   return (
     <div className="c-list-menu">
       <SearchBar
@@ -49,32 +67,22 @@ const VenueMenu = (props) => {
           value: venues.list.search
         }}
       />
-      <MetaDropdown
+      <Dropdown
         local={{
-          bool: venues.list.range,
-          handleSelect: handleSearch,
           handleToggle: venueToggleRange,
-          list: [
-            ["05", "range", "05"],
-            ["10", "range", "10"],
-            ["15", "range", "15"],
-            ["20", "range", "20"],
-            ["25", "range", "25"]
-          ],
-          name: "Range"
+          list: rangeList,
+          name: "Range",
+          open: venues.list.range,
+          util: "u-dropdown-width"
         }}
       />
-      <MetaDropdown
+      <Dropdown
         local={{
-          bool: venues.list.sort,
-          handleSelect: handleSearch,
           handleToggle: venueToggleSort,
-          list: [
-            ["Match", "sort", "best_match"],
-            ["Distance", "sort", "distance"],
-            ["Rating", "sort", "rating"]
-          ],
-          name: "Sort By"
+          list: sortList,
+          name: "Sort By",
+          open: venues.list.sort,
+          util: "u-dropdown-width"
         }}
       />
     </div>
@@ -86,7 +94,7 @@ VenueMenu.propList = ["data.venues", "location"];
 
 VenueMenu.injected = {
   jsx: {
-    MetaDropdown,
+    Dropdown,
     SearchBar
   }
 };

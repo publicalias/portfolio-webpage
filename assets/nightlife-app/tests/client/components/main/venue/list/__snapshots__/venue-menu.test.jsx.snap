@@ -14,67 +14,59 @@ exports[`venue menu should match snapshot 1`] = `
       }
     }
   />
-  <MetaDropdown
+  <Dropdown
     local={
       Object {
-        "bool": false,
-        "handleSelect": [Function],
         "handleToggle": [MockFunction],
         "list": Array [
-          Array [
-            "05",
-            "range",
-            "05",
-          ],
-          Array [
-            "10",
-            "range",
-            "10",
-          ],
-          Array [
-            "15",
-            "range",
-            "15",
-          ],
-          Array [
-            "20",
-            "range",
-            "20",
-          ],
-          Array [
-            "25",
-            "range",
-            "25",
-          ],
+          Object {
+            "handleClick": [Function],
+            "text": "5 Miles",
+          },
+          Object {
+            "handleClick": [Function],
+            "text": "10 Miles",
+          },
+          Object {
+            "handleClick": [Function],
+            "text": "15 Miles",
+          },
+          Object {
+            "handleClick": [Function],
+            "text": "20 Miles",
+          },
+          Object {
+            "handleClick": [Function],
+            "text": "25 Miles",
+          },
         ],
         "name": "Range",
+        "open": false,
+        "util": "u-dropdown-width",
       }
     }
   />
-  <MetaDropdown
+  <Dropdown
     local={
       Object {
-        "bool": false,
-        "handleSelect": [Function],
         "handleToggle": [MockFunction],
         "list": Array [
-          Array [
-            "Match",
-            "sort",
-            "best_match",
-          ],
-          Array [
-            "Distance",
-            "sort",
-            "distance",
-          ],
-          Array [
-            "Rating",
-            "sort",
-            "rating",
-          ],
+          Object {
+            "handleClick": [Function],
+            "text": "Match",
+          },
+          Object {
+            "handleClick": [Function],
+            "text": "Distance",
+          },
+          Object {
+            "handleClick": [Function],
+            "text": "Rating",
+          },
         ],
         "name": "Sort By",
+        "open": false,
+        "util": "u-dropdown-width",
       }
     }
   />

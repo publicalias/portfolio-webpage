@@ -1,26 +1,9 @@
 @import "redux/styles";
 
+@import "all/components/dropdown";
 @import "all/components/search-bar";
 
 //components
-
-.c-dropdown {
-
-  &__item {
-    margin-top: 1.5vw;
-    width: 100%;
-  }
-
-  &__list {
-    position: absolute;
-    width: 100%;
-  }
-
-  &__toggle { width: 100%; }
-
-  &__wrapper { position: relative; }
-
-}
 
 .c-list-menu {
   @include grid-item(1, 5, 2, 13);
@@ -93,3 +76,7 @@
   }
 
 }
+
+//utilities
+
+.u-dropdown-width { width: 9vw; }

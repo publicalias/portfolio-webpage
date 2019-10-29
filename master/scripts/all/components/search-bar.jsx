@@ -28,20 +28,20 @@ const SearchBar = (props) => {
   return (
     <div className="c-search-bar js-set-outline">
       <input
-        className="c-search-bar__input js-get-outline qa-search-input"
+        className="c-search-bar__input js-get-outline"
         maxLength="100"
         onChange={handleChange}
         placeholder="Search"
         value={value}
       />
       <button
-        className="c-search-bar__submit js-get-outline qa-search-submit u-no-hover"
+        className="c-search-bar__submit js-get-outline u-no-hover"
         onClick={handleSubmit}
       >
         <i className="fas fa-search" />
       </button>
       <button
-        className="c-search-bar__clear js-get-outline qa-search-clear u-no-hover"
+        className="c-search-bar__clear js-get-outline u-no-hover"
         onClick={handleClear}
       >
         <i className="fas fa-times" />
