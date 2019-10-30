@@ -26,7 +26,8 @@ const userGetList = (params, length, location) => (dispatch) => reduxAPICall(dis
     location
   }
 }, {
-  array: false
+  ignoreNull: true,
+  overwriteArray: false
 });
 
 //user toggle block

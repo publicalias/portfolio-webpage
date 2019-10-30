@@ -26,7 +26,8 @@ const venueGetList = (params, length, location) => (dispatch) => reduxAPICall(di
     location
   }
 }, {
-  array: false
+  ignoreNull: true,
+  overwriteArray: false
 });
 
 //exports

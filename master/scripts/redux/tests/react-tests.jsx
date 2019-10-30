@@ -158,7 +158,7 @@ const reactTests = {
 
 const withDataList = (render, dataList) => (...args) => {
 
-  const deepCopy = initDeepCopy({ array: false });
+  const deepCopy = initDeepCopy({ overwriteArray: false });
   const fullDataList = deepCopy(dataList, args.map((e) => e === null ? {} : e));
 
   return render(...fullDataList);

@@ -20,7 +20,7 @@ const React = require("react");
 
 const { testMount, testShallow } = testWrapper(MetaItem);
 
-const deepCopy = initDeepCopy({ array: false });
+const deepCopy = initDeepCopy({ overwriteArray: false });
 
 //setup
 

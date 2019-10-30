@@ -40,7 +40,8 @@ describe("venueGetList", () => {
       location: null
     }
   }, {
-    array: false
+    ignoreNull: true,
+    overwriteArray: false
   });
 
 });

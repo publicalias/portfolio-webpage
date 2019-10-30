@@ -61,14 +61,25 @@ const initDeepCopy = (config) => (...args) => {
 
   const isObject = (val) => val && typeof val === "object";
 
-  const overwrite = (val) => {
+  const ignore = (val) => {
 
-    const { array, object } = Object.assign({
-      array: true,
-      object: false
+    const { ignoreNull, ignoreUndefined } = Object.assign({
+      ignoreNull: false,
+      ignoreUndefined: false
     }, config);
 
-    return Array.isArray(val) ? array : object;
+    return val === null && ignoreNull || val === undefined && ignoreUndefined;
+
+  };
+
+  const overwrite = (val) => {
+
+    const { overwriteArray, overwriteObject } = Object.assign({
+      overwriteArray: true,
+      overwriteObject: false
+    }, config);
+
+    return Array.isArray(val) ? overwriteArray : overwriteObject;
 
   };
 
@@ -77,6 +88,10 @@ const initDeepCopy = (config) => (...args) => {
   const mergeFn = (to, from) => {
 
     for (const [key, val] of Object.entries(from)) {
+
+      if (ignore(val)) {
+        continue;
+      }
 
       if (!isObject(val)) {
 
