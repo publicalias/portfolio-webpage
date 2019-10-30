@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`meta list body should match snapshot (default) 1`] = `
+<div
+  className="c-list-body"
+>
+  <div />
+  <hr />
+  <div
+    className="c-list-body__head u-margin-full"
+  >
+    <h4
+      className="u-photo-width"
+    >
+      Photo
+    </h4>
+    <h4>
+      Description
+    </h4>
+  </div>
+  <div
+    className="c-list-body__body js-infinite-scroll qa-infinite-scroll"
+    onScroll={[MockFunction]}
+  >
+    <div
+      className="c-list-body__content"
+    >
+      <div>
+        <div
+          className="c-list-item"
+        >
+          <p
+            className="u-photo-width"
+          >
+            N/A
+          </p>
+          <p>
+            No Items
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`meta list body should match snapshot (list) 1`] = `
+<div
+  className="c-list-body"
+>
+  <div />
+  <hr />
+  <div
+    className="c-list-body__head u-margin-full"
+  >
+    <h4
+      className="u-photo-width"
+    >
+      Photo
+    </h4>
+    <h4>
+      Description
+    </h4>
+  </div>
+  <div
+    className="c-list-body__body js-infinite-scroll qa-infinite-scroll"
+    onScroll={[MockFunction]}
+  >
+    <div
+      className="c-list-body__content"
+    >
+      <div
+        key=""
+      />
+    </div>
+  </div>
+</div>
+`;

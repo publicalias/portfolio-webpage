@@ -26,7 +26,7 @@ exports[`meta list should match snapshot (default) 1`] = `
     <p
       className="u-margin-none"
     >
-      No notifications
+      No Notifications
     </p>
   </div>
 </div>

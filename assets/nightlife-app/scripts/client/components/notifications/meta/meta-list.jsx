@@ -39,7 +39,7 @@ const MetaList = (props) => {
       </div>
       <hr />
       <div className="c-note-list__body">
-        {list.length ? list : <p className="u-margin-none">No notifications</p>}
+        {list.length ? list : <p className="u-margin-none">No Notifications</p>}
       </div>
     </div>
   );

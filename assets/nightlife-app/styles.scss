@@ -3,7 +3,34 @@
 @import "all/components/dropdown";
 @import "all/components/search-bar";
 
+@mixin list-item {
+  align-items: center;
+  display: inline-grid;
+  grid-auto-flow: column;
+  grid-gap: 1.5vw;
+}
+
 //components
+
+.c-list-body {
+
+  @include grid-item(2, 5, 3, 13);
+
+  &__body {
+    @include scroll-box(60vw);
+    padding-right: 4.5vw;
+  }
+
+  &__content {
+    display: grid;
+    grid-gap: 1.5vw;
+  }
+
+  &__head { @include list-item; }
+
+}
+
+.c-list-item { @include list-item; }
 
 .c-list-menu {
   @include grid-item(1, 5, 2, 13);
@@ -80,3 +107,5 @@
 //utilities
 
 .u-dropdown-width { width: 9vw; }
+
+.u-photo-width { width: 9vw; }
