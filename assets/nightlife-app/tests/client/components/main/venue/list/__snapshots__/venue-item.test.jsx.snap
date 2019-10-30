@@ -1,3 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`venue item should match snapshot 1`] = `""`;
+exports[`venue item should match snapshot 1`] = `
+<Link
+  to="/venues/page/id-a"
+>
+  <div
+    className="c-list-item"
+  >
+    <img
+      alt="Venue Photo"
+      className="u-photo-width qa-image-error"
+      onError={[Function]}
+      src="https://www.example.com/thumbnail.jpg"
+    />
+    <div>
+      <h5
+        className="u-margin-half"
+      >
+        Venue A
+      </h5>
+      <p>
+        0 Miles
+      </p>
+      <img
+        alt="0 Stars"
+        className="u-photo-width"
+        src="/nightlife-app/media/yelp-stars/yelp-stars-0.png"
+      />
+    </div>
+  </div>
+</Link>
+`;

@@ -12,13 +12,9 @@ const { testWrapper } = require("../../../test-helpers");
 const { newUser } = require("redux/schemas");
 const { initTestSnapshot, reactTests, withDataList } = require("redux/tests/react-tests");
 
-//node modules
-
-const { MemoryRouter } = require("react-router-dom");
-
 //utilities
 
-const { testShallow } = testWrapper(ListItem, MemoryRouter);
+const { testShallow } = testWrapper(ListItem);
 
 //setup
 
