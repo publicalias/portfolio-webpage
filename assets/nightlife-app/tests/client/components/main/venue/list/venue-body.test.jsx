@@ -8,13 +8,11 @@ const { testWrapper } = require("../../../../test-helpers");
 
 //global imports
 
-const { initTestSnapshot, reactTests } = require("redux/tests/react-tests");
+const { initTestSnapshot, reactTests, withDataList } = require("redux/tests/react-tests");
 
 //utilities
 
 const { testShallow } = testWrapper(VenueBody);
-
-const testSnapshot = initTestSnapshot(testShallow);
 
 //setup
 
@@ -23,4 +21,14 @@ beforeEach(reactTests.inject(VenueBody));
 
 //venue body
 
-test("venue body should match snapshot", () => testSnapshot());
+describe("venue body", () => {
+
+  const dataList = [null, { handleScroll: jest.fn() }];
+
+  const testSnapshot = withDataList(initTestSnapshot(testShallow), dataList);
+
+  it("should match snapshot (default)", () => testSnapshot());
+
+  it("should match snapshot (list)", () => testSnapshot({ venues: { data: [{}] } }));
+
+});

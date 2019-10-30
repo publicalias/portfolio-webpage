@@ -133,7 +133,7 @@ const getHandlers = (scroll) => (list, path, limit, clear, fetch) => {
 
     clear();
 
-    const res = await fetch();
+    const res = await fetch(0);
 
     scroll.current = {
       end: get(res, path).length < limit,

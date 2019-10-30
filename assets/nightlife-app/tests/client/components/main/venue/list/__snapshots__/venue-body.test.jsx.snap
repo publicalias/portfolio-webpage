@@ -1,3 +1,84 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`venue body should match snapshot 1`] = `""`;
+exports[`venue body should match snapshot (default) 1`] = `
+<MetaListBody
+  local={
+    Object {
+      "handleScroll": [MockFunction],
+      "header": <div
+        className="c-list-body__header--venues"
+      >
+        <h1>
+          Venues
+        </h1>
+        <a
+          href="https://www.yelp.com/"
+        >
+          <img
+            alt="Yelp Icon"
+            className="u-photo-width"
+            src="/nightlife-app/media/yelp-logo.png"
+          />
+        </a>
+      </div>,
+      "list": Array [],
+      "placeholder": "No Venues",
+    }
+  }
+/>
+`;
+
+exports[`venue body should match snapshot (list) 1`] = `
+<MetaListBody
+  local={
+    Object {
+      "handleScroll": [MockFunction],
+      "header": <div
+        className="c-list-body__header--venues"
+      >
+        <h1>
+          Venues
+        </h1>
+        <a
+          href="https://www.yelp.com/"
+        >
+          <img
+            alt="Yelp Icon"
+            className="u-photo-width"
+            src="/nightlife-app/media/yelp-logo.png"
+          />
+        </a>
+      </div>,
+      "list": Array [
+        <VenueItem
+          local={
+            Object {
+              "venue": Object {
+                "coordinates": Object {
+                  "latitude": 0,
+                  "longitude": 0,
+                },
+                "display_phone": "",
+                "distance": 0,
+                "favorites": Array [],
+                "hours": Array [],
+                "id": "",
+                "image_url": "",
+                "is_closed": false,
+                "location": Object {
+                  "display_address": Array [],
+                },
+                "name": "",
+                "photos": Array [],
+                "rating": 0,
+                "url": "",
+              },
+            }
+          }
+        />,
+      ],
+      "placeholder": "No Venues",
+    }
+  }
+/>
+`;

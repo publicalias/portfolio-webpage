@@ -28,6 +28,14 @@
 
   &__head { @include list-item; }
 
+  &__header {
+    &--venues {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
 }
 
 .c-list-item { @include list-item; }
