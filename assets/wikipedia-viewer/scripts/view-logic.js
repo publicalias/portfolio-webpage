@@ -7,9 +7,7 @@ const { select } = require("all/dom-api");
 
 //render results
 
-const renderResults = (res) => {
-
-  const [input, titles, bodies, links] = res;
+const renderResults = ([input, titles, bodies, links]) => {
 
   let results = [`
     <h2 class="u-align-center">Search results for "${input}"</h2>

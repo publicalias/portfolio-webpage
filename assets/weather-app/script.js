@@ -20,9 +20,7 @@ const app = {
 
   //get weather
 
-  async getWeather(position) {
-
-    const { coords: { latitude: lat, longitude: lon } } = position;
+  async getWeather({ coords: { latitude: lat, longitude: lon } }) {
 
     const res = await getJSON(`/weather-app/weather?lat=${lat}&lon=${lon}`);
 

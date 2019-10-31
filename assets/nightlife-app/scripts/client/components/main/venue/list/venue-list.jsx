@@ -19,7 +19,7 @@ const React = require("react");
 
 const VenueList = (props) => {
 
-  const { actions: { venueClearState, venueGetList }, data: { user, venues }, location } = props;
+  const { actions: { venueClearState, venueGetList }, data: { user, venues: { data } }, location } = props;
 
   const {
     jsx: { VenueBody, VenueMenu },
@@ -32,7 +32,7 @@ const VenueList = (props) => {
 
   const { handleScroll } = useInfiniteScroll(
     location.search,
-    venues.data,
+    data,
     "venues.data",
     50,
     venueClearState,
@@ -50,7 +50,7 @@ const VenueList = (props) => {
 
 };
 
-VenueList.propList = ["data.user", "data.venues", "location"];
+VenueList.propList = ["data.user", "data.venues.data", "location"];
 
 VenueList.injected = {
   jsx: {

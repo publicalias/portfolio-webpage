@@ -24,19 +24,13 @@ const MetaNavBar = (props) => {
 
   return (
     <div className="c-nav-bar">
-      {list.map((e) => {
-
-        const [id, text, bool, link, util] = e;
-
-        return bool && (
-          <div className={`c-nav-bar__item ${util}`} key={keyGen(id)}>
-            <Link to={link}>
-              <h3 className="c-nav-bar__text u-hover">{text}</h3>
-            </Link>
-          </div>
-        );
-
-      })}
+      {list.map(([id, text, bool, link, util]) => bool && (
+        <div className={`c-nav-bar__item ${util}`} key={keyGen(id)}>
+          <Link to={link}>
+            <h3 className="c-nav-bar__text u-hover">{text}</h3>
+          </Link>
+        </div>
+      ))}
     </div>
   );
 

@@ -98,21 +98,15 @@ const AuthButtons = (props) => {
 
   return (
     <div className="c-auth-buttons">
-      {list.map((e) => {
-
-        const [id, text, util = "", Component] = e;
-
-        return Component ? <Component {...props} key={keyGen(id)} /> : (
-          <button
-            className={`c-auth-buttons__button ${util}`}
-            key={keyGen(id)}
-            onClick={handleClick(id)}
-          >
-            {text}
-          </button>
-        );
-
-      })}
+      {list.map(([id, text, util = "", Component]) => Component ? <Component {...props} key={keyGen(id)} /> : (
+        <button
+          className={`c-auth-buttons__button ${util}`}
+          key={keyGen(id)}
+          onClick={handleClick(id)}
+        >
+          {text}
+        </button>
+      ))}
     </div>
   );
 

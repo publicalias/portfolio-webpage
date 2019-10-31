@@ -14,12 +14,8 @@ const { getSearchParams, setSearchParams } = require("redux/client-utils");
 const getLocation = (user) => get(user, "data.address")
   ? get(user, "data.location")
   : new Promise((resolve) => {
-    navigator.geolocation.getCurrentPosition((position) => {
-
-      const { coords: { latitude: lat, longitude: lon } } = position;
-
+    navigator.geolocation.getCurrentPosition(({ coords: { latitude: lat, longitude: lon } }) => {
       resolve(newGeoPoint({ coordinates: [lon, lat] }));
-
     }, () => {
       resolve(null);
     });

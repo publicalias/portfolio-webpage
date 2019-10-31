@@ -12,9 +12,14 @@ const React = require("react");
 
 const PollIcon = (props) => {
 
-  const { actions: { formRemoveOption, pollRemoveOption, pollRemoveVote }, local: { poll, role, view } } = props;
-
-  const { created, fill, text, voted } = view;
+  const {
+    actions: { formRemoveOption, pollRemoveOption, pollRemoveVote },
+    local: {
+      poll,
+      role,
+      view: { created, fill, text, voted }
+    }
+  } = props;
 
   //events
 

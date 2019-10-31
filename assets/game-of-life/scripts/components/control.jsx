@@ -17,9 +17,7 @@ const Control = (props) => {
   return (
     <div className="c-control js-resize-control">
       {props.display.map((e) => <p className="c-control__text" key={keyGen(e)}>{e}</p>)}
-      {props.control.map((e) => {
-
-        const { setType, content: [a, b] } = e;
+      {props.control.map(({ setType, content: [a, b] }) => {
 
         const [{ fn: handleEventA }, { fn: handleEventB } = {}] = [a, b];
 

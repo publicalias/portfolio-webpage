@@ -43,9 +43,7 @@ const sortFn = (a, b) => {
 
 };
 
-const writeData = (item) => {
-
-  const { avatar, link, name, state, status } = item;
+const writeData = ({ avatar, link, name, state, status }) => {
 
   const html = `
     <div class="${state} js-filter-output">

@@ -86,12 +86,8 @@ const initTestAPI = (newState) => {
       ["META_ADD_ERRORS", { errors: [] }, "errors", [metaAddErrors([])]]
     ];
 
-    for (const e of success) {
-
-      const [type, res, test, actionList] = e;
-
+    for (const [type, res, test, actionList] of success) {
       it(`dispatches ${type} action on success (${test})`, () => testAPI.success(action, args, res, actionList));
-
     }
 
     it("dispatches META_ADD_ERRORS on failure", () => testAPI.failure(action, args));

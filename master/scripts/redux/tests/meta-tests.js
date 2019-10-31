@@ -3,10 +3,7 @@
 //init test errors
 
 const initTestErrors = (testData) => (fn, testArgs = []) => {
-  testData.forEach((e, i) => {
-
-    const [description, args, setup] = e;
-
+  testData.forEach(([description, args, setup], i) => {
     it(description, async () => {
 
       const thisArgs = args.concat(testArgs[i] || []);
@@ -18,7 +15,6 @@ const initTestErrors = (testData) => (fn, testArgs = []) => {
       await fn(...thisArgs);
 
     });
-
   });
 };
 

@@ -15,7 +15,12 @@ const { useEffect, useRef } = React;
 
 const ErrorMessage = (props) => {
 
-  const { actions: { metaAddErrors, metaCloseError, metaTimeoutError }, data: { errors }, history, location } = props;
+  const {
+    actions: { metaAddErrors, metaCloseError, metaTimeoutError },
+    data: { errors },
+    history,
+    location
+  } = props;
 
   //utilities
 
