@@ -31,7 +31,7 @@ const MetaList = (props) => {
       <div className="c-note-list__head">
         <h3>{heading}</h3>
         <button
-          className="c-note-list__button qa-refresh-list"
+          className="c-icon-button qa-refresh-list"
           onClick={handleClick}
         >
           <i className="fas fa-sync" />

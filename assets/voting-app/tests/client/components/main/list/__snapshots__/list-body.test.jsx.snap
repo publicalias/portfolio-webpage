@@ -1,55 +1,207 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`list body (header) should match snapshot (all) 1`] = `
+<div
+  className="c-list-body"
+>
+  <h1>
+    All Polls
+  </h1>
+  <hr />
+  <div
+    className="c-list-body__head u-margin-full"
+  >
+    <h4>
+      Hide
+    </h4>
+    <h4>
+      Description
+    </h4>
+  </div>
+  <div
+    className="c-list-body__body js-infinite-scroll qa-infinite-scroll"
+    onScroll={[MockFunction]}
+  >
+    <div
+      className="c-list-body__content"
+    >
+      <div
+        className="c-list-item"
+      >
+        <p>
+          N/A
+        </p>
+        <p>
+          No Polls
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`list body (header) should match snapshot (created) 1`] = `
+<div
+  className="c-list-body"
+>
+  <h1>
+    My Polls
+  </h1>
+  <hr />
+  <div
+    className="c-list-body__head u-margin-full"
+  >
+    <h4>
+      Hide
+    </h4>
+    <h4>
+      Description
+    </h4>
+  </div>
+  <div
+    className="c-list-body__body js-infinite-scroll qa-infinite-scroll"
+    onScroll={[MockFunction]}
+  >
+    <div
+      className="c-list-body__content"
+    >
+      <div
+        className="c-list-item"
+      >
+        <p>
+          N/A
+        </p>
+        <p>
+          No Polls
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`list body (header) should match snapshot (hidden) 1`] = `
+<div
+  className="c-list-body"
+>
+  <h1>
+    Hidden
+  </h1>
+  <hr />
+  <div
+    className="c-list-body__head u-margin-full"
+  >
+    <h4>
+      Hide
+    </h4>
+    <h4>
+      Description
+    </h4>
+  </div>
+  <div
+    className="c-list-body__body js-infinite-scroll qa-infinite-scroll"
+    onScroll={[MockFunction]}
+  >
+    <div
+      className="c-list-body__content"
+    >
+      <div
+        className="c-list-item"
+      >
+        <p>
+          N/A
+        </p>
+        <p>
+          No Polls
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`list body (header) should match snapshot (voted) 1`] = `
+<div
+  className="c-list-body"
+>
+  <h1>
+    Voted
+  </h1>
+  <hr />
+  <div
+    className="c-list-body__head u-margin-full"
+  >
+    <h4>
+      Hide
+    </h4>
+    <h4>
+      Description
+    </h4>
+  </div>
+  <div
+    className="c-list-body__body js-infinite-scroll qa-infinite-scroll"
+    onScroll={[MockFunction]}
+  >
+    <div
+      className="c-list-body__content"
+    >
+      <div
+        className="c-list-item"
+      >
+        <p>
+          N/A
+        </p>
+        <p>
+          No Polls
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`list body should match snapshot (authenticated) 1`] = `
 <div
   className="c-list-body"
 >
+  <h1>
+    All Polls
+  </h1>
+  <hr />
   <div
-    className="c-list-body__scroll-view js-infinite-scroll qa-infinite-scroll"
+    className="c-list-body__head u-margin-full"
+  >
+    <h4>
+      Hide
+    </h4>
+    <h4>
+      Flag
+    </h4>
+    <h4>
+      Description
+    </h4>
+  </div>
+  <div
+    className="c-list-body__body js-infinite-scroll qa-infinite-scroll"
     onScroll={[MockFunction]}
   >
-    <table
-      className="c-list-body__table"
+    <div
+      className="c-list-body__content"
     >
-      <thead>
-        <tr>
-          <td
-            className="c-list-body__col--10"
-          >
-            <h5>
-              Hide
-            </h5>
-          </td>
-          <td
-            className="c-list-body__col--10"
-          >
-            <h5>
-              Flag
-            </h5>
-          </td>
-          <td
-            className="c-list-body__col--80"
-          >
-            <h5>
-              Description
-            </h5>
-          </td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            N/A
-          </td>
-          <td>
-            N/A
-          </td>
-          <td>
-            No Polls
-          </td>
-        </tr>
-      </tbody>
-    </table>
+      <div
+        className="c-list-item"
+      >
+        <p>
+          N/A
+        </p>
+        <p>
+          N/A
+        </p>
+        <p>
+          No Polls
+        </p>
+      </div>
+    </div>
   </div>
 </div>
 `;
@@ -58,42 +210,38 @@ exports[`list body should match snapshot (default) 1`] = `
 <div
   className="c-list-body"
 >
+  <h1>
+    All Polls
+  </h1>
+  <hr />
   <div
-    className="c-list-body__scroll-view js-infinite-scroll qa-infinite-scroll"
+    className="c-list-body__head u-margin-full"
+  >
+    <h4>
+      Hide
+    </h4>
+    <h4>
+      Description
+    </h4>
+  </div>
+  <div
+    className="c-list-body__body js-infinite-scroll qa-infinite-scroll"
     onScroll={[MockFunction]}
   >
-    <table
-      className="c-list-body__table"
+    <div
+      className="c-list-body__content"
     >
-      <thead>
-        <tr>
-          <td
-            className="c-list-body__col--10"
-          >
-            <h5>
-              Hide
-            </h5>
-          </td>
-          <td
-            className="c-list-body__col--90"
-          >
-            <h5>
-              Description
-            </h5>
-          </td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            N/A
-          </td>
-          <td>
-            No Polls
-          </td>
-        </tr>
-      </tbody>
-    </table>
+      <div
+        className="c-list-item"
+      >
+        <p>
+          N/A
+        </p>
+        <p>
+          No Polls
+        </p>
+      </div>
+    </div>
   </div>
 </div>
 `;
@@ -102,120 +250,84 @@ exports[`list body should match snapshot (list) 1`] = `
 <div
   className="c-list-body"
 >
+  <h1>
+    All Polls
+  </h1>
+  <hr />
   <div
-    className="c-list-body__scroll-view js-infinite-scroll qa-infinite-scroll"
+    className="c-list-body__head u-margin-full"
+  >
+    <h4>
+      Hide
+    </h4>
+    <h4>
+      Description
+    </h4>
+  </div>
+  <div
+    className="c-list-body__body js-infinite-scroll qa-infinite-scroll"
     onScroll={[MockFunction]}
   >
-    <table
-      className="c-list-body__table"
+    <div
+      className="c-list-body__content"
     >
-      <thead>
-        <tr>
-          <td
-            className="c-list-body__col--10"
-          >
-            <h5>
-              Hide
-            </h5>
-          </td>
-          <td
-            className="c-list-body__col--90"
-          >
-            <h5>
-              Description
-            </h5>
-          </td>
-        </tr>
-      </thead>
-      <tbody>
-        <ListItem
-          actions={
-            Object {
-              "formAddOption": [MockFunction],
-              "formCheckTitle": [MockFunction],
-              "formClearState": [MockFunction],
-              "formRemoveOption": [MockFunction],
-              "formSetAdd": [MockFunction],
-              "formSetTitle": [MockFunction],
-              "formToggleDelete": [MockFunction],
-              "formToggleSecret": [MockFunction],
-              "listClearState": [MockFunction],
-              "listSetSearch": [MockFunction],
-              "metaAddErrors": [MockFunction],
-              "metaCloseError": [MockFunction],
-              "metaCreatePoll": [MockFunction],
-              "metaDeletePoll": [MockFunction],
-              "metaGetPollItem": [MockFunction],
-              "metaGetPollList": [MockFunction],
-              "metaGetUser": [MockFunction],
-              "metaNoOp": [MockFunction],
-              "metaSetLoading": [MockFunction],
-              "metaSetState": [MockFunction],
-              "metaTimeoutError": [MockFunction],
-              "metaToggleDelete": [MockFunction],
-              "pollAddOption": [MockFunction],
-              "pollCastVote": [MockFunction],
-              "pollRemoveOption": [MockFunction],
-              "pollRemoveVote": [MockFunction],
-              "pollToggleFlag": [MockFunction],
-              "pollToggleHide": [MockFunction],
-              "pollToggleSecret": [MockFunction],
-              "viewClearState": [MockFunction],
-              "viewSetAdd": [MockFunction],
-              "viewToggleDelete": [MockFunction],
-              "viewToggleSettings": [MockFunction],
-            }
+      <ListItem
+        actions={
+          Object {
+            "formAddOption": [MockFunction],
+            "formCheckTitle": [MockFunction],
+            "formClearState": [MockFunction],
+            "formRemoveOption": [MockFunction],
+            "formSetAdd": [MockFunction],
+            "formSetTitle": [MockFunction],
+            "formToggleDelete": [MockFunction],
+            "formToggleSecret": [MockFunction],
+            "listClearState": [MockFunction],
+            "listSetSearch": [MockFunction],
+            "metaAddErrors": [MockFunction],
+            "metaCloseError": [MockFunction],
+            "metaCreatePoll": [MockFunction],
+            "metaDeletePoll": [MockFunction],
+            "metaGetPollItem": [MockFunction],
+            "metaGetPollList": [MockFunction],
+            "metaGetUser": [MockFunction],
+            "metaNoOp": [MockFunction],
+            "metaSetLoading": [MockFunction],
+            "metaSetState": [MockFunction],
+            "metaTimeoutError": [MockFunction],
+            "metaToggleDelete": [MockFunction],
+            "pollAddOption": [MockFunction],
+            "pollCastVote": [MockFunction],
+            "pollRemoveOption": [MockFunction],
+            "pollRemoveVote": [MockFunction],
+            "pollToggleFlag": [MockFunction],
+            "pollToggleHide": [MockFunction],
+            "pollToggleSecret": [MockFunction],
+            "viewClearState": [MockFunction],
+            "viewSetAdd": [MockFunction],
+            "viewToggleDelete": [MockFunction],
+            "viewToggleSettings": [MockFunction],
           }
-          data={
-            Object {
-              "account": Object {
-                "delete": false,
-              },
-              "errors": Array [],
-              "form": Object {
-                "add": "",
-                "delete": false,
-                "options": Array [],
-                "secret": false,
-                "title": "",
-              },
-              "list": Object {
-                "search": "",
-              },
-              "loading": 0,
-              "polls": Array [
-                Object {
-                  "author": "",
-                  "date": 0,
-                  "id": "",
-                  "options": Array [],
-                  "secret": false,
-                  "title": "",
-                  "users": Object {
-                    "created": "",
-                    "flagged": Array [],
-                    "hidden": Array [],
-                  },
-                  "votes": 0,
-                },
-              ],
-              "user": Object {},
-              "view": Object {
-                "add": "",
-                "delete": false,
-                "settings": false,
-              },
-            }
-          }
-          history={
-            Object {
-              "push": [MockFunction],
-            }
-          }
-          key="0-0"
-          local={
-            Object {
-              "poll": Object {
+        }
+        data={
+          Object {
+            "account": Object {
+              "delete": false,
+            },
+            "errors": Array [],
+            "form": Object {
+              "add": "",
+              "delete": false,
+              "options": Array [],
+              "secret": false,
+              "title": "",
+            },
+            "list": Object {
+              "search": "",
+            },
+            "loading": 0,
+            "polls": Array [
+              Object {
                 "author": "",
                 "date": 0,
                 "id": "",
@@ -229,14 +341,44 @@ exports[`list body should match snapshot (list) 1`] = `
                 },
                 "votes": 0,
               },
-            }
+            ],
+            "user": Object {},
+            "view": Object {
+              "add": "",
+              "delete": false,
+              "settings": false,
+            },
           }
-          location={Object {}}
-          match={Object {}}
-          staticContext={Object {}}
-        />
-      </tbody>
-    </table>
+        }
+        history={
+          Object {
+            "push": [MockFunction],
+          }
+        }
+        key="0-0"
+        local={
+          Object {
+            "poll": Object {
+              "author": "",
+              "date": 0,
+              "id": "",
+              "options": Array [],
+              "secret": false,
+              "title": "",
+              "users": Object {
+                "created": "",
+                "flagged": Array [],
+                "hidden": Array [],
+              },
+              "votes": 0,
+            },
+          }
+        }
+        location={Object {}}
+        match={Object {}}
+        staticContext={Object {}}
+      />
+    </div>
   </div>
 </div>
 `;

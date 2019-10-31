@@ -12,32 +12,35 @@ const React = require("react");
 
 const PollToggle = (props) => {
 
-  const { actions: { pollToggleFlag, pollToggleHide }, data: { user }, local: { list, poll, role } } = props;
+  const { actions: { pollToggleFlag, pollToggleHide }, data: { user }, local: { list, poll, role, util } } = props;
 
-  //events
-
-  const handleFlag = () => {
-    handleReload(() => pollToggleFlag(poll.id), props, list);
-  };
-
-  const handleHide = () => {
-    handleReload(() => pollToggleHide(poll.id), props, list);
-  };
-
-  //render
+  //utilities
 
   const toggled = (prop) => poll.users[prop].includes(user.id);
 
-  const hideIcon = toggled("hidden") ? "far fa-eye-slash" : "far fa-eye";
-  const flagIcon = toggled("flagged") ? "fas fa-flag" : "far fa-flag";
+  const handler = (fn) => () => {
+    handleReload(() => fn(poll.id), props, list);
+  };
 
-  return role === "flag" ? (
-    <button className="qa-toggle-flag" onClick={handleFlag}>
-      <i className={flagIcon} />
-    </button>
-  ) : (
-    <button className="qa-toggle-hide" onClick={handleHide}>
-      <i className={hideIcon} />
+  const { handleClick, icon } = ((data) => data[role])({
+    flag: {
+      handleClick: handler(pollToggleFlag),
+      icon: toggled("flagged") ? "fas fa-flag" : "far fa-flag"
+    },
+    hide: {
+      handleClick: handler(pollToggleHide),
+      icon: toggled("hidden") ? "far fa-eye-slash" : "far fa-eye"
+    }
+  });
+
+  //render
+
+  return (
+    <button
+      className={`c-icon-button qa-toggle-${role} ${util || ""}`}
+      onClick={handleClick}
+    >
+      <i className={icon} />
     </button>
   );
 

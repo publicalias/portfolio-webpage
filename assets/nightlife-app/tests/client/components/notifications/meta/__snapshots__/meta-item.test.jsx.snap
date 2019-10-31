@@ -18,7 +18,7 @@ exports[`meta item should match snapshot 1`] = `
     className="c-note-item__actions"
   >
     <button
-      className="c-note-item__button qa-action-item"
+      className="c-icon-button qa-action-item"
       key="0-425"
       onClick={[Function]}
     >

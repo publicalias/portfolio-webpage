@@ -24,6 +24,8 @@
 
 //components
 
+.c-icon-button { width: 3.2vw; }
+
 .c-ui {
   @include grid;
   margin: 4.5vw auto;
@@ -39,4 +41,5 @@
 .u-flex-right { margin-left: auto !important; }
 
 .u-margin-none { margin: 0 !important; }
+
 .u-margin-right { margin-right: 1.5vw !important; }

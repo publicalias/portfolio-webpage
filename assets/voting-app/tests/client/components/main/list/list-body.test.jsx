@@ -16,6 +16,10 @@ const { initTestEvent, initTestSnapshot, reactTests, withDataList } = require("r
 
 const { testShallow } = testWrapper(ListBody);
 
+const dataList = [null, { handleScroll: jest.fn() }];
+
+const testSnapshot = withDataList(initTestSnapshot(testShallow), dataList);
+
 //setup
 
 beforeAll(reactTests.setup);
@@ -24,10 +28,6 @@ beforeEach(reactTests.inject(ListBody));
 //list body
 
 describe("list body", () => {
-
-  const dataList = [null, { handleScroll: jest.fn() }];
-
-  const testSnapshot = withDataList(initTestSnapshot(testShallow), dataList);
 
   const testScroll = initTestEvent(testShallow, "scroll", {});
 
@@ -46,5 +46,19 @@ describe("list body", () => {
     });
 
   });
+
+});
+
+describe("list body (header)", () => {
+
+  const getArgs = (filter) => [null, null, { location: { search: `?filter=${filter}` } }];
+
+  it("should match snapshot (all)", () => testSnapshot(...getArgs("all")));
+
+  it("should match snapshot (created)", () => testSnapshot(...getArgs("created")));
+
+  it("should match snapshot (voted)", () => testSnapshot(...getArgs("voted")));
+
+  it("should match snapshot (hidden)", () => testSnapshot(...getArgs("hidden")));
 
 });

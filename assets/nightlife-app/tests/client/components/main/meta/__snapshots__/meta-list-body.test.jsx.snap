@@ -9,9 +9,7 @@ exports[`meta list body should match snapshot (default) 1`] = `
   <div
     className="c-list-body__head u-margin-full"
   >
-    <h4
-      className="u-photo-width"
-    >
+    <h4>
       Photo
     </h4>
     <h4>
@@ -29,9 +27,7 @@ exports[`meta list body should match snapshot (default) 1`] = `
         <div
           className="c-list-item"
         >
-          <p
-            className="u-photo-width"
-          >
+          <p>
             N/A
           </p>
           <p>
@@ -53,9 +49,7 @@ exports[`meta list body should match snapshot (list) 1`] = `
   <div
     className="c-list-body__head u-margin-full"
   >
-    <h4
-      className="u-photo-width"
-    >
+    <h4>
       Photo
     </h4>
     <h4>

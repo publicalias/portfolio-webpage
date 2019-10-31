@@ -8,6 +8,7 @@
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: 1.5vw;
+  grid-template-columns: 9vw auto;
 }
 
 //components
@@ -28,12 +29,12 @@
 
   &__head { @include list-item; }
 
-  &__header {
-    &--venues {
-      align-items: center;
-      display: flex;
-      justify-content: space-between;
-    }
+  &__header { &--venues { position: relative; } }
+
+  &__logo {
+    bottom: 0;
+    position: absolute;
+    right: 0;
   }
 
 }
@@ -60,8 +61,6 @@
     grid-gap: 1.5vw;
   }
 
-  &__button { width: 3.2vw; }
-
   &__info { margin-right: 3vw; }
 
 }
@@ -84,8 +83,6 @@
     display: flex;
     justify-content: space-between;
   }
-
-  &__button { width: 3.2vw; }
 
 }
 

@@ -16,7 +16,7 @@ exports[`venue body should match snapshot (default) 1`] = `
         >
           <img
             alt="Yelp Icon"
-            className="u-photo-width"
+            className="c-list-body__logo u-photo-width"
             src="/nightlife-app/media/yelp-logo.png"
           />
         </a>
@@ -44,7 +44,7 @@ exports[`venue body should match snapshot (list) 1`] = `
         >
           <img
             alt="Yelp Icon"
-            className="u-photo-width"
+            className="c-list-body__logo u-photo-width"
             src="/nightlife-app/media/yelp-logo.png"
           />
         </a>

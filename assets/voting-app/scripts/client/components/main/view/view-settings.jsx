@@ -55,7 +55,7 @@ const ViewSettings = (props) => {
         </div>
       ) : <button className="c-view-menu__control-btn qa-confirm-true" onClick={handleConfirm}>Delete</button>}
       <button
-        className="c-view-menu__toggle-btn qa-toggle-secret u-flex-right"
+        className="c-view-menu__button qa-toggle-secret u-flex-right"
         onClick={handleSecret}
       >
         {poll.secret || poll.users.flagged.length >= 5 ? "Private" : "Public"}

@@ -31,7 +31,7 @@ const VenueBody = (props) => {
       <a href="https://www.yelp.com/">
         <img
           alt="Yelp Icon"
-          className="u-photo-width"
+          className="c-list-body__logo u-photo-width"
           src="/nightlife-app/media/yelp-logo.png"
         />
       </a>

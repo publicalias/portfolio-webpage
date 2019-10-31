@@ -11,7 +11,7 @@ exports[`meta list should match snapshot (default) 1`] = `
       Meta
     </h3>
     <button
-      className="c-note-list__button qa-refresh-list"
+      className="c-icon-button qa-refresh-list"
       onClick={[Function]}
     >
       <i
@@ -43,7 +43,7 @@ exports[`meta list should match snapshot (list) 1`] = `
       Meta
     </h3>
     <button
-      className="c-note-list__button qa-refresh-list"
+      className="c-icon-button qa-refresh-list"
       onClick={[Function]}
     >
       <i

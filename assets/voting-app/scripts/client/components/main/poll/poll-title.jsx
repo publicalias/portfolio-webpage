@@ -39,7 +39,7 @@ const PollTitle = (props) => {
     </div>
   ) : (
     <div className="u-align-center">
-      <h3 className="u-margin-half">{poll.title || "Untitled"}</h3>
+      <h1 className="u-margin-half">{poll.title || "Untitled"}</h1>
       {attribution}
     </div>
   );

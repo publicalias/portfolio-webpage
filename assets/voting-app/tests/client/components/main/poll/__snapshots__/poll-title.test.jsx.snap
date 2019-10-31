@@ -36,11 +36,11 @@ exports[`poll title (view) should match snapshot (author) 1`] = `
 <div
   className="u-align-center"
 >
-  <h3
+  <h1
     className="u-margin-half"
   >
     Untitled
-  </h3>
+  </h1>
   <h4>
     By Author A
   </h4>
@@ -51,11 +51,11 @@ exports[`poll title (view) should match snapshot (default) 1`] = `
 <div
   className="u-align-center"
 >
-  <h3
+  <h1
     className="u-margin-half"
   >
     Untitled
-  </h3>
+  </h1>
   <h4>
     By Anonymous
   </h4>
@@ -66,11 +66,11 @@ exports[`poll title (view) should match snapshot (title) 1`] = `
 <div
   className="u-align-center"
 >
-  <h3
+  <h1
     className="u-margin-half"
   >
     Title A
-  </h3>
+  </h1>
   <h4>
     By Anonymous
   </h4>

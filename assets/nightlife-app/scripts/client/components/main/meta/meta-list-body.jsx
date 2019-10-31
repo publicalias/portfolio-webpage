@@ -17,7 +17,7 @@ const MetaListBody = (props) => {
       {header}
       <hr />
       <div className="c-list-body__head u-margin-full">
-        <h4 className="u-photo-width">Photo</h4>
+        <h4>Photo</h4>
         <h4>Description</h4>
       </div>
       <div
@@ -28,7 +28,7 @@ const MetaListBody = (props) => {
           {list.length ? list : (
             <div>
               <div className="c-list-item">
-                <p className="u-photo-width">N/A</p>
+                <p>N/A</p>
                 <p>{placeholder}</p>
               </div>
             </div>

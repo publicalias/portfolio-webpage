@@ -26,7 +26,7 @@ exports[`view settings should match snapshot (confirm) 1`] = `
     </button>
   </div>
   <button
-    className="c-view-menu__toggle-btn qa-toggle-secret u-flex-right"
+    className="c-view-menu__button qa-toggle-secret u-flex-right"
     onClick={[Function]}
   >
     Public
@@ -45,7 +45,7 @@ exports[`view settings should match snapshot (default) 1`] = `
     Delete
   </button>
   <button
-    className="c-view-menu__toggle-btn qa-toggle-secret u-flex-right"
+    className="c-view-menu__button qa-toggle-secret u-flex-right"
     onClick={[Function]}
   >
     Public
@@ -64,7 +64,7 @@ exports[`view settings should match snapshot (flagged) 1`] = `
     Delete
   </button>
   <button
-    className="c-view-menu__toggle-btn qa-toggle-secret u-flex-right"
+    className="c-view-menu__button qa-toggle-secret u-flex-right"
     onClick={[Function]}
   >
     Private
@@ -83,7 +83,7 @@ exports[`view settings should match snapshot (secret) 1`] = `
     Delete
   </button>
   <button
-    className="c-view-menu__toggle-btn qa-toggle-secret u-flex-right"
+    className="c-view-menu__button qa-toggle-secret u-flex-right"
     onClick={[Function]}
   >
     Private

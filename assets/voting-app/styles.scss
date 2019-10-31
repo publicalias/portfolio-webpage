@@ -2,6 +2,13 @@
 
 @import "all/components/search-bar";
 
+@mixin list-item {
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 1.5vw;
+  grid-template-columns: 4.5vw minmax(4.5vw, max-content) max-content;
+}
+
 @mixin menu {
   @include grid-item(1, 5, 2, 13);
   display: flex;
@@ -13,6 +20,8 @@
 
   @include menu;
 
+  &__button { margin-left: 1.5vw; }
+
   &__confirm-text {
     margin: 0 1.5vw 0 0;
     padding: 0.5vw 0.75vw;
@@ -22,32 +31,28 @@
 
   &__display-box { display: flex; }
 
-  &__toggle-btn { margin-left: 1.5vw; }
-
 };
 
 .c-list-body {
 
   @include grid-item(2, 5, 4, 13);
 
-  &__col {
-    &--10 { width: 10%; }
-    &--80 { width: 80%; }
-    &--90 { width: 90%; }
-  }
-
-  &__scroll-view {
+  &__body {
     @include scroll-box(60vw);
     overflow-x: hidden;
     padding-right: 4.5vw;
   }
 
-  &__table {
-    border-spacing: 1.5vw;
-    margin: -1.5vw;
+  &__content {
+    display: grid;
+    grid-gap: 1.5vw;
   }
 
+  &__head { @include list-item; }
+
 }
+
+.c-list-item { @include list-item; }
 
 .c-list-menu {
 
@@ -76,13 +81,14 @@
 
   &__input {
     @include font-head;
-    font-size: 2.8vw;
+    font-size: 3.6vw;
     text-align: center;
   }
 
   &__tooltip {
     background: rgba(0, 0, 0, 0.75);
     display: none;
+    grid-gap: 1vw;
     padding: 1.5vw;
     position: absolute;
     text-align: left;
@@ -102,9 +108,9 @@
     top: 0.32vw;
   }
 
-  &__input-box { display: flex; }
-
   &__input { flex: 11; }
+
+  &__input-box { display: flex; }
 
   &__layout { display: flex; }
 
@@ -126,8 +132,10 @@
 
 .js-toggle-hover { &.is-hovered { fill: white; } };
 
-.js-toggle-tooltip { &.is-open { display: block; } };
+.js-toggle-tooltip { &.is-open { display: grid; } };
 
 //utilities
+
+.u-margin-auto { margin: auto; }
 
 .u-margin-half--negative { margin-bottom: -1.5vw; }

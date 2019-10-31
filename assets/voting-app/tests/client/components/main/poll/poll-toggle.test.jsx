@@ -50,6 +50,8 @@ describe("poll toggle (flag)", () => {
 
   it("should match snapshot (toggled)", () => testProp("flagged"));
 
+  it("should match snapshot (util)", () => testFlag(null, null, { util: "u-whatever" }));
+
   it("should call pollToggleFlag on click (list)", () => testToggle(".qa-toggle-flag", "pollToggleFlag", true));
 
   it("should call pollToggleFlag on click (view)", () => testToggle(".qa-toggle-flag", "pollToggleFlag"));
@@ -67,6 +69,8 @@ describe("poll toggle (hide)", () => {
   it("should match snapshot (default)", () => testProp());
 
   it("should match snapshot (toggled)", () => testProp("hidden"));
+
+  it("should match snapshot (util)", () => testHide(null, null, { util: "u-whatever" }));
 
   it("should call pollToggleHide on click (list)", () => testToggle(".qa-toggle-hide", "pollToggleHide", true));
 

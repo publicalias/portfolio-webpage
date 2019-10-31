@@ -32,7 +32,7 @@ exports[`form menu should match snapshot (confirm) 1`] = `
     </button>
   </div>
   <button
-    className="c-form-menu__toggle-btn qa-toggle-secret u-flex-right"
+    className="c-form-menu__button qa-toggle-secret u-flex-right"
     onClick={[Function]}
   >
     Public
@@ -57,7 +57,7 @@ exports[`form menu should match snapshot (default) 1`] = `
     Discard
   </button>
   <button
-    className="c-form-menu__toggle-btn qa-toggle-secret u-flex-right"
+    className="c-form-menu__button qa-toggle-secret u-flex-right"
     onClick={[Function]}
   >
     Public
@@ -82,7 +82,7 @@ exports[`form menu should match snapshot (secret) 1`] = `
     Discard
   </button>
   <button
-    className="c-form-menu__toggle-btn qa-toggle-secret u-flex-right"
+    className="c-form-menu__button qa-toggle-secret u-flex-right"
     onClick={[Function]}
   >
     Private

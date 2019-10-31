@@ -28,8 +28,8 @@ const ViewControls = (props) => {
 
   return (
     <div className="c-view-menu__display-box u-flex-right">
-      <button className="c-view-menu__toggle-btn qa-share-poll" onClick={handleShare}>Share</button>
-      <div className="c-view-menu__toggle-btn">
+      <button className="c-view-menu__button qa-share-poll" onClick={handleShare}>Share</button>
+      <div className="c-view-menu__button">
         <PollToggle
           {...props}
           local={{
@@ -39,7 +39,7 @@ const ViewControls = (props) => {
         />
       </div>
       {auth && (
-        <div className="c-view-menu__toggle-btn">
+        <div className="c-view-menu__button">
           <PollToggle
             {...props}
             local={{

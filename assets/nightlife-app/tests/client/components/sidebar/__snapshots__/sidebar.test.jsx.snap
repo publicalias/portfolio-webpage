@@ -4,9 +4,9 @@ exports[`sidebar should match snapshot (authenticated) 1`] = `
 <div
   className="c-sidebar"
 >
-  <p>
+  <h4>
     Hi, Anonymous!
-  </p>
+  </h4>
   <hr />
   <button
     className="c-sidebar__toggle qa-toggle-settings"
@@ -135,9 +135,9 @@ exports[`sidebar should match snapshot (default) 1`] = `
 <div
   className="c-sidebar"
 >
-  <p>
+  <h4>
     Hi, Anonymous!
-  </p>
+  </h4>
   <hr />
   <AuthButtons
     actions={
@@ -241,9 +241,9 @@ exports[`sidebar should match snapshot (name) 1`] = `
 <div
   className="c-sidebar"
 >
-  <p>
+  <h4>
     Hi, User A!
-  </p>
+  </h4>
   <hr />
   <button
     className="c-sidebar__toggle qa-toggle-settings"
@@ -372,9 +372,9 @@ exports[`sidebar should match snapshot (settings) 1`] = `
 <div
   className="c-sidebar"
 >
-  <p>
+  <h4>
     Hi, Anonymous!
-  </p>
+  </h4>
   <hr />
   <button
     className="c-sidebar__toggle qa-toggle-settings"

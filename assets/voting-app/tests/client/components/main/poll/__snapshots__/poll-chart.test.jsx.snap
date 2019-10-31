@@ -9,7 +9,7 @@ exports[`poll chart (form) should match snapshot 1`] = `
   <div
     className="c-poll-display__tooltip js-toggle-tooltip"
   >
-    <p
+    <h5
       className="js-edit-label"
     />
     <p
@@ -28,7 +28,7 @@ exports[`poll chart (view) should match snapshot 1`] = `
   <div
     className="c-poll-display__tooltip js-toggle-tooltip"
   >
-    <p
+    <h5
       className="js-edit-label"
     />
     <p

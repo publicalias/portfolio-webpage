@@ -31,36 +31,34 @@ const ListItem = (props) => {
   const stats = `${getVotes(poll.votes)} \u2014 ${readDate(poll.date)}`;
 
   return (
-    <tr>
-      <td>
+    <div className="c-list-item">
+      <PollToggle
+        {...props}
+        local={{
+          list: true,
+          poll,
+          role: "hide",
+          util: "u-margin-auto"
+        }}
+      />
+      {auth && (
         <PollToggle
           {...props}
           local={{
             list: true,
             poll,
-            role: "hide"
+            role: "flag",
+            util: "u-margin-auto"
           }}
         />
-      </td>
-      {auth && (
-        <td>
-          <PollToggle
-            {...props}
-            local={{
-              list: true,
-              poll,
-              role: "flag"
-            }}
-          />
-        </td>
       )}
-      <td className="u-cursor-pointer">
-        <Link to={`/view/${poll.id}`}>
-          <p>{poll.title}</p>
+      <Link to={`/view/${poll.id}`}>
+        <div className="u-cursor-pointer">
+          <h5 className="u-margin-half">{poll.title}</h5>
           <p className="u-margin-none">{stats}</p>
-        </Link>
-      </td>
-    </tr>
+        </div>
+      </Link>
+    </div>
   );
 
 };

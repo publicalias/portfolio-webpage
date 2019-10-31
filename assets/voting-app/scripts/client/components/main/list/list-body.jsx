@@ -4,6 +4,8 @@
 
 const ListItem = require("./list-item");
 
+const { getListParams } = require("../../../app-logic");
+
 //global imports
 
 const { initKeyGen } = require("all/react-utils");
@@ -16,7 +18,7 @@ const React = require("react");
 
 const ListBody = (props) => {
 
-  const { data: { user, polls }, local: { handleScroll } } = props;
+  const { data: { user, polls }, local: { handleScroll }, location } = props;
 
   const { jsx: { ListItem } } = ListBody.injected;
 
@@ -24,53 +26,50 @@ const ListBody = (props) => {
 
   const keyGen = initKeyGen();
 
+  const header = ((params, data) => data[params.filter])(getListParams(location), {
+    all: "All Polls",
+    created: "My Polls",
+    voted: "Voted",
+    hidden: "Hidden"
+  });
+
   const auth = user.type === "auth";
 
   return (
     <div className="c-list-body">
+      <h1>{header}</h1>
+      <hr />
+      <div className="c-list-body__head u-margin-full">
+        <h4>Hide</h4>
+        {auth && <h4>Flag</h4>}
+        <h4>Description</h4>
+      </div>
       <div
-        className="c-list-body__scroll-view js-infinite-scroll qa-infinite-scroll"
+        className="c-list-body__body js-infinite-scroll qa-infinite-scroll"
         onScroll={handleScroll}
       >
-        <table className="c-list-body__table">
-          <thead>
-            <tr>
-              <td className="c-list-body__col--10">
-                <h5>Hide</h5>
-              </td>
-              {auth && (
-                <td className="c-list-body__col--10">
-                  <h5>Flag</h5>
-                </td>
-              )}
-              <td className={`c-list-body__col--${auth ? "80" : "90"}`}>
-                <h5>Description</h5>
-              </td>
-            </tr>
-          </thead>
-          <tbody>
-            {polls.length ? polls.map((e) => (
-              <ListItem
-                {...props}
-                key={keyGen(e.title)}
-                local={{ poll: e }}
-              />
-            )) : (
-              <tr>
-                <td>N/A</td>
-                {auth && <td>N/A</td>}
-                <td>No Polls</td>
-              </tr>
-            )}
-          </tbody>
-        </table>
+        <div className="c-list-body__content">
+          {polls.length ? polls.map((e) => (
+            <ListItem
+              {...props}
+              key={keyGen(e.title)}
+              local={{ poll: e }}
+            />
+          )) : (
+            <div className="c-list-item">
+              <p>N/A</p>
+              {auth && <p>N/A</p>}
+              <p>No Polls</p>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
 
 };
 
-ListBody.propList = ["data.user", "data.polls", "local"];
+ListBody.propList = ["data.user", "data.polls", "local", "location"];
 
 ListBody.injected = { jsx: { ListItem } };
 

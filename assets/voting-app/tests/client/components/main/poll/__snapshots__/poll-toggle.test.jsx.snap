@@ -2,7 +2,7 @@
 
 exports[`poll toggle (flag) should match snapshot (default) 1`] = `
 <button
-  className="qa-toggle-flag"
+  className="c-icon-button qa-toggle-flag "
   onClick={[Function]}
 >
   <i
@@ -13,7 +13,7 @@ exports[`poll toggle (flag) should match snapshot (default) 1`] = `
 
 exports[`poll toggle (flag) should match snapshot (toggled) 1`] = `
 <button
-  className="qa-toggle-flag"
+  className="c-icon-button qa-toggle-flag "
   onClick={[Function]}
 >
   <i
@@ -22,9 +22,20 @@ exports[`poll toggle (flag) should match snapshot (toggled) 1`] = `
 </button>
 `;
 
+exports[`poll toggle (flag) should match snapshot (util) 1`] = `
+<button
+  className="c-icon-button qa-toggle-flag u-whatever"
+  onClick={[Function]}
+>
+  <i
+    className="far fa-flag"
+  />
+</button>
+`;
+
 exports[`poll toggle (hide) should match snapshot (default) 1`] = `
 <button
-  className="qa-toggle-hide"
+  className="c-icon-button qa-toggle-hide "
   onClick={[Function]}
 >
   <i
@@ -35,11 +46,22 @@ exports[`poll toggle (hide) should match snapshot (default) 1`] = `
 
 exports[`poll toggle (hide) should match snapshot (toggled) 1`] = `
 <button
-  className="qa-toggle-hide"
+  className="c-icon-button qa-toggle-hide "
   onClick={[Function]}
 >
   <i
     className="far fa-eye-slash"
+  />
+</button>
+`;
+
+exports[`poll toggle (hide) should match snapshot (util) 1`] = `
+<button
+  className="c-icon-button qa-toggle-hide u-whatever"
+  onClick={[Function]}
+>
+  <i
+    className="far fa-eye"
   />
 </button>
 `;

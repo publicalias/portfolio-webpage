@@ -5,13 +5,13 @@ exports[`view controls should match snapshot (authenticated) 1`] = `
   className="c-view-menu__display-box u-flex-right"
 >
   <button
-    className="c-view-menu__toggle-btn qa-share-poll"
+    className="c-view-menu__button qa-share-poll"
     onClick={[Function]}
   >
     Share
   </button>
   <div
-    className="c-view-menu__toggle-btn"
+    className="c-view-menu__button"
   >
     <PollToggle
       actions={
@@ -118,7 +118,7 @@ exports[`view controls should match snapshot (authenticated) 1`] = `
     />
   </div>
   <div
-    className="c-view-menu__toggle-btn"
+    className="c-view-menu__button"
   >
     <PollToggle
       actions={
@@ -232,13 +232,13 @@ exports[`view controls should match snapshot (default) 1`] = `
   className="c-view-menu__display-box u-flex-right"
 >
   <button
-    className="c-view-menu__toggle-btn qa-share-poll"
+    className="c-view-menu__button qa-share-poll"
     onClick={[Function]}
   >
     Share
   </button>
   <div
-    className="c-view-menu__toggle-btn"
+    className="c-view-menu__button"
   >
     <PollToggle
       actions={

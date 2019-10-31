@@ -58,7 +58,7 @@ const FormMenu = (props) => {
         </div>
       ) : <button className="c-form-menu__control-btn qa-confirm-true" onClick={handleConfirm}>Discard</button>}
       <button
-        className="c-form-menu__toggle-btn qa-toggle-secret u-flex-right"
+        className="c-form-menu__button qa-toggle-secret u-flex-right"
         onClick={handleSecret}
       >
         {form.secret ? "Private" : "Public"}
