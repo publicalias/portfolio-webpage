@@ -1,5 +1,9 @@
 "use strict";
 
+//local imports
+
+const { getLocation } = require("../../app-logic");
+
 //global imports
 
 const { capitalize } = require("all/utilities");
@@ -15,6 +19,8 @@ const SidebarInput = (props) => {
   const { actions, data: { user, account }, local: { type } } = props;
 
   const { metaGetUser } = actions;
+
+  const { lib: { getLocation } } = SidebarInput.injected;
 
   //utilities
 
@@ -38,7 +44,7 @@ const SidebarInput = (props) => {
 
   const handleSubmit = async () => {
 
-    await submit(text);
+    await submit(text, await getLocation());
 
     change("");
 
@@ -68,6 +74,8 @@ const SidebarInput = (props) => {
 };
 
 SidebarInput.propList = ["data.user", "data.account", "local"];
+
+SidebarInput.injected = { lib: { getLocation } };
 
 //exports
 

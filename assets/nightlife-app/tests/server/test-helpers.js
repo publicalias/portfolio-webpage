@@ -17,9 +17,9 @@ const favoritesCol = () => db.collection("nightlife-app/favorites");
 const friendsCol = () => db.collection("nightlife-app/friends");
 const userDataCol = () => db.collection("nightlife-app/user-data");
 
-//geo point
+//get geo point
 
-const geoPoint = (x, y = x) => newGeoPoint({ coordinates: [x, y] });
+const getGeoPoint = (x, y = x) => newGeoPoint({ coordinates: [x, y] });
 
 //init test user item
 
@@ -33,7 +33,7 @@ const initTestUserItem = (mockAPICall, getData, getItemData) => async (id) => {
     })),
     userDataCol().insertOne(newUserData({
       id: "id-a",
-      data: { location: geoPoint(0) }
+      data: { location: getGeoPoint(0) }
     }))
   ]);
 
@@ -109,7 +109,7 @@ const testSearch = initTestErrors([
 //exports
 
 module.exports = {
-  geoPoint,
+  getGeoPoint,
   initTestUserItem,
   initTestVenueItem,
   injectHandler,

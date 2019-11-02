@@ -30,6 +30,16 @@ test("metaSetAvatar creates META_SET_AVATAR actions", () => {
 
 });
 
+//meta toggle loaded
+
+test("metaToggleLoaded creates META_TOGGLE_LOADED actions", () => {
+
+  const { metaToggleLoaded } = actions;
+
+  expect(metaToggleLoaded()).toEqual({ type: "META_TOGGLE_LOADED" });
+
+});
+
 //meta toggle settings
 
 test("metaToggleSettings creates META_TOGGLE_SETTINGS actions", () => {

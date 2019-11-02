@@ -154,6 +154,15 @@ const reactTests = {
 
 };
 
+//set props
+
+const setProps = (wrapper, data, local, other) => {
+  wrapper.setProps(deepCopy(wrapper.props(), other, {
+    data: data || {},
+    local: local || {}
+  }));
+};
+
 //with data list
 
 const withDataList = (render, dataList) => (...args) => {
@@ -177,5 +186,6 @@ module.exports = {
   initTestSnapshot,
   initTestWrapper,
   reactTests,
+  setProps,
   withDataList
 };

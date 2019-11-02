@@ -4,23 +4,56 @@
 
 const VenueList = require("../../../../../../scripts/client/components/main/venue/list/venue-list");
 
-const { testWrapper } = require("../../../../test-helpers");
+const { getGeoPoint, testWrapper } = require("../../../../test-helpers");
 
 //global imports
 
-const { initTestSnapshot, reactTests } = require("redux/tests/react-tests");
+const { testMock } = require("redux/tests/meta-tests");
+const { mockInfiniteScroll } = require("redux/tests/client-tests");
+const { initTestSnapshot, reactTests, setProps } = require("redux/tests/react-tests");
 
 //utilities
 
-const { testShallow } = testWrapper(VenueList);
-
-const testSnapshot = initTestSnapshot(testShallow);
+const { testMount, testShallow } = testWrapper(VenueList);
 
 //setup
 
 beforeAll(reactTests.setup);
-beforeEach(reactTests.inject(VenueList, { lib: { useInfiniteScroll: jest.fn(() => ({ handleScroll: jest.fn() })) } }));
+beforeEach(reactTests.inject(VenueList, { lib: mockInfiniteScroll().lib }));
 
 //venue list
 
-test("venue list should match snapshot", () => testSnapshot());
+describe("venue list", () => {
+
+  const testSnapshot = initTestSnapshot(testShallow);
+
+  it("should match snapshot", () => testSnapshot());
+
+  it("should call handleReload conditionally on update", () => {
+
+    const { handleReload, lib } = mockInfiniteScroll();
+
+    Object.assign(VenueList.injected.lib, lib);
+
+    const list = [
+      [{ user: { data: { location: getGeoPoint(0) } } }],
+      [{ account: { loaded: true } }],
+      [null, null, { location: { search: "" } }],
+      [{ user: { data: { location: getGeoPoint(1) } } }]
+    ];
+
+    const { wrapper } = testMount();
+
+    wrapper.mount();
+
+    for (const e of list) {
+      setProps(wrapper, ...e);
+    }
+
+    testMock(handleReload, [], [], []);
+
+    wrapper.unmount();
+
+  });
+
+});

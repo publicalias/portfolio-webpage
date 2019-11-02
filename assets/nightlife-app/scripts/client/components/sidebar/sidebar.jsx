@@ -39,14 +39,8 @@ const Sidebar = (props) => {
           <button className="c-sidebar__toggle qa-toggle-settings" onClick={handleClick}>Settings</button>
           {account.settings && (
             <React.Fragment>
-              <SidebarInput
-                {...props}
-                local={{ type: "address" }}
-              />
-              <SidebarInput
-                {...props}
-                local={{ type: "avatar" }}
-              />
+              <SidebarInput {...props} local={{ type: "address" }} />
+              <SidebarInput {...props} local={{ type: "avatar" }} />
             </React.Fragment>
           )}
         </React.Fragment>

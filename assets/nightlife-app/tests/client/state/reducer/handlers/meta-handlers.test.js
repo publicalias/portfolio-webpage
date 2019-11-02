@@ -27,6 +27,16 @@ test("reducer accepts META_SET_AVATAR actions", () => {
 
 });
 
+//meta toggle loaded
+
+test("reducer accepts META_TOGGLE_LOADED actions", () => {
+
+  const { metaToggleLoaded } = actions;
+
+  testReducer(metaToggleLoaded(), null, { account: { loaded: true } });
+
+});
+
 //meta toggle settings
 
 test("reducer accepts META_TOGGLE_SETTINGS actions", () => {

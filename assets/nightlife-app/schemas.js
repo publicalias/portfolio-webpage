@@ -180,7 +180,8 @@ const newState = initSchema({
     settings: false,
     avatar: "",
     address: "",
-    delete: false
+    delete: false,
+    loaded: false
   },
   errors: [],
   loading: false,

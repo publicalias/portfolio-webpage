@@ -5,7 +5,7 @@
 const handlers = require("../../../../scripts/server/api/handlers/meta-handlers");
 
 const { newUserData, newUserWithData } = require("../../../../schemas");
-const { geoPoint } = require("../../test-helpers");
+const { getGeoPoint } = require("../../test-helpers");
 
 //global imports
 
@@ -95,18 +95,18 @@ describe("metaSaveAddress", () => {
     location
   });
 
-  const testSave = async (address = null, location) => {
-
-    const former = await userDataCol().findOne();
+  const testSave = async (address = "", location = null) => {
 
     const res = await mockAPICall(newUser({ id: "id-a" }), getData(address, location));
 
     const update = await userDataCol().findOne();
 
-    const setAddress = address || !address && !location;
+    const { lib: { geoCode } } = metaSaveAddress.injected;
 
-    expect(update.data.address).toEqual(setAddress ? address : former.data.address);
-    expect(update.data.location).toEqual(address || location || null);
+    testMock(geoCode, address && [address]);
+
+    expect(update.data.address).toEqual(address);
+    expect(update.data.location).toEqual(address ? getGeoPoint(1) : location);
 
     testMock(res.json, [{}]);
 
@@ -114,12 +114,12 @@ describe("metaSaveAddress", () => {
 
   beforeEach(async () => {
 
-    metaSaveAddress.injected.lib.geoCode = jest.fn((address) => address || null);
+    metaSaveAddress.injected.lib.geoCode = jest.fn((address) => address ? getGeoPoint(1) : null);
 
     await insertUserData({
       data: {
         address: "12345",
-        location: geoPoint(0)
+        location: getGeoPoint(0)
       }
     });
 
@@ -129,7 +129,7 @@ describe("metaSaveAddress", () => {
 
   it("sends noop if successful (address)", () => testSave("67890"));
 
-  it("sends noop if successful (location)", () => testSave(null, geoPoint(1)));
+  it("sends noop if successful (location)", () => testSave("", getGeoPoint(1)));
 
   it("sends noop if successful (neither)", () => testSave());
 

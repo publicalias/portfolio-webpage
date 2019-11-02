@@ -4,12 +4,13 @@
 
 const PollChart = require("../../../../../scripts/client/components/main/poll/poll-chart");
 
+const { newOption } = require("../../../../../schemas");
 const { initTestPoll, testWrapper } = require("../../../test-helpers");
 
 //global imports
 
 const { testMock } = require("redux/tests/meta-tests");
-const { initTestSnapshot, reactTests } = require("redux/tests/react-tests");
+const { initTestSnapshot, reactTests, setProps } = require("redux/tests/react-tests");
 
 //utilities
 
@@ -21,15 +22,20 @@ const testLoad = (render, role) => {
 
   const { lib: { renderChart, rngInt } } = PollChart.injected;
 
-  const { wrapper } = render(null, { options: [role === "form" ? "Option A" : { text: "Option A" }] });
+  const { wrapper } = render(null, { options: [] });
 
   wrapper.mount();
+
+  setProps(wrapper, null, { poll: { options: [role === "form" ? "Option A" : newOption({ text: "Option A" })] } });
 
   if (role === "form") {
     testMock(rngInt, [0, 9, true]);
   }
 
   testMock(renderChart, [
+    [],
+    []
+  ], [
     [0],
     ["Option A"]
   ]);
@@ -52,7 +58,7 @@ describe("poll chart (form)", () => {
 
   it("should match snapshot", () => testForm());
 
-  it("should call renderChart on load and poll.options", () => testLoad(testFormMount, "form"));
+  it("should call renderChart conditionally on update", () => testLoad(testFormMount, "form"));
 
 });
 
@@ -63,6 +69,6 @@ describe("poll chart (view)", () => {
 
   it("should match snapshot", () => testView());
 
-  it("should call renderChart on load and poll.options", () => testLoad(testViewMount, "view"));
+  it("should call renderChart conditionally on update", () => testLoad(testViewMount, "view"));
 
 });

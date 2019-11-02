@@ -5,20 +5,24 @@
 const SidebarInput = require("../../../../scripts/client/components/sidebar/sidebar-input");
 
 const { newUserWithData } = require("../../../../schemas");
-const { testWrapper } = require("../../test-helpers");
+const { getGeoPoint, testWrapper } = require("../../test-helpers");
 
 //global imports
 
+const { testMock } = require("redux/tests/meta-tests");
 const { initTestEvent, initTestSnapshot, reactTests, withDataList } = require("redux/tests/react-tests");
 
 //utilities
 
 const { testMount, testShallow } = testWrapper(SidebarInput);
 
-const testSnapshot = initTestSnapshot(testShallow);
+const userData = {
+  address: "12345",
+  avatar: "https://www.example.com/avatar.jpg",
+  location: getGeoPoint(0)
+};
 
-const address = "12345";
-const avatar = "https://www.example.com/avatar.jpg";
+const testSnapshot = initTestSnapshot(testShallow);
 
 const testChange = (render, type, text) => {
 
@@ -38,8 +42,13 @@ const testClick = (render, type, text) => {
     }
   }];
 
+  const { lib: { getLocation } } = SidebarInput.injected;
+
   const fnList = [
-    [`metaSave${type}`, [text]],
+    () => {
+      testMock(getLocation, []);
+    },
+    [`metaSave${type}`, [text, userData.location]],
     [`metaSet${type}`, [""]],
     ["metaGetUser", []]
   ];
@@ -51,11 +60,13 @@ const testClick = (render, type, text) => {
 //setup
 
 beforeAll(reactTests.setup);
-beforeEach(reactTests.inject(SidebarInput));
+beforeEach(reactTests.inject(SidebarInput, { lib: { getLocation: jest.fn(() => userData.location) } }));
 
 //sidebar input
 
 describe("sidebar input (address)", () => {
+
+  const { address } = userData;
 
   const dataList = [{ user: newUserWithData() }, { type: "address" }];
 
@@ -77,6 +88,8 @@ describe("sidebar input (address)", () => {
 });
 
 describe("sidebar input (avatar)", () => {
+
+  const { avatar } = userData;
 
   const dataList = [{ user: newUserWithData() }, { type: "avatar" }];
 

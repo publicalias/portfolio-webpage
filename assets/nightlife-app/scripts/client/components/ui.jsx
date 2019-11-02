@@ -26,7 +26,7 @@ const { useEffect } = React;
 
 const UI = (props) => {
 
-  const { actions: { metaGetUser, metaSaveAddress }, data: { user } } = props;
+  const { actions: { metaGetUser, metaSaveAddress, metaToggleLoaded }, data: { user } } = props;
 
   const {
     jsx: { FriendList, Route, RSVPList, Sidebar, UserList, UserPage, VenueList, VenuePage },
@@ -37,15 +37,14 @@ const UI = (props) => {
 
   const initUser = async () => {
 
-    const res = await metaGetUser();
+    const { user } = await metaGetUser();
 
-    if (res.user.type === "auth") {
-
-      await metaSaveAddress(null, await getLocation(res.user));
-
-      metaGetUser();
-
+    if (user.type === "auth" && !user.data.location) {
+      await metaSaveAddress(user.data.address, await getLocation(user));
+      await metaGetUser();
     }
+
+    metaToggleLoaded();
 
   };
 
@@ -68,9 +67,15 @@ const UI = (props) => {
         render={() => <VenueList {...props} />}
       />
       <Route path="/users/list" render={() => <UserList {...props} />} />
-      <Route path="/users/page/:id" render={({ match }) => <UserPage {...props} local={{ id: match.params.id }} />} />
+      <Route
+        path="/users/page/:id"
+        render={({ match }) => <UserPage {...props} local={{ id: match.params.id }} />}
+      />
       <Route path="/venues/list" render={() => <VenueList {...props} />} />
-      <Route path="/venues/page/:id" render={({ match }) => <VenuePage {...props} local={{ id: match.params.id }} />} />
+      <Route
+        path="/venues/page/:id"
+        render={({ match }) => <VenuePage {...props} local={{ id: match.params.id }} />}
+      />
       {auth && <RSVPList {...props} />}
       {auth && <FriendList {...props} />}
     </div>

@@ -15,6 +15,8 @@ const { useInfiniteScroll } = require("redux/client-utils");
 
 const React = require("react");
 
+const { useLayoutEffect } = React;
+
 //list
 
 const List = (props) => {
@@ -27,14 +29,13 @@ const List = (props) => {
 
   const fetch = (length) => metaGetPollList(getListParams(location), length);
 
-  const { handleScroll } = useInfiniteScroll(
-    location.search,
-    polls,
-    "polls",
-    100,
-    listClearState,
-    fetch
-  );
+  const { handleReload, handleScroll } = useInfiniteScroll(polls, "polls", 100, listClearState, fetch);
+
+  //lifecycle
+
+  useLayoutEffect(() => {
+    handleReload(); //async
+  }, [location.search]);
 
   //render
 

@@ -5,7 +5,7 @@
 const handlers = require("../../../../scripts/server/api/handlers/venue-handlers");
 
 const { newFriend, newListParamsVenues, newVenue, newYelpParams } = require("../../../../schemas");
-const { geoPoint, initTestVenueItem, injectHandler, insertFriend, testSearch } = require("../../test-helpers");
+const { getGeoPoint, initTestVenueItem, injectHandler, insertFriend, testSearch } = require("../../test-helpers");
 
 //global imports
 
@@ -45,7 +45,7 @@ describe("venueGetItem (no data)", () => {
 
   const mockAPICall = initMockAPICall(venueGetItem, "GET");
 
-  const getData = (location = geoPoint(0.05)) => ({
+  const getData = (location = getGeoPoint(0.05)) => ({
     id: "id-a",
     location
   });
@@ -75,7 +75,7 @@ describe("venueGetItem (data)", () => {
 
   const getData = () => ({
     id: "id-a",
-    location: geoPoint(0.05)
+    location: getGeoPoint(0.05)
   });
 
   const testGetItem = initTestVenueItem(mockAPICall, getData, () => ({ distance: 4.9 }));
@@ -105,7 +105,7 @@ describe("venueGetItem (data, friends)", () => {
 
   const getData = () => ({
     id: "id-a",
-    location: geoPoint(0.05)
+    location: getGeoPoint(0.05)
   });
 
   const testGetItem = initTestVenueItem(mockAPICall, getData, async () => ({
@@ -143,7 +143,7 @@ describe("venueGetList (no data)", () => {
 
   const mockAPICall = initMockAPICall(venueGetList, "GET");
 
-  const getData = (params, location = geoPoint(0)) => ({
+  const getData = (params, location = getGeoPoint(0)) => ({
     params: newListParamsVenues(params),
     length: 0,
     location
@@ -186,7 +186,7 @@ describe("venueGetList (data, length)", () => {
   const getData = (length) => ({
     params: newListParamsVenues(),
     length,
-    location: geoPoint(0)
+    location: getGeoPoint(0)
   });
 
   const testGetList = async (length) => {
@@ -214,7 +214,7 @@ describe("venueGetList (data, params)", () => {
 
   const mockAPICall = initMockAPICall(venueGetList, "GET");
 
-  const getData = (params, location = geoPoint(0)) => ({
+  const getData = (params, location = getGeoPoint(0)) => ({
     params: newListParamsVenues(params),
     length: 0,
     location
@@ -233,7 +233,7 @@ describe("venueGetList (data, params)", () => {
 
   };
 
-  it("sends data if successful (range)", () => testGetList({ range: 25 }, { radius: 40000 }, geoPoint(0.05), {
+  it("sends data if successful (range)", () => testGetList({ range: 25 }, { radius: 40000 }, getGeoPoint(0.05), {
     latitude: 0.05,
     longitude: 0.05
   }, {

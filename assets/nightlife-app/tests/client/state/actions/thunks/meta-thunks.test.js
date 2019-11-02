@@ -24,12 +24,12 @@ describe("metaSaveAddress", () => {
 
   const { metaSaveAddress } = actions;
 
-  testAPI.default(metaSaveAddress(""), {
+  testAPI.default(metaSaveAddress("", null), {
     path: "/nightlife-app/api/meta-save-address",
     method: "PATCH",
     data: {
       address: "",
-      location: undefined
+      location: null
     }
   });
 

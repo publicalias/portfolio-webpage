@@ -9,7 +9,7 @@ const { metaAddErrors, metaNoOp, metaSetLoading, metaSetState } = require("redux
 
 //node modules
 
-const { useRef, useLayoutEffect } = require("react");
+const { useRef } = require("react");
 
 //get search params
 
@@ -127,11 +127,13 @@ const getPosition = () => {
 
 };
 
-const getHandlers = (scroll) => (list, path, limit, clear, fetch) => {
+const useInfiniteScroll = (list, path, limit, reset, fetch) => {
+
+  const scroll = useRef();
 
   const handleReload = async () => {
 
-    clear();
+    reset();
 
     const res = await fetch(0);
 
@@ -163,23 +165,6 @@ const getHandlers = (scroll) => (list, path, limit, clear, fetch) => {
     scroll.current.pending = false;
 
   };
-
-  return {
-    handleReload,
-    handleScroll
-  };
-
-};
-
-const useInfiniteScroll = (bool, ...args) => {
-
-  const scroll = useRef();
-
-  const { handleReload, handleScroll } = getHandlers(scroll)(...args);
-
-  useLayoutEffect(() => {
-    handleReload(); //async
-  }, [bool]);
 
   return {
     handleReload,

@@ -50,14 +50,11 @@ const metaSaveAddress = handleAPICall({
 
     const { lib: { geoCode } } = metaSaveAddress.injected;
 
-    const data = await geoCode(address) || location || null;
-
-    const setAddress = address || !address && !location;
-
     await userDataCol().updateOne({ id: req.user.id }, deepCopy({
-      $set: { "data.location": data }
-    }, setAddress && {
-      $set: { "data.address": address }
+      $set: {
+        "data.address": address,
+        "data.location": address ? await geoCode(address) : location
+      }
     }));
 
     res.json({});
