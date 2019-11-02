@@ -71,6 +71,7 @@ exports[`venue body should match snapshot (list) 1`] = `
                 "name": "",
                 "photos": Array [],
                 "rating": 0,
+                "rsvps": Array [],
                 "url": "",
               },
             }

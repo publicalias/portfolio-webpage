@@ -16,6 +16,7 @@ const { initMockAPICall, mongoTests } = require("redux/tests/server-tests");
 
 const favoritesCol = () => db.collection("nightlife-app/favorites");
 const friendsCol = () => db.collection("nightlife-app/friends");
+const rsvpsCol = () => db.collection("nightlife-app/rsvps");
 
 const injectHandlerWithList = () => {
 
@@ -34,7 +35,7 @@ const injectHandlerWithList = () => {
 //setup
 
 beforeAll(mongoTests.setup);
-beforeEach(mongoTests.reset(favoritesCol, friendsCol));
+beforeEach(mongoTests.reset(favoritesCol, friendsCol, rsvpsCol));
 afterAll(mongoTests.teardown);
 
 //venue get item
@@ -111,6 +112,9 @@ describe("venueGetItem (data, friends)", () => {
   const testGetItem = initTestVenueItem(mockAPICall, getData, async () => ({
     distance: 4.9,
     favorites: await favoritesCol()
+      .find()
+      .toArray(),
+    rsvps: await rsvpsCol()
       .find()
       .toArray()
   }));

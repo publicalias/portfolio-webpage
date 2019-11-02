@@ -4,7 +4,7 @@
 
 const handlers = require("../../scripts/server/api/handlers/venue-handlers");
 
-const { newFavorite, newFriend, newGeoPoint, newUserData, newVenue } = require("../../schemas");
+const { newFavorite, newFriend, newGeoPoint, newRSVP, newUserData, newVenue } = require("../../schemas");
 
 //global imports
 
@@ -15,6 +15,7 @@ const { initTestErrors, overlyLongInput, testMock } = require("redux/tests/meta-
 
 const favoritesCol = () => db.collection("nightlife-app/favorites");
 const friendsCol = () => db.collection("nightlife-app/friends");
+const rsvpsCol = () => db.collection("nightlife-app/rsvps");
 const userDataCol = () => db.collection("nightlife-app/user-data");
 
 //get geo point
@@ -77,6 +78,11 @@ const initTestVenueItem = (mockAPICall, getData, getItemData) => async (id) => {
   });
 
   await favoritesCol().insertOne(newFavorite({
+    user: { id: "id-c" },
+    venue: { id: "id-a" }
+  }));
+
+  await rsvpsCol().insertOne(newRSVP({
     user: { id: "id-c" },
     venue: { id: "id-a" }
   }));

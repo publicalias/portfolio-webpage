@@ -19,6 +19,7 @@ const request = require("request-promise-native");
 
 const favoritesCol = () => db.collection("nightlife-app/favorites");
 const friendsCol = () => db.collection("nightlife-app/friends");
+const rsvpsCol = () => db.collection("nightlife-app/rsvps");
 const userDataCol = () => db.collection("nightlife-app/user-data");
 
 //check search
@@ -30,115 +31,6 @@ const checkSearch = (params) => checkErrors([{
   bool: params.search.length > 100,
   text: "Search exceeds character limit"
 }]);
-
-//find user item / find user list
-
-const addDistUser = async (location, max = Infinity) => {
-
-  await userDataCol().createIndex({ "data.location": "2dsphere" });
-
-  const field = "data.distance";
-
-  return [{
-    $geoNear: {
-      near: location,
-      distanceField: field,
-      maxDistance: max * 1609, //miles to meters
-      distanceMultiplier: 1 / 1609, //meters to miles
-      limit: 1000
-    }
-  }, {
-    $addFields: {
-      [field]: round(`$${field}`, 1) //no $round
-    }
-  }];
-
-};
-
-const addListUser = (user) => {
-
-  if (!user) {
-    return [];
-  }
-
-  const lists = [{
-    $lookup: {
-      from: "nightlife-app/favorites",
-      localField: "id",
-      foreignField: "user.id",
-      as: "data.favorites"
-    }
-  }, {
-    $lookup: {
-      from: "nightlife-app/friends",
-      let: { id: "$id" },
-      pipeline: [{
-        $match: {
-          $and: [
-            { $expr: { $or: [{ $eq: ["$from.id", "$$id"] }, { $eq: ["$to.id", "$$id"] }] } },
-            { confirmed: true }
-          ]
-        }
-      }],
-      as: "data.friends"
-    }
-  }];
-
-  const filter = (prop) => [{
-    $addFields: {
-      [`data.${prop}`]: {
-        $cond: {
-          if: {
-            $or: [
-              { $eq: [user.id, "$id"] },
-              { $in: [user.id, "$data.friends.from.id"] },
-              { $in: [user.id, "$data.friends.to.id"] }
-            ]
-          },
-          then: `$data.${prop}`,
-          else: []
-        }
-      }
-    }
-  }];
-
-  return lists.concat(filter("favorites"), filter("friends"));
-
-};
-
-const findUserItem = async (user, id, location) => {
-
-  const [item] = await userDataCol()
-    .aggregate([...await addDistUser(location), { $match: { id } }, ...addListUser(user)])
-    .toArray();
-
-  return item;
-
-};
-
-const findUserList = async (params, length, location) => {
-
-  const { range, search } = params;
-
-  const $match = search ? {
-    name: {
-      $regex: search,
-      $options: "i"
-    }
-  } : {};
-
-  const $sort = {
-    "data.distance": -1,
-    "_id": 1 //ensures consistency in tests
-  };
-
-  return userDataCol()
-    .aggregate([...await addDistUser(location, range), { $match }, { $sort }])
-    .skip(length)
-    .limit(50)
-    .toArray();
-
-};
 
 //friend id list
 
@@ -172,6 +64,102 @@ const friendIDList = async (id) => {
 
 };
 
+//find user item / find user list
+
+const aggDistUser = async (location, max = Infinity) => {
+
+  await userDataCol().createIndex({ "data.location": "2dsphere" });
+
+  const field = "data.distance";
+
+  return [{
+    $geoNear: {
+      near: location,
+      distanceField: field,
+      maxDistance: max * 1609, //miles to meters
+      distanceMultiplier: 1 / 1609, //meters to miles
+      limit: 1000
+    }
+  }, {
+    $addFields: {
+      [field]: round(`$${field}`, 1) //no $round
+    }
+  }];
+
+};
+
+const aggListUser = async (user, id) => {
+
+  const list = await friendIDList(id);
+
+  if (!user || !list.includes(user.id)) {
+    return [];
+  }
+
+  return [{
+    $lookup: {
+      from: "nightlife-app/favorites",
+      localField: "id",
+      foreignField: "user.id",
+      as: "data.favorites"
+    }
+  }, {
+    $lookup: {
+      from: "nightlife-app/friends",
+      let: { id: "$id" },
+      pipeline: [{
+        $match: {
+          $and: [
+            { $expr: { $or: [{ $eq: ["$from.id", "$$id"] }, { $eq: ["$to.id", "$$id"] }] } },
+            { confirmed: true }
+          ]
+        }
+      }],
+      as: "data.friends"
+    }
+  }];
+
+};
+
+const findUserItem = async (user, id, location) => {
+
+  const [dist, list] = await Promise.all([
+    aggDistUser(location),
+    aggListUser(user, id)
+  ]);
+
+  const [item] = await userDataCol()
+    .aggregate([...dist, { $match: { id } }, ...list])
+    .toArray();
+
+  return item;
+
+};
+
+const findUserList = async (params, length, location) => {
+
+  const { range, search } = params;
+
+  const $match = search ? {
+    name: {
+      $regex: search,
+      $options: "i"
+    }
+  } : {};
+
+  const $sort = {
+    "data.distance": -1,
+    "_id": 1 //ensures consistency in tests
+  };
+
+  return userDataCol()
+    .aggregate([...await aggDistUser(location, range), { $match }, { $sort }])
+    .skip(length)
+    .limit(50)
+    .toArray();
+
+};
+
 //find venue item / find venue list
 
 const addDistVenue = (item, location) => {
@@ -199,6 +187,12 @@ const addListVenue = async (item, user) => {
 
   return {
     favorites: await favoritesCol()
+      .find({
+        "user.id": { $in: friends },
+        "venue.id": item.id
+      })
+      .toArray(),
+    rsvps: await rsvpsCol()
       .find({
         "user.id": { $in: friends },
         "venue.id": item.id

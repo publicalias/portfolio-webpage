@@ -159,13 +159,15 @@ const newVenue = initSchema({ //uses the yelp api
   photos: [],
   url: "",
 
-  favorites: [] //computed
+  favorites: [], //computed
+  rsvps: [] //computed
 
 }, {
 
   hours: listReplacer(newHours),
 
-  favorites: listReplacer(newFavorite)
+  favorites: listReplacer(newFavorite),
+  rsvps: listReplacer(newRSVP)
 
 });
 
