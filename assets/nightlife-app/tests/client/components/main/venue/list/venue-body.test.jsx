@@ -23,9 +23,7 @@ beforeEach(reactTests.inject(VenueBody));
 
 describe("venue body", () => {
 
-  const dataList = [null, { handleScroll: jest.fn() }];
-
-  const testSnapshot = withDataList(initTestSnapshot(testShallow), dataList);
+  const testSnapshot = withDataList(initTestSnapshot(testShallow), [null, { handleScroll: jest.fn() }]);
 
   it("should match snapshot (default)", () => testSnapshot());
 

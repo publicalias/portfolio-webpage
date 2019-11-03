@@ -24,15 +24,15 @@ beforeEach(reactTests.inject(VenueItem));
 
 describe("venue item", () => {
 
-  const dataList = [null, {
+  const testItem = withDataList(testShallow, [null, {
     venue: newVenue({
       id: "id-a",
       image_url: "https://www.example.com/thumbnail.jpg",
       name: "Venue A"
     })
-  }];
+  }]);
 
-  const testSnapshot = withDataList(initTestSnapshot(testShallow), dataList);
+  const testSnapshot = initTestSnapshot(testItem);
 
   it("should match snapshot", () => testSnapshot());
 
@@ -41,9 +41,9 @@ describe("venue item", () => {
     const event = { target: { src: "" } };
     const placeholder = "https://via.placeholder.com/100x100?text=undefined";
 
-    const testError = initTestEvent(testShallow, "error", event);
+    const testError = initTestEvent(testItem, "error", event);
 
-    return testError(".qa-image-error", dataList, () => {
+    return testError(".qa-image-error", [], () => {
       expect(event.target.src).toEqual(placeholder);
     });
 

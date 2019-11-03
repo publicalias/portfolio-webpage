@@ -13,9 +13,10 @@ const { initTestEvent, initTestSnapshot, reactTests } = require("redux/tests/rea
 
 //utilities
 
-const { testMount, testShallow } = testWrapper(PollIcon);
+const { testShallow } = testWrapper(PollIcon);
 
-const testSnapshot = initTestSnapshot(testShallow);
+const testForm = initTestPoll(testShallow, "form");
+const testView = initTestPoll(testShallow, "view");
 
 const getView = ({ created = false, fill = "rgba(0, 0, 0, 0.75)", text = "", voted = false } = {}) => ({
   view: {
@@ -35,21 +36,17 @@ beforeEach(reactTests.inject(PollIcon));
 
 describe("poll icon (form)", () => {
 
-  const testForm = (view) => initTestPoll(testSnapshot, "form")(null, null, getView(view));
+  const testSnapshot = (view) => initTestSnapshot(testForm)(null, null, getView(view));
 
-  it("should match snapshot (default)", () => testForm());
+  it("should match snapshot (default)", () => testSnapshot());
 
-  it("should match snapshot (created)", () => testForm({ created: true }));
+  it("should match snapshot (created)", () => testSnapshot({ created: true }));
 
-  it("should match snapshot (voted)", () => testForm({ voted: true }));
+  it("should match snapshot (voted)", () => testSnapshot({ voted: true }));
 
 });
 
 describe("poll icon (form, events)", () => {
-
-  const testFormMount = initTestPoll(testMount, "form");
-
-  const testClick = initTestEvent(testFormMount, "click");
 
   it("should call formRemoveOption on click (remove)", () => {
 
@@ -58,7 +55,18 @@ describe("poll icon (form, events)", () => {
       text: "Option A"
     })];
 
-    return testClick(".qa-option-remove", dataList, ["formRemoveOption", ["Option A"]]);
+    const event = { stopPropagation: jest.fn() };
+
+    const testClick = initTestEvent(testForm, "click", event);
+
+    const fnList = [
+      ["formRemoveOption", ["Option A"]],
+      () => {
+        testMock(event.stopPropagation, []);
+      }
+    ];
+
+    return testClick(".qa-option-remove", dataList, ...fnList);
 
   });
 
@@ -66,31 +74,31 @@ describe("poll icon (form, events)", () => {
 
 describe("poll icon (view)", () => {
 
-  const testView = (view) => initTestPoll(testSnapshot, "view")(null, null, getView(view));
+  const testSnapshot = (view) => initTestSnapshot(testView)(null, null, getView(view));
 
-  it("should match snapshot (default)", () => testView());
+  it("should match snapshot (default)", () => testSnapshot());
 
-  it("should match snapshot (created)", () => testView({ created: true }));
+  it("should match snapshot (created)", () => testSnapshot({ created: true }));
 
-  it("should match snapshot (voted)", () => testView({ voted: true }));
+  it("should match snapshot (voted)", () => testSnapshot({ voted: true }));
 
 });
 
 describe("poll icon (view, events)", () => {
 
-  const testViewMount = initTestPoll(testMount, "view");
-
-  const testRemove = (view, fn) => {
-
-    const event = { stopPropagation: jest.fn() };
-    const testReload = initTestReload("click", event);
+  const testClick = (view, fn) => {
 
     const dataList = [null, { id: "id-b" }, getView(view)];
+
+    const event = { stopPropagation: jest.fn() };
+
+    const testReload = initTestReload("click", event);
+
     const fnList = [fn, () => {
       testMock(event.stopPropagation, []);
     }];
 
-    return testReload(testViewMount, dataList, ".qa-option-remove", "id-b", ...fnList);
+    return testReload(testView, dataList, ".qa-option-remove", "id-b", ...fnList);
 
   };
 
@@ -101,7 +109,7 @@ describe("poll icon (view, events)", () => {
       text: "Option A"
     };
 
-    return testRemove(view, ["pollRemoveOption", ["id-b", "Option A"]]);
+    return testClick(view, ["pollRemoveOption", ["id-b", "Option A"]]);
 
   });
 
@@ -109,7 +117,7 @@ describe("poll icon (view, events)", () => {
 
     const view = { voted: true };
 
-    return testRemove(view, ["pollRemoveVote", ["id-b"]]);
+    return testClick(view, ["pollRemoveVote", ["id-b"]]);
 
   });
 

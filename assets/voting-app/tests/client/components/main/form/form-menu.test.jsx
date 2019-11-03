@@ -14,7 +14,7 @@ const { initTestEvent, initTestSnapshot, reactTests } = require("redux/tests/rea
 
 //utilities
 
-const { testMount, testShallow } = testWrapper(FormMenu);
+const { testShallow } = testWrapper(FormMenu);
 
 //setup
 
@@ -37,35 +37,42 @@ describe("form menu", () => {
 
 describe("form menu (create)", () => {
 
-  const testCreate = (res) => testCreateDelete(testMount, [], ".qa-create-poll", res, ["metaCreatePoll", [newForm()]]);
+  const testClick = (res) => testCreateDelete(testShallow, [], ".qa-create-poll", res, ["metaCreatePoll", [newForm()]]);
 
-  it("should call metaCreatePoll and history.push on click (success)", () => testCreate({}));
+  it("should call metaCreatePoll and history.push on click (success)", () => testClick({}));
 
-  it("should call metaCreatePoll and history.push on click (errors)", () => testCreate({ errors: [] }));
+  it("should call metaCreatePoll and history.push on click (errors)", () => testClick({ errors: [] }));
 
-  it("should call metaCreatePoll and history.push on click (failure)", () => testCreate());
+  it("should call metaCreatePoll and history.push on click (failure)", () => testClick());
 
 });
 
 describe("form menu (click)", () => {
 
-  const testClick = initTestEvent(testMount, "click");
-
-  const testSelect = () => {
-
-    const { lib: { select } } = FormMenu.injected;
-
-    testMock(select, [".js-edit-title"]);
-
-    expect(mockResults(select)[0].value).toEqual("");
-
-  };
-
   const dataList = [{ form: { delete: true } }];
+
+  const testClick = initTestEvent(testShallow, "click");
 
   it("should call formToggleDelete on click (discard)", () => testClick(".qa-confirm-true", [], ["formToggleDelete", []]));
 
-  it("should call formClearState on click (yes)", () => testClick(".qa-discard-poll", dataList, ["formClearState", []], testSelect));
+  it("should call formClearState on click (yes)", () => {
+
+    const fnList = [
+      ["formClearState", []],
+      () => {
+
+        const { lib: { select } } = FormMenu.injected;
+
+        testMock(select, [".js-edit-title"]);
+
+        expect(mockResults(select)[0].value).toEqual("");
+
+      }
+    ];
+
+    return testClick(".qa-discard-poll", dataList, ...fnList);
+
+  });
 
   it("should call formToggleDelete on click (no)", () => testClick(".qa-confirm-false", dataList, ["formToggleDelete", []]));
 

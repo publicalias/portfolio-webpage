@@ -15,7 +15,8 @@ const { initTestSnapshot, reactTests, withDataList } = require("redux/tests/reac
 
 const { testShallow } = testWrapper(Poll);
 
-const testSnapshot = initTestSnapshot(testShallow);
+const testForm = initTestPoll(testShallow, "form");
+const testView = initTestPoll(testShallow, "view");
 
 //setup
 
@@ -26,33 +27,33 @@ beforeEach(reactTests.inject(Poll));
 
 describe("poll (form)", () => {
 
-  const testForm = initTestPoll(testSnapshot, "form");
+  const testSnapshot = initTestSnapshot(testForm);
 
-  it("should match snapshot (default)", () => testForm());
+  it("should match snapshot (default)", () => testSnapshot());
 
-  it("should match snapshot (authenticated)", () => testForm({ user: newUser() }));
+  it("should match snapshot (authenticated)", () => testSnapshot({ user: newUser() }));
 
-  it("should match snapshot (options)", () => testForm(null, { options: ["Option A"] }));
+  it("should match snapshot (options)", () => testSnapshot(null, { options: ["Option A"] }));
 
 });
 
 describe("poll (view)", () => {
 
-  const testView = initTestPoll(testSnapshot, "view");
+  const testSnapshot = initTestSnapshot(testView);
 
-  const testPoll = withDataList(testView, [{
+  const testPoll = withDataList(testSnapshot, [{
     user: newUser(),
     polls: [{ id: "id-a" }]
   }]);
 
-  it("should match snapshot (default)", () => testView());
+  it("should match snapshot (default)", () => testSnapshot());
 
-  it("should match snapshot (authenticated)", () => testView({ user: newUser() }));
+  it("should match snapshot (authenticated)", () => testSnapshot({ user: newUser() }));
 
   it("should match snapshot (authenticated, wrong poll)", () => testPoll(null, { id: "id-b" }));
 
   it("should match snapshot (authenticated, right poll)", () => testPoll(null, { id: "id-a" }));
 
-  it("should match snapshot (options)", () => testView(null, { options: [{}] }));
+  it("should match snapshot (options)", () => testSnapshot(null, { options: [{}] }));
 
 });

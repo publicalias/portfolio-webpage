@@ -11,13 +11,9 @@ const { testWrapper } = require("../test-helpers");
 const { testMock } = require("redux/tests/meta-tests");
 const { initTestSnapshot, reactTests } = require("redux/tests/react-tests");
 
-//node modules
-
-const { MemoryRouter } = require("react-router-dom");
-
 //utilities
 
-const { testMount, testShallow } = testWrapper(UI, MemoryRouter);
+const { testMount, testShallow } = testWrapper(UI);
 
 //setup
 

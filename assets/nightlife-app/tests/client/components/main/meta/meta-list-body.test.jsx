@@ -28,14 +28,12 @@ beforeEach(reactTests.inject(MetaListBody));
 
 describe("meta list body", () => {
 
-  const dataList = [null, {
+  const testList = withDataList(testShallow, [null, {
     handleScroll: jest.fn(),
     header: <div />,
     list: [],
     placeholder: "No Items"
-  }];
-
-  const testList = withDataList(testShallow, dataList);
+  }]);
 
   const testSnapshot = initTestSnapshot(testList);
 

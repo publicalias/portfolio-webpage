@@ -8,9 +8,8 @@ const { testWrapper } = require("../../../test-helpers");
 
 //global imports
 
-const { initDeepCopy } = require("all/utilities");
 const { testMock } = require("redux/tests/meta-tests");
-const { initTestEvent, initTestSnapshot, reactTests } = require("redux/tests/react-tests");
+const { initTestEvent, initTestSnapshot, reactTests, withDataList } = require("redux/tests/react-tests");
 
 //node modules
 
@@ -18,9 +17,7 @@ const React = require("react");
 
 //utilities
 
-const { testMount, testShallow } = testWrapper(MetaItem);
-
-const deepCopy = initDeepCopy({ overwriteArray: false });
+const { testShallow } = testWrapper(MetaItem);
 
 //setup
 
@@ -31,20 +28,20 @@ beforeEach(reactTests.inject(MetaItem));
 
 describe("meta item", () => {
 
-  const dataList = [null, {
+  const testItem = withDataList(testShallow, [null, {
     buttons: [{ icon: "icon" }],
     item: {
       id: "id-a",
       date: 0
     },
     notification: <div />
-  }];
+  }]);
 
-  const testSnapshot = initTestSnapshot(testShallow);
+  const testSnapshot = initTestSnapshot(testItem);
 
-  const testClick = initTestEvent(testMount, "click");
+  const testClick = initTestEvent(testItem, "click");
 
-  it("should match snapshot", () => testSnapshot(...dataList));
+  it("should match snapshot", () => testSnapshot());
 
   it("should call handler and refresh on click", () => {
 
@@ -53,10 +50,10 @@ describe("meta item", () => {
 
     const args = [
       ".qa-action-item",
-      deepCopy(dataList, [null, {
+      [null, {
         buttons: [{ handler }],
         refresh
-      }]),
+      }],
       () => {
         testMock(handler, ["id-a"]);
         testMock(refresh, []);

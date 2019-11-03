@@ -12,11 +12,12 @@ const { initTestEvent, initTestSnapshot, reactTests } = require("redux/tests/rea
 
 //utilities
 
-const { testMount, testShallow } = testWrapper(PollInput);
+const { testShallow } = testWrapper(PollInput);
 
-const testSnapshot = initTestSnapshot(testShallow);
+const testForm = initTestPoll(testShallow, "form");
+const testView = initTestPoll(testShallow, "view");
 
-const testChange = (render, type) => {
+const initTestChange = (render) => (type) => {
 
   const testChange = initTestEvent(render, "change", { target: { value: "Option A" } });
 
@@ -33,16 +34,16 @@ beforeEach(reactTests.inject(PollInput));
 
 describe("poll input (form)", () => {
 
-  const testForm = initTestPoll(testSnapshot, "form");
-  const testFormMount = initTestPoll(testMount, "form");
+  const testSnapshot = initTestSnapshot(testForm);
 
-  const testClick = initTestEvent(testFormMount, "click");
+  const testChange = initTestChange(testForm);
+  const testClick = initTestEvent(testForm, "click");
 
-  it("should match snapshot", () => testForm());
+  it("should match snapshot", () => testSnapshot());
 
-  it("should call formSetAdd on change", () => testChange(testFormMount, "formSetAdd"));
+  it("should call formSetAdd on change", () => testChange("formSetAdd"));
 
-  it("should call formAddOption on submit", () => {
+  it("should call formAddOption on click", () => {
 
     const dataList = [{ form: { add: "Option A" } }];
 
@@ -54,29 +55,36 @@ describe("poll input (form)", () => {
 
 describe("poll input (view)", () => {
 
-  const testView = initTestPoll(testSnapshot, "view");
-  const testViewMount = initTestPoll(testMount, "view");
+  const testSnapshot = initTestSnapshot(testView);
 
-  const testSubmit = (res) => {
+  const testChange = initTestChange(testView);
 
-    const dataList = [{ view: { add: "Option A" } }, { id: "id-a" }, null, { actions: { pollAddOption: jest.fn(() => res) } }];
+  const testClick = (res) => {
+
+    const dataList = [
+      { view: { add: "Option A" } },
+      { id: "id-a" },
+      null,
+      { actions: { pollAddOption: jest.fn(() => res) } }
+    ];
+
     const fnList = [
       ["pollAddOption", ["id-a", "Option A"]],
       ["viewSetAdd", res && !res.errors ? [""] : undefined]
     ];
 
-    return testReload(testViewMount, dataList, ".qa-option-submit", "id-a", ...fnList);
+    return testReload(testView, dataList, ".qa-option-submit", "id-a", ...fnList);
 
   };
 
-  it("should match snapshot", () => testView({ view: { add: "Option A" } }));
+  it("should match snapshot", () => testSnapshot({ view: { add: "Option A" } }));
 
-  it("should call viewSetAdd on change", () => testChange(testViewMount, "viewSetAdd"));
+  it("should call viewSetAdd on change", () => testChange("viewSetAdd"));
 
-  it("should call pollAddOption on submit (failure)", () => testSubmit());
+  it("should call pollAddOption on click (failure)", () => testClick());
 
-  it("should call pollAddOption on submit (errors)", () => testSubmit({ errors: [] }));
+  it("should call pollAddOption on click (errors)", () => testClick({ errors: [] }));
 
-  it("should call pollAddOption and viewSetAdd on submit (success)", () => testSubmit({}));
+  it("should call pollAddOption and viewSetAdd on click (success)", () => testClick({}));
 
 });

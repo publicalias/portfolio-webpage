@@ -218,7 +218,16 @@ describe("pollToggleSecret", () => {
 
   const getData = () => ({ id: "id-a" });
 
-  const testSecret = async (user) => {
+  beforeEach(() => pollsCol().insertOne(newPoll({
+    id: "id-a",
+    users: { created: "id-b" }
+  })));
+
+  it("sends status if authentication fails", () => testAuthFail(mockAPICall, getData(), [newUser()]));
+
+  it("sends noop if successful", async () => {
+
+    const user = newUser({ id: "id-b" });
 
     const toggle = async () => {
 
@@ -237,15 +246,6 @@ describe("pollToggleSecret", () => {
     await toggle();
     await toggle();
 
-  };
-
-  beforeEach(() => pollsCol().insertOne(newPoll({
-    id: "id-a",
-    users: { created: "id-b" }
-  })));
-
-  it("sends status if authentication fails", () => testAuthFail(mockAPICall, getData(), [newUser()]));
-
-  it("sends noop if successful", () => testSecret(newUser({ id: "id-b" })));
+  });
 
 });

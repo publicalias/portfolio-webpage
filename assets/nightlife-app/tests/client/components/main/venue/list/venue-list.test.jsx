@@ -10,7 +10,7 @@ const { getGeoPoint, testWrapper } = require("../../../../test-helpers");
 
 const { testMock } = require("redux/tests/meta-tests");
 const { mockInfiniteScroll } = require("redux/tests/client-tests");
-const { initTestSnapshot, reactTests, setProps } = require("redux/tests/react-tests");
+const { initTestSnapshot, reactTests } = require("redux/tests/react-tests");
 
 //utilities
 
@@ -42,12 +42,12 @@ describe("venue list", () => {
       [{ user: { data: { location: getGeoPoint(1) } } }]
     ];
 
-    const { wrapper } = testMount();
+    const { setProps, wrapper } = testMount();
 
     wrapper.mount();
 
     for (const e of list) {
-      setProps(wrapper, ...e);
+      setProps(...e);
     }
 
     testMock(handleReload, [], [], []);

@@ -13,17 +13,18 @@ const { initTestSnapshot, reactTests } = require("redux/tests/react-tests");
 
 //utilities
 
-const { testMount, testShallow } = testWrapper(PollToggle);
+const { testShallow } = testWrapper(PollToggle);
 
-const testSnapshot = initTestSnapshot(testShallow);
+const testFlag = initTestPoll(testShallow, "flag");
+const testHide = initTestPoll(testShallow, "hide");
 
-const initTestProp = (render) => (prop) => render({ user: newUser({ id: "id-a" }) }, prop && {
+const initTestBool = (render) => (prop) => render({ user: newUser({ id: "id-a" }) }, prop && {
   users: {
     [prop]: ["id-a"]
   }
 });
 
-const initTestToggle = (render) => (qa, type, list) => {
+const initTestClick = (render) => (qa, type, list) => {
 
   const dataList = [null, { id: "id-a" }, { list }];
 
@@ -40,40 +41,38 @@ beforeEach(reactTests.inject(PollToggle));
 
 describe("poll toggle (flag)", () => {
 
-  const testFlag = initTestPoll(testSnapshot, "flag");
-  const testFlagMount = initTestPoll(testMount, "flag");
+  const testSnapshot = initTestSnapshot(testFlag);
+  const testBool = initTestBool(testSnapshot);
 
-  const testProp = initTestProp(testFlag);
-  const testToggle = initTestToggle(testFlagMount);
+  const testClick = initTestClick(testFlag);
 
-  it("should match snapshot (default)", () => testProp());
+  it("should match snapshot (default)", () => testBool());
 
-  it("should match snapshot (toggled)", () => testProp("flagged"));
+  it("should match snapshot (toggled)", () => testBool("flagged"));
 
-  it("should match snapshot (util)", () => testFlag(null, null, { util: "u-whatever" }));
+  it("should match snapshot (util)", () => testSnapshot(null, null, { util: "u-whatever" }));
 
-  it("should call pollToggleFlag on click (list)", () => testToggle(".qa-toggle-flag", "pollToggleFlag", true));
+  it("should call pollToggleFlag on click (list)", () => testClick(".qa-toggle-flag", "pollToggleFlag", true));
 
-  it("should call pollToggleFlag on click (view)", () => testToggle(".qa-toggle-flag", "pollToggleFlag"));
+  it("should call pollToggleFlag on click (view)", () => testClick(".qa-toggle-flag", "pollToggleFlag"));
 
 });
 
 describe("poll toggle (hide)", () => {
 
-  const testHide = initTestPoll(testSnapshot, "hide");
-  const testHideMount = initTestPoll(testMount, "hide");
+  const testSnapshot = initTestSnapshot(testHide);
+  const testBool = initTestBool(testSnapshot);
 
-  const testProp = initTestProp(testHide);
-  const testToggle = initTestToggle(testHideMount);
+  const testClick = initTestClick(testHide);
 
-  it("should match snapshot (default)", () => testProp());
+  it("should match snapshot (default)", () => testBool());
 
-  it("should match snapshot (toggled)", () => testProp("hidden"));
+  it("should match snapshot (toggled)", () => testBool("hidden"));
 
-  it("should match snapshot (util)", () => testHide(null, null, { util: "u-whatever" }));
+  it("should match snapshot (util)", () => testSnapshot(null, null, { util: "u-whatever" }));
 
-  it("should call pollToggleHide on click (list)", () => testToggle(".qa-toggle-hide", "pollToggleHide", true));
+  it("should call pollToggleHide on click (list)", () => testClick(".qa-toggle-hide", "pollToggleHide", true));
 
-  it("should call pollToggleHide on click (view)", () => testToggle(".qa-toggle-hide", "pollToggleHide"));
+  it("should call pollToggleHide on click (view)", () => testClick(".qa-toggle-hide", "pollToggleHide"));
 
 });

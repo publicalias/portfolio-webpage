@@ -12,13 +12,9 @@ const { getGeoPoint, testWrapper } = require("../test-helpers");
 const { testMock } = require("redux/tests/meta-tests");
 const { initTestSnapshot, reactTests } = require("redux/tests/react-tests");
 
-//node modules
-
-const { MemoryRouter } = require("react-router-dom");
-
 //utilities
 
-const { testMount, testShallow } = testWrapper(UI, MemoryRouter);
+const { testMount, testShallow } = testWrapper(UI);
 
 const userData = { location: getGeoPoint(0) };
 
@@ -35,7 +31,20 @@ describe("ui", () => {
 
   const testSnapshot = initTestSnapshot(testShallow);
 
-  const testLoad = async (user, fn) => {
+  const testLoadDefault = (props) => {
+
+    const { actions: { metaGetUser, metaSaveAddress, metaToggleLoaded } } = props;
+
+    const { lib: { getLocation } } = UI.injected;
+
+    testMock(metaGetUser, []);
+    testMock(getLocation);
+    testMock(metaSaveAddress);
+    testMock(metaToggleLoaded, []);
+
+  };
+
+  const testLoad = async (user = {}, fn = testLoadDefault) => {
 
     const dataList = [null, null, { actions: { metaGetUser: jest.fn(() => ({ user })) } }];
 
@@ -52,30 +61,17 @@ describe("ui", () => {
 
   };
 
-  const testDefault = (props) => {
-
-    const { actions: { metaGetUser, metaSaveAddress, metaToggleLoaded } } = props;
-
-    const { lib: { getLocation } } = UI.injected;
-
-    testMock(metaGetUser, []);
-    testMock(getLocation);
-    testMock(metaSaveAddress);
-    testMock(metaToggleLoaded, []);
-
-  };
-
   it("should match snapshot (default)", () => testSnapshot());
 
   it("should match snapshot (authenticated)", () => testSnapshot({ user: newUserWithData() }));
 
-  it("should call initUser on load (default)", () => testLoad({}, testDefault));
+  it("should call initUser on load (default)", () => testLoad());
 
   it("should call initUser on load (authenticated, location)", () => {
 
     const user = newUserWithData({ data: { location } });
 
-    return testLoad(user, testDefault);
+    return testLoad(user);
 
   });
 

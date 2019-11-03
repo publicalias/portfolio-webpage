@@ -16,9 +16,7 @@ const { initTestEvent, initTestSnapshot, reactTests, withDataList } = require("r
 
 const { testShallow } = testWrapper(ListBody);
 
-const dataList = [null, { handleScroll: jest.fn() }];
-
-const testSnapshot = withDataList(initTestSnapshot(testShallow), dataList);
+const testSnapshot = withDataList(initTestSnapshot(testShallow), [null, { handleScroll: jest.fn() }]);
 
 //setup
 

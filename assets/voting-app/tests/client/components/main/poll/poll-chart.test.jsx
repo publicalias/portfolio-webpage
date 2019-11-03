@@ -10,23 +10,27 @@ const { initTestPoll, testWrapper } = require("../../../test-helpers");
 //global imports
 
 const { testMock } = require("redux/tests/meta-tests");
-const { initTestSnapshot, reactTests, setProps } = require("redux/tests/react-tests");
+const { initTestSnapshot, reactTests } = require("redux/tests/react-tests");
 
 //utilities
 
 const { testMount, testShallow } = testWrapper(PollChart);
 
-const testSnapshot = initTestSnapshot(testShallow);
+const testForm = initTestPoll(testShallow, "form");
+const testFormMount = initTestPoll(testMount, "form");
+
+const testView = initTestPoll(testShallow, "view");
+const testViewMount = initTestPoll(testMount, "view");
 
 const testLoad = (render, role) => {
 
   const { lib: { renderChart, rngInt } } = PollChart.injected;
 
-  const { wrapper } = render(null, { options: [] });
+  const { setProps, wrapper } = render(null, { options: [] });
 
   wrapper.mount();
 
-  setProps(wrapper, null, { poll: { options: [role === "form" ? "Option A" : newOption({ text: "Option A" })] } });
+  setProps(null, { poll: { options: [role === "form" ? "Option A" : newOption({ text: "Option A" })] } });
 
   if (role === "form") {
     testMock(rngInt, [0, 9, true]);
@@ -53,10 +57,9 @@ beforeEach(reactTests.inject(PollChart, { lib: { rngInt: jest.fn(() => 0) } }));
 
 describe("poll chart (form)", () => {
 
-  const testForm = initTestPoll(testSnapshot, "form");
-  const testFormMount = initTestPoll(testMount, "form");
+  const testSnapshot = initTestSnapshot(testForm);
 
-  it("should match snapshot", () => testForm());
+  it("should match snapshot", () => testSnapshot());
 
   it("should call renderChart conditionally on update", () => testLoad(testFormMount, "form"));
 
@@ -64,10 +67,9 @@ describe("poll chart (form)", () => {
 
 describe("poll chart (view)", () => {
 
-  const testView = initTestPoll(testSnapshot, "view");
-  const testViewMount = initTestPoll(testMount, "view");
+  const testSnapshot = initTestSnapshot(testView);
 
-  it("should match snapshot", () => testView());
+  it("should match snapshot", () => testSnapshot());
 
   it("should call renderChart conditionally on update", () => testLoad(testViewMount, "view"));
 

@@ -125,7 +125,7 @@ describe("metaGetPollItem", () => {
 
   const getData = () => ({ id: "id-a" });
 
-  const testPolls = async (pollData) => {
+  const testGetItem = async (pollData) => {
 
     const polls = pollData.map(newPoll);
 
@@ -137,9 +137,9 @@ describe("metaGetPollItem", () => {
 
   };
 
-  it("sends data if successful (id exists)", () => testPolls([{ id: "id-a" }, {}]));
+  it("sends data if successful (id exists)", () => testGetItem([{ id: "id-a" }, {}]));
 
-  it("sends data if successful (id does not exist)", () => testPolls([{}]));
+  it("sends data if successful (id does not exist)", () => testGetItem([{}]));
 
 });
 
@@ -156,7 +156,7 @@ describe("metaGetPollList", () => {
     length
   });
 
-  const testPolls = async (length) => {
+  const testGetList = async (length) => {
 
     const polls = Array(1 + 100)
       .fill({})
@@ -170,9 +170,9 @@ describe("metaGetPollList", () => {
 
   };
 
-  it("sends data if successful (length, 0)", () => testPolls(0));
+  it("sends data if successful (length, 0)", () => testGetList(0));
 
-  it("sends data if successful (length, 1)", () => testPolls(1));
+  it("sends data if successful (length, 1)", () => testGetList(1));
 
 });
 
@@ -184,7 +184,7 @@ describe("metaGetPollList (sort)", () => {
 
   const getData = (sort) => ({ params: newListParams({ sort }) });
 
-  const testPolls = async (pollData, sort) => {
+  const testGetList = async (pollData, sort) => {
 
     const polls = pollData.map(newPoll);
 
@@ -196,7 +196,7 @@ describe("metaGetPollList (sort)", () => {
 
   };
 
-  it("sends data if successful (sort, new)", () => testPolls([{}, { date: 1 }], "new"));
+  it("sends data if successful (sort, new)", () => testGetList([{}, { date: 1 }], "new"));
 
   it("sends data if successful (sort, popular)", () => {
 
@@ -205,7 +205,7 @@ describe("metaGetPollList (sort)", () => {
       options: [{ voted: ["id-a"] }]
     }];
 
-    return testPolls(polls, "popular");
+    return testGetList(polls, "popular");
 
   });
 
@@ -219,7 +219,7 @@ describe("metaGetPollList (search)", () => {
 
   const getData = (search) => ({ params: newListParams({ search }) });
 
-  const testPolls = async (pollData, search, count) => {
+  const testGetList = async (pollData, search, count) => {
 
     const polls = pollData.map(newPoll);
 
@@ -239,7 +239,7 @@ describe("metaGetPollList (search)", () => {
 
   });
 
-  it("sends data if successful (search, empty)", () => testPolls([{}], "", 1));
+  it("sends data if successful (search, empty)", () => testGetList([{}], "", 1));
 
   it("sends data if successful (search, non-empty)", () => {
 
@@ -252,7 +252,7 @@ describe("metaGetPollList (search)", () => {
       {}
     ];
 
-    return testPolls(polls, text, 3);
+    return testGetList(polls, text, 3);
 
   });
 
@@ -266,7 +266,7 @@ describe("metaGetPollList (filter)", () => {
 
   const getData = (filter) => ({ params: newListParams({ filter }) });
 
-  const testPolls = async (pollData, filter, counts) => {
+  const testGetList = async (pollData, filter, counts) => {
 
     const userData = [newUser, newIPUser, () => ({})].slice(0, counts.length);
 
@@ -290,7 +290,7 @@ describe("metaGetPollList (filter)", () => {
 
     const polls = [{}, { users: { hidden: ["id-a"] } }, { secret: true }, { users: { flagged: Array(5).fill("") } }];
 
-    return testPolls(polls, "all", [1, 1, 2]);
+    return testGetList(polls, "all", [1, 1, 2]);
 
   });
 
@@ -306,7 +306,7 @@ describe("metaGetPollList (filter)", () => {
 
     const polls = [{ users: { created: "id-a" } }, { options: [{ created: "id-a" }] }, {}];
 
-    return testPolls(polls, "created", [2]);
+    return testGetList(polls, "created", [2]);
 
   });
 
@@ -317,7 +317,7 @@ describe("metaGetPollList (filter)", () => {
       options: [{ voted: ["id-a"] }]
     }, {}];
 
-    return testPolls(polls, "voted", [1, 1, 0]);
+    return testGetList(polls, "voted", [1, 1, 0]);
 
   });
 
@@ -325,7 +325,7 @@ describe("metaGetPollList (filter)", () => {
 
     const polls = [{ users: { hidden: ["id-a"] } }, {}];
 
-    return testPolls(polls, "hidden", [1, 1, 0]);
+    return testGetList(polls, "hidden", [1, 1, 0]);
 
   });
 
@@ -339,7 +339,7 @@ describe("metaGetUser", () => {
 
   const mockAPICall = initMockAPICall(metaGetUser, "GET");
 
-  const testUser = async (user) => {
+  const testGetUser = async (user) => {
 
     const res = await mockAPICall(user);
 
@@ -347,7 +347,7 @@ describe("metaGetUser", () => {
 
   };
 
-  it("sends data if successful (user is authenticated)", () => testUser(newUser()));
+  it("sends data if successful (user is authenticated)", () => testGetUser(newUser()));
 
   it("sends data if successful (ip user exists)", async () => {
 
@@ -355,10 +355,10 @@ describe("metaGetUser", () => {
 
     await usersCol().insertOne(user);
 
-    await testUser(user);
+    await testGetUser(user);
 
   });
 
-  it("sends data if successful (no ip user exists)", () => testUser({}));
+  it("sends data if successful (no ip user exists)", () => testGetUser({}));
 
 });

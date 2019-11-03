@@ -13,7 +13,7 @@ const { initTestEvent, initTestSnapshot, reactTests, withDataList } = require("r
 
 //utilities
 
-const { testMount, testShallow } = testWrapper(ViewSettings);
+const { testShallow } = testWrapper(ViewSettings);
 
 //setup
 
@@ -38,25 +38,25 @@ describe("view settings", () => {
 
 describe("view settings (delete)", () => {
 
-  const testDelete = (res) => {
+  const testClick = (res) => {
 
     const dataList = [{ view: { delete: true } }, { poll: newPoll({ id: "id-a" }) }];
 
-    return testCreateDelete(testMount, dataList, ".qa-delete-poll", res, ["metaDeletePoll", ["id-a"]]);
+    return testCreateDelete(testShallow, dataList, ".qa-delete-poll", res, ["metaDeletePoll", ["id-a"]]);
 
   };
 
-  it("should call metaDeletePoll on click (success)", () => testDelete({}));
+  it("should call metaDeletePoll on click (success)", () => testClick({}));
 
-  it("should call metaDeletePoll on click (errors)", () => testDelete({ errors: [] }));
+  it("should call metaDeletePoll on click (errors)", () => testClick({ errors: [] }));
 
-  it("should call metaDeletePoll on click (failure)", () => testDelete());
+  it("should call metaDeletePoll on click (failure)", () => testClick());
 
 });
 
 describe("view settings (click)", () => {
 
-  const testClick = initTestEvent(withDataList(testMount, [null, { poll: newPoll() }]), "click");
+  const testClick = initTestEvent(withDataList(testShallow, [null, { poll: newPoll() }]), "click");
 
   it("should call viewToggleDelete on click (delete)", () => testClick(".qa-confirm-true", [], ["viewToggleDelete", []]));
 
@@ -72,7 +72,7 @@ describe("view settings (click)", () => {
 
     const dataList = [null, { poll: newPoll({ id: "id-a" }) }];
 
-    return testReload(testMount, dataList, ".qa-toggle-secret", "id-a", ["pollToggleSecret", ["id-a"]]);
+    return testReload(testShallow, dataList, ".qa-toggle-secret", "id-a", ["pollToggleSecret", ["id-a"]]);
 
   });
 

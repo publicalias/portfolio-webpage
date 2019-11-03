@@ -48,7 +48,7 @@ const initTestSnapshot = (render) => (data, local, other) => {
 
 //init test wrapper
 
-const mockProps = (newState, actions, data, local, other) => {
+const getProps = (newState, actions, data, local, other) => {
 
   const init = {
 
@@ -71,34 +71,32 @@ const mockProps = (newState, actions, data, local, other) => {
 
 };
 
-const initTestWrapper = (newState, actions) => (UUT, Context) => {
+const setProps = (wrapper) => (data, local, other) => {
+  wrapper.setProps(deepCopy(wrapper.props(), other, {
+    data: data || {},
+    local: local || {}
+  }));
+};
+
+const initTestWrapper = (newState, actions) => (Component) => {
 
   const wrapFn = (render) => (data, local, other) => {
 
-    const props = mockProps(newState, actions, data, local, other);
+    const props = getProps(newState, actions, data, local, other);
 
-    const Component = Context ? (
-      <Context>
-        <UUT {...props} />
-      </Context>
-    ) : <UUT {...props} />;
+    const wrapper = render(<Component {...props} />);
 
     return {
       props,
-      wrapper: render(Component)
+      wrapper,
+      setProps: setProps(wrapper)
     };
 
   };
 
-  const dive = (Component) => shallow(Component)
-    .find(UUT)
-    .dive();
-
-  const shallowFn = Context ? dive : shallow;
-
   return {
     testMount: wrapFn(mount),
-    testShallow: wrapFn(shallowFn)
+    testShallow: wrapFn(shallow)
   };
 
 };
@@ -154,15 +152,6 @@ const reactTests = {
 
 };
 
-//set props
-
-const setProps = (wrapper, data, local, other) => {
-  wrapper.setProps(deepCopy(wrapper.props(), other, {
-    data: data || {},
-    local: local || {}
-  }));
-};
-
 //with data list
 
 const withDataList = (render, dataList) => (...args) => {
@@ -186,6 +175,5 @@ module.exports = {
   initTestSnapshot,
   initTestWrapper,
   reactTests,
-  setProps,
   withDataList
 };

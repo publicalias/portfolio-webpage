@@ -34,14 +34,16 @@ describe("meta list", () => {
     type: "meta"
   }];
 
-  const testList = withDataList(initTestSnapshot(testShallow), dataList);
+  const testList = withDataList(testShallow, dataList);
   const testListMount = withDataList(testMount, dataList);
 
-  const testClick = initTestEvent(testListMount, "click");
+  const testSnapshot = initTestSnapshot(testList);
 
-  it("should match snapshot (default)", () => testList());
+  const testClick = initTestEvent(testList, "click");
 
-  it("should match snapshot (list)", () => testList(null, { list: [<div key="" />] }));
+  it("should match snapshot (default)", () => testSnapshot());
+
+  it("should match snapshot (list)", () => testSnapshot(null, { list: [<div key="" />] }));
 
   it("should call refresh on load", () => {
 
@@ -62,7 +64,7 @@ describe("meta list", () => {
     const refresh = jest.fn();
 
     return testClick(".qa-refresh-list", [null, { refresh }], () => {
-      testMock(refresh, [], []);
+      testMock(refresh, []);
     });
 
   });

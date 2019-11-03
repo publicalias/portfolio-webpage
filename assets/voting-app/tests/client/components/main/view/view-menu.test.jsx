@@ -15,7 +15,7 @@ const { initTestEvent, initTestSnapshot, reactTests } = require("redux/tests/rea
 
 //utilities
 
-const { testMount, testShallow } = testWrapper(ViewMenu);
+const { testShallow } = testWrapper(ViewMenu);
 
 //setup
 
@@ -26,11 +26,11 @@ beforeEach(reactTests.inject(ViewMenu));
 
 describe("view menu", () => {
 
+  const dataList = [{ user: newUser({ id: "id-a" }) }, { poll: newPoll({ users: { created: "id-a" } }) }];
+
   const testSnapshot = initTestSnapshot(testShallow);
 
-  const testClick = initTestEvent(testMount, "click");
-
-  const dataList = [{ user: newUser({ id: "id-a" }) }, { poll: newPoll({ users: { created: "id-a" } }) }];
+  const testClick = initTestEvent(testShallow, "click");
 
   it("should match snapshot (default)", () => testSnapshot(null, { poll: newPoll() }));
 

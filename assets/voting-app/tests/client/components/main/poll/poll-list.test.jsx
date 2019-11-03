@@ -13,9 +13,10 @@ const { initTestEvent, initTestSnapshot, reactTests, withDataList } = require("r
 
 //utilities
 
-const { testMount, testShallow } = testWrapper(PollList);
+const { testShallow } = testWrapper(PollList);
 
-const testSnapshot = initTestSnapshot(testShallow);
+const testForm = initTestPoll(testShallow, "form");
+const testView = initTestPoll(testShallow, "view");
 
 //setup
 
@@ -26,19 +27,17 @@ beforeEach(reactTests.inject(PollList, { lib: { chartColor: jest.fn(() => "rgba(
 
 describe("poll list (form)", () => {
 
-  const testForm = withDataList(initTestPoll(testSnapshot, "form"), [null, { options: ["Option A"] }]);
+  const testSnapshot = withDataList(initTestSnapshot(testForm), [null, { options: ["Option A"] }]);
 
-  it("should match snapshot (default)", () => testForm());
+  it("should match snapshot (default)", () => testSnapshot());
 
-  it("should match snapshot (authenticated)", () => testForm({ user: newUser() }));
+  it("should match snapshot (authenticated)", () => testSnapshot({ user: newUser() }));
 
 });
 
 describe("poll list (form, events)", () => {
 
-  const testFormMount = withDataList(initTestPoll(testMount, "form"), [null, { options: ["Option A"] }]);
-
-  const testClick = initTestEvent(testFormMount, "click");
+  const testClick = initTestEvent(withDataList(testForm, [null, { options: ["Option A"] }]), "click");
 
   it("should do nothing on click (vote)", () => testClick(".qa-option-vote", [], ["pollCastVote"]));
 
@@ -46,17 +45,17 @@ describe("poll list (form, events)", () => {
 
 describe("poll list (view)", () => {
 
-  const testView = withDataList(initTestPoll(testSnapshot, "view"), [null, { options: [{ text: "Option A" }] }]);
+  const testSnapshot = withDataList(initTestSnapshot(testView), [null, { options: [{ text: "Option A" }] }]);
 
-  it("should match snapshot (default)", () => testView());
+  it("should match snapshot (default)", () => testSnapshot());
 
-  it("should match snapshot (authenticated)", () => testView({ user: newUser({ id: "id-a" }) })); //not created
+  it("should match snapshot (authenticated)", () => testSnapshot({ user: newUser({ id: "id-a" }) })); //not created
 
   it("should match snapshot (options, created poll)", () => {
 
     const dataList = [{ user: newUser({ id: "id-a" }) }, { users: { created: "id-a" } }];
 
-    return testView(...dataList);
+    return testSnapshot(...dataList);
 
   });
 
@@ -64,7 +63,7 @@ describe("poll list (view)", () => {
 
     const dataList = [{ user: newUser({ id: "id-a" }) }, { options: [{ created: "id-a" }] }];
 
-    return testView(...dataList);
+    return testSnapshot(...dataList);
 
   });
 
@@ -72,7 +71,7 @@ describe("poll list (view)", () => {
 
     const dataList = [{ user: newUser({ id: "id-a" }) }, { options: [{ voted: ["id-a"] }] }];
 
-    return testView(...dataList);
+    return testSnapshot(...dataList);
 
   });
 
@@ -80,13 +79,13 @@ describe("poll list (view)", () => {
 
 describe("poll list (view, events)", () => {
 
-  const testViewMount = withDataList(initTestPoll(testMount, "view"), [null, { options: [{ text: "Option A" }] }]);
+  const testList = withDataList(testView, [null, { options: [{ text: "Option A" }] }]);
 
   it("should call pollCastVote on click (vote)", () => {
 
     const dataList = [null, { id: "id-a" }];
 
-    return testReload(testViewMount, dataList, ".qa-option-vote", "id-a", ["pollCastVote", ["id-a", "Option A"]]);
+    return testReload(testList, dataList, ".qa-option-vote", "id-a", ["pollCastVote", ["id-a", "Option A"]]);
 
   });
 

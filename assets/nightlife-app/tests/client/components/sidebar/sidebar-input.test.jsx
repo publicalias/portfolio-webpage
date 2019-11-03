@@ -14,7 +14,7 @@ const { initTestEvent, initTestSnapshot, reactTests, withDataList } = require("r
 
 //utilities
 
-const { testMount, testShallow } = testWrapper(SidebarInput);
+const { testShallow } = testWrapper(SidebarInput);
 
 const userData = {
   address: "12345",
@@ -22,40 +22,42 @@ const userData = {
   location: getGeoPoint(0)
 };
 
-const testSnapshot = initTestSnapshot(testShallow);
+const initTestInput = (render, type, text, prop = type.toLowerCase()) => ({
 
-const testChange = (render, type, text) => {
+  testChange() {
 
-  const testChange = initTestEvent(render, "change", { target: { value: text } });
+    const testChange = initTestEvent(render, "change", { target: { value: text } });
 
-  return testChange(".qa-account-input", [], [`metaSet${type}`, [text]]);
+    return testChange(".qa-account-input", [], [`metaSet${type}`, [text]]);
 
-};
+  },
 
-const testClick = (render, type, text) => {
+  testClick() {
 
-  const testClick = initTestEvent(render, "click");
+    const dataList = [{
+      account: {
+        [prop]: text
+      }
+    }];
 
-  const dataList = [{
-    account: {
-      [type.toLowerCase()]: text
-    }
-  }];
+    const testClick = initTestEvent(render, "click");
 
-  const { lib: { getLocation } } = SidebarInput.injected;
+    const { lib: { getLocation } } = SidebarInput.injected;
 
-  const fnList = [
-    () => {
-      testMock(getLocation, []);
-    },
-    [`metaSave${type}`, [text, userData.location]],
-    [`metaSet${type}`, [""]],
-    ["metaGetUser", []]
-  ];
+    const fnList = [
+      () => {
+        testMock(getLocation, []);
+      },
+      [`metaSave${type}`, [text, userData.location]],
+      [`metaSet${type}`, [""]],
+      ["metaGetUser", []]
+    ];
 
-  return testClick(".qa-account-submit", dataList, ...fnList);
+    return testClick(".qa-account-submit", dataList, ...fnList);
 
-};
+  }
+
+});
 
 //setup
 
@@ -68,22 +70,22 @@ describe("sidebar input (address)", () => {
 
   const { address } = userData;
 
-  const dataList = [{ user: newUserWithData() }, { type: "address" }];
+  const testInput = withDataList(testShallow, [{ user: newUserWithData() }, { type: "address" }]);
 
-  const testAddress = withDataList(testSnapshot, dataList);
-  const testAddressMount = withDataList(testMount, dataList);
+  const testSnapshot = initTestSnapshot(testInput);
+  const testBool = withDataList(testSnapshot, [{ user: { data: { address } } }]);
 
-  const testBool = withDataList(testAddress, [{ user: { data: { address } } }]);
+  const { testChange, testClick } = initTestInput(testInput, "Address", address);
 
-  it("should match snapshot (default)", () => testAddress());
+  it("should match snapshot (default)", () => testSnapshot());
 
   it("should match snapshot (bool)", () => testBool());
 
   it("should match snapshot (bool, text)", () => testBool({ account: { address } }));
 
-  it("should call handleChange on change", () => testChange(testAddressMount, "Address", address));
+  it("should call handleChange on change", () => testChange());
 
-  it("should call handleSubmit on click", () => testClick(testAddressMount, "Address", address));
+  it("should call handleSubmit on click", () => testClick());
 
 });
 
@@ -91,21 +93,21 @@ describe("sidebar input (avatar)", () => {
 
   const { avatar } = userData;
 
-  const dataList = [{ user: newUserWithData() }, { type: "avatar" }];
+  const testInput = withDataList(testShallow, [{ user: newUserWithData() }, { type: "avatar" }]);
 
-  const testAvatar = withDataList(testSnapshot, dataList);
-  const testAvatarMount = withDataList(testMount, dataList);
+  const testSnapshot = initTestSnapshot(testInput);
+  const testBool = withDataList(testSnapshot, [{ user: { data: { avatar } } }]);
 
-  const testBool = withDataList(testAvatar, [{ user: { data: { avatar } } }]);
+  const { testChange, testClick } = initTestInput(testInput, "Avatar", avatar);
 
-  it("should match snapshot (default)", () => testAvatar());
+  it("should match snapshot (default)", () => testSnapshot());
 
   it("should match snapshot (bool)", () => testBool());
 
   it("should match snapshot (bool, text)", () => testBool({ account: { avatar } }));
 
-  it("should call handleChange on change", () => testChange(testAvatarMount, "Avatar", avatar));
+  it("should call handleChange on change", () => testChange());
 
-  it("should call handleSubmit on click", () => testClick(testAvatarMount, "Avatar", avatar));
+  it("should call handleSubmit on click", () => testClick());
 
 });

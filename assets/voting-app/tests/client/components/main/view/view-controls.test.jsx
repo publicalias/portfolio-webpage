@@ -15,7 +15,7 @@ const { initTestEvent, initTestSnapshot, reactTests, withDataList } = require("r
 
 //utilities
 
-const { testMount, testShallow } = testWrapper(ViewControls);
+const { testShallow } = testWrapper(ViewControls);
 
 //setup
 
@@ -26,11 +26,11 @@ beforeEach(reactTests.inject(ViewControls));
 
 describe("view controls", () => {
 
-  const dataList = [null, { poll: newPoll() }];
+  const testControls = withDataList(testShallow, [null, { poll: newPoll() }]);
 
-  const testSnapshot = withDataList(initTestSnapshot(testShallow), dataList);
+  const testSnapshot = initTestSnapshot(testControls);
 
-  const testClick = initTestEvent(withDataList(testMount, dataList), "click");
+  const testClick = initTestEvent(testControls, "click");
 
   it("should match snapshot (default)", () => testSnapshot());
 

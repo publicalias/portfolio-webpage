@@ -13,7 +13,7 @@ const { initTestEvent, initTestSnapshot, reactTests } = require("redux/tests/rea
 
 //utilities
 
-const { testMount, testShallow } = testWrapper(Sidebar);
+const { testShallow } = testWrapper(Sidebar);
 
 //setup
 
@@ -26,7 +26,7 @@ describe("sidebar", () => {
 
   const testSnapshot = initTestSnapshot(testShallow);
 
-  const testClick = initTestEvent(testMount, "click");
+  const testClick = initTestEvent(testShallow, "click");
 
   it("should match snapshot (default)", () => testSnapshot());
 

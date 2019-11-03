@@ -13,9 +13,10 @@ const { initTestEvent, initTestSnapshot, reactTests } = require("redux/tests/rea
 
 //utilities
 
-const { testMount, testShallow } = testWrapper(PollTitle);
+const { testShallow } = testWrapper(PollTitle);
 
-const testSnapshot = initTestSnapshot(testShallow);
+const testForm = initTestPoll(testShallow, "form");
+const testView = initTestPoll(testShallow, "view");
 
 //setup
 
@@ -26,14 +27,13 @@ beforeEach(reactTests.inject(PollTitle));
 
 describe("poll title (form)", () => {
 
-  const testForm = initTestPoll(testSnapshot, "form");
-  const testFormMount = initTestPoll(testMount, "form");
+  const testSnapshot = initTestSnapshot(testForm);
 
-  const testBlur = initTestEvent(testFormMount, "blur", { target: { value: "Title A" } });
+  const testBlur = initTestEvent(testForm, "blur", { target: { value: "Title A" } });
 
-  it("should match snapshot (default)", () => testForm());
+  it("should match snapshot (default)", () => testSnapshot());
 
-  it("should match snapshot (author)", () => testForm({ user: newUser({ name: "Author A" }) }));
+  it("should match snapshot (author)", () => testSnapshot({ user: newUser({ name: "Author A" }) }));
 
   it("should call formSetTitle and formCheckTitle on blur", () => {
 
@@ -50,12 +50,12 @@ describe("poll title (form)", () => {
 
 describe("poll title (view)", () => {
 
-  const testView = initTestPoll(testSnapshot, "view");
+  const testSnapshot = initTestSnapshot(testView);
 
-  it("should match snapshot (default)", () => testView());
+  it("should match snapshot (default)", () => testSnapshot());
 
-  it("should match snapshot (title)", () => testView(null, { title: "Title A" }));
+  it("should match snapshot (title)", () => testSnapshot(null, { title: "Title A" }));
 
-  it("should match snapshot (author)", () => testView(null, { author: "Author A" }));
+  it("should match snapshot (author)", () => testSnapshot(null, { author: "Author A" }));
 
 });
