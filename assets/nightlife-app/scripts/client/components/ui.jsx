@@ -35,7 +35,7 @@ const UI = (props) => {
 
   //utilities
 
-  const initUser = async () => {
+  const initUserData = async () => {
 
     const { user } = await metaGetUser();
 
@@ -51,7 +51,7 @@ const UI = (props) => {
   //lifecycle
 
   useEffect(() => {
-    initUser(); //async
+    initUserData(); //async
   }, []);
 
   //render
@@ -96,9 +96,7 @@ UI.injected = {
     VenueList,
     VenuePage
   },
-  lib: {
-    getLocation
-  }
+  lib: { getLocation }
 };
 
 //exports

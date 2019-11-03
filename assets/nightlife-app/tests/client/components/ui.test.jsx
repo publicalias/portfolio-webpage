@@ -65,9 +65,9 @@ describe("ui", () => {
 
   it("should match snapshot (authenticated)", () => testSnapshot({ user: newUserWithData() }));
 
-  it("should call initUser on load (default)", () => testLoad());
+  it("should call initUserData on load (default)", () => testLoad());
 
-  it("should call initUser on load (authenticated, location)", () => {
+  it("should call initUserData on load (authenticated, location)", () => {
 
     const user = newUserWithData({ data: { location } });
 
@@ -75,7 +75,7 @@ describe("ui", () => {
 
   });
 
-  it("should call initUser on load (authenticated, no location)", () => {
+  it("should call initUserData on load (authenticated, no location)", () => {
 
     const user = newUserWithData();
 

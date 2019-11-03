@@ -109,6 +109,15 @@
 
 }
 
+.c-venue-page {
+
+  @include grid-item(1, 5, 3, 13);
+
+  display: grid;
+  grid-gap: 3vw;
+
+}
+
 //utilities
 
 .u-dropdown-width { width: 9vw; }

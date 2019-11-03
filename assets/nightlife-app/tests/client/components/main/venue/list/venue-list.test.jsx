@@ -36,10 +36,10 @@ describe("venue list", () => {
     Object.assign(VenueList.injected.lib, lib);
 
     const list = [
-      [{ user: { data: { location: getGeoPoint(0) } } }],
+      [{ user: { data: { location: null } } }],
       [{ account: { loaded: true } }],
       [null, null, { location: { search: "" } }],
-      [{ user: { data: { location: getGeoPoint(1) } } }]
+      [{ user: { data: { location: getGeoPoint(0) } } }]
     ];
 
     const { setProps, wrapper } = testMount();

@@ -88,8 +88,8 @@ const initTestWrapper = (newState, actions) => (Component) => {
 
     return {
       props,
-      wrapper,
-      setProps: setProps(wrapper)
+      setProps: setProps(wrapper),
+      wrapper
     };
 
   };

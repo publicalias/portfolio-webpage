@@ -21,7 +21,7 @@ const Poll = (props) => {
 
   //render
 
-  const canAdd = user.type === "auth" && (role === "form" || polls[0] && polls[0].id === poll.id);
+  const canAdd = user.type === "auth" && (role === "form" || polls.find((e) => e.id === poll.id));
   const hasOptions = poll.options.length > 0;
 
   const display = canAdd || hasOptions;
