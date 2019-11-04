@@ -57,7 +57,10 @@ exports[`rsvp list should match snapshot (list) 1`] = `
               "venueGetItem": [MockFunction],
               "venueGetList": [MockFunction],
               "venueSetMessage": [MockFunction],
+              "venueSetPause": [MockFunction],
+              "venueSetPhoto": [MockFunction],
               "venueSetSearch": [MockFunction],
+              "venueSetStart": [MockFunction],
               "venueSetTime": [MockFunction],
               "venueToggleForm": [MockFunction],
               "venueToggleRange": [MockFunction],
@@ -113,6 +116,11 @@ exports[`rsvp list should match snapshot (list) 1`] = `
                 "page": Object {
                   "form": false,
                   "message": "",
+                  "photos": Object {
+                    "pause": false,
+                    "photo": null,
+                    "start": false,
+                  },
                   "time": "",
                 },
               },

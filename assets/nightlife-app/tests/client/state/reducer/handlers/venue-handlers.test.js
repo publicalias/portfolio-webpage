@@ -28,6 +28,38 @@ test("reducer accepts VENUE_CLEAR_STATE actions", () => {
 
 });
 
+//venue set message
+
+test("reducer accepts VENUE_SET_MESSAGE actions", () => {
+
+  const { venueSetMessage } = actions;
+
+  testReducer(venueSetMessage("Message"), null, { venues: { page: { message: "Message" } } });
+
+});
+
+//venue set pause
+
+test("reducer accepts VENUE_SET_PAUSE actions", () => {
+
+  const { venueSetPause } = actions;
+
+  testReducer(venueSetPause(true), null, { venues: { page: { photos: { pause: true } } } });
+
+});
+
+//venue set photo
+
+test("reducer accepts VENUE_SET_PHOTO actions", () => {
+
+  const { venueSetPhoto } = actions;
+
+  const photo = "https://www.example.com/photo.jpg";
+
+  testReducer(venueSetPhoto(photo), null, { venues: { page: { photos: { photo } } } });
+
+});
+
 //venue set search
 
 test("reducer accepts VENUE_SET_SEARCH actions", () => {
@@ -38,6 +70,16 @@ test("reducer accepts VENUE_SET_SEARCH actions", () => {
 
 });
 
+//venue set start
+
+test("reducer accepts VENUE_SET_START actions", () => {
+
+  const { venueSetStart } = actions;
+
+  testReducer(venueSetStart(true), null, { venues: { page: { photos: { start: true } } } });
+
+});
+
 //venue set time
 
 test("reducer accepts VENUE_SET_TIME actions", () => {
@@ -45,16 +87,6 @@ test("reducer accepts VENUE_SET_TIME actions", () => {
   const { venueSetTime } = actions;
 
   testReducer(venueSetTime("9:00 PM"), null, { venues: { page: { time: "9:00 PM" } } });
-
-});
-
-//venue set message
-
-test("reducer accepts VENUE_SET_MESSAGE actions", () => {
-
-  const { venueSetMessage } = actions;
-
-  testReducer(venueSetMessage("Message"), null, { venues: { page: { message: "Message" } } });
 
 });
 

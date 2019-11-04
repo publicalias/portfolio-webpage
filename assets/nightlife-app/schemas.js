@@ -215,6 +215,11 @@ const newState = initSchema({
       sort: false
     },
     page: {
+      photos: {
+        photo: null,
+        pause: false,
+        start: false
+      },
       form: false,
       time: "",
       message: ""

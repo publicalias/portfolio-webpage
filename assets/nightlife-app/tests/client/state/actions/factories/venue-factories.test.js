@@ -14,6 +14,45 @@ test("venueClearState creates VENUE_CLEAR_STATE actions", () => {
 
 });
 
+//venue set message
+
+test("venueSetMessage creates VENUE_SET_MESSAGE actions", () => {
+
+  const { venueSetMessage } = actions;
+
+  expect(venueSetMessage("")).toEqual({
+    type: "VENUE_SET_MESSAGE",
+    message: ""
+  });
+
+});
+
+//venue set pause
+
+test("venueSetPause creates VENUE_SET_PAUSE actions", () => {
+
+  const { venueSetPause } = actions;
+
+  expect(venueSetPause(true)).toEqual({
+    type: "VENUE_SET_PAUSE",
+    pause: true
+  });
+
+});
+
+//venue set photo
+
+test("venueSetPhoto creates VENUE_SET_PHOTO actions", () => {
+
+  const { venueSetPhoto } = actions;
+
+  expect(venueSetPhoto("")).toEqual({
+    type: "VENUE_SET_PHOTO",
+    photo: ""
+  });
+
+});
+
 //venue set search
 
 test("venueSetSearch creates VENUE_SET_SEARCH actions", () => {
@@ -27,6 +66,19 @@ test("venueSetSearch creates VENUE_SET_SEARCH actions", () => {
 
 });
 
+//venue set start
+
+test("venueSetStart creates VENUE_SET_START actions", () => {
+
+  const { venueSetStart } = actions;
+
+  expect(venueSetStart(true)).toEqual({
+    type: "VENUE_SET_START",
+    start: true
+  });
+
+});
+
 //venue set time
 
 test("venueSetTime creates VENUE_SET_TIME actions", () => {
@@ -36,19 +88,6 @@ test("venueSetTime creates VENUE_SET_TIME actions", () => {
   expect(venueSetTime("")).toEqual({
     type: "VENUE_SET_TIME",
     time: ""
-  });
-
-});
-
-//venue set message
-
-test("venueSetMessage creates VENUE_SET_MESSAGE actions", () => {
-
-  const { venueSetMessage } = actions;
-
-  expect(venueSetMessage("")).toEqual({
-    type: "VENUE_SET_MESSAGE",
-    message: ""
   });
 
 });
