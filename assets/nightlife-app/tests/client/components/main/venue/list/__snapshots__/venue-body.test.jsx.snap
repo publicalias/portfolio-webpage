@@ -64,7 +64,6 @@ exports[`venue body should match snapshot (list) 1`] = `
                 "hours": Array [],
                 "id": "",
                 "image_url": "",
-                "is_closed": false,
                 "location": Object {
                   "display_address": Array [],
                 },

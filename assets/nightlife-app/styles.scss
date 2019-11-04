@@ -116,6 +116,26 @@
   display: grid;
   grid-gap: 3vw;
 
+  &__data {
+    display: grid;
+    grid-gap: 0 3vw;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  &__header {
+    align-items: center;
+    display: grid;
+    grid-gap: 3vw;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  &__info { grid-area: 1 / 1 / 2 / 3; }
+
+  &__rating {
+    justify-self: end;
+    width: 18vw;
+  }
+
 }
 
 //utilities

@@ -125,12 +125,17 @@ const newUserWithData = copySchema(newUser, newUserData);
 //new venue
 
 const newOpen = initSchema({
-  day: 0,
+  day: 0, //starts on monday
   end: "",
   start: ""
 });
 
-const newHours = initSchema({ open: [] }, { open: listReplacer(newOpen) });
+const newHours = initSchema({
+  is_open_now: false,
+  open: []
+}, {
+  open: listReplacer(newOpen)
+});
 
 const newVenue = initSchema({ //uses the yelp api
 
@@ -154,7 +159,6 @@ const newVenue = initSchema({ //uses the yelp api
 
   display_phone: "",
   hours: [],
-  is_closed: false,
   location: { display_address: [] },
   photos: [],
   url: "",

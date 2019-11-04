@@ -105,7 +105,6 @@ exports[`venue page should match snapshot (default) 1`] = `
           "hours": Array [],
           "id": "",
           "image_url": "",
-          "is_closed": false,
           "location": Object {
             "display_address": Array [],
           },
@@ -222,7 +221,6 @@ exports[`venue page should match snapshot (default) 1`] = `
           "hours": Array [],
           "id": "",
           "image_url": "",
-          "is_closed": false,
           "location": Object {
             "display_address": Array [],
           },
@@ -342,7 +340,6 @@ exports[`venue page should match snapshot (match) 1`] = `
               "hours": Array [],
               "id": "id-a",
               "image_url": "",
-              "is_closed": false,
               "location": Object {
                 "display_address": Array [],
               },
@@ -384,7 +381,6 @@ exports[`venue page should match snapshot (match) 1`] = `
           "hours": Array [],
           "id": "id-a",
           "image_url": "",
-          "is_closed": false,
           "location": Object {
             "display_address": Array [],
           },
@@ -481,7 +477,6 @@ exports[`venue page should match snapshot (match) 1`] = `
               "hours": Array [],
               "id": "id-a",
               "image_url": "",
-              "is_closed": false,
               "location": Object {
                 "display_address": Array [],
               },
@@ -523,7 +518,6 @@ exports[`venue page should match snapshot (match) 1`] = `
           "hours": Array [],
           "id": "id-a",
           "image_url": "",
-          "is_closed": false,
           "location": Object {
             "display_address": Array [],
           },
