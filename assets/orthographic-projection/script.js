@@ -189,8 +189,6 @@ const svg = {
 
     const rotate = rotateHandlers(params, app.handleMouseLeave);
 
-    bindObject(rotate);
-
     //mouse events
 
     for (const e of rotate.ids) {

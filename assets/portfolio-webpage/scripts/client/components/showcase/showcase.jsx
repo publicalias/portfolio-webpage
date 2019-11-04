@@ -4,19 +4,18 @@
 
 const Carousel = require("./carousel");
 
-const { itemIsInView } = require("../../view-logic");
-
 //global imports
 
+const { itemIsInView } = require("all/client-utils");
+const { carousel } = require("all/components/carousel");
 const { select } = require("all/dom-api");
 const { hookEvent, initKeyGen, useInterval, useSetState } = require("all/react-utils");
-const { cycleItems } = require("all/utilities");
 
 //node modules
 
 const React = require("react");
 
-const { useEffect } = React;
+const { useEffect, useRef } = React;
 
 //showcase
 
@@ -25,53 +24,68 @@ const Showcase = (props) => {
   //state
 
   const [state, setState] = useSetState({
-    project: props.showcase.projects[0],
-    start: true,
-    pause: false
+    item: props.showcase.projects[0],
+    pause: false,
+    start: true
+  });
+
+  //utilities
+
+  const touchRef = useRef({
+    start: null,
+    end: null
+  });
+
+  const handlers = carousel({
+
+    actions: {
+
+      setItem(item) {
+
+        const DOMShowcase = select(".js-toggle-showcase");
+
+        DOMShowcase.animate({ opacity: 0 }, () => {
+          setState({ item }, () => {
+            DOMShowcase.animate({ opacity: 1 });
+          });
+        });
+
+      },
+
+      setPause(pause) {
+        setState({ pause });
+      },
+
+      setStart(start) {
+        setState({ start });
+      }
+
+    },
+
+    data: {
+      ...state,
+      list: props.showcase.projects
+    },
+
+    local: {
+
+      getShown() {
+
+        const navHeight = select(".js-ref-nav-bar").rect().height;
+
+        return itemIsInView(".js-toggle-showcase", navHeight);
+
+      },
+
+      touch: touchRef.current
+
+    }
+
   });
 
   //events
 
-  const handleInit = () => {
-
-    const { start, pause } = state;
-
-    if (pause) {
-      return;
-    }
-
-    const navHeight = select(".js-ref-nav-bar").rect().height;
-    const inView = itemIsInView(".js-toggle-showcase", navHeight);
-
-    if (inView && !start) {
-      setState({ start: true });
-    } else if (!inView && start) {
-      setState({ start: false });
-    }
-
-  };
-
-  const handlePause = (bool = false) => () => {
-    setState({ pause: bool });
-  };
-
-  const handleTurn = (delta) => () => {
-
-    if (!delta) {
-      return;
-    }
-
-    const DOMShowcase = select(".js-toggle-showcase");
-
-    const project = cycleItems(props.showcase.projects, state.project, delta);
-
-    DOMShowcase.animate({ opacity: 0 }, () => {
-      setState({ project }, () => {
-        DOMShowcase.animate({ opacity: 1 });
-      });
-    });
-
-  };
+  const { handleInit, handlePause, handleTurn } = handlers;
 
   //lifecycle
 
@@ -83,7 +97,7 @@ const Showcase = (props) => {
 
   //render
 
-  const { project: { name, comments, links } } = state;
+  const { item: { name, comments, links } } = state;
 
   const keyGen = initKeyGen();
 
@@ -102,8 +116,7 @@ const Showcase = (props) => {
           <hr />
           {comments && <p className="u-margin-full">{comments}</p>}
           <Carousel
-            handlePause={handlePause}
-            handleTurn={handleTurn}
+            handlers={handlers}
             key={keyGen(name)} //smooths transition
             links={links}
           />

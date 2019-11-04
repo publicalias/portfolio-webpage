@@ -3,6 +3,7 @@
 //global imports
 
 const { select } = require("all/dom-api");
+const { bindObject } = require("all/utilities");
 
 //node modules
 
@@ -21,7 +22,7 @@ const rotateHandlers = (params, tooltip) => {
     .domain([0, h])
     .range([90, -90]);
 
-  return {
+  const handlers = {
 
     int: null,
     ids: ["up", "down", "left", "right", "reset"],
@@ -86,6 +87,8 @@ const rotateHandlers = (params, tooltip) => {
     }
 
   };
+
+  return bindObject(handlers);
 
 };
 

@@ -235,9 +235,7 @@ const getUtils = (state, setState) => {
 
   };
 
-  bindObject(utils);
-
-  return utils;
+  return bindObject(utils);
 
 };
 

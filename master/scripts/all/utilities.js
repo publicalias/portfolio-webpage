@@ -7,6 +7,7 @@ const alphabet = "abcdefghijklmnopqrstuvwxyz";
 //bind object
 
 const bindObject = (to, from = to) => {
+
   for (const [key, val] of Object.entries(from)) {
     switch (typeof val) {
       case "function":
@@ -18,6 +19,9 @@ const bindObject = (to, from = to) => {
         }
     }
   }
+
+  return to;
+
 };
 
 //capitalize

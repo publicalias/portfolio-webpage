@@ -20,14 +20,12 @@ const Preview = (props) => {
     case "window":
       return (
         <div className="c-preview u-margin-half">
-          <a {...pageLink} className="c-preview__layer--top">
-            <div className="c-preview__clear" />
+          <a {...pageLink}>
+            <img
+              alt="Screenshot"
+              src={view || "https://via.placeholder.com/800x450?text=undefined"}
+            />
           </a>
-          <img
-            alt="Screenshot"
-            className="c-preview__layer"
-            src={view || "https://via.placeholder.com/800x450?text=undefined"}
-          />
         </div>
       );
     case "button":
