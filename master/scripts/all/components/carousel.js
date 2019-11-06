@@ -4,39 +4,108 @@
 
 const { swipeEvent } = require("all/client-utils");
 const { select } = require("all/dom-api");
-const { bindObject, cycleItems } = require("all/utilities");
+const { hookEvent } = require("all/react-utils");
+const { cycleItems } = require("all/utilities");
 
-//carousel
+//node modules
 
-const carousel = (props) => {
+const React = require("react");
+
+const { useEffect, useLayoutEffect, useRef } = React;
+
+//use carousel
+
+const useLifecycle = (props, ready, utilities) => {
 
   const {
-    actions: { setItem, setPause, setStart },
-    data: { item, list, pause, start },
-    local: { getShown, touch }
+    actions: { setItem, setStart },
+    data: { list, pause, start },
+    local: { getShown }
   } = props;
 
-  const handlers = {
+  //utilities
 
-    //initialize carousel
+  const handleInit = () => {
 
-    handleInit() {
+    if (pause) {
+      return;
+    }
 
-      if (pause) {
-        return;
+    const shown = getShown();
+
+    if (shown && !start) {
+      setStart(true);
+    } else if (!shown && start) {
+      setStart(false);
+    }
+
+  };
+
+  const handleRotate = () => {
+
+    const { handleTurn } = utilities;
+
+    if (!start || pause) {
+      return;
+    }
+
+    const loaded = select(".js-ref-image").complete;
+
+    const id = (async () => {
+
+      if (!loaded) {
+        await new Promise((resolve) => {
+          ready.resolve = resolve;
+        });
       }
 
-      const shown = getShown();
+      return setTimeout(handleTurn(1), 5000);
 
-      if (shown && !start) {
-        setStart(true);
-      } else if (!shown && start) {
-        setStart(false);
+    })();
+
+    return async () => {
+
+      if (ready.resolve) {
+        ready.resolve();
       }
 
-    },
+      clearTimeout(await id);
 
-    //pause carousel
+    };
+
+  };
+
+  //lifecycle
+
+  const bool = JSON.stringify(list);
+
+  useLayoutEffect(() => {
+    setItem(list[0]);
+  }, [bool]);
+
+  useEffect(handleInit, [bool]);
+
+  useEffect(() => hookEvent(select(window), "resize scroll", handleInit));
+
+  useEffect(handleRotate);
+
+};
+
+const useCarousel = (props) => {
+
+  const {
+    actions: { setItem, setPause },
+    data: { item, list }
+  } = props;
+
+  const { current: ready } = useRef({ resolve: null });
+  const { current: touch } = useRef({ start: null });
+
+  //utilities
+
+  const utilities = {
+
+    //pause
 
     handlePause(bool = false) {
       return () => {
@@ -44,9 +113,39 @@ const carousel = (props) => {
       };
     },
 
-    //swipe end
+    //turn
+
+    handleTurn(delta) {
+      return () => {
+        if (delta && list.length > 1) {
+          select(".js-fade-carousel").animate({ opacity: 0 }, () => {
+            setItem(cycleItems(list, item, delta));
+          });
+        }
+      };
+    }
+
+  };
+
+  //events
+
+  const events = {
+
+    //error
+
+    handleError: ready.resolve,
+
+    //load
+
+    handleLoad() {
+      select(".js-fade-carousel").animate({ opacity: 1 }, ready.resolve);
+    },
+
+    //swipe
 
     handleTouchEnd(event) {
+
+      const { handlePause, handleTurn } = utilities;
 
       const { height, width } = select(".js-ref-carousel").rect();
 
@@ -55,44 +154,42 @@ const carousel = (props) => {
         right: -1
       };
 
-      event.persist();
-      touch.end = event;
+      const to = swipeEvent(touch.start, event, height, width);
 
-      const to = swipeEvent(touch.start, touch.end, height, width);
+      handleTurn(swipe[to])();
 
-      this.handleTurn(swipe[to])();
-
-      this.handlePause()();
+      handlePause()();
 
     },
 
-    //swipe end
+    //swipe
 
     handleTouchStart(event) {
+
+      const { handlePause } = utilities;
 
       event.persist();
       touch.start = event;
 
-      this.handlePause(true)();
+      handlePause(true)();
 
-    },
-
-    //turn carousel
-
-    handleTurn(delta) {
-      return () => {
-        if (delta) {
-          setItem(cycleItems(list, item, delta));
-        }
-      };
     }
 
   };
 
-  return bindObject(handlers);
+  //lifecycle
+
+  useLifecycle(props, ready, utilities);
+
+  //return
+
+  return {
+    events,
+    utilities
+  };
 
 };
 
 //exports
 
-module.exports = { carousel };
+module.exports = { useCarousel };

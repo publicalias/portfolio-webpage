@@ -18,7 +18,10 @@ const Carousel = (props) => {
 
   //events
 
-  const { handleTouchEnd, handleTouchStart, handleTurn } = handlers;
+  const {
+    events: { handleError, handleLoad, handleTouchEnd, handleTouchStart },
+    utilities: { handleTurn }
+  } = handlers;
 
   //render
 
@@ -33,6 +36,9 @@ const Carousel = (props) => {
       <a {...safeLink(page)}>
         <img
           alt="Screenshot"
+          className="js-ref-image"
+          onError={handleError}
+          onLoad={handleLoad}
           src={view || "https://via.placeholder.com/800x450?text=undefined"}
         />
       </a>

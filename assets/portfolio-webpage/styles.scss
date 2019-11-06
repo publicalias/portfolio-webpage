@@ -116,6 +116,8 @@
 
 .js-expand-sublist { &.is-open { display: block; } }
 
+.js-fade-carousel { opacity: 0; }
+
 //utilities
 
 .u-padding-left { padding-left: 1.5vw; }

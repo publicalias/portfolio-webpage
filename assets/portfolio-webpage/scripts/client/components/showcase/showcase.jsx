@@ -7,15 +7,13 @@ const Carousel = require("./carousel");
 //global imports
 
 const { itemIsInView } = require("all/client-utils");
-const { carousel } = require("all/components/carousel");
+const { useCarousel } = require("all/components/carousel");
 const { select } = require("all/dom-api");
-const { hookEvent, initKeyGen, useInterval, useSetState } = require("all/react-utils");
+const { initKeyGen, useSetState } = require("all/react-utils");
 
 //node modules
 
 const React = require("react");
-
-const { useEffect, useRef } = React;
 
 //showcase
 
@@ -23,33 +21,23 @@ const Showcase = (props) => {
 
   //state
 
+  const list = props.showcase.projects;
+
   const [state, setState] = useSetState({
-    item: props.showcase.projects[0],
+    item: list[0],
+    list,
     pause: false,
-    start: true
+    start: false
   });
 
-  //utilities
+  //lifecycle
 
-  const touchRef = useRef({
-    start: null,
-    end: null
-  });
-
-  const handlers = carousel({
+  const handlers = useCarousel({
 
     actions: {
 
       setItem(item) {
-
-        const DOMShowcase = select(".js-toggle-showcase");
-
-        DOMShowcase.animate({ opacity: 0 }, () => {
-          setState({ item }, () => {
-            DOMShowcase.animate({ opacity: 1 });
-          });
-        });
-
+        setState({ item });
       },
 
       setPause(pause) {
@@ -62,38 +50,21 @@ const Showcase = (props) => {
 
     },
 
-    data: {
-      ...state,
-      list: props.showcase.projects
-    },
+    data: state,
 
     local: {
-
       getShown() {
 
         const navHeight = select(".js-ref-nav-bar").rect().height;
 
-        return itemIsInView(".js-toggle-showcase", navHeight);
+        return itemIsInView(".js-fade-carousel", navHeight);
 
-      },
-
-      touch: touchRef.current
-
+      }
     }
 
   });
 
-  //events
-
-  const { handleInit, handlePause, handleTurn } = handlers;
-
-  //lifecycle
-
-  useEffect(handleInit, []);
-
-  useEffect(() => hookEvent(select(window), "resize scroll", handleInit));
-
-  useInterval(handleTurn(1), state.start && !state.pause && 5000);
+  const { utilities: { handlePause } } = handlers;
 
   //render
 
@@ -108,7 +79,7 @@ const Showcase = (props) => {
           <h1>Showcase</h1>
         </div>
         <div
-          className="c-grid__item--8 js-toggle-showcase"
+          className="c-grid__item--8 js-fade-carousel"
           onMouseEnter={handlePause(true)}
           onMouseLeave={handlePause()}
         >
