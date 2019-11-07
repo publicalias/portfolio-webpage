@@ -15,8 +15,8 @@ exports[`venue body should match snapshot (default) 1`] = `
           href="https://www.yelp.com/"
         >
           <img
-            alt="Yelp Icon"
-            className="c-list-body__logo u-photo-width"
+            alt="Yelp Logo"
+            className="c-list-body__logo"
             src="/nightlife-app/media/yelp-logo.png"
           />
         </a>
@@ -43,8 +43,8 @@ exports[`venue body should match snapshot (list) 1`] = `
           href="https://www.yelp.com/"
         >
           <img
-            alt="Yelp Icon"
-            className="c-list-body__logo u-photo-width"
+            alt="Yelp Logo"
+            className="c-list-body__logo"
             src="/nightlife-app/media/yelp-logo.png"
           />
         </a>

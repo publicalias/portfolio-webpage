@@ -73,7 +73,7 @@ const VenueMenu = (props) => {
           list: rangeList,
           name: "Range",
           open: list.range,
-          util: "u-dropdown-width"
+          util: "u-widget-width"
         }}
       />
       <Dropdown
@@ -82,7 +82,7 @@ const VenueMenu = (props) => {
           list: sortList,
           name: "Sort By",
           open: list.sort,
-          util: "u-dropdown-width"
+          util: "u-widget-width"
         }}
       />
     </div>

@@ -42,7 +42,7 @@ exports[`venue menu should match snapshot 1`] = `
         ],
         "name": "Range",
         "open": false,
-        "util": "u-dropdown-width",
+        "util": "u-widget-width",
       }
     }
   />
@@ -66,7 +66,7 @@ exports[`venue menu should match snapshot 1`] = `
         ],
         "name": "Sort By",
         "open": false,
-        "util": "u-dropdown-width",
+        "util": "u-widget-width",
       }
     }
   />

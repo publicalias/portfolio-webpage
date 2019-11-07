@@ -28,6 +28,8 @@ describe("venue info", () => {
 
   it("should match snapshot (default)", () => testSnapshot());
 
+  it("should match snapshot (url)", () => testSnapshot(null, { venue: { url: "https://www.example.com/" } }));
+
   it("should match snapshot (name)", () => testSnapshot(null, { venue: { name: "Venue A" } }));
 
   it("should match snapshot (address)", () => testSnapshot(null, {

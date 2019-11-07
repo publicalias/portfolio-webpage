@@ -29,7 +29,10 @@ const VenuePage = (props) => {
     local: { id }
   } = props;
 
-  const { lib: { getLocation } } = VenuePage.injected;
+  const {
+    jsx: { VenueControls, VenueInfo, VenueList },
+    lib: { getLocation }
+  } = VenuePage.injected;
 
   //utilities
 

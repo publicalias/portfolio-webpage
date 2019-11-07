@@ -2,7 +2,7 @@
 
 //global imports
 
-const { cycleItems, get } = require("all/utilities");
+const { cycleItems, get, leadZero } = require("all/utilities");
 
 //node modules
 
@@ -12,30 +12,46 @@ const dateFormat = require("dateformat");
 
 const getHours = (venue) => {
 
-  const open = get(venue, "hours.0.is_open_now");
+  const getTime = () => {
 
-  const getTime = (key) => {
+    const date = new Date();
+    const time = `${leadZero(date.getHours())}${leadZero(date.getMinutes())}`;
 
-    const day = cycleItems([0, 1, 2, 3, 4, 5, 6], new Date().getDay() + (open ? 0 : 1), -1);
+    const getKey = (offset, key) => {
 
-    return get(venue, `hours.0.open.${day}.${key}`) || "0000";
+      const day = cycleItems([0, 1, 2, 3, 4, 5, 6], date.getDay() + offset, -1);
+
+      return get(venue, `hours.0.open.${day}.${key}`) || "0000";
+
+    };
+
+    const start = getKey(0, "start");
+    const end = getKey(0, "end");
+    const after = getKey(1, "start");
+
+    if (time < start) {
+      return [false, start];
+    } else if (time < end) {
+      return [true, end];
+    }
+
+    return [false, after];
 
   };
 
-  const setTime = (val) => {
+  const setTime = ([open, time]) => {
 
     const date = new Date(0);
 
-    date.setHours(...val.match(/\d{2}/g));
+    date.setHours(...time.match(/\d{2}/g));
 
-    return dateFormat(date, "h:MM TT");
+    return [open, dateFormat(date, "h:MM TT")];
 
   };
 
-  const start = setTime(getTime("start"));
-  const end = setTime(getTime("end"));
+  const [open, time] = setTime(getTime());
 
-  return open ? `Open - Closes at ${end}` : `Closed - Opens at ${start}`;
+  return open ? `Open - Closes at ${time}` : `Closed - Opens at ${time}`;
 
 };
 

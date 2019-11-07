@@ -2,7 +2,7 @@
 
 //local imports
 
-const VenuePhotos = require("./venue-photos");
+const VenuePhotos = require("./photos/venue-photos");
 
 const { getHours } = require("../../../../view-logic");
 
@@ -20,7 +20,7 @@ const VenueInfo = (props) => {
 
   const { local: { venue } } = props;
 
-  const { lib: { getHours } } = VenueInfo.injected;
+  const { jsx: { VenuePhotos }, lib: { getHours } } = VenueInfo.injected;
 
   //render
 
@@ -31,7 +31,7 @@ const VenueInfo = (props) => {
   return (
     <div className="c-venue-page__info">
       <div className="c-venue-page__header">
-        <h1 className="u-align-left">{venue.name || "Undefined"}</h1>
+        <h1><a href={venue.url || "https://www.yelp.com/"}>{venue.name || "Undefined"}</a></h1>
         <img
           alt={`${venue.rating} Stars`}
           className="c-venue-page__rating"
@@ -57,7 +57,10 @@ const VenueInfo = (props) => {
 
 VenueInfo.propList = ["local"];
 
-VenueInfo.injected = { lib: { getHours } };
+VenueInfo.injected = {
+  jsx: { VenuePhotos },
+  lib: { getHours }
+};
 
 //exports
 

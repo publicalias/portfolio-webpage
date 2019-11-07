@@ -12,4 +12,7 @@
   padding: 1vw 1.5vw;
 }
 
-.c-weather { @include square(100% * 1 / 3); }
+.c-weather {
+  @include square(100% * 1 / 3);
+  margin: auto;
+}
