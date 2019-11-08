@@ -6,6 +6,28 @@ const { newState } = require("../../../../../schemas");
 const { actions } = require("../../../../../scripts/client/state/actions/actions");
 const { testReducer } = require("../../../test-helpers");
 
+//venue clear form
+
+test("reducer accepts VENUE_CLEAR_FORM actions", () => {
+
+  const { venueClearForm } = actions;
+
+  testReducer(venueClearForm(), {
+    venues: {
+      page: {
+        form: {
+          open: true,
+          time: "9:00 PM",
+          message: "Message"
+        }
+      }
+    }
+  }, {
+    venues: newState().venues
+  });
+
+});
+
 //venue clear state
 
 test("reducer accepts VENUE_CLEAR_STATE actions", () => {
@@ -15,11 +37,22 @@ test("reducer accepts VENUE_CLEAR_STATE actions", () => {
   testReducer(venueClearState(), {
     venues: {
       data: [{}],
-      list: { search: "Coffee" },
-      view: {
-        form: true,
-        time: "9:00 PM",
-        message: "Message"
+      list: {
+        range: true,
+        search: "Coffee",
+        sort: true
+      },
+      page: {
+        photos: {
+          photo: "https://www.example.com/photo.jpg",
+          pause: "true",
+          start: "true"
+        },
+        form: {
+          open: true,
+          time: "9:00 PM",
+          message: "Message"
+        }
       }
     }
   }, {
@@ -34,7 +67,7 @@ test("reducer accepts VENUE_SET_MESSAGE actions", () => {
 
   const { venueSetMessage } = actions;
 
-  testReducer(venueSetMessage("Message"), null, { venues: { page: { message: "Message" } } });
+  testReducer(venueSetMessage("Message"), null, { venues: { page: { form: { message: "Message" } } } });
 
 });
 
@@ -86,7 +119,7 @@ test("reducer accepts VENUE_SET_TIME actions", () => {
 
   const { venueSetTime } = actions;
 
-  testReducer(venueSetTime("9:00 PM"), null, { venues: { page: { time: "9:00 PM" } } });
+  testReducer(venueSetTime("9:00 PM"), null, { venues: { page: { form: { time: "9:00 PM" } } } });
 
 });
 
@@ -96,7 +129,7 @@ test("reducer accepts VENUE_TOGGLE_FORM actions", () => {
 
   const { venueToggleForm } = actions;
 
-  testReducer(venueToggleForm(), null, { venues: { page: { form: true } } });
+  testReducer(venueToggleForm(), null, { venues: { page: { form: { open: true } } } });
 
 });
 

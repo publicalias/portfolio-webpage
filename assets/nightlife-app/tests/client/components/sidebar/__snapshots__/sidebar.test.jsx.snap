@@ -48,6 +48,7 @@ exports[`sidebar should match snapshot (authenticated) 1`] = `
         "userSetSearch": [MockFunction],
         "userToggleBlock": [MockFunction],
         "userToggleRange": [MockFunction],
+        "venueClearForm": [MockFunction],
         "venueClearState": [MockFunction],
         "venueGetItem": [MockFunction],
         "venueGetList": [MockFunction],
@@ -112,14 +113,16 @@ exports[`sidebar should match snapshot (authenticated) 1`] = `
             "sort": false,
           },
           "page": Object {
-            "form": false,
-            "message": "",
+            "form": Object {
+              "message": "",
+              "open": false,
+              "time": "",
+            },
             "photos": Object {
               "pause": false,
               "photo": null,
               "start": false,
             },
-            "time": "",
           },
         },
       }
@@ -183,6 +186,7 @@ exports[`sidebar should match snapshot (default) 1`] = `
         "userSetSearch": [MockFunction],
         "userToggleBlock": [MockFunction],
         "userToggleRange": [MockFunction],
+        "venueClearForm": [MockFunction],
         "venueClearState": [MockFunction],
         "venueGetItem": [MockFunction],
         "venueGetList": [MockFunction],
@@ -228,14 +232,16 @@ exports[`sidebar should match snapshot (default) 1`] = `
             "sort": false,
           },
           "page": Object {
-            "form": false,
-            "message": "",
+            "form": Object {
+              "message": "",
+              "open": false,
+              "time": "",
+            },
             "photos": Object {
               "pause": false,
               "photo": null,
               "start": false,
             },
-            "time": "",
           },
         },
       }
@@ -305,6 +311,7 @@ exports[`sidebar should match snapshot (name) 1`] = `
         "userSetSearch": [MockFunction],
         "userToggleBlock": [MockFunction],
         "userToggleRange": [MockFunction],
+        "venueClearForm": [MockFunction],
         "venueClearState": [MockFunction],
         "venueGetItem": [MockFunction],
         "venueGetList": [MockFunction],
@@ -369,14 +376,16 @@ exports[`sidebar should match snapshot (name) 1`] = `
             "sort": false,
           },
           "page": Object {
-            "form": false,
-            "message": "",
+            "form": Object {
+              "message": "",
+              "open": false,
+              "time": "",
+            },
             "photos": Object {
               "pause": false,
               "photo": null,
               "start": false,
             },
-            "time": "",
           },
         },
       }
@@ -446,6 +455,7 @@ exports[`sidebar should match snapshot (settings) 1`] = `
         "userSetSearch": [MockFunction],
         "userToggleBlock": [MockFunction],
         "userToggleRange": [MockFunction],
+        "venueClearForm": [MockFunction],
         "venueClearState": [MockFunction],
         "venueGetItem": [MockFunction],
         "venueGetList": [MockFunction],
@@ -510,14 +520,16 @@ exports[`sidebar should match snapshot (settings) 1`] = `
             "sort": false,
           },
           "page": Object {
-            "form": false,
-            "message": "",
+            "form": Object {
+              "message": "",
+              "open": false,
+              "time": "",
+            },
             "photos": Object {
               "pause": false,
               "photo": null,
               "start": false,
             },
-            "time": "",
           },
         },
       }
@@ -570,6 +582,7 @@ exports[`sidebar should match snapshot (settings) 1`] = `
         "userSetSearch": [MockFunction],
         "userToggleBlock": [MockFunction],
         "userToggleRange": [MockFunction],
+        "venueClearForm": [MockFunction],
         "venueClearState": [MockFunction],
         "venueGetItem": [MockFunction],
         "venueGetList": [MockFunction],
@@ -634,14 +647,16 @@ exports[`sidebar should match snapshot (settings) 1`] = `
             "sort": false,
           },
           "page": Object {
-            "form": false,
-            "message": "",
+            "form": Object {
+              "message": "",
+              "open": false,
+              "time": "",
+            },
             "photos": Object {
               "pause": false,
               "photo": null,
               "start": false,
             },
-            "time": "",
           },
         },
       }
@@ -694,6 +709,7 @@ exports[`sidebar should match snapshot (settings) 1`] = `
         "userSetSearch": [MockFunction],
         "userToggleBlock": [MockFunction],
         "userToggleRange": [MockFunction],
+        "venueClearForm": [MockFunction],
         "venueClearState": [MockFunction],
         "venueGetItem": [MockFunction],
         "venueGetList": [MockFunction],
@@ -758,14 +774,16 @@ exports[`sidebar should match snapshot (settings) 1`] = `
             "sort": false,
           },
           "page": Object {
-            "form": false,
-            "message": "",
+            "form": Object {
+              "message": "",
+              "open": false,
+              "time": "",
+            },
             "photos": Object {
               "pause": false,
               "photo": null,
               "start": false,
             },
-            "time": "",
           },
         },
       }

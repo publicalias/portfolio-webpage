@@ -1,5 +1,9 @@
 "use strict";
 
+//venue clear form
+
+const venueClearForm = () => ({ type: "VENUE_CLEAR_FORM" });
+
 //venue clear state
 
 const venueClearState = () => ({ type: "VENUE_CLEAR_STATE" });
@@ -61,6 +65,7 @@ const venueToggleSort = () => ({ type: "VENUE_TOGGLE_SORT" });
 //exports
 
 module.exports = {
+  venueClearForm,
   venueClearState,
   venueSetMessage,
   venueSetPause,

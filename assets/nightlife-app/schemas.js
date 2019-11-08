@@ -215,9 +215,11 @@ const newState = initSchema({
         pause: false,
         start: false
       },
-      form: false,
-      time: "",
-      message: ""
+      form: {
+        open: false,
+        time: "",
+        message: ""
+      }
     }
   }
 

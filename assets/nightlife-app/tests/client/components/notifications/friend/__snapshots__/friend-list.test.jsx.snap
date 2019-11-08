@@ -53,6 +53,7 @@ exports[`friend list should match snapshot (list) 1`] = `
               "userSetSearch": [MockFunction],
               "userToggleBlock": [MockFunction],
               "userToggleRange": [MockFunction],
+              "venueClearForm": [MockFunction],
               "venueClearState": [MockFunction],
               "venueGetItem": [MockFunction],
               "venueGetList": [MockFunction],
@@ -113,14 +114,16 @@ exports[`friend list should match snapshot (list) 1`] = `
                   "sort": false,
                 },
                 "page": Object {
-                  "form": false,
-                  "message": "",
+                  "form": Object {
+                    "message": "",
+                    "open": false,
+                    "time": "",
+                  },
                   "photos": Object {
                     "pause": false,
                     "photo": null,
                     "start": false,
                   },
-                  "time": "",
                 },
               },
             }

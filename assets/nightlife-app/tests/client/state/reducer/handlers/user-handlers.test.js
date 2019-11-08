@@ -15,7 +15,10 @@ test("reducer accepts USER_CLEAR_STATE actions", () => {
   testReducer(userClearState(), {
     users: {
       data: [{}],
-      list: { search: "User A" }
+      list: {
+        range: true,
+        search: "User A"
+      }
     }
   }, {
     users: newState().users

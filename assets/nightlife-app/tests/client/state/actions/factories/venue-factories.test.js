@@ -4,6 +4,16 @@
 
 const { actions } = require("../../../../../scripts/client/state/actions/actions");
 
+//venue clear form
+
+test("venueClearForm creates VENUE_CLEAR_FORM actions", () => {
+
+  const { venueClearForm } = actions;
+
+  expect(venueClearForm()).toEqual({ type: "VENUE_CLEAR_FORM" });
+
+});
+
 //venue clear state
 
 test("venueClearState creates VENUE_CLEAR_STATE actions", () => {
