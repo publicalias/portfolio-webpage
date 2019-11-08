@@ -8,14 +8,14 @@ const React = require("react");
 
 const SwipeBtn = (props) => {
 
-  const { handleClick, mod } = props;
+  const { handleClick, type } = props;
 
   return (
     <button
-      className={`c-preview__swipe--${mod}`}
+      className={`c-preview__swipe--${type}`}
       onClick={handleClick}
     >
-      <i className={`fas fa-chevron-${mod}`} />
+      <i className={`fas fa-chevron-${type}`} />
     </button>
   );
 

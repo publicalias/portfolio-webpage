@@ -11,6 +11,12 @@
   grid-template-columns: 9vw auto;
 }
 
+@mixin swipe-btn {
+  position: absolute;
+  width: 3.2vw;
+  z-index: 1;
+}
+
 //components
 
 .c-list-body {
@@ -156,6 +162,20 @@
     right: 3vw;
     width: 9vw;
     z-index: 1;
+  }
+
+  &__swipe {
+
+    &--left {
+      @include swipe-btn;
+      left: 3vw;
+    }
+
+    &--right {
+      @include swipe-btn;
+      right: 3vw;
+    }
+
   }
 
   &__view {

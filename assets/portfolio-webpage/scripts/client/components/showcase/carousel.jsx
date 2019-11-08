@@ -31,8 +31,8 @@ const Carousel = (props) => {
       onTouchEnd={handleTouchEnd}
       onTouchStart={handleTouchStart}
     >
-      <SwipeBtn handleClick={handleTurn(-1)} mod="left" />
-      <SwipeBtn handleClick={handleTurn(1)} mod="right" />
+      <SwipeBtn handleClick={handleTurn(-1)} type="left" />
+      <SwipeBtn handleClick={handleTurn(1)} type="right" />
       <a {...safeLink(page)}>
         <img
           alt="Screenshot"

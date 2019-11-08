@@ -8,13 +8,12 @@ const { testWrapper } = require("../../../../../test-helpers");
 
 //global imports
 
-const { initTestSnapshot, reactTests } = require("redux/tests/react-tests");
+const { testMock } = require("redux/tests/meta-tests");
+const { initTestEvent, initTestSnapshot, reactTests, withDataList } = require("redux/tests/react-tests");
 
 //utilities
 
 const { testShallow } = testWrapper(VenueSwipe);
-
-const testSnapshot = initTestSnapshot(testShallow);
 
 //setup
 
@@ -23,4 +22,27 @@ beforeEach(reactTests.inject(VenueSwipe));
 
 //venue swipe
 
-test("venue swipe should match snapshot", () => testSnapshot());
+describe("venue swipe", () => {
+
+  const testSwipe = withDataList(testShallow, [null, {
+    handleClick: jest.fn(),
+    type: "meta"
+  }]);
+
+  const testSnapshot = initTestSnapshot(testSwipe);
+
+  const testClick = initTestEvent(testSwipe, "click", {});
+
+  it("should match snapshot", () => testSnapshot());
+
+  it("should call handleClick on click", () => {
+
+    const handleClick = jest.fn();
+
+    return testClick(".qa-carousel-swipe", [null, { handleClick }], () => {
+      testMock(handleClick, [{}]);
+    });
+
+  });
+
+});
