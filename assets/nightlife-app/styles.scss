@@ -141,6 +141,13 @@
 
 }
 
-//utilities
+.c-venue-photos {
+  align-items: center;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  height: 45vw;
+  justify-content: center;
+  position: relative;
+}
 
 .u-widget-width { width: 9vw; }

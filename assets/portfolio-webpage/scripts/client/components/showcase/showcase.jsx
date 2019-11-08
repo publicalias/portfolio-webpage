@@ -9,7 +9,7 @@ const Carousel = require("./carousel");
 const { itemIsInView } = require("all/client-utils");
 const { useCarousel } = require("all/components/carousel");
 const { select } = require("all/dom-api");
-const { initKeyGen, useSetState } = require("all/react-utils");
+const { useSetState } = require("all/react-utils");
 
 //node modules
 
@@ -70,8 +70,6 @@ const Showcase = (props) => {
 
   const { item: { name, comments, links } } = state;
 
-  const keyGen = initKeyGen();
-
   return (
     <div className="c-content--xl js-scroll-showcase">
       <div className="c-grid">
@@ -86,11 +84,7 @@ const Showcase = (props) => {
           <h3 className="u-align-center">{name}</h3>
           <hr />
           {comments && <p className="u-margin-full">{comments}</p>}
-          <Carousel
-            handlers={handlers}
-            key={keyGen(name)} //smooths transition
-            links={links}
-          />
+          <Carousel handlers={handlers} links={links} />
         </div>
       </div>
     </div>

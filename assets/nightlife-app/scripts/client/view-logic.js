@@ -2,6 +2,8 @@
 
 //global imports
 
+const { itemIsInView } = require("all/client-utils");
+const { select } = require("all/dom-api");
 const { cycleItems, get, leadZero } = require("all/utilities");
 
 //node modules
@@ -55,6 +57,19 @@ const getHours = (venue) => {
 
 };
 
+//get shown
+
+const getShown = () => {
+
+  const navHeight = select(".js-ref-nav-bar").rect().height;
+
+  return itemIsInView(".js-ref-carousel", navHeight);
+
+};
+
 //exports
 
-module.exports = { getHours };
+module.exports = {
+  getHours,
+  getShown
+};

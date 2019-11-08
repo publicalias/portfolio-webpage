@@ -23,8 +23,8 @@ const MetaNavBar = (props) => {
   const keyGen = initKeyGen();
 
   return (
-    <div className="c-nav-bar">
-      {list.map(([id, text, bool, link, util]) => bool && (
+    <div className="c-nav-bar js-ref-nav-bar">
+      {list.map(([id, text, bool, link, util = ""]) => bool && (
         <div className={`c-nav-bar__item ${util}`} key={keyGen(id)}>
           <Link to={link}>
             <h3 className="c-nav-bar__text u-hover">{text}</h3>
