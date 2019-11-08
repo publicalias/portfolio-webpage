@@ -1,3 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`venue logo should match snapshot 1`] = `""`;
+exports[`venue logo should match snapshot 1`] = `
+<a
+  href="https://www.yelp.com/"
+>
+  <img
+    alt="Yelp Logo"
+    className="c-venue-photos__logo"
+    src="/nightlife-app/media/yelp-logo.png"
+  />
+</a>
+`;

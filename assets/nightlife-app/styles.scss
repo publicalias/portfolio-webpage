@@ -150,6 +150,14 @@
   justify-content: center;
   position: relative;
 
+  &__logo {
+    bottom: 3vw;
+    position: absolute;
+    right: 3vw;
+    width: 9vw;
+    z-index: 1;
+  }
+
   &__view {
     max-height: 45vw;
     max-width: 100%;
