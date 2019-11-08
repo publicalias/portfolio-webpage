@@ -7,7 +7,7 @@ const { testAPI } = require("../../../test-helpers");
 
 //favorite add
 
-describe("favorite add", () => {
+describe("favoriteAdd", () => {
 
   const { favoriteAdd } = actions;
 
@@ -15,10 +15,8 @@ describe("favorite add", () => {
     path: "/nightlife-app/api/favorite-add",
     method: "POST",
     data: {
-      venue: {
-        name: "",
-        id: ""
-      }
+      name: "",
+      id: ""
     }
   });
 

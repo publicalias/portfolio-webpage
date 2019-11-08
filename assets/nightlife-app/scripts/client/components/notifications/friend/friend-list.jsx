@@ -17,7 +17,7 @@ const React = require("react");
 
 const FriendList = (props) => {
 
-  const { actions: { friendGetList }, data: { notifications: { friends } } } = props;
+  const { actions: { friendGetList }, data: { notifications: { friends }, users: { data } } } = props;
 
   const { jsx: { FriendItem, MetaList } } = FriendList.injected;
 
@@ -36,6 +36,7 @@ const FriendList = (props) => {
   return (
     <MetaList
       local={{
+        bool: JSON.stringify(data),
         heading: "Friend Requests",
         list,
         refresh: friendGetList,
@@ -46,7 +47,7 @@ const FriendList = (props) => {
 
 };
 
-FriendList.propList = ["data.notifications.friends"];
+FriendList.propList = ["data.notifications.friends", "data.users.data"];
 
 FriendList.injected = {
   jsx: {

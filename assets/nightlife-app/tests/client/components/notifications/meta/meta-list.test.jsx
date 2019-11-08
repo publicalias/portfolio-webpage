@@ -29,6 +29,7 @@ beforeEach(reactTests.inject(MetaList));
 describe("meta list", () => {
 
   const dataList = [null, {
+    bool: "[]",
     heading: "Meta",
     list: [],
     type: "meta"
@@ -45,15 +46,17 @@ describe("meta list", () => {
 
   it("should match snapshot (list)", () => testSnapshot(null, { list: [<div key="" />] }));
 
-  it("should call refresh on load", () => {
+  it("should call refresh conditionally on update", () => {
 
     const refresh = jest.fn();
 
-    const { wrapper } = testListMount(null, { refresh });
+    const { setProps, wrapper } = testListMount(null, { refresh });
 
     wrapper.mount();
 
-    testMock(refresh, []);
+    setProps(null, { bool: "[{}]" });
+
+    testMock(refresh, [], []);
 
     wrapper.unmount();
 

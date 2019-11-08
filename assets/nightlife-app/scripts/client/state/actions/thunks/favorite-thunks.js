@@ -10,10 +10,8 @@ const favoriteAdd = (name, id) => (dispatch) => reduxAPICall(dispatch, {
   path: "/nightlife-app/api/favorite-add",
   method: "POST",
   data: {
-    venue: {
-      name,
-      id
-    }
+    name,
+    id
   }
 });
 

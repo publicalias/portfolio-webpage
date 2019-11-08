@@ -27,6 +27,8 @@ describe("friend list", () => {
 
   it("should match snapshot (default)", () => testSnapshot());
 
+  it("should match snapshot (bool)", () => testSnapshot({ users: { data: [{}] } }));
+
   it("should match snapshot (list)", () => testSnapshot({ notifications: { friends: [{}] } }));
 
 });

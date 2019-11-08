@@ -10,7 +10,7 @@ const { useEffect } = React;
 
 const MetaList = (props) => {
 
-  const { local: { heading, list, refresh, type } } = props;
+  const { local: { bool, heading, list, refresh, type } } = props;
 
   //events
 
@@ -22,7 +22,7 @@ const MetaList = (props) => {
 
   useEffect(() => {
     refresh(); //async
-  }, []);
+  }, [bool]);
 
   //render
 

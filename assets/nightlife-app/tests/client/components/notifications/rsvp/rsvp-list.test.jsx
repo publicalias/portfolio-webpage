@@ -27,6 +27,8 @@ describe("rsvp list", () => {
 
   it("should match snapshot (default)", () => testSnapshot());
 
+  it("should match snapshot (bool)", () => testSnapshot({ venues: { data: [{}] } }));
+
   it("should match snapshot (list)", () => testSnapshot({ notifications: { rsvps: [{}] } }));
 
 });
