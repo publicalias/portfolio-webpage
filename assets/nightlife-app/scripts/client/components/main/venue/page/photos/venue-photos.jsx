@@ -77,7 +77,6 @@ const VenuePhotos = (props) => {
       />
       <VenueLogo />
       <VenueImage
-        {...props}
         local={{
           handleError,
           handleLoad,

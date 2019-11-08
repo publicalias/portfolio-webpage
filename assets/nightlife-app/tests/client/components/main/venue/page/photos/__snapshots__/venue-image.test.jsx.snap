@@ -1,3 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`venue image should match snapshot 1`] = `""`;
+exports[`venue image should match snapshot (default) 1`] = `
+<div
+  className="c-venue-photos__wrapper js-fade-carousel u-display-none"
+>
+  <a
+    href="https://www.example.com/"
+  >
+    <img
+      alt="Venue Photo"
+      className="c-venue-photos__view js-ref-image qa-carousel-image"
+      onError={[MockFunction]}
+      onLoad={[MockFunction]}
+      src=""
+    />
+  </a>
+</div>
+`;
+
+exports[`venue image should match snapshot (src) 1`] = `
+<div
+  className="c-venue-photos__wrapper js-fade-carousel "
+>
+  <a
+    href="https://www.example.com/"
+  >
+    <img
+      alt="Venue Photo"
+      className="c-venue-photos__view js-ref-image qa-carousel-image"
+      onError={[MockFunction]}
+      onLoad={[MockFunction]}
+      src="https://www.example.com/photo.jpg"
+    />
+  </a>
+</div>
+`;
