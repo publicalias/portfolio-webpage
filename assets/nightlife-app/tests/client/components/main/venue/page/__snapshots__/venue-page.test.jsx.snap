@@ -1,279 +1,495 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`venue page should match snapshot (authenticated) 1`] = `
+<div
+  className="c-venue-page"
+>
+  <div
+    className="c-venue-page__info"
+  >
+    <VenueInfo
+      actions={
+        Object {
+          "favoriteAdd": [MockFunction],
+          "favoriteRemove": [MockFunction],
+          "friendAdd": [MockFunction],
+          "friendConfirm": [MockFunction],
+          "friendDismiss": [MockFunction],
+          "friendGetList": [MockFunction],
+          "friendRemove": [MockFunction],
+          "metaAddErrors": [MockFunction],
+          "metaCloseError": [MockFunction],
+          "metaGetUser": [MockFunction],
+          "metaNoOp": [MockFunction],
+          "metaSaveAddress": [MockFunction],
+          "metaSaveAvatar": [MockFunction],
+          "metaSetAddress": [MockFunction],
+          "metaSetAvatar": [MockFunction],
+          "metaSetLoading": [MockFunction],
+          "metaSetState": [MockFunction],
+          "metaTimeoutError": [MockFunction],
+          "metaToggleDelete": [MockFunction],
+          "metaToggleLoaded": [MockFunction],
+          "metaToggleSettings": [MockFunction],
+          "rsvpAdd": [MockFunction],
+          "rsvpDismiss": [MockFunction],
+          "rsvpGetList": [MockFunction],
+          "rsvpRemove": [MockFunction],
+          "userClearState": [MockFunction],
+          "userGetItem": [MockFunction],
+          "userGetList": [MockFunction],
+          "userSetSearch": [MockFunction],
+          "userToggleBlock": [MockFunction],
+          "userToggleRange": [MockFunction],
+          "venueClearForm": [MockFunction],
+          "venueClearState": [MockFunction],
+          "venueGetItem": [MockFunction],
+          "venueGetList": [MockFunction],
+          "venueSetMessage": [MockFunction],
+          "venueSetPause": [MockFunction],
+          "venueSetPhoto": [MockFunction],
+          "venueSetSearch": [MockFunction],
+          "venueSetStart": [MockFunction],
+          "venueSetTime": [MockFunction],
+          "venueToggleForm": [MockFunction],
+          "venueToggleRange": [MockFunction],
+          "venueToggleSort": [MockFunction],
+        }
+      }
+      data={
+        Object {
+          "account": Object {
+            "address": "",
+            "avatar": "",
+            "delete": false,
+            "loaded": false,
+            "settings": false,
+          },
+          "errors": Array [],
+          "loading": false,
+          "notifications": Object {
+            "friends": Array [],
+            "rsvps": Array [],
+          },
+          "user": Object {
+            "auth": Object {
+              "id": "",
+              "provider": "",
+            },
+            "data": Object {
+              "address": "",
+              "app": "nightlife-app",
+              "avatar": "",
+              "blocks": Array [],
+              "distance": 0,
+              "favorites": Array [],
+              "friends": Array [],
+              "location": null,
+              "restricted": false,
+            },
+            "id": "",
+            "name": "",
+            "type": "auth",
+          },
+          "users": Object {
+            "data": Array [],
+            "list": Object {
+              "range": false,
+              "search": "",
+            },
+          },
+          "venues": Object {
+            "data": Array [],
+            "list": Object {
+              "range": false,
+              "search": "",
+              "sort": false,
+            },
+            "page": Object {
+              "form": Object {
+                "message": "",
+                "open": false,
+                "time": "",
+              },
+              "photos": Object {
+                "pause": false,
+                "photo": null,
+                "start": false,
+              },
+            },
+          },
+        }
+      }
+      history={
+        Object {
+          "push": [MockFunction],
+        }
+      }
+      local={
+        Object {
+          "venue": Object {
+            "coordinates": Object {
+              "latitude": 0,
+              "longitude": 0,
+            },
+            "display_phone": "",
+            "distance": 0,
+            "favorites": Array [],
+            "hours": Array [],
+            "id": "",
+            "image_url": "",
+            "location": Object {
+              "display_address": Array [],
+            },
+            "name": "",
+            "photos": Array [],
+            "rating": 0,
+            "rsvps": Array [],
+            "url": "",
+          },
+        }
+      }
+      location={Object {}}
+      match={Object {}}
+      staticContext={Object {}}
+    />
+  </div>
+  <div
+    className="c-venue-page__controls"
+  >
+    <VenueControls
+      actions={
+        Object {
+          "favoriteAdd": [MockFunction],
+          "favoriteRemove": [MockFunction],
+          "friendAdd": [MockFunction],
+          "friendConfirm": [MockFunction],
+          "friendDismiss": [MockFunction],
+          "friendGetList": [MockFunction],
+          "friendRemove": [MockFunction],
+          "metaAddErrors": [MockFunction],
+          "metaCloseError": [MockFunction],
+          "metaGetUser": [MockFunction],
+          "metaNoOp": [MockFunction],
+          "metaSaveAddress": [MockFunction],
+          "metaSaveAvatar": [MockFunction],
+          "metaSetAddress": [MockFunction],
+          "metaSetAvatar": [MockFunction],
+          "metaSetLoading": [MockFunction],
+          "metaSetState": [MockFunction],
+          "metaTimeoutError": [MockFunction],
+          "metaToggleDelete": [MockFunction],
+          "metaToggleLoaded": [MockFunction],
+          "metaToggleSettings": [MockFunction],
+          "rsvpAdd": [MockFunction],
+          "rsvpDismiss": [MockFunction],
+          "rsvpGetList": [MockFunction],
+          "rsvpRemove": [MockFunction],
+          "userClearState": [MockFunction],
+          "userGetItem": [MockFunction],
+          "userGetList": [MockFunction],
+          "userSetSearch": [MockFunction],
+          "userToggleBlock": [MockFunction],
+          "userToggleRange": [MockFunction],
+          "venueClearForm": [MockFunction],
+          "venueClearState": [MockFunction],
+          "venueGetItem": [MockFunction],
+          "venueGetList": [MockFunction],
+          "venueSetMessage": [MockFunction],
+          "venueSetPause": [MockFunction],
+          "venueSetPhoto": [MockFunction],
+          "venueSetSearch": [MockFunction],
+          "venueSetStart": [MockFunction],
+          "venueSetTime": [MockFunction],
+          "venueToggleForm": [MockFunction],
+          "venueToggleRange": [MockFunction],
+          "venueToggleSort": [MockFunction],
+        }
+      }
+      data={
+        Object {
+          "account": Object {
+            "address": "",
+            "avatar": "",
+            "delete": false,
+            "loaded": false,
+            "settings": false,
+          },
+          "errors": Array [],
+          "loading": false,
+          "notifications": Object {
+            "friends": Array [],
+            "rsvps": Array [],
+          },
+          "user": Object {
+            "auth": Object {
+              "id": "",
+              "provider": "",
+            },
+            "data": Object {
+              "address": "",
+              "app": "nightlife-app",
+              "avatar": "",
+              "blocks": Array [],
+              "distance": 0,
+              "favorites": Array [],
+              "friends": Array [],
+              "location": null,
+              "restricted": false,
+            },
+            "id": "",
+            "name": "",
+            "type": "auth",
+          },
+          "users": Object {
+            "data": Array [],
+            "list": Object {
+              "range": false,
+              "search": "",
+            },
+          },
+          "venues": Object {
+            "data": Array [],
+            "list": Object {
+              "range": false,
+              "search": "",
+              "sort": false,
+            },
+            "page": Object {
+              "form": Object {
+                "message": "",
+                "open": false,
+                "time": "",
+              },
+              "photos": Object {
+                "pause": false,
+                "photo": null,
+                "start": false,
+              },
+            },
+          },
+        }
+      }
+      history={
+        Object {
+          "push": [MockFunction],
+        }
+      }
+      local={
+        Object {
+          "venue": Object {
+            "coordinates": Object {
+              "latitude": 0,
+              "longitude": 0,
+            },
+            "display_phone": "",
+            "distance": 0,
+            "favorites": Array [],
+            "hours": Array [],
+            "id": "",
+            "image_url": "",
+            "location": Object {
+              "display_address": Array [],
+            },
+            "name": "",
+            "photos": Array [],
+            "rating": 0,
+            "rsvps": Array [],
+            "url": "",
+          },
+        }
+      }
+      location={Object {}}
+      match={Object {}}
+      staticContext={Object {}}
+    />
+  </div>
+  <div
+    className="c-venue-page__favorites"
+  >
+    <VenueList
+      local={
+        Object {
+          "heading": "Favorites",
+          "list": Array [],
+        }
+      }
+    />
+  </div>
+  <div
+    className="c-venue-page__rsvps"
+  >
+    <VenueList
+      local={
+        Object {
+          "heading": "RSVPs",
+          "list": Array [],
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
 exports[`venue page should match snapshot (default) 1`] = `
 <div
   className="c-venue-page"
 >
-  <VenueInfo
-    actions={
-      Object {
-        "favoriteAdd": [MockFunction],
-        "favoriteRemove": [MockFunction],
-        "friendAdd": [MockFunction],
-        "friendConfirm": [MockFunction],
-        "friendDismiss": [MockFunction],
-        "friendGetList": [MockFunction],
-        "friendRemove": [MockFunction],
-        "metaAddErrors": [MockFunction],
-        "metaCloseError": [MockFunction],
-        "metaGetUser": [MockFunction],
-        "metaNoOp": [MockFunction],
-        "metaSaveAddress": [MockFunction],
-        "metaSaveAvatar": [MockFunction],
-        "metaSetAddress": [MockFunction],
-        "metaSetAvatar": [MockFunction],
-        "metaSetLoading": [MockFunction],
-        "metaSetState": [MockFunction],
-        "metaTimeoutError": [MockFunction],
-        "metaToggleDelete": [MockFunction],
-        "metaToggleLoaded": [MockFunction],
-        "metaToggleSettings": [MockFunction],
-        "rsvpAdd": [MockFunction],
-        "rsvpDismiss": [MockFunction],
-        "rsvpGetList": [MockFunction],
-        "rsvpRemove": [MockFunction],
-        "userClearState": [MockFunction],
-        "userGetItem": [MockFunction],
-        "userGetList": [MockFunction],
-        "userSetSearch": [MockFunction],
-        "userToggleBlock": [MockFunction],
-        "userToggleRange": [MockFunction],
-        "venueClearForm": [MockFunction],
-        "venueClearState": [MockFunction],
-        "venueGetItem": [MockFunction],
-        "venueGetList": [MockFunction],
-        "venueSetMessage": [MockFunction],
-        "venueSetPause": [MockFunction],
-        "venueSetPhoto": [MockFunction],
-        "venueSetSearch": [MockFunction],
-        "venueSetStart": [MockFunction],
-        "venueSetTime": [MockFunction],
-        "venueToggleForm": [MockFunction],
-        "venueToggleRange": [MockFunction],
-        "venueToggleSort": [MockFunction],
+  <div
+    className="c-venue-page__info"
+  >
+    <VenueInfo
+      actions={
+        Object {
+          "favoriteAdd": [MockFunction],
+          "favoriteRemove": [MockFunction],
+          "friendAdd": [MockFunction],
+          "friendConfirm": [MockFunction],
+          "friendDismiss": [MockFunction],
+          "friendGetList": [MockFunction],
+          "friendRemove": [MockFunction],
+          "metaAddErrors": [MockFunction],
+          "metaCloseError": [MockFunction],
+          "metaGetUser": [MockFunction],
+          "metaNoOp": [MockFunction],
+          "metaSaveAddress": [MockFunction],
+          "metaSaveAvatar": [MockFunction],
+          "metaSetAddress": [MockFunction],
+          "metaSetAvatar": [MockFunction],
+          "metaSetLoading": [MockFunction],
+          "metaSetState": [MockFunction],
+          "metaTimeoutError": [MockFunction],
+          "metaToggleDelete": [MockFunction],
+          "metaToggleLoaded": [MockFunction],
+          "metaToggleSettings": [MockFunction],
+          "rsvpAdd": [MockFunction],
+          "rsvpDismiss": [MockFunction],
+          "rsvpGetList": [MockFunction],
+          "rsvpRemove": [MockFunction],
+          "userClearState": [MockFunction],
+          "userGetItem": [MockFunction],
+          "userGetList": [MockFunction],
+          "userSetSearch": [MockFunction],
+          "userToggleBlock": [MockFunction],
+          "userToggleRange": [MockFunction],
+          "venueClearForm": [MockFunction],
+          "venueClearState": [MockFunction],
+          "venueGetItem": [MockFunction],
+          "venueGetList": [MockFunction],
+          "venueSetMessage": [MockFunction],
+          "venueSetPause": [MockFunction],
+          "venueSetPhoto": [MockFunction],
+          "venueSetSearch": [MockFunction],
+          "venueSetStart": [MockFunction],
+          "venueSetTime": [MockFunction],
+          "venueToggleForm": [MockFunction],
+          "venueToggleRange": [MockFunction],
+          "venueToggleSort": [MockFunction],
+        }
       }
-    }
-    data={
-      Object {
-        "account": Object {
-          "address": "",
-          "avatar": "",
-          "delete": false,
-          "loaded": false,
-          "settings": false,
-        },
-        "errors": Array [],
-        "loading": false,
-        "notifications": Object {
-          "friends": Array [],
-          "rsvps": Array [],
-        },
-        "user": Object {},
-        "users": Object {
-          "data": Array [],
-          "list": Object {
-            "range": false,
-            "search": "",
+      data={
+        Object {
+          "account": Object {
+            "address": "",
+            "avatar": "",
+            "delete": false,
+            "loaded": false,
+            "settings": false,
           },
-        },
-        "venues": Object {
-          "data": Array [],
-          "list": Object {
-            "range": false,
-            "search": "",
-            "sort": false,
+          "errors": Array [],
+          "loading": false,
+          "notifications": Object {
+            "friends": Array [],
+            "rsvps": Array [],
           },
-          "page": Object {
-            "form": Object {
-              "message": "",
-              "open": false,
-              "time": "",
-            },
-            "photos": Object {
-              "pause": false,
-              "photo": null,
-              "start": false,
+          "user": Object {},
+          "users": Object {
+            "data": Array [],
+            "list": Object {
+              "range": false,
+              "search": "",
             },
           },
-        },
-      }
-    }
-    history={
-      Object {
-        "push": [MockFunction],
-      }
-    }
-    local={
-      Object {
-        "venue": Object {
-          "coordinates": Object {
-            "latitude": 0,
-            "longitude": 0,
-          },
-          "display_phone": "",
-          "distance": 0,
-          "favorites": Array [],
-          "hours": Array [],
-          "id": "",
-          "image_url": "",
-          "location": Object {
-            "display_address": Array [],
-          },
-          "name": "",
-          "photos": Array [],
-          "rating": 0,
-          "rsvps": Array [],
-          "url": "",
-        },
-      }
-    }
-    location={Object {}}
-    match={Object {}}
-    staticContext={Object {}}
-  />
-  <VenueControls
-    actions={
-      Object {
-        "favoriteAdd": [MockFunction],
-        "favoriteRemove": [MockFunction],
-        "friendAdd": [MockFunction],
-        "friendConfirm": [MockFunction],
-        "friendDismiss": [MockFunction],
-        "friendGetList": [MockFunction],
-        "friendRemove": [MockFunction],
-        "metaAddErrors": [MockFunction],
-        "metaCloseError": [MockFunction],
-        "metaGetUser": [MockFunction],
-        "metaNoOp": [MockFunction],
-        "metaSaveAddress": [MockFunction],
-        "metaSaveAvatar": [MockFunction],
-        "metaSetAddress": [MockFunction],
-        "metaSetAvatar": [MockFunction],
-        "metaSetLoading": [MockFunction],
-        "metaSetState": [MockFunction],
-        "metaTimeoutError": [MockFunction],
-        "metaToggleDelete": [MockFunction],
-        "metaToggleLoaded": [MockFunction],
-        "metaToggleSettings": [MockFunction],
-        "rsvpAdd": [MockFunction],
-        "rsvpDismiss": [MockFunction],
-        "rsvpGetList": [MockFunction],
-        "rsvpRemove": [MockFunction],
-        "userClearState": [MockFunction],
-        "userGetItem": [MockFunction],
-        "userGetList": [MockFunction],
-        "userSetSearch": [MockFunction],
-        "userToggleBlock": [MockFunction],
-        "userToggleRange": [MockFunction],
-        "venueClearForm": [MockFunction],
-        "venueClearState": [MockFunction],
-        "venueGetItem": [MockFunction],
-        "venueGetList": [MockFunction],
-        "venueSetMessage": [MockFunction],
-        "venueSetPause": [MockFunction],
-        "venueSetPhoto": [MockFunction],
-        "venueSetSearch": [MockFunction],
-        "venueSetStart": [MockFunction],
-        "venueSetTime": [MockFunction],
-        "venueToggleForm": [MockFunction],
-        "venueToggleRange": [MockFunction],
-        "venueToggleSort": [MockFunction],
-      }
-    }
-    data={
-      Object {
-        "account": Object {
-          "address": "",
-          "avatar": "",
-          "delete": false,
-          "loaded": false,
-          "settings": false,
-        },
-        "errors": Array [],
-        "loading": false,
-        "notifications": Object {
-          "friends": Array [],
-          "rsvps": Array [],
-        },
-        "user": Object {},
-        "users": Object {
-          "data": Array [],
-          "list": Object {
-            "range": false,
-            "search": "",
-          },
-        },
-        "venues": Object {
-          "data": Array [],
-          "list": Object {
-            "range": false,
-            "search": "",
-            "sort": false,
-          },
-          "page": Object {
-            "form": Object {
-              "message": "",
-              "open": false,
-              "time": "",
+          "venues": Object {
+            "data": Array [],
+            "list": Object {
+              "range": false,
+              "search": "",
+              "sort": false,
             },
-            "photos": Object {
-              "pause": false,
-              "photo": null,
-              "start": false,
+            "page": Object {
+              "form": Object {
+                "message": "",
+                "open": false,
+                "time": "",
+              },
+              "photos": Object {
+                "pause": false,
+                "photo": null,
+                "start": false,
+              },
             },
           },
-        },
+        }
       }
-    }
-    history={
-      Object {
-        "push": [MockFunction],
+      history={
+        Object {
+          "push": [MockFunction],
+        }
       }
-    }
-    local={
-      Object {
-        "venue": Object {
-          "coordinates": Object {
-            "latitude": 0,
-            "longitude": 0,
+      local={
+        Object {
+          "venue": Object {
+            "coordinates": Object {
+              "latitude": 0,
+              "longitude": 0,
+            },
+            "display_phone": "",
+            "distance": 0,
+            "favorites": Array [],
+            "hours": Array [],
+            "id": "",
+            "image_url": "",
+            "location": Object {
+              "display_address": Array [],
+            },
+            "name": "",
+            "photos": Array [],
+            "rating": 0,
+            "rsvps": Array [],
+            "url": "",
           },
-          "display_phone": "",
-          "distance": 0,
-          "favorites": Array [],
-          "hours": Array [],
-          "id": "",
-          "image_url": "",
-          "location": Object {
-            "display_address": Array [],
-          },
-          "name": "",
-          "photos": Array [],
-          "rating": 0,
-          "rsvps": Array [],
-          "url": "",
-        },
+        }
       }
-    }
-    location={Object {}}
-    match={Object {}}
-    staticContext={Object {}}
-  />
-  <VenueList
-    local={
-      Object {
-        "heading": "Favorites",
-        "list": Array [],
+      location={Object {}}
+      match={Object {}}
+      staticContext={Object {}}
+    />
+  </div>
+  <div
+    className="c-venue-page__favorites"
+  >
+    <VenueList
+      local={
+        Object {
+          "heading": "Favorites",
+          "list": Array [],
+        }
       }
-    }
-  />
-  <VenueList
-    local={
-      Object {
-        "heading": "RSVPs",
-        "list": Array [],
+    />
+  </div>
+  <div
+    className="c-venue-page__rsvps"
+  >
+    <VenueList
+      local={
+        Object {
+          "heading": "RSVPs",
+          "list": Array [],
+        }
       }
-    }
-  />
+    />
+  </div>
 </div>
 `;
 
@@ -281,317 +497,181 @@ exports[`venue page should match snapshot (match) 1`] = `
 <div
   className="c-venue-page"
 >
-  <VenueInfo
-    actions={
-      Object {
-        "favoriteAdd": [MockFunction],
-        "favoriteRemove": [MockFunction],
-        "friendAdd": [MockFunction],
-        "friendConfirm": [MockFunction],
-        "friendDismiss": [MockFunction],
-        "friendGetList": [MockFunction],
-        "friendRemove": [MockFunction],
-        "metaAddErrors": [MockFunction],
-        "metaCloseError": [MockFunction],
-        "metaGetUser": [MockFunction],
-        "metaNoOp": [MockFunction],
-        "metaSaveAddress": [MockFunction],
-        "metaSaveAvatar": [MockFunction],
-        "metaSetAddress": [MockFunction],
-        "metaSetAvatar": [MockFunction],
-        "metaSetLoading": [MockFunction],
-        "metaSetState": [MockFunction],
-        "metaTimeoutError": [MockFunction],
-        "metaToggleDelete": [MockFunction],
-        "metaToggleLoaded": [MockFunction],
-        "metaToggleSettings": [MockFunction],
-        "rsvpAdd": [MockFunction],
-        "rsvpDismiss": [MockFunction],
-        "rsvpGetList": [MockFunction],
-        "rsvpRemove": [MockFunction],
-        "userClearState": [MockFunction],
-        "userGetItem": [MockFunction],
-        "userGetList": [MockFunction],
-        "userSetSearch": [MockFunction],
-        "userToggleBlock": [MockFunction],
-        "userToggleRange": [MockFunction],
-        "venueClearForm": [MockFunction],
-        "venueClearState": [MockFunction],
-        "venueGetItem": [MockFunction],
-        "venueGetList": [MockFunction],
-        "venueSetMessage": [MockFunction],
-        "venueSetPause": [MockFunction],
-        "venueSetPhoto": [MockFunction],
-        "venueSetSearch": [MockFunction],
-        "venueSetStart": [MockFunction],
-        "venueSetTime": [MockFunction],
-        "venueToggleForm": [MockFunction],
-        "venueToggleRange": [MockFunction],
-        "venueToggleSort": [MockFunction],
+  <div
+    className="c-venue-page__info"
+  >
+    <VenueInfo
+      actions={
+        Object {
+          "favoriteAdd": [MockFunction],
+          "favoriteRemove": [MockFunction],
+          "friendAdd": [MockFunction],
+          "friendConfirm": [MockFunction],
+          "friendDismiss": [MockFunction],
+          "friendGetList": [MockFunction],
+          "friendRemove": [MockFunction],
+          "metaAddErrors": [MockFunction],
+          "metaCloseError": [MockFunction],
+          "metaGetUser": [MockFunction],
+          "metaNoOp": [MockFunction],
+          "metaSaveAddress": [MockFunction],
+          "metaSaveAvatar": [MockFunction],
+          "metaSetAddress": [MockFunction],
+          "metaSetAvatar": [MockFunction],
+          "metaSetLoading": [MockFunction],
+          "metaSetState": [MockFunction],
+          "metaTimeoutError": [MockFunction],
+          "metaToggleDelete": [MockFunction],
+          "metaToggleLoaded": [MockFunction],
+          "metaToggleSettings": [MockFunction],
+          "rsvpAdd": [MockFunction],
+          "rsvpDismiss": [MockFunction],
+          "rsvpGetList": [MockFunction],
+          "rsvpRemove": [MockFunction],
+          "userClearState": [MockFunction],
+          "userGetItem": [MockFunction],
+          "userGetList": [MockFunction],
+          "userSetSearch": [MockFunction],
+          "userToggleBlock": [MockFunction],
+          "userToggleRange": [MockFunction],
+          "venueClearForm": [MockFunction],
+          "venueClearState": [MockFunction],
+          "venueGetItem": [MockFunction],
+          "venueGetList": [MockFunction],
+          "venueSetMessage": [MockFunction],
+          "venueSetPause": [MockFunction],
+          "venueSetPhoto": [MockFunction],
+          "venueSetSearch": [MockFunction],
+          "venueSetStart": [MockFunction],
+          "venueSetTime": [MockFunction],
+          "venueToggleForm": [MockFunction],
+          "venueToggleRange": [MockFunction],
+          "venueToggleSort": [MockFunction],
+        }
       }
-    }
-    data={
-      Object {
-        "account": Object {
-          "address": "",
-          "avatar": "",
-          "delete": false,
-          "loaded": false,
-          "settings": false,
-        },
-        "errors": Array [],
-        "loading": false,
-        "notifications": Object {
-          "friends": Array [],
-          "rsvps": Array [],
-        },
-        "user": Object {},
-        "users": Object {
-          "data": Array [],
-          "list": Object {
-            "range": false,
-            "search": "",
+      data={
+        Object {
+          "account": Object {
+            "address": "",
+            "avatar": "",
+            "delete": false,
+            "loaded": false,
+            "settings": false,
           },
-        },
-        "venues": Object {
-          "data": Array [
-            Object {
-              "coordinates": Object {
-                "latitude": 0,
-                "longitude": 0,
+          "errors": Array [],
+          "loading": false,
+          "notifications": Object {
+            "friends": Array [],
+            "rsvps": Array [],
+          },
+          "user": Object {},
+          "users": Object {
+            "data": Array [],
+            "list": Object {
+              "range": false,
+              "search": "",
+            },
+          },
+          "venues": Object {
+            "data": Array [
+              Object {
+                "coordinates": Object {
+                  "latitude": 0,
+                  "longitude": 0,
+                },
+                "display_phone": "",
+                "distance": 0,
+                "favorites": Array [],
+                "hours": Array [],
+                "id": "id-a",
+                "image_url": "",
+                "location": Object {
+                  "display_address": Array [],
+                },
+                "name": "",
+                "photos": Array [],
+                "rating": 0,
+                "rsvps": Array [],
+                "url": "",
               },
-              "display_phone": "",
-              "distance": 0,
-              "favorites": Array [],
-              "hours": Array [],
-              "id": "id-a",
-              "image_url": "",
-              "location": Object {
-                "display_address": Array [],
+            ],
+            "list": Object {
+              "range": false,
+              "search": "",
+              "sort": false,
+            },
+            "page": Object {
+              "form": Object {
+                "message": "",
+                "open": false,
+                "time": "",
               },
-              "name": "",
-              "photos": Array [],
-              "rating": 0,
-              "rsvps": Array [],
-              "url": "",
-            },
-          ],
-          "list": Object {
-            "range": false,
-            "search": "",
-            "sort": false,
-          },
-          "page": Object {
-            "form": Object {
-              "message": "",
-              "open": false,
-              "time": "",
-            },
-            "photos": Object {
-              "pause": false,
-              "photo": null,
-              "start": false,
-            },
-          },
-        },
-      }
-    }
-    history={
-      Object {
-        "push": [MockFunction],
-      }
-    }
-    local={
-      Object {
-        "venue": Object {
-          "coordinates": Object {
-            "latitude": 0,
-            "longitude": 0,
-          },
-          "display_phone": "",
-          "distance": 0,
-          "favorites": Array [],
-          "hours": Array [],
-          "id": "id-a",
-          "image_url": "",
-          "location": Object {
-            "display_address": Array [],
-          },
-          "name": "",
-          "photos": Array [],
-          "rating": 0,
-          "rsvps": Array [],
-          "url": "",
-        },
-      }
-    }
-    location={Object {}}
-    match={Object {}}
-    staticContext={Object {}}
-  />
-  <VenueControls
-    actions={
-      Object {
-        "favoriteAdd": [MockFunction],
-        "favoriteRemove": [MockFunction],
-        "friendAdd": [MockFunction],
-        "friendConfirm": [MockFunction],
-        "friendDismiss": [MockFunction],
-        "friendGetList": [MockFunction],
-        "friendRemove": [MockFunction],
-        "metaAddErrors": [MockFunction],
-        "metaCloseError": [MockFunction],
-        "metaGetUser": [MockFunction],
-        "metaNoOp": [MockFunction],
-        "metaSaveAddress": [MockFunction],
-        "metaSaveAvatar": [MockFunction],
-        "metaSetAddress": [MockFunction],
-        "metaSetAvatar": [MockFunction],
-        "metaSetLoading": [MockFunction],
-        "metaSetState": [MockFunction],
-        "metaTimeoutError": [MockFunction],
-        "metaToggleDelete": [MockFunction],
-        "metaToggleLoaded": [MockFunction],
-        "metaToggleSettings": [MockFunction],
-        "rsvpAdd": [MockFunction],
-        "rsvpDismiss": [MockFunction],
-        "rsvpGetList": [MockFunction],
-        "rsvpRemove": [MockFunction],
-        "userClearState": [MockFunction],
-        "userGetItem": [MockFunction],
-        "userGetList": [MockFunction],
-        "userSetSearch": [MockFunction],
-        "userToggleBlock": [MockFunction],
-        "userToggleRange": [MockFunction],
-        "venueClearForm": [MockFunction],
-        "venueClearState": [MockFunction],
-        "venueGetItem": [MockFunction],
-        "venueGetList": [MockFunction],
-        "venueSetMessage": [MockFunction],
-        "venueSetPause": [MockFunction],
-        "venueSetPhoto": [MockFunction],
-        "venueSetSearch": [MockFunction],
-        "venueSetStart": [MockFunction],
-        "venueSetTime": [MockFunction],
-        "venueToggleForm": [MockFunction],
-        "venueToggleRange": [MockFunction],
-        "venueToggleSort": [MockFunction],
-      }
-    }
-    data={
-      Object {
-        "account": Object {
-          "address": "",
-          "avatar": "",
-          "delete": false,
-          "loaded": false,
-          "settings": false,
-        },
-        "errors": Array [],
-        "loading": false,
-        "notifications": Object {
-          "friends": Array [],
-          "rsvps": Array [],
-        },
-        "user": Object {},
-        "users": Object {
-          "data": Array [],
-          "list": Object {
-            "range": false,
-            "search": "",
-          },
-        },
-        "venues": Object {
-          "data": Array [
-            Object {
-              "coordinates": Object {
-                "latitude": 0,
-                "longitude": 0,
+              "photos": Object {
+                "pause": false,
+                "photo": null,
+                "start": false,
               },
-              "display_phone": "",
-              "distance": 0,
-              "favorites": Array [],
-              "hours": Array [],
-              "id": "id-a",
-              "image_url": "",
-              "location": Object {
-                "display_address": Array [],
-              },
-              "name": "",
-              "photos": Array [],
-              "rating": 0,
-              "rsvps": Array [],
-              "url": "",
-            },
-          ],
-          "list": Object {
-            "range": false,
-            "search": "",
-            "sort": false,
-          },
-          "page": Object {
-            "form": Object {
-              "message": "",
-              "open": false,
-              "time": "",
-            },
-            "photos": Object {
-              "pause": false,
-              "photo": null,
-              "start": false,
             },
           },
-        },
+        }
       }
-    }
-    history={
-      Object {
-        "push": [MockFunction],
+      history={
+        Object {
+          "push": [MockFunction],
+        }
       }
-    }
-    local={
-      Object {
-        "venue": Object {
-          "coordinates": Object {
-            "latitude": 0,
-            "longitude": 0,
+      local={
+        Object {
+          "venue": Object {
+            "coordinates": Object {
+              "latitude": 0,
+              "longitude": 0,
+            },
+            "display_phone": "",
+            "distance": 0,
+            "favorites": Array [],
+            "hours": Array [],
+            "id": "id-a",
+            "image_url": "",
+            "location": Object {
+              "display_address": Array [],
+            },
+            "name": "",
+            "photos": Array [],
+            "rating": 0,
+            "rsvps": Array [],
+            "url": "",
           },
-          "display_phone": "",
-          "distance": 0,
-          "favorites": Array [],
-          "hours": Array [],
-          "id": "id-a",
-          "image_url": "",
-          "location": Object {
-            "display_address": Array [],
-          },
-          "name": "",
-          "photos": Array [],
-          "rating": 0,
-          "rsvps": Array [],
-          "url": "",
-        },
+        }
       }
-    }
-    location={Object {}}
-    match={Object {}}
-    staticContext={Object {}}
-  />
-  <VenueList
-    local={
-      Object {
-        "heading": "Favorites",
-        "list": Array [],
+      location={Object {}}
+      match={Object {}}
+      staticContext={Object {}}
+    />
+  </div>
+  <div
+    className="c-venue-page__favorites"
+  >
+    <VenueList
+      local={
+        Object {
+          "heading": "Favorites",
+          "list": Array [],
+        }
       }
-    }
-  />
-  <VenueList
-    local={
-      Object {
-        "heading": "RSVPs",
-        "list": Array [],
+    />
+  </div>
+  <div
+    className="c-venue-page__rsvps"
+  >
+    <VenueList
+      local={
+        Object {
+          "heading": "RSVPs",
+          "list": Array [],
+        }
       }
-    }
-  />
+    />
+  </div>
 </div>
 `;

@@ -2,7 +2,7 @@
 
 //local imports
 
-const VenueControls = require("./venue-controls");
+const VenueControls = require("./controls/venue-controls");
 const VenueInfo = require("./venue-info");
 const VenueList = require("./venue-list");
 
@@ -58,22 +58,34 @@ const VenuePage = (props) => {
 
   //render
 
+  const auth = user.type === "auth";
+
   return (
     <div className="c-venue-page">
-      <VenueInfo {...props} local={{ venue }} />
-      <VenueControls {...props} local={{ venue }} />
-      <VenueList
-        local={{
-          heading: "Favorites",
-          list: venue.favorites
-        }}
-      />
-      <VenueList
-        local={{
-          heading: "RSVPs",
-          list: venue.rsvps
-        }}
-      />
+      <div className="c-venue-page__info">
+        <VenueInfo {...props} local={{ venue }} />
+      </div>
+      {auth && (
+        <div className="c-venue-page__controls">
+          <VenueControls {...props} local={{ venue }} />
+        </div>
+      )}
+      <div className="c-venue-page__favorites">
+        <VenueList
+          local={{
+            heading: "Favorites",
+            list: venue.favorites
+          }}
+        />
+      </div>
+      <div className="c-venue-page__rsvps">
+        <VenueList
+          local={{
+            heading: "RSVPs",
+            list: venue.rsvps
+          }}
+        />
+      </div>
     </div>
   );
 

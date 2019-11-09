@@ -2,9 +2,10 @@
 
 //local imports
 
-const VenueControls = require("../../../../../../scripts/client/components/main/venue/page/venue-controls");
+const VenueControls = require("../../../../../../../scripts/client/components/main/venue/page/controls/venue-controls");
 
-const { testWrapper } = require("../../../../test-helpers");
+const { newVenue } = require("../../../../../../../schemas");
+const { testWrapper } = require("../../../../../test-helpers");
 
 //global imports
 
@@ -23,4 +24,4 @@ beforeEach(reactTests.inject(VenueControls));
 
 //venue controls
 
-test("venue controls should match snapshot", () => testSnapshot());
+test("venue controls should match snapshot", () => testSnapshot(null, { venue: newVenue() }));

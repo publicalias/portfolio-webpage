@@ -2,10 +2,10 @@
 
 exports[`venue info should match snapshot (address) 1`] = `
 <div
-  className="c-venue-page__info"
+  className="c-venue-info"
 >
   <div
-    className="c-venue-page__header"
+    className="c-venue-info__header"
   >
     <h1>
       <a
@@ -16,7 +16,7 @@ exports[`venue info should match snapshot (address) 1`] = `
     </h1>
     <img
       alt="0 Stars"
-      className="c-venue-page__rating"
+      className="c-venue-info__rating"
       src="/nightlife-app/media/yelp-stars/yelp-stars-0.png"
     />
   </div>
@@ -156,7 +156,7 @@ exports[`venue info should match snapshot (address) 1`] = `
     />
   </div>
   <div
-    className="c-venue-page__data"
+    className="c-venue-info__data"
   >
     <div>
       <p
@@ -191,10 +191,10 @@ exports[`venue info should match snapshot (address) 1`] = `
 
 exports[`venue info should match snapshot (default) 1`] = `
 <div
-  className="c-venue-page__info"
+  className="c-venue-info"
 >
   <div
-    className="c-venue-page__header"
+    className="c-venue-info__header"
   >
     <h1>
       <a
@@ -205,7 +205,7 @@ exports[`venue info should match snapshot (default) 1`] = `
     </h1>
     <img
       alt="0 Stars"
-      className="c-venue-page__rating"
+      className="c-venue-info__rating"
       src="/nightlife-app/media/yelp-stars/yelp-stars-0.png"
     />
   </div>
@@ -342,7 +342,7 @@ exports[`venue info should match snapshot (default) 1`] = `
     />
   </div>
   <div
-    className="c-venue-page__data"
+    className="c-venue-info__data"
   >
     <div>
       <p
@@ -372,10 +372,10 @@ exports[`venue info should match snapshot (default) 1`] = `
 
 exports[`venue info should match snapshot (name) 1`] = `
 <div
-  className="c-venue-page__info"
+  className="c-venue-info"
 >
   <div
-    className="c-venue-page__header"
+    className="c-venue-info__header"
   >
     <h1>
       <a
@@ -386,7 +386,7 @@ exports[`venue info should match snapshot (name) 1`] = `
     </h1>
     <img
       alt="0 Stars"
-      className="c-venue-page__rating"
+      className="c-venue-info__rating"
       src="/nightlife-app/media/yelp-stars/yelp-stars-0.png"
     />
   </div>
@@ -523,7 +523,7 @@ exports[`venue info should match snapshot (name) 1`] = `
     />
   </div>
   <div
-    className="c-venue-page__data"
+    className="c-venue-info__data"
   >
     <div>
       <p
@@ -553,10 +553,10 @@ exports[`venue info should match snapshot (name) 1`] = `
 
 exports[`venue info should match snapshot (phone) 1`] = `
 <div
-  className="c-venue-page__info"
+  className="c-venue-info"
 >
   <div
-    className="c-venue-page__header"
+    className="c-venue-info__header"
   >
     <h1>
       <a
@@ -567,7 +567,7 @@ exports[`venue info should match snapshot (phone) 1`] = `
     </h1>
     <img
       alt="0 Stars"
-      className="c-venue-page__rating"
+      className="c-venue-info__rating"
       src="/nightlife-app/media/yelp-stars/yelp-stars-0.png"
     />
   </div>
@@ -704,7 +704,7 @@ exports[`venue info should match snapshot (phone) 1`] = `
     />
   </div>
   <div
-    className="c-venue-page__data"
+    className="c-venue-info__data"
   >
     <div>
       <p
@@ -734,10 +734,10 @@ exports[`venue info should match snapshot (phone) 1`] = `
 
 exports[`venue info should match snapshot (url) 1`] = `
 <div
-  className="c-venue-page__info"
+  className="c-venue-info"
 >
   <div
-    className="c-venue-page__header"
+    className="c-venue-info__header"
   >
     <h1>
       <a
@@ -748,7 +748,7 @@ exports[`venue info should match snapshot (url) 1`] = `
     </h1>
     <img
       alt="0 Stars"
-      className="c-venue-page__rating"
+      className="c-venue-info__rating"
       src="/nightlife-app/media/yelp-stars/yelp-stars-0.png"
     />
   </div>
@@ -885,7 +885,7 @@ exports[`venue info should match snapshot (url) 1`] = `
     />
   </div>
   <div
-    className="c-venue-page__data"
+    className="c-venue-info__data"
   >
     <div>
       <p

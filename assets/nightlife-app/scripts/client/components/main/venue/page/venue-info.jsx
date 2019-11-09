@@ -29,12 +29,12 @@ const VenueInfo = (props) => {
   const address = ((list = venue.location.display_address) => list.length ? list : ["No Address"])();
 
   return (
-    <div className="c-venue-page__info">
-      <div className="c-venue-page__header">
+    <div className="c-venue-info">
+      <div className="c-venue-info__header">
         <h1><a href={venue.url || "https://www.yelp.com/"}>{venue.name || "Undefined"}</a></h1>
         <img
           alt={`${venue.rating} Stars`}
-          className="c-venue-page__rating"
+          className="c-venue-info__rating"
           src={`/nightlife-app/media/yelp-stars/yelp-stars-${venue.rating}.png`}
         />
       </div>
@@ -42,7 +42,7 @@ const VenueInfo = (props) => {
       <div className="u-margin-full">
         <VenuePhotos {...props} />
       </div>
-      <div className="c-venue-page__data">
+      <div className="c-venue-info__data">
         <div>
           {address.map((e) => <p key={keyGen(e)}>{e}</p>)}
         </div>

@@ -4,6 +4,7 @@
 
 const VenuePage = require("../../../../../../scripts/client/components/main/venue/page/venue-page");
 
+const { newUserWithData } = require("../../../../../../schemas");
 const { getGeoPoint, testWrapper } = require("../../../../test-helpers");
 
 //global imports
@@ -58,6 +59,8 @@ describe("venue page", () => {
   };
 
   it("should match snapshot (default)", () => testSnapshot());
+
+  it("should match snapshot (authenticated)", () => testSnapshot({ user: newUserWithData() }));
 
   it("should match snapshot (match)", () => testSnapshot({ venues: { data: [{ id: "id-a" }] } }));
 
