@@ -1,3 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`venue favorite should match snapshot 1`] = `""`;
+exports[`venue favorite (favorite) should match snapshot 1`] = `
+<button
+  className="c-icon-button qa-toggle-favorite"
+  onClick={[Function]}
+>
+  <i
+    className="fas fa-star"
+  />
+</button>
+`;
+
+exports[`venue favorite should match snapshot 1`] = `
+<button
+  className="c-icon-button qa-toggle-favorite"
+  onClick={[Function]}
+>
+  <i
+    className="far fa-star"
+  />
+</button>
+`;
