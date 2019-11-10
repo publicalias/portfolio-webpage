@@ -24,7 +24,7 @@ beforeEach(reactTests.inject(VenueFavorite));
 
 //venue favorite
 
-describe("venue favorite", () => {
+describe("VenueFavorite (default)", () => {
 
   const testFavorite = withDataList(testShallow, [null, {
     venue: newVenue({
@@ -54,7 +54,7 @@ describe("venue favorite", () => {
 
 });
 
-describe("venue favorite (favorite)", () => {
+describe("VenueFavorite (favorite)", () => {
 
   const testFavorite = withDataList(testShallow, [{ user: newUserWithData({ id: "id-a" }) }, {
     venue: newVenue({

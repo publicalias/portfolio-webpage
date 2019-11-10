@@ -37,22 +37,6 @@ const initTestSnapshot = (render) => (data, local, other) => {
 
 };
 
-//init test submit
-
-const initTestSubmit = (event, [failure, errors = failure, success = failure]) => (testSubmit) => {
-
-  const tests = [
-    [failure, "failure", undefined],
-    [errors, "errors", { errors: [] }],
-    [success, "success", {}]
-  ];
-
-  for (const [type, test, res] of tests) {
-    it(`should call ${type} on ${event} (${test})`, () => testSubmit(res));
-  }
-
-};
-
 //mock infinite scroll
 
 const mockInfiniteScroll = (handleReload = jest.fn(), handleScroll = jest.fn()) => ({
@@ -65,6 +49,18 @@ const mockInfiniteScroll = (handleReload = jest.fn(), handleScroll = jest.fn()) 
     }))
   }
 });
+
+//test submit
+
+const testSubmit = (event, label) => (testSubmit) => {
+
+  it(`should call ${label} on ${event} (failure)`, testSubmit());
+
+  it(`should call ${label} on ${event} (errors)`, testSubmit({ errors: [] }));
+
+  it(`should call ${label} on ${event} (success)`, testSubmit({}));
+
+};
 
 //with data list
 
@@ -87,7 +83,7 @@ const withDataList = (render, dataList) => (...args) => {
 module.exports = {
   initTestEvent,
   initTestSnapshot,
-  initTestSubmit,
   mockInfiniteScroll,
+  testSubmit,
   withDataList
 };

@@ -1,6 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`venue rsvp (open) should match snapshot 1`] = `
+exports[`VenueRSVP (default) should match snapshot 1`] = `
+<Fragment>
+  <button
+    className="qa-toggle-rsvp"
+    onClick={[Function]}
+  >
+    Add RSVP
+  </button>
+</Fragment>
+`;
+
+exports[`VenueRSVP (open) should match snapshot 1`] = `
 <Fragment>
   <button
     className="qa-toggle-rsvp"
@@ -41,24 +52,13 @@ exports[`venue rsvp (open) should match snapshot 1`] = `
 </Fragment>
 `;
 
-exports[`venue rsvp (rsvp) should match snapshot 1`] = `
+exports[`VenueRSVP (rsvp) should match snapshot 1`] = `
 <Fragment>
   <button
     className="qa-toggle-rsvp"
     onClick={[Function]}
   >
     Remove RSVP
-  </button>
-</Fragment>
-`;
-
-exports[`venue rsvp should match snapshot 1`] = `
-<Fragment>
-  <button
-    className="qa-toggle-rsvp"
-    onClick={[Function]}
-  >
-    Add RSVP
   </button>
 </Fragment>
 `;

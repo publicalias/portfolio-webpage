@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`meta list body should match snapshot (default) 1`] = `
+exports[`MetaListBody should match snapshot (default) 1`] = `
 <div
   className="c-list-body"
 >
@@ -40,7 +40,7 @@ exports[`meta list body should match snapshot (default) 1`] = `
 </div>
 `;
 
-exports[`meta list body should match snapshot (list) 1`] = `
+exports[`MetaListBody should match snapshot (list) 1`] = `
 <div
   className="c-list-body"
 >

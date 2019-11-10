@@ -23,7 +23,7 @@ beforeEach(reactTests.inject(Form));
 
 //form
 
-describe("form", () => {
+describe("Form", () => {
 
   const testSnapshot = initTestSnapshot(testShallow);
 

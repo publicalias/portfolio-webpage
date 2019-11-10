@@ -28,18 +28,18 @@ const PollInput = (props) => {
     }
   };
 
-  const handleSubmitForm = () => {
-    formAddOption(form.add, form.options);
-  };
+  const handleSubmit = async () => {
+    if (role === "form") {
+      formAddOption(form.add, form.options);
+    } else {
 
-  const handleSubmitView = async () => {
+      const res = await handleReload(() => pollAddOption(poll.id, view.add), props);
 
-    const res = await handleReload(() => pollAddOption(poll.id, view.add), props);
+      if (res && !res.errors) {
+        viewSetAdd("");
+      }
 
-    if (res && !res.errors) {
-      viewSetAdd("");
     }
-
   };
 
   //render
@@ -57,7 +57,7 @@ const PollInput = (props) => {
       />
       <button
         className="c-poll-options__submit qa-option-submit"
-        onClick={role === "form" ? handleSubmitForm : handleSubmitView}
+        onClick={handleSubmit}
       >
         Add
       </button>

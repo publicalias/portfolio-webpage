@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`friend list should match snapshot (bool) 1`] = `
+exports[`FriendList should match snapshot (bool) 1`] = `
 <MetaList
   local={
     Object {
@@ -14,7 +14,7 @@ exports[`friend list should match snapshot (bool) 1`] = `
 />
 `;
 
-exports[`friend list should match snapshot (default) 1`] = `
+exports[`FriendList should match snapshot (default) 1`] = `
 <MetaList
   local={
     Object {
@@ -28,7 +28,7 @@ exports[`friend list should match snapshot (default) 1`] = `
 />
 `;
 
-exports[`friend list should match snapshot (list) 1`] = `
+exports[`FriendList should match snapshot (list) 1`] = `
 <MetaList
   local={
     Object {

@@ -65,7 +65,7 @@ beforeEach(reactTests.inject(SidebarInput, { lib: { getLocation: jest.fn(() => u
 
 //sidebar input
 
-describe("sidebar input (address)", () => {
+describe("SidebarInput (address)", () => {
 
   const { address } = userData;
 
@@ -88,7 +88,7 @@ describe("sidebar input (address)", () => {
 
 });
 
-describe("sidebar input (avatar)", () => {
+describe("SidebarInput (avatar)", () => {
 
   const { avatar } = userData;
 

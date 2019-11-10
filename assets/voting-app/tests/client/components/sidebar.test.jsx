@@ -23,7 +23,7 @@ beforeEach(reactTests.inject(Sidebar));
 
 //sidebar
 
-describe("sidebar", () => {
+describe("Sidebar", () => {
 
   const testSnapshot = initTestSnapshot(testShallow);
 

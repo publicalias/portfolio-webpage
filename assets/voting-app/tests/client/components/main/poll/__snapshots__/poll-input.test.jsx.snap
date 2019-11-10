@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`poll input (form) should match snapshot 1`] = `
+exports[`PollInput (form) should match snapshot 1`] = `
 <div
   className="c-poll-options__input-box"
 >
@@ -20,7 +20,7 @@ exports[`poll input (form) should match snapshot 1`] = `
 </div>
 `;
 
-exports[`poll input (view) should match snapshot 1`] = `
+exports[`PollInput (view) should match snapshot 1`] = `
 <div
   className="c-poll-options__input-box"
 >
@@ -29,7 +29,7 @@ exports[`poll input (view) should match snapshot 1`] = `
     maxLength="100"
     onChange={[Function]}
     placeholder="New Option (Up to 20)"
-    value="Option A"
+    value=""
   />
   <button
     className="c-poll-options__submit qa-option-submit"

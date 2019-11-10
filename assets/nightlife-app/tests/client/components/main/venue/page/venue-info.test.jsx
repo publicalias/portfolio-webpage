@@ -23,7 +23,7 @@ beforeEach(reactTests.inject(VenueInfo, { lib: { getHours: jest.fn(() => "Closed
 
 //venue info
 
-describe("venue info", () => {
+describe("VenueInfo", () => {
 
   const testSnapshot = withDataList(initTestSnapshot(testShallow), [null, { venue: newVenue() }]);
 

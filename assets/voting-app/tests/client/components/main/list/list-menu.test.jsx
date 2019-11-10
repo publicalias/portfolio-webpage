@@ -24,4 +24,4 @@ beforeEach(reactTests.inject(ListMenu));
 
 //list menu
 
-test("list menu should match snapshot", () => testSnapshot({ list: { search: "Apple" } }));
+test("ListMenu should match snapshot", () => testSnapshot({ list: { search: "Apple" } }));

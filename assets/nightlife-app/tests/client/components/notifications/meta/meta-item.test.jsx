@@ -27,7 +27,7 @@ beforeEach(reactTests.inject(MetaItem));
 
 //meta item
 
-describe("meta item", () => {
+describe("MetaItem", () => {
 
   const testItem = withDataList(testShallow, [null, {
     buttons: [{ icon: "icon" }],
@@ -44,7 +44,7 @@ describe("meta item", () => {
 
   it("should match snapshot", () => testSnapshot());
 
-  it("should call handler and refresh on click", () => {
+  it("should call handleClick on click", () => {
 
     const handler = jest.fn();
     const refresh = jest.fn();

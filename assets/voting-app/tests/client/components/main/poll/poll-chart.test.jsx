@@ -56,7 +56,7 @@ beforeEach(reactTests.inject(PollChart, { lib: { rngInt: jest.fn(() => 0) } }));
 
 //poll chart
 
-describe("poll chart (form)", () => {
+describe("PollChart (form)", () => {
 
   const testSnapshot = initTestSnapshot(testForm);
 
@@ -66,7 +66,7 @@ describe("poll chart (form)", () => {
 
 });
 
-describe("poll chart (view)", () => {
+describe("PollChart (view)", () => {
 
   const testSnapshot = initTestSnapshot(testView);
 

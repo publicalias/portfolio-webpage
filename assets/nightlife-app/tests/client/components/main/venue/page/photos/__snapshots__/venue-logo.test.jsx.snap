@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`venue logo should match snapshot 1`] = `
+exports[`VenueLogo should match snapshot 1`] = `
 <a
   href="https://www.yelp.com/"
 >

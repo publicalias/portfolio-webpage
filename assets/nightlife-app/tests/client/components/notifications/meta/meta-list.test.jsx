@@ -27,7 +27,7 @@ beforeEach(reactTests.inject(MetaList));
 
 //meta list
 
-describe("meta list", () => {
+describe("MetaList", () => {
 
   const dataList = [null, {
     bool: "[]",
@@ -63,7 +63,7 @@ describe("meta list", () => {
 
   });
 
-  it("should call refresh on click", () => {
+  it("should call handleClick on click", () => {
 
     const refresh = jest.fn();
 

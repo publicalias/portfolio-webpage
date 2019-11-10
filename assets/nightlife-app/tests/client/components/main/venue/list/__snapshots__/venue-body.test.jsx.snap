@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`venue body should match snapshot (default) 1`] = `
+exports[`VenueBody should match snapshot (default) 1`] = `
 <MetaListBody
   local={
     Object {
@@ -28,7 +28,7 @@ exports[`venue body should match snapshot (default) 1`] = `
 />
 `;
 
-exports[`venue body should match snapshot (list) 1`] = `
+exports[`VenueBody should match snapshot (list) 1`] = `
 <MetaListBody
   local={
     Object {

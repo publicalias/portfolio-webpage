@@ -23,7 +23,7 @@ beforeEach(reactTests.inject(View));
 
 //view
 
-describe("view", () => {
+describe("View", () => {
 
   const testSnapshot = initTestSnapshot(testShallow);
 

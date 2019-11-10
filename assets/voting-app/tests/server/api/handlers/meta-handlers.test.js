@@ -145,7 +145,7 @@ describe("metaGetPollItem", () => {
 
 //meta get poll list
 
-describe("metaGetPollList", () => {
+describe("metaGetPollList (general)", () => {
 
   const { metaGetPollList } = handlers;
 

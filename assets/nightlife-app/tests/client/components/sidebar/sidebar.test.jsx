@@ -23,7 +23,7 @@ beforeEach(reactTests.inject(Sidebar));
 
 //sidebar
 
-describe("sidebar", () => {
+describe("Sidebar", () => {
 
   const testSnapshot = initTestSnapshot(testShallow);
 
@@ -40,7 +40,7 @@ describe("sidebar", () => {
     account: { settings: true }
   }));
 
-  it("should call metaToggleSettings on click", () => testClick(
+  it("should call handleClick on click", () => testClick(
     ".qa-toggle-settings",
     [{ user: newUserWithData() }],
     ["metaToggleSettings", []]

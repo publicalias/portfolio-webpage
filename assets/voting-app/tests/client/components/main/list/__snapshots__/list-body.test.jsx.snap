@@ -1,166 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`list body (header) should match snapshot (all) 1`] = `
-<div
-  className="c-list-body"
->
-  <h1>
-    All Polls
-  </h1>
-  <hr />
-  <div
-    className="c-list-body__head u-margin-full"
-  >
-    <h4>
-      Hide
-    </h4>
-    <h4>
-      Description
-    </h4>
-  </div>
-  <div
-    className="c-list-body__body js-infinite-scroll qa-infinite-scroll"
-    onScroll={[MockFunction]}
-  >
-    <div
-      className="c-list-body__content"
-    >
-      <div
-        className="c-list-item"
-      >
-        <p>
-          N/A
-        </p>
-        <p>
-          No Polls
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`list body (header) should match snapshot (created) 1`] = `
-<div
-  className="c-list-body"
->
-  <h1>
-    My Polls
-  </h1>
-  <hr />
-  <div
-    className="c-list-body__head u-margin-full"
-  >
-    <h4>
-      Hide
-    </h4>
-    <h4>
-      Description
-    </h4>
-  </div>
-  <div
-    className="c-list-body__body js-infinite-scroll qa-infinite-scroll"
-    onScroll={[MockFunction]}
-  >
-    <div
-      className="c-list-body__content"
-    >
-      <div
-        className="c-list-item"
-      >
-        <p>
-          N/A
-        </p>
-        <p>
-          No Polls
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`list body (header) should match snapshot (hidden) 1`] = `
-<div
-  className="c-list-body"
->
-  <h1>
-    Hidden
-  </h1>
-  <hr />
-  <div
-    className="c-list-body__head u-margin-full"
-  >
-    <h4>
-      Hide
-    </h4>
-    <h4>
-      Description
-    </h4>
-  </div>
-  <div
-    className="c-list-body__body js-infinite-scroll qa-infinite-scroll"
-    onScroll={[MockFunction]}
-  >
-    <div
-      className="c-list-body__content"
-    >
-      <div
-        className="c-list-item"
-      >
-        <p>
-          N/A
-        </p>
-        <p>
-          No Polls
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`list body (header) should match snapshot (voted) 1`] = `
-<div
-  className="c-list-body"
->
-  <h1>
-    Voted
-  </h1>
-  <hr />
-  <div
-    className="c-list-body__head u-margin-full"
-  >
-    <h4>
-      Hide
-    </h4>
-    <h4>
-      Description
-    </h4>
-  </div>
-  <div
-    className="c-list-body__body js-infinite-scroll qa-infinite-scroll"
-    onScroll={[MockFunction]}
-  >
-    <div
-      className="c-list-body__content"
-    >
-      <div
-        className="c-list-item"
-      >
-        <p>
-          N/A
-        </p>
-        <p>
-          No Polls
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`list body should match snapshot (authenticated) 1`] = `
+exports[`ListBody (general) should match snapshot (authenticated) 1`] = `
 <div
   className="c-list-body"
 >
@@ -206,7 +46,7 @@ exports[`list body should match snapshot (authenticated) 1`] = `
 </div>
 `;
 
-exports[`list body should match snapshot (default) 1`] = `
+exports[`ListBody (general) should match snapshot (default) 1`] = `
 <div
   className="c-list-body"
 >
@@ -246,7 +86,7 @@ exports[`list body should match snapshot (default) 1`] = `
 </div>
 `;
 
-exports[`list body should match snapshot (list) 1`] = `
+exports[`ListBody (general) should match snapshot (list) 1`] = `
 <div
   className="c-list-body"
 >
@@ -378,6 +218,166 @@ exports[`list body should match snapshot (list) 1`] = `
         match={Object {}}
         staticContext={Object {}}
       />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ListBody (header) should match snapshot (all) 1`] = `
+<div
+  className="c-list-body"
+>
+  <h1>
+    All Polls
+  </h1>
+  <hr />
+  <div
+    className="c-list-body__head u-margin-full"
+  >
+    <h4>
+      Hide
+    </h4>
+    <h4>
+      Description
+    </h4>
+  </div>
+  <div
+    className="c-list-body__body js-infinite-scroll qa-infinite-scroll"
+    onScroll={[MockFunction]}
+  >
+    <div
+      className="c-list-body__content"
+    >
+      <div
+        className="c-list-item"
+      >
+        <p>
+          N/A
+        </p>
+        <p>
+          No Polls
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ListBody (header) should match snapshot (created) 1`] = `
+<div
+  className="c-list-body"
+>
+  <h1>
+    My Polls
+  </h1>
+  <hr />
+  <div
+    className="c-list-body__head u-margin-full"
+  >
+    <h4>
+      Hide
+    </h4>
+    <h4>
+      Description
+    </h4>
+  </div>
+  <div
+    className="c-list-body__body js-infinite-scroll qa-infinite-scroll"
+    onScroll={[MockFunction]}
+  >
+    <div
+      className="c-list-body__content"
+    >
+      <div
+        className="c-list-item"
+      >
+        <p>
+          N/A
+        </p>
+        <p>
+          No Polls
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ListBody (header) should match snapshot (hidden) 1`] = `
+<div
+  className="c-list-body"
+>
+  <h1>
+    Hidden
+  </h1>
+  <hr />
+  <div
+    className="c-list-body__head u-margin-full"
+  >
+    <h4>
+      Hide
+    </h4>
+    <h4>
+      Description
+    </h4>
+  </div>
+  <div
+    className="c-list-body__body js-infinite-scroll qa-infinite-scroll"
+    onScroll={[MockFunction]}
+  >
+    <div
+      className="c-list-body__content"
+    >
+      <div
+        className="c-list-item"
+      >
+        <p>
+          N/A
+        </p>
+        <p>
+          No Polls
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ListBody (header) should match snapshot (voted) 1`] = `
+<div
+  className="c-list-body"
+>
+  <h1>
+    Voted
+  </h1>
+  <hr />
+  <div
+    className="c-list-body__head u-margin-full"
+  >
+    <h4>
+      Hide
+    </h4>
+    <h4>
+      Description
+    </h4>
+  </div>
+  <div
+    className="c-list-body__body js-infinite-scroll qa-infinite-scroll"
+    onScroll={[MockFunction]}
+  >
+    <div
+      className="c-list-body__content"
+    >
+      <div
+        className="c-list-item"
+      >
+        <p>
+          N/A
+        </p>
+        <p>
+          No Polls
+        </p>
+      </div>
     </div>
   </div>
 </div>

@@ -8,7 +8,7 @@ const { initTestPoll, testReload, testWrapper } = require("../../../test-helpers
 
 //global imports
 
-const { initTestEvent, initTestSnapshot, initTestSubmit } = require("redux/tests/client-tests");
+const { initTestEvent, initTestSnapshot, testSubmit } = require("redux/tests/client-tests");
 const { reactTests } = require("redux/tests/react-tests");
 
 //utilities
@@ -33,7 +33,7 @@ beforeEach(reactTests.inject(PollInput));
 
 //poll input
 
-describe("poll input (form)", () => {
+describe("PollInput (form)", () => {
 
   const testSnapshot = initTestSnapshot(testForm);
 
@@ -42,9 +42,9 @@ describe("poll input (form)", () => {
 
   it("should match snapshot", () => testSnapshot());
 
-  it("should call formSetAdd on change", () => testChange("formSetAdd"));
+  it("should call handleChange on change", () => testChange("formSetAdd"));
 
-  it("should call formAddOption on click", () => {
+  it("should call handleSubmit on click", () => {
 
     const dataList = [{ form: { add: "Option A" } }];
 
@@ -54,23 +54,17 @@ describe("poll input (form)", () => {
 
 });
 
-describe("poll input (view)", () => {
+describe("PollInput (view)", () => {
 
   const testSnapshot = initTestSnapshot(testView);
 
   const testChange = initTestChange(testView);
 
-  const testSubmit = initTestSubmit("click", [
-    "pollAddOption",
-    "pollAddOption",
-    "pollAddOption and viewSetAdd"
-  ]);
+  it("should match snapshot", () => testSnapshot());
 
-  it("should match snapshot", () => testSnapshot({ view: { add: "Option A" } }));
+  it("should call handleChange on change", () => testChange("viewSetAdd"));
 
-  it("should call viewSetAdd on change", () => testChange("viewSetAdd"));
-
-  testSubmit((res) => testReload(
+  testSubmit("click", "handleSubmit", (res) => testReload(
     testView,
     [
       { view: { add: "Option A" } },

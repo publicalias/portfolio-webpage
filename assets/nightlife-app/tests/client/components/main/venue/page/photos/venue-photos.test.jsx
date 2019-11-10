@@ -43,7 +43,7 @@ beforeEach(reactTests.inject(VenuePhotos, {
 
 //venue photos
 
-describe("venue photos", () => {
+describe("VenuePhotos (snapshots)", () => {
 
   const testSnapshot = initTestSnapshot(withDataList(testShallow, dataList));
 
@@ -51,7 +51,7 @@ describe("venue photos", () => {
 
 });
 
-describe("venue photos (events)", () => {
+describe("VenuePhotos (events)", () => {
 
   const testEvent = (type, fn) => initTestEvent(withDataList(testShallow, dataList), type, {})(
     ".qa-carousel-events",

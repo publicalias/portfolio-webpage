@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`sidebar should match snapshot (default) 1`] = `
+exports[`Sidebar should match snapshot (default) 1`] = `
 <div
   className="c-sidebar"
 >
@@ -89,7 +89,7 @@ exports[`sidebar should match snapshot (default) 1`] = `
 </div>
 `;
 
-exports[`sidebar should match snapshot (name) 1`] = `
+exports[`Sidebar should match snapshot (name) 1`] = `
 <div
   className="c-sidebar"
 >

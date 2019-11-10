@@ -9,7 +9,7 @@ const { testWrapper } = require("../../../../../test-helpers");
 
 //global imports
 
-const { initTestEvent, initTestSnapshot, initTestSubmit, withDataList } = require("redux/tests/client-tests");
+const { initTestEvent, initTestSnapshot, testSubmit, withDataList } = require("redux/tests/client-tests");
 const { testMock } = require("redux/tests/meta-tests");
 const { reactTests } = require("redux/tests/react-tests");
 
@@ -24,7 +24,7 @@ beforeEach(reactTests.inject(VenueRSVP));
 
 //venue rsvp
 
-describe("venue rsvp", () => {
+describe("VenueRSVP (default)", () => {
 
   const testRSVP = withDataList(testShallow, [null, { venue: newVenue() }]);
 
@@ -38,7 +38,7 @@ describe("venue rsvp", () => {
 
 });
 
-describe("venue rsvp (rsvp)", () => {
+describe("VenueRSVP (rsvp)", () => {
 
   const testRSVP = withDataList(testShallow, [{ user: newUserWithData({ id: "id-a" }) }, {
     venue: newVenue({
@@ -70,7 +70,7 @@ describe("venue rsvp (rsvp)", () => {
 
 });
 
-describe("venue rsvp (open)", () => {
+describe("VenueRSVP (open)", () => {
 
   const testRSVP = withDataList(testShallow, [{ venues: { page: { form: { open: true } } } }, {
     venue: newVenue({
@@ -84,8 +84,6 @@ describe("venue rsvp (open)", () => {
   const testChange = (value) => initTestEvent(testRSVP, "change", { target: { value } });
 
   const testClick = initTestEvent(testRSVP, "click");
-
-  const testSubmit = initTestSubmit("click", ["handleClickSubmit"]);
 
   it("should match snapshot", () => testSnapshot());
 
@@ -103,7 +101,7 @@ describe("venue rsvp (open)", () => {
 
   it("should call handleClickCancel on click", () => testClick(".qa-rsvp-cancel", [], ["venueClearForm", []]));
 
-  testSubmit((res) => {
+  testSubmit("click", "handleClickSubmit", (res) => {
 
     const dataList = [{
       venues: {

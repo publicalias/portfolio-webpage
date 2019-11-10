@@ -26,7 +26,7 @@ beforeEach(reactTests.inject(PollList, { lib: { chartColor: jest.fn(() => "rgba(
 
 //poll list
 
-describe("poll list (form)", () => {
+describe("PollList (form)", () => {
 
   const testSnapshot = withDataList(initTestSnapshot(testForm), [null, { options: ["Option A"] }]);
 
@@ -36,7 +36,7 @@ describe("poll list (form)", () => {
 
 });
 
-describe("poll list (form, events)", () => {
+describe("PollList (form, events)", () => {
 
   const testClick = initTestEvent(withDataList(testForm, [null, { options: ["Option A"] }]), "click");
 
@@ -44,7 +44,7 @@ describe("poll list (form, events)", () => {
 
 });
 
-describe("poll list (view)", () => {
+describe("PollList (view)", () => {
 
   const testSnapshot = withDataList(initTestSnapshot(testView), [null, { options: [{ text: "Option A" }] }]);
 
@@ -78,11 +78,11 @@ describe("poll list (view)", () => {
 
 });
 
-describe("poll list (view, events)", () => {
+describe("PollList (view, events)", () => {
 
   const testList = withDataList(testView, [null, { options: [{ text: "Option A" }] }]);
 
-  it("should call pollCastVote on click (vote)", () => {
+  it("should call handleVote on click (vote)", () => {
 
     const dataList = [null, { id: "id-a" }];
 

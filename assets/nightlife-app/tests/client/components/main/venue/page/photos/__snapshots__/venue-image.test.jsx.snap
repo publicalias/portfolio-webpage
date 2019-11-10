@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`venue image should match snapshot (default) 1`] = `
+exports[`VenueImage should match snapshot (default) 1`] = `
 <div
   className="c-venue-photos__wrapper js-fade-carousel u-display-none"
 >
@@ -18,7 +18,7 @@ exports[`venue image should match snapshot (default) 1`] = `
 </div>
 `;
 
-exports[`venue image should match snapshot (src) 1`] = `
+exports[`VenueImage should match snapshot (src) 1`] = `
 <div
   className="c-venue-photos__wrapper js-fade-carousel "
 >

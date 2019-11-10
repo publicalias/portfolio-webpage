@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`view controls should match snapshot (authenticated) 1`] = `
+exports[`ViewControls should match snapshot (authenticated) 1`] = `
 <div
   className="c-view-menu__display-box u-flex-right"
 >
@@ -227,7 +227,7 @@ exports[`view controls should match snapshot (authenticated) 1`] = `
 </div>
 `;
 
-exports[`view controls should match snapshot (default) 1`] = `
+exports[`ViewControls should match snapshot (default) 1`] = `
 <div
   className="c-view-menu__display-box u-flex-right"
 >

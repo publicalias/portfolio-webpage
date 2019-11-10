@@ -29,7 +29,7 @@ beforeEach(reactTests.inject(FriendItem));
 
 //friend item
 
-describe("friend item (confirmed, from)", () => {
+describe("FriendItem (confirmed, from)", () => {
 
   const dataList = [{ user: newUserWithData({ id: "id-a" }) }, { friend: getFriend(true) }];
 
@@ -41,7 +41,7 @@ describe("friend item (confirmed, from)", () => {
 
 });
 
-describe("friend item (confirmed, to)", () => {
+describe("FriendItem (confirmed, to)", () => {
 
   const dataList = [null, { friend: getFriend(true) }];
 
@@ -53,7 +53,7 @@ describe("friend item (confirmed, to)", () => {
 
 });
 
-describe("friend item (unconfirmed, from)", () => {
+describe("FriendItem (unconfirmed, from)", () => {
 
   const dataList = [{ user: newUserWithData({ id: "id-a" }) }, { friend: getFriend() }];
 
@@ -65,7 +65,7 @@ describe("friend item (unconfirmed, from)", () => {
 
 });
 
-describe("friend item (unconfirmed, to)", () => {
+describe("FriendItem (unconfirmed, to)", () => {
 
   const dataList = [null, { friend: getFriend() }];
 

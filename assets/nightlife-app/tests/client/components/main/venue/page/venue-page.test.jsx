@@ -24,7 +24,7 @@ beforeEach(reactTests.inject(VenuePage, { lib: { getLocation: jest.fn((user) => 
 
 //venue page
 
-describe("venue page", () => {
+describe("VenuePage", () => {
 
   const dataList = [null, { id: "id-a" }];
 

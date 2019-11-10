@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`poll (form) should match snapshot (authenticated) 1`] = `
+exports[`Poll (form) should match snapshot (authenticated) 1`] = `
 <Fragment>
   <div
     className="c-poll-display"
@@ -302,7 +302,7 @@ exports[`poll (form) should match snapshot (authenticated) 1`] = `
 </Fragment>
 `;
 
-exports[`poll (form) should match snapshot (default) 1`] = `
+exports[`Poll (form) should match snapshot (default) 1`] = `
 <Fragment>
   <div
     className="c-poll-display--tall"
@@ -482,7 +482,7 @@ exports[`poll (form) should match snapshot (default) 1`] = `
 </Fragment>
 `;
 
-exports[`poll (form) should match snapshot (options) 1`] = `
+exports[`Poll (form) should match snapshot (options) 1`] = `
 <Fragment>
   <div
     className="c-poll-display"
@@ -757,7 +757,7 @@ exports[`poll (form) should match snapshot (options) 1`] = `
 </Fragment>
 `;
 
-exports[`poll (view) should match snapshot (authenticated) 1`] = `
+exports[`Poll (view) should match snapshot (authenticated) 1`] = `
 <Fragment>
   <div
     className="c-poll-display--tall"
@@ -973,7 +973,7 @@ exports[`poll (view) should match snapshot (authenticated) 1`] = `
 </Fragment>
 `;
 
-exports[`poll (view) should match snapshot (authenticated, match) 1`] = `
+exports[`Poll (view) should match snapshot (authenticated, match) 1`] = `
 <Fragment>
   <div
     className="c-poll-display"
@@ -1341,7 +1341,7 @@ exports[`poll (view) should match snapshot (authenticated, match) 1`] = `
 </Fragment>
 `;
 
-exports[`poll (view) should match snapshot (default) 1`] = `
+exports[`Poll (view) should match snapshot (default) 1`] = `
 <Fragment>
   <div
     className="c-poll-display--tall"
@@ -1535,7 +1535,7 @@ exports[`poll (view) should match snapshot (default) 1`] = `
 </Fragment>
 `;
 
-exports[`poll (view) should match snapshot (options) 1`] = `
+exports[`Poll (view) should match snapshot (options) 1`] = `
 <Fragment>
   <div
     className="c-poll-display"

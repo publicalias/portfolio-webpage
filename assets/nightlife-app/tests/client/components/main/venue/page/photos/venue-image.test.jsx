@@ -24,7 +24,7 @@ beforeEach(reactTests.inject(VenueImage));
 
 //venue image
 
-describe("venue image", () => {
+describe("VenueImage", () => {
 
   const src = "https://www.example.com/photo.jpg";
 

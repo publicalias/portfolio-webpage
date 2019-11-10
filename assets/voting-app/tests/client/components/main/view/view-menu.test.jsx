@@ -25,7 +25,7 @@ beforeEach(reactTests.inject(ViewMenu));
 
 //view menu
 
-describe("view menu", () => {
+describe("ViewMenu", () => {
 
   const dataList = [{ user: newUser({ id: "id-a" }) }, { poll: newPoll({ users: { created: "id-a" } }) }];
 
@@ -45,7 +45,7 @@ describe("view menu", () => {
 
   });
 
-  it("should call viewToggleSettings on click", () => {
+  it("should call handleClick on click", () => {
 
     const fn = ["viewToggleSettings", []];
 

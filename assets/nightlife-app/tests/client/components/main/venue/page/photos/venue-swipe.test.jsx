@@ -23,7 +23,7 @@ beforeEach(reactTests.inject(VenueSwipe));
 
 //venue swipe
 
-describe("venue swipe", () => {
+describe("VenueSwipe", () => {
 
   const testSwipe = withDataList(testShallow, [null, {
     handleClick: jest.fn(),

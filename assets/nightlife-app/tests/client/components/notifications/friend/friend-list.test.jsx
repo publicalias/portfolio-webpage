@@ -22,7 +22,7 @@ beforeEach(reactTests.inject(FriendList));
 
 //friend list
 
-describe("friend list", () => {
+describe("FriendList", () => {
 
   const testSnapshot = initTestSnapshot(testShallow);
 

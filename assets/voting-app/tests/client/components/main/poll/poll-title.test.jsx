@@ -26,7 +26,7 @@ beforeEach(reactTests.inject(PollTitle));
 
 //poll title
 
-describe("poll title (form)", () => {
+describe("PollTitle (form)", () => {
 
   const testSnapshot = initTestSnapshot(testForm);
 
@@ -36,7 +36,7 @@ describe("poll title (form)", () => {
 
   it("should match snapshot (author)", () => testSnapshot({ user: newUser({ name: "Author A" }) }));
 
-  it("should call formSetTitle and formCheckTitle on blur", () => testBlur(
+  it("should call handleBlur on blur", () => testBlur(
     ".qa-title-input",
     [],
     ["formSetTitle", ["Title A"]],
@@ -45,7 +45,7 @@ describe("poll title (form)", () => {
 
 });
 
-describe("poll title (view)", () => {
+describe("PollTitle (view)", () => {
 
   const testSnapshot = initTestSnapshot(testView);
 

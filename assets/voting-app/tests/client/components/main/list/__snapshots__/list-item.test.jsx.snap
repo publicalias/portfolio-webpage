@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`list item should match snapshot (authenticated) 1`] = `
+exports[`ListItem should match snapshot (authenticated) 1`] = `
 <div
   className="c-list-item"
 >
@@ -235,7 +235,7 @@ exports[`list item should match snapshot (authenticated) 1`] = `
 </div>
 `;
 
-exports[`list item should match snapshot (default) 1`] = `
+exports[`ListItem should match snapshot (default) 1`] = `
 <div
   className="c-list-item"
 >

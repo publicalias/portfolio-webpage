@@ -26,7 +26,7 @@ beforeEach(reactTests.inject(UI, { lib: { getLocation: jest.fn(() => userData.lo
 
 //ui
 
-describe("ui", () => {
+describe("UI", () => {
 
   const { location } = userData;
 

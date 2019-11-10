@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`view menu should match snapshot (created) 1`] = `
+exports[`ViewMenu should match snapshot (created) 1`] = `
 <div
   className="c-view-menu"
 >
@@ -115,7 +115,7 @@ exports[`view menu should match snapshot (created) 1`] = `
 </div>
 `;
 
-exports[`view menu should match snapshot (created, settings) 1`] = `
+exports[`ViewMenu should match snapshot (created, settings) 1`] = `
 <div
   className="c-view-menu"
 >
@@ -230,7 +230,7 @@ exports[`view menu should match snapshot (created, settings) 1`] = `
 </div>
 `;
 
-exports[`view menu should match snapshot (default) 1`] = `
+exports[`ViewMenu should match snapshot (default) 1`] = `
 <div
   className="c-view-menu"
 >

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`venue photos should match snapshot 1`] = `
+exports[`VenuePhotos (snapshots) should match snapshot 1`] = `
 <div
   className="c-venue-photos js-ref-carousel qa-carousel-events"
   onMouseEnter={[MockFunction]}

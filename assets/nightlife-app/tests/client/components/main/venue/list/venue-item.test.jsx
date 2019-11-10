@@ -23,7 +23,7 @@ beforeEach(reactTests.inject(VenueItem));
 
 //venue item
 
-describe("venue item", () => {
+describe("VenueItem", () => {
 
   const testItem = withDataList(testShallow, [null, {
     venue: newVenue({

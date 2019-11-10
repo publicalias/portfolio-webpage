@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`poll chart (form) should match snapshot 1`] = `
+exports[`PollChart (form) should match snapshot 1`] = `
 <Fragment>
   <svg
     className="c-poll-display__chart js-render-chart"
@@ -19,7 +19,7 @@ exports[`poll chart (form) should match snapshot 1`] = `
 </Fragment>
 `;
 
-exports[`poll chart (view) should match snapshot 1`] = `
+exports[`PollChart (view) should match snapshot 1`] = `
 <Fragment>
   <svg
     className="c-poll-display__chart js-render-chart"

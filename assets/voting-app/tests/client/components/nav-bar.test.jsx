@@ -23,7 +23,7 @@ beforeEach(reactTests.inject(NavBar));
 
 //nav bar
 
-describe("nav bar", () => {
+describe("NavBar", () => {
 
   const testSnapshot = initTestSnapshot(testShallow);
 

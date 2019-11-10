@@ -23,7 +23,7 @@ beforeEach(reactTests.inject(UI));
 
 //ui
 
-describe("ui", () => {
+describe("UI", () => {
 
   const testSnapshot = initTestSnapshot(testShallow);
 

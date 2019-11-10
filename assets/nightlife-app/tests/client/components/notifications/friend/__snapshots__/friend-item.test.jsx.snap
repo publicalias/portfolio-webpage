@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`friend item (confirmed, from) should match snapshot (default) 1`] = `
+exports[`FriendItem (confirmed, from) should match snapshot (default) 1`] = `
 <MetaItem
   local={
     Object {
@@ -42,7 +42,7 @@ exports[`friend item (confirmed, from) should match snapshot (default) 1`] = `
 />
 `;
 
-exports[`friend item (confirmed, from) should match snapshot (name) 1`] = `
+exports[`FriendItem (confirmed, from) should match snapshot (name) 1`] = `
 <MetaItem
   local={
     Object {
@@ -84,7 +84,7 @@ exports[`friend item (confirmed, from) should match snapshot (name) 1`] = `
 />
 `;
 
-exports[`friend item (confirmed, to) should match snapshot (default) 1`] = `
+exports[`FriendItem (confirmed, to) should match snapshot (default) 1`] = `
 <MetaItem
   local={
     Object {
@@ -127,7 +127,7 @@ exports[`friend item (confirmed, to) should match snapshot (default) 1`] = `
 />
 `;
 
-exports[`friend item (confirmed, to) should match snapshot (name) 1`] = `
+exports[`FriendItem (confirmed, to) should match snapshot (name) 1`] = `
 <MetaItem
   local={
     Object {
@@ -170,7 +170,7 @@ exports[`friend item (confirmed, to) should match snapshot (name) 1`] = `
 />
 `;
 
-exports[`friend item (unconfirmed, from) should match snapshot (default) 1`] = `
+exports[`FriendItem (unconfirmed, from) should match snapshot (default) 1`] = `
 <MetaItem
   local={
     Object {
@@ -213,7 +213,7 @@ exports[`friend item (unconfirmed, from) should match snapshot (default) 1`] = `
 />
 `;
 
-exports[`friend item (unconfirmed, from) should match snapshot (name) 1`] = `
+exports[`FriendItem (unconfirmed, from) should match snapshot (name) 1`] = `
 <MetaItem
   local={
     Object {
@@ -256,7 +256,7 @@ exports[`friend item (unconfirmed, from) should match snapshot (name) 1`] = `
 />
 `;
 
-exports[`friend item (unconfirmed, to) should match snapshot (default) 1`] = `
+exports[`FriendItem (unconfirmed, to) should match snapshot (default) 1`] = `
 <MetaItem
   local={
     Object {
@@ -302,7 +302,7 @@ exports[`friend item (unconfirmed, to) should match snapshot (default) 1`] = `
 />
 `;
 
-exports[`friend item (unconfirmed, to) should match snapshot (name) 1`] = `
+exports[`FriendItem (unconfirmed, to) should match snapshot (name) 1`] = `
 <MetaItem
   local={
     Object {

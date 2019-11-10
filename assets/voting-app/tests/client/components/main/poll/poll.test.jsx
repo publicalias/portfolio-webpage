@@ -26,7 +26,7 @@ beforeEach(reactTests.inject(Poll));
 
 //poll
 
-describe("poll (form)", () => {
+describe("Poll (form)", () => {
 
   const testSnapshot = initTestSnapshot(testForm);
 
@@ -38,7 +38,7 @@ describe("poll (form)", () => {
 
 });
 
-describe("poll (view)", () => {
+describe("Poll (view)", () => {
 
   const testSnapshot = initTestSnapshot(testView);
 

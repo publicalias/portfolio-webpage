@@ -22,7 +22,7 @@ beforeEach(reactTests.inject(RSVPList));
 
 //rsvp list
 
-describe("rsvp list", () => {
+describe("RSVPList", () => {
 
   const testSnapshot = initTestSnapshot(testShallow);
 

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`poll list (form) should match snapshot (authenticated) 1`] = `
+exports[`PollList (form) should match snapshot (authenticated) 1`] = `
 <div
   className="u-margin-half"
 >
@@ -124,7 +124,7 @@ exports[`poll list (form) should match snapshot (authenticated) 1`] = `
 </div>
 `;
 
-exports[`poll list (form) should match snapshot (default) 1`] = `
+exports[`PollList (form) should match snapshot (default) 1`] = `
 <div
   className="u-margin-half--negative"
 >
@@ -237,7 +237,7 @@ exports[`poll list (form) should match snapshot (default) 1`] = `
 </div>
 `;
 
-exports[`poll list (view) should match snapshot (authenticated) 1`] = `
+exports[`PollList (view) should match snapshot (authenticated) 1`] = `
 <div
   className="u-margin-half"
 >
@@ -372,7 +372,7 @@ exports[`poll list (view) should match snapshot (authenticated) 1`] = `
 </div>
 `;
 
-exports[`poll list (view) should match snapshot (default) 1`] = `
+exports[`PollList (view) should match snapshot (default) 1`] = `
 <div
   className="u-margin-half--negative"
 >
@@ -496,7 +496,7 @@ exports[`poll list (view) should match snapshot (default) 1`] = `
 </div>
 `;
 
-exports[`poll list (view) should match snapshot (options, created option) 1`] = `
+exports[`PollList (view) should match snapshot (options, created option) 1`] = `
 <div
   className="u-margin-half"
 >
@@ -631,7 +631,7 @@ exports[`poll list (view) should match snapshot (options, created option) 1`] = 
 </div>
 `;
 
-exports[`poll list (view) should match snapshot (options, created poll) 1`] = `
+exports[`PollList (view) should match snapshot (options, created poll) 1`] = `
 <div
   className="u-margin-half"
 >
@@ -766,7 +766,7 @@ exports[`poll list (view) should match snapshot (options, created poll) 1`] = `
 </div>
 `;
 
-exports[`poll list (view) should match snapshot (options, voted) 1`] = `
+exports[`PollList (view) should match snapshot (options, voted) 1`] = `
 <div
   className="u-margin-half"
 >

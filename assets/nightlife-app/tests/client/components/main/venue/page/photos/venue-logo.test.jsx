@@ -24,4 +24,4 @@ beforeEach(reactTests.inject(VenueLogo));
 
 //venue logo
 
-test("venue logo should match snapshot", () => testSnapshot());
+test("VenueLogo should match snapshot", () => testSnapshot());

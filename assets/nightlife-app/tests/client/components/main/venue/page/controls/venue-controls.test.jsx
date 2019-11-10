@@ -25,4 +25,4 @@ beforeEach(reactTests.inject(VenueControls));
 
 //venue controls
 
-test("venue controls should match snapshot", () => testSnapshot(null, { venue: newVenue() }));
+test("VenueControls should match snapshot", () => testSnapshot(null, { venue: newVenue() }));

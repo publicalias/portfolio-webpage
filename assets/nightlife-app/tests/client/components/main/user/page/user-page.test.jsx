@@ -24,4 +24,4 @@ beforeEach(reactTests.inject(UserPage));
 
 //user page
 
-test("user page should match snapshot", () => testSnapshot());
+test("UserPage should match snapshot", () => testSnapshot());

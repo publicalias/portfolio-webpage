@@ -24,4 +24,4 @@ beforeEach(reactTests.inject(VenueList));
 
 //venue list
 
-test("venue list should match snapshot", () => testSnapshot());
+test("VenueList should match snapshot", () => testSnapshot());

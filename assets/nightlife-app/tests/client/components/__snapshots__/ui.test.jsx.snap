@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ui should match snapshot (authenticated) 1`] = `
+exports[`UI should match snapshot (authenticated) 1`] = `
 <div
   className="c-ui"
 >
@@ -394,7 +394,7 @@ exports[`ui should match snapshot (authenticated) 1`] = `
 </div>
 `;
 
-exports[`ui should match snapshot (default) 1`] = `
+exports[`UI should match snapshot (default) 1`] = `
 <div
   className="c-ui"
 >

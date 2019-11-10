@@ -32,7 +32,7 @@ beforeEach(reactTests.inject(RSVPItem));
 
 //rsvp item
 
-describe("rsvp item (self)", () => {
+describe("RSVPItem (self)", () => {
 
   const dataList = [{ user: newUserWithData({ id: "id-a" }) }, { rsvp: getRSVP() }];
 
@@ -44,7 +44,7 @@ describe("rsvp item (self)", () => {
 
 });
 
-describe("rsvp item (user)", () => {
+describe("RSVPItem (user)", () => {
 
   const dataList = [null, { rsvp: getRSVP() }];
 

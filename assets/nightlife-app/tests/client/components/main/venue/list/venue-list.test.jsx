@@ -23,7 +23,7 @@ beforeEach(reactTests.inject(VenueList, { lib: mockInfiniteScroll().lib }));
 
 //venue list
 
-describe("venue list", () => {
+describe("VenueList", () => {
 
   const testSnapshot = initTestSnapshot(testShallow);
 

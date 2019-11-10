@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`view should match snapshot (default) 1`] = `
+exports[`View should match snapshot (default) 1`] = `
 <Fragment>
   <ViewMenu
     actions={
@@ -188,7 +188,7 @@ exports[`view should match snapshot (default) 1`] = `
 </Fragment>
 `;
 
-exports[`view should match snapshot (id) 1`] = `
+exports[`View should match snapshot (id) 1`] = `
 <Fragment>
   <ViewMenu
     actions={

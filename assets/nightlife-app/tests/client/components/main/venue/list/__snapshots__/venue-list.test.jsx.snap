@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`venue list should match snapshot 1`] = `
+exports[`VenueList should match snapshot 1`] = `
 <Fragment>
   <VenueMenu
     actions={

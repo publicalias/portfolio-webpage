@@ -40,7 +40,7 @@ beforeEach(reactTests.inject(PollToggle));
 
 //poll toggle
 
-describe("poll toggle (flag)", () => {
+describe("PollToggle (flag)", () => {
 
   const testSnapshot = initTestSnapshot(testFlag);
   const testBool = initTestBool(testSnapshot);
@@ -53,13 +53,13 @@ describe("poll toggle (flag)", () => {
 
   it("should match snapshot (util)", () => testSnapshot(null, null, { util: "u-whatever" }));
 
-  it("should call pollToggleFlag on click (list)", () => testClick(".qa-toggle-flag", "pollToggleFlag", true));
+  it("should call handleClick on click (list)", () => testClick(".qa-toggle-flag", "pollToggleFlag", true));
 
-  it("should call pollToggleFlag on click (view)", () => testClick(".qa-toggle-flag", "pollToggleFlag"));
+  it("should call handleClick on click (view)", () => testClick(".qa-toggle-flag", "pollToggleFlag"));
 
 });
 
-describe("poll toggle (hide)", () => {
+describe("PollToggle (hide)", () => {
 
   const testSnapshot = initTestSnapshot(testHide);
   const testBool = initTestBool(testSnapshot);
@@ -72,8 +72,8 @@ describe("poll toggle (hide)", () => {
 
   it("should match snapshot (util)", () => testSnapshot(null, null, { util: "u-whatever" }));
 
-  it("should call pollToggleHide on click (list)", () => testClick(".qa-toggle-hide", "pollToggleHide", true));
+  it("should call handleClick on click (list)", () => testClick(".qa-toggle-hide", "pollToggleHide", true));
 
-  it("should call pollToggleHide on click (view)", () => testClick(".qa-toggle-hide", "pollToggleHide"));
+  it("should call handleClick on click (view)", () => testClick(".qa-toggle-hide", "pollToggleHide"));
 
 });

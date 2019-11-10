@@ -9,7 +9,7 @@ const { testCreateDelete, testReload, testWrapper } = require("../../../test-hel
 
 //global imports
 
-const { initTestEvent, initTestSnapshot, initTestSubmit, withDataList } = require("redux/tests/client-tests");
+const { initTestEvent, initTestSnapshot, testSubmit, withDataList } = require("redux/tests/client-tests");
 const { reactTests } = require("redux/tests/react-tests");
 
 //utilities
@@ -23,7 +23,7 @@ beforeEach(reactTests.inject(ViewSettings));
 
 //view settings
 
-describe("view settings", () => {
+describe("ViewSettings (snapshots)", () => {
 
   const testSnapshot = withDataList(initTestSnapshot(testShallow), [null, { poll: newPoll() }]);
 
@@ -37,27 +37,17 @@ describe("view settings", () => {
 
 });
 
-describe("view settings (delete)", () => {
-
-  const testSubmit = initTestSubmit("click", ["metaDeletePoll"]);
-
-  testSubmit((res) => {
-
-    const dataList = [{ view: { delete: true } }, { poll: newPoll({ id: "id-a" }) }];
-
-    return testCreateDelete(testShallow, dataList, ".qa-delete-poll", res, ["metaDeletePoll", ["id-a"]]);
-
-  });
-
-});
-
-describe("view settings (click)", () => {
+describe("ViewSettings (events)", () => {
 
   const testClick = initTestEvent(withDataList(testShallow, [null, { poll: newPoll() }]), "click");
 
-  it("should call viewToggleDelete on click (delete)", () => testClick(".qa-confirm-true", [], ["viewToggleDelete", []]));
+  it("should call handleConfirm on click (delete)", () => testClick(
+    ".qa-confirm-true",
+    [],
+    ["viewToggleDelete", []]
+  ));
 
-  it("should call viewToggleDelete on click (no)", () => {
+  it("should call handleConfirm on click (no)", () => {
 
     const dataList = [{ view: { delete: true } }];
 
@@ -65,7 +55,7 @@ describe("view settings (click)", () => {
 
   });
 
-  it("should call pollToggleSecret on click (secret)", () => {
+  it("should call handleSecret on click (secret)", () => {
 
     const dataList = [null, { poll: newPoll({ id: "id-a" }) }];
 
@@ -73,7 +63,7 @@ describe("view settings (click)", () => {
 
   });
 
-  it("should call metaAddErrors on click (secret, flagged)", () => {
+  it("should call handleSecret on click (secret, flagged)", () => {
 
     const dataList = [null, {
       poll: newPoll({
@@ -85,6 +75,14 @@ describe("view settings (click)", () => {
     return testClick(".qa-toggle-secret", dataList, ["metaAddErrors", [
       ["Poll has been flagged too many times"]
     ]]);
+
+  });
+
+  testSubmit("click", "handleDelete", (res) => {
+
+    const dataList = [{ view: { delete: true } }, { poll: newPoll({ id: "id-a" }) }];
+
+    return testCreateDelete(testShallow, dataList, ".qa-delete-poll", res, ["metaDeletePoll", ["id-a"]]);
 
   });
 

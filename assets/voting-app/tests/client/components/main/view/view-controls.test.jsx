@@ -25,7 +25,7 @@ beforeEach(reactTests.inject(ViewControls));
 
 //view controls
 
-describe("view controls", () => {
+describe("ViewControls", () => {
 
   const testControls = withDataList(testShallow, [null, { poll: newPoll() }]);
 
@@ -37,7 +37,7 @@ describe("view controls", () => {
 
   it("should match snapshot (authenticated)", () => testSnapshot({ user: newUser() }));
 
-  it("should call writeText on click", () => {
+  it("should call handleShare on click", () => {
 
     navigator.clipboard = { writeText: jest.fn() };
 

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`rsvp list should match snapshot (bool) 1`] = `
+exports[`RSVPList should match snapshot (bool) 1`] = `
 <MetaList
   local={
     Object {
@@ -14,7 +14,7 @@ exports[`rsvp list should match snapshot (bool) 1`] = `
 />
 `;
 
-exports[`rsvp list should match snapshot (default) 1`] = `
+exports[`RSVPList should match snapshot (default) 1`] = `
 <MetaList
   local={
     Object {
@@ -28,7 +28,7 @@ exports[`rsvp list should match snapshot (default) 1`] = `
 />
 `;
 
-exports[`rsvp list should match snapshot (list) 1`] = `
+exports[`RSVPList should match snapshot (list) 1`] = `
 <MetaList
   local={
     Object {

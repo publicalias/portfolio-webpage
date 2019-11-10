@@ -27,7 +27,7 @@ beforeEach(reactTests.inject(MetaListBody));
 
 //meta list body
 
-describe("meta list body", () => {
+describe("MetaListBody", () => {
 
   const testList = withDataList(testShallow, [null, {
     handleScroll: jest.fn(),

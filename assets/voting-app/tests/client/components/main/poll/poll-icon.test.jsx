@@ -35,7 +35,7 @@ beforeEach(reactTests.inject(PollIcon));
 
 //poll icon
 
-describe("poll icon (form)", () => {
+describe("PollIcon (form)", () => {
 
   const testSnapshot = (view) => initTestSnapshot(testForm)(null, null, getView(view));
 
@@ -47,9 +47,9 @@ describe("poll icon (form)", () => {
 
 });
 
-describe("poll icon (form, events)", () => {
+describe("PollIcon (form, events)", () => {
 
-  it("should call formRemoveOption on click (remove)", () => {
+  it("should call handleRemove on click (remove)", () => {
 
     const event = { stopPropagation: jest.fn() };
 
@@ -71,7 +71,7 @@ describe("poll icon (form, events)", () => {
 
 });
 
-describe("poll icon (view)", () => {
+describe("PollIcon (view)", () => {
 
   const testSnapshot = (view) => initTestSnapshot(testView)(null, null, getView(view));
 
@@ -83,7 +83,7 @@ describe("poll icon (view)", () => {
 
 });
 
-describe("poll icon (view, events)", () => {
+describe("PollIcon (view, events)", () => {
 
   const testClick = (view, fn) => {
 
@@ -104,7 +104,7 @@ describe("poll icon (view, events)", () => {
 
   };
 
-  it("should call pollRemoveOption on click (remove, created)", () => {
+  it("should call handleRemove on click (remove, created)", () => {
 
     const view = {
       created: true,
@@ -115,7 +115,7 @@ describe("poll icon (view, events)", () => {
 
   });
 
-  it("should call pollRemoveVote on click (remove, voted)", () => {
+  it("should call handleRemove on click (remove, voted)", () => {
 
     const view = { voted: true };
 

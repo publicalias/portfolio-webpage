@@ -26,7 +26,7 @@ beforeEach(reactTests.inject(ListBody));
 
 //list body
 
-describe("list body", () => {
+describe("ListBody (general)", () => {
 
   const testScroll = initTestEvent(testShallow, "scroll", {});
 
@@ -48,7 +48,7 @@ describe("list body", () => {
 
 });
 
-describe("list body (header)", () => {
+describe("ListBody (header)", () => {
 
   const testBody = (filter) => testSnapshot(null, null, { location: { search: `?filter=${filter}` } });
 

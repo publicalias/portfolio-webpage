@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`venue info should match snapshot (address) 1`] = `
+exports[`VenueInfo should match snapshot (address) 1`] = `
 <div
   className="c-venue-info"
 >
@@ -189,7 +189,7 @@ exports[`venue info should match snapshot (address) 1`] = `
 </div>
 `;
 
-exports[`venue info should match snapshot (default) 1`] = `
+exports[`VenueInfo should match snapshot (default) 1`] = `
 <div
   className="c-venue-info"
 >
@@ -370,7 +370,7 @@ exports[`venue info should match snapshot (default) 1`] = `
 </div>
 `;
 
-exports[`venue info should match snapshot (name) 1`] = `
+exports[`VenueInfo should match snapshot (name) 1`] = `
 <div
   className="c-venue-info"
 >
@@ -551,7 +551,7 @@ exports[`venue info should match snapshot (name) 1`] = `
 </div>
 `;
 
-exports[`venue info should match snapshot (phone) 1`] = `
+exports[`VenueInfo should match snapshot (phone) 1`] = `
 <div
   className="c-venue-info"
 >
@@ -732,7 +732,7 @@ exports[`venue info should match snapshot (phone) 1`] = `
 </div>
 `;
 
-exports[`venue info should match snapshot (url) 1`] = `
+exports[`VenueInfo should match snapshot (url) 1`] = `
 <div
   className="c-venue-info"
 >

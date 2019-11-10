@@ -24,7 +24,7 @@ beforeEach(reactTests.inject(ListItem, { lib: { getVotes: jest.fn(() => "0 Votes
 
 //list item
 
-describe("list item", () => {
+describe("ListItem", () => {
 
   const testSnapshot = withDataList(initTestSnapshot(testShallow), [null, {
     poll: newPoll({

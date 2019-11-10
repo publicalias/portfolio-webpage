@@ -22,7 +22,7 @@ beforeEach(reactTests.inject(VenueBody));
 
 //venue body
 
-describe("venue body", () => {
+describe("VenueBody", () => {
 
   const testSnapshot = withDataList(initTestSnapshot(testShallow), [null, { handleScroll: jest.fn() }]);
 

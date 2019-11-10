@@ -9,7 +9,7 @@ const { testCreateDelete, testWrapper } = require("../../../test-helpers");
 
 //global imports
 
-const { initTestEvent, initTestSnapshot, initTestSubmit } = require("redux/tests/client-tests");
+const { initTestEvent, initTestSnapshot, testSubmit } = require("redux/tests/client-tests");
 const { mockResults, testMock } = require("redux/tests/meta-tests");
 const { reactTests } = require("redux/tests/react-tests");
 
@@ -24,7 +24,7 @@ beforeEach(reactTests.inject(FormMenu, { lib: { select: jest.fn(() => ({})) } })
 
 //form menu
 
-describe("form menu", () => {
+describe("FormMenu (snapshots)", () => {
 
   const testSnapshot = initTestSnapshot(testShallow);
 
@@ -36,23 +36,19 @@ describe("form menu", () => {
 
 });
 
-describe("form menu (create)", () => {
-
-  const testSubmit = initTestSubmit("click", ["metaCreatePoll and history.push"]);
-
-  testSubmit((res) => testCreateDelete(testShallow, [], ".qa-create-poll", res, ["metaCreatePoll", [newForm()]]));
-
-});
-
-describe("form menu (click)", () => {
+describe("FormMenu (events)", () => {
 
   const dataList = [{ form: { delete: true } }];
 
   const testClick = initTestEvent(testShallow, "click");
 
-  it("should call formToggleDelete on click (discard)", () => testClick(".qa-confirm-true", [], ["formToggleDelete", []]));
+  it("should call handleConfirm on click (discard)", () => testClick(
+    ".qa-confirm-true",
+    [],
+    ["formToggleDelete", []]
+  ));
 
-  it("should call formClearState on click (yes)", () => testClick(
+  it("should call handleDiscard on click (yes)", () => testClick(
     ".qa-discard-poll",
     dataList,
     ["formClearState", []],
@@ -67,16 +63,24 @@ describe("form menu (click)", () => {
     }
   ));
 
-  it("should call formToggleDelete on click (no)", () => testClick(
+  it("should call handleConfirm on click (no)", () => testClick(
     ".qa-confirm-false",
     dataList,
     ["formToggleDelete", []]
   ));
 
-  it("should call formToggleSecret on click (secret)", () => testClick(
+  it("should call handleSecret on click (secret)", () => testClick(
     ".qa-toggle-secret",
     [],
     ["formToggleSecret", []]
   ));
+
+  testSubmit("click", "handleCreate", (res) => {
+
+    const args = [testShallow, [], ".qa-create-poll", res, ["metaCreatePoll", [newForm()]]];
+
+    return testCreateDelete(...args);
+
+  });
 
 });

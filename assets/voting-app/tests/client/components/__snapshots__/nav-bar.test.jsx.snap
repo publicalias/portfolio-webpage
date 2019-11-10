@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`nav bar should match snapshot (authenticated) 1`] = `
+exports[`NavBar should match snapshot (authenticated) 1`] = `
 <MetaNavBar
   local={
     Object {
@@ -42,7 +42,7 @@ exports[`nav bar should match snapshot (authenticated) 1`] = `
 />
 `;
 
-exports[`nav bar should match snapshot (default) 1`] = `
+exports[`NavBar should match snapshot (default) 1`] = `
 <MetaNavBar
   local={
     Object {

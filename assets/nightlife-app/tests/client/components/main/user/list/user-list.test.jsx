@@ -24,4 +24,4 @@ beforeEach(reactTests.inject(UserList));
 
 //user list
 
-test("user list should match snapshot", () => testSnapshot());
+test("UserList should match snapshot", () => testSnapshot());

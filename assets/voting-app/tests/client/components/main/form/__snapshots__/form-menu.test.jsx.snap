@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`form menu should match snapshot (confirm) 1`] = `
+exports[`FormMenu (snapshots) should match snapshot (confirm) 1`] = `
 <div
   className="c-form-menu"
 >
@@ -40,7 +40,7 @@ exports[`form menu should match snapshot (confirm) 1`] = `
 </div>
 `;
 
-exports[`form menu should match snapshot (default) 1`] = `
+exports[`FormMenu (snapshots) should match snapshot (default) 1`] = `
 <div
   className="c-form-menu"
 >
@@ -65,7 +65,7 @@ exports[`form menu should match snapshot (default) 1`] = `
 </div>
 `;
 
-exports[`form menu should match snapshot (secret) 1`] = `
+exports[`FormMenu (snapshots) should match snapshot (secret) 1`] = `
 <div
   className="c-form-menu"
 >

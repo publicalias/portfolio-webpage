@@ -24,4 +24,4 @@ beforeEach(reactTests.inject(VenueMenu));
 
 //venue menu
 
-test("venue menu should match snapshot", () => testSnapshot());
+test("VenueMenu should match snapshot", () => testSnapshot());

@@ -19,7 +19,7 @@ const ViewMenu = (props) => {
 
   //events
 
-  const handleSettings = () => {
+  const handleClick = () => {
     viewToggleSettings();
   };
 
@@ -32,7 +32,7 @@ const ViewMenu = (props) => {
       {created && (
         <button
           className="c-view-menu__control-btn qa-toggle-settings"
-          onClick={handleSettings}
+          onClick={handleClick}
         >
           Settings
         </button>
