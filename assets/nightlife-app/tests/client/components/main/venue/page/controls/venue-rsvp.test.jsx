@@ -9,8 +9,9 @@ const { testWrapper } = require("../../../../../test-helpers");
 
 //global imports
 
+const { initTestEvent, initTestSnapshot, initTestSubmit, withDataList } = require("redux/tests/client-tests");
 const { testMock } = require("redux/tests/meta-tests");
-const { initTestEvent, initTestSnapshot, initTestSubmit, reactTests, withDataList } = require("redux/tests/react-tests");
+const { reactTests } = require("redux/tests/react-tests");
 
 //utilities
 

@@ -294,13 +294,10 @@ describe("metaGetPollList (filter)", () => {
 
   });
 
-  it("sends status if authentication fails (filter, created)", () => {
-
-    const args = [mockAPICall, getData("created")];
-
-    return testAuthFail(...args);
-
-  });
+  it("sends status if authentication fails (filter, created)", () => testAuthFail(
+    mockAPICall,
+    getData("created")
+  ));
 
   it("sends data if successful (filter, created)", () => {
 

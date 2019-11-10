@@ -8,8 +8,9 @@ const { initTestPoll, initTestReload, testWrapper } = require("../../../test-hel
 
 //global imports
 
+const { initTestEvent, initTestSnapshot } = require("redux/tests/client-tests");
 const { testMock } = require("redux/tests/meta-tests");
-const { initTestEvent, initTestSnapshot, reactTests } = require("redux/tests/react-tests");
+const { reactTests } = require("redux/tests/react-tests");
 
 //utilities
 
@@ -50,23 +51,21 @@ describe("poll icon (form, events)", () => {
 
   it("should call formRemoveOption on click (remove)", () => {
 
-    const dataList = [null, null, getView({
-      created: true,
-      text: "Option A"
-    })];
-
     const event = { stopPropagation: jest.fn() };
 
     const testClick = initTestEvent(testForm, "click", event);
 
-    const fnList = [
+    return testClick(
+      ".qa-option-remove",
+      [null, null, getView({
+        created: true,
+        text: "Option A"
+      })],
       ["formRemoveOption", ["Option A"]],
       () => {
         testMock(event.stopPropagation, []);
       }
-    ];
-
-    return testClick(".qa-option-remove", dataList, ...fnList);
+    );
 
   });
 
@@ -88,17 +87,20 @@ describe("poll icon (view, events)", () => {
 
   const testClick = (view, fn) => {
 
-    const dataList = [null, { id: "id-b" }, getView(view)];
-
     const event = { stopPropagation: jest.fn() };
 
     const testReload = initTestReload("click", event);
 
-    const fnList = [fn, () => {
-      testMock(event.stopPropagation, []);
-    }];
-
-    return testReload(testView, dataList, ".qa-option-remove", "id-b", ...fnList);
+    return testReload(
+      testView,
+      [null, { id: "id-b" }, getView(view)],
+      ".qa-option-remove",
+      "id-b",
+      fn,
+      () => {
+        testMock(event.stopPropagation, []);
+      }
+    );
 
   };
 

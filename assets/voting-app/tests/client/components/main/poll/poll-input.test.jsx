@@ -8,7 +8,8 @@ const { initTestPoll, testReload, testWrapper } = require("../../../test-helpers
 
 //global imports
 
-const { initTestEvent, initTestSnapshot, reactTests } = require("redux/tests/react-tests");
+const { initTestEvent, initTestSnapshot, initTestSubmit } = require("redux/tests/client-tests");
+const { reactTests } = require("redux/tests/react-tests");
 
 //utilities
 
@@ -59,32 +60,28 @@ describe("poll input (view)", () => {
 
   const testChange = initTestChange(testView);
 
-  const testClick = (res) => {
-
-    const dataList = [
-      { view: { add: "Option A" } },
-      { id: "id-a" },
-      null,
-      { actions: { pollAddOption: jest.fn(() => res) } }
-    ];
-
-    const fnList = [
-      ["pollAddOption", ["id-a", "Option A"]],
-      ["viewSetAdd", res && !res.errors ? [""] : undefined]
-    ];
-
-    return testReload(testView, dataList, ".qa-option-submit", "id-a", ...fnList);
-
-  };
+  const testSubmit = initTestSubmit("click", [
+    "pollAddOption",
+    "pollAddOption",
+    "pollAddOption and viewSetAdd"
+  ]);
 
   it("should match snapshot", () => testSnapshot({ view: { add: "Option A" } }));
 
   it("should call viewSetAdd on change", () => testChange("viewSetAdd"));
 
-  it("should call pollAddOption on click (failure)", () => testClick());
-
-  it("should call pollAddOption on click (errors)", () => testClick({ errors: [] }));
-
-  it("should call pollAddOption and viewSetAdd on click (success)", () => testClick({}));
+  testSubmit((res) => testReload(
+    testView,
+    [
+      { view: { add: "Option A" } },
+      { id: "id-a" },
+      null,
+      { actions: { pollAddOption: jest.fn(() => res) } }
+    ],
+    ".qa-option-submit",
+    "id-a",
+    ["pollAddOption", ["id-a", "Option A"]],
+    ["viewSetAdd", res && !res.errors ? [""] : undefined]
+  ));
 
 });

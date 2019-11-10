@@ -9,7 +9,8 @@ const { initTestPoll, testWrapper } = require("../../../test-helpers");
 //global imports
 
 const { newUser } = require("redux/schemas");
-const { initTestEvent, initTestSnapshot, reactTests } = require("redux/tests/react-tests");
+const { initTestEvent, initTestSnapshot } = require("redux/tests/client-tests");
+const { reactTests } = require("redux/tests/react-tests");
 
 //utilities
 
@@ -35,16 +36,12 @@ describe("poll title (form)", () => {
 
   it("should match snapshot (author)", () => testSnapshot({ user: newUser({ name: "Author A" }) }));
 
-  it("should call formSetTitle and formCheckTitle on blur", () => {
-
-    const fnList = [
-      ["formSetTitle", ["Title A"]],
-      ["formCheckTitle", ["Title A"]]
-    ];
-
-    return testBlur(".qa-title-input", [], ...fnList);
-
-  });
+  it("should call formSetTitle and formCheckTitle on blur", () => testBlur(
+    ".qa-title-input",
+    [],
+    ["formSetTitle", ["Title A"]],
+    ["formCheckTitle", ["Title A"]]
+  ));
 
 });
 

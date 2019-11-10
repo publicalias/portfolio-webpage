@@ -64,9 +64,7 @@ describe("friendAdd", () => {
 
   it("sends status if authentication fails", async () => {
 
-    const args = [mockAPICall, getData(), [newUser({ id: "id-b" })]];
-
-    await testAuthFail(...args);
+    await testAuthFail(mockAPICall, getData(), [newUser({ id: "id-b" })]);
 
     expect(await friendsCol().countDocuments()).toEqual(0);
 

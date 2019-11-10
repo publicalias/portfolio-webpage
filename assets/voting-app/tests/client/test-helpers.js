@@ -9,8 +9,9 @@ const { reducer } = require("../../scripts/client/state/reducer/reducer");
 //global imports
 
 const { deepCopy } = require("all/utilities");
+const { initTestEvent } = require("redux/tests/client-tests");
 const { testMock } = require("redux/tests/meta-tests");
-const { initTestEvent, initTestWrapper } = require("redux/tests/react-tests");
+const { initTestWrapper } = require("redux/tests/react-tests");
 const { initTestAPI, initTestReducer } = require("redux/tests/redux-tests");
 
 //init test poll

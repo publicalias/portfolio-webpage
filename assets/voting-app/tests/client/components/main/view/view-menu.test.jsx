@@ -11,7 +11,8 @@ const { testWrapper } = require("../../../test-helpers");
 
 const { deepCopy } = require("all/utilities");
 const { newUser } = require("redux/schemas");
-const { initTestEvent, initTestSnapshot, reactTests } = require("redux/tests/react-tests");
+const { initTestEvent, initTestSnapshot } = require("redux/tests/client-tests");
+const { reactTests } = require("redux/tests/react-tests");
 
 //utilities
 

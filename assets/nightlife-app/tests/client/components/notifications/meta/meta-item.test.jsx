@@ -8,8 +8,9 @@ const { testWrapper } = require("../../../test-helpers");
 
 //global imports
 
+const { initTestEvent, initTestSnapshot, withDataList } = require("redux/tests/client-tests");
 const { testMock } = require("redux/tests/meta-tests");
-const { initTestEvent, initTestSnapshot, reactTests, withDataList } = require("redux/tests/react-tests");
+const { reactTests } = require("redux/tests/react-tests");
 
 //node modules
 
@@ -48,7 +49,7 @@ describe("meta item", () => {
     const handler = jest.fn();
     const refresh = jest.fn();
 
-    const args = [
+    return testClick(
       ".qa-action-item",
       [null, {
         buttons: [{ handler }],
@@ -58,9 +59,7 @@ describe("meta item", () => {
         testMock(handler, ["id-a"]);
         testMock(refresh, []);
       }
-    ];
-
-    return testClick(...args);
+    );
 
   });
 

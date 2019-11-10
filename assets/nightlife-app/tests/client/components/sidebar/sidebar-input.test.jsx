@@ -9,8 +9,9 @@ const { getGeoPoint, testWrapper } = require("../../test-helpers");
 
 //global imports
 
+const { initTestEvent, initTestSnapshot, withDataList } = require("redux/tests/client-tests");
 const { testMock } = require("redux/tests/meta-tests");
-const { initTestEvent, initTestSnapshot, reactTests, withDataList } = require("redux/tests/react-tests");
+const { reactTests } = require("redux/tests/react-tests");
 
 //utilities
 
@@ -34,26 +35,24 @@ const initTestInput = (render, type, text, prop = type.toLowerCase()) => ({
 
   testClick() {
 
-    const dataList = [{
-      account: {
-        [prop]: text
-      }
-    }];
-
     const testClick = initTestEvent(render, "click");
 
     const { lib: { getLocation } } = SidebarInput.injected;
 
-    const fnList = [
+    return testClick(
+      ".qa-account-submit",
+      [{
+        account: {
+          [prop]: text
+        }
+      }],
       () => {
         testMock(getLocation, []);
       },
       [`metaSave${type}`, [text, userData.location]],
       [`metaSet${type}`, [""]],
       ["metaGetUser", []]
-    ];
-
-    return testClick(".qa-account-submit", dataList, ...fnList);
+    );
 
   }
 

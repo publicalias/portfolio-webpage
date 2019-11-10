@@ -130,13 +130,11 @@ describe("rsvpDismiss", () => {
 
   };
 
-  it("sends status if authentication fails", async () => {
-
-    const args = [mockAPICall, getData(), [newUser(), newUser({ id: "id-c" }), newUser({ id: "id-d" })]];
-
-    await testAuthFail(...args);
-
-  });
+  it("sends status if authentication fails", () => testAuthFail(
+    mockAPICall,
+    getData(),
+    [newUser(), newUser({ id: "id-c" }), newUser({ id: "id-d" })]
+  ));
 
   it("sends noop if successful (from)", () => testDismiss("id-d"));
 

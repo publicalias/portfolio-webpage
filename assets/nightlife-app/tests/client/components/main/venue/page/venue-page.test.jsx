@@ -9,8 +9,9 @@ const { getGeoPoint, testWrapper } = require("../../../../test-helpers");
 
 //global imports
 
+const { initTestSnapshot, withDataList } = require("redux/tests/client-tests");
 const { testMock } = require("redux/tests/meta-tests");
-const { initTestSnapshot, reactTests, withDataList } = require("redux/tests/react-tests");
+const { reactTests } = require("redux/tests/react-tests");
 
 //utilities
 

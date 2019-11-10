@@ -9,8 +9,9 @@ const { testWrapper } = require("../../../test-helpers");
 //global imports
 
 const { newUser } = require("redux/schemas");
+const { initTestEvent, initTestSnapshot, withDataList } = require("redux/tests/client-tests");
 const { testMock } = require("redux/tests/meta-tests");
-const { initTestEvent, initTestSnapshot, reactTests, withDataList } = require("redux/tests/react-tests");
+const { reactTests } = require("redux/tests/react-tests");
 
 //utilities
 
@@ -49,14 +50,14 @@ describe("list body", () => {
 
 describe("list body (header)", () => {
 
-  const getArgs = (filter) => [null, null, { location: { search: `?filter=${filter}` } }];
+  const testBody = (filter) => testSnapshot(null, null, { location: { search: `?filter=${filter}` } });
 
-  it("should match snapshot (all)", () => testSnapshot(...getArgs("all")));
+  it("should match snapshot (all)", () => testBody("all"));
 
-  it("should match snapshot (created)", () => testSnapshot(...getArgs("created")));
+  it("should match snapshot (created)", () => testBody("created"));
 
-  it("should match snapshot (voted)", () => testSnapshot(...getArgs("voted")));
+  it("should match snapshot (voted)", () => testBody("voted"));
 
-  it("should match snapshot (hidden)", () => testSnapshot(...getArgs("hidden")));
+  it("should match snapshot (hidden)", () => testBody("hidden"));
 
 });

@@ -9,7 +9,8 @@ const { testCreateDelete, testReload, testWrapper } = require("../../../test-hel
 
 //global imports
 
-const { initTestEvent, initTestSnapshot, reactTests, withDataList } = require("redux/tests/react-tests");
+const { initTestEvent, initTestSnapshot, initTestSubmit, withDataList } = require("redux/tests/client-tests");
+const { reactTests } = require("redux/tests/react-tests");
 
 //utilities
 
@@ -38,19 +39,15 @@ describe("view settings", () => {
 
 describe("view settings (delete)", () => {
 
-  const testClick = (res) => {
+  const testSubmit = initTestSubmit("click", ["metaDeletePoll"]);
+
+  testSubmit((res) => {
 
     const dataList = [{ view: { delete: true } }, { poll: newPoll({ id: "id-a" }) }];
 
     return testCreateDelete(testShallow, dataList, ".qa-delete-poll", res, ["metaDeletePoll", ["id-a"]]);
 
-  };
-
-  it("should call metaDeletePoll on click (success)", () => testClick({}));
-
-  it("should call metaDeletePoll on click (errors)", () => testClick({ errors: [] }));
-
-  it("should call metaDeletePoll on click (failure)", () => testClick());
+  });
 
 });
 

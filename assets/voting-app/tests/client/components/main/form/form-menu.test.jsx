@@ -9,8 +9,9 @@ const { testCreateDelete, testWrapper } = require("../../../test-helpers");
 
 //global imports
 
+const { initTestEvent, initTestSnapshot, initTestSubmit } = require("redux/tests/client-tests");
 const { mockResults, testMock } = require("redux/tests/meta-tests");
-const { initTestEvent, initTestSnapshot, reactTests } = require("redux/tests/react-tests");
+const { reactTests } = require("redux/tests/react-tests");
 
 //utilities
 
@@ -37,13 +38,9 @@ describe("form menu", () => {
 
 describe("form menu (create)", () => {
 
-  const testClick = (res) => testCreateDelete(testShallow, [], ".qa-create-poll", res, ["metaCreatePoll", [newForm()]]);
+  const testSubmit = initTestSubmit("click", ["metaCreatePoll and history.push"]);
 
-  it("should call metaCreatePoll and history.push on click (success)", () => testClick({}));
-
-  it("should call metaCreatePoll and history.push on click (errors)", () => testClick({ errors: [] }));
-
-  it("should call metaCreatePoll and history.push on click (failure)", () => testClick());
+  testSubmit((res) => testCreateDelete(testShallow, [], ".qa-create-poll", res, ["metaCreatePoll", [newForm()]]));
 
 });
 
@@ -55,27 +52,31 @@ describe("form menu (click)", () => {
 
   it("should call formToggleDelete on click (discard)", () => testClick(".qa-confirm-true", [], ["formToggleDelete", []]));
 
-  it("should call formClearState on click (yes)", () => {
+  it("should call formClearState on click (yes)", () => testClick(
+    ".qa-discard-poll",
+    dataList,
+    ["formClearState", []],
+    () => {
 
-    const fnList = [
-      ["formClearState", []],
-      () => {
+      const { lib: { select } } = FormMenu.injected;
 
-        const { lib: { select } } = FormMenu.injected;
+      testMock(select, [".js-edit-title"]);
 
-        testMock(select, [".js-edit-title"]);
+      expect(mockResults(select)[0].value).toEqual("");
 
-        expect(mockResults(select)[0].value).toEqual("");
+    }
+  ));
 
-      }
-    ];
+  it("should call formToggleDelete on click (no)", () => testClick(
+    ".qa-confirm-false",
+    dataList,
+    ["formToggleDelete", []]
+  ));
 
-    return testClick(".qa-discard-poll", dataList, ...fnList);
-
-  });
-
-  it("should call formToggleDelete on click (no)", () => testClick(".qa-confirm-false", dataList, ["formToggleDelete", []]));
-
-  it("should call formToggleSecret on click (secret)", () => testClick(".qa-toggle-secret", [], ["formToggleSecret", []]));
+  it("should call formToggleSecret on click (secret)", () => testClick(
+    ".qa-toggle-secret",
+    [],
+    ["formToggleSecret", []]
+  ));
 
 });

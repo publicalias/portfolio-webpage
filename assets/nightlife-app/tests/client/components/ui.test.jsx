@@ -9,8 +9,9 @@ const { getGeoPoint, testWrapper } = require("../test-helpers");
 
 //global imports
 
+const { initTestSnapshot } = require("redux/tests/client-tests");
 const { testMock } = require("redux/tests/meta-tests");
-const { initTestSnapshot, reactTests } = require("redux/tests/react-tests");
+const { reactTests } = require("redux/tests/react-tests");
 
 //utilities
 
@@ -46,9 +47,7 @@ describe("ui", () => {
 
   const testLoad = async (user = {}, fn = testLoadDefault) => {
 
-    const dataList = [null, null, { actions: { metaGetUser: jest.fn(() => ({ user })) } }];
-
-    const { props, wrapper } = testMount(...dataList);
+    const { props, wrapper } = testMount(null, null, { actions: { metaGetUser: jest.fn(() => ({ user })) } });
 
     wrapper.mount();
 
