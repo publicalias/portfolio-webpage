@@ -74,12 +74,12 @@ exports[`rsvp list should match snapshot (list) 1`] = `
               "venueGetItem": [MockFunction],
               "venueGetList": [MockFunction],
               "venueSetMessage": [MockFunction],
+              "venueSetOpen": [MockFunction],
               "venueSetPause": [MockFunction],
               "venueSetPhoto": [MockFunction],
               "venueSetSearch": [MockFunction],
               "venueSetStart": [MockFunction],
               "venueSetTime": [MockFunction],
-              "venueToggleForm": [MockFunction],
               "venueToggleRange": [MockFunction],
               "venueToggleSort": [MockFunction],
             }

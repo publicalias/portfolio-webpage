@@ -71,6 +71,16 @@ test("reducer accepts VENUE_SET_MESSAGE actions", () => {
 
 });
 
+//venue set open
+
+test("reducer accepts VENUE_SET_OPEN actions", () => {
+
+  const { venueSetOpen } = actions;
+
+  testReducer(venueSetOpen(true), null, { venues: { page: { form: { open: true } } } });
+
+});
+
 //venue set pause
 
 test("reducer accepts VENUE_SET_PAUSE actions", () => {
@@ -120,16 +130,6 @@ test("reducer accepts VENUE_SET_TIME actions", () => {
   const { venueSetTime } = actions;
 
   testReducer(venueSetTime("9:00 PM"), null, { venues: { page: { form: { time: "9:00 PM" } } } });
-
-});
-
-//venue toggle form
-
-test("reducer accepts VENUE_TOGGLE_FORM actions", () => {
-
-  const { venueToggleForm } = actions;
-
-  testReducer(venueToggleForm(), null, { venues: { page: { form: { open: true } } } });
 
 });
 

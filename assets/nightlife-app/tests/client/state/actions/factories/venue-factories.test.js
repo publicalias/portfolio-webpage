@@ -37,6 +37,19 @@ test("venueSetMessage creates VENUE_SET_MESSAGE actions", () => {
 
 });
 
+//venue set open
+
+test("venueSetOpen creates VENUE_SET_OPEN actions", () => {
+
+  const { venueSetOpen } = actions;
+
+  expect(venueSetOpen(true)).toEqual({
+    type: "VENUE_SET_OPEN",
+    open: true
+  });
+
+});
+
 //venue set pause
 
 test("venueSetPause creates VENUE_SET_PAUSE actions", () => {
@@ -99,16 +112,6 @@ test("venueSetTime creates VENUE_SET_TIME actions", () => {
     type: "VENUE_SET_TIME",
     time: ""
   });
-
-});
-
-//venue toggle form
-
-test("venueToggleForm creates VENUE_TOGGLE_FORM actions", () => {
-
-  const { venueToggleForm } = actions;
-
-  expect(venueToggleForm()).toEqual({ type: "VENUE_TOGGLE_FORM" });
 
 });
 

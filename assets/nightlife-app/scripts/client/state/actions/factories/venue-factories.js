@@ -15,6 +15,13 @@ const venueSetMessage = (message) => ({
   message
 });
 
+//venue set open
+
+const venueSetOpen = (open) => ({
+  type: "VENUE_SET_OPEN",
+  open
+});
+
 //venue set pause
 
 const venueSetPause = (pause) => ({
@@ -50,10 +57,6 @@ const venueSetTime = (time) => ({
   time
 });
 
-//venue toggle form
-
-const venueToggleForm = () => ({ type: "VENUE_TOGGLE_FORM" });
-
 //venue toggle range
 
 const venueToggleRange = () => ({ type: "VENUE_TOGGLE_RANGE" });
@@ -68,12 +71,12 @@ module.exports = {
   venueClearForm,
   venueClearState,
   venueSetMessage,
+  venueSetOpen,
   venueSetPause,
   venueSetPhoto,
   venueSetSearch,
   venueSetStart,
   venueSetTime,
-  venueToggleForm,
   venueToggleRange,
   venueToggleSort
 };
