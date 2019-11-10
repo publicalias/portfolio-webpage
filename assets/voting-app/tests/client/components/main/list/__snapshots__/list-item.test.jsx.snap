@@ -214,11 +214,11 @@ exports[`ListItem should match snapshot (authenticated) 1`] = `
     match={Object {}}
     staticContext={Object {}}
   />
-  <Link
-    to="/view/id-a"
+  <div
+    className="u-grid-span-2"
   >
-    <div
-      className="u-cursor-pointer"
+    <Link
+      to="/view/id-a"
     >
       <h5
         className="u-margin-half"
@@ -230,8 +230,8 @@ exports[`ListItem should match snapshot (authenticated) 1`] = `
       >
         0 Votes — 31 December 1969
       </p>
-    </div>
-  </Link>
+    </Link>
+  </div>
 </div>
 `;
 
@@ -333,11 +333,11 @@ exports[`ListItem should match snapshot (default) 1`] = `
     match={Object {}}
     staticContext={Object {}}
   />
-  <Link
-    to="/view/id-a"
+  <div
+    className="u-grid-span-2"
   >
-    <div
-      className="u-cursor-pointer"
+    <Link
+      to="/view/id-a"
     >
       <h5
         className="u-margin-half"
@@ -349,7 +349,7 @@ exports[`ListItem should match snapshot (default) 1`] = `
       >
         0 Votes — 31 December 1969
       </p>
-    </div>
-  </Link>
+    </Link>
+  </div>
 </div>
 `;

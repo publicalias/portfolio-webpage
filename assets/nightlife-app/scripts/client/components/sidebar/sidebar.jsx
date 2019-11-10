@@ -32,7 +32,7 @@ const Sidebar = (props) => {
 
   return (
     <div className="c-sidebar">
-      <h4>{`Hi, ${user.name || "Anonymous"}!`}</h4>
+      <h4 className="u-align-left">{`Hi, ${user.name || "Anonymous"}!`}</h4>
       <hr />
       {auth && (
         <React.Fragment>

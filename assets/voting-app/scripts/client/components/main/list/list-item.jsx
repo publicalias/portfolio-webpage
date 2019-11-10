@@ -52,12 +52,12 @@ const ListItem = (props) => {
           }}
         />
       )}
-      <Link to={`/view/${poll.id}`}>
-        <div className="u-cursor-pointer">
+      <div className="u-grid-span-2">
+        <Link to={`/view/${poll.id}`}>
           <h5 className="u-margin-half">{poll.title}</h5>
           <p className="u-margin-none">{stats}</p>
-        </div>
-      </Link>
+        </Link>
+      </div>
     </div>
   );
 

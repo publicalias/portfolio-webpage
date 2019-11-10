@@ -23,9 +23,7 @@ exports[`MetaList should match snapshot (default) 1`] = `
   <div
     className="c-notification-list__body"
   >
-    <p
-      className="u-margin-none"
-    >
+    <p>
       No Notifications
     </p>
   </div>

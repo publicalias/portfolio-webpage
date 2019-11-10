@@ -52,7 +52,7 @@
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-  z-index: 3; //overlaps project previews
+  z-index: 10; //overlaps project previews
 
   &__expand {
     background: rgba(0, 0, 0, 0.75);

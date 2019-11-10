@@ -6,7 +6,7 @@
   display: grid;
   grid-auto-flow: column;
   grid-gap: 1.5vw;
-  grid-template-columns: 4.5vw minmax(4.5vw, max-content) max-content;
+  grid-template-columns: 4.5vw 4.5vw auto;
 }
 
 @mixin menu {
@@ -135,6 +135,8 @@
 .js-toggle-tooltip { &.is-open { display: grid; } };
 
 //utilities
+
+.u-grid-span-2 { grid-column: span 2; }
 
 .u-margin-auto { margin: auto; }
 

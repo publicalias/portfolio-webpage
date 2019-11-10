@@ -4,7 +4,9 @@ exports[`Sidebar should match snapshot (default) 1`] = `
 <div
   className="c-sidebar"
 >
-  <h4>
+  <h4
+    className="u-align-left"
+  >
     Hi, Anonymous!
   </h4>
   <hr />
@@ -93,7 +95,9 @@ exports[`Sidebar should match snapshot (name) 1`] = `
 <div
   className="c-sidebar"
 >
-  <h4>
+  <h4
+    className="u-align-left"
+  >
     Hi, User A!
   </h4>
   <hr />

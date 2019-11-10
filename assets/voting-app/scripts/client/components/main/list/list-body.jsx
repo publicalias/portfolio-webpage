@@ -42,7 +42,7 @@ const ListBody = (props) => {
       <div className="c-list-body__head u-margin-full">
         <h4>Hide</h4>
         {auth && <h4>Flag</h4>}
-        <h4>Description</h4>
+        <h4 className="u-grid-span-2">Description</h4>
       </div>
       <div
         className="c-list-body__body js-infinite-scroll qa-infinite-scroll"
