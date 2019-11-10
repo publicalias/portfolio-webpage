@@ -20,12 +20,12 @@ const MetaItem = (props) => {
   const keyGen = initKeyGen();
 
   return (
-    <div className="c-note-item">
-      <div className="c-note-item__info">
+    <div className="c-notification-item">
+      <div className="c-notification-item__info">
         {notification}
         <p className="u-margin-none">{readDate(item.date)}</p>
       </div>
-      <div className="c-note-item__actions">
+      <div className="c-notification-item__actions">
         {buttons.map((e) => {
 
           const handleClick = async () => {

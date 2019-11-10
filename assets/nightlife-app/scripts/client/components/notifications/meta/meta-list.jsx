@@ -27,8 +27,8 @@ const MetaList = (props) => {
   //render
 
   return (
-    <div className={`c-note-list--${type}`}>
-      <div className="c-note-list__head">
+    <div className={`c-notification-list--${type}`}>
+      <div className="c-notification-list__head">
         <h3>{heading}</h3>
         <button
           className="c-icon-button qa-refresh-list"
@@ -38,7 +38,7 @@ const MetaList = (props) => {
         </button>
       </div>
       <hr />
-      <div className="c-note-list__body">
+      <div className="c-notification-list__body">
         {list.length ? list : <p className="u-margin-none">No Notifications</p>}
       </div>
     </div>

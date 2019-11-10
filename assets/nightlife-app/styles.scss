@@ -56,7 +56,7 @@
   overflow: visible;
 }
 
-.c-note-item {
+.c-notification-item {
 
   display: flex;
   justify-content: space-between;
@@ -72,7 +72,7 @@
 
 }
 
-.c-note-list {
+.c-notification-list {
 
   &--friend { @include grid-item(3, 7, 4, 13); }
 

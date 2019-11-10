@@ -2,10 +2,10 @@
 
 exports[`MetaList should match snapshot (default) 1`] = `
 <div
-  className="c-note-list--meta"
+  className="c-notification-list--meta"
 >
   <div
-    className="c-note-list__head"
+    className="c-notification-list__head"
   >
     <h3>
       Meta
@@ -21,7 +21,7 @@ exports[`MetaList should match snapshot (default) 1`] = `
   </div>
   <hr />
   <div
-    className="c-note-list__body"
+    className="c-notification-list__body"
   >
     <p
       className="u-margin-none"
@@ -34,10 +34,10 @@ exports[`MetaList should match snapshot (default) 1`] = `
 
 exports[`MetaList should match snapshot (list) 1`] = `
 <div
-  className="c-note-list--meta"
+  className="c-notification-list--meta"
 >
   <div
-    className="c-note-list__head"
+    className="c-notification-list__head"
   >
     <h3>
       Meta
@@ -53,7 +53,7 @@ exports[`MetaList should match snapshot (list) 1`] = `
   </div>
   <hr />
   <div
-    className="c-note-list__body"
+    className="c-notification-list__body"
   >
     <div
       key=""

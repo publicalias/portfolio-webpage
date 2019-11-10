@@ -2,10 +2,10 @@
 
 exports[`MetaItem should match snapshot 1`] = `
 <div
-  className="c-note-item"
+  className="c-notification-item"
 >
   <div
-    className="c-note-item__info"
+    className="c-notification-item__info"
   >
     <div />
     <p
@@ -15,7 +15,7 @@ exports[`MetaItem should match snapshot 1`] = `
     </p>
   </div>
   <div
-    className="c-note-item__actions"
+    className="c-notification-item__actions"
   >
     <button
       className="c-icon-button qa-action-item"
