@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MetaPageList should match snapshot (default) 1`] = `
+<div
+  className="c-page-list"
+>
+  <h3>
+    Meta
+  </h3>
+  <hr />
+  <div
+    className="c-page-list__body"
+  >
+    <p>
+      No Names
+    </p>
+  </div>
+</div>
+`;
+
+exports[`MetaPageList should match snapshot (list) 1`] = `
+<div
+  className="c-page-list"
+>
+  <h3>
+    Meta
+  </h3>
+  <hr />
+  <div
+    className="c-page-list__body"
+  >
+    <p
+      className="c-page-list__item"
+      key="0-347"
+    >
+      <Link
+        to="/users/page/id-a"
+      >
+        User A
+      </Link>
+    </p>
+  </div>
+</div>
+`;

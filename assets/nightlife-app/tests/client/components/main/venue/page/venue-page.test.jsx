@@ -24,7 +24,7 @@ beforeEach(reactTests.inject(VenuePage, { lib: { getLocation: jest.fn((user) => 
 
 //venue page
 
-describe("VenuePage", () => {
+describe("VenuePage (general)", () => {
 
   const dataList = [null, { id: "id-a" }];
 
@@ -75,6 +75,38 @@ describe("VenuePage", () => {
     testMock(getLocation, [userA], [userA], [userA], [userB]);
     testMock(venueGetItem, ["id-a", null], ["id-a", null], ["id-a", null], ["id-a", getGeoPoint(0)]);
 
+  }));
+
+});
+
+describe("VenuePage (list)", () => {
+
+  const dataList = [{ venues: { data: [{ id: "id-a" }] } }, { id: "id-a" }];
+
+  const testSnapshot = withDataList(initTestSnapshot(testShallow), dataList);
+
+  const testPage = (data) => testSnapshot({ venues: { data: [data] } });
+
+  it("should match snapshot (favorites)", () => testPage({ favorites: [{ user: { id: "id-b" } }] }));
+
+  it("should match snapshot (favorites, name)", () => testPage({
+    favorites: [{
+      user: {
+        name: "User B",
+        id: "id-b"
+      }
+    }]
+  }));
+
+  it("should match snapshot (rsvps)", () => testPage({ rsvps: [{ user: { id: "id-b" } }] }));
+
+  it("should match snapshot (rsvps, name)", () => testPage({
+    rsvps: [{
+      user: {
+        name: "User B",
+        id: "id-b"
+      }
+    }]
   }));
 
 });

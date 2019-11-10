@@ -4,7 +4,7 @@
 
 const VenueControls = require("./controls/venue-controls");
 const VenueData = require("./data/venue-data");
-const VenueList = require("./venue-list");
+const MetaPageList = require("../../meta/meta-page-list");
 
 const { getLocation } = require("../../../../app-logic");
 const { newVenue } = require("../../../../../../schemas");
@@ -30,7 +30,7 @@ const VenuePage = (props) => {
   } = props;
 
   const {
-    jsx: { VenueControls, VenueData, VenueList },
+    jsx: { MetaPageList, VenueControls, VenueData },
     lib: { getLocation }
   } = VenuePage.injected;
 
@@ -60,6 +60,8 @@ const VenuePage = (props) => {
 
   const auth = user.type === "auth";
 
+  const mapFn = ({ user: { name, id } }) => [name || "Anonymous", id, `/users/page/${id}`];
+
   return (
     <div className="c-venue-page">
       <div className="c-venue-page__info">
@@ -71,18 +73,18 @@ const VenuePage = (props) => {
         </div>
       )}
       <div className="c-venue-page__favorites">
-        <VenueList
+        <MetaPageList
           local={{
             heading: "Favorites",
-            list: venue.favorites
+            list: venue.favorites.map(mapFn)
           }}
         />
       </div>
       <div className="c-venue-page__rsvps">
-        <VenueList
+        <MetaPageList
           local={{
             heading: "RSVPs",
-            list: venue.rsvps
+            list: venue.rsvps.map(mapFn)
           }}
         />
       </div>
@@ -102,9 +104,9 @@ VenuePage.propList = [
 
 VenuePage.injected = {
   jsx: {
+    MetaPageList,
     VenueControls,
-    VenueData,
-    VenueList
+    VenueData
   },
   lib: { getLocation }
 };
