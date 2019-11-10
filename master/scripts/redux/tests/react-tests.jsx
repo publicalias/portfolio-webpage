@@ -46,6 +46,22 @@ const initTestSnapshot = (render) => (data, local, other) => {
 
 };
 
+//init test submit
+
+const initTestSubmit = (event, [failure, errors = failure, success = failure]) => (testSubmit) => {
+
+  const tests = [
+    [failure, "failure", undefined],
+    [errors, "errors", { errors: [] }],
+    [success, "success", {}]
+  ];
+
+  for (const [type, test, res] of tests) {
+    it(`should call ${type} on ${event} (${test})`, () => testSubmit(res));
+  }
+
+};
+
 //init test wrapper
 
 const getProps = (newState, actions, data, local, other) => {
@@ -173,6 +189,7 @@ const withDataList = (render, dataList) => (...args) => {
 module.exports = {
   initTestEvent,
   initTestSnapshot,
+  initTestSubmit,
   initTestWrapper,
   reactTests,
   withDataList

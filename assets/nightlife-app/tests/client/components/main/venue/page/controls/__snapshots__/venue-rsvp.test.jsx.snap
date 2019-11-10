@@ -1,3 +1,64 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`venue rsvp should match snapshot 1`] = `""`;
+exports[`venue rsvp (open) should match snapshot 1`] = `
+<Fragment>
+  <button
+    className="qa-toggle-rsvp"
+    onClick={[Function]}
+  >
+    Add RSVP
+  </button>
+  <div
+    className="c-venue-form"
+  >
+    <input
+      className="c-venue-form__time qa-rsvp-time"
+      maxLength="100"
+      onChange={[Function]}
+      placeholder="Time (e.g. 9:00 PM)"
+      value=""
+    />
+    <input
+      className="c-venue-form__message qa-rsvp-message"
+      maxLength="100"
+      onChange={[Function]}
+      placeholder="Message"
+      value=""
+    />
+    <button
+      className="c-venue-form__submit qa-rsvp-submit"
+      onClick={[Function]}
+    >
+      Submit
+    </button>
+    <button
+      className="c-venue-form__cancel qa-rsvp-cancel"
+      onClick={[Function]}
+    >
+      Cancel
+    </button>
+  </div>
+</Fragment>
+`;
+
+exports[`venue rsvp (rsvp) should match snapshot 1`] = `
+<Fragment>
+  <button
+    className="qa-toggle-rsvp"
+    onClick={[Function]}
+  >
+    Remove RSVP
+  </button>
+</Fragment>
+`;
+
+exports[`venue rsvp should match snapshot 1`] = `
+<Fragment>
+  <button
+    className="qa-toggle-rsvp"
+    onClick={[Function]}
+  >
+    Add RSVP
+  </button>
+</Fragment>
+`;
