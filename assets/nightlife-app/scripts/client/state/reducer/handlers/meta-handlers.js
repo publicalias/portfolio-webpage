@@ -12,9 +12,9 @@ const META_SET_ADDRESS = (state, { address }) => deepCopy(state, { account: { ad
 
 const META_SET_AVATAR = (state, { avatar }) => deepCopy(state, { account: { avatar } });
 
-//meta toggle loaded
+//meta set ready
 
-const META_TOGGLE_LOADED = (state) => deepCopy(state, { account: { loaded: !state.account.loaded } });
+const META_SET_READY = (state, { ready }) => deepCopy(state, { ready });
 
 //meta toggle settings
 
@@ -25,6 +25,6 @@ const META_TOGGLE_SETTINGS = (state) => deepCopy(state, { account: { settings: !
 module.exports = {
   META_SET_ADDRESS,
   META_SET_AVATAR,
-  META_TOGGLE_LOADED,
+  META_SET_READY,
   META_TOGGLE_SETTINGS
 };

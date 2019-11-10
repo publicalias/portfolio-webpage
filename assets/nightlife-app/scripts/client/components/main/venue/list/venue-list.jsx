@@ -24,7 +24,7 @@ const VenueList = (props) => {
 
   const {
     actions: { venueClearState, venueGetList },
-    data: { user, account, venues: { data } },
+    data: { user, ready, venues: { data } },
     location
   } = props;
 
@@ -42,12 +42,12 @@ const VenueList = (props) => {
   //lifecycle
 
   useLayoutEffect(() => {
-    if (account.loaded) {
+    if (ready) {
       handleReload(); //async
     }
   }, [
     JSON.stringify(get(user, "data.location")),
-    account.loaded,
+    ready,
     location.search
   ]);
 
@@ -62,7 +62,7 @@ const VenueList = (props) => {
 
 };
 
-VenueList.propList = ["data.user", "data.account", "data.venues.data", "location"];
+VenueList.propList = ["data.user", "data.ready", "data.venues.data", "location"];
 
 VenueList.injected = {
   jsx: {

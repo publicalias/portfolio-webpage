@@ -43,9 +43,9 @@ test("venueSetOpen creates VENUE_SET_OPEN actions", () => {
 
   const { venueSetOpen } = actions;
 
-  expect(venueSetOpen(true)).toEqual({
+  expect(venueSetOpen()).toEqual({
     type: "VENUE_SET_OPEN",
-    open: true
+    open: false
   });
 
 });
@@ -56,9 +56,9 @@ test("venueSetPause creates VENUE_SET_PAUSE actions", () => {
 
   const { venueSetPause } = actions;
 
-  expect(venueSetPause(true)).toEqual({
+  expect(venueSetPause()).toEqual({
     type: "VENUE_SET_PAUSE",
-    pause: true
+    pause: false
   });
 
 });
@@ -95,9 +95,9 @@ test("venueSetStart creates VENUE_SET_START actions", () => {
 
   const { venueSetStart } = actions;
 
-  expect(venueSetStart(true)).toEqual({
+  expect(venueSetStart()).toEqual({
     type: "VENUE_SET_START",
-    start: true
+    start: false
   });
 
 });

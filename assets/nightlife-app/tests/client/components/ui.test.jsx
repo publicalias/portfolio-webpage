@@ -34,14 +34,14 @@ describe("UI", () => {
 
   const testLoadDefault = (props) => {
 
-    const { actions: { metaGetUser, metaSaveAddress, metaToggleLoaded } } = props;
+    const { actions: { metaGetUser, metaSaveAddress, metaSetReady } } = props;
 
     const { lib: { getLocation } } = UI.injected;
 
     testMock(metaGetUser, []);
     testMock(getLocation);
     testMock(metaSaveAddress);
-    testMock(metaToggleLoaded, []);
+    testMock(metaSetReady, [true]);
 
   };
 
@@ -80,14 +80,14 @@ describe("UI", () => {
 
     return testLoad(user, (props) => {
 
-      const { actions: { metaGetUser, metaSaveAddress, metaToggleLoaded } } = props;
+      const { actions: { metaGetUser, metaSaveAddress, metaSetReady } } = props;
 
       const { lib: { getLocation } } = UI.injected;
 
       testMock(metaGetUser, [], []);
       testMock(getLocation, [user]);
       testMock(metaSaveAddress, ["", location]);
-      testMock(metaToggleLoaded, []);
+      testMock(metaSetReady, [true]);
 
     });
 

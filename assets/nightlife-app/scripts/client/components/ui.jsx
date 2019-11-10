@@ -26,7 +26,7 @@ const { useEffect } = React;
 
 const UI = (props) => {
 
-  const { actions: { metaGetUser, metaSaveAddress, metaToggleLoaded }, data: { user } } = props;
+  const { actions: { metaGetUser, metaSaveAddress, metaSetReady }, data: { user } } = props;
 
   const {
     jsx: { FriendList, Route, RSVPList, Sidebar, UserList, UserPage, VenueList, VenuePage },
@@ -44,7 +44,7 @@ const UI = (props) => {
       await metaGetUser();
     }
 
-    metaToggleLoaded();
+    metaSetReady(true);
 
   };
 

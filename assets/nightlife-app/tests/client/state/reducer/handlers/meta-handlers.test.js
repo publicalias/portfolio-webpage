@@ -27,13 +27,13 @@ test("reducer accepts META_SET_AVATAR actions", () => {
 
 });
 
-//meta toggle loaded
+//meta set ready
 
-test("reducer accepts META_TOGGLE_LOADED actions", () => {
+test("reducer accepts META_SET_READY actions", () => {
 
-  const { metaToggleLoaded } = actions;
+  const { metaSetReady } = actions;
 
-  testReducer(metaToggleLoaded(), null, { account: { loaded: true } });
+  testReducer(metaSetReady(true), null, { ready: true });
 
 });
 

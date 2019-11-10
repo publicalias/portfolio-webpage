@@ -17,14 +17,14 @@ const venueSetMessage = (message) => ({
 
 //venue set open
 
-const venueSetOpen = (open) => ({
+const venueSetOpen = (open = false) => ({
   type: "VENUE_SET_OPEN",
   open
 });
 
 //venue set pause
 
-const venueSetPause = (pause) => ({
+const venueSetPause = (pause = false) => ({
   type: "VENUE_SET_PAUSE",
   pause
 });
@@ -45,7 +45,7 @@ const venueSetSearch = (search) => ({
 
 //venue set start
 
-const venueSetStart = (start) => ({
+const venueSetStart = (start = false) => ({
   type: "VENUE_SET_START",
   start
 });

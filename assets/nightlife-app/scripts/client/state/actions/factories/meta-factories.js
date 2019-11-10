@@ -14,9 +14,12 @@ const metaSetAvatar = (avatar) => ({
   avatar
 });
 
-//meta toggle loaded
+//meta set ready
 
-const metaToggleLoaded = () => ({ type: "META_TOGGLE_LOADED" });
+const metaSetReady = (ready = false) => ({
+  type: "META_SET_READY",
+  ready
+});
 
 //meta toggle settings
 
@@ -27,6 +30,6 @@ const metaToggleSettings = () => ({ type: "META_TOGGLE_SETTINGS" });
 module.exports = {
   metaSetAddress,
   metaSetAvatar,
-  metaToggleLoaded,
+  metaSetReady,
   metaToggleSettings
 };

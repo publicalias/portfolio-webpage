@@ -37,7 +37,7 @@ describe("VenueList", () => {
 
     const list = [
       [{ user: { data: { location: null } } }],
-      [{ account: { loaded: true } }],
+      [{ ready: true }],
       [null, null, { location: { search: "" } }],
       [{ user: { data: { location: getGeoPoint(0) } } }]
     ];

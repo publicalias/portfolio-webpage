@@ -25,7 +25,7 @@ const VenuePage = (props) => {
 
   const {
     actions: { venueClearState, venueGetItem },
-    data: { user, account, notifications: { friends, rsvps }, venues: { data } },
+    data: { user, ready, notifications: { friends, rsvps }, venues: { data } },
     local: { id }
   } = props;
 
@@ -46,12 +46,12 @@ const VenuePage = (props) => {
   //lifecycle
 
   useLayoutEffect(() => {
-    if (account.loaded) {
+    if (ready) {
       initVenueData(); //async
     }
   }, [
     JSON.stringify(get(user, "data.location")),
-    account.loaded,
+    ready,
     JSON.stringify(friends),
     JSON.stringify(rsvps)
   ]);
@@ -93,7 +93,7 @@ const VenuePage = (props) => {
 
 VenuePage.propList = [
   "data.user",
-  "data.account",
+  "data.ready",
   "data.notifications.friends",
   "data.notifications.rsvps",
   "data.venues.data",

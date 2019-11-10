@@ -40,11 +40,11 @@ const Showcase = (props) => {
         setState({ item });
       },
 
-      setPause(pause) {
+      setPause(pause = false) {
         setState({ pause });
       },
 
-      setStart(start) {
+      setStart(start = false) {
         setState({ start });
       }
 

@@ -36,7 +36,7 @@ const useLifecycle = (props, ready, utilities) => {
     if (shown && !start) {
       setStart(true);
     } else if (!shown && start) {
-      setStart(false);
+      setStart();
     }
 
   };
@@ -107,7 +107,7 @@ const useCarousel = (props) => {
 
     //pause
 
-    handlePause(bool = false) {
+    handlePause(bool) {
       return () => {
         setPause(bool);
       };

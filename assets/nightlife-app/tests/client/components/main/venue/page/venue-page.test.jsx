@@ -37,7 +37,7 @@ describe("VenuePage", () => {
 
     const list = [
       [userA],
-      [{ account: { loaded: true } }],
+      [{ ready: true }],
       [{ notifications: { friends: [{}] } }],
       [{ notifications: { rsvps: [{}] } }],
       [userB]

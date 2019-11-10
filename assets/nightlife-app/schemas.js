@@ -181,11 +181,12 @@ const newState = initSchema({
     settings: false,
     avatar: "",
     address: "",
-    delete: false,
-    loaded: false
+    delete: false
   },
   errors: [],
-  loading: false,
+  loading: 0,
+
+  ready: false,
 
   //view
 

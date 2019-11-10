@@ -54,10 +54,10 @@ exports[`FriendList should match snapshot (list) 1`] = `
               "metaSetAddress": [MockFunction],
               "metaSetAvatar": [MockFunction],
               "metaSetLoading": [MockFunction],
+              "metaSetReady": [MockFunction],
               "metaSetState": [MockFunction],
               "metaTimeoutError": [MockFunction],
               "metaToggleDelete": [MockFunction],
-              "metaToggleLoaded": [MockFunction],
               "metaToggleSettings": [MockFunction],
               "rsvpAdd": [MockFunction],
               "rsvpDismiss": [MockFunction],
@@ -90,11 +90,10 @@ exports[`FriendList should match snapshot (list) 1`] = `
                 "address": "",
                 "avatar": "",
                 "delete": false,
-                "loaded": false,
                 "settings": false,
               },
               "errors": Array [],
-              "loading": false,
+              "loading": 0,
               "notifications": Object {
                 "friends": Array [
                   Object {
@@ -114,6 +113,7 @@ exports[`FriendList should match snapshot (list) 1`] = `
                 ],
                 "rsvps": Array [],
               },
+              "ready": false,
               "user": Object {},
               "users": Object {
                 "data": Array [],
