@@ -2,7 +2,7 @@
 
 //local imports
 
-const VenueImage = require("../../../../../../../scripts/client/components/main/venue/page/photos/venue-image");
+const VenueImage = require("../../../../../../../scripts/client/components/main/venue/page/data/venue-image");
 
 const { newVenue } = require("../../../../../../../schemas");
 const { testWrapper } = require("../../../../../test-helpers");

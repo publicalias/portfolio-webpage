@@ -134,13 +134,7 @@
   &__time { grid-column: 1 / 3; }
 }
 
-.c-venue-info {
-
-  &__data {
-    display: grid;
-    grid-gap: 0 3vw;
-    grid-template-columns: 1fr 1fr;
-  }
+.c-venue-data {
 
   &__header {
     align-items: center;
@@ -149,6 +143,12 @@
     grid-template-columns: 1fr 1fr;
     text-align: left;
     text-decoration: underline;
+  }
+
+  &__info {
+    display: grid;
+    grid-gap: 0 3vw;
+    grid-template-columns: 1fr 1fr;
   }
 
   &__rating {

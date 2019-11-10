@@ -2,7 +2,7 @@
 
 //local imports
 
-const VenueSwipe = require("../../../../../../../scripts/client/components/main/venue/page/photos/venue-swipe");
+const VenueSwipe = require("../../../../../../../scripts/client/components/main/venue/page/data/venue-swipe");
 
 const { testWrapper } = require("../../../../../test-helpers");
 

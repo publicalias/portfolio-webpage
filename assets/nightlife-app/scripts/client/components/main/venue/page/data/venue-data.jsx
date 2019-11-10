@@ -2,9 +2,9 @@
 
 //local imports
 
-const VenuePhotos = require("./photos/venue-photos");
+const VenuePhotos = require("./venue-photos");
 
-const { getHours } = require("../../../../view-logic");
+const { getHours } = require("../../../../../view-logic");
 
 //global imports
 
@@ -14,13 +14,13 @@ const { initKeyGen } = require("all/react-utils");
 
 const React = require("react");
 
-//venue info
+//venue data
 
-const VenueInfo = (props) => {
+const VenueData = (props) => {
 
   const { local: { venue } } = props;
 
-  const { jsx: { VenuePhotos }, lib: { getHours } } = VenueInfo.injected;
+  const { jsx: { VenuePhotos }, lib: { getHours } } = VenueData.injected;
 
   //render
 
@@ -29,12 +29,12 @@ const VenueInfo = (props) => {
   const address = ((list = venue.location.display_address) => list.length ? list : ["No Address"])();
 
   return (
-    <div className="c-venue-info">
-      <div className="c-venue-info__header">
+    <div className="c-venue-data">
+      <div className="c-venue-data__header">
         <h1><a href={venue.url || "https://www.yelp.com/"}>{venue.name || "Undefined"}</a></h1>
         <img
           alt={`${venue.rating} Stars`}
-          className="c-venue-info__rating"
+          className="c-venue-data__rating"
           src={`/nightlife-app/media/yelp-stars/yelp-stars-${venue.rating}.png`}
         />
       </div>
@@ -42,7 +42,7 @@ const VenueInfo = (props) => {
       <div className="u-margin-full">
         <VenuePhotos {...props} />
       </div>
-      <div className="c-venue-info__data">
+      <div className="c-venue-data__info">
         <div>
           {address.map((e) => <p key={keyGen(e)}>{e}</p>)}
         </div>
@@ -55,13 +55,13 @@ const VenueInfo = (props) => {
 
 };
 
-VenueInfo.propList = ["local"];
+VenueData.propList = ["local"];
 
-VenueInfo.injected = {
+VenueData.injected = {
   jsx: { VenuePhotos },
   lib: { getHours }
 };
 
 //exports
 
-module.exports = VenueInfo;
+module.exports = VenueData;

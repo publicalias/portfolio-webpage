@@ -3,7 +3,7 @@
 //local imports
 
 const VenueControls = require("./controls/venue-controls");
-const VenueInfo = require("./venue-info");
+const VenueData = require("./data/venue-data");
 const VenueList = require("./venue-list");
 
 const { getLocation } = require("../../../../app-logic");
@@ -30,7 +30,7 @@ const VenuePage = (props) => {
   } = props;
 
   const {
-    jsx: { VenueControls, VenueInfo, VenueList },
+    jsx: { VenueControls, VenueData, VenueList },
     lib: { getLocation }
   } = VenuePage.injected;
 
@@ -63,7 +63,7 @@ const VenuePage = (props) => {
   return (
     <div className="c-venue-page">
       <div className="c-venue-page__info">
-        <VenueInfo {...props} local={{ venue }} />
+        <VenueData {...props} local={{ venue }} />
       </div>
       {auth && (
         <div className="c-venue-page__controls">
@@ -103,7 +103,7 @@ VenuePage.propList = [
 VenuePage.injected = {
   jsx: {
     VenueControls,
-    VenueInfo,
+    VenueData,
     VenueList
   },
   lib: { getLocation }

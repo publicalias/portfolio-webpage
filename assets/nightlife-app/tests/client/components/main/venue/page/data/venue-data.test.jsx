@@ -2,10 +2,10 @@
 
 //local imports
 
-const VenueInfo = require("../../../../../../scripts/client/components/main/venue/page/venue-info");
+const VenueData = require("../../../../../../../scripts/client/components/main/venue/page/data/venue-data");
 
-const { newVenue } = require("../../../../../../schemas");
-const { testWrapper } = require("../../../../test-helpers");
+const { newVenue } = require("../../../../../../../schemas");
+const { testWrapper } = require("../../../../../test-helpers");
 
 //global imports
 
@@ -14,16 +14,16 @@ const { reactTests } = require("redux/tests/react-tests");
 
 //utilities
 
-const { testShallow } = testWrapper(VenueInfo);
+const { testShallow } = testWrapper(VenueData);
 
 //setup
 
 beforeAll(reactTests.setup);
-beforeEach(reactTests.inject(VenueInfo, { lib: { getHours: jest.fn(() => "Closed - Opens at 12:00 AM") } }));
+beforeEach(reactTests.inject(VenueData, { lib: { getHours: jest.fn(() => "Closed - Opens at 12:00 AM") } }));
 
-//venue info
+//venue data
 
-describe("VenueInfo", () => {
+describe("VenueData", () => {
 
   const testSnapshot = withDataList(initTestSnapshot(testShallow), [null, { venue: newVenue() }]);
 
