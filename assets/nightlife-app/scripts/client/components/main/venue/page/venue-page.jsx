@@ -71,7 +71,13 @@ const VenuePage = (props) => {
       </div>
       {auth && (
         <div className="c-venue-page__controls">
-          <VenueControls {...props} local={{ venue }} />
+          <VenueControls
+            {...props}
+            local={{
+              refresh: initVenueData,
+              venue
+            }}
+          />
         </div>
       )}
       <div className="c-venue-page__favorites">

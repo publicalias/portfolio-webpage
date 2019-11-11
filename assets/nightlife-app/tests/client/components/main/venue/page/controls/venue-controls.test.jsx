@@ -25,4 +25,7 @@ beforeEach(reactTests.inject(VenueControls));
 
 //venue controls
 
-test("VenueControls should match snapshot", () => testSnapshot(null, { venue: newVenue() }));
+test("VenueControls should match snapshot", () => testSnapshot(null, {
+  refresh: jest.fn(),
+  venue: newVenue()
+}));

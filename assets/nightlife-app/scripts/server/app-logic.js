@@ -15,6 +15,7 @@ const chrono = require("chrono-node");
 const dateFormat = require("dateformat");
 const haversine = require("haversine");
 const round = require("mongo-round");
+const NodeCache = require("node-cache");
 const request = require("request-promise-native");
 
 //utilities
@@ -276,25 +277,43 @@ const handleAuthFriend = (allowFrom, allowTo) => async (req, res) => {
 
 //handle yelp api
 
+const [cacheA, cacheB] = ((options) => [new NodeCache(options), new NodeCache(options)])({
+  stdTTL: 86400, //seconds
+  checkperiod: 3600,
+  useClones: false
+});
+
 const handleYelpAPI = async (id, params) => {
   try {
 
     const headers = { Authorization: `Bearer ${process.env.API_YP_KEY}` };
 
-    if (id) {
-      return JSON.parse(await request({
+    const key = id || JSON.stringify(params);
+
+    const getJSON = (cache, fetch) => cache.get(key) || (async (data = fetch()) => {
+
+      cache.set(key, await data);
+
+      return data;
+
+    })();
+
+    return id
+      ? await getJSON(cacheA, async () => JSON.parse(await request({
         headers,
         uri: `https://api.yelp.com/v3/businesses/${id}`
-      }));
-    }
+      })))
+      : await getJSON(cacheB, async () => {
 
-    const { businesses: list } = JSON.parse(await request({
-      headers,
-      qs: params,
-      uri: "https://api.yelp.com/v3/businesses/search"
-    }));
+        const { businesses: list } = JSON.parse(await request({
+          headers,
+          qs: params,
+          uri: "https://api.yelp.com/v3/businesses/search"
+        }));
 
-    return list;
+        return list;
+
+      });
 
   } catch {
     return id ? null : [];

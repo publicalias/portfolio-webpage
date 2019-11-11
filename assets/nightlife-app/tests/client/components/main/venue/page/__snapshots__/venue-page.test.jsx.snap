@@ -277,6 +277,7 @@ exports[`VenuePage (general) should match snapshot (authenticated) 1`] = `
       }
       local={
         Object {
+          "refresh": [Function],
           "venue": Object {
             "coordinates": Object {
               "latitude": 0,

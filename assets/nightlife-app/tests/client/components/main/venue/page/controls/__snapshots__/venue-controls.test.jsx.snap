@@ -105,7 +105,7 @@ exports[`VenueControls should match snapshot 1`] = `
     }
     local={
       Object {
-        "refresh": [Function],
+        "refresh": [MockFunction],
         "venue": Object {
           "coordinates": Object {
             "latitude": 0,
@@ -233,7 +233,7 @@ exports[`VenueControls should match snapshot 1`] = `
     }
     local={
       Object {
-        "refresh": [Function],
+        "refresh": [MockFunction],
         "venue": Object {
           "coordinates": Object {
             "latitude": 0,
