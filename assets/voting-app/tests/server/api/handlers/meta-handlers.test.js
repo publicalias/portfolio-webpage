@@ -34,7 +34,7 @@ describe("metaCreatePoll", () => {
 
   const getData = (form) => newForm(form);
 
-  const testError = async (error, form, count = 0) => {
+  const testError = async (error, form) => {
 
     const res = await mockAPICall(newUser(), getData(form));
 
@@ -42,17 +42,9 @@ describe("metaCreatePoll", () => {
 
     expect(errors.includes(error)).toEqual(true);
 
-    expect(await pollsCol().countDocuments()).toEqual(count);
-
   };
 
-  it("sends status if authentication fails", async () => {
-
-    await testAuthFail(mockAPICall, getData());
-
-    expect(await pollsCol().countDocuments()).toEqual(0);
-
-  });
+  it("sends status if authentication fails", () => testAuthFail(mockAPICall, getData()));
 
   testOptions((error, data, other) => testError(error, { options: [data, ...other || []] }));
 
@@ -95,13 +87,7 @@ describe("metaDeletePoll", () => {
     users: { created: "id-b" }
   })));
 
-  it("sends status if authentication fails", async () => {
-
-    await testAuthFail(mockAPICall, getData(), [newUser()]);
-
-    expect(await pollsCol().countDocuments()).toEqual(1);
-
-  });
+  it("sends status if authentication fails", () => testAuthFail(mockAPICall, getData(), [newUser()]));
 
   it("sends noop if successful", async () => {
 

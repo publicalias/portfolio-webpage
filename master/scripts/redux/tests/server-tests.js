@@ -118,13 +118,9 @@ const omitKeys = (obj, keys) => Object.entries(obj)
 
 const testInsert = async (collection, keys = []) => {
 
-  const [count, document] = await Promise.all([
-    collection().countDocuments(),
-    collection().findOne()
-  ]);
+  const insert = await collection().findOne();
 
-  expect(count).toEqual(1);
-  expect(omitKeys(document, ["_id", "id", "date", ...keys])).toMatchSnapshot();
+  expect(omitKeys(insert, ["_id", "id", "date", ...keys])).toMatchSnapshot();
 
 };
 

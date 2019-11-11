@@ -44,21 +44,13 @@ describe("rsvpAdd", () => {
     ["sends errors if time is incorrectly formatted", ["Time is incorrectly formatted", "lol idk"]]
   ]);
 
-  it("sends status if authentication fails", async () => {
-
-    await testAuthFail(mockAPICall, getData());
-
-    expect(await rsvpsCol().countDocuments()).toEqual(0);
-
-  });
+  it("sends status if authentication fails", () => testAuthFail(mockAPICall, getData()));
 
   it("sends errors if venue does not exist", async () => {
 
     const res = await mockAPICall(newUser(), Object.assign(getData(), { id: "" }));
 
     testMock(res.json, [{ errors: ["Venue does not exist"] }]);
-
-    expect(await rsvpsCol().countDocuments()).toEqual(0);
 
   });
 
@@ -74,8 +66,6 @@ describe("rsvpAdd", () => {
 
     testMock(res.json, [{ errors: ["RSVP already exists"] }]);
 
-    expect(await rsvpsCol().countDocuments()).toEqual(1);
-
   });
 
   testInputs(async (error, time, message) => {
@@ -85,8 +75,6 @@ describe("rsvpAdd", () => {
     const [{ errors }] = res.json.mock.calls[0];
 
     expect(errors.includes(error)).toEqual(true);
-
-    expect(await rsvpsCol().countDocuments()).toEqual(0);
 
   });
 
@@ -238,13 +226,7 @@ describe("rsvpRemove", () => {
     user: { id: "id-b" }
   })));
 
-  it("sends status if authentication fails", async () => {
-
-    await testAuthFail(mockAPICall, getData(), [newUser()]);
-
-    expect(await rsvpsCol().countDocuments()).toEqual(1);
-
-  });
+  it("sends status if authentication fails", () => testAuthFail(mockAPICall, getData(), [newUser()]));
 
   it("sends noop if successful", async () => {
 

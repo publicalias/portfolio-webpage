@@ -40,8 +40,6 @@ const initTestToggle = (handler, getData, prop) => async (user) => {
   await toggleProp(true);
   await toggleProp();
 
-  expect(await usersCol().countDocuments()).toEqual(1);
-
 };
 
 //init test unvote
@@ -110,8 +108,6 @@ const initTestVote = (handler, getData) => async (user) => {
 
   await castVote(0);
   await castVote(1);
-
-  expect(await usersCol().countDocuments()).toEqual(1);
 
 };
 

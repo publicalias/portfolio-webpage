@@ -35,21 +35,13 @@ describe("favoriteAdd", () => {
     id
   });
 
-  it("sends status if authentication fails", async () => {
-
-    await testAuthFail(mockAPICall, getData());
-
-    expect(await favoritesCol().countDocuments()).toEqual(0);
-
-  });
+  it("sends status if authentication fails", () => testAuthFail(mockAPICall, getData()));
 
   it("sends errors if venue does not exist", async () => {
 
     const res = await mockAPICall(newUser(), getData(""));
 
     testMock(res.json, [{ errors: ["Venue does not exist"] }]);
-
-    expect(await favoritesCol().countDocuments()).toEqual(0);
 
   });
 
@@ -63,8 +55,6 @@ describe("favoriteAdd", () => {
     const res = await mockAPICall(newUser({ id: "id-b" }), getData());
 
     testMock(res.json, [{ errors: ["Favorite already exists"] }]);
-
-    expect(await favoritesCol().countDocuments()).toEqual(1);
 
   });
 
@@ -101,13 +91,7 @@ describe("favoriteRemove", () => {
     user: { id: "id-b" }
   })));
 
-  it("sends status if authentication fails", async () => {
-
-    await testAuthFail(mockAPICall, getData(), [newUser()]);
-
-    expect(await favoritesCol().countDocuments()).toEqual(1);
-
-  });
+  it("sends status if authentication fails", () => testAuthFail(mockAPICall, getData(), [newUser()]));
 
   it("sends noop if successful", async () => {
 

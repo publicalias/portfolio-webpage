@@ -53,8 +53,6 @@ describe("friendAdd", () => {
 
     testMock(res.json, [{ errors: ["Friend request already exists"] }]);
 
-    expect(await friendsCol().countDocuments()).toEqual(1);
-
   };
 
   beforeEach(() => userDataCol().insertOne(newUserData({
@@ -62,21 +60,13 @@ describe("friendAdd", () => {
     data: { blocks: ["id-b"] }
   })));
 
-  it("sends status if authentication fails", async () => {
-
-    await testAuthFail(mockAPICall, getData(), [newUser({ id: "id-b" })]);
-
-    expect(await friendsCol().countDocuments()).toEqual(0);
-
-  });
+  it("sends status if authentication fails", () => testAuthFail(mockAPICall, getData(), [newUser({ id: "id-b" })]));
 
   it("sends errors if user does not exist", async () => {
 
     const res = await mockAPICall(newUser(), getData(""));
 
     testMock(res.json, [{ errors: ["User does not exist"] }]);
-
-    expect(await friendsCol().countDocuments()).toEqual(0);
 
   });
 
@@ -211,13 +201,7 @@ describe("friendRemove", () => {
 
   };
 
-  it("sends status if authentication fails", async () => {
-
-    await testAuthFail(mockAPICall, getData(), [newUser()]);
-
-    expect(await friendsCol().countDocuments()).toEqual(1);
-
-  });
+  it("sends status if authentication fails", () => testAuthFail(mockAPICall, getData(), [newUser()]));
 
   it("sends noop if successful (from)", () => testRemove("id-b"));
 
