@@ -2,7 +2,7 @@
 
 //local imports
 
-const { friendIDList, isValidTime } = require("../../app-logic");
+const { friendIDList, readTime } = require("../../app-logic");
 const { newRSVP } = require("../../../../schemas");
 
 //global imports
@@ -30,14 +30,15 @@ const rsvpAdd = handleAPICall({
 
     const exists = await rsvpsCol().findOne({
       "user.id": req.user.id,
-      "venue.id": id
+      "venue.id": id,
+      "time": readTime(time)
     });
 
     handleErrors(res, checkErrors([{
       bool: exists,
       text: "RSVP already exists"
     }, {
-      bool: !isValidTime(time),
+      bool: !readTime(time),
       text: "Time is incorrectly formatted"
     }]));
 
@@ -58,7 +59,7 @@ const rsvpAdd = handleAPICall({
         name,
         id
       },
-      time,
+      time: readTime(time),
       message
     }));
 

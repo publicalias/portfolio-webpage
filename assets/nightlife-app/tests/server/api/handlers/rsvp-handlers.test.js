@@ -50,7 +50,8 @@ describe("rsvpAdd", () => {
 
     await rsvpsCol().insertOne(newRSVP({
       user: { id: "id-b" },
-      venue: { id: "id-a" }
+      venue: { id: "id-a" },
+      time: "9:00 PM"
     }));
 
     const res = await mockAPICall(newUser({ id: "id-b" }), getData());

@@ -51,14 +51,3 @@ exports[`VenueRSVP (open) should match snapshot 1`] = `
   </div>
 </Fragment>
 `;
-
-exports[`VenueRSVP (rsvp) should match snapshot 1`] = `
-<Fragment>
-  <button
-    className="qa-toggle-rsvp"
-    onClick={[Function]}
-  >
-    Remove RSVP
-  </button>
-</Fragment>
-`;

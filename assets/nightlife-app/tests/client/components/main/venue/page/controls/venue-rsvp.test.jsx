@@ -4,7 +4,7 @@
 
 const VenueRSVP = require("../../../../../../../scripts/client/components/main/venue/page/controls/venue-rsvp");
 
-const { newUserWithData, newVenue } = require("../../../../../../../schemas");
+const { newVenue } = require("../../../../../../../schemas");
 const { testWrapper } = require("../../../../../test-helpers");
 
 //global imports
@@ -35,38 +35,6 @@ describe("VenueRSVP (default)", () => {
   it("should match snapshot", () => testSnapshot());
 
   it("should call handleClickRSVP on click", () => testClick(".qa-toggle-rsvp", [], ["venueSetOpen", [true]]));
-
-});
-
-describe("VenueRSVP (rsvp)", () => {
-
-  const testRSVP = withDataList(testShallow, [{ user: newUserWithData({ id: "id-a" }) }, {
-    venue: newVenue({
-      rsvps: [{
-        id: "id-b",
-        user: { id: "id-a" }
-      }]
-    })
-  }]);
-
-  const testSnapshot = initTestSnapshot(testRSVP);
-
-  const testClick = initTestEvent(testRSVP, "click");
-
-  it("should match snapshot", () => testSnapshot());
-
-  it("should call handleClickRSVP on click", () => testClick(
-    ".qa-toggle-rsvp",
-    [null, { refresh: jest.fn() }],
-    (props) => {
-
-      const { actions: { rsvpRemove }, local: { refresh } } = props;
-
-      testMock(rsvpRemove, ["id-b"]);
-      testMock(refresh, []);
-
-    }
-  ));
 
 });
 

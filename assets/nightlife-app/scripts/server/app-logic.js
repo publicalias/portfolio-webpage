@@ -11,6 +11,8 @@ const { handleAuthFail } = require("redux/server-utils");
 
 //node modules
 
+const chrono = require("chrono-node");
+const dateFormat = require("dateformat");
 const haversine = require("haversine");
 const round = require("mongo-round");
 const request = require("request-promise-native");
@@ -299,9 +301,9 @@ const handleYelpAPI = async (id, params) => {
   }
 };
 
-//is valid time
+//read time
 
-const isValidTime = (time) => /^(1[0-2]|[1-9]):[0-5][0-9]\s[AP]M$/.test(time);
+const readTime = (time) => ((date = chrono.strict.parseDate(time)) => date && dateFormat(date, "h:MM TT"))();
 
 //exports
 
@@ -315,5 +317,5 @@ module.exports = {
   geoCode,
   handleAuthFriend,
   handleYelpAPI,
-  isValidTime
+  readTime
 };

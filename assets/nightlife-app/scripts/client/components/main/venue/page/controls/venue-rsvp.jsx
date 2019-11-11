@@ -9,14 +9,10 @@ const React = require("react");
 const VenueRSVP = (props) => {
 
   const {
-    actions: { rsvpAdd, rsvpRemove, venueClearForm, venueSetMessage, venueSetOpen, venueSetTime },
-    data: { user, venues: { page: { form } } },
+    actions: { rsvpAdd, venueClearForm, venueSetMessage, venueSetOpen, venueSetTime },
+    data: { venues: { page: { form } } },
     local: { refresh, venue }
   } = props;
-
-  //utilities
-
-  const rsvp = venue.rsvps.find((e) => e.user.id === user.id);
 
   //events
 
@@ -32,16 +28,8 @@ const VenueRSVP = (props) => {
     venueClearForm();
   };
 
-  const handleClickRSVP = async () => {
-    if (rsvp) {
-
-      await rsvpRemove(rsvp.id);
-
-      refresh();
-
-    } else {
-      venueSetOpen(true);
-    }
+  const handleClickRSVP = () => {
+    venueSetOpen(true);
   };
 
   const handleClickSubmit = async () => {
@@ -59,12 +47,7 @@ const VenueRSVP = (props) => {
 
   return (
     <React.Fragment>
-      <button
-        className="qa-toggle-rsvp"
-        onClick={handleClickRSVP}
-      >
-        {rsvp ? "Remove RSVP" : "Add RSVP"}
-      </button>
+      <button className="qa-toggle-rsvp" onClick={handleClickRSVP}>Add RSVP</button>
       {form.open && (
         <div className="c-venue-form">
           <input
@@ -100,7 +83,7 @@ const VenueRSVP = (props) => {
 
 };
 
-VenueRSVP.propList = ["data.user", "data.venues.page.form", "local"];
+VenueRSVP.propList = ["data.venues.page.form", "local"];
 
 //exports
 
