@@ -34,15 +34,13 @@ describe("formAddOption", () => {
     options
   });
 
-  const testError = async (error, add, options) => {
+  testOptions(async (error, add, options) => {
 
     const res = await mockAPICall({}, getData(add, options));
 
     testMock(res.json, [{ errors: [error] }]);
 
-  };
-
-  testOptions(testError);
+  });
 
   it("sends data if successful", async () => {
 
@@ -69,15 +67,13 @@ describe("formCheckTitle", () => {
 
   const getData = (title) => ({ title });
 
-  const testError = async (error, title) => {
+  testTitle(async (error, title) => {
 
     const res = await mockAPICall({}, getData(title));
 
     testMock(res.json, [{ errors: [error] }]);
 
-  };
-
-  testTitle(testError);
+  });
 
   it("sends noop if successful", async () => {
 

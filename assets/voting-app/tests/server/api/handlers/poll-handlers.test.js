@@ -37,7 +37,9 @@ describe("pollAddOption", () => {
     text
   });
 
-  const testError = async (error, text, options = []) => {
+  it("sends status if authentication fails", () => testAuthFail(mockAPICall, getData()));
+
+  testOptions(async (error, text, options = []) => {
 
     await pollsCol().insertOne(newPoll({
       id: "id-a",
@@ -48,11 +50,7 @@ describe("pollAddOption", () => {
 
     testMock(res.json, [{ errors: [error] }]);
 
-  };
-
-  testOptions(testError);
-
-  it("sends status if authentication fails", () => testAuthFail(mockAPICall, getData()));
+  });
 
   it("sends noop if successful", async () => {
 

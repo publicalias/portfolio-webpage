@@ -7,8 +7,8 @@ const { newUserData, newUserWithData } = require("../../../../schemas");
 
 //global imports
 
-const { deepCopy } = require("all/utilities");
-const { handleAPICall, handleAuthFail } = require("redux/server-utils");
+const { checkErrors, deepCopy } = require("all/utilities");
+const { handleAPICall, handleAuthFail, handleErrors } = require("redux/server-utils");
 
 //utilities
 
@@ -44,6 +44,17 @@ const metaSaveAddress = handleAPICall({
 
   failure: handleAuthFail,
 
+  errors(req, res) {
+
+    const { address } = req.body.data;
+
+    handleErrors(res, checkErrors([{
+      bool: address.length > 100,
+      text: "Address exceeds character limit"
+    }]));
+
+  },
+
   async success(req, res) {
 
     const { address, location } = req.body.data;
@@ -70,6 +81,17 @@ metaSaveAddress.injected = { lib: { geoCode } };
 const metaSaveAvatar = handleAPICall({
 
   failure: handleAuthFail,
+
+  errors(req, res) {
+
+    const { avatar } = req.body.data;
+
+    handleErrors(res, checkErrors([{
+      bool: avatar.length > 100,
+      text: "Avatar exceeds character limit"
+    }]));
+
+  },
 
   async success(req, res) {
 

@@ -9,7 +9,7 @@ const { newFriend, newRSVP } = require("../../../../schemas");
 //global imports
 
 const { newUser } = require("redux/schemas");
-const { testMock } = require("redux/tests/meta-tests");
+const { initTestErrors, overlyLongInput, testMock } = require("redux/tests/meta-tests");
 const { initMockAPICall, mongoTests, testAuthFail, testInsert } = require("redux/tests/server-tests");
 
 //utilities
@@ -31,12 +31,18 @@ describe("rsvpAdd", () => {
 
   const mockAPICall = initMockAPICall(rsvpAdd, "POST");
 
-  const getData = (time = "9:00 PM") => ({
+  const getData = (time = "9:00 PM", message = "Message") => ({
     name: "Venue A",
     id: "id-a",
     time,
-    message: "Message"
+    message
   });
+
+  const testInputs = initTestErrors([
+    ["sends errors if time exceeds character limit", ["Time exceeds character limit", overlyLongInput]],
+    ["sends errors if message exceeds character limit", ["Message exceeds character limit", "9:00 PM", overlyLongInput]],
+    ["sends errors if time is incorrectly formatted", ["Time is incorrectly formatted", "lol idk"]]
+  ]);
 
   it("sends status if authentication fails", async () => {
 
@@ -62,11 +68,13 @@ describe("rsvpAdd", () => {
 
   });
 
-  it("sends errors if time is incorrectly formatted", async () => {
+  testInputs(async (error, time, message) => {
 
-    const res = await mockAPICall(newUser(), getData("idk lol"));
+    const res = await mockAPICall(newUser(), getData(time, message));
 
-    testMock(res.json, [{ errors: ["Time is incorrectly formatted"] }]);
+    const [{ errors }] = res.json.mock.calls[0];
+
+    expect(errors.includes(error)).toEqual(true);
 
     expect(await rsvpsCol().countDocuments()).toEqual(0);
 

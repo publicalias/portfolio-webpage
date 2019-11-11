@@ -10,7 +10,7 @@ const { getGeoPoint } = require("../../test-helpers");
 //global imports
 
 const { newUser } = require("redux/schemas");
-const { testMock } = require("redux/tests/meta-tests");
+const { overlyLongInput, testMock } = require("redux/tests/meta-tests");
 const { initMockAPICall, mongoTests, testAuthFail, testInsert } = require("redux/tests/server-tests");
 
 //utilities
@@ -127,6 +127,14 @@ describe("metaSaveAddress", () => {
 
   it("sends status if authentication fails", () => testAuthFail(mockAPICall, getData()));
 
+  it("sends errors if address exceeds character limit", async () => {
+
+    const res = await mockAPICall(newUser(), getData(overlyLongInput));
+
+    testMock(res.json, [{ errors: ["Address exceeds character limit"] }]);
+
+  });
+
   it("sends noop if successful (address)", () => testSave("67890"));
 
   it("sends noop if successful (location)", () => testSave("", getGeoPoint(1)));
@@ -143,11 +151,19 @@ describe("metaSaveAvatar", () => {
 
   const mockAPICall = initMockAPICall(metaSaveAvatar, "PATCH");
 
-  const getData = () => ({ avatar: "https://www.example.com/avatar.jpg" });
+  const getData = (avatar = "https://www.example.com/avatar.jpg") => ({ avatar });
 
   beforeEach(() => insertUserData());
 
   it("sends status if authentication fails", () => testAuthFail(mockAPICall, getData()));
+
+  it("sends errors if avatar exceeds character limit", async () => {
+
+    const res = await mockAPICall(newUser(), getData(overlyLongInput));
+
+    testMock(res.json, [{ errors: ["Avatar exceeds character limit"] }]);
+
+  });
 
   it("sends noop if successful", async () => {
 

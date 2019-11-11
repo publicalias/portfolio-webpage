@@ -38,17 +38,13 @@ describe("metaCreatePoll", () => {
 
     const res = await mockAPICall(newUser(), getData(form));
 
-    const args = res.json.mock.calls[0];
+    const [{ errors }] = res.json.mock.calls[0];
 
-    expect(args[0].errors.includes(error)).toEqual(true);
+    expect(errors.includes(error)).toEqual(true);
 
     expect(await pollsCol().countDocuments()).toEqual(count);
 
   };
-
-  testOptions((error, data, other) => testError(error, { options: [data, ...other || []] }));
-
-  testTitle((error, data, count) => testError(error, { title: data }, count), [null, null, [1]]);
 
   it("sends status if authentication fails", async () => {
 
@@ -57,6 +53,10 @@ describe("metaCreatePoll", () => {
     expect(await pollsCol().countDocuments()).toEqual(0);
 
   });
+
+  testOptions((error, data, other) => testError(error, { options: [data, ...other || []] }));
+
+  testTitle((error, data, count) => testError(error, { title: data }, count), [null, null, [1]]);
 
   it("sends noop if successful", async () => {
 

@@ -26,7 +26,7 @@ const rsvpAdd = handleAPICall({
 
   async errors(req, res) {
 
-    const { id, time } = req.body.data;
+    const { id, time, message } = req.body.data;
 
     const exists = await rsvpsCol().findOne({
       "user.id": req.user.id,
@@ -37,6 +37,12 @@ const rsvpAdd = handleAPICall({
     handleErrors(res, checkErrors([{
       bool: exists,
       text: "RSVP already exists"
+    }, {
+      bool: time.length > 100,
+      text: "Time exceeds character limit"
+    }, {
+      bool: message.length > 100,
+      text: "Message exceeds character limit"
     }, {
       bool: !readTime(time),
       text: "Time is incorrectly formatted"
