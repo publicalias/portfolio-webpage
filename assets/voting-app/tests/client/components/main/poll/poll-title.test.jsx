@@ -30,7 +30,9 @@ describe("PollTitle (form)", () => {
 
   const testSnapshot = initTestSnapshot(testForm);
 
-  const testBlur = initTestEvent(testForm, "blur", { target: { value: "Title A" } });
+  const testBlur = initTestEvent(testForm, "blur");
+
+  const testChange = initTestEvent(testForm, "change", { target: { value: "Title A" } });
 
   it("should match snapshot (default)", () => testSnapshot());
 
@@ -38,9 +40,14 @@ describe("PollTitle (form)", () => {
 
   it("should call handleBlur on blur", () => testBlur(
     ".qa-title-input",
-    [],
-    ["formSetTitle", ["Title A"]],
+    [{ form: { title: "Title A" } }],
     ["formCheckTitle", ["Title A"]]
+  ));
+
+  it("should call handleChange on change", () => testChange(
+    ".qa-title-input",
+    [],
+    ["formSetTitle", ["Title A"]]
   ));
 
 });

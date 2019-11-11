@@ -8,17 +8,16 @@ const React = require("react");
 
 const PollTitle = (props) => {
 
-  const { actions: { formSetTitle, formCheckTitle }, data: { user }, local: { poll, role } } = props;
+  const { actions: { formCheckTitle, formSetTitle }, data: { user, form }, local: { poll, role } } = props;
 
   //events
 
-  const handleBlur = (event) => {
+  const handleBlur = () => {
+    formCheckTitle(form.title);
+  };
 
-    const title = event.target.value;
-
-    formSetTitle(title);
-    formCheckTitle(title);
-
+  const handleChange = (event) => {
+    formSetTitle(event.target.value);
   };
 
   //render
@@ -30,10 +29,12 @@ const PollTitle = (props) => {
   return role === "form" ? (
     <div className="u-align-center">
       <input
-        className="c-poll-display__input qa-title-input u-margin-half js-edit-title"
+        className="c-poll-display__input qa-title-input u-margin-half"
         maxLength="100"
         onBlur={handleBlur}
+        onChange={handleChange}
         placeholder="Untitled"
+        value={form.title}
       />
       {attribution}
     </div>
@@ -46,7 +47,7 @@ const PollTitle = (props) => {
 
 };
 
-PollTitle.propList = ["data.user", "local"];
+PollTitle.propList = ["data.user", "data.form", "local"];
 
 //exports
 

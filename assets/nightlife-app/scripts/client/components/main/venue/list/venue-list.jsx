@@ -43,7 +43,7 @@ const VenueList = (props) => {
 
   useLayoutEffect(() => {
     if (ready) {
-      handleReload(); //async
+      handleReload();
     }
   }, [
     JSON.stringify(get(user, "data.location")),

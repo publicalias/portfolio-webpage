@@ -39,21 +39,23 @@ const VenuePage = (props) => {
   const venue = data.find((e) => e.id === id) || newVenue();
 
   const initVenueData = async () => {
-    venueClearState();
     venueGetItem(id, await getLocation(user));
   };
 
   //lifecycle
 
+  useLayoutEffect(venueClearState, [id]);
+
   useLayoutEffect(() => {
     if (ready) {
-      initVenueData(); //async
+      initVenueData();
     }
   }, [
     JSON.stringify(get(user, "data.location")),
     ready,
     JSON.stringify(friends),
-    JSON.stringify(rsvps)
+    JSON.stringify(rsvps),
+    id
   ]);
 
   //render

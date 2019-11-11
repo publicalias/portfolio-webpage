@@ -30,7 +30,23 @@ describe("VenuePage (general)", () => {
 
   const testSnapshot = withDataList(initTestSnapshot(testShallow), dataList);
 
-  const testLoad = async (fn) => {
+  const testPage = withDataList(testMount, dataList);
+
+  const testLoadA = (fn) => {
+
+    const { props, setProps, wrapper } = testPage();
+
+    wrapper.mount();
+
+    setProps(null, { id: "id-b" });
+
+    fn(props);
+
+    wrapper.unmount();
+
+  };
+
+  const testLoadB = async (fn) => {
 
     const userA = { user: { data: { location: null } } };
     const userB = { user: { data: { location: getGeoPoint(0) } } };
@@ -43,7 +59,7 @@ describe("VenuePage (general)", () => {
       [userB]
     ];
 
-    const { props, setProps, wrapper } = testMount(...dataList);
+    const { props, setProps, wrapper } = testPage();
 
     wrapper.mount();
 
@@ -65,13 +81,20 @@ describe("VenuePage (general)", () => {
 
   it("should match snapshot (match)", () => testSnapshot({ venues: { data: [{ id: "id-a" }] } }));
 
-  it("should call initVenueData conditionally on update", () => testLoad((props, userA, userB) => {
+  it("should call venueClearState conditionally on update", () => testLoadA((props) => {
 
-    const { actions: { venueClearState, venueGetItem } } = props;
+    const { actions: { venueClearState } } = props;
+
+    testMock(venueClearState, [], []);
+
+  }));
+
+  it("should call initVenueData conditionally on update", () => testLoadB((props, userA, userB) => {
+
+    const { actions: { venueGetItem } } = props;
 
     const { lib: { getLocation } } = VenuePage.injected;
 
-    testMock(venueClearState, [], [], [], []);
     testMock(getLocation, [userA], [userA], [userA], [userB]);
     testMock(venueGetItem, ["id-a", null], ["id-a", null], ["id-a", null], ["id-a", getGeoPoint(0)]);
 

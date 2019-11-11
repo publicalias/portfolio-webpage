@@ -5,10 +5,12 @@ exports[`PollTitle (form) should match snapshot (author) 1`] = `
   className="u-align-center"
 >
   <input
-    className="c-poll-display__input qa-title-input u-margin-half js-edit-title"
+    className="c-poll-display__input qa-title-input u-margin-half"
     maxLength="100"
     onBlur={[Function]}
+    onChange={[Function]}
     placeholder="Untitled"
+    value=""
   />
   <h4>
     By Author A
@@ -21,10 +23,12 @@ exports[`PollTitle (form) should match snapshot (default) 1`] = `
   className="u-align-center"
 >
   <input
-    className="c-poll-display__input qa-title-input u-margin-half js-edit-title"
+    className="c-poll-display__input qa-title-input u-margin-half"
     maxLength="100"
     onBlur={[Function]}
+    onChange={[Function]}
     placeholder="Untitled"
+    value=""
   />
   <h4>
     By Anonymous

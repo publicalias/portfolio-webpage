@@ -10,7 +10,6 @@ const { testCreateDelete, testWrapper } = require("../../../test-helpers");
 //global imports
 
 const { initTestEvent, initTestSnapshot, testSubmit } = require("redux/tests/client-tests");
-const { mockResults, testMock } = require("redux/tests/meta-tests");
 const { reactTests } = require("redux/tests/react-tests");
 
 //utilities
@@ -51,16 +50,7 @@ describe("FormMenu (events)", () => {
   it("should call handleDiscard on click (yes)", () => testClick(
     ".qa-discard-poll",
     dataList,
-    ["formClearState", []],
-    () => {
-
-      const { lib: { select } } = FormMenu.injected;
-
-      testMock(select, [".js-edit-title"]);
-
-      expect(mockResults(select)[0].value).toEqual("");
-
-    }
+    ["formClearState", []]
   ));
 
   it("should call handleConfirm on click (no)", () => testClick(
