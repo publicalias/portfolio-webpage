@@ -52,6 +52,16 @@ describe("rsvpAdd", () => {
 
   });
 
+  it("sends errors if venue does not exist", async () => {
+
+    const res = await mockAPICall(newUser(), Object.assign(getData(), { id: "" }));
+
+    testMock(res.json, [{ errors: ["Venue does not exist"] }]);
+
+    expect(await rsvpsCol().countDocuments()).toEqual(0);
+
+  });
+
   it("sends errors if RSVP already exists", async () => {
 
     await rsvpsCol().insertOne(newRSVP({

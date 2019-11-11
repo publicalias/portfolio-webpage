@@ -33,6 +33,9 @@ const favoriteAdd = handleAPICall({
     });
 
     handleErrors(res, checkErrors([{
+      bool: !id,
+      text: "Venue does not exist"
+    }, {
       bool: exists,
       text: "Favorite already exists"
     }]));

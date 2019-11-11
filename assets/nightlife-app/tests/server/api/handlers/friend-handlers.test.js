@@ -37,9 +37,9 @@ describe("friendAdd", () => {
 
   const mockAPICall = initMockAPICall(friendAdd, "POST");
 
-  const getData = () => ({
+  const getData = (id = "id-a") => ({
     name: "User A",
-    id: "id-a"
+    id
   });
 
   const testError = async (from, to) => {
@@ -65,6 +65,16 @@ describe("friendAdd", () => {
   it("sends status if authentication fails", async () => {
 
     await testAuthFail(mockAPICall, getData(), [newUser({ id: "id-b" })]);
+
+    expect(await friendsCol().countDocuments()).toEqual(0);
+
+  });
+
+  it("sends errors if user does not exist", async () => {
+
+    const res = await mockAPICall(newUser(), getData(""));
+
+    testMock(res.json, [{ errors: ["User does not exist"] }]);
 
     expect(await friendsCol().countDocuments()).toEqual(0);
 

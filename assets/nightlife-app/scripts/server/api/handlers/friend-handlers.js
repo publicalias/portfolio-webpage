@@ -27,9 +27,13 @@ const friendAdd = handleAPICall({
 
     const { id } = req.body.data;
 
-    const { data: { blocks } } = await userDataCol().findOne({ id });
+    handleAuthFail(req, res, id && await (async () => {
 
-    handleAuthFail(req, res, (id) => blocks.includes(id));
+      const { data: { blocks } } = await userDataCol().findOne({ id });
+
+      return (id) => blocks.includes(id);
+
+    })());
 
   },
 
@@ -48,6 +52,9 @@ const friendAdd = handleAPICall({
     });
 
     handleErrors(res, checkErrors([{
+      bool: !id,
+      text: "User does not exist"
+    }, {
       bool: exists,
       text: "Friend request already exists"
     }]));

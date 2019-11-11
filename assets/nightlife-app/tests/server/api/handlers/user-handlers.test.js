@@ -269,7 +269,7 @@ describe("userToggleBlock", () => {
 
   const mockAPICall = initMockAPICall(userToggleBlock, "PATCH");
 
-  const getData = () => ({ id: "id-b" });
+  const getData = (id = "id-b") => ({ id });
 
   const testAdd = async (from, to) => {
 
@@ -291,6 +291,14 @@ describe("userToggleBlock", () => {
   };
 
   it("sends status if authentication fails", () => testAuthFail(mockAPICall, getData()));
+
+  it("sends errors if user does not exist", async () => {
+
+    const res = await mockAPICall(newUser(), getData(""));
+
+    testMock(res.json, [{ errors: ["User does not exist"] }]);
+
+  });
 
   it("sends noop if successful (add, from)", () => testAdd("id-a", "id-b"));
 

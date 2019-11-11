@@ -6,6 +6,7 @@ const { checkSearch, findUserItem, findUserList } = require("../../app-logic");
 
 //global imports
 
+const { checkErrors } = require("all/utilities");
 const { handleAPICall, handleAuthFail, handleErrors } = require("redux/server-utils");
 
 //utilities
@@ -54,6 +55,17 @@ const userGetList = handleAPICall({
 const userToggleBlock = handleAPICall({
 
   failure: handleAuthFail,
+
+  errors(req, res) {
+
+    const { id } = req.body.data;
+
+    handleErrors(res, checkErrors([{
+      bool: !id,
+      text: "User does not exist"
+    }]));
+
+  },
 
   async success(req, res) {
 

@@ -30,14 +30,24 @@ describe("favoriteAdd", () => {
 
   const mockAPICall = initMockAPICall(favoriteAdd, "POST");
 
-  const getData = () => ({
+  const getData = (id = "id-a") => ({
     name: "Venue A",
-    id: "id-a"
+    id
   });
 
   it("sends status if authentication fails", async () => {
 
     await testAuthFail(mockAPICall, getData());
+
+    expect(await favoritesCol().countDocuments()).toEqual(0);
+
+  });
+
+  it("sends errors if venue does not exist", async () => {
+
+    const res = await mockAPICall(newUser(), getData(""));
+
+    testMock(res.json, [{ errors: ["Venue does not exist"] }]);
 
     expect(await favoritesCol().countDocuments()).toEqual(0);
 
