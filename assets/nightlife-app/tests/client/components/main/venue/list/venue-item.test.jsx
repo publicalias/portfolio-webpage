@@ -44,7 +44,7 @@ describe("VenueItem", () => {
 
     const testError = initTestEvent(testItem, "error", event);
 
-    return testError(".qa-image-error", [], () => {
+    return testError(".qa-error-image", [], () => {
       expect(event.target.src).toEqual(placeholder);
     });
 

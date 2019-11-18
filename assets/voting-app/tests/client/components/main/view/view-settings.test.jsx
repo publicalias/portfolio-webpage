@@ -42,7 +42,7 @@ describe("ViewSettings (events)", () => {
   const testClick = initTestEvent(withDataList(testShallow, [null, { poll: newPoll() }]), "click");
 
   it("should call handleConfirm on click (delete)", () => testClick(
-    ".qa-confirm-true",
+    ".qa-click-delete",
     [],
     ["viewToggleDelete", []]
   ));
@@ -51,7 +51,7 @@ describe("ViewSettings (events)", () => {
 
     const dataList = [{ view: { delete: true } }];
 
-    return testClick(".qa-confirm-false", dataList, ["viewToggleDelete", []]);
+    return testClick(".qa-click-no", dataList, ["viewToggleDelete", []]);
 
   });
 
@@ -82,7 +82,7 @@ describe("ViewSettings (events)", () => {
 
     const dataList = [{ view: { delete: true } }, { poll: newPoll({ id: "id-a" }) }];
 
-    return testCreateDelete(testShallow, dataList, ".qa-delete-poll", res, ["metaDeletePoll", ["id-a"]]);
+    return testCreateDelete(testShallow, dataList, ".qa-click-yes", res, ["metaDeletePoll", ["id-a"]]);
 
   });
 

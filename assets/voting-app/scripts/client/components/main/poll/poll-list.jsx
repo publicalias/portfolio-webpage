@@ -52,7 +52,7 @@ const PollList = (props) => {
 
         return (
           <button
-            className="c-poll-options__option u-margin-half u-margin-right qa-option-vote"
+            className="c-poll-options__option u-margin-half u-margin-right qa-click-vote"
             key={keyGen(text)}
             onClick={handleVote(text)}
           >

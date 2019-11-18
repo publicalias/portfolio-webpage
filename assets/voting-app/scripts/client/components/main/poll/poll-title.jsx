@@ -29,7 +29,7 @@ const PollTitle = (props) => {
   return role === "form" ? (
     <div className="u-align-center">
       <input
-        className="c-poll-display__input qa-title-input u-margin-half"
+        className="c-poll-display__input qa-ref-title u-margin-half"
         maxLength="100"
         onBlur={handleBlur}
         onChange={handleChange}

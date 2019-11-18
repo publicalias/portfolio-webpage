@@ -54,7 +54,7 @@ describe("VenuePhotos (snapshots)", () => {
 describe("VenuePhotos (events)", () => {
 
   const testEvent = (type, fn) => initTestEvent(withDataList(testShallow, dataList), type, {})(
-    ".qa-carousel-events",
+    ".qa-ref-carousel",
     [],
     () => {
 

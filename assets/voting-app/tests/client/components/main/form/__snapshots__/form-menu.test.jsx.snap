@@ -5,7 +5,7 @@ exports[`FormMenu (snapshots) should match snapshot (confirm) 1`] = `
   className="c-form-menu"
 >
   <button
-    className="c-form-menu__control-btn qa-create-poll"
+    className="c-form-menu__control-btn qa-click-create"
     onClick={[Function]}
   >
     Create
@@ -19,13 +19,13 @@ exports[`FormMenu (snapshots) should match snapshot (confirm) 1`] = `
       Are you sure?
     </p>
     <button
-      className="c-form-menu__control-btn qa-discard-poll"
+      className="c-form-menu__control-btn qa-click-yes"
       onClick={[Function]}
     >
       Yes
     </button>
     <button
-      className="c-form-menu__control-btn qa-confirm-false"
+      className="c-form-menu__control-btn qa-click-no"
       onClick={[Function]}
     >
       No
@@ -45,13 +45,13 @@ exports[`FormMenu (snapshots) should match snapshot (default) 1`] = `
   className="c-form-menu"
 >
   <button
-    className="c-form-menu__control-btn qa-create-poll"
+    className="c-form-menu__control-btn qa-click-create"
     onClick={[Function]}
   >
     Create
   </button>
   <button
-    className="c-form-menu__control-btn qa-confirm-true"
+    className="c-form-menu__control-btn qa-click-discard"
     onClick={[Function]}
   >
     Discard
@@ -70,13 +70,13 @@ exports[`FormMenu (snapshots) should match snapshot (secret) 1`] = `
   className="c-form-menu"
 >
   <button
-    className="c-form-menu__control-btn qa-create-poll"
+    className="c-form-menu__control-btn qa-click-create"
     onClick={[Function]}
   >
     Create
   </button>
   <button
-    className="c-form-menu__control-btn qa-confirm-true"
+    className="c-form-menu__control-btn qa-click-discard"
     onClick={[Function]}
   >
     Discard

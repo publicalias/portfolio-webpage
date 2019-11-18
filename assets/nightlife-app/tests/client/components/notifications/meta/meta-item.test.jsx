@@ -50,7 +50,7 @@ describe("MetaItem", () => {
     const refresh = jest.fn();
 
     return testClick(
-      ".qa-action-item",
+      ".qa-click-item",
       [null, {
         buttons: [{ handler }],
         refresh

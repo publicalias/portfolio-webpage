@@ -42,19 +42,19 @@ describe("FormMenu (events)", () => {
   const testClick = initTestEvent(testShallow, "click");
 
   it("should call handleConfirm on click (discard)", () => testClick(
-    ".qa-confirm-true",
+    ".qa-click-discard",
     [],
     ["formToggleDelete", []]
   ));
 
   it("should call handleDiscard on click (yes)", () => testClick(
-    ".qa-discard-poll",
+    ".qa-click-yes",
     dataList,
     ["formClearState", []]
   ));
 
   it("should call handleConfirm on click (no)", () => testClick(
-    ".qa-confirm-false",
+    ".qa-click-no",
     dataList,
     ["formToggleDelete", []]
   ));
@@ -67,7 +67,7 @@ describe("FormMenu (events)", () => {
 
   testSubmit("click", "handleCreate", (res) => {
 
-    const args = [testShallow, [], ".qa-create-poll", res, ["metaCreatePoll", [newForm()]]];
+    const args = [testShallow, [], ".qa-click-create", res, ["metaCreatePoll", [newForm()]]];
 
     return testCreateDelete(...args);
 

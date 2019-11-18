@@ -51,27 +51,27 @@ const VenueRSVP = (props) => {
       {form.open && (
         <div className="c-venue-form">
           <input
-            className="c-venue-form__time qa-rsvp-time"
+            className="c-venue-form__time qa-change-time"
             maxLength="100"
             onChange={handleChangeTime}
             placeholder="Time (e.g. 9:00 PM)"
             value={form.time}
           />
           <input
-            className="c-venue-form__message qa-rsvp-message"
+            className="c-venue-form__message qa-change-message"
             maxLength="100"
             onChange={handleChangeMessage}
             placeholder="Message"
             value={form.message}
           />
           <button
-            className="c-venue-form__submit qa-rsvp-submit"
+            className="c-venue-form__submit qa-click-submit"
             onClick={handleClickSubmit}
           >
             Submit
           </button>
           <button
-            className="c-venue-form__cancel qa-rsvp-cancel"
+            className="c-venue-form__cancel qa-click-cancel"
             onClick={handleClickCancel}
           >
             Cancel

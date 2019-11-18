@@ -57,7 +57,7 @@ const VenuePhotos = (props) => {
 
   return (
     <div
-      className="c-venue-photos js-ref-carousel qa-carousel-events"
+      className="c-venue-photos js-ref-carousel qa-ref-carousel"
       onMouseEnter={handlePause(true)}
       onMouseLeave={handlePause()}
       onTouchEnd={handleTouchEnd}

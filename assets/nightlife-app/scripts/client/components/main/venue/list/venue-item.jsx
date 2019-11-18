@@ -27,7 +27,7 @@ const VenueItem = (props) => {
       <div className="c-list-item">
         <img
           alt="Venue Photo"
-          className="qa-image-error"
+          className="qa-error-image"
           onError={handleError}
           src={venue.image_url}
         />

@@ -39,7 +39,7 @@ const App = (props) => {
   useEffect(checkInput, []);
 
   useEffect(() => {
-    select(".js-loading-state").class("is-loading", true, bool);
+    select(".js-toggle-loading").class("is-loading", true, bool);
   }, [bool]);
 
   useEffect(() => {

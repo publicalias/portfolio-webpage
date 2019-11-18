@@ -5,14 +5,14 @@ exports[`PollInput (form) should match snapshot 1`] = `
   className="c-poll-options__input-box"
 >
   <input
-    className="c-poll-options__input qa-option-input u-margin-right"
+    className="c-poll-options__input qa-change-input u-margin-right"
     maxLength="100"
     onChange={[Function]}
     placeholder="New Option (Up to 20)"
     value=""
   />
   <button
-    className="c-poll-options__submit qa-option-submit"
+    className="c-poll-options__submit qa-submit-input"
     onClick={[Function]}
   >
     Add
@@ -25,14 +25,14 @@ exports[`PollInput (view) should match snapshot 1`] = `
   className="c-poll-options__input-box"
 >
   <input
-    className="c-poll-options__input qa-option-input u-margin-right"
+    className="c-poll-options__input qa-change-input u-margin-right"
     maxLength="100"
     onChange={[Function]}
     placeholder="New Option (Up to 20)"
     value=""
   />
   <button
-    className="c-poll-options__submit qa-option-submit"
+    className="c-poll-options__submit qa-submit-input"
     onClick={[Function]}
   >
     Add

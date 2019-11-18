@@ -50,10 +50,10 @@ const ViewSettings = (props) => {
       {view.delete ? (
         <div className="c-view-menu__display-box">
           <p className="c-view-menu__confirm-text">Are you sure?</p>
-          <button className="c-view-menu__control-btn qa-delete-poll" onClick={handleDelete}>Yes</button>
-          <button className="c-view-menu__control-btn qa-confirm-false" onClick={handleConfirm}>No</button>
+          <button className="c-view-menu__control-btn qa-click-yes" onClick={handleDelete}>Yes</button>
+          <button className="c-view-menu__control-btn qa-click-no" onClick={handleConfirm}>No</button>
         </div>
-      ) : <button className="c-view-menu__control-btn qa-confirm-true" onClick={handleConfirm}>Delete</button>}
+      ) : <button className="c-view-menu__control-btn qa-click-delete" onClick={handleConfirm}>Delete</button>}
       <button
         className="c-view-menu__button qa-toggle-secret u-flex-right"
         onClick={handleSecret}

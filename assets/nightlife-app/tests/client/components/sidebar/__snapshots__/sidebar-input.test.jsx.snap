@@ -5,14 +5,14 @@ exports[`SidebarInput (address) should match snapshot (bool) 1`] = `
   className="c-sidebar__input-box"
 >
   <input
-    className="c-sidebar__input qa-account-input"
+    className="c-sidebar__input qa-change-input"
     maxLength="100"
     onChange={[Function]}
     placeholder="Address"
     value=""
   />
   <button
-    className="c-sidebar__submit qa-account-submit"
+    className="c-sidebar__submit qa-submit-input"
     onClick={[Function]}
   >
     Reset
@@ -25,14 +25,14 @@ exports[`SidebarInput (address) should match snapshot (bool, text) 1`] = `
   className="c-sidebar__input-box"
 >
   <input
-    className="c-sidebar__input qa-account-input"
+    className="c-sidebar__input qa-change-input"
     maxLength="100"
     onChange={[Function]}
     placeholder="Address"
     value="12345"
   />
   <button
-    className="c-sidebar__submit qa-account-submit"
+    className="c-sidebar__submit qa-submit-input"
     onClick={[Function]}
   >
     Set
@@ -45,14 +45,14 @@ exports[`SidebarInput (address) should match snapshot (default) 1`] = `
   className="c-sidebar__input-box"
 >
   <input
-    className="c-sidebar__input qa-account-input"
+    className="c-sidebar__input qa-change-input"
     maxLength="100"
     onChange={[Function]}
     placeholder="Address"
     value=""
   />
   <button
-    className="c-sidebar__submit qa-account-submit"
+    className="c-sidebar__submit qa-submit-input"
     onClick={[Function]}
   >
     Set
@@ -65,14 +65,14 @@ exports[`SidebarInput (avatar) should match snapshot (bool) 1`] = `
   className="c-sidebar__input-box"
 >
   <input
-    className="c-sidebar__input qa-account-input"
+    className="c-sidebar__input qa-change-input"
     maxLength="100"
     onChange={[Function]}
     placeholder="Avatar"
     value=""
   />
   <button
-    className="c-sidebar__submit qa-account-submit"
+    className="c-sidebar__submit qa-submit-input"
     onClick={[Function]}
   >
     Reset
@@ -85,14 +85,14 @@ exports[`SidebarInput (avatar) should match snapshot (bool, text) 1`] = `
   className="c-sidebar__input-box"
 >
   <input
-    className="c-sidebar__input qa-account-input"
+    className="c-sidebar__input qa-change-input"
     maxLength="100"
     onChange={[Function]}
     placeholder="Avatar"
     value="https://www.example.com/avatar.jpg"
   />
   <button
-    className="c-sidebar__submit qa-account-submit"
+    className="c-sidebar__submit qa-submit-input"
     onClick={[Function]}
   >
     Set
@@ -105,14 +105,14 @@ exports[`SidebarInput (avatar) should match snapshot (default) 1`] = `
   className="c-sidebar__input-box"
 >
   <input
-    className="c-sidebar__input qa-account-input"
+    className="c-sidebar__input qa-change-input"
     maxLength="100"
     onChange={[Function]}
     placeholder="Avatar"
     value=""
   />
   <button
-    className="c-sidebar__submit qa-account-submit"
+    className="c-sidebar__submit qa-submit-input"
     onClick={[Function]}
   >
     Set

@@ -1,6 +1,43 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ListMenu should match snapshot 1`] = `
+exports[`ListMenu should match snapshot (default) 1`] = `
+<div
+  className="c-list-menu"
+>
+  <div
+    className="c-list-menu__search"
+  >
+    <SearchBar
+      local={
+        Object {
+          "handleChange": [Function],
+          "handleClear": [Function],
+          "handleSubmit": [Function],
+          "value": "",
+        }
+      }
+    />
+  </div>
+  <div
+    className="c-list-menu__sort"
+  >
+    <button
+      className="qa-sort-new"
+      onClick={[Function]}
+    >
+      New
+    </button>
+    <button
+      className="qa-sort-popular"
+      onClick={[Function]}
+    >
+      Popular
+    </button>
+  </div>
+</div>
+`;
+
+exports[`ListMenu should match snapshot (search) 1`] = `
 <div
   className="c-list-menu"
 >

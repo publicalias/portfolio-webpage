@@ -2,7 +2,7 @@
 
 exports[`VenuePhotos (snapshots) should match snapshot 1`] = `
 <div
-  className="c-venue-photos js-ref-carousel qa-carousel-events"
+  className="c-venue-photos js-ref-carousel qa-ref-carousel"
   onMouseEnter={[MockFunction]}
   onMouseLeave={[MockFunction]}
   onTouchEnd={[MockFunction]}

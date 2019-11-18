@@ -7,24 +7,19 @@ const { select } = require("all/dom-api");
 //update board
 
 const updateBoard = (board) => {
-  for (let i = 0; i < board.length; i++) {
+  board.forEach((e, i) => {
 
-    const DOMCell = select(`.js-click-cell-${i}`);
+    const [text, bool] = ((data) => data[e])({
+      "1": ["X", false],
+      "0": ["&nbsp;", true],
+      "-1": ["O", false]
+    });
 
-    switch (board[i]) {
-      case 1:
-        DOMCell.text("X");
-        break;
-      case 0:
-        DOMCell.html("&nbsp;");
-        break;
-      case -1:
-        DOMCell.text("O");
-    }
+    select(`.js-click-cell-${i}`)
+      .html(text)
+      .class("is-empty", true, bool);
 
-    DOMCell.class("is-empty", true, board[i] === 0);
-
-  }
+  });
 };
 
 //update count

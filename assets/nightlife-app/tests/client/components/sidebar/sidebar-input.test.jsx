@@ -29,7 +29,7 @@ const initTestInput = (render, type, text, prop = type.toLowerCase()) => ({
 
     const testChange = initTestEvent(render, "change", { target: { value: text } });
 
-    return testChange(".qa-account-input", [], [`metaSet${type}`, [text]]);
+    return testChange(".qa-change-input", [], [`metaSet${type}`, [text]]);
 
   },
 
@@ -40,7 +40,7 @@ const initTestInput = (render, type, text, prop = type.toLowerCase()) => ({
     const { lib: { getLocation } } = SidebarInput.injected;
 
     return testClick(
-      ".qa-account-submit",
+      ".qa-submit-input",
       [{
         account: {
           [prop]: text

@@ -5,7 +5,7 @@ exports[`PollList (form) should match snapshot (authenticated) 1`] = `
   className="u-margin-half"
 >
   <button
-    className="c-poll-options__option u-margin-half u-margin-right qa-option-vote"
+    className="c-poll-options__option u-margin-half u-margin-right qa-click-vote"
     key="0-730"
     onClick={[Function]}
   >
@@ -129,7 +129,7 @@ exports[`PollList (form) should match snapshot (default) 1`] = `
   className="u-margin-half--negative"
 >
   <button
-    className="c-poll-options__option u-margin-half u-margin-right qa-option-vote"
+    className="c-poll-options__option u-margin-half u-margin-right qa-click-vote"
     key="0-730"
     onClick={[Function]}
   >
@@ -242,7 +242,7 @@ exports[`PollList (view) should match snapshot (authenticated) 1`] = `
   className="u-margin-half"
 >
   <button
-    className="c-poll-options__option u-margin-half u-margin-right qa-option-vote"
+    className="c-poll-options__option u-margin-half u-margin-right qa-click-vote"
     key="0-730"
     onClick={[Function]}
   >
@@ -377,7 +377,7 @@ exports[`PollList (view) should match snapshot (default) 1`] = `
   className="u-margin-half--negative"
 >
   <button
-    className="c-poll-options__option u-margin-half u-margin-right qa-option-vote"
+    className="c-poll-options__option u-margin-half u-margin-right qa-click-vote"
     key="0-730"
     onClick={[Function]}
   >
@@ -501,7 +501,7 @@ exports[`PollList (view) should match snapshot (options, created option) 1`] = `
   className="u-margin-half"
 >
   <button
-    className="c-poll-options__option u-margin-half u-margin-right qa-option-vote"
+    className="c-poll-options__option u-margin-half u-margin-right qa-click-vote"
     key="0-730"
     onClick={[Function]}
   >
@@ -636,7 +636,7 @@ exports[`PollList (view) should match snapshot (options, created poll) 1`] = `
   className="u-margin-half"
 >
   <button
-    className="c-poll-options__option u-margin-half u-margin-right qa-option-vote"
+    className="c-poll-options__option u-margin-half u-margin-right qa-click-vote"
     key="0-730"
     onClick={[Function]}
   >
@@ -771,7 +771,7 @@ exports[`PollList (view) should match snapshot (options, voted) 1`] = `
   className="u-margin-half"
 >
   <button
-    className="c-poll-options__option u-margin-half u-margin-right qa-option-vote"
+    className="c-poll-options__option u-margin-half u-margin-right qa-click-vote"
     key="0-730"
     onClick={[Function]}
   >

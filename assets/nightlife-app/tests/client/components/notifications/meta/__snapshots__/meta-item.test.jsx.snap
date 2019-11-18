@@ -18,7 +18,7 @@ exports[`MetaItem should match snapshot 1`] = `
     className="c-notification-item__actions"
   >
     <button
-      className="c-icon-button qa-action-item"
+      className="c-icon-button qa-click-item"
       key="0-425"
       onClick={[Function]}
     >

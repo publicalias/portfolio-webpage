@@ -8,14 +8,13 @@ const { testWrapper } = require("../../../test-helpers");
 
 //global imports
 
-const { initTestSnapshot } = require("redux/tests/client-tests");
+const { initTestEvent, initTestSnapshot } = require("redux/tests/client-tests");
+const { testMock } = require("redux/tests/meta-tests");
 const { reactTests } = require("redux/tests/react-tests");
 
 //utilities
 
 const { testShallow } = testWrapper(ListMenu);
-
-const testSnapshot = initTestSnapshot(testShallow);
 
 //setup
 
@@ -24,4 +23,26 @@ beforeEach(reactTests.inject(ListMenu));
 
 //list menu
 
-test("ListMenu should match snapshot", () => testSnapshot({ list: { search: "Apple" } }));
+describe("ListMenu", () => {
+
+  const testSnapshot = initTestSnapshot(testShallow);
+
+  const testClick = initTestEvent(testShallow, "click");
+
+  const testSort = (type) => testClick(`.qa-sort-${type}`, [], (props) => {
+
+    const { history } = props;
+
+    testMock(history.push, [`/list?sort=${type}`]);
+
+  });
+
+  it("should match snapshot (default)", () => testSnapshot());
+
+  it("should match snapshot (search)", () => testSnapshot({ list: { search: "Apple" } }));
+
+  it("should call handleSearch on click (new)", () => testSort("new"));
+
+  it("should call handleSearch on click (popular)", () => testSort("popular"));
+
+});

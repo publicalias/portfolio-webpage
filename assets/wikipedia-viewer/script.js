@@ -14,7 +14,7 @@ const { select } = require("all/dom-api");
 
 const search = async () => {
 
-  const DOMInput = select(".js-submit-input");
+  const DOMInput = select(".js-ref-input");
 
   const term = DOMInput.value.trim();
 
@@ -38,7 +38,7 @@ select(document).on("DOMContentLoaded", () => {
 
   select(".js-get-outline").on("blur focus", toggleOutline);
 
-  select(".js-submit-button").on("click", search);
+  select(".js-click-submit").on("click", search);
 
   select(".js-render-output").on("click", ".js-close-modal", () => {
     toggleModal();

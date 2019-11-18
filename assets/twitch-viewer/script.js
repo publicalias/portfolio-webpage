@@ -18,13 +18,13 @@ const search = async (channels = "brunofin, comster404, cretetion, esl_sc2, free
 
   storageKey("channels", channels);
 
-  select(".js-submit-input").value = list.map((e) => e.name).join(", ");
+  select(".js-ref-input").value = list.map((e) => e.name).join(", ");
 
 };
 
 const submit = () => {
 
-  let channels = select(".js-submit-input").value;
+  let channels = select(".js-ref-input").value;
 
   if (!(/^(\w{4,25},\s)*\w{4,25}$/).test(channels)) {
     return;

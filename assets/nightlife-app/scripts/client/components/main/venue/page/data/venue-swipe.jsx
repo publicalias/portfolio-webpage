@@ -14,7 +14,7 @@ const VenueSwipe = (props) => {
 
   return (
     <button
-      className={`c-venue-photos__swipe--${type} qa-carousel-swipe`}
+      className={`c-venue-photos__swipe--${type} qa-click-swipe`}
       onClick={handleClick}
     >
       <i className={`fas fa-chevron-${type}`} />

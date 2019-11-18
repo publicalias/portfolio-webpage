@@ -49,14 +49,14 @@ const PollInput = (props) => {
   return (
     <div className="c-poll-options__input-box">
       <input
-        className="c-poll-options__input qa-option-input u-margin-right"
+        className="c-poll-options__input qa-change-input u-margin-right"
         maxLength="100"
         onChange={handleChange}
         placeholder="New Option (Up to 20)"
         value={value}
       />
       <button
-        className="c-poll-options__submit qa-option-submit"
+        className="c-poll-options__submit qa-submit-input"
         onClick={handleSubmit}
       >
         Add

@@ -56,7 +56,7 @@ describe("PollIcon (form, events)", () => {
     const testClick = initTestEvent(testForm, "click", event);
 
     return testClick(
-      ".qa-option-remove",
+      ".qa-click-remove",
       [null, null, getView({
         created: true,
         text: "Option A"
@@ -94,7 +94,7 @@ describe("PollIcon (view, events)", () => {
     return testReload(
       testView,
       [null, { id: "id-b" }, getView(view)],
-      ".qa-option-remove",
+      ".qa-click-remove",
       "id-b",
       fn,
       () => {

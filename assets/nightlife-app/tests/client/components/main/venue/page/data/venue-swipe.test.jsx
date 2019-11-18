@@ -40,7 +40,7 @@ describe("VenueSwipe", () => {
 
     const handleClick = jest.fn();
 
-    return testClick(".qa-carousel-swipe", [null, { handleClick }], () => {
+    return testClick(".qa-click-swipe", [null, { handleClick }], () => {
       testMock(handleClick, [{}]);
     });
 

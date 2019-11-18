@@ -22,7 +22,7 @@ const initTestChange = (render) => (type) => {
 
   const testChange = initTestEvent(render, "change", { target: { value: "Option A" } });
 
-  return testChange(".qa-option-input", [], [type, ["Option A"]]);
+  return testChange(".qa-change-input", [], [type, ["Option A"]]);
 
 };
 
@@ -48,7 +48,7 @@ describe("PollInput (form)", () => {
 
     const dataList = [{ form: { add: "Option A" } }];
 
-    return testClick(".qa-option-submit", dataList, ["formAddOption", ["Option A", []]]);
+    return testClick(".qa-submit-input", dataList, ["formAddOption", ["Option A", []]]);
 
   });
 
@@ -72,7 +72,7 @@ describe("PollInput (view)", () => {
       null,
       { actions: { pollAddOption: jest.fn(() => res) } }
     ],
-    ".qa-option-submit",
+    ".qa-submit-input",
     "id-a",
     ["pollAddOption", ["id-a", "Option A"]],
     ["viewSetAdd", res && !res.errors ? [""] : undefined]

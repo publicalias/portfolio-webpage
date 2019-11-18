@@ -42,14 +42,14 @@ const FormMenu = (props) => {
 
   return (
     <div className="c-form-menu">
-      <button className="c-form-menu__control-btn qa-create-poll" onClick={handleCreate}>Create</button>
+      <button className="c-form-menu__control-btn qa-click-create" onClick={handleCreate}>Create</button>
       {form.delete ? (
         <div className="c-form-menu__display-box">
           <p className="c-form-menu__confirm-text">Are you sure?</p>
-          <button className="c-form-menu__control-btn qa-discard-poll" onClick={handleDiscard}>Yes</button>
-          <button className="c-form-menu__control-btn qa-confirm-false" onClick={handleConfirm}>No</button>
+          <button className="c-form-menu__control-btn qa-click-yes" onClick={handleDiscard}>Yes</button>
+          <button className="c-form-menu__control-btn qa-click-no" onClick={handleConfirm}>No</button>
         </div>
-      ) : <button className="c-form-menu__control-btn qa-confirm-true" onClick={handleConfirm}>Discard</button>}
+      ) : <button className="c-form-menu__control-btn qa-click-discard" onClick={handleConfirm}>Discard</button>}
       <button
         className="c-form-menu__button qa-toggle-secret u-flex-right"
         onClick={handleSecret}

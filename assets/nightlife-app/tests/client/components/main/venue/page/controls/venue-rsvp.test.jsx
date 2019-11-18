@@ -56,18 +56,18 @@ describe("VenueRSVP (open)", () => {
   it("should match snapshot", () => testSnapshot());
 
   it("should call handleChangeMessage on change", () => testChange("Message")(
-    ".qa-rsvp-message",
+    ".qa-change-message",
     [],
     ["venueSetMessage", ["Message"]]
   ));
 
   it("should call handleChangeTime on change", () => testChange("9:00 PM")(
-    ".qa-rsvp-time",
+    ".qa-change-time",
     [],
     ["venueSetTime", ["9:00 PM"]]
   ));
 
-  it("should call handleClickCancel on click", () => testClick(".qa-rsvp-cancel", [], ["venueClearForm", []]));
+  it("should call handleClickCancel on click", () => testClick(".qa-click-cancel", [], ["venueClearForm", []]));
 
   testSubmit("click", "handleClickSubmit", (res) => {
 
@@ -90,7 +90,7 @@ describe("VenueRSVP (open)", () => {
       actions: { rsvpAdd: jest.fn(() => res) }
     }];
 
-    return testClick(".qa-rsvp-submit", dataList, (props) => {
+    return testClick(".qa-click-submit", dataList, (props) => {
 
       const { actions: { rsvpAdd, venueClearForm }, local: { refresh } } = props;
 

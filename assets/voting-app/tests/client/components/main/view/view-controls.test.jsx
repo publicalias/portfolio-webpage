@@ -41,7 +41,7 @@ describe("ViewControls", () => {
 
     navigator.clipboard = { writeText: jest.fn() };
 
-    return testClick(".qa-share-poll", [], () => {
+    return testClick(".qa-click-share", [], () => {
       testMock(navigator.clipboard.writeText, [location.href]);
     });
 

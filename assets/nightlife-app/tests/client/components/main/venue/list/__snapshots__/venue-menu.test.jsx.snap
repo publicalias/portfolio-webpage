@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`VenueMenu should match snapshot 1`] = `
+exports[`VenueMenu should match snapshot (default) 1`] = `
 <div
   className="c-list-menu"
 >
@@ -11,6 +11,79 @@ exports[`VenueMenu should match snapshot 1`] = `
         "handleClear": [Function],
         "handleSubmit": [Function],
         "value": "",
+      }
+    }
+  />
+  <Dropdown
+    local={
+      Object {
+        "handleToggle": [MockFunction],
+        "list": Array [
+          Object {
+            "handleClick": [Function],
+            "text": "5 Miles",
+          },
+          Object {
+            "handleClick": [Function],
+            "text": "10 Miles",
+          },
+          Object {
+            "handleClick": [Function],
+            "text": "15 Miles",
+          },
+          Object {
+            "handleClick": [Function],
+            "text": "20 Miles",
+          },
+          Object {
+            "handleClick": [Function],
+            "text": "25 Miles",
+          },
+        ],
+        "name": "Range",
+        "open": false,
+        "util": "u-widget-width",
+      }
+    }
+  />
+  <Dropdown
+    local={
+      Object {
+        "handleToggle": [MockFunction],
+        "list": Array [
+          Object {
+            "handleClick": [Function],
+            "text": "Match",
+          },
+          Object {
+            "handleClick": [Function],
+            "text": "Distance",
+          },
+          Object {
+            "handleClick": [Function],
+            "text": "Rating",
+          },
+        ],
+        "name": "Sort By",
+        "open": false,
+        "util": "u-widget-width",
+      }
+    }
+  />
+</div>
+`;
+
+exports[`VenueMenu should match snapshot (search) 1`] = `
+<div
+  className="c-list-menu"
+>
+  <SearchBar
+    local={
+      Object {
+        "handleChange": [Function],
+        "handleClear": [Function],
+        "handleSubmit": [Function],
+        "value": "Coffee",
       }
     }
   />

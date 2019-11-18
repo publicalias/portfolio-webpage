@@ -57,14 +57,14 @@ const SidebarInput = (props) => {
   return (
     <div className="c-sidebar__input-box">
       <input
-        className="c-sidebar__input qa-account-input"
+        className="c-sidebar__input qa-change-input"
         maxLength="100"
         onChange={handleChange}
         placeholder={placeholder}
         value={text}
       />
       <button
-        className="c-sidebar__submit qa-account-submit"
+        className="c-sidebar__submit qa-submit-input"
         onClick={handleSubmit}
       >
         {bool && !text ? "Reset" : "Set"}

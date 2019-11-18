@@ -15,8 +15,6 @@ const { reactTests } = require("redux/tests/react-tests");
 
 const { testShallow } = testWrapper(VenueMenu);
 
-const testSnapshot = initTestSnapshot(testShallow);
-
 //setup
 
 beforeAll(reactTests.setup);
@@ -24,4 +22,12 @@ beforeEach(reactTests.inject(VenueMenu));
 
 //venue menu
 
-test("VenueMenu should match snapshot", () => testSnapshot());
+describe("VenueMenu", () => {
+
+  const testSnapshot = initTestSnapshot(testShallow);
+
+  it("should match snapshot (default)", () => testSnapshot());
+
+  it("should match snapshot (search)", () => testSnapshot({ venues: { list: { search: "Coffee" } } }));
+
+});

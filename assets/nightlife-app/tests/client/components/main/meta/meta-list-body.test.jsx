@@ -48,7 +48,7 @@ describe("MetaListBody", () => {
 
     const handleScroll = jest.fn();
 
-    return testScroll(".qa-infinite-scroll", [null, { handleScroll }], () => {
+    return testScroll(".qa-ref-scroll", [null, { handleScroll }], () => {
       testMock(handleScroll, [{}]);
     });
 

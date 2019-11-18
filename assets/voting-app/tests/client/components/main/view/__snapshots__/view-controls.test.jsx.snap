@@ -5,7 +5,7 @@ exports[`ViewControls should match snapshot (authenticated) 1`] = `
   className="c-view-menu__display-box u-flex-right"
 >
   <button
-    className="c-view-menu__button qa-share-poll"
+    className="c-view-menu__button qa-click-share"
     onClick={[Function]}
   >
     Share
@@ -232,7 +232,7 @@ exports[`ViewControls should match snapshot (default) 1`] = `
   className="c-view-menu__display-box u-flex-right"
 >
   <button
-    className="c-view-menu__button qa-share-poll"
+    className="c-view-menu__button qa-click-share"
     onClick={[Function]}
   >
     Share

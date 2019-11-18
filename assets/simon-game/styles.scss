@@ -77,4 +77,4 @@ $offset: calc(50% + 1.5vw);
 
 //states
 
-.js-hover-btn { &.is-active { fill: white; } }
+.js-toggle-hover { &.is-hovered { fill: white; } }

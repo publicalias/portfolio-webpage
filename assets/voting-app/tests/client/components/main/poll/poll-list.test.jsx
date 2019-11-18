@@ -40,7 +40,7 @@ describe("PollList (form, events)", () => {
 
   const testClick = initTestEvent(withDataList(testForm, [null, { options: ["Option A"] }]), "click");
 
-  it("should do nothing on click (vote)", () => testClick(".qa-option-vote", [], ["pollCastVote"]));
+  it("should do nothing on click (vote)", () => testClick(".qa-click-vote", [], ["pollCastVote"]));
 
 });
 
@@ -86,7 +86,7 @@ describe("PollList (view, events)", () => {
 
     const dataList = [null, { id: "id-a" }];
 
-    return testReload(testList, dataList, ".qa-option-vote", "id-a", ["pollCastVote", ["id-a", "Option A"]]);
+    return testReload(testList, dataList, ".qa-click-vote", "id-a", ["pollCastVote", ["id-a", "Option A"]]);
 
   });
 

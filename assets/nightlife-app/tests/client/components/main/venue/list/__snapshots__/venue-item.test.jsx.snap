@@ -9,7 +9,7 @@ exports[`VenueItem should match snapshot 1`] = `
   >
     <img
       alt="Venue Photo"
-      className="qa-image-error"
+      className="qa-error-image"
       onError={[Function]}
       src="https://www.example.com/thumbnail.jpg"
     />

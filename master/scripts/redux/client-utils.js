@@ -112,7 +112,7 @@ const setSearchParams = (location, key, val) => {
 
 const getPosition = () => {
 
-  const DOMScroll = select(".js-infinite-scroll");
+  const DOMScroll = select(".js-ref-scroll");
 
   const view = DOMScroll.rect().height;
   const content = DOMScroll.scrollHeight;

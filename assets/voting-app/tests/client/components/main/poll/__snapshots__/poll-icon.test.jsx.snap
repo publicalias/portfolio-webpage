@@ -2,7 +2,7 @@
 
 exports[`PollIcon (form) should match snapshot (created) 1`] = `
 <span
-  className="c-poll-options__remove qa-option-remove"
+  className="c-poll-options__remove qa-click-remove"
   onClick={[Function]}
 >
   <i
@@ -26,7 +26,7 @@ exports[`PollIcon (form) should match snapshot (default) 1`] = `
 
 exports[`PollIcon (form) should match snapshot (voted) 1`] = `
 <span
-  className="c-poll-options__remove qa-option-remove"
+  className="c-poll-options__remove qa-click-remove"
   onClick={[Function]}
 >
   <i
@@ -37,7 +37,7 @@ exports[`PollIcon (form) should match snapshot (voted) 1`] = `
 
 exports[`PollIcon (view) should match snapshot (created) 1`] = `
 <span
-  className="c-poll-options__remove qa-option-remove"
+  className="c-poll-options__remove qa-click-remove"
   onClick={[Function]}
 >
   <i
@@ -61,7 +61,7 @@ exports[`PollIcon (view) should match snapshot (default) 1`] = `
 
 exports[`PollIcon (view) should match snapshot (voted) 1`] = `
 <span
-  className="c-poll-options__remove qa-option-remove"
+  className="c-poll-options__remove qa-click-remove"
   onClick={[Function]}
 >
   <i

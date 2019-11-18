@@ -28,7 +28,7 @@ const ViewControls = (props) => {
 
   return (
     <div className="c-view-menu__display-box u-flex-right">
-      <button className="c-view-menu__button qa-share-poll" onClick={handleShare}>Share</button>
+      <button className="c-view-menu__button qa-click-share" onClick={handleShare}>Share</button>
       <div className="c-view-menu__button">
         <PollToggle
           {...props}

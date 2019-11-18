@@ -5,7 +5,7 @@ exports[`PollTitle (form) should match snapshot (author) 1`] = `
   className="u-align-center"
 >
   <input
-    className="c-poll-display__input qa-title-input u-margin-half"
+    className="c-poll-display__input qa-ref-title u-margin-half"
     maxLength="100"
     onBlur={[Function]}
     onChange={[Function]}
@@ -23,7 +23,7 @@ exports[`PollTitle (form) should match snapshot (default) 1`] = `
   className="u-align-center"
 >
   <input
-    className="c-poll-display__input qa-title-input u-margin-half"
+    className="c-poll-display__input qa-ref-title u-margin-half"
     maxLength="100"
     onBlur={[Function]}
     onChange={[Function]}

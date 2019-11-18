@@ -23,27 +23,27 @@ exports[`VenueRSVP (open) should match snapshot 1`] = `
     className="c-venue-form"
   >
     <input
-      className="c-venue-form__time qa-rsvp-time"
+      className="c-venue-form__time qa-change-time"
       maxLength="100"
       onChange={[Function]}
       placeholder="Time (e.g. 9:00 PM)"
       value=""
     />
     <input
-      className="c-venue-form__message qa-rsvp-message"
+      className="c-venue-form__message qa-change-message"
       maxLength="100"
       onChange={[Function]}
       placeholder="Message"
       value=""
     />
     <button
-      className="c-venue-form__submit qa-rsvp-submit"
+      className="c-venue-form__submit qa-click-submit"
       onClick={[Function]}
     >
       Submit
     </button>
     <button
-      className="c-venue-form__cancel qa-rsvp-cancel"
+      className="c-venue-form__cancel qa-click-cancel"
       onClick={[Function]}
     >
       Cancel

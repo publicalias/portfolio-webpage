@@ -63,7 +63,7 @@ const clickEvents = (app) => {
 //hover events
 
 const hoverEvents = () => {
-  select(".js-toggle-btn")
+  select(".js-toggle-disabled")
     .on("mouseenter", utils.hover(true))
     .on("mouseleave", utils.hover());
 };

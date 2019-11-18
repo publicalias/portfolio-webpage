@@ -13,13 +13,13 @@ exports[`ViewSettings (snapshots) should match snapshot (confirm) 1`] = `
       Are you sure?
     </p>
     <button
-      className="c-view-menu__control-btn qa-delete-poll"
+      className="c-view-menu__control-btn qa-click-yes"
       onClick={[Function]}
     >
       Yes
     </button>
     <button
-      className="c-view-menu__control-btn qa-confirm-false"
+      className="c-view-menu__control-btn qa-click-no"
       onClick={[Function]}
     >
       No
@@ -39,7 +39,7 @@ exports[`ViewSettings (snapshots) should match snapshot (default) 1`] = `
   className="c-view-menu__display-box u-flex-1"
 >
   <button
-    className="c-view-menu__control-btn qa-confirm-true"
+    className="c-view-menu__control-btn qa-click-delete"
     onClick={[Function]}
   >
     Delete
@@ -58,7 +58,7 @@ exports[`ViewSettings (snapshots) should match snapshot (flagged) 1`] = `
   className="c-view-menu__display-box u-flex-1"
 >
   <button
-    className="c-view-menu__control-btn qa-confirm-true"
+    className="c-view-menu__control-btn qa-click-delete"
     onClick={[Function]}
   >
     Delete
@@ -77,7 +77,7 @@ exports[`ViewSettings (snapshots) should match snapshot (secret) 1`] = `
   className="c-view-menu__display-box u-flex-1"
 >
   <button
-    className="c-view-menu__control-btn qa-confirm-true"
+    className="c-view-menu__control-btn qa-click-delete"
     onClick={[Function]}
   >
     Delete

@@ -38,7 +38,7 @@ const MetaItem = (props) => {
 
           return (
             <button
-              className="c-icon-button qa-action-item"
+              className="c-icon-button qa-click-item"
               key={keyGen(e.icon)}
               onClick={handleClick}
             >

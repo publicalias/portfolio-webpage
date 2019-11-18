@@ -48,7 +48,7 @@ const filterEvents = () => {
 //submit events
 
 const submitEvents = (submit) => {
-  select(".js-submit-button").on("click", submit);
+  select(".js-click-submit").on("click", submit);
 };
 
 //exports

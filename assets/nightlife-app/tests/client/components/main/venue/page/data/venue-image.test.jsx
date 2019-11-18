@@ -38,7 +38,7 @@ describe("VenueImage", () => {
   const testSnapshot = initTestSnapshot(testImage);
 
   const testEvent = (type, prop) => initTestEvent(testImage, type, {})(
-    ".qa-carousel-image",
+    ".qa-ref-image",
     [null, {
       handleError: jest.fn(),
       handleLoad: jest.fn(),

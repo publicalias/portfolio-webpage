@@ -24,7 +24,7 @@ exports[`ListBody (general) should match snapshot (authenticated) 1`] = `
     </h4>
   </div>
   <div
-    className="c-list-body__body js-infinite-scroll qa-infinite-scroll"
+    className="c-list-body__body js-ref-scroll qa-ref-scroll"
     onScroll={[MockFunction]}
   >
     <div
@@ -69,7 +69,7 @@ exports[`ListBody (general) should match snapshot (default) 1`] = `
     </h4>
   </div>
   <div
-    className="c-list-body__body js-infinite-scroll qa-infinite-scroll"
+    className="c-list-body__body js-ref-scroll qa-ref-scroll"
     onScroll={[MockFunction]}
   >
     <div
@@ -111,7 +111,7 @@ exports[`ListBody (general) should match snapshot (list) 1`] = `
     </h4>
   </div>
   <div
-    className="c-list-body__body js-infinite-scroll qa-infinite-scroll"
+    className="c-list-body__body js-ref-scroll qa-ref-scroll"
     onScroll={[MockFunction]}
   >
     <div
@@ -250,7 +250,7 @@ exports[`ListBody (header) should match snapshot (all) 1`] = `
     </h4>
   </div>
   <div
-    className="c-list-body__body js-infinite-scroll qa-infinite-scroll"
+    className="c-list-body__body js-ref-scroll qa-ref-scroll"
     onScroll={[MockFunction]}
   >
     <div
@@ -292,7 +292,7 @@ exports[`ListBody (header) should match snapshot (created) 1`] = `
     </h4>
   </div>
   <div
-    className="c-list-body__body js-infinite-scroll qa-infinite-scroll"
+    className="c-list-body__body js-ref-scroll qa-ref-scroll"
     onScroll={[MockFunction]}
   >
     <div
@@ -334,7 +334,7 @@ exports[`ListBody (header) should match snapshot (hidden) 1`] = `
     </h4>
   </div>
   <div
-    className="c-list-body__body js-infinite-scroll qa-infinite-scroll"
+    className="c-list-body__body js-ref-scroll qa-ref-scroll"
     onScroll={[MockFunction]}
   >
     <div
@@ -376,7 +376,7 @@ exports[`ListBody (header) should match snapshot (voted) 1`] = `
     </h4>
   </div>
   <div
-    className="c-list-body__body js-infinite-scroll qa-infinite-scroll"
+    className="c-list-body__body js-ref-scroll qa-ref-scroll"
     onScroll={[MockFunction]}
   >
     <div

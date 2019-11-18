@@ -2,7 +2,7 @@
 
 exports[`VenueSwipe should match snapshot 1`] = `
 <button
-  className="c-venue-photos__swipe--meta qa-carousel-swipe"
+  className="c-venue-photos__swipe--meta qa-click-swipe"
   onClick={[MockFunction]}
 >
   <i

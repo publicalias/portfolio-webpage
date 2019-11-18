@@ -39,13 +39,13 @@ describe("PollTitle (form)", () => {
   it("should match snapshot (author)", () => testSnapshot({ user: newUser({ name: "Author A" }) }));
 
   it("should call handleBlur on blur", () => testBlur(
-    ".qa-title-input",
+    ".qa-ref-title",
     [{ form: { title: "Title A" } }],
     ["formCheckTitle", ["Title A"]]
   ));
 
   it("should call handleChange on change", () => testChange(
-    ".qa-title-input",
+    ".qa-ref-title",
     [],
     ["formSetTitle", ["Title A"]]
   ));
