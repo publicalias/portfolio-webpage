@@ -12,8 +12,6 @@ exports[`UserBody should match snapshot (default) 1`] = `
           Users
         </h1>
       </div>,
-      "list": Array [],
-      "placeholder": "No Users",
     }
   }
 />
@@ -31,30 +29,29 @@ exports[`UserBody should match snapshot (list) 1`] = `
           Users
         </h1>
       </div>,
-      "list": Array [
-        <UserItem
-          local={
-            Object {
-              "user": Object {
-                "data": Object {
-                  "address": "",
-                  "app": "nightlife-app",
-                  "avatar": "",
-                  "blocks": Array [],
-                  "distance": 0,
-                  "favorites": Array [],
-                  "friends": Array [],
-                  "location": null,
-                },
-                "id": "",
-                "name": "",
-              },
-            }
-          }
-        />,
-      ],
-      "placeholder": "No Users",
     }
   }
-/>
+>
+  <UserItem
+    key="0-0"
+    local={
+      Object {
+        "user": Object {
+          "data": Object {
+            "address": "",
+            "app": "nightlife-app",
+            "avatar": "",
+            "blocks": Array [],
+            "distance": 0,
+            "favorites": Array [],
+            "friends": Array [],
+            "location": null,
+          },
+          "id": "",
+          "name": "",
+        },
+      }
+    }
+  />
+</MetaListBody>
 `;

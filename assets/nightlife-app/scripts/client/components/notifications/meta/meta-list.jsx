@@ -10,7 +10,7 @@ const { useEffect } = React;
 
 const MetaList = (props) => {
 
-  const { local: { bool, heading, list, refresh, type } } = props;
+  const { children, local: { bool, heading, refresh, type } } = props;
 
   //events
 
@@ -39,7 +39,7 @@ const MetaList = (props) => {
       </div>
       <hr />
       <div className="c-notification-list__body">
-        {list.length ? list : <p>No Notifications</p>}
+        {children.length ? children : <p>No Notifications</p>}
       </div>
     </div>
   );

@@ -34,7 +34,7 @@ const MetaPageList = (props) => {
           >
             <Link to={link}>{name}</Link>
           </p>
-        )) : <p>No Names</p>}
+        )) : <p>No Data</p>}
       </div>
     </div>
   );

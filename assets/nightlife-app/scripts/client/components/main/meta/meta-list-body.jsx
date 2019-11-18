@@ -8,7 +8,7 @@ const React = require("react");
 
 const MetaListBody = (props) => {
 
-  const { local: { handleScroll, header, list, placeholder } } = props;
+  const { children, local: { handleScroll, header } } = props;
 
   //render
 
@@ -25,12 +25,10 @@ const MetaListBody = (props) => {
         onScroll={handleScroll}
       >
         <div className="c-list-body__content">
-          {list.length ? list : (
-            <div>
-              <div className="c-list-item">
-                <p>N/A</p>
-                <p>{placeholder}</p>
-              </div>
+          {children.length ? children : (
+            <div className="c-list-item">
+              <p>N/A</p>
+              <p>No Results</p>
             </div>
           )}
         </div>

@@ -25,24 +25,23 @@ const FriendList = (props) => {
 
   const keyGen = initKeyGen();
 
-  const list = friends.map((e) => (
-    <FriendItem
-      {...props}
-      key={keyGen(e.id)}
-      local={{ friend: e }}
-    />
-  ));
-
   return (
     <MetaList
       local={{
         bool: JSON.stringify(data),
         heading: "Friend Requests",
-        list,
         refresh: friendGetList,
         type: "friend"
       }}
-    />
+    >
+      {friends.map((e) => (
+        <FriendItem
+          {...props}
+          key={keyGen(e.id)}
+          local={{ friend: e }}
+        />
+      ))}
+    </MetaList>
   );
 
 };

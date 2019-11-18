@@ -38,22 +38,20 @@ const VenueBody = (props) => {
     </div>
   );
 
-  const list = data.map((e) => (
-    <VenueItem
-      key={keyGen(e.id)}
-      local={{ venue: e }}
-    />
-  ));
-
   return (
     <MetaListBody
       local={{
         handleScroll,
-        header,
-        list,
-        placeholder: "No Venues"
+        header
       }}
-    />
+    >
+      {data.map((e) => (
+        <VenueItem
+          key={keyGen(e.id)}
+          local={{ venue: e }}
+        />
+      ))}
+    </MetaListBody>
   );
 
 };

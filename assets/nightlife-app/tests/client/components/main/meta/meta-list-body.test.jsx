@@ -31,9 +31,9 @@ describe("MetaListBody", () => {
 
   const testList = withDataList(testShallow, [null, {
     handleScroll: jest.fn(),
-    header: <div />,
-    list: [],
-    placeholder: "No Items"
+    header: <div />
+  }, {
+    children: []
   }]);
 
   const testSnapshot = initTestSnapshot(testList);
@@ -42,7 +42,7 @@ describe("MetaListBody", () => {
 
   it("should match snapshot (default)", () => testSnapshot());
 
-  it("should match snapshot (list)", () => testSnapshot(null, { list: [<div key="" />] }));
+  it("should match snapshot (list)", () => testSnapshot(null, null, { children: [<div key="" />] }));
 
   it("should call handleScroll on scroll", () => {
 

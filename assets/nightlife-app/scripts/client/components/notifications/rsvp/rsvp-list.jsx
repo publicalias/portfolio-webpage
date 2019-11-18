@@ -25,24 +25,23 @@ const RSVPList = (props) => {
 
   const keyGen = initKeyGen();
 
-  const list = rsvps.map((e) => (
-    <RSVPItem
-      {...props}
-      key={keyGen(e.id)}
-      local={{ rsvp: e }}
-    />
-  ));
-
   return (
     <MetaList
       local={{
         bool: JSON.stringify(data),
         heading: "RSVPs",
-        list,
         refresh: rsvpGetList,
         type: "rsvp"
       }}
-    />
+    >
+      {rsvps.map((e) => (
+        <RSVPItem
+          {...props}
+          key={keyGen(e.id)}
+          local={{ rsvp: e }}
+        />
+      ))}
+    </MetaList>
   );
 
 };

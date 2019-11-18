@@ -32,8 +32,9 @@ describe("MetaList", () => {
   const dataList = [null, {
     bool: "[]",
     heading: "Meta",
-    list: [],
     type: "meta"
+  }, {
+    children: []
   }];
 
   const testList = withDataList(testShallow, dataList);
@@ -45,7 +46,7 @@ describe("MetaList", () => {
 
   it("should match snapshot (default)", () => testSnapshot());
 
-  it("should match snapshot (list)", () => testSnapshot(null, { list: [<div key="" />] }));
+  it("should match snapshot (list)", () => testSnapshot(null, null, { children: [<div key="" />] }));
 
   it("should call refresh conditionally on update", () => {
 

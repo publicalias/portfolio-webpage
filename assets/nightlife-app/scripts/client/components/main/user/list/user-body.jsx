@@ -31,22 +31,20 @@ const UserBody = (props) => {
     </div>
   );
 
-  const list = data.map((e) => (
-    <UserItem
-      key={keyGen(e.id)}
-      local={{ user: e }}
-    />
-  ));
-
   return (
     <MetaListBody
       local={{
         handleScroll,
-        header,
-        list,
-        placeholder: "No Users"
+        header
       }}
-    />
+    >
+      {data.map((e) => (
+        <UserItem
+          key={keyGen(e.id)}
+          local={{ user: e }}
+        />
+      ))}
+    </MetaListBody>
   );
 
 };

@@ -12,7 +12,7 @@ exports[`MetaPageList should match snapshot (default) 1`] = `
     className="c-page-list__body"
   >
     <p>
-      No Names
+      No Data
     </p>
   </div>
 </div>
