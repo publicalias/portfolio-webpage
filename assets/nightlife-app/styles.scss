@@ -51,6 +51,7 @@
 .c-list-menu {
   @include grid-item(1, 5, 2, 13);
   display: grid;
+  grid-auto-columns: 1fr auto auto;
   grid-auto-flow: column;
   grid-gap: 3vw;
   overflow: visible;

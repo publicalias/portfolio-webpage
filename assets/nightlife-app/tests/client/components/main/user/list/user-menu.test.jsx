@@ -15,8 +15,6 @@ const { reactTests } = require("redux/tests/react-tests");
 
 const { testShallow } = testWrapper(UserMenu);
 
-const testSnapshot = initTestSnapshot(testShallow);
-
 //setup
 
 beforeAll(reactTests.setup);
@@ -24,4 +22,12 @@ beforeEach(reactTests.inject(UserMenu));
 
 //user menu
 
-test("UserMenu should match snapshot", () => testSnapshot());
+describe("UserMenu", () => {
+
+  const testSnapshot = initTestSnapshot(testShallow);
+
+  it("should match snapshot (default)", () => testSnapshot());
+
+  it("should match snapshot (search)", () => testSnapshot({ users: { list: { search: "User A" } } }));
+
+});
