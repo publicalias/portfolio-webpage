@@ -46,6 +46,7 @@ const UserList = (props) => {
       handleReload();
     }
   }, [
+    get(user, "data.avatar"),
     JSON.stringify(get(user, "data.location")),
     ready,
     location.search

@@ -1,3 +1,30 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`UserItem should match snapshot 1`] = `""`;
+exports[`UserItem should match snapshot 1`] = `
+<Link
+  to="/users/page/id-a"
+>
+  <div
+    className="c-list-item"
+  >
+    <img
+      alt="User Photo"
+      className="qa-error-image"
+      onError={[Function]}
+      src=""
+    />
+    <div>
+      <h5
+        className="u-margin-half"
+      >
+        User A
+      </h5>
+      <p
+        className="u-margin-none"
+      >
+        0 Miles
+      </p>
+    </div>
+  </div>
+</Link>
+`;

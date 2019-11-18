@@ -39,6 +39,7 @@ describe("UserList", () => {
       [{ user: { data: { location: null } } }],
       [{ ready: true }],
       [null, null, { location: { search: "" } }],
+      [{ user: { data: { avatar: "https://www.example.com/avatar.jpg" } } }],
       [{ user: { data: { location: getGeoPoint(0) } } }]
     ];
 
@@ -50,7 +51,7 @@ describe("UserList", () => {
       setProps(...e);
     }
 
-    testMock(handleReload, [], [], []);
+    testMock(handleReload, [], [], [], []);
 
     wrapper.unmount();
 
