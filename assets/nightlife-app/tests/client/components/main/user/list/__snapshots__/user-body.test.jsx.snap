@@ -1,3 +1,60 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`UserBody should match snapshot 1`] = `""`;
+exports[`UserBody should match snapshot (default) 1`] = `
+<MetaListBody
+  local={
+    Object {
+      "handleScroll": [MockFunction],
+      "header": <div
+        className="c-list-body__header"
+      >
+        <h1>
+          Users
+        </h1>
+      </div>,
+      "list": Array [],
+      "placeholder": "No Users",
+    }
+  }
+/>
+`;
+
+exports[`UserBody should match snapshot (list) 1`] = `
+<MetaListBody
+  local={
+    Object {
+      "handleScroll": [MockFunction],
+      "header": <div
+        className="c-list-body__header"
+      >
+        <h1>
+          Users
+        </h1>
+      </div>,
+      "list": Array [
+        <UserItem
+          local={
+            Object {
+              "user": Object {
+                "data": Object {
+                  "address": "",
+                  "app": "nightlife-app",
+                  "avatar": "",
+                  "blocks": Array [],
+                  "distance": 0,
+                  "favorites": Array [],
+                  "friends": Array [],
+                  "location": null,
+                },
+                "id": "",
+                "name": "",
+              },
+            }
+          }
+        />,
+      ],
+      "placeholder": "No Users",
+    }
+  }
+/>
+`;

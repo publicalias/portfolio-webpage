@@ -8,14 +8,12 @@ const { testWrapper } = require("../../../../test-helpers");
 
 //global imports
 
-const { initTestSnapshot } = require("redux/tests/client-tests");
+const { initTestSnapshot, withDataList } = require("redux/tests/client-tests");
 const { reactTests } = require("redux/tests/react-tests");
 
 //utilities
 
 const { testShallow } = testWrapper(UserBody);
-
-const testSnapshot = initTestSnapshot(testShallow);
 
 //setup
 
@@ -24,4 +22,12 @@ beforeEach(reactTests.inject(UserBody));
 
 //user body
 
-test("UserBody should match snapshot", () => testSnapshot());
+describe("UserBody", () => {
+
+  const testSnapshot = withDataList(initTestSnapshot(testShallow), [null, { handleScroll: jest.fn() }]);
+
+  it("should match snapshot (default)", () => testSnapshot());
+
+  it("should match snapshot (list)", () => testSnapshot({ users: { data: [{}] } }));
+
+});
