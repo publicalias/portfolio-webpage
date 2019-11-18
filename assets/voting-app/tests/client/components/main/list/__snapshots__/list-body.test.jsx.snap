@@ -28,21 +28,17 @@ exports[`ListBody (general) should match snapshot (authenticated) 1`] = `
     onScroll={[MockFunction]}
   >
     <div
-      className="c-list-body__content"
+      className="c-list-item"
     >
-      <div
-        className="c-list-item"
-      >
-        <p>
-          N/A
-        </p>
-        <p>
-          N/A
-        </p>
-        <p>
-          No Polls
-        </p>
-      </div>
+      <p>
+        N/A
+      </p>
+      <p>
+        N/A
+      </p>
+      <p>
+        No Polls
+      </p>
     </div>
   </div>
 </div>
@@ -73,18 +69,14 @@ exports[`ListBody (general) should match snapshot (default) 1`] = `
     onScroll={[MockFunction]}
   >
     <div
-      className="c-list-body__content"
+      className="c-list-item"
     >
-      <div
-        className="c-list-item"
-      >
-        <p>
-          N/A
-        </p>
-        <p>
-          No Polls
-        </p>
-      </div>
+      <p>
+        N/A
+      </p>
+      <p>
+        No Polls
+      </p>
     </div>
   </div>
 </div>
@@ -114,97 +106,63 @@ exports[`ListBody (general) should match snapshot (list) 1`] = `
     className="c-list-body__body js-ref-scroll qa-ref-scroll"
     onScroll={[MockFunction]}
   >
-    <div
-      className="c-list-body__content"
-    >
-      <ListItem
-        actions={
-          Object {
-            "formAddOption": [MockFunction],
-            "formCheckTitle": [MockFunction],
-            "formClearState": [MockFunction],
-            "formRemoveOption": [MockFunction],
-            "formSetAdd": [MockFunction],
-            "formSetTitle": [MockFunction],
-            "formToggleDelete": [MockFunction],
-            "formToggleSecret": [MockFunction],
-            "listClearState": [MockFunction],
-            "listSetSearch": [MockFunction],
-            "metaAddErrors": [MockFunction],
-            "metaCloseError": [MockFunction],
-            "metaCreatePoll": [MockFunction],
-            "metaDeletePoll": [MockFunction],
-            "metaGetPollItem": [MockFunction],
-            "metaGetPollList": [MockFunction],
-            "metaGetUser": [MockFunction],
-            "metaNoOp": [MockFunction],
-            "metaSetLoading": [MockFunction],
-            "metaSetState": [MockFunction],
-            "metaTimeoutError": [MockFunction],
-            "metaToggleDelete": [MockFunction],
-            "pollAddOption": [MockFunction],
-            "pollCastVote": [MockFunction],
-            "pollRemoveOption": [MockFunction],
-            "pollRemoveVote": [MockFunction],
-            "pollToggleFlag": [MockFunction],
-            "pollToggleHide": [MockFunction],
-            "pollToggleSecret": [MockFunction],
-            "viewClearState": [MockFunction],
-            "viewSetAdd": [MockFunction],
-            "viewToggleDelete": [MockFunction],
-            "viewToggleSettings": [MockFunction],
-          }
+    <ListItem
+      actions={
+        Object {
+          "formAddOption": [MockFunction],
+          "formCheckTitle": [MockFunction],
+          "formClearState": [MockFunction],
+          "formRemoveOption": [MockFunction],
+          "formSetAdd": [MockFunction],
+          "formSetTitle": [MockFunction],
+          "formToggleDelete": [MockFunction],
+          "formToggleSecret": [MockFunction],
+          "listClearState": [MockFunction],
+          "listSetSearch": [MockFunction],
+          "metaAddErrors": [MockFunction],
+          "metaCloseError": [MockFunction],
+          "metaCreatePoll": [MockFunction],
+          "metaDeletePoll": [MockFunction],
+          "metaGetPollItem": [MockFunction],
+          "metaGetPollList": [MockFunction],
+          "metaGetUser": [MockFunction],
+          "metaNoOp": [MockFunction],
+          "metaSetLoading": [MockFunction],
+          "metaSetState": [MockFunction],
+          "metaTimeoutError": [MockFunction],
+          "metaToggleDelete": [MockFunction],
+          "pollAddOption": [MockFunction],
+          "pollCastVote": [MockFunction],
+          "pollRemoveOption": [MockFunction],
+          "pollRemoveVote": [MockFunction],
+          "pollToggleFlag": [MockFunction],
+          "pollToggleHide": [MockFunction],
+          "pollToggleSecret": [MockFunction],
+          "viewClearState": [MockFunction],
+          "viewSetAdd": [MockFunction],
+          "viewToggleDelete": [MockFunction],
+          "viewToggleSettings": [MockFunction],
         }
-        data={
-          Object {
-            "account": Object {
-              "delete": false,
-            },
-            "errors": Array [],
-            "form": Object {
-              "add": "",
-              "delete": false,
-              "options": Array [],
-              "secret": false,
-              "title": "",
-            },
-            "list": Object {
-              "search": "",
-            },
-            "loading": 0,
-            "polls": Array [
-              Object {
-                "author": "",
-                "date": 0,
-                "id": "",
-                "options": Array [],
-                "secret": false,
-                "title": "",
-                "users": Object {
-                  "created": "",
-                  "flagged": Array [],
-                  "hidden": Array [],
-                },
-                "votes": 0,
-              },
-            ],
-            "user": Object {},
-            "view": Object {
-              "add": "",
-              "delete": false,
-              "settings": false,
-            },
-          }
-        }
-        history={
-          Object {
-            "push": [MockFunction],
-          }
-        }
-        key="0-0"
-        local={
-          Object {
-            "poll": Object {
+      }
+      data={
+        Object {
+          "account": Object {
+            "delete": false,
+          },
+          "errors": Array [],
+          "form": Object {
+            "add": "",
+            "delete": false,
+            "options": Array [],
+            "secret": false,
+            "title": "",
+          },
+          "list": Object {
+            "search": "",
+          },
+          "loading": 0,
+          "polls": Array [
+            Object {
               "author": "",
               "date": 0,
               "id": "",
@@ -218,13 +176,43 @@ exports[`ListBody (general) should match snapshot (list) 1`] = `
               },
               "votes": 0,
             },
-          }
+          ],
+          "user": Object {},
+          "view": Object {
+            "add": "",
+            "delete": false,
+            "settings": false,
+          },
         }
-        location={Object {}}
-        match={Object {}}
-        staticContext={Object {}}
-      />
-    </div>
+      }
+      history={
+        Object {
+          "push": [MockFunction],
+        }
+      }
+      key="0-0"
+      local={
+        Object {
+          "poll": Object {
+            "author": "",
+            "date": 0,
+            "id": "",
+            "options": Array [],
+            "secret": false,
+            "title": "",
+            "users": Object {
+              "created": "",
+              "flagged": Array [],
+              "hidden": Array [],
+            },
+            "votes": 0,
+          },
+        }
+      }
+      location={Object {}}
+      match={Object {}}
+      staticContext={Object {}}
+    />
   </div>
 </div>
 `;
@@ -254,18 +242,14 @@ exports[`ListBody (header) should match snapshot (all) 1`] = `
     onScroll={[MockFunction]}
   >
     <div
-      className="c-list-body__content"
+      className="c-list-item"
     >
-      <div
-        className="c-list-item"
-      >
-        <p>
-          N/A
-        </p>
-        <p>
-          No Polls
-        </p>
-      </div>
+      <p>
+        N/A
+      </p>
+      <p>
+        No Polls
+      </p>
     </div>
   </div>
 </div>
@@ -296,18 +280,14 @@ exports[`ListBody (header) should match snapshot (created) 1`] = `
     onScroll={[MockFunction]}
   >
     <div
-      className="c-list-body__content"
+      className="c-list-item"
     >
-      <div
-        className="c-list-item"
-      >
-        <p>
-          N/A
-        </p>
-        <p>
-          No Polls
-        </p>
-      </div>
+      <p>
+        N/A
+      </p>
+      <p>
+        No Polls
+      </p>
     </div>
   </div>
 </div>
@@ -338,18 +318,14 @@ exports[`ListBody (header) should match snapshot (hidden) 1`] = `
     onScroll={[MockFunction]}
   >
     <div
-      className="c-list-body__content"
+      className="c-list-item"
     >
-      <div
-        className="c-list-item"
-      >
-        <p>
-          N/A
-        </p>
-        <p>
-          No Polls
-        </p>
-      </div>
+      <p>
+        N/A
+      </p>
+      <p>
+        No Polls
+      </p>
     </div>
   </div>
 </div>
@@ -380,18 +356,14 @@ exports[`ListBody (header) should match snapshot (voted) 1`] = `
     onScroll={[MockFunction]}
   >
     <div
-      className="c-list-body__content"
+      className="c-list-item"
     >
-      <div
-        className="c-list-item"
-      >
-        <p>
-          N/A
-        </p>
-        <p>
-          No Polls
-        </p>
-      </div>
+      <p>
+        N/A
+      </p>
+      <p>
+        No Polls
+      </p>
     </div>
   </div>
 </div>

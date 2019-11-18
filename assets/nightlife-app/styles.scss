@@ -8,7 +8,7 @@
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: 1.5vw;
-  grid-template-columns: 9vw auto;
+  grid-template-columns: 9vw;
 }
 
 @mixin swipe-btn {
@@ -25,12 +25,10 @@
 
   &__body {
     @include scroll-box(60vw);
-    padding-right: 4.5vw;
-  }
-
-  &__content {
     display: grid;
+    grid-auto-rows: max-content;
     grid-gap: 1.5vw;
+    padding-right: 4.5vw;
   }
 
   &__head { @include list-item; }
@@ -51,9 +49,9 @@
 .c-list-menu {
   @include grid-item(1, 5, 2, 13);
   display: grid;
-  grid-auto-columns: 1fr auto auto;
   grid-auto-flow: column;
   grid-gap: 3vw;
+  grid-template-columns: 1fr;
   overflow: visible;
 }
 
@@ -180,8 +178,8 @@
 .c-venue-page {
   @include grid-item(1, 5, 3, 13);
   display: grid;
-  grid-auto-columns: 1fr 1fr;
   grid-gap: 3vw;
+  grid-template-columns: 1fr 1fr;
   &__controls { grid-column: 1 / 3; }
   &__favorites { grid-column: 1 / 2; }
   &__info { grid-column: 1 / 3; }

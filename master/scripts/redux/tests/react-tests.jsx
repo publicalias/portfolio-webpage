@@ -16,20 +16,15 @@ const { configure, mount, shallow } = require("enzyme");
 const getProps = (newState, actions, data, local, other) => {
 
   const init = {
-
     actions: Object.keys(actions).reduce((acc, e) => Object.assign(acc, {
       [e]: jest.fn()
     }), {}),
-
     data: newState(data),
-
-    local,
-
     history: { push: jest.fn() },
+    local,
     location: {},
     match: {},
     staticContext: {}
-
   };
 
   return deepCopy(init, other);

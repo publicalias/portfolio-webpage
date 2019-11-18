@@ -6,7 +6,7 @@
   display: grid;
   grid-auto-flow: column;
   grid-gap: 1.5vw;
-  grid-template-columns: 4.5vw 4.5vw auto;
+  grid-template-columns: 4.5vw 4.5vw;
 }
 
 @mixin menu {
@@ -39,13 +39,10 @@
 
   &__body {
     @include scroll-box(60vw);
-    overflow-x: hidden;
-    padding-right: 4.5vw;
-  }
-
-  &__content {
     display: grid;
+    grid-auto-rows: max-content;
     grid-gap: 1.5vw;
+    padding-right: 4.5vw;
   }
 
   &__head { @include list-item; }

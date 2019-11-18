@@ -48,21 +48,19 @@ const ListBody = (props) => {
         className="c-list-body__body js-ref-scroll qa-ref-scroll"
         onScroll={handleScroll}
       >
-        <div className="c-list-body__content">
-          {polls.length ? polls.map((e) => (
-            <ListItem
-              {...props}
-              key={keyGen(e.title)}
-              local={{ poll: e }}
-            />
-          )) : (
-            <div className="c-list-item">
-              <p>N/A</p>
-              {auth && <p>N/A</p>}
-              <p>No Polls</p>
-            </div>
-          )}
-        </div>
+        {polls.length ? polls.map((e) => (
+          <ListItem
+            {...props}
+            key={keyGen(e.title)}
+            local={{ poll: e }}
+          />
+        )) : (
+          <div className="c-list-item">
+            <p>N/A</p>
+            {auth && <p>N/A</p>}
+            <p>No Polls</p>
+          </div>
+        )}
       </div>
     </div>
   );

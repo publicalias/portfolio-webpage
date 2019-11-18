@@ -24,14 +24,12 @@ const MetaListBody = (props) => {
         className="c-list-body__body js-ref-scroll qa-ref-scroll"
         onScroll={handleScroll}
       >
-        <div className="c-list-body__content">
-          {children.length ? children : (
-            <div className="c-list-item">
-              <p>N/A</p>
-              <p>No Results</p>
-            </div>
-          )}
-        </div>
+        {children.length ? children : (
+          <div className="c-list-item">
+            <p>N/A</p>
+            <p>No Results</p>
+          </div>
+        )}
       </div>
     </div>
   );

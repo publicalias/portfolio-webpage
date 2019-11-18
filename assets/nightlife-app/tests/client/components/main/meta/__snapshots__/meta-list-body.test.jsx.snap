@@ -21,18 +21,14 @@ exports[`MetaListBody should match snapshot (default) 1`] = `
     onScroll={[MockFunction]}
   >
     <div
-      className="c-list-body__content"
+      className="c-list-item"
     >
-      <div
-        className="c-list-item"
-      >
-        <p>
-          N/A
-        </p>
-        <p>
-          No Results
-        </p>
-      </div>
+      <p>
+        N/A
+      </p>
+      <p>
+        No Results
+      </p>
     </div>
   </div>
 </div>
@@ -59,12 +55,8 @@ exports[`MetaListBody should match snapshot (list) 1`] = `
     onScroll={[MockFunction]}
   >
     <div
-      className="c-list-body__content"
-    >
-      <div
-        key=""
-      />
-    </div>
+      key=""
+    />
   </div>
 </div>
 `;
