@@ -1,3 +1,217 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`UserList should match snapshot 1`] = `""`;
+exports[`UserList should match snapshot 1`] = `
+<Fragment>
+  <UserMenu
+    actions={
+      Object {
+        "favoriteAdd": [MockFunction],
+        "favoriteRemove": [MockFunction],
+        "friendAdd": [MockFunction],
+        "friendConfirm": [MockFunction],
+        "friendDismiss": [MockFunction],
+        "friendGetList": [MockFunction],
+        "friendRemove": [MockFunction],
+        "metaAddErrors": [MockFunction],
+        "metaCloseError": [MockFunction],
+        "metaGetUser": [MockFunction],
+        "metaNoOp": [MockFunction],
+        "metaSaveAddress": [MockFunction],
+        "metaSaveAvatar": [MockFunction],
+        "metaSetAddress": [MockFunction],
+        "metaSetAvatar": [MockFunction],
+        "metaSetLoading": [MockFunction],
+        "metaSetReady": [MockFunction],
+        "metaSetState": [MockFunction],
+        "metaTimeoutError": [MockFunction],
+        "metaToggleDelete": [MockFunction],
+        "metaToggleSettings": [MockFunction],
+        "rsvpAdd": [MockFunction],
+        "rsvpDismiss": [MockFunction],
+        "rsvpGetList": [MockFunction],
+        "rsvpRemove": [MockFunction],
+        "userClearState": [MockFunction],
+        "userGetItem": [MockFunction],
+        "userGetList": [MockFunction],
+        "userSetSearch": [MockFunction],
+        "userToggleBlock": [MockFunction],
+        "userToggleRange": [MockFunction],
+        "venueClearForm": [MockFunction],
+        "venueClearState": [MockFunction],
+        "venueGetItem": [MockFunction],
+        "venueGetList": [MockFunction],
+        "venueSetMessage": [MockFunction],
+        "venueSetOpen": [MockFunction],
+        "venueSetPause": [MockFunction],
+        "venueSetPhoto": [MockFunction],
+        "venueSetSearch": [MockFunction],
+        "venueSetStart": [MockFunction],
+        "venueSetTime": [MockFunction],
+        "venueToggleRange": [MockFunction],
+        "venueToggleSort": [MockFunction],
+      }
+    }
+    data={
+      Object {
+        "account": Object {
+          "address": "",
+          "avatar": "",
+          "delete": false,
+          "settings": false,
+        },
+        "errors": Array [],
+        "loading": 0,
+        "notifications": Object {
+          "friends": Array [],
+          "rsvps": Array [],
+        },
+        "ready": false,
+        "user": Object {},
+        "users": Object {
+          "data": Array [],
+          "list": Object {
+            "range": false,
+            "search": "",
+          },
+        },
+        "venues": Object {
+          "data": Array [],
+          "list": Object {
+            "range": false,
+            "search": "",
+            "sort": false,
+          },
+          "page": Object {
+            "form": Object {
+              "message": "",
+              "open": false,
+              "time": "",
+            },
+            "photos": Object {
+              "pause": false,
+              "photo": null,
+              "start": false,
+            },
+          },
+        },
+      }
+    }
+    history={
+      Object {
+        "push": [MockFunction],
+      }
+    }
+    location={Object {}}
+    match={Object {}}
+    staticContext={Object {}}
+  />
+  <UserBody
+    actions={
+      Object {
+        "favoriteAdd": [MockFunction],
+        "favoriteRemove": [MockFunction],
+        "friendAdd": [MockFunction],
+        "friendConfirm": [MockFunction],
+        "friendDismiss": [MockFunction],
+        "friendGetList": [MockFunction],
+        "friendRemove": [MockFunction],
+        "metaAddErrors": [MockFunction],
+        "metaCloseError": [MockFunction],
+        "metaGetUser": [MockFunction],
+        "metaNoOp": [MockFunction],
+        "metaSaveAddress": [MockFunction],
+        "metaSaveAvatar": [MockFunction],
+        "metaSetAddress": [MockFunction],
+        "metaSetAvatar": [MockFunction],
+        "metaSetLoading": [MockFunction],
+        "metaSetReady": [MockFunction],
+        "metaSetState": [MockFunction],
+        "metaTimeoutError": [MockFunction],
+        "metaToggleDelete": [MockFunction],
+        "metaToggleSettings": [MockFunction],
+        "rsvpAdd": [MockFunction],
+        "rsvpDismiss": [MockFunction],
+        "rsvpGetList": [MockFunction],
+        "rsvpRemove": [MockFunction],
+        "userClearState": [MockFunction],
+        "userGetItem": [MockFunction],
+        "userGetList": [MockFunction],
+        "userSetSearch": [MockFunction],
+        "userToggleBlock": [MockFunction],
+        "userToggleRange": [MockFunction],
+        "venueClearForm": [MockFunction],
+        "venueClearState": [MockFunction],
+        "venueGetItem": [MockFunction],
+        "venueGetList": [MockFunction],
+        "venueSetMessage": [MockFunction],
+        "venueSetOpen": [MockFunction],
+        "venueSetPause": [MockFunction],
+        "venueSetPhoto": [MockFunction],
+        "venueSetSearch": [MockFunction],
+        "venueSetStart": [MockFunction],
+        "venueSetTime": [MockFunction],
+        "venueToggleRange": [MockFunction],
+        "venueToggleSort": [MockFunction],
+      }
+    }
+    data={
+      Object {
+        "account": Object {
+          "address": "",
+          "avatar": "",
+          "delete": false,
+          "settings": false,
+        },
+        "errors": Array [],
+        "loading": 0,
+        "notifications": Object {
+          "friends": Array [],
+          "rsvps": Array [],
+        },
+        "ready": false,
+        "user": Object {},
+        "users": Object {
+          "data": Array [],
+          "list": Object {
+            "range": false,
+            "search": "",
+          },
+        },
+        "venues": Object {
+          "data": Array [],
+          "list": Object {
+            "range": false,
+            "search": "",
+            "sort": false,
+          },
+          "page": Object {
+            "form": Object {
+              "message": "",
+              "open": false,
+              "time": "",
+            },
+            "photos": Object {
+              "pause": false,
+              "photo": null,
+              "start": false,
+            },
+          },
+        },
+      }
+    }
+    history={
+      Object {
+        "push": [MockFunction],
+      }
+    }
+    local={
+      Object {
+        "handleScroll": [MockFunction],
+      }
+    }
+    location={Object {}}
+    match={Object {}}
+    staticContext={Object {}}
+  />
+</Fragment>
+`;

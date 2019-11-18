@@ -4,24 +4,56 @@
 
 const UserList = require("../../../../../../scripts/client/components/main/user/list/user-list");
 
-const { testWrapper } = require("../../../../test-helpers");
+const { getGeoPoint, testWrapper } = require("../../../../test-helpers");
 
 //global imports
 
-const { initTestSnapshot } = require("redux/tests/client-tests");
+const { initTestSnapshot, mockInfiniteScroll } = require("redux/tests/client-tests");
+const { testMock } = require("redux/tests/meta-tests");
 const { reactTests } = require("redux/tests/react-tests");
 
 //utilities
 
-const { testShallow } = testWrapper(UserList);
-
-const testSnapshot = initTestSnapshot(testShallow);
+const { testMount, testShallow } = testWrapper(UserList);
 
 //setup
 
 beforeAll(reactTests.setup);
-beforeEach(reactTests.inject(UserList));
+beforeEach(reactTests.inject(UserList, { lib: mockInfiniteScroll().lib }));
 
 //user list
 
-test("UserList should match snapshot", () => testSnapshot());
+describe("UserList", () => {
+
+  const testSnapshot = initTestSnapshot(testShallow);
+
+  it("should match snapshot", () => testSnapshot());
+
+  it("should call handleReload conditionally on update", () => {
+
+    const { handleReload, lib } = mockInfiniteScroll();
+
+    Object.assign(UserList.injected.lib, lib);
+
+    const list = [
+      [{ user: { data: { location: null } } }],
+      [{ ready: true }],
+      [null, null, { location: { search: "" } }],
+      [{ user: { data: { location: getGeoPoint(0) } } }]
+    ];
+
+    const { setProps, wrapper } = testMount();
+
+    wrapper.mount();
+
+    for (const e of list) {
+      setProps(...e);
+    }
+
+    testMock(handleReload, [], [], []);
+
+    wrapper.unmount();
+
+  });
+
+});

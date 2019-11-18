@@ -2,7 +2,7 @@
 
 //local imports
 
-const { newGeoPoint, newListParamsVenues } = require("../../schemas");
+const { newGeoPoint, newListParamsUsers, newListParamsVenues } = require("../../schemas");
 
 //global imports
 
@@ -21,9 +21,17 @@ const getLocation = (user = {}) => get(user, "data.address")
     });
   });
 
+//get user params
+
+const getUserParams = (location) => getSearchParams(newListParamsUsers, location);
+
 //get venue params
 
 const getVenueParams = (location) => getSearchParams(newListParamsVenues, location);
+
+//set user params
+
+const setUserParams = setSearchParams;
 
 //set venue params
 
@@ -33,6 +41,8 @@ const setVenueParams = setSearchParams;
 
 module.exports = {
   getLocation,
+  getUserParams,
   getVenueParams,
+  setUserParams,
   setVenueParams
 };
