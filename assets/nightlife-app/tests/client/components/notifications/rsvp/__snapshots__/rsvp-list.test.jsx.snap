@@ -4,7 +4,6 @@ exports[`RSVPList should match snapshot (bool) 1`] = `
 <MetaList
   local={
     Object {
-      "bool": "[{\\"coordinates\\":{\\"latitude\\":0,\\"longitude\\":0},\\"id\\":\\"\\",\\"name\\":\\"\\",\\"rating\\":0,\\"distance\\":0,\\"image_url\\":\\"\\",\\"display_phone\\":\\"\\",\\"hours\\":[],\\"location\\":{\\"display_address\\":[]},\\"photos\\":[],\\"url\\":\\"\\",\\"favorites\\":[],\\"rsvps\\":[]}]",
       "heading": "RSVPs",
       "refresh": [MockFunction],
       "type": "rsvp",
@@ -17,7 +16,6 @@ exports[`RSVPList should match snapshot (default) 1`] = `
 <MetaList
   local={
     Object {
-      "bool": "[]",
       "heading": "RSVPs",
       "refresh": [MockFunction],
       "type": "rsvp",
@@ -30,7 +28,6 @@ exports[`RSVPList should match snapshot (list) 1`] = `
 <MetaList
   local={
     Object {
-      "bool": "[]",
       "heading": "RSVPs",
       "refresh": [MockFunction],
       "type": "rsvp",

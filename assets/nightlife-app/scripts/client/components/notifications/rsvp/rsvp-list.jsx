@@ -17,7 +17,7 @@ const React = require("react");
 
 const RSVPList = (props) => {
 
-  const { actions: { rsvpGetList }, data: { notifications: { rsvps }, venues: { data } } } = props;
+  const { actions: { rsvpGetList }, data: { notifications: { rsvps } } } = props;
 
   const { jsx: { MetaList, RSVPItem } } = RSVPList.injected;
 
@@ -28,7 +28,6 @@ const RSVPList = (props) => {
   return (
     <MetaList
       local={{
-        bool: JSON.stringify(data),
         heading: "RSVPs",
         refresh: rsvpGetList,
         type: "rsvp"
@@ -46,7 +45,7 @@ const RSVPList = (props) => {
 
 };
 
-RSVPList.propList = ["data.notifications.rsvps", "data.venues.data"];
+RSVPList.propList = ["data.notifications.rsvps"];
 
 RSVPList.injected = {
   jsx: {

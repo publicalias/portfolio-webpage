@@ -36,7 +36,7 @@ const MetaListBody = (props) => {
 
 };
 
-MetaListBody.propList = ["local"];
+MetaListBody.propList = ["children", "local"];
 
 //exports
 

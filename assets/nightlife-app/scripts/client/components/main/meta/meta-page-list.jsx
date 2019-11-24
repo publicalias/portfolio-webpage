@@ -14,9 +14,20 @@ const { Link } = require("react-router-dom");
 
 const MetaPageList = (props) => {
 
-  const { local: { heading, list } } = props;
+  const { local: { heading, list, type } } = props;
 
   const { jsx: { Link } } = MetaPageList.injected;
+
+  //utilities
+
+  const mapFn = ((data) => data[type])({
+    user({ user: { name, id } }) {
+      return [name || "Anonymous", id, `/users/page/${id}`];
+    },
+    venue({ venue: { name, id } }) {
+      return [name || "Undefined", id, `/venues/page/${id}`];
+    }
+  });
 
   //render
 
@@ -27,7 +38,7 @@ const MetaPageList = (props) => {
       <h3>{heading}</h3>
       <hr />
       <div className="c-page-list__body">
-        {list.length ? list.map(([name, id, link]) => (
+        {list.length ? list.map(mapFn).map(([name, id, link]) => (
           <p
             className="c-page-list__item"
             key={keyGen(id)}

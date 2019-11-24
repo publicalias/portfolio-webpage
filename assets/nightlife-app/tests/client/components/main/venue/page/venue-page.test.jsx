@@ -48,15 +48,18 @@ describe("VenuePage (general)", () => {
 
   const testLoadB = async (fn) => {
 
-    const userA = { user: { data: { location: null } } };
-    const userB = { user: { data: { location: getGeoPoint(0) } } };
+    const userData = {
+      a: { data: { location: null } },
+      b: { data: { location: getGeoPoint(0) } }
+    };
 
     const list = [
-      [userA],
+      [{ user: userData.a }],
       [{ ready: true }],
       [{ notifications: { friends: [{}] } }],
       [{ notifications: { rsvps: [{}] } }],
-      [userB]
+      [null, { id: "id-b" }],
+      [{ user: userData.b }]
     ];
 
     const { props, setProps, wrapper } = testPage();
@@ -69,7 +72,7 @@ describe("VenuePage (general)", () => {
 
     await Promise.resolve();
 
-    fn(props, userA.user, userB.user);
+    fn(props, userData);
 
     wrapper.unmount();
 
@@ -89,14 +92,23 @@ describe("VenuePage (general)", () => {
 
   }));
 
-  it("should call initVenueData conditionally on update", () => testLoadB((props, userA, userB) => {
+  it("should call initVenueData conditionally on update", () => testLoadB((props, userData) => {
 
-    const { actions: { venueGetItem } } = props;
+    const { actions: { rsvpGetList, venueGetItem } } = props;
 
     const { lib: { getLocation } } = VenuePage.injected;
 
-    testMock(getLocation, [userA], [userA], [userA], [userB]);
-    testMock(venueGetItem, ["id-a", null], ["id-a", null], ["id-a", null], ["id-a", getGeoPoint(0)]);
+    const [innerA, innerB] = Object.values(userData).map((e) => [e]);
+
+    const [outerA, outerB, outerC] = [
+      ["id-a", null],
+      ["id-b", null],
+      ["id-b", getGeoPoint(0)]
+    ];
+
+    testMock(rsvpGetList, [], [], [], [], []);
+    testMock(getLocation, innerA, innerA, innerA, innerA, innerB);
+    testMock(venueGetItem, outerA, outerA, outerA, outerB, outerC);
 
   }));
 
@@ -110,26 +122,8 @@ describe("VenuePage (list)", () => {
 
   const testPage = (data) => testSnapshot({ venues: { data: [data] } });
 
-  it("should match snapshot (favorites)", () => testPage({ favorites: [{ user: { id: "id-b" } }] }));
+  it("should match snapshot (favorites)", () => testPage({ favorites: [{}] }));
 
-  it("should match snapshot (favorites, name)", () => testPage({
-    favorites: [{
-      user: {
-        name: "User B",
-        id: "id-b"
-      }
-    }]
-  }));
-
-  it("should match snapshot (rsvps)", () => testPage({ rsvps: [{ user: { id: "id-b" } }] }));
-
-  it("should match snapshot (rsvps, name)", () => testPage({
-    rsvps: [{
-      user: {
-        name: "User B",
-        id: "id-b"
-      }
-    }]
-  }));
+  it("should match snapshot (rsvps)", () => testPage({ rsvps: [{}] }));
 
 });

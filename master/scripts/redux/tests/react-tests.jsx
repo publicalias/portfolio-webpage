@@ -32,10 +32,14 @@ const getProps = (newState, actions, data, local, other) => {
 };
 
 const setProps = (wrapper) => (data, local, other) => {
-  wrapper.setProps(deepCopy(wrapper.props(), other, {
+
+  const init = {
     data: data || {},
     local: local || {}
-  }));
+  };
+
+  wrapper.setProps(deepCopy(wrapper.props(), init, other));
+
 };
 
 const initTestWrapper = (newState, actions) => (Component) => {

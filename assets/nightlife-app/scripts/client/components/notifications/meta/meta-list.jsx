@@ -10,7 +10,7 @@ const { useEffect } = React;
 
 const MetaList = (props) => {
 
-  const { children, local: { bool, heading, refresh, type } } = props;
+  const { children, local: { heading, refresh, type } } = props;
 
   //events
 
@@ -22,7 +22,7 @@ const MetaList = (props) => {
 
   useEffect(() => {
     refresh(); //async
-  }, [bool]);
+  }, []);
 
   //render
 
@@ -46,7 +46,7 @@ const MetaList = (props) => {
 
 };
 
-MetaList.propList = ["local"];
+MetaList.propList = ["children", "local"];
 
 //exports
 

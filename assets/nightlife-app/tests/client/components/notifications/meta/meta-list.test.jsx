@@ -48,17 +48,15 @@ describe("MetaList", () => {
 
   it("should match snapshot (list)", () => testSnapshot(null, null, { children: [<div key="" />] }));
 
-  it("should call refresh conditionally on update", () => {
+  it("should call refresh on load", () => {
 
     const refresh = jest.fn();
 
-    const { setProps, wrapper } = testListMount(null, { refresh });
+    const { wrapper } = testListMount(null, { refresh });
 
     wrapper.mount();
 
-    setProps(null, { bool: "[{}]" });
-
-    testMock(refresh, [], []);
+    testMock(refresh, []);
 
     wrapper.unmount();
 

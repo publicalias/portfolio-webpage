@@ -4,6 +4,7 @@
 
 const MetaPageList = require("../../../../../scripts/client/components/main/meta/meta-page-list");
 
+const { newFavorite } = require("../../../../../schemas");
 const { testWrapper } = require("../../../test-helpers");
 
 //global imports
@@ -24,17 +25,33 @@ beforeEach(reactTests.inject(MetaPageList));
 
 describe("MetaPageList", () => {
 
-  const testSnapshot = withDataList(initTestSnapshot(testShallow), [null, {
-    heading: "Meta",
-    list: []
-  }]);
+  const testPageList = (type, name) => {
 
-  it("should match snapshot (default)", () => testSnapshot());
+    const testSnapshot = withDataList(initTestSnapshot(testShallow), [null, {
+      heading: "Meta",
+      list: [],
+      type
+    }]);
 
-  it("should match snapshot (list)", () => testSnapshot(null, {
-    list: [
-      ["User A", "id-a", "/users/page/id-a"]
-    ]
-  }));
+    const testList = (name = "") => testSnapshot(null, {
+      list: [newFavorite({
+        [type]: {
+          name,
+          id: "id-a"
+        }
+      })]
+    });
+
+    it(`should match snapshot (${type}, default)`, () => testSnapshot());
+
+    it(`should match snapshot (${type}, list)`, () => testList());
+
+    it(`should match snapshot (${type}, list, name)`, () => testList(name));
+
+  };
+
+  testPageList("user", "User A");
+
+  testPageList("venue", "Venue A");
 
 });

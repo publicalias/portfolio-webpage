@@ -4,7 +4,6 @@ exports[`FriendList should match snapshot (bool) 1`] = `
 <MetaList
   local={
     Object {
-      "bool": "[{\\"name\\":\\"\\",\\"id\\":\\"\\",\\"data\\":{\\"app\\":\\"nightlife-app\\",\\"address\\":\\"\\",\\"avatar\\":\\"\\",\\"location\\":null,\\"distance\\":0,\\"blocks\\":[],\\"favorites\\":[],\\"friends\\":[]}}]",
       "heading": "Friend Requests",
       "refresh": [MockFunction],
       "type": "friend",
@@ -17,7 +16,6 @@ exports[`FriendList should match snapshot (default) 1`] = `
 <MetaList
   local={
     Object {
-      "bool": "[]",
       "heading": "Friend Requests",
       "refresh": [MockFunction],
       "type": "friend",
@@ -30,7 +28,6 @@ exports[`FriendList should match snapshot (list) 1`] = `
 <MetaList
   local={
     Object {
-      "bool": "[]",
       "heading": "Friend Requests",
       "refresh": [MockFunction],
       "type": "friend",

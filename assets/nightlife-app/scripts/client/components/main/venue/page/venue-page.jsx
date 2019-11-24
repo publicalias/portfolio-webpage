@@ -24,7 +24,7 @@ const { useLayoutEffect } = React;
 const VenuePage = (props) => {
 
   const {
-    actions: { venueClearState, venueGetItem },
+    actions: { rsvpGetList, venueClearState, venueGetItem },
     data: { user, ready, notifications: { friends, rsvps }, venues: { data } },
     local: { id }
   } = props;
@@ -39,7 +39,8 @@ const VenuePage = (props) => {
   const venue = data.find((e) => e.id === id) || newVenue();
 
   const initVenueData = async () => {
-    venueGetItem(id, await getLocation(user));
+    rsvpGetList(); //notifications
+    venueGetItem(id, await getLocation(user)); //page
   };
 
   //lifecycle
@@ -62,8 +63,6 @@ const VenuePage = (props) => {
 
   const auth = user.type === "auth";
 
-  const mapFn = ({ user: { name, id } }) => [name || "Anonymous", id, `/users/page/${id}`];
-
   return (
     <div className="c-venue-page">
       <div className="c-venue-page__info">
@@ -84,7 +83,8 @@ const VenuePage = (props) => {
         <MetaPageList
           local={{
             heading: "Favorites",
-            list: venue.favorites.map(mapFn)
+            list: venue.favorites,
+            type: "user"
           }}
         />
       </div>
@@ -92,7 +92,8 @@ const VenuePage = (props) => {
         <MetaPageList
           local={{
             heading: "RSVPs",
-            list: venue.rsvps.map(mapFn)
+            list: venue.rsvps,
+            type: "user"
           }}
         />
       </div>

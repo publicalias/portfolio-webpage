@@ -313,6 +313,7 @@ exports[`VenuePage (general) should match snapshot (authenticated) 1`] = `
         Object {
           "heading": "Favorites",
           "list": Array [],
+          "type": "user",
         }
       }
     />
@@ -325,6 +326,7 @@ exports[`VenuePage (general) should match snapshot (authenticated) 1`] = `
         Object {
           "heading": "RSVPs",
           "list": Array [],
+          "type": "user",
         }
       }
     />
@@ -475,6 +477,7 @@ exports[`VenuePage (general) should match snapshot (default) 1`] = `
         Object {
           "heading": "Favorites",
           "list": Array [],
+          "type": "user",
         }
       }
     />
@@ -487,6 +490,7 @@ exports[`VenuePage (general) should match snapshot (default) 1`] = `
         Object {
           "heading": "RSVPs",
           "list": Array [],
+          "type": "user",
         }
       }
     />
@@ -658,6 +662,7 @@ exports[`VenuePage (general) should match snapshot (match) 1`] = `
         Object {
           "heading": "Favorites",
           "list": Array [],
+          "type": "user",
         }
       }
     />
@@ -670,6 +675,7 @@ exports[`VenuePage (general) should match snapshot (match) 1`] = `
         Object {
           "heading": "RSVPs",
           "list": Array [],
+          "type": "user",
         }
       }
     />
@@ -769,7 +775,7 @@ exports[`VenuePage (list) should match snapshot (favorites) 1`] = `
                   Object {
                     "id": "",
                     "user": Object {
-                      "id": "id-b",
+                      "id": "",
                       "name": "",
                     },
                     "venue": Object {
@@ -829,7 +835,7 @@ exports[`VenuePage (list) should match snapshot (favorites) 1`] = `
               Object {
                 "id": "",
                 "user": Object {
-                  "id": "id-b",
+                  "id": "",
                   "name": "",
                 },
                 "venue": Object {
@@ -865,225 +871,19 @@ exports[`VenuePage (list) should match snapshot (favorites) 1`] = `
         Object {
           "heading": "Favorites",
           "list": Array [
-            Array [
-              "Anonymous",
-              "id-b",
-              "/users/page/id-b",
-            ],
-          ],
-        }
-      }
-    />
-  </div>
-  <div
-    className="c-venue-page__rsvps"
-  >
-    <MetaPageList
-      local={
-        Object {
-          "heading": "RSVPs",
-          "list": Array [],
-        }
-      }
-    />
-  </div>
-</div>
-`;
-
-exports[`VenuePage (list) should match snapshot (favorites, name) 1`] = `
-<div
-  className="c-venue-page"
->
-  <div
-    className="c-venue-page__info"
-  >
-    <VenueData
-      actions={
-        Object {
-          "favoriteAdd": [MockFunction],
-          "favoriteRemove": [MockFunction],
-          "friendAdd": [MockFunction],
-          "friendConfirm": [MockFunction],
-          "friendDismiss": [MockFunction],
-          "friendGetList": [MockFunction],
-          "friendRemove": [MockFunction],
-          "metaAddErrors": [MockFunction],
-          "metaCloseError": [MockFunction],
-          "metaGetUser": [MockFunction],
-          "metaNoOp": [MockFunction],
-          "metaSaveAddress": [MockFunction],
-          "metaSaveAvatar": [MockFunction],
-          "metaSetAddress": [MockFunction],
-          "metaSetAvatar": [MockFunction],
-          "metaSetLoading": [MockFunction],
-          "metaSetReady": [MockFunction],
-          "metaSetState": [MockFunction],
-          "metaTimeoutError": [MockFunction],
-          "metaToggleDelete": [MockFunction],
-          "metaToggleSettings": [MockFunction],
-          "rsvpAdd": [MockFunction],
-          "rsvpDismiss": [MockFunction],
-          "rsvpGetList": [MockFunction],
-          "rsvpRemove": [MockFunction],
-          "userClearState": [MockFunction],
-          "userGetItem": [MockFunction],
-          "userGetList": [MockFunction],
-          "userSetSearch": [MockFunction],
-          "userToggleBlock": [MockFunction],
-          "userToggleRange": [MockFunction],
-          "venueClearForm": [MockFunction],
-          "venueClearState": [MockFunction],
-          "venueGetItem": [MockFunction],
-          "venueGetList": [MockFunction],
-          "venueSetMessage": [MockFunction],
-          "venueSetOpen": [MockFunction],
-          "venueSetPause": [MockFunction],
-          "venueSetPhoto": [MockFunction],
-          "venueSetSearch": [MockFunction],
-          "venueSetStart": [MockFunction],
-          "venueSetTime": [MockFunction],
-          "venueToggleRange": [MockFunction],
-          "venueToggleSort": [MockFunction],
-        }
-      }
-      data={
-        Object {
-          "account": Object {
-            "address": "",
-            "avatar": "",
-            "delete": false,
-            "settings": false,
-          },
-          "errors": Array [],
-          "loading": 0,
-          "notifications": Object {
-            "friends": Array [],
-            "rsvps": Array [],
-          },
-          "ready": false,
-          "user": Object {},
-          "users": Object {
-            "data": Array [],
-            "list": Object {
-              "range": false,
-              "search": "",
-            },
-          },
-          "venues": Object {
-            "data": Array [
-              Object {
-                "coordinates": Object {
-                  "latitude": 0,
-                  "longitude": 0,
-                },
-                "display_phone": "",
-                "distance": 0,
-                "favorites": Array [
-                  Object {
-                    "id": "",
-                    "user": Object {
-                      "id": "id-b",
-                      "name": "User B",
-                    },
-                    "venue": Object {
-                      "id": "",
-                      "name": "",
-                    },
-                  },
-                ],
-                "hours": Array [],
-                "id": "id-a",
-                "image_url": "",
-                "location": Object {
-                  "display_address": Array [],
-                },
-                "name": "",
-                "photos": Array [],
-                "rating": 0,
-                "rsvps": Array [],
-                "url": "",
-              },
-            ],
-            "list": Object {
-              "range": false,
-              "search": "",
-              "sort": false,
-            },
-            "page": Object {
-              "form": Object {
-                "message": "",
-                "open": false,
-                "time": "",
-              },
-              "photos": Object {
-                "pause": false,
-                "photo": null,
-                "start": false,
-              },
-            },
-          },
-        }
-      }
-      history={
-        Object {
-          "push": [MockFunction],
-        }
-      }
-      local={
-        Object {
-          "venue": Object {
-            "coordinates": Object {
-              "latitude": 0,
-              "longitude": 0,
-            },
-            "display_phone": "",
-            "distance": 0,
-            "favorites": Array [
-              Object {
+            Object {
+              "id": "",
+              "user": Object {
                 "id": "",
-                "user": Object {
-                  "id": "id-b",
-                  "name": "User B",
-                },
-                "venue": Object {
-                  "id": "",
-                  "name": "",
-                },
+                "name": "",
               },
-            ],
-            "hours": Array [],
-            "id": "id-a",
-            "image_url": "",
-            "location": Object {
-              "display_address": Array [],
+              "venue": Object {
+                "id": "",
+                "name": "",
+              },
             },
-            "name": "",
-            "photos": Array [],
-            "rating": 0,
-            "rsvps": Array [],
-            "url": "",
-          },
-        }
-      }
-      location={Object {}}
-      match={Object {}}
-      staticContext={Object {}}
-    />
-  </div>
-  <div
-    className="c-venue-page__favorites"
-  >
-    <MetaPageList
-      local={
-        Object {
-          "heading": "Favorites",
-          "list": Array [
-            Array [
-              "User B",
-              "id-b",
-              "/users/page/id-b",
-            ],
           ],
+          "type": "user",
         }
       }
     />
@@ -1096,6 +896,7 @@ exports[`VenuePage (list) should match snapshot (favorites, name) 1`] = `
         Object {
           "heading": "RSVPs",
           "list": Array [],
+          "type": "user",
         }
       }
     />
@@ -1209,7 +1010,7 @@ exports[`VenuePage (list) should match snapshot (rsvps) 1`] = `
                     "message": "",
                     "time": "",
                     "user": Object {
-                      "id": "id-b",
+                      "id": "",
                       "name": "",
                     },
                     "venue": Object {
@@ -1273,7 +1074,7 @@ exports[`VenuePage (list) should match snapshot (rsvps) 1`] = `
                 "message": "",
                 "time": "",
                 "user": Object {
-                  "id": "id-b",
+                  "id": "",
                   "name": "",
                 },
                 "venue": Object {
@@ -1299,6 +1100,7 @@ exports[`VenuePage (list) should match snapshot (rsvps) 1`] = `
         Object {
           "heading": "Favorites",
           "list": Array [],
+          "type": "user",
         }
       }
     />
@@ -1311,233 +1113,23 @@ exports[`VenuePage (list) should match snapshot (rsvps) 1`] = `
         Object {
           "heading": "RSVPs",
           "list": Array [
-            Array [
-              "Anonymous",
-              "id-b",
-              "/users/page/id-b",
-            ],
-          ],
-        }
-      }
-    />
-  </div>
-</div>
-`;
-
-exports[`VenuePage (list) should match snapshot (rsvps, name) 1`] = `
-<div
-  className="c-venue-page"
->
-  <div
-    className="c-venue-page__info"
-  >
-    <VenueData
-      actions={
-        Object {
-          "favoriteAdd": [MockFunction],
-          "favoriteRemove": [MockFunction],
-          "friendAdd": [MockFunction],
-          "friendConfirm": [MockFunction],
-          "friendDismiss": [MockFunction],
-          "friendGetList": [MockFunction],
-          "friendRemove": [MockFunction],
-          "metaAddErrors": [MockFunction],
-          "metaCloseError": [MockFunction],
-          "metaGetUser": [MockFunction],
-          "metaNoOp": [MockFunction],
-          "metaSaveAddress": [MockFunction],
-          "metaSaveAvatar": [MockFunction],
-          "metaSetAddress": [MockFunction],
-          "metaSetAvatar": [MockFunction],
-          "metaSetLoading": [MockFunction],
-          "metaSetReady": [MockFunction],
-          "metaSetState": [MockFunction],
-          "metaTimeoutError": [MockFunction],
-          "metaToggleDelete": [MockFunction],
-          "metaToggleSettings": [MockFunction],
-          "rsvpAdd": [MockFunction],
-          "rsvpDismiss": [MockFunction],
-          "rsvpGetList": [MockFunction],
-          "rsvpRemove": [MockFunction],
-          "userClearState": [MockFunction],
-          "userGetItem": [MockFunction],
-          "userGetList": [MockFunction],
-          "userSetSearch": [MockFunction],
-          "userToggleBlock": [MockFunction],
-          "userToggleRange": [MockFunction],
-          "venueClearForm": [MockFunction],
-          "venueClearState": [MockFunction],
-          "venueGetItem": [MockFunction],
-          "venueGetList": [MockFunction],
-          "venueSetMessage": [MockFunction],
-          "venueSetOpen": [MockFunction],
-          "venueSetPause": [MockFunction],
-          "venueSetPhoto": [MockFunction],
-          "venueSetSearch": [MockFunction],
-          "venueSetStart": [MockFunction],
-          "venueSetTime": [MockFunction],
-          "venueToggleRange": [MockFunction],
-          "venueToggleSort": [MockFunction],
-        }
-      }
-      data={
-        Object {
-          "account": Object {
-            "address": "",
-            "avatar": "",
-            "delete": false,
-            "settings": false,
-          },
-          "errors": Array [],
-          "loading": 0,
-          "notifications": Object {
-            "friends": Array [],
-            "rsvps": Array [],
-          },
-          "ready": false,
-          "user": Object {},
-          "users": Object {
-            "data": Array [],
-            "list": Object {
-              "range": false,
-              "search": "",
-            },
-          },
-          "venues": Object {
-            "data": Array [
-              Object {
-                "coordinates": Object {
-                  "latitude": 0,
-                  "longitude": 0,
-                },
-                "display_phone": "",
-                "distance": 0,
-                "favorites": Array [],
-                "hours": Array [],
-                "id": "id-a",
-                "image_url": "",
-                "location": Object {
-                  "display_address": Array [],
-                },
+            Object {
+              "date": 0,
+              "hidden": Array [],
+              "id": "",
+              "message": "",
+              "time": "",
+              "user": Object {
+                "id": "",
                 "name": "",
-                "photos": Array [],
-                "rating": 0,
-                "rsvps": Array [
-                  Object {
-                    "date": 0,
-                    "hidden": Array [],
-                    "id": "",
-                    "message": "",
-                    "time": "",
-                    "user": Object {
-                      "id": "id-b",
-                      "name": "User B",
-                    },
-                    "venue": Object {
-                      "id": "",
-                      "name": "",
-                    },
-                  },
-                ],
-                "url": "",
               },
-            ],
-            "list": Object {
-              "range": false,
-              "search": "",
-              "sort": false,
-            },
-            "page": Object {
-              "form": Object {
-                "message": "",
-                "open": false,
-                "time": "",
-              },
-              "photos": Object {
-                "pause": false,
-                "photo": null,
-                "start": false,
-              },
-            },
-          },
-        }
-      }
-      history={
-        Object {
-          "push": [MockFunction],
-        }
-      }
-      local={
-        Object {
-          "venue": Object {
-            "coordinates": Object {
-              "latitude": 0,
-              "longitude": 0,
-            },
-            "display_phone": "",
-            "distance": 0,
-            "favorites": Array [],
-            "hours": Array [],
-            "id": "id-a",
-            "image_url": "",
-            "location": Object {
-              "display_address": Array [],
-            },
-            "name": "",
-            "photos": Array [],
-            "rating": 0,
-            "rsvps": Array [
-              Object {
-                "date": 0,
-                "hidden": Array [],
+              "venue": Object {
                 "id": "",
-                "message": "",
-                "time": "",
-                "user": Object {
-                  "id": "id-b",
-                  "name": "User B",
-                },
-                "venue": Object {
-                  "id": "",
-                  "name": "",
-                },
+                "name": "",
               },
-            ],
-            "url": "",
-          },
-        }
-      }
-      location={Object {}}
-      match={Object {}}
-      staticContext={Object {}}
-    />
-  </div>
-  <div
-    className="c-venue-page__favorites"
-  >
-    <MetaPageList
-      local={
-        Object {
-          "heading": "Favorites",
-          "list": Array [],
-        }
-      }
-    />
-  </div>
-  <div
-    className="c-venue-page__rsvps"
-  >
-    <MetaPageList
-      local={
-        Object {
-          "heading": "RSVPs",
-          "list": Array [
-            Array [
-              "User B",
-              "id-b",
-              "/users/page/id-b",
-            ],
+            },
           ],
+          "type": "user",
         }
       }
     />
