@@ -159,9 +159,15 @@ describe("rsvpGetList", () => {
 
   const mockAPICall = initMockAPICall(rsvpGetList, "GET");
 
-  it("sends status if authentication fails", () => testAuthFail(mockAPICall));
+  it("sends data if successful (default)", async () => {
 
-  it("sends data if successful", async () => {
+    const res = await mockAPICall();
+
+    testMock(res.json, [{ notifications: { rsvps: [] } }]);
+
+  });
+
+  it("sends data if successful (authenticated)", async () => {
 
     const friends = [
       newFriend({

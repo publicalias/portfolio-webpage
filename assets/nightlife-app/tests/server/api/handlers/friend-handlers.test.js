@@ -31,7 +31,7 @@ afterAll(mongoTests.teardown);
 
 //friend add
 
-describe("friendAdd", () => {
+describe("friendAdd (general)", () => {
 
   const { friendAdd } = handlers;
 
@@ -42,44 +42,27 @@ describe("friendAdd", () => {
     id
   });
 
-  const testError = async (from, to) => {
-
-    await friendsCol().insertOne(newFriend({
-      from: { id: from },
-      to: { id: to }
-    }));
-
-    const res = await mockAPICall(newUser({ id: "id-c" }), getData());
-
-    testMock(res.json, [{ errors: ["Friend request already exists"] }]);
-
-  };
-
-  beforeEach(() => userDataCol().insertOne(newUserData({
-    id: "id-a",
-    data: { blocks: ["id-b"] }
-  })));
-
-  it("sends status if authentication fails", () => testAuthFail(mockAPICall, getData(), [newUser({ id: "id-b" })]));
+  it("sends status if authentication fails", () => testAuthFail(mockAPICall, getData(), [newUser({ id: "id-a" })]));
 
   it("sends errors if user does not exist", async () => {
 
-    const res = await mockAPICall(newUser(), getData(""));
+    const res = await mockAPICall(newUser({ id: "id-b" }), getData(""));
 
     testMock(res.json, [{ errors: ["User does not exist"] }]);
 
   });
 
-  it("sends errors if friend request already exists (from)", () => testError("id-a", "id-c"));
-
-  it("sends errors if friend request already exists (to)", () => testError("id-c", "id-a"));
-
   it("sends noop if successful", async () => {
+
+    await userDataCol().insertMany([
+      newUserData({ id: "id-a" }),
+      newUserData({ id: "id-b" })
+    ]);
 
     const res = await mockAPICall(
       newUser({
-        name: "User C",
-        id: "id-c"
+        name: "User B",
+        id: "id-b"
       }),
       getData()
     );
@@ -89,6 +72,59 @@ describe("friendAdd", () => {
     await testInsert(friendsCol);
 
   });
+
+});
+
+describe("friendAdd (blocks, exists)", () => {
+
+  const { friendAdd } = handlers;
+
+  const mockAPICall = initMockAPICall(friendAdd, "POST");
+
+  const getData = () => ({
+    name: "User A",
+    id: "id-a"
+  });
+
+  const testBlocks = async (from) => {
+
+    await userDataCol().insertMany([
+      newUserData({
+        id: "id-a",
+        data: { blocks: ["id-b"] }
+      }),
+      newUserData(from)
+    ]);
+
+    const res = await mockAPICall(newUser(from), getData());
+
+    testMock(res.json, [{ errors: ["User is blocked"] }]);
+
+  };
+
+  const testExists = async (from, to) => {
+
+    await friendsCol().insertOne(newFriend({
+      from: { id: from },
+      to: { id: to }
+    }));
+
+    const res = await mockAPICall(newUser({ id: "id-d" }), getData());
+
+    testMock(res.json, [{ errors: ["Friend request already exists"] }]);
+
+  };
+
+  it("sends errors if user is blocked (from)", () => testBlocks({ id: "id-b" }));
+
+  it("sends errors if user is blocked (to)", () => testBlocks({
+    id: "id-c",
+    data: { blocks: ["id-a"] }
+  }));
+
+  it("sends errors if friend request already exists (from)", () => testExists("id-a", "id-d"));
+
+  it("sends errors if friend request already exists (to)", () => testExists("id-d", "id-a"));
 
 });
 
@@ -152,9 +188,15 @@ describe("friendGetList", () => {
 
   const mockAPICall = initMockAPICall(friendGetList, "GET");
 
-  it("sends status if authentication fails", () => testAuthFail(mockAPICall));
+  it("sends data if successful (default)", async () => {
 
-  it("sends data if successful", async () => {
+    const res = await mockAPICall();
+
+    testMock(res.json, [{ notifications: { friends: [] } }]);
+
+  });
+
+  it("sends data if successful (authenticated)", async () => {
 
     const friends = [
       newFriend({ from: { id: "id-a" } }),

@@ -108,15 +108,13 @@ const rsvpDismiss = handleAPICall({
 
 //rsvp get list
 
-const rsvpGetList = handleAPICall({
+const rsvpGetList = async (req, res) => {
 
-  failure: handleAuthFail,
-
-  async success(req, res) {
+  const rsvps = !req.user ? [] : await (async () => {
 
     const friends = await friendIDList(req.user.id);
 
-    const rsvps = await rsvpsCol()
+    return rsvpsCol()
       .find({
         "user.id": { $in: friends },
         "hidden": { $ne: req.user.id }
@@ -124,11 +122,11 @@ const rsvpGetList = handleAPICall({
       .sort({ date: -1 })
       .toArray();
 
-    res.json({ notifications: { rsvps } });
+  })();
 
-  }
+  res.json({ notifications: { rsvps } });
 
-});
+};
 
 //rsvp remove
 

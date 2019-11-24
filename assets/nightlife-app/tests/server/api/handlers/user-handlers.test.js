@@ -290,11 +290,11 @@ describe("userToggleBlock", () => {
 
   };
 
-  it("sends status if authentication fails", () => testAuthFail(mockAPICall, getData()));
+  it("sends status if authentication fails", () => testAuthFail(mockAPICall, getData(), [newUser({ id: "id-b" })]));
 
   it("sends errors if user does not exist", async () => {
 
-    const res = await mockAPICall(newUser(), getData(""));
+    const res = await mockAPICall(newUser({ id: "id-a" }), getData(""));
 
     testMock(res.json, [{ errors: ["User does not exist"] }]);
 

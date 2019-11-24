@@ -54,7 +54,13 @@ const userGetList = handleAPICall({
 
 const userToggleBlock = handleAPICall({
 
-  failure: handleAuthFail,
+  failure(req, res) {
+
+    const { id } = req.body.data;
+
+    handleAuthFail(req, res, () => id === req.user.id);
+
+  },
 
   errors(req, res) {
 

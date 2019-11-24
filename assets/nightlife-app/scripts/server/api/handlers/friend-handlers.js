@@ -7,7 +7,7 @@ const { newFriend } = require("../../../../schemas");
 
 //global imports
 
-const { checkErrors } = require("all/utilities");
+const { checkErrors, get } = require("all/utilities");
 const { handleAPICall, handleAuthFail, handleErrors } = require("redux/server-utils");
 
 //node modules
@@ -23,23 +23,24 @@ const userDataCol = () => db.collection("nightlife-app/user-data");
 
 const friendAdd = handleAPICall({
 
-  async failure(req, res) {
+  failure(req, res) {
 
     const { id } = req.body.data;
 
-    handleAuthFail(req, res, id && await (async () => {
-
-      const { data: { blocks } } = await userDataCol().findOne({ id });
-
-      return (id) => blocks.includes(id);
-
-    })());
+    handleAuthFail(req, res, () => id === req.user.id);
 
   },
 
   async errors(req, res) {
 
     const { id } = req.body.data;
+
+    const [from, to] = await Promise.all([
+      userDataCol().findOne({ id: req.user.id }),
+      userDataCol().findOne({ id })
+    ]);
+
+    const blocked = (user, id, list = get(user, "data.blocks")) => list && list.includes(id);
 
     const exists = await friendsCol().findOne({
       $or: [{
@@ -54,6 +55,9 @@ const friendAdd = handleAPICall({
     handleErrors(res, checkErrors([{
       bool: !id,
       text: "User does not exist"
+    }, {
+      bool: blocked(from, id) || blocked(to, req.user.id),
+      text: "User is blocked"
     }, {
       bool: exists,
       text: "Friend request already exists"
@@ -122,27 +126,21 @@ const friendDismiss = handleAPICall({
 
 //friend get list
 
-const friendGetList = handleAPICall({
+const friendGetList = async (req, res) => {
 
-  failure: handleAuthFail,
+  const friends = !req.user ? [] : await friendsCol()
+    .find({
+      $and: [
+        { $or: [{ "from.id": req.user.id }, { "to.id": req.user.id }] },
+        { hidden: { $ne: req.user.id } }
+      ]
+    })
+    .sort({ date: -1 })
+    .toArray();
 
-  async success(req, res) {
+  res.json({ notifications: { friends } });
 
-    const friends = await friendsCol()
-      .find({
-        $and: [
-          { $or: [{ "from.id": req.user.id }, { "to.id": req.user.id }] },
-          { hidden: { $ne: req.user.id } }
-        ]
-      })
-      .sort({ date: -1 })
-      .toArray();
-
-    res.json({ notifications: { friends } });
-
-  }
-
-});
+};
 
 //friend remove
 
