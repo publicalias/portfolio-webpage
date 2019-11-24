@@ -1,3 +1,53 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`user data should match snapshot 1`] = `""`;
+exports[`UserData should match snapshot (default) 1`] = `
+<div>
+  <h1
+    className="u-align-left"
+  >
+    Anonymous
+  </h1>
+  <hr />
+  <div
+    className="c-user-avatar u-margin-full"
+  >
+    <img
+      alt="User Photo"
+      className="c-user-avatar__image qa-error-image"
+      onError={[Function]}
+      src="https://www.example.com/avatar.jpg"
+    />
+  </div>
+  <p
+    className="u-align-right u-margin-none"
+  >
+    0 Miles
+  </p>
+</div>
+`;
+
+exports[`UserData should match snapshot (name) 1`] = `
+<div>
+  <h1
+    className="u-align-left"
+  >
+    User A
+  </h1>
+  <hr />
+  <div
+    className="c-user-avatar u-margin-full"
+  >
+    <img
+      alt="User Photo"
+      className="c-user-avatar__image qa-error-image"
+      onError={[Function]}
+      src="https://www.example.com/avatar.jpg"
+    />
+  </div>
+  <p
+    className="u-align-right u-margin-none"
+  >
+    0 Miles
+  </p>
+</div>
+`;

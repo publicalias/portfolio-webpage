@@ -164,6 +164,8 @@
 
 }
 
+.c-user-avatar { @include image-frame; }
+
 .c-venue-controls {
   align-items: start;
   display: grid;
