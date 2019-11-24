@@ -4,18 +4,35 @@
 
 const UserControls = require("../../../../../../scripts/client/components/main/user/page/user-controls");
 
+const { newUserData, newUserWithData } = require("../../../../../../schemas");
 const { testWrapper } = require("../../../../test-helpers");
 
 //global imports
 
-const { initTestSnapshot } = require("redux/tests/client-tests");
+const { deepCopy } = require("all/utilities");
+const { initTestEvent, initTestSnapshot, withDataList } = require("redux/tests/client-tests");
+const { testMock } = require("redux/tests/meta-tests");
 const { reactTests } = require("redux/tests/react-tests");
 
 //utilities
 
 const { testShallow } = testWrapper(UserControls);
 
-const testSnapshot = initTestSnapshot(testShallow);
+const testControls = withDataList(testShallow, [{ user: newUserWithData({ id: "id-a" }) }, {
+  refresh: jest.fn(),
+  userData: newUserData({
+    name: "User B",
+    id: "id-b"
+  })
+}]);
+
+const getList = (from) => ({
+  friends: [{
+    id: "id-c",
+    from: { id: from ? "id-a" : "id-b" },
+    to: { id: from ? "id-b" : "id-a" }
+  }]
+});
 
 //setup
 
@@ -24,4 +41,61 @@ beforeEach(reactTests.inject(UserControls));
 
 //user controls
 
-test("user controls should match snapshot", () => testSnapshot());
+describe("UserControls (snapshots)", () => {
+
+  const testSnapshot = initTestSnapshot(testControls);
+
+  it("should match snapshot (default)", () => testSnapshot());
+
+  it("should match snapshot (friend, from)", () => testSnapshot(null, { userData: { data: getList(true) } }));
+
+  it("should match snapshot (friend, to)", () => testSnapshot(null, { userData: { data: getList() } }));
+
+  it("should match snapshot (pending, from)", () => testSnapshot({ notifications: getList(true) }));
+
+  it("should match snapshot (pending, to)", () => testSnapshot({ notifications: getList() }));
+
+  it("should match snapshot (blocked)", () => testSnapshot({ user: { data: { blocks: ["id-b"] } } }));
+
+});
+
+describe("UserControls (events)", () => {
+
+  const initTestClick = (qa) => (dataList, fn) => {
+
+    const testClick = initTestEvent(testControls, "click");
+
+    const refresh = jest.fn();
+
+    const fullDataList = deepCopy(dataList, [null, { refresh }]);
+
+    return testClick(qa, fullDataList, fn, () => {
+      testMock(refresh, []);
+    });
+
+  };
+
+  const testFriend = initTestClick(".qa-click-friend");
+  const testBlock = initTestClick(".qa-toggle-block");
+
+  it("should call handleFriend on click (default)", () => testFriend(
+    [],
+    ["friendAdd", ["User B", "id-b"]]
+  ));
+
+  it("should call handleFriend on click (friend, from)", () => testFriend(
+    [null, { userData: { data: getList(true) } }],
+    ["friendRemove", ["id-c"]]
+  ));
+
+  it("should call handleFriend on click (friend, to)", () => testFriend(
+    [null, { userData: { data: getList() } }],
+    ["friendRemove", ["id-c"]]
+  ));
+
+  it("should call handleBlock on click", () => testBlock(
+    [],
+    ["userToggleBlock", ["id-b"]]
+  ));
+
+});

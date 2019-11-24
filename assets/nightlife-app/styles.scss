@@ -166,6 +166,8 @@
 
 .c-user-avatar { @include image-frame; }
 
+.c-user-controls { display: flex; }
+
 .c-venue-controls {
   align-items: start;
   display: grid;

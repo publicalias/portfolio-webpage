@@ -1,3 +1,121 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`user controls should match snapshot 1`] = `""`;
+exports[`UserControls (snapshots) should match snapshot (blocked) 1`] = `
+<div
+  className="c-user-controls"
+>
+  <button
+    className="qa-click-friend u-margin-right"
+    disabled={false}
+    onClick={[Function]}
+  >
+    Add Friend
+  </button>
+  <button
+    className="qa-toggle-block"
+    onClick={[Function]}
+  >
+    Unblock
+  </button>
+</div>
+`;
+
+exports[`UserControls (snapshots) should match snapshot (default) 1`] = `
+<div
+  className="c-user-controls"
+>
+  <button
+    className="qa-click-friend u-margin-right"
+    disabled={false}
+    onClick={[Function]}
+  >
+    Add Friend
+  </button>
+  <button
+    className="qa-toggle-block"
+    onClick={[Function]}
+  >
+    Block
+  </button>
+</div>
+`;
+
+exports[`UserControls (snapshots) should match snapshot (friend, from) 1`] = `
+<div
+  className="c-user-controls"
+>
+  <button
+    className="qa-click-friend u-margin-right"
+    disabled={false}
+    onClick={[Function]}
+  >
+    Remove Friend
+  </button>
+  <button
+    className="qa-toggle-block"
+    onClick={[Function]}
+  >
+    Block
+  </button>
+</div>
+`;
+
+exports[`UserControls (snapshots) should match snapshot (friend, to) 1`] = `
+<div
+  className="c-user-controls"
+>
+  <button
+    className="qa-click-friend u-margin-right"
+    disabled={false}
+    onClick={[Function]}
+  >
+    Remove Friend
+  </button>
+  <button
+    className="qa-toggle-block"
+    onClick={[Function]}
+  >
+    Block
+  </button>
+</div>
+`;
+
+exports[`UserControls (snapshots) should match snapshot (pending, from) 1`] = `
+<div
+  className="c-user-controls"
+>
+  <button
+    className="qa-click-friend u-margin-right"
+    disabled={true}
+    onClick={[Function]}
+  >
+    Pending
+  </button>
+  <button
+    className="qa-toggle-block"
+    onClick={[Function]}
+  >
+    Block
+  </button>
+</div>
+`;
+
+exports[`UserControls (snapshots) should match snapshot (pending, to) 1`] = `
+<div
+  className="c-user-controls"
+>
+  <button
+    className="qa-click-friend u-margin-right"
+    disabled={true}
+    onClick={[Function]}
+  >
+    Pending
+  </button>
+  <button
+    className="qa-toggle-block"
+    onClick={[Function]}
+  >
+    Block
+  </button>
+</div>
+`;
