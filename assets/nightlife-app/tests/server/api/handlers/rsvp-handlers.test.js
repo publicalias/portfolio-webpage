@@ -39,8 +39,8 @@ describe("rsvpAdd", () => {
   });
 
   const testInputs = initTestErrors([
-    ["sends errors if time exceeds character limit", ["Time exceeds character limit", overlyLongInput]],
-    ["sends errors if message exceeds character limit", ["Message exceeds character limit", "9:00 PM", overlyLongInput]],
+    ["sends errors if time exceeds character limit", ["Time exceeds character limit", overlyLongInput()]],
+    ["sends errors if message exceeds character limit", ["Message exceeds character limit", "9:00 PM", overlyLongInput()]],
     ["sends errors if time is incorrectly formatted", ["Time is incorrectly formatted", "lol idk"]]
   ]);
 

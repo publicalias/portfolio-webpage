@@ -6,7 +6,7 @@ exports[`SidebarInput (address) should match snapshot (bool) 1`] = `
 >
   <input
     className="c-sidebar__input qa-change-input"
-    maxLength="100"
+    maxLength="1000"
     onChange={[Function]}
     placeholder="Address"
     value=""
@@ -26,7 +26,7 @@ exports[`SidebarInput (address) should match snapshot (bool, text) 1`] = `
 >
   <input
     className="c-sidebar__input qa-change-input"
-    maxLength="100"
+    maxLength="1000"
     onChange={[Function]}
     placeholder="Address"
     value="12345"
@@ -46,7 +46,7 @@ exports[`SidebarInput (address) should match snapshot (default) 1`] = `
 >
   <input
     className="c-sidebar__input qa-change-input"
-    maxLength="100"
+    maxLength="1000"
     onChange={[Function]}
     placeholder="Address"
     value=""
@@ -66,7 +66,7 @@ exports[`SidebarInput (avatar) should match snapshot (bool) 1`] = `
 >
   <input
     className="c-sidebar__input qa-change-input"
-    maxLength="100"
+    maxLength="1000"
     onChange={[Function]}
     placeholder="Avatar"
     value=""
@@ -86,7 +86,7 @@ exports[`SidebarInput (avatar) should match snapshot (bool, text) 1`] = `
 >
   <input
     className="c-sidebar__input qa-change-input"
-    maxLength="100"
+    maxLength="1000"
     onChange={[Function]}
     placeholder="Avatar"
     value="https://www.example.com/avatar.jpg"
@@ -106,7 +106,7 @@ exports[`SidebarInput (avatar) should match snapshot (default) 1`] = `
 >
   <input
     className="c-sidebar__input qa-change-input"
-    maxLength="100"
+    maxLength="1000"
     onChange={[Function]}
     placeholder="Avatar"
     value=""

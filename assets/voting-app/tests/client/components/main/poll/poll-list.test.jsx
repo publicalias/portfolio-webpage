@@ -56,7 +56,7 @@ describe("PollList (view)", () => {
 
     const dataList = [{ user: newUser({ id: "id-a" }) }, { users: { created: "id-a" } }];
 
-    return testSnapshot(...dataList);
+    testSnapshot(...dataList);
 
   });
 
@@ -64,7 +64,7 @@ describe("PollList (view)", () => {
 
     const dataList = [{ user: newUser({ id: "id-a" }) }, { options: [{ created: "id-a" }] }];
 
-    return testSnapshot(...dataList);
+    testSnapshot(...dataList);
 
   });
 
@@ -72,7 +72,7 @@ describe("PollList (view)", () => {
 
     const dataList = [{ user: newUser({ id: "id-a" }) }, { options: [{ voted: ["id-a"] }] }];
 
-    return testSnapshot(...dataList);
+    testSnapshot(...dataList);
 
   });
 

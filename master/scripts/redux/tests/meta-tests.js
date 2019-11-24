@@ -24,8 +24,8 @@ const mockResults = (fn) => fn.mock.results.map((e) => e.value);
 
 //overly long input
 
-const overlyLongInput = Array(100 + 1)
-  .fill("a")
+const overlyLongInput = (n = 100) => Array(n + 1)
+  .fill("0")
   .join("");
 
 //test mock

@@ -219,7 +219,7 @@ describe("metaGetPollList (search)", () => {
 
   it("sends errors if search exceeds character limit", async () => {
 
-    const res = await mockAPICall({}, getData(overlyLongInput));
+    const res = await mockAPICall({}, getData(overlyLongInput()));
 
     testMock(res.json, [{ errors: ["Search exceeds character limit"] }]);
 

@@ -129,7 +129,7 @@ describe("metaSaveAddress", () => {
 
   it("sends errors if address exceeds character limit", async () => {
 
-    const res = await mockAPICall(newUser(), getData(overlyLongInput));
+    const res = await mockAPICall(newUser(), getData(overlyLongInput(1000)));
 
     testMock(res.json, [{ errors: ["Address exceeds character limit"] }]);
 
@@ -159,7 +159,7 @@ describe("metaSaveAvatar", () => {
 
   it("sends errors if avatar exceeds character limit", async () => {
 
-    const res = await mockAPICall(newUser(), getData(overlyLongInput));
+    const res = await mockAPICall(newUser(), getData(overlyLongInput(1000)));
 
     testMock(res.json, [{ errors: ["Avatar exceeds character limit"] }]);
 

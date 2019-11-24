@@ -49,7 +49,7 @@ const metaSaveAddress = handleAPICall({
     const { address } = req.body.data;
 
     handleErrors(res, checkErrors([{
-      bool: address.length > 100,
+      bool: address.length > 1000,
       text: "Address exceeds character limit"
     }]));
 
@@ -87,7 +87,7 @@ const metaSaveAvatar = handleAPICall({
     const { avatar } = req.body.data;
 
     handleErrors(res, checkErrors([{
-      bool: avatar.length > 100,
+      bool: avatar.length > 1000,
       text: "Avatar exceeds character limit"
     }]));
 

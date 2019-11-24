@@ -109,7 +109,7 @@ const insertFriend = (from, to) => friendsCol().insertOne(newFriend({
 const testSearch = initTestErrors([
   ["sends errors if range is out of bounds (above)", ["Range is out of bounds", { range: 30 }]],
   ["sends errors if range is out of bounds (below)", ["Range is out of bounds", { range: 0 }]],
-  ["sends errors if search exceeds character limit", ["Search exceeds character limit", { search: overlyLongInput }]]
+  ["sends errors if search exceeds character limit", ["Search exceeds character limit", { search: overlyLongInput() }]]
 ]);
 
 //exports

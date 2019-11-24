@@ -119,7 +119,7 @@ const maxOptions = Array(100)
 
 const testOptions = initTestErrors([
   ["sends errors if option is empty", ["Option is empty", ""]],
-  ["sends errors if option exceeds character limit", ["Option exceeds character limit", overlyLongInput]],
+  ["sends errors if option exceeds character limit", ["Option exceeds character limit", overlyLongInput()]],
   ["sends errors if option already exists", ["Option already exists", "Option A", ["Option A"]]],
   ["sends errors if option exceeds limit", ["Option exceeds limit", "Option A", maxOptions]]
 ]);
@@ -130,7 +130,7 @@ const duplicate = () => pollsCol().insertOne(newPoll({ title: "Title A" }));
 
 const testTitle = initTestErrors([
   ["sends errors if title is empty", ["Title is empty", ""]],
-  ["sends errors if title exceeds character limit", ["Title exceeds character limit", overlyLongInput]],
+  ["sends errors if title exceeds character limit", ["Title exceeds character limit", overlyLongInput()]],
   ["sends errors if title already exists", ["Title already exists", "Title A"], duplicate]
 ]);
 

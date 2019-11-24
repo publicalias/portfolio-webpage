@@ -58,7 +58,7 @@ const SidebarInput = (props) => {
     <div className="c-sidebar__input-box">
       <input
         className="c-sidebar__input qa-change-input"
-        maxLength="100"
+        maxLength="1000"
         onChange={handleChange}
         placeholder={placeholder}
         value={text}
