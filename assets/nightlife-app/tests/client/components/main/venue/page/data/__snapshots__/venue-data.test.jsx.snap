@@ -17,7 +17,7 @@ exports[`VenueData should match snapshot (address) 1`] = `
     <img
       alt="0 Stars"
       className="c-venue-data__rating"
-      src="/nightlife-app/media/yelp-stars/yelp-stars-0.png"
+      src="/nightlife-app/media/yelp/stars/stars-0.png"
     />
   </div>
   <hr />
@@ -206,7 +206,7 @@ exports[`VenueData should match snapshot (default) 1`] = `
     <img
       alt="0 Stars"
       className="c-venue-data__rating"
-      src="/nightlife-app/media/yelp-stars/yelp-stars-0.png"
+      src="/nightlife-app/media/yelp/stars/stars-0.png"
     />
   </div>
   <hr />
@@ -387,7 +387,7 @@ exports[`VenueData should match snapshot (name) 1`] = `
     <img
       alt="0 Stars"
       className="c-venue-data__rating"
-      src="/nightlife-app/media/yelp-stars/yelp-stars-0.png"
+      src="/nightlife-app/media/yelp/stars/stars-0.png"
     />
   </div>
   <hr />
@@ -568,7 +568,7 @@ exports[`VenueData should match snapshot (phone) 1`] = `
     <img
       alt="0 Stars"
       className="c-venue-data__rating"
-      src="/nightlife-app/media/yelp-stars/yelp-stars-0.png"
+      src="/nightlife-app/media/yelp/stars/stars-0.png"
     />
   </div>
   <hr />
@@ -749,7 +749,7 @@ exports[`VenueData should match snapshot (url) 1`] = `
     <img
       alt="0 Stars"
       className="c-venue-data__rating"
-      src="/nightlife-app/media/yelp-stars/yelp-stars-0.png"
+      src="/nightlife-app/media/yelp/stars/stars-0.png"
     />
   </div>
   <hr />

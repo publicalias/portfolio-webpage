@@ -37,7 +37,7 @@ const VenueItem = (props) => {
           <img
             alt={`${venue.rating} Stars`}
             className="u-widget-width"
-            src={`/nightlife-app/media/yelp-stars/yelp-stars-${venue.rating}.png`}
+            src={`/nightlife-app/media/yelp/stars/stars-${venue.rating}.png`}
           />
         </div>
       </div>

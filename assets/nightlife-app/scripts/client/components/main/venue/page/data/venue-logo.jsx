@@ -11,7 +11,7 @@ const VenueLogo = () => (
     <img
       alt="Yelp Logo"
       className="c-venue-photos__logo"
-      src="/nightlife-app/media/yelp-logo.png"
+      src="/nightlife-app/media/yelp/logo.png"
     />
   </a>
 );

@@ -32,7 +32,7 @@ const VenueBody = (props) => {
         <img
           alt="Yelp Logo"
           className="c-list-body__logo"
-          src="/nightlife-app/media/yelp-logo.png"
+          src="/nightlife-app/media/yelp/logo.png"
         />
       </a>
     </div>

@@ -25,7 +25,7 @@ exports[`VenueItem should match snapshot 1`] = `
       <img
         alt="0 Stars"
         className="u-widget-width"
-        src="/nightlife-app/media/yelp-stars/yelp-stars-0.png"
+        src="/nightlife-app/media/yelp/stars/stars-0.png"
       />
     </div>
   </div>

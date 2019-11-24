@@ -7,7 +7,7 @@ exports[`VenueLogo should match snapshot 1`] = `
   <img
     alt="Yelp Logo"
     className="c-venue-photos__logo"
-    src="/nightlife-app/media/yelp-logo.png"
+    src="/nightlife-app/media/yelp/logo.png"
   />
 </a>
 `;
