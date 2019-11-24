@@ -11,7 +11,7 @@ exports[`UserItem should match snapshot 1`] = `
       alt="User Photo"
       className="qa-error-image"
       onError={[Function]}
-      src=""
+      src="https://www.example.com/thumbnail.jpg"
     />
     <div>
       <h5

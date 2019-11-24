@@ -10,7 +10,7 @@ const { Link } = require("react-router-dom");
 
 const UserItem = (props) => {
 
-  const { local: { user } } = props;
+  const { local: { userData } } = props;
 
   const { jsx: { Link } } = UserItem.injected;
 
@@ -23,17 +23,17 @@ const UserItem = (props) => {
   //render
 
   return (
-    <Link to={`/users/page/${user.id}`}>
+    <Link to={`/users/page/${userData.id}`}>
       <div className="c-list-item">
         <img
           alt="User Photo"
           className="qa-error-image"
           onError={handleError}
-          src={user.data.avatar}
+          src={userData.data.avatar}
         />
         <div>
-          <h5 className="u-margin-half">{user.name}</h5>
-          <p className="u-margin-none">{`${user.data.distance} Miles`}</p>
+          <h5 className="u-margin-half">{userData.name}</h5>
+          <p className="u-margin-none">{`${userData.data.distance} Miles`}</p>
         </div>
       </div>
     </Link>

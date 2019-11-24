@@ -26,10 +26,10 @@ beforeEach(reactTests.inject(UserItem));
 describe("UserItem", () => {
 
   const testItem = withDataList(testShallow, [null, {
-    user: newUserData({
+    userData: newUserData({
+      name: "User A",
       id: "id-a",
-      image_url: "https://www.example.com/thumbnail.jpg",
-      name: "User A"
+      data: { avatar: "https://www.example.com/thumbnail.jpg" }
     })
   }]);
 

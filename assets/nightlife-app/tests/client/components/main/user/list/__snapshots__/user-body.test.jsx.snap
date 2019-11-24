@@ -36,7 +36,7 @@ exports[`UserBody should match snapshot (list) 1`] = `
     key="0-0"
     local={
       Object {
-        "user": Object {
+        "userData": Object {
           "data": Object {
             "address": "",
             "app": "nightlife-app",

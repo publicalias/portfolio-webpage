@@ -1,3 +1,504 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`UserPage should match snapshot 1`] = `""`;
+exports[`UserPage (general) should match snapshot (authenticated) 1`] = `
+<div
+  className="c-page-view"
+>
+  <UserData
+    local={
+      Object {
+        "userData": Object {
+          "data": Object {
+            "address": "",
+            "app": "nightlife-app",
+            "avatar": "",
+            "blocks": Array [],
+            "distance": 0,
+            "favorites": Array [],
+            "friends": Array [],
+            "location": null,
+          },
+          "id": "",
+          "name": "",
+        },
+      }
+    }
+  />
+  <UserControls
+    actions={
+      Object {
+        "favoriteAdd": [MockFunction],
+        "favoriteRemove": [MockFunction],
+        "friendAdd": [MockFunction],
+        "friendConfirm": [MockFunction],
+        "friendDismiss": [MockFunction],
+        "friendGetList": [MockFunction],
+        "friendRemove": [MockFunction],
+        "metaAddErrors": [MockFunction],
+        "metaCloseError": [MockFunction],
+        "metaGetUser": [MockFunction],
+        "metaNoOp": [MockFunction],
+        "metaSaveAddress": [MockFunction],
+        "metaSaveAvatar": [MockFunction],
+        "metaSetAddress": [MockFunction],
+        "metaSetAvatar": [MockFunction],
+        "metaSetLoading": [MockFunction],
+        "metaSetReady": [MockFunction],
+        "metaSetState": [MockFunction],
+        "metaTimeoutError": [MockFunction],
+        "metaToggleDelete": [MockFunction],
+        "metaToggleSettings": [MockFunction],
+        "rsvpAdd": [MockFunction],
+        "rsvpDismiss": [MockFunction],
+        "rsvpGetList": [MockFunction],
+        "rsvpRemove": [MockFunction],
+        "userClearState": [MockFunction],
+        "userGetItem": [MockFunction],
+        "userGetList": [MockFunction],
+        "userSetSearch": [MockFunction],
+        "userToggleBlock": [MockFunction],
+        "userToggleRange": [MockFunction],
+        "venueClearForm": [MockFunction],
+        "venueClearState": [MockFunction],
+        "venueGetItem": [MockFunction],
+        "venueGetList": [MockFunction],
+        "venueSetMessage": [MockFunction],
+        "venueSetOpen": [MockFunction],
+        "venueSetPause": [MockFunction],
+        "venueSetPhoto": [MockFunction],
+        "venueSetSearch": [MockFunction],
+        "venueSetStart": [MockFunction],
+        "venueSetTime": [MockFunction],
+        "venueToggleRange": [MockFunction],
+        "venueToggleSort": [MockFunction],
+      }
+    }
+    data={
+      Object {
+        "account": Object {
+          "address": "",
+          "avatar": "",
+          "delete": false,
+          "settings": false,
+        },
+        "errors": Array [],
+        "loading": 0,
+        "notifications": Object {
+          "friends": Array [],
+          "rsvps": Array [],
+        },
+        "ready": false,
+        "user": Object {
+          "auth": Object {
+            "id": "",
+            "provider": "",
+          },
+          "data": Object {
+            "address": "",
+            "app": "nightlife-app",
+            "avatar": "",
+            "blocks": Array [],
+            "distance": 0,
+            "favorites": Array [],
+            "friends": Array [],
+            "location": null,
+            "restricted": false,
+          },
+          "id": "",
+          "name": "",
+          "type": "auth",
+        },
+        "users": Object {
+          "data": Array [],
+          "list": Object {
+            "range": false,
+            "search": "",
+          },
+        },
+        "venues": Object {
+          "data": Array [],
+          "list": Object {
+            "range": false,
+            "search": "",
+            "sort": false,
+          },
+          "page": Object {
+            "form": Object {
+              "message": "",
+              "open": false,
+              "time": "",
+            },
+            "photos": Object {
+              "pause": false,
+              "photo": null,
+              "start": false,
+            },
+          },
+        },
+      }
+    }
+    history={
+      Object {
+        "push": [MockFunction],
+      }
+    }
+    local={
+      Object {
+        "refresh": [Function],
+        "userData": Object {
+          "data": Object {
+            "address": "",
+            "app": "nightlife-app",
+            "avatar": "",
+            "blocks": Array [],
+            "distance": 0,
+            "favorites": Array [],
+            "friends": Array [],
+            "location": null,
+          },
+          "id": "",
+          "name": "",
+        },
+      }
+    }
+    location={Object {}}
+    match={Object {}}
+    staticContext={Object {}}
+  />
+  <div
+    className="c-page-info"
+  >
+    <MetaPageList
+      local={
+        Object {
+          "heading": "Favorites",
+          "list": Array [],
+          "type": "venue",
+        }
+      }
+    />
+    <MetaPageList
+      local={
+        Object {
+          "heading": "Friends",
+          "list": Array [],
+          "type": "user",
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`UserPage (general) should match snapshot (default) 1`] = `
+<div
+  className="c-page-view"
+>
+  <UserData
+    local={
+      Object {
+        "userData": Object {
+          "data": Object {
+            "address": "",
+            "app": "nightlife-app",
+            "avatar": "",
+            "blocks": Array [],
+            "distance": 0,
+            "favorites": Array [],
+            "friends": Array [],
+            "location": null,
+          },
+          "id": "",
+          "name": "",
+        },
+      }
+    }
+  />
+  <div
+    className="c-page-info"
+  >
+    <MetaPageList
+      local={
+        Object {
+          "heading": "Favorites",
+          "list": Array [],
+          "type": "venue",
+        }
+      }
+    />
+    <MetaPageList
+      local={
+        Object {
+          "heading": "Friends",
+          "list": Array [],
+          "type": "user",
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`UserPage (general) should match snapshot (match) 1`] = `
+<div
+  className="c-page-view"
+>
+  <UserData
+    local={
+      Object {
+        "userData": Object {
+          "data": Object {
+            "address": "",
+            "app": "nightlife-app",
+            "avatar": "",
+            "blocks": Array [],
+            "distance": 0,
+            "favorites": Array [],
+            "friends": Array [],
+            "location": null,
+          },
+          "id": "id-a",
+          "name": "",
+        },
+      }
+    }
+  />
+  <div
+    className="c-page-info"
+  >
+    <MetaPageList
+      local={
+        Object {
+          "heading": "Favorites",
+          "list": Array [],
+          "type": "venue",
+        }
+      }
+    />
+    <MetaPageList
+      local={
+        Object {
+          "heading": "Friends",
+          "list": Array [],
+          "type": "user",
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`UserPage (list) should match snapshot (favorites) 1`] = `
+<div
+  className="c-page-view"
+>
+  <UserData
+    local={
+      Object {
+        "userData": Object {
+          "data": Object {
+            "address": "",
+            "app": "nightlife-app",
+            "avatar": "",
+            "blocks": Array [],
+            "distance": 0,
+            "favorites": Array [
+              Object {
+                "id": "",
+                "user": Object {
+                  "id": "",
+                  "name": "",
+                },
+                "venue": Object {
+                  "id": "",
+                  "name": "",
+                },
+              },
+            ],
+            "friends": Array [],
+            "location": null,
+          },
+          "id": "id-a",
+          "name": "",
+        },
+      }
+    }
+  />
+  <div
+    className="c-page-info"
+  >
+    <MetaPageList
+      local={
+        Object {
+          "heading": "Favorites",
+          "list": Array [
+            Object {
+              "id": "",
+              "user": Object {
+                "id": "",
+                "name": "",
+              },
+              "venue": Object {
+                "id": "",
+                "name": "",
+              },
+            },
+          ],
+          "type": "venue",
+        }
+      }
+    />
+    <MetaPageList
+      local={
+        Object {
+          "heading": "Friends",
+          "list": Array [],
+          "type": "user",
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`UserPage (list) should match snapshot (friends, from) 1`] = `
+<div
+  className="c-page-view"
+>
+  <UserData
+    local={
+      Object {
+        "userData": Object {
+          "data": Object {
+            "address": "",
+            "app": "nightlife-app",
+            "avatar": "",
+            "blocks": Array [],
+            "distance": 0,
+            "favorites": Array [],
+            "friends": Array [
+              Object {
+                "confirmed": false,
+                "date": 0,
+                "from": Object {
+                  "id": "id-a",
+                  "name": "",
+                },
+                "hidden": Array [],
+                "id": "",
+                "to": Object {
+                  "id": "id-b",
+                  "name": "",
+                },
+              },
+            ],
+            "location": null,
+          },
+          "id": "id-a",
+          "name": "",
+        },
+      }
+    }
+  />
+  <div
+    className="c-page-info"
+  >
+    <MetaPageList
+      local={
+        Object {
+          "heading": "Favorites",
+          "list": Array [],
+          "type": "venue",
+        }
+      }
+    />
+    <MetaPageList
+      local={
+        Object {
+          "heading": "Friends",
+          "list": Array [
+            Object {
+              "user": Object {
+                "id": "id-b",
+                "name": "",
+              },
+            },
+          ],
+          "type": "user",
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`UserPage (list) should match snapshot (friends, to) 1`] = `
+<div
+  className="c-page-view"
+>
+  <UserData
+    local={
+      Object {
+        "userData": Object {
+          "data": Object {
+            "address": "",
+            "app": "nightlife-app",
+            "avatar": "",
+            "blocks": Array [],
+            "distance": 0,
+            "favorites": Array [],
+            "friends": Array [
+              Object {
+                "confirmed": false,
+                "date": 0,
+                "from": Object {
+                  "id": "id-b",
+                  "name": "",
+                },
+                "hidden": Array [],
+                "id": "",
+                "to": Object {
+                  "id": "id-a",
+                  "name": "",
+                },
+              },
+            ],
+            "location": null,
+          },
+          "id": "id-a",
+          "name": "",
+        },
+      }
+    }
+  />
+  <div
+    className="c-page-info"
+  >
+    <MetaPageList
+      local={
+        Object {
+          "heading": "Favorites",
+          "list": Array [],
+          "type": "venue",
+        }
+      }
+    />
+    <MetaPageList
+      local={
+        Object {
+          "heading": "Friends",
+          "list": Array [
+            Object {
+              "user": Object {
+                "id": "id-b",
+                "name": "",
+              },
+            },
+          ],
+          "type": "user",
+        }
+      }
+    />
+  </div>
+</div>
+`;

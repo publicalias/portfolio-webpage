@@ -41,7 +41,7 @@ const UserBody = (props) => {
       {data.map((e) => (
         <UserItem
           key={keyGen(e.id)}
-          local={{ user: e }}
+          local={{ userData: e }}
         />
       ))}
     </MetaListBody>
