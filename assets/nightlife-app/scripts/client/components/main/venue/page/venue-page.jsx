@@ -64,22 +64,18 @@ const VenuePage = (props) => {
   const auth = user.type === "auth";
 
   return (
-    <div className="c-venue-page">
-      <div className="c-venue-page__info">
-        <VenueData {...props} local={{ venue }} />
-      </div>
+    <div className="c-page-view">
+      <VenueData {...props} local={{ venue }} />
       {auth && (
-        <div className="c-venue-page__controls">
-          <VenueControls
-            {...props}
-            local={{
-              refresh: initVenueData,
-              venue
-            }}
-          />
-        </div>
+        <VenueControls
+          {...props}
+          local={{
+            refresh: initVenueData,
+            venue
+          }}
+        />
       )}
-      <div className="c-venue-page__favorites">
+      <div className="c-page-info">
         <MetaPageList
           local={{
             heading: "Favorites",
@@ -87,8 +83,6 @@ const VenuePage = (props) => {
             type: "user"
           }}
         />
-      </div>
-      <div className="c-venue-page__rsvps">
         <MetaPageList
           local={{
             heading: "RSVPs",

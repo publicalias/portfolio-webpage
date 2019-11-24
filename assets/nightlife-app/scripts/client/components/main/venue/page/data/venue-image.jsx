@@ -19,7 +19,7 @@ const VenueImage = (props) => {
       <a href={venue.url}>
         <img
           alt="Venue Photo"
-          className="c-venue-photos__view js-ref-image qa-ref-image"
+          className="c-venue-photos__image js-ref-image qa-ref-image"
           onError={handleError}
           onLoad={handleLoad}
           src={src}

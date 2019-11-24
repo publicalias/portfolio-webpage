@@ -3,6 +3,22 @@
 @import "all/components/dropdown";
 @import "all/components/search-bar";
 
+@mixin image-frame {
+
+  align-items: center;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  height: 45vw;
+  justify-content: center;
+
+  &__image {
+    max-height: 45vw;
+    max-width: 100%;
+    width: auto;
+  }
+
+}
+
 @mixin list-item {
   align-items: center;
   display: inline-grid;
@@ -67,7 +83,10 @@
     grid-gap: 1.5vw;
   }
 
-  &__info { margin-right: 3vw; }
+  &__info {
+    margin-right: 3vw;
+    text-align: left;
+  }
 
 }
 
@@ -92,6 +111,12 @@
 
 }
 
+.c-page-info {
+  display: grid;
+  grid-gap: 3vw;
+  grid-template-columns: 1fr 1fr;
+}
+
 .c-page-list {
 
   &__body {
@@ -108,6 +133,12 @@
     text-decoration: underline;
   }
 
+}
+
+.c-page-view {
+  @include grid-item(1, 5, 3, 13);
+  display: grid;
+  grid-gap: 3vw;
 }
 
 .c-sidebar {
@@ -175,24 +206,9 @@
 
 }
 
-.c-venue-page {
-  @include grid-item(1, 5, 3, 13);
-  display: grid;
-  grid-gap: 3vw;
-  grid-template-columns: 1fr 1fr;
-  &__controls { grid-column: 1 / 3; }
-  &__favorites { grid-column: 1 / 2; }
-  &__info { grid-column: 1 / 3; }
-  &__rsvps { grid-column: 2 / 3; }
-}
-
 .c-venue-photos {
 
-  align-items: center;
-  background: rgba(0, 0, 0, 0.75);
-  display: flex;
-  height: 45vw;
-  justify-content: center;
+  @include image-frame;
   position: relative;
 
   &__logo {
@@ -215,12 +231,6 @@
       right: 3vw;
     }
 
-  }
-
-  &__view {
-    max-height: 45vw;
-    max-width: 100%;
-    width: auto;
   }
 
   &__wrapper { position: relative; }

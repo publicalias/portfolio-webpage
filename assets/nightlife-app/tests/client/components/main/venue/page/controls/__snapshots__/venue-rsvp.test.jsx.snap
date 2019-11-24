@@ -4,6 +4,7 @@ exports[`VenueRSVP (default) should match snapshot 1`] = `
 <Fragment>
   <button
     className="qa-toggle-rsvp"
+    disabled={false}
     onClick={[Function]}
   >
     Add RSVP
@@ -15,6 +16,7 @@ exports[`VenueRSVP (open) should match snapshot 1`] = `
 <Fragment>
   <button
     className="qa-toggle-rsvp"
+    disabled={true}
     onClick={[Function]}
   >
     Add RSVP

@@ -47,7 +47,13 @@ const VenueRSVP = (props) => {
 
   return (
     <React.Fragment>
-      <button className="qa-toggle-rsvp" onClick={handleClickRSVP}>Add RSVP</button>
+      <button
+        className="qa-toggle-rsvp"
+        disabled={form.open}
+        onClick={handleClickRSVP}
+      >
+        Add RSVP
+      </button>
       {form.open && (
         <div className="c-venue-form">
           <input

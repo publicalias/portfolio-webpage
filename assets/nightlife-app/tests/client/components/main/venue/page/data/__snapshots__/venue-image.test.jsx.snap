@@ -9,7 +9,7 @@ exports[`VenueImage should match snapshot (default) 1`] = `
   >
     <img
       alt="Venue Photo"
-      className="c-venue-photos__view js-ref-image qa-ref-image"
+      className="c-venue-photos__image js-ref-image qa-ref-image"
       onError={[MockFunction]}
       onLoad={[MockFunction]}
       src=""
@@ -27,7 +27,7 @@ exports[`VenueImage should match snapshot (src) 1`] = `
   >
     <img
       alt="Venue Photo"
-      className="c-venue-photos__view js-ref-image qa-ref-image"
+      className="c-venue-photos__image js-ref-image qa-ref-image"
       onError={[MockFunction]}
       onLoad={[MockFunction]}
       src="https://www.example.com/photo.jpg"
