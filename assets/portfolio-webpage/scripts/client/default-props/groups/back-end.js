@@ -60,7 +60,7 @@ const backEnd = {
       ],
       resources: [{
         text: "Custom Search API",
-        link: "https://developers.google.com/custom-search/json-api/v1/overview"
+        link: "https://developers.google.com/custom-search/docs/overview"
       }],
       preview: "button",
       links: {
@@ -88,7 +88,7 @@ const backEnd = {
     projects: [{
       name: "Voting App",
       id: "voting-app",
-      comments: "This app lets you create private polls, hide/flag polls, and search, sort, and filter the full list of polls. It also lets you log in with social media and delete your account (and all your data) in three clicks. It's the most painless trial experience imaginable.",
+      comments: "This app goes well beyond the required user stories by letting you create private polls; hide/flag polls; and search, sort, and filter the full list of polls. It also lets you log in with social media and delete your account (and all your data) in three clicks. It's the most painless trial experience imaginable.",
       userStories: [
         "As an authenticated user, I can keep my polls and come back later to access them.",
         "As an authenticated user, I can share my polls with my friends.",
@@ -118,19 +118,34 @@ const backEnd = {
     }, {
       name: "Nightlife App",
       id: "nightlife-app",
-      comments: "",
+      comments: "I built this app as the MVP for a real-world application. It lets you browse venues and users in your area and click listings for more information. Venue pages let you favorite, RSVP, and see if any of your friends have favorited or RSVP'd. User pages let you send friend requests, block users, and see your friends' favorites and friends lists. You get notifications for friend requests and friends' RSVPs, and demo users help demonstrate these features.",
       userStories: [
         "As an unauthenticated user, I can view all bars in my area.",
         "As an authenticated user, I can add myself to a bar to indicate I am going there tonight.",
         "As an authenticated user, I can remove myself from a bar if I no longer want to go there.",
         "As an unauthenticated user, when I log in, I should not have to search again."
       ],
-      resources: [],
+      resources: [{
+        text: "Demo: Friendly Bot",
+        link: "https://images.pexels.com/photos/595804/pexels-photo-595804.jpeg"
+      }, {
+        text: "Demo: Misanthropic Bot",
+        link: "https://images.pexels.com/photos/678307/pexels-photo-678307.jpeg"
+      }, {
+        text: "Demo: Shy Bot",
+        link: "https://images.pexels.com/photos/678308/pexels-photo-678308.jpeg"
+      }, {
+        text: "Geocoding API",
+        link: "https://developers.google.com/maps/documentation/geocoding/start"
+      }, {
+        text: "Yelp API",
+        link: "https://www.yelp.com/fusion"
+      }],
       preview: "window",
       links: {
-        page: "",
-        code: "",
-        view: ""
+        page: "/nightlife-app",
+        code: "https://github.com/publicalias/portfolio-webpage/tree/master/assets/nightlife-app",
+        view: "/portfolio-webpage/media/screenshots/nightlife-app.jpg"
       }
     }, {
       name: "Stock Market App",

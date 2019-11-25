@@ -134,7 +134,7 @@ const frontEnd = {
       ],
       resources: [{
         text: "Twitch API",
-        link: "https://dev.twitch.tv/docs"
+        link: "https://dev.twitch.tv/docs/api"
       }],
       preview: "window",
       links: {
