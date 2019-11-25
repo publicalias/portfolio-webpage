@@ -17,7 +17,7 @@ const UserItem = (props) => {
   //events
 
   const handleError = (event) => {
-    event.target.src = "https://via.placeholder.com/100x100?text=undefined";
+    event.target.src = "https://via.placeholder.com/800x450?text=undefined";
   };
 
   //render
@@ -32,7 +32,7 @@ const UserItem = (props) => {
           src={userData.data.avatar}
         />
         <div>
-          <h5 className="u-margin-half">{userData.name}</h5>
+          <h5 className="u-margin-half">{userData.name || "Anonymous"}</h5>
           <p className="u-margin-none">{`${userData.data.distance} Miles`}</p>
         </div>
       </div>

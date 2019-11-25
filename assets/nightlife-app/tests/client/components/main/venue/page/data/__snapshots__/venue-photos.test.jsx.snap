@@ -1,6 +1,47 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`VenuePhotos (snapshots) should match snapshot 1`] = `
+exports[`VenuePhotos (snapshots) should match snapshot (default) 1`] = `
+<div
+  className="c-venue-photos js-ref-carousel qa-ref-carousel"
+  onMouseEnter={[MockFunction]}
+  onMouseLeave={[MockFunction]}
+  onTouchEnd={[MockFunction]}
+  onTouchStart={[MockFunction]}
+>
+  <VenueLogo />
+  <VenueImage
+    local={
+      Object {
+        "handleError": [MockFunction],
+        "handleLoad": [MockFunction],
+        "src": "https://www.example.com/photo.jpg",
+        "venue": Object {
+          "coordinates": Object {
+            "latitude": 0,
+            "longitude": 0,
+          },
+          "display_phone": "",
+          "distance": 0,
+          "favorites": Array [],
+          "hours": Array [],
+          "id": "",
+          "image_url": "",
+          "location": Object {
+            "display_address": Array [],
+          },
+          "name": "",
+          "photos": Array [],
+          "rating": 0,
+          "rsvps": Array [],
+          "url": "",
+        },
+      }
+    }
+  />
+</div>
+`;
+
+exports[`VenuePhotos (snapshots) should match snapshot (turn) 1`] = `
 <div
   className="c-venue-photos js-ref-carousel qa-ref-carousel"
   onMouseEnter={[MockFunction]}
@@ -46,7 +87,10 @@ exports[`VenuePhotos (snapshots) should match snapshot 1`] = `
             "display_address": Array [],
           },
           "name": "",
-          "photos": Array [],
+          "photos": Array [
+            "",
+            "",
+          ],
           "rating": 0,
           "rsvps": Array [],
           "url": "",

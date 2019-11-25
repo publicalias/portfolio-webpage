@@ -110,7 +110,7 @@ exports[`UI should match snapshot (authenticated) 1`] = `
             },
             "photos": Object {
               "pause": false,
-              "photo": null,
+              "photo": "",
               "start": false,
             },
           },
@@ -253,7 +253,7 @@ exports[`UI should match snapshot (authenticated) 1`] = `
             },
             "photos": Object {
               "pause": false,
-              "photo": null,
+              "photo": "",
               "start": false,
             },
           },
@@ -375,7 +375,7 @@ exports[`UI should match snapshot (authenticated) 1`] = `
             },
             "photos": Object {
               "pause": false,
-              "photo": null,
+              "photo": "",
               "start": false,
             },
           },
@@ -485,7 +485,7 @@ exports[`UI should match snapshot (default) 1`] = `
             },
             "photos": Object {
               "pause": false,
-              "photo": null,
+              "photo": "",
               "start": false,
             },
           },

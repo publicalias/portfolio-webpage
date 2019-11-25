@@ -28,9 +28,7 @@ const FriendItem = (props) => {
   const status = friend.confirmed ? "confirmed" : "unconfirmed";
 
   const userLink = ((user = type === "from" ? friend.to : friend.from) => (
-    <Link
-      to={`/users/page/${user.id}`}
-    >
+    <Link to={`/users/page/${user.id}`}>
       <span className="u-underline">
         {user.name || "Anonymous"}
       </span>

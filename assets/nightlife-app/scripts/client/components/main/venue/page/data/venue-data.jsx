@@ -31,7 +31,7 @@ const VenueData = (props) => {
   return (
     <div className="c-venue-data">
       <div className="c-venue-data__header">
-        <h1><a href={venue.url || "https://www.yelp.com/"}>{venue.name || "Undefined"}</a></h1>
+        <h1>{venue.name || "Undefined"}</h1>
         <img
           alt={`${venue.rating} Stars`}
           className="c-venue-data__rating"

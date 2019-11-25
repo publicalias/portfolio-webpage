@@ -28,19 +28,20 @@ describe("VenueItem", () => {
   const testItem = withDataList(testShallow, [null, {
     venue: newVenue({
       id: "id-a",
-      image_url: "https://www.example.com/thumbnail.jpg",
-      name: "Venue A"
+      image_url: "https://www.example.com/photo.jpg"
     })
   }]);
 
   const testSnapshot = initTestSnapshot(testItem);
 
-  it("should match snapshot", () => testSnapshot());
+  it("should match snapshot (default)", () => testSnapshot());
+
+  it("should match snapshot (name)", () => testSnapshot(null, { venue: { name: "Venue A" } }));
 
   it("should call handleError on error", () => {
 
     const event = { target: { src: "" } };
-    const placeholder = "https://via.placeholder.com/100x100?text=undefined";
+    const placeholder = "https://via.placeholder.com/800x450?text=undefined";
 
     const testError = initTestEvent(testItem, "error", event);
 

@@ -26,39 +26,48 @@ beforeEach(reactTests.inject(VenueImage));
 
 describe("VenueImage", () => {
 
-  const src = "https://www.example.com/photo.jpg";
-
   const testImage = withDataList(testShallow, [null, {
     handleError: jest.fn(),
     handleLoad: jest.fn(),
-    src: "",
-    venue: newVenue({ url: "https://www.example.com/" })
+    src: "https://www.example.com/photo.jpg",
+    venue: newVenue()
   }]);
 
   const testSnapshot = initTestSnapshot(testImage);
 
-  const testEvent = (type, prop) => initTestEvent(testImage, type, {})(
-    ".qa-ref-image",
-    [null, {
-      handleError: jest.fn(),
-      handleLoad: jest.fn(),
-      src
-    }],
-    (props) => {
-
-      const handler = props.local[prop];
-
-      testMock(handler, [{}]);
-
-    }
-  );
-
   it("should match snapshot (default)", () => testSnapshot());
 
-  it("should match snapshot (src)", () => testSnapshot(null, { src }));
+  it("should match snapshot (url)", () => testSnapshot(null, { venue: { url: "https://www.example.com/" } }));
 
-  it("should call handleError on error", () => testEvent("error", "handleError"));
+  it("should call handleError on error", () => {
 
-  it("should call handleLoad on load", () => testEvent("load", "handleLoad"));
+    const handleError = jest.fn();
+
+    const event = { target: { src: "" } };
+    const placeholder = "https://via.placeholder.com/800x450?text=undefined";
+
+    const testError = initTestEvent(testImage, "error", event);
+
+    return testError(".qa-ref-image", [null, { handleError }], () => {
+
+      testMock(handleError, []);
+
+      expect(event.target.src).toEqual(placeholder);
+
+    });
+
+  });
+
+  it("should call handleLoad on load", () => {
+
+    const handleLoad = jest.fn();
+
+    const testLoad = initTestEvent(testImage, "load", {});
+
+    return testLoad(".qa-ref-image", [null, { handleLoad }], () => {
+      testMock(handleLoad, [{}]);
+    });
+
+  });
 
 });

@@ -27,20 +27,21 @@ describe("UserItem", () => {
 
   const testItem = withDataList(testShallow, [null, {
     userData: newUserData({
-      name: "User A",
       id: "id-a",
-      data: { avatar: "https://www.example.com/thumbnail.jpg" }
+      data: { avatar: "https://www.example.com/avatar.jpg" }
     })
   }]);
 
   const testSnapshot = initTestSnapshot(testItem);
 
-  it("should match snapshot", () => testSnapshot());
+  it("should match snapshot (default)", () => testSnapshot());
+
+  it("should match snapshot (name)", () => testSnapshot(null, { userData: { name: "User A" } }));
 
   it("should call handleError on error", () => {
 
     const event = { target: { src: "" } };
-    const placeholder = "https://via.placeholder.com/100x100?text=undefined";
+    const placeholder = "https://via.placeholder.com/800x450?text=undefined";
 
     const testError = initTestEvent(testItem, "error", event);
 

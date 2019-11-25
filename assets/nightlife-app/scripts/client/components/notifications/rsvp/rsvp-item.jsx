@@ -23,9 +23,7 @@ const RSVPItem = (props) => {
   const type = user.id === rsvp.user.id ? "self" : "user";
 
   const userLink = (
-    <Link
-      to={`/users/page/${rsvp.user.id}`}
-    >
+    <Link to={`/users/page/${rsvp.user.id}`}>
       <span className="u-underline">
         {rsvp.user.name || "Anonymous"}
       </span>
@@ -33,11 +31,9 @@ const RSVPItem = (props) => {
   );
 
   const venueLink = (
-    <Link
-      to={`/venues/page/${rsvp.venue.id}`}
-    >
+    <Link to={`/venues/page/${rsvp.venue.id}`}>
       <span className="u-underline">
-        {rsvp.venue.name}
+        {rsvp.venue.name || "Undefined"}
       </span>
     </Link>
   );

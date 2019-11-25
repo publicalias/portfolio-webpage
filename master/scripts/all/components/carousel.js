@@ -129,17 +129,19 @@ const useCarousel = (props) => {
 
   //events
 
+  const handleLoad = () => {
+    select(".js-fade-carousel").animate({ opacity: 1 }, ready.resolve);
+  };
+
   const events = {
 
     //error
 
-    handleError: ready.resolve,
+    handleError: handleLoad,
 
     //load
 
-    handleLoad() {
-      select(".js-fade-carousel").animate({ opacity: 1 }, ready.resolve);
-    },
+    handleLoad,
 
     //swipe
 

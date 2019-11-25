@@ -18,10 +18,7 @@ const { testShallow } = testWrapper(RSVPItem);
 
 const getRSVP = () => newRSVP({
   user: { id: "id-a" },
-  venue: {
-    name: "Venue B",
-    id: "id-b"
-  },
+  venue: { id: "id-b" },
   time: "9:00 PM"
 });
 
@@ -40,6 +37,8 @@ describe("RSVPItem (self)", () => {
 
   it("should match snapshot (default)", () => testSnapshot());
 
+  it("should match snapshot (name)", () => testSnapshot(null, { rsvp: { venue: { name: "Venue B" } } }));
+
   it("should match snapshot (message)", () => testSnapshot(null, { rsvp: { message: "Message" } }));
 
 });
@@ -52,7 +51,9 @@ describe("RSVPItem (user)", () => {
 
   it("should match snapshot (default)", () => testSnapshot());
 
-  it("should match snapshot (name)", () => testSnapshot(null, { rsvp: { user: { name: "User A" } } }));
+  it("should match snapshot (name, user)", () => testSnapshot(null, { rsvp: { user: { name: "User A" } } }));
+
+  it("should match snapshot (name, venue)", () => testSnapshot(null, { rsvp: { venue: { name: "Venue B" } } }));
 
   it("should match snapshot (message)", () => testSnapshot(null, { rsvp: { message: "Message" } }));
 

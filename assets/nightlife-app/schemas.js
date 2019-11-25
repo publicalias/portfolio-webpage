@@ -212,7 +212,7 @@ const newState = initSchema({
     },
     page: {
       photos: {
-        photo: null,
+        photo: "",
         pause: false,
         start: false
       },

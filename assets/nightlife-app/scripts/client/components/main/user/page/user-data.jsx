@@ -17,7 +17,7 @@ const UserData = (props) => {
   //events
 
   const handleError = (event) => {
-    event.target.src = "https://via.placeholder.com/450x800?text=undefined";
+    event.target.src = "https://via.placeholder.com/800x450?text=undefined";
   };
 
   //render

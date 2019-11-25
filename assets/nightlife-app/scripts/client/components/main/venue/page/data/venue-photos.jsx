@@ -55,6 +55,8 @@ const VenuePhotos = (props) => {
 
   //render
 
+  const turn = venue.photos.length > 1;
+
   return (
     <div
       className="c-venue-photos js-ref-carousel qa-ref-carousel"
@@ -63,18 +65,22 @@ const VenuePhotos = (props) => {
       onTouchEnd={handleTouchEnd}
       onTouchStart={handleTouchStart}
     >
-      <VenueSwipe
-        local={{
-          handleClick: handleTurn(-1),
-          type: "left"
-        }}
-      />
-      <VenueSwipe
-        local={{
-          handleClick: handleTurn(1),
-          type: "right"
-        }}
-      />
+      {turn && (
+        <React.Fragment>
+          <VenueSwipe
+            local={{
+              handleClick: handleTurn(-1),
+              type: "left"
+            }}
+          />
+          <VenueSwipe
+            local={{
+              handleClick: handleTurn(1),
+              type: "right"
+            }}
+          />
+        </React.Fragment>
+      )}
       <VenueLogo />
       <VenueImage
         local={{

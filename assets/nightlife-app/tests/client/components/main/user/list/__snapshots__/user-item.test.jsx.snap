@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`UserItem should match snapshot 1`] = `
+exports[`UserItem should match snapshot (default) 1`] = `
 <Link
   to="/users/page/id-a"
 >
@@ -11,7 +11,36 @@ exports[`UserItem should match snapshot 1`] = `
       alt="User Photo"
       className="qa-error-image"
       onError={[Function]}
-      src="https://www.example.com/thumbnail.jpg"
+      src="https://www.example.com/avatar.jpg"
+    />
+    <div>
+      <h5
+        className="u-margin-half"
+      >
+        Anonymous
+      </h5>
+      <p
+        className="u-margin-none"
+      >
+        0 Miles
+      </p>
+    </div>
+  </div>
+</Link>
+`;
+
+exports[`UserItem should match snapshot (name) 1`] = `
+<Link
+  to="/users/page/id-a"
+>
+  <div
+    className="c-list-item"
+  >
+    <img
+      alt="User Photo"
+      className="qa-error-image"
+      onError={[Function]}
+      src="https://www.example.com/avatar.jpg"
     />
     <div>
       <h5

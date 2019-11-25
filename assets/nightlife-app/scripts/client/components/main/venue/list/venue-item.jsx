@@ -17,7 +17,7 @@ const VenueItem = (props) => {
   //events
 
   const handleError = (event) => {
-    event.target.src = "https://via.placeholder.com/100x100?text=undefined";
+    event.target.src = "https://via.placeholder.com/800x450?text=undefined";
   };
 
   //render
@@ -32,7 +32,7 @@ const VenueItem = (props) => {
           src={venue.image_url}
         />
         <div>
-          <h5 className="u-margin-half">{venue.name}</h5>
+          <h5 className="u-margin-half">{venue.name || "Undefined"}</h5>
           <p>{`${venue.distance} Miles`}</p>
           <img
             alt={`${venue.rating} Stars`}

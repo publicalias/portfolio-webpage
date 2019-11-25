@@ -110,7 +110,7 @@ exports[`VenuePage (general) should match snapshot (authenticated) 1`] = `
             },
             "photos": Object {
               "pause": false,
-              "photo": null,
+              "photo": "",
               "start": false,
             },
           },
@@ -256,7 +256,7 @@ exports[`VenuePage (general) should match snapshot (authenticated) 1`] = `
             },
             "photos": Object {
               "pause": false,
-              "photo": null,
+              "photo": "",
               "start": false,
             },
           },
@@ -413,7 +413,7 @@ exports[`VenuePage (general) should match snapshot (default) 1`] = `
             },
             "photos": Object {
               "pause": false,
-              "photo": null,
+              "photo": "",
               "start": false,
             },
           },
@@ -590,7 +590,7 @@ exports[`VenuePage (general) should match snapshot (match) 1`] = `
             },
             "photos": Object {
               "pause": false,
-              "photo": null,
+              "photo": "",
               "start": false,
             },
           },
@@ -779,7 +779,7 @@ exports[`VenuePage (list) should match snapshot (favorites) 1`] = `
             },
             "photos": Object {
               "pause": false,
-              "photo": null,
+              "photo": "",
               "start": false,
             },
           },
@@ -996,7 +996,7 @@ exports[`VenuePage (list) should match snapshot (rsvps) 1`] = `
             },
             "photos": Object {
               "pause": false,
-              "photo": null,
+              "photo": "",
               "start": false,
             },
           },

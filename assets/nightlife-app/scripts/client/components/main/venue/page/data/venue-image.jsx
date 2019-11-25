@@ -8,15 +8,23 @@ const React = require("react");
 
 const VenueImage = (props) => {
 
-  const { local: { handleError, handleLoad, src, venue } } = props;
+  const { local: { handleError: handleErrorEvent, handleLoad, src, venue } } = props;
+
+  //events
+
+  const handleError = (event) => {
+
+    handleErrorEvent();
+
+    event.target.src = "https://via.placeholder.com/800x450?text=undefined";
+
+  };
 
   //render
 
-  const util = src ? "" : "u-display-none"; //ref must exist
-
   return (
-    <div className={`c-venue-photos__wrapper js-fade-carousel ${util}`}>
-      <a href={venue.url}>
+    <div className="c-venue-photos__wrapper js-fade-carousel">
+      <a href={venue.url || "https://www.yelp.com/"}>
         <img
           alt="Venue Photo"
           className="c-venue-photos__image js-ref-image qa-ref-image"

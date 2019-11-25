@@ -8,11 +8,7 @@ exports[`VenueData should match snapshot (address) 1`] = `
     className="c-venue-data__header"
   >
     <h1>
-      <a
-        href="https://www.yelp.com/"
-      >
-        Undefined
-      </a>
+      Undefined
     </h1>
     <img
       alt="0 Stars"
@@ -111,7 +107,7 @@ exports[`VenueData should match snapshot (address) 1`] = `
               },
               "photos": Object {
                 "pause": false,
-                "photo": null,
+                "photo": "",
                 "start": false,
               },
             },
@@ -197,11 +193,7 @@ exports[`VenueData should match snapshot (default) 1`] = `
     className="c-venue-data__header"
   >
     <h1>
-      <a
-        href="https://www.yelp.com/"
-      >
-        Undefined
-      </a>
+      Undefined
     </h1>
     <img
       alt="0 Stars"
@@ -300,7 +292,7 @@ exports[`VenueData should match snapshot (default) 1`] = `
               },
               "photos": Object {
                 "pause": false,
-                "photo": null,
+                "photo": "",
                 "start": false,
               },
             },
@@ -378,11 +370,7 @@ exports[`VenueData should match snapshot (name) 1`] = `
     className="c-venue-data__header"
   >
     <h1>
-      <a
-        href="https://www.yelp.com/"
-      >
-        Venue A
-      </a>
+      Venue A
     </h1>
     <img
       alt="0 Stars"
@@ -481,7 +469,7 @@ exports[`VenueData should match snapshot (name) 1`] = `
               },
               "photos": Object {
                 "pause": false,
-                "photo": null,
+                "photo": "",
                 "start": false,
               },
             },
@@ -559,11 +547,7 @@ exports[`VenueData should match snapshot (phone) 1`] = `
     className="c-venue-data__header"
   >
     <h1>
-      <a
-        href="https://www.yelp.com/"
-      >
-        Undefined
-      </a>
+      Undefined
     </h1>
     <img
       alt="0 Stars"
@@ -662,7 +646,7 @@ exports[`VenueData should match snapshot (phone) 1`] = `
               },
               "photos": Object {
                 "pause": false,
-                "photo": null,
+                "photo": "",
                 "start": false,
               },
             },
@@ -722,187 +706,6 @@ exports[`VenueData should match snapshot (phone) 1`] = `
       className="u-margin-none"
     >
       (000) 000-0000
-    </p>
-    <p
-      className="u-align-right u-margin-none"
-    >
-      Closed - Opens at 12:00 AM
-    </p>
-  </div>
-</div>
-`;
-
-exports[`VenueData should match snapshot (url) 1`] = `
-<div
-  className="c-venue-data"
->
-  <div
-    className="c-venue-data__header"
-  >
-    <h1>
-      <a
-        href="https://www.example.com/"
-      >
-        Undefined
-      </a>
-    </h1>
-    <img
-      alt="0 Stars"
-      className="c-venue-data__rating"
-      src="/nightlife-app/media/yelp/stars/stars-0.png"
-    />
-  </div>
-  <hr />
-  <div
-    className="u-margin-full"
-  >
-    <VenuePhotos
-      actions={
-        Object {
-          "favoriteAdd": [MockFunction],
-          "favoriteRemove": [MockFunction],
-          "friendAdd": [MockFunction],
-          "friendConfirm": [MockFunction],
-          "friendDismiss": [MockFunction],
-          "friendGetList": [MockFunction],
-          "friendRemove": [MockFunction],
-          "metaAddErrors": [MockFunction],
-          "metaCloseError": [MockFunction],
-          "metaGetUser": [MockFunction],
-          "metaNoOp": [MockFunction],
-          "metaSaveAddress": [MockFunction],
-          "metaSaveAvatar": [MockFunction],
-          "metaSetAddress": [MockFunction],
-          "metaSetAvatar": [MockFunction],
-          "metaSetLoading": [MockFunction],
-          "metaSetReady": [MockFunction],
-          "metaSetState": [MockFunction],
-          "metaTimeoutError": [MockFunction],
-          "metaToggleDelete": [MockFunction],
-          "metaToggleSettings": [MockFunction],
-          "rsvpAdd": [MockFunction],
-          "rsvpDismiss": [MockFunction],
-          "rsvpGetList": [MockFunction],
-          "rsvpRemove": [MockFunction],
-          "userClearState": [MockFunction],
-          "userGetItem": [MockFunction],
-          "userGetList": [MockFunction],
-          "userSetSearch": [MockFunction],
-          "userToggleBlock": [MockFunction],
-          "userToggleRange": [MockFunction],
-          "venueClearForm": [MockFunction],
-          "venueClearState": [MockFunction],
-          "venueGetItem": [MockFunction],
-          "venueGetList": [MockFunction],
-          "venueSetMessage": [MockFunction],
-          "venueSetOpen": [MockFunction],
-          "venueSetPause": [MockFunction],
-          "venueSetPhoto": [MockFunction],
-          "venueSetSearch": [MockFunction],
-          "venueSetStart": [MockFunction],
-          "venueSetTime": [MockFunction],
-          "venueToggleRange": [MockFunction],
-          "venueToggleSort": [MockFunction],
-        }
-      }
-      data={
-        Object {
-          "account": Object {
-            "address": "",
-            "avatar": "",
-            "delete": false,
-            "settings": false,
-          },
-          "errors": Array [],
-          "loading": 0,
-          "notifications": Object {
-            "friends": Array [],
-            "rsvps": Array [],
-          },
-          "ready": false,
-          "user": Object {},
-          "users": Object {
-            "data": Array [],
-            "list": Object {
-              "range": false,
-              "search": "",
-            },
-          },
-          "venues": Object {
-            "data": Array [],
-            "list": Object {
-              "range": false,
-              "search": "",
-              "sort": false,
-            },
-            "page": Object {
-              "form": Object {
-                "message": "",
-                "open": false,
-                "time": "",
-              },
-              "photos": Object {
-                "pause": false,
-                "photo": null,
-                "start": false,
-              },
-            },
-          },
-        }
-      }
-      history={
-        Object {
-          "push": [MockFunction],
-        }
-      }
-      local={
-        Object {
-          "venue": Object {
-            "coordinates": Object {
-              "latitude": 0,
-              "longitude": 0,
-            },
-            "display_phone": "",
-            "distance": 0,
-            "favorites": Array [],
-            "hours": Array [],
-            "id": "",
-            "image_url": "",
-            "location": Object {
-              "display_address": Array [],
-            },
-            "name": "",
-            "photos": Array [],
-            "rating": 0,
-            "rsvps": Array [],
-            "url": "https://www.example.com/",
-          },
-        }
-      }
-      location={Object {}}
-      match={Object {}}
-      staticContext={Object {}}
-    />
-  </div>
-  <div
-    className="c-venue-data__info"
-  >
-    <div>
-      <p
-        key="0-931"
-      >
-        No Address
-      </p>
-    </div>
-    <p
-      className="u-align-right"
-    >
-      0 Miles
-    </p>
-    <p
-      className="u-margin-none"
-    >
-      No Phone
     </p>
     <p
       className="u-align-right u-margin-none"

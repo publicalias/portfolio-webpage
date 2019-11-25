@@ -38,7 +38,7 @@ describe("UserData", () => {
   it("should call handleError on error", () => {
 
     const event = { target: { src: "" } };
-    const placeholder = "https://via.placeholder.com/450x800?text=undefined";
+    const placeholder = "https://via.placeholder.com/800x450?text=undefined";
 
     const testError = initTestEvent(testData, "error", event);
 

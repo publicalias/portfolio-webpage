@@ -137,7 +137,7 @@ exports[`RSVPList should match snapshot (list) 1`] = `
             },
             "photos": Object {
               "pause": false,
-              "photo": null,
+              "photo": "",
               "start": false,
             },
           },

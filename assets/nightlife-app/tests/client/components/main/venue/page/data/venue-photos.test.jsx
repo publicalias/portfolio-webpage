@@ -47,7 +47,9 @@ describe("VenuePhotos (snapshots)", () => {
 
   const testSnapshot = initTestSnapshot(withDataList(testShallow, dataList));
 
-  it("should match snapshot", () => testSnapshot());
+  it("should match snapshot (default)", () => testSnapshot());
+
+  it("should match snapshot (turn)", () => testSnapshot(null, { venue: { photos: ["", ""] } }));
 
 });
 
