@@ -26,11 +26,11 @@ const MetaItem = (props) => {
         <p className="u-margin-none">{readDate(item.date)}</p>
       </div>
       <div className="c-notification-item__actions">
-        {buttons.map((e) => {
+        {buttons.map(({ handler, icon }) => {
 
           const handleClick = async () => {
 
-            await e.handler(item.id);
+            await handler(item.id);
 
             refresh();
 
@@ -39,10 +39,10 @@ const MetaItem = (props) => {
           return (
             <button
               className="c-icon-button qa-click-item"
-              key={keyGen(e.icon)}
+              key={keyGen(icon)}
               onClick={handleClick}
             >
-              <i className={e.icon} />
+              <i className={icon} />
             </button>
           );
 

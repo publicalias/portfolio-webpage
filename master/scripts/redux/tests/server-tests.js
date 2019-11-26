@@ -13,7 +13,7 @@ const { MongoMemoryServer } = require("mongodb-memory-server");
 
 //init mock api call
 
-const initMockAPICall = (fn, method) => async (user = {}, data = null) => {
+const initMockAPICall = (fn, method, mock = jest.fn) => async (user = {}, data = null) => {
 
   const isQuery = method === "GET" || method === "DELETE";
 
@@ -28,11 +28,11 @@ const initMockAPICall = (fn, method) => async (user = {}, data = null) => {
 
   const resSent = { headersSent: false };
   const resMock = ((fn) => ({
-    json: fn,
-    sendStatus: fn
-  }))(jest.fn(() => {
+    json: mock(fn),
+    sendStatus: mock(fn)
+  }))(() => {
     resSent.headersSent = true;
-  }));
+  });
 
   const req = Object.assign(reqUser, reqData);
   const res = Object.assign(resSent, resMock);

@@ -34,18 +34,21 @@ const Sidebar = (props) => {
     <div className="c-sidebar">
       <h4 className="u-align-left">{`Hi, ${user.name || "Anonymous"}!`}</h4>
       <hr />
-      {auth && (
-        <React.Fragment>
-          <button className="c-sidebar__toggle qa-toggle-settings" onClick={handleClick}>Settings</button>
-          {account.settings && (
-            <React.Fragment>
-              <SidebarInput {...props} local={{ type: "address" }} />
-              <SidebarInput {...props} local={{ type: "avatar" }} />
-            </React.Fragment>
-          )}
-        </React.Fragment>
-      )}
-      <AuthButtons {...props} local={{ redirect: "/nightlife-app" }} />
+      <div className="c-sidebar__buttons">
+        {auth && (
+          <React.Fragment>
+            <button className="c-sidebar__toggle qa-toggle-settings" onClick={handleClick}>Settings</button>
+            {account.settings && (
+              <React.Fragment>
+                <p className="u-margin-none">Tip: Set your address to "DEMO" to interact with the demo users.</p>
+                <SidebarInput {...props} local={{ type: "address" }} />
+                <SidebarInput {...props} local={{ type: "avatar" }} />
+              </React.Fragment>
+            )}
+          </React.Fragment>
+        )}
+        <AuthButtons {...props} local={{ redirect: "/nightlife-app" }} />
+      </div>
     </div>
   );
 
