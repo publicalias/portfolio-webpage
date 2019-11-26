@@ -14,6 +14,7 @@ const app = express();
 //setup
 
 global.__build = `${__dirname}/build`;
+global.__ready = app;
 
 addPath("master/scripts");
 
@@ -48,17 +49,21 @@ for (const e of projects) {
 
 //initialize server
 
-const config = {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-};
-
-MongoClient.connect(process.env.DB_URL, config)
+MongoClient.connect(process.env.DB_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  })
   .then((res) => {
     global.db = res.db();
-    app.listen(process.env.PORT || 3000);
+    app.listen(process.env.PORT || 3000, () => {
+      app.emit("ready");
+    });
   })
   .catch((err) => {
     console.log(err);
     process.exit(1);
   });
+
+process.on("unhandledRejection", (err) => {
+  console.log(err);
+});

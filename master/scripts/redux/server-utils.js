@@ -13,6 +13,8 @@ const MongoDBStore = require("connect-mongodb-session")(session);
 const passport = require("passport");
 const uuid = require("uuid/v1");
 
+const { job } = require("cron");
+
 //utilities
 
 const usersCol = () => db.collection("auth/users");
@@ -126,6 +128,10 @@ const handleSession = (router) => {
   router.use(passport.session());
 };
 
+//hourly
+
+const hourly = (fn) => job("0 0 * * * *", fn, null, true, null, null, true);
+
 //exports
 
 module.exports = {
@@ -135,5 +141,6 @@ module.exports = {
   handleAPICall,
   handleAuthFail,
   handleErrors,
-  handleSession
+  handleSession,
+  hourly
 };

@@ -56,13 +56,10 @@ const mongoTests = {
 
     this.server = new MongoMemoryServer();
 
-    const uri = await this.server.getConnectionString();
-    const config = {
+    this.client = await MongoClient.connect(await this.server.getConnectionString(), {
       useNewUrlParser: true,
       useUnifiedTopology: true
-    };
-
-    this.client = await MongoClient.connect(uri, config);
+    });
 
     global.db = this.client.db();
 
