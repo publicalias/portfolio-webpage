@@ -63,6 +63,36 @@ const newIPUser = initSchema({
   ip: ""
 });
 
+//new mock api call
+
+const newMockAPICall = (method, user, data, mock) => {
+
+  const isQuery = method === "GET" || method === "DELETE";
+
+  const reqUser = user.auth ? { user } : { ip: "ip" in user ? user.ip : "0.0.0.0" };
+  const reqData = isQuery ? {
+    query: { data: JSON.stringify(data) },
+    body: {}
+  } : {
+    query: {},
+    body: { data }
+  };
+
+  const resSent = { headersSent: false };
+  const resMock = ((fn) => ({
+    json: mock(fn),
+    sendStatus: mock(fn)
+  }))(() => {
+    resSent.headersSent = true;
+  });
+
+  return {
+    req: Object.assign(reqUser, reqData),
+    res: Object.assign(resSent, resMock)
+  };
+
+};
+
 //new user
 
 const newUser = initSchema({
@@ -84,5 +114,6 @@ module.exports = {
   listReplacer,
   newError,
   newIPUser,
+  newMockAPICall,
   newUser
 };

@@ -136,6 +136,24 @@ const leadZero = (int, digits = 2) => {
 
 };
 
+//mock
+
+const mock = (fn) => {
+
+  const wrapper = (...args) => {
+
+    wrapper.mock.calls.push(args);
+
+    return fn(args);
+
+  };
+
+  Object.assign(wrapper, { mock: { calls: [] } });
+
+  return wrapper;
+
+};
+
 //months
 
 const months = [
@@ -203,6 +221,7 @@ module.exports = {
   get,
   initDeepCopy,
   leadZero,
+  mock,
   months,
   objEqual,
   readDate,

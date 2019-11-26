@@ -3,7 +3,7 @@
 //global imports
 
 const { bindObject } = require("all/utilities");
-const { newUser } = require("redux/schemas");
+const { newMockAPICall, newUser } = require("redux/schemas");
 const { testMock } = require("redux/tests/meta-tests");
 
 //node modules
@@ -13,29 +13,9 @@ const { MongoMemoryServer } = require("mongodb-memory-server");
 
 //init mock api call
 
-const initMockAPICall = (fn, method, mock = jest.fn) => async (user = {}, data = null) => {
+const initMockAPICall = (fn, method) => async (user = {}, data = null) => {
 
-  const isQuery = method === "GET" || method === "DELETE";
-
-  const reqUser = user.auth ? { user } : { ip: "ip" in user ? user.ip : "0.0.0.0" };
-  const reqData = isQuery ? {
-    query: { data: JSON.stringify(data) },
-    body: {}
-  } : {
-    query: {},
-    body: { data }
-  };
-
-  const resSent = { headersSent: false };
-  const resMock = ((fn) => ({
-    json: mock(fn),
-    sendStatus: mock(fn)
-  }))(() => {
-    resSent.headersSent = true;
-  });
-
-  const req = Object.assign(reqUser, reqData);
-  const res = Object.assign(resSent, resMock);
+  const { req, res } = newMockAPICall(method, user, data, jest.fn);
 
   await fn(req, res);
 

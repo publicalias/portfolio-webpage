@@ -8,7 +8,6 @@ const { newGeoPoint, newVenue, newYelpParams } = require("../../schemas");
 
 const { checkErrors, roundTo } = require("all/utilities");
 const { handleAuthFail } = require("redux/server-utils");
-const { initMockAPICall } = require("redux/tests/server-tests");
 
 //node modules
 
@@ -25,24 +24,6 @@ const favoritesCol = () => db.collection("nightlife-app/favorites");
 const friendsCol = () => db.collection("nightlife-app/friends");
 const rsvpsCol = () => db.collection("nightlife-app/rsvps");
 const userDataCol = () => db.collection("nightlife-app/user-data");
-
-//bot api call
-
-const botAPICall = (fn, method) => initMockAPICall(fn, method, (fn) => { //shameless hack
-
-  const wrapper = (...args) => {
-
-    wrapper.mock.calls.push(args);
-
-    return fn(args);
-
-  };
-
-  Object.assign(wrapper, { mock: { calls: [] } });
-
-  return wrapper;
-
-});
 
 //check search
 
@@ -346,7 +327,6 @@ const readTime = (time) => ((date = chrono.strict.parseDate(time)) => date && da
 //exports
 
 module.exports = {
-  botAPICall,
   checkSearch,
   findUserItem,
   findUserList,

@@ -2,8 +2,8 @@
 
 //global imports
 
-const { capitalize } = require("all/utilities");
-const { newIPUser } = require("redux/schemas");
+const { capitalize, mock } = require("all/utilities");
+const { newIPUser, newMockAPICall } = require("redux/schemas");
 
 //node modules
 
@@ -45,6 +45,18 @@ const apiRouter = (handlers) => {
   router.delete("/:action", apiRequest);
 
   return router;
+
+};
+
+//bot api call
+
+const botAPICall = async (fn, method, user, data) => {
+
+  const { req, res } = newMockAPICall(method, user, data, mock);
+
+  await fn(req, res);
+
+  return res;
 
 };
 
@@ -136,6 +148,7 @@ const hourly = (fn) => job("0 0 * * * *", fn, null, true, null, null, true);
 
 module.exports = {
   apiRouter,
+  botAPICall,
   getIPUser,
   getOrSetUser,
   handleAPICall,

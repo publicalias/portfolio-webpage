@@ -9,12 +9,11 @@ const { rsvpAdd } = require("../api/handlers/rsvp-handlers");
 const { userToggleBlock } = require("../api/handlers/user-handlers");
 const { venueGetList } = require("../api/handlers/venue-handlers");
 
-const { botAPICall } = require("../app-logic");
 const { newListParamsVenues, newUserWithData } = require("../../../schemas");
 
 //global imports
 
-const { hourly } = require("redux/server-utils");
+const { botAPICall, hourly } = require("redux/server-utils");
 
 //utilities
 
@@ -35,7 +34,7 @@ const botAcceptRequest = () => friendsCol()
   }])
   .on("change", ({ fullDocument: data }) => {
     setTimeout(() => {
-      botAPICall(friendConfirm, "PATCH")(FriendlyBot, { id: data.id });
+      botAPICall(friendConfirm, "PATCH", FriendlyBot, { id: data.id });
     }, 3000);
   });
 
@@ -47,7 +46,7 @@ const botCreateRSVP = () => hourly(async () => {
     return;
   }
 
-  const res = await botAPICall(venueGetList, "GET")(FriendlyBot, {
+  const res = await botAPICall(venueGetList, "GET", FriendlyBot, {
     params: newListParamsVenues(),
     length: 0,
     location: FriendlyBot.data.location
@@ -55,7 +54,7 @@ const botCreateRSVP = () => hourly(async () => {
 
   const [{ venues: { data: [{ id, name }] } }] = res.json.mock.calls[0];
 
-  botAPICall(rsvpAdd, "POST")(FriendlyBot, {
+  botAPICall(rsvpAdd, "POST", FriendlyBot, {
     name,
     id,
     time: "9:00 PM",
@@ -73,14 +72,14 @@ const botRejectRequest = () => friendsCol()
   }])
   .on("change", ({ fullDocument: data }) => {
     setTimeout(() => {
-      botAPICall(userToggleBlock, "PATCH")(MisanthropicBot, { id: data.from.id });
+      botAPICall(userToggleBlock, "PATCH", MisanthropicBot, { id: data.from.id });
     }, 3000);
   });
 
 const botSendRequest = () => userDataCol()
   .watch([{ $match: { operationType: "insert" } }])
   .on("change", ({ fullDocument: data }) => {
-    botAPICall(friendAdd, "POST")(FriendlyBot, {
+    botAPICall(friendAdd, "POST", FriendlyBot, {
       name: data.name,
       id: data.id
     });
