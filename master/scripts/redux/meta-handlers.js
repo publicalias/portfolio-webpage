@@ -22,6 +22,10 @@ const META_ADD_ERRORS = (state, { errors }) => {
 
 const META_CLOSE_ERROR = (state) => deepCopy(state, { errors: state.errors.slice(1) });
 
+//meta log action
+
+const META_LOG_ACTION = (state, { action }) => deepCopy(state, { log: state.log.concat(action) });
+
 //meta no op
 
 const META_NO_OP = (state) => state;
@@ -52,6 +56,7 @@ const META_TOGGLE_DELETE = (state) => deepCopy(state, { account: { delete: !stat
 module.exports = {
   META_ADD_ERRORS,
   META_CLOSE_ERROR,
+  META_LOG_ACTION,
   META_NO_OP,
   META_SET_LOADING,
   META_SET_STATE,

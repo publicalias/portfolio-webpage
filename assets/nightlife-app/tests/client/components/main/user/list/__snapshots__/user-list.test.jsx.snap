@@ -15,6 +15,7 @@ exports[`UserList should match snapshot 1`] = `
         "metaAddErrors": [MockFunction],
         "metaCloseError": [MockFunction],
         "metaGetUser": [MockFunction],
+        "metaLogAction": [MockFunction],
         "metaNoOp": [MockFunction],
         "metaSaveAddress": [MockFunction],
         "metaSaveAvatar": [MockFunction],
@@ -61,6 +62,7 @@ exports[`UserList should match snapshot 1`] = `
         },
         "errors": Array [],
         "loading": 0,
+        "log": Array [],
         "notifications": Object {
           "friends": Array [],
           "rsvps": Array [],
@@ -118,6 +120,7 @@ exports[`UserList should match snapshot 1`] = `
         "metaAddErrors": [MockFunction],
         "metaCloseError": [MockFunction],
         "metaGetUser": [MockFunction],
+        "metaLogAction": [MockFunction],
         "metaNoOp": [MockFunction],
         "metaSaveAddress": [MockFunction],
         "metaSaveAvatar": [MockFunction],
@@ -164,6 +167,7 @@ exports[`UserList should match snapshot 1`] = `
         },
         "errors": Array [],
         "loading": 0,
+        "log": Array [],
         "notifications": Object {
           "friends": Array [],
           "rsvps": Array [],

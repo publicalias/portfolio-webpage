@@ -33,6 +33,7 @@ exports[`VenueData should match snapshot (address) 1`] = `
           "metaAddErrors": [MockFunction],
           "metaCloseError": [MockFunction],
           "metaGetUser": [MockFunction],
+          "metaLogAction": [MockFunction],
           "metaNoOp": [MockFunction],
           "metaSaveAddress": [MockFunction],
           "metaSaveAvatar": [MockFunction],
@@ -79,6 +80,7 @@ exports[`VenueData should match snapshot (address) 1`] = `
           },
           "errors": Array [],
           "loading": 0,
+          "log": Array [],
           "notifications": Object {
             "friends": Array [],
             "rsvps": Array [],
@@ -218,6 +220,7 @@ exports[`VenueData should match snapshot (default) 1`] = `
           "metaAddErrors": [MockFunction],
           "metaCloseError": [MockFunction],
           "metaGetUser": [MockFunction],
+          "metaLogAction": [MockFunction],
           "metaNoOp": [MockFunction],
           "metaSaveAddress": [MockFunction],
           "metaSaveAvatar": [MockFunction],
@@ -264,6 +267,7 @@ exports[`VenueData should match snapshot (default) 1`] = `
           },
           "errors": Array [],
           "loading": 0,
+          "log": Array [],
           "notifications": Object {
             "friends": Array [],
             "rsvps": Array [],
@@ -395,6 +399,7 @@ exports[`VenueData should match snapshot (name) 1`] = `
           "metaAddErrors": [MockFunction],
           "metaCloseError": [MockFunction],
           "metaGetUser": [MockFunction],
+          "metaLogAction": [MockFunction],
           "metaNoOp": [MockFunction],
           "metaSaveAddress": [MockFunction],
           "metaSaveAvatar": [MockFunction],
@@ -441,6 +446,7 @@ exports[`VenueData should match snapshot (name) 1`] = `
           },
           "errors": Array [],
           "loading": 0,
+          "log": Array [],
           "notifications": Object {
             "friends": Array [],
             "rsvps": Array [],
@@ -572,6 +578,7 @@ exports[`VenueData should match snapshot (phone) 1`] = `
           "metaAddErrors": [MockFunction],
           "metaCloseError": [MockFunction],
           "metaGetUser": [MockFunction],
+          "metaLogAction": [MockFunction],
           "metaNoOp": [MockFunction],
           "metaSaveAddress": [MockFunction],
           "metaSaveAvatar": [MockFunction],
@@ -618,6 +625,7 @@ exports[`VenueData should match snapshot (phone) 1`] = `
           },
           "errors": Array [],
           "loading": 0,
+          "log": Array [],
           "notifications": Object {
             "friends": Array [],
             "rsvps": Array [],

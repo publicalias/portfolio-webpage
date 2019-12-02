@@ -11,6 +11,13 @@ const metaAddErrors = (errors) => ({
 
 const metaCloseError = () => ({ type: "META_CLOSE_ERROR" });
 
+//meta log action
+
+const metaLogAction = (action) => ({
+  type: "META_LOG_ACTION",
+  action
+});
+
 //meta no op
 
 const metaNoOp = () => ({ type: "META_NO_OP" });
@@ -43,6 +50,7 @@ const metaToggleDelete = () => ({ type: "META_TOGGLE_DELETE" });
 module.exports = {
   metaAddErrors,
   metaCloseError,
+  metaLogAction,
   metaNoOp,
   metaSetLoading,
   metaSetState,

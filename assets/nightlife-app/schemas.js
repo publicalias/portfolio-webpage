@@ -186,6 +186,7 @@ const newState = initSchema({
   errors: [],
   loading: 0,
 
+  log: [],
   ready: false,
 
   //view

@@ -24,6 +24,7 @@ exports[`ListItem should match snapshot (authenticated) 1`] = `
         "metaGetPollItem": [MockFunction],
         "metaGetPollList": [MockFunction],
         "metaGetUser": [MockFunction],
+        "metaLogAction": [MockFunction],
         "metaNoOp": [MockFunction],
         "metaSetLoading": [MockFunction],
         "metaSetState": [MockFunction],
@@ -59,6 +60,7 @@ exports[`ListItem should match snapshot (authenticated) 1`] = `
           "search": "",
         },
         "loading": 0,
+        "log": Array [],
         "polls": Array [],
         "user": Object {
           "auth": Object {
@@ -129,6 +131,7 @@ exports[`ListItem should match snapshot (authenticated) 1`] = `
         "metaGetPollItem": [MockFunction],
         "metaGetPollList": [MockFunction],
         "metaGetUser": [MockFunction],
+        "metaLogAction": [MockFunction],
         "metaNoOp": [MockFunction],
         "metaSetLoading": [MockFunction],
         "metaSetState": [MockFunction],
@@ -164,6 +167,7 @@ exports[`ListItem should match snapshot (authenticated) 1`] = `
           "search": "",
         },
         "loading": 0,
+        "log": Array [],
         "polls": Array [],
         "user": Object {
           "auth": Object {
@@ -259,6 +263,7 @@ exports[`ListItem should match snapshot (default) 1`] = `
         "metaGetPollItem": [MockFunction],
         "metaGetPollList": [MockFunction],
         "metaGetUser": [MockFunction],
+        "metaLogAction": [MockFunction],
         "metaNoOp": [MockFunction],
         "metaSetLoading": [MockFunction],
         "metaSetState": [MockFunction],
@@ -294,6 +299,7 @@ exports[`ListItem should match snapshot (default) 1`] = `
           "search": "",
         },
         "loading": 0,
+        "log": Array [],
         "polls": Array [],
         "user": Object {},
         "view": Object {

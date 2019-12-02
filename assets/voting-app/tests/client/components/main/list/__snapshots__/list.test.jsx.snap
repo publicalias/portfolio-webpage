@@ -22,6 +22,7 @@ exports[`List should match snapshot 1`] = `
         "metaGetPollItem": [MockFunction],
         "metaGetPollList": [MockFunction],
         "metaGetUser": [MockFunction],
+        "metaLogAction": [MockFunction],
         "metaNoOp": [MockFunction],
         "metaSetLoading": [MockFunction],
         "metaSetState": [MockFunction],
@@ -57,6 +58,7 @@ exports[`List should match snapshot 1`] = `
           "search": "",
         },
         "loading": 0,
+        "log": Array [],
         "polls": Array [],
         "user": Object {},
         "view": Object {
@@ -95,6 +97,7 @@ exports[`List should match snapshot 1`] = `
         "metaGetPollItem": [MockFunction],
         "metaGetPollList": [MockFunction],
         "metaGetUser": [MockFunction],
+        "metaLogAction": [MockFunction],
         "metaNoOp": [MockFunction],
         "metaSetLoading": [MockFunction],
         "metaSetState": [MockFunction],
@@ -130,6 +133,7 @@ exports[`List should match snapshot 1`] = `
           "search": "",
         },
         "loading": 0,
+        "log": Array [],
         "polls": Array [],
         "user": Object {},
         "view": Object {

@@ -6,7 +6,8 @@ const { reduxAPICall } = require("redux/client-utils");
 
 //form add option
 
-const formAddOption = (add, options) => (dispatch) => reduxAPICall(dispatch, {
+const formAddOption = (add, options) => reduxAPICall({
+  type: "FORM_ADD_OPTION",
   path: "/voting-app/api/form-add-option",
   method: "GET",
   data: {
@@ -17,7 +18,8 @@ const formAddOption = (add, options) => (dispatch) => reduxAPICall(dispatch, {
 
 //form check title
 
-const formCheckTitle = (title) => (dispatch) => reduxAPICall(dispatch, {
+const formCheckTitle = (title) => reduxAPICall({
+  type: "FORM_CHECK_TITLE",
   path: "/voting-app/api/form-check-title",
   method: "GET",
   data: { title }

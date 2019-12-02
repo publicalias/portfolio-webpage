@@ -12,6 +12,7 @@ describe("metaGetUser", () => {
   const { metaGetUser } = actions;
 
   testAPI.default(metaGetUser(), {
+    type: "META_GET_USER",
     path: "/nightlife-app/api/meta-get-user",
     method: "GET"
   });
@@ -25,6 +26,7 @@ describe("metaSaveAddress", () => {
   const { metaSaveAddress } = actions;
 
   testAPI.default(metaSaveAddress("", null), {
+    type: "META_SAVE_ADDRESS",
     path: "/nightlife-app/api/meta-save-address",
     method: "PATCH",
     data: {
@@ -42,6 +44,7 @@ describe("metaSaveAvatar", () => {
   const { metaSaveAvatar } = actions;
 
   testAPI.default(metaSaveAvatar(""), {
+    type: "META_SAVE_AVATAR",
     path: "/nightlife-app/api/meta-save-avatar",
     method: "PATCH",
     data: { avatar: "" }

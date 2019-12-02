@@ -17,6 +17,7 @@ exports[`VenueControls should match snapshot 1`] = `
         "metaAddErrors": [MockFunction],
         "metaCloseError": [MockFunction],
         "metaGetUser": [MockFunction],
+        "metaLogAction": [MockFunction],
         "metaNoOp": [MockFunction],
         "metaSaveAddress": [MockFunction],
         "metaSaveAvatar": [MockFunction],
@@ -63,6 +64,7 @@ exports[`VenueControls should match snapshot 1`] = `
         },
         "errors": Array [],
         "loading": 0,
+        "log": Array [],
         "notifications": Object {
           "friends": Array [],
           "rsvps": Array [],
@@ -145,6 +147,7 @@ exports[`VenueControls should match snapshot 1`] = `
         "metaAddErrors": [MockFunction],
         "metaCloseError": [MockFunction],
         "metaGetUser": [MockFunction],
+        "metaLogAction": [MockFunction],
         "metaNoOp": [MockFunction],
         "metaSaveAddress": [MockFunction],
         "metaSaveAvatar": [MockFunction],
@@ -191,6 +194,7 @@ exports[`VenueControls should match snapshot 1`] = `
         },
         "errors": Array [],
         "loading": 0,
+        "log": Array [],
         "notifications": Object {
           "friends": Array [],
           "rsvps": Array [],

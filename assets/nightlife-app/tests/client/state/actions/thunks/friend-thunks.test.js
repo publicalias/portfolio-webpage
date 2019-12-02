@@ -12,6 +12,7 @@ describe("friendAdd", () => {
   const { friendAdd } = actions;
 
   testAPI.default(friendAdd("", ""), {
+    type: "FRIEND_ADD",
     path: "/nightlife-app/api/friend-add",
     method: "POST",
     data: {
@@ -29,6 +30,7 @@ describe("friendConfirm", () => {
   const { friendConfirm } = actions;
 
   testAPI.default(friendConfirm(""), {
+    type: "FRIEND_CONFIRM",
     path: "/nightlife-app/api/friend-confirm",
     method: "PATCH",
     data: { id: "" }
@@ -43,6 +45,7 @@ describe("friendDismiss", () => {
   const { friendDismiss } = actions;
 
   testAPI.default(friendDismiss(""), {
+    type: "FRIEND_DISMISS",
     path: "/nightlife-app/api/friend-dismiss",
     method: "PATCH",
     data: { id: "" }
@@ -57,6 +60,7 @@ describe("friendGetList", () => {
   const { friendGetList } = actions;
 
   testAPI.default(friendGetList(), {
+    type: "FRIEND_GET_LIST",
     path: "/nightlife-app/api/friend-get-list",
     method: "GET"
   });
@@ -70,6 +74,7 @@ describe("friendRemove", () => {
   const { friendRemove } = actions;
 
   testAPI.default(friendRemove(""), {
+    type: "FRIEND_REMOVE",
     path: "/nightlife-app/api/friend-remove",
     method: "DELETE",
     data: { id: "" }

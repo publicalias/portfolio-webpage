@@ -13,6 +13,7 @@ describe("userGetItem", () => {
   const { userGetItem } = actions;
 
   testAPI.default(userGetItem("", null), {
+    type: "USER_GET_ITEM",
     path: "/nightlife-app/api/user-get-item",
     method: "GET",
     data: {
@@ -32,6 +33,7 @@ describe("userGetList", () => {
   const params = newListParamsUsers();
 
   testAPI.default(userGetList(params, 0, null), {
+    type: "USER_GET_LIST",
     path: "/nightlife-app/api/user-get-list",
     method: "GET",
     data: {
@@ -53,6 +55,7 @@ describe("userToggleBlock", () => {
   const { userToggleBlock } = actions;
 
   testAPI.default(userToggleBlock(""), {
+    type: "USER_TOGGLE_BLOCK",
     path: "/nightlife-app/api/user-toggle-block",
     method: "PATCH",
     data: { id: "" }

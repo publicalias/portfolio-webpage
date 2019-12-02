@@ -74,13 +74,29 @@ App.injected = {
 
 const getContext = (Component, actions) => {
 
+  const { metaSetLoading } = actions;
+
   const withStore = connect(
     (state) => ({ data: state }),
     (dispatch) => ({
       actions: Object.entries(actions).reduce((acc, [key, val]) => Object.assign(acc, {
-        [key]: typeof val() === "function" ? (...args) => dispatch(val(...args)) : (...args) => {
-          dispatch(val(...args));
-        }
+        [key]: typeof val() === "object"
+          ? (...args) => {
+            dispatch(val(...args));
+          }
+          : async (...args) => {
+
+            const loading = (bool) => dispatch(metaSetLoading(bool));
+
+            loading(true);
+
+            const res = await dispatch(val(...args));
+
+            loading();
+
+            return res;
+
+          }
       }), {})
     })
   );
@@ -93,11 +109,23 @@ const ReduxApp = (props) => {
 
   const { local: { actions, reducer, root } } = props;
 
+  const { metaLogAction } = actions;
+
   const { jsx: { App, BrowserRouter, Provider } } = ReduxApp.injected;
 
   //utilities
 
-  const middleware = applyMiddleware(ReduxThunk);
+  const logActions = (store) => (next) => (action) => {
+
+    if (action.type !== "META_LOG_ACTION") {
+      store.dispatch(metaLogAction(action.type));
+    }
+
+    return next(action);
+
+  };
+
+  const middleware = applyMiddleware(logActions, ReduxThunk);
   const store = createStore(reducer, middleware);
 
   const Connected = getContext(App, actions);

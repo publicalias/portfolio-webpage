@@ -13,6 +13,7 @@ describe("venueGetItem", () => {
   const { venueGetItem } = actions;
 
   testAPI.default(venueGetItem("", null), {
+    type: "VENUE_GET_ITEM",
     path: "/nightlife-app/api/venue-get-item",
     method: "GET",
     data: {
@@ -32,6 +33,7 @@ describe("venueGetList", () => {
   const params = newListParamsVenues();
 
   testAPI.default(venueGetList(params, 0, null), {
+    type: "VENUE_GET_LIST",
     path: "/nightlife-app/api/venue-get-list",
     method: "GET",
     data: {

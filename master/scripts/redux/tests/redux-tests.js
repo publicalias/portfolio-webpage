@@ -4,7 +4,7 @@
 
 const { encodeAPICall } = require("all/client-utils");
 const { deepCopy } = require("all/utilities");
-const { metaAddErrors, metaNoOp, metaSetLoading, metaSetState } = require("redux/meta-factories");
+const { metaAddErrors, metaNoOp, metaSetState } = require("redux/meta-factories");
 const { testMock } = require("redux/tests/meta-tests");
 
 //node modules
@@ -30,15 +30,15 @@ const testAPIThunk = async (action, args, actionList, lastState, fetch) => {
 
   const store = mockStore(lastState);
 
-  const fullList = [metaSetLoading(true), ...actionList, metaSetLoading()];
-
   global.fetch = jest.fn(fetch);
   global.Headers = jest.fn();
 
   await store.dispatch(action);
 
   testAPICall(args);
-  expect(store.getActions()).toEqual(fullList);
+  expect(action.type).toEqual(args.type);
+
+  expect(store.getActions()).toEqual(actionList);
 
 };
 

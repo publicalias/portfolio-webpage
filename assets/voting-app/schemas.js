@@ -50,6 +50,8 @@ const newState = initSchema({
   errors: [],
   loading: 0,
 
+  log: [],
+
   //data
 
   polls: [],

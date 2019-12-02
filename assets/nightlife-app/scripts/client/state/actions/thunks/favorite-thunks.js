@@ -6,7 +6,8 @@ const { reduxAPICall } = require("redux/client-utils");
 
 //favorite add
 
-const favoriteAdd = (name, id) => (dispatch) => reduxAPICall(dispatch, {
+const favoriteAdd = (name, id) => reduxAPICall({
+  type: "FAVORITE_ADD",
   path: "/nightlife-app/api/favorite-add",
   method: "POST",
   data: {
@@ -17,7 +18,8 @@ const favoriteAdd = (name, id) => (dispatch) => reduxAPICall(dispatch, {
 
 //favorite remove
 
-const favoriteRemove = (id) => (dispatch) => reduxAPICall(dispatch, {
+const favoriteRemove = (id) => reduxAPICall({
+  type: "FAVORITE_REMOVE",
   path: "/nightlife-app/api/favorite-remove",
   method: "DELETE",
   data: { id }

@@ -12,6 +12,7 @@ describe("favoriteAdd", () => {
   const { favoriteAdd } = actions;
 
   testAPI.default(favoriteAdd("", ""), {
+    type: "FAVORITE_ADD",
     path: "/nightlife-app/api/favorite-add",
     method: "POST",
     data: {
@@ -29,6 +30,7 @@ describe("favoriteRemove", () => {
   const { favoriteRemove } = actions;
 
   testAPI.default(favoriteRemove(""), {
+    type: "FAVORITE_REMOVE",
     path: "/nightlife-app/api/favorite-remove",
     method: "DELETE",
     data: { id: "" }

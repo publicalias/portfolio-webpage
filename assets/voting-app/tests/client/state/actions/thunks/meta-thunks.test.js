@@ -13,6 +13,7 @@ describe("metaCreatePoll", () => {
   const { metaCreatePoll } = actions;
 
   testAPI.default(metaCreatePoll(newForm()), {
+    type: "META_CREATE_POLL",
     path: "/voting-app/api/meta-create-poll",
     method: "POST",
     data: newForm()
@@ -27,6 +28,7 @@ describe("metaDeletePoll", () => {
   const { metaDeletePoll } = actions;
 
   testAPI.default(metaDeletePoll(""), {
+    type: "META_DELETE_POLL",
     path: "/voting-app/api/meta-delete-poll",
     method: "DELETE",
     data: { id: "" }
@@ -41,6 +43,7 @@ describe("metaGetPollItem", () => {
   const { metaGetPollItem } = actions;
 
   testAPI.default(metaGetPollItem(""), {
+    type: "META_GET_POLL_ITEM",
     path: "/voting-app/api/meta-get-poll-item",
     method: "GET",
     data: { id: "" }
@@ -57,6 +60,7 @@ describe("metaGetPollList", () => {
   const params = newListParams();
 
   testAPI.default(metaGetPollList(params), {
+    type: "META_GET_POLL_LIST",
     path: "/voting-app/api/meta-get-poll-list",
     method: "GET",
     data: {
@@ -74,6 +78,7 @@ describe("metaGetUser", () => {
   const { metaGetUser } = actions;
 
   testAPI.default(metaGetUser(), {
+    type: "META_GET_USER",
     path: "/voting-app/api/meta-get-user",
     method: "GET"
   });

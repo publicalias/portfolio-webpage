@@ -6,7 +6,8 @@ const { reduxAPICall } = require("redux/client-utils");
 
 //poll add option
 
-const pollAddOption = (id, text) => (dispatch) => reduxAPICall(dispatch, {
+const pollAddOption = (id, text) => reduxAPICall({
+  type: "POLL_ADD_OPTION",
   path: "/voting-app/api/poll-add-option",
   method: "PATCH",
   data: {
@@ -17,7 +18,8 @@ const pollAddOption = (id, text) => (dispatch) => reduxAPICall(dispatch, {
 
 //poll cast vote
 
-const pollCastVote = (id, text) => (dispatch) => reduxAPICall(dispatch, {
+const pollCastVote = (id, text) => reduxAPICall({
+  type: "POLL_CAST_VOTE",
   path: "/voting-app/api/poll-cast-vote",
   method: "PATCH",
   data: {
@@ -28,7 +30,8 @@ const pollCastVote = (id, text) => (dispatch) => reduxAPICall(dispatch, {
 
 //poll remove option
 
-const pollRemoveOption = (id, text) => (dispatch) => reduxAPICall(dispatch, {
+const pollRemoveOption = (id, text) => reduxAPICall({
+  type: "POLL_REMOVE_OPTION",
   path: "/voting-app/api/poll-remove-option",
   method: "PATCH",
   data: {
@@ -39,7 +42,8 @@ const pollRemoveOption = (id, text) => (dispatch) => reduxAPICall(dispatch, {
 
 //poll remove vote
 
-const pollRemoveVote = (id) => (dispatch) => reduxAPICall(dispatch, {
+const pollRemoveVote = (id) => reduxAPICall({
+  type: "POLL_REMOVE_VOTE",
   path: "/voting-app/api/poll-remove-vote",
   method: "PATCH",
   data: { id }
@@ -47,7 +51,8 @@ const pollRemoveVote = (id) => (dispatch) => reduxAPICall(dispatch, {
 
 //poll toggle flag
 
-const pollToggleFlag = (id) => (dispatch) => reduxAPICall(dispatch, {
+const pollToggleFlag = (id) => reduxAPICall({
+  type: "POLL_TOGGLE_FLAG",
   path: "/voting-app/api/poll-toggle-flag",
   method: "PATCH",
   data: { id }
@@ -55,7 +60,8 @@ const pollToggleFlag = (id) => (dispatch) => reduxAPICall(dispatch, {
 
 //poll toggle hide
 
-const pollToggleHide = (id) => (dispatch) => reduxAPICall(dispatch, {
+const pollToggleHide = (id) => reduxAPICall({
+  type: "POLL_TOGGLE_HIDE",
   path: "/voting-app/api/poll-toggle-hide",
   method: "PATCH",
   data: { id }
@@ -63,7 +69,8 @@ const pollToggleHide = (id) => (dispatch) => reduxAPICall(dispatch, {
 
 //poll toggle secret
 
-const pollToggleSecret = (id) => (dispatch) => reduxAPICall(dispatch, {
+const pollToggleSecret = (id) => reduxAPICall({
+  type: "POLL_TOGGLE_SECRET",
   path: "/voting-app/api/poll-toggle-secret",
   method: "PATCH",
   data: { id }

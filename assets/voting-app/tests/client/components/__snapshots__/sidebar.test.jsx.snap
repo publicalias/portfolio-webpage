@@ -30,6 +30,7 @@ exports[`Sidebar should match snapshot (default) 1`] = `
         "metaGetPollItem": [MockFunction],
         "metaGetPollList": [MockFunction],
         "metaGetUser": [MockFunction],
+        "metaLogAction": [MockFunction],
         "metaNoOp": [MockFunction],
         "metaSetLoading": [MockFunction],
         "metaSetState": [MockFunction],
@@ -65,6 +66,7 @@ exports[`Sidebar should match snapshot (default) 1`] = `
           "search": "",
         },
         "loading": 0,
+        "log": Array [],
         "polls": Array [],
         "user": Object {},
         "view": Object {
@@ -121,6 +123,7 @@ exports[`Sidebar should match snapshot (name) 1`] = `
         "metaGetPollItem": [MockFunction],
         "metaGetPollList": [MockFunction],
         "metaGetUser": [MockFunction],
+        "metaLogAction": [MockFunction],
         "metaNoOp": [MockFunction],
         "metaSetLoading": [MockFunction],
         "metaSetState": [MockFunction],
@@ -156,6 +159,7 @@ exports[`Sidebar should match snapshot (name) 1`] = `
           "search": "",
         },
         "loading": 0,
+        "log": Array [],
         "polls": Array [],
         "user": Object {
           "auth": Object {

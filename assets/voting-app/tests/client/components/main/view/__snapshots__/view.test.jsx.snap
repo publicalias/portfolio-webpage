@@ -22,6 +22,7 @@ exports[`View should match snapshot (default) 1`] = `
         "metaGetPollItem": [MockFunction],
         "metaGetPollList": [MockFunction],
         "metaGetUser": [MockFunction],
+        "metaLogAction": [MockFunction],
         "metaNoOp": [MockFunction],
         "metaSetLoading": [MockFunction],
         "metaSetState": [MockFunction],
@@ -57,6 +58,7 @@ exports[`View should match snapshot (default) 1`] = `
           "search": "",
         },
         "loading": 0,
+        "log": Array [],
         "polls": Array [],
         "user": Object {},
         "view": Object {
@@ -113,6 +115,7 @@ exports[`View should match snapshot (default) 1`] = `
         "metaGetPollItem": [MockFunction],
         "metaGetPollList": [MockFunction],
         "metaGetUser": [MockFunction],
+        "metaLogAction": [MockFunction],
         "metaNoOp": [MockFunction],
         "metaSetLoading": [MockFunction],
         "metaSetState": [MockFunction],
@@ -148,6 +151,7 @@ exports[`View should match snapshot (default) 1`] = `
           "search": "",
         },
         "loading": 0,
+        "log": Array [],
         "polls": Array [],
         "user": Object {},
         "view": Object {
@@ -210,6 +214,7 @@ exports[`View should match snapshot (id) 1`] = `
         "metaGetPollItem": [MockFunction],
         "metaGetPollList": [MockFunction],
         "metaGetUser": [MockFunction],
+        "metaLogAction": [MockFunction],
         "metaNoOp": [MockFunction],
         "metaSetLoading": [MockFunction],
         "metaSetState": [MockFunction],
@@ -245,6 +250,7 @@ exports[`View should match snapshot (id) 1`] = `
           "search": "",
         },
         "loading": 0,
+        "log": Array [],
         "polls": Array [
           Object {
             "author": "",
@@ -316,6 +322,7 @@ exports[`View should match snapshot (id) 1`] = `
         "metaGetPollItem": [MockFunction],
         "metaGetPollList": [MockFunction],
         "metaGetUser": [MockFunction],
+        "metaLogAction": [MockFunction],
         "metaNoOp": [MockFunction],
         "metaSetLoading": [MockFunction],
         "metaSetState": [MockFunction],
@@ -351,6 +358,7 @@ exports[`View should match snapshot (id) 1`] = `
           "search": "",
         },
         "loading": 0,
+        "log": Array [],
         "polls": Array [
           Object {
             "author": "",

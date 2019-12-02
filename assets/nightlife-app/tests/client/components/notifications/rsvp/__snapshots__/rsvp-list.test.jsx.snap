@@ -47,6 +47,7 @@ exports[`RSVPList should match snapshot (list) 1`] = `
         "metaAddErrors": [MockFunction],
         "metaCloseError": [MockFunction],
         "metaGetUser": [MockFunction],
+        "metaLogAction": [MockFunction],
         "metaNoOp": [MockFunction],
         "metaSaveAddress": [MockFunction],
         "metaSaveAvatar": [MockFunction],
@@ -93,6 +94,7 @@ exports[`RSVPList should match snapshot (list) 1`] = `
         },
         "errors": Array [],
         "loading": 0,
+        "log": Array [],
         "notifications": Object {
           "friends": Array [],
           "rsvps": Array [

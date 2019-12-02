@@ -5,7 +5,7 @@
 const { encodeAPICall, getJSON } = require("all/client-utils");
 const { select } = require("all/dom-api");
 const { get } = require("all/utilities");
-const { metaAddErrors, metaNoOp, metaSetLoading, metaSetState } = require("redux/meta-factories");
+const { metaAddErrors, metaNoOp, metaSetState } = require("redux/meta-factories");
 
 //node modules
 
@@ -56,35 +56,35 @@ const resHandlers = (dispatch, config, successFn, failureFn) => ({
 
   failure: failureFn || ((err) => {
     dispatch(metaAddErrors([err.message]));
-  }),
-
-  loading(bool) {
-    dispatch(metaSetLoading(bool));
-  }
+  })
 
 });
 
-const reduxAPICall = async (dispatch, args, config, successFn, failureFn) => {
+const reduxAPICall = (args, config, successFn, failureFn) => {
 
-  const { path, init } = encodeAPICall(args);
+  const fn = async (dispatch) => {
 
-  const { success, failure, loading } = resHandlers(dispatch, config, successFn, failureFn);
+    const { path, init } = encodeAPICall(args);
 
-  loading(true);
+    const { success, failure } = resHandlers(dispatch, config, successFn, failureFn);
 
-  try {
+    try {
 
-    const res = await getJSON(path, init);
+      const res = await getJSON(path, init);
 
-    success(res);
-    loading();
+      success(res);
 
-    return res;
+      return res;
 
-  } catch (err) {
-    failure(err);
-    loading();
-  }
+    } catch (err) {
+      failure(err);
+    }
+
+  };
+
+  fn.type = args.type; //logging
+
+  return fn;
 
 };
 

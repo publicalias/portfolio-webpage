@@ -126,6 +126,7 @@ exports[`ListBody (general) should match snapshot (list) 1`] = `
           "metaGetPollItem": [MockFunction],
           "metaGetPollList": [MockFunction],
           "metaGetUser": [MockFunction],
+          "metaLogAction": [MockFunction],
           "metaNoOp": [MockFunction],
           "metaSetLoading": [MockFunction],
           "metaSetState": [MockFunction],
@@ -161,6 +162,7 @@ exports[`ListBody (general) should match snapshot (list) 1`] = `
             "search": "",
           },
           "loading": 0,
+          "log": Array [],
           "polls": Array [
             Object {
               "author": "",
