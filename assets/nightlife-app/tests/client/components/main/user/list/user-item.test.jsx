@@ -19,7 +19,7 @@ const { testShallow } = testWrapper(UserItem);
 //setup
 
 beforeAll(reactTests.setup);
-beforeEach(reactTests.inject(UserItem));
+beforeEach(reactTests.inject(UserItem, { lib: { delimit: jest.fn((x) => x) } }));
 
 //user item
 

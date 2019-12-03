@@ -1,5 +1,9 @@
 "use strict";
 
+//global imports
+
+const { delimit } = require("all/utilities");
+
 //node modules
 
 const React = require("react");
@@ -12,7 +16,7 @@ const VenueItem = (props) => {
 
   const { local: { venue } } = props;
 
-  const { jsx: { Link } } = VenueItem.injected;
+  const { jsx: { Link }, lib: { delimit } } = VenueItem.injected;
 
   //events
 
@@ -21,6 +25,8 @@ const VenueItem = (props) => {
   };
 
   //render
+
+  const distance = delimit(venue.distance);
 
   return (
     <Link to={`/venues/page/${venue.id}`}>
@@ -33,7 +39,7 @@ const VenueItem = (props) => {
         />
         <div>
           <h5 className="u-margin-half">{venue.name || "Undefined"}</h5>
-          <p>{`${venue.distance} Miles`}</p>
+          <p>{`${distance} Miles`}</p>
           <img
             alt={`${venue.rating} Stars`}
             className="u-widget-width"
@@ -48,7 +54,10 @@ const VenueItem = (props) => {
 
 VenueItem.propList = ["local"];
 
-VenueItem.injected = { jsx: { Link } };
+VenueItem.injected = {
+  jsx: { Link },
+  lib: { delimit }
+};
 
 //exports
 

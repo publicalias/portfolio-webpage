@@ -19,7 +19,7 @@ const { testShallow } = testWrapper(VenueItem);
 //setup
 
 beforeAll(reactTests.setup);
-beforeEach(reactTests.inject(VenueItem));
+beforeEach(reactTests.inject(VenueItem, { lib: { delimit: jest.fn((x) => x) } }));
 
 //venue item
 

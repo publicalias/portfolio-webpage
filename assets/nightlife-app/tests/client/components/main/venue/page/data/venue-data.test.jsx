@@ -19,7 +19,12 @@ const { testShallow } = testWrapper(VenueData);
 //setup
 
 beforeAll(reactTests.setup);
-beforeEach(reactTests.inject(VenueData, { lib: { getHours: jest.fn(() => "Closed - Opens at 12:00 AM") } }));
+beforeEach(reactTests.inject(VenueData, {
+  lib: {
+    delimit: jest.fn((x) => x),
+    getHours: jest.fn(() => "Closed - Opens at 12:00 AM")
+  }
+}));
 
 //venue data
 

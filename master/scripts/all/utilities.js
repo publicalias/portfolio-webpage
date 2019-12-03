@@ -49,6 +49,20 @@ const cycleItems = (arr, val, delta = 1) => {
 
 };
 
+//delimit
+
+const delimit = (n) => n.toString().replace(/\d+/, (match) => {
+
+  const x = match.split("");
+
+  for (let i = x.length - 3; i > 0; i -= 3) {
+    x.splice(i, 0, ",");
+  }
+
+  return x.join("");
+
+});
+
 //get
 
 const get = (obj, key) => key.split(".").reduce((acc, e) => {
@@ -218,6 +232,7 @@ module.exports = {
   checkErrors,
   cycleItems,
   deepCopy,
+  delimit,
   get,
   initDeepCopy,
   leadZero,

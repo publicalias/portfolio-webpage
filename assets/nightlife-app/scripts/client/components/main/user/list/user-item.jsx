@@ -1,5 +1,9 @@
 "use strict";
 
+//global imports
+
+const { delimit } = require("all/utilities");
+
 //node modules
 
 const React = require("react");
@@ -12,7 +16,7 @@ const UserItem = (props) => {
 
   const { local: { userData } } = props;
 
-  const { jsx: { Link } } = UserItem.injected;
+  const { jsx: { Link }, lib: { delimit } } = UserItem.injected;
 
   //events
 
@@ -21,6 +25,8 @@ const UserItem = (props) => {
   };
 
   //render
+
+  const distance = delimit(userData.data.distance);
 
   return (
     <Link to={`/users/page/${userData.id}`}>
@@ -33,7 +39,7 @@ const UserItem = (props) => {
         />
         <div>
           <h5 className="u-margin-half">{userData.name || "Anonymous"}</h5>
-          <p className="u-margin-none">{`${userData.data.distance} Miles`}</p>
+          <p className="u-margin-none">{`${distance} Miles`}</p>
         </div>
       </div>
     </Link>
@@ -43,7 +49,10 @@ const UserItem = (props) => {
 
 UserItem.propList = ["local"];
 
-UserItem.injected = { jsx: { Link } };
+UserItem.injected = {
+  jsx: { Link },
+  lib: { delimit }
+};
 
 //exports
 

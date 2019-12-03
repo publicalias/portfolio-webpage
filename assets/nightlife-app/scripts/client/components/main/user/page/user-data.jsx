@@ -1,8 +1,8 @@
 "use strict";
 
-//local imports
+//global imports
 
-const UserControls = require("./user-controls");
+const { delimit } = require("all/utilities");
 
 //node modules
 
@@ -14,6 +14,8 @@ const UserData = (props) => {
 
   const { local: { userData } } = props;
 
+  const { lib: { delimit } } = UserData.injected;
+
   //events
 
   const handleError = (event) => {
@@ -21,6 +23,8 @@ const UserData = (props) => {
   };
 
   //render
+
+  const distance = delimit(userData.data.distance);
 
   return (
     <div>
@@ -37,7 +41,7 @@ const UserData = (props) => {
       <p
         className="u-align-right u-margin-none"
       >
-        {`${userData.data.distance} Miles`}
+        {`${distance} Miles`}
       </p>
     </div>
   );
@@ -46,7 +50,7 @@ const UserData = (props) => {
 
 UserData.propList = ["local"];
 
-UserData.injected = UserControls;
+UserData.injected = { lib: { delimit } };
 
 //exports
 
