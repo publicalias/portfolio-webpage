@@ -1,5 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`List should call useInfiniteScroll on update 1`] = `
+Array [
+  Array [
+    Array [],
+    "polls",
+    100,
+    [MockFunction],
+    [Function],
+  ],
+  Array [
+    Array [],
+    "polls",
+    100,
+    [MockFunction],
+    [Function],
+  ],
+]
+`;
+
 exports[`List should match snapshot 1`] = `
 <Fragment>
   <ListMenu

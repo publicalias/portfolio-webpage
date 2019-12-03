@@ -1,6 +1,55 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`UI should match snapshot (authenticated) 1`] = `
+exports[`UI (lifecycle) should call useRefresh on update 1`] = `
+Array [
+  Array [
+    [MockFunction] {
+      "calls": Array [
+        Array [],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": Object {
+            "user": Object {},
+          },
+        },
+      ],
+    },
+    0,
+    Array [],
+    Array [
+      "META_SAVE_ADDRESS",
+      "META_SAVE_AVATAR",
+      "USER_TOGGLE_BLOCK",
+    ],
+  ],
+  Array [
+    [MockFunction] {
+      "calls": Array [
+        Array [],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": Object {
+            "user": Object {},
+          },
+        },
+      ],
+    },
+    0,
+    Array [],
+    Array [
+      "META_SAVE_ADDRESS",
+      "META_SAVE_AVATAR",
+      "USER_TOGGLE_BLOCK",
+    ],
+  ],
+]
+`;
+
+exports[`UI (snapshots) should match snapshot (authenticated) 1`] = `
 <div
   className="c-ui"
 >
@@ -400,7 +449,7 @@ exports[`UI should match snapshot (authenticated) 1`] = `
 </div>
 `;
 
-exports[`UI should match snapshot (default) 1`] = `
+exports[`UI (snapshots) should match snapshot (default) 1`] = `
 <div
   className="c-ui"
 >

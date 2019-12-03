@@ -50,6 +50,22 @@ const mockInfiniteScroll = (handleReload = jest.fn(), handleScroll = jest.fn()) 
   }
 });
 
+//test mock hook
+
+const testMockHook = (Component, render, id, dataList = [], fn = jest.fn()) => {
+
+  Component.injected.lib[id] = fn;
+
+  const { wrapper } = render(...dataList);
+
+  wrapper.mount();
+
+  expect(fn.mock.calls).toMatchSnapshot();
+
+  wrapper.unmount();
+
+};
+
 //test submit
 
 const testSubmit = (event, label) => (testSubmit) => {
@@ -84,6 +100,7 @@ module.exports = {
   initTestEvent,
   initTestSnapshot,
   mockInfiniteScroll,
+  testMockHook,
   testSubmit,
   withDataList
 };

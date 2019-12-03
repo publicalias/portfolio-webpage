@@ -9,7 +9,6 @@ const { getLocation, getVenueParams } = require("../../../../app-logic");
 
 //global imports
 
-const { get } = require("all/utilities");
 const { useInfiniteScroll } = require("redux/client-utils");
 
 //node modules
@@ -46,7 +45,7 @@ const VenueList = (props) => {
       handleReload();
     }
   }, [
-    JSON.stringify(get(user, "data.location")),
+    JSON.stringify(user),
     ready,
     location.search
   ]);

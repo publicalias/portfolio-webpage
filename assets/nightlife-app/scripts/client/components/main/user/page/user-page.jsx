@@ -11,7 +11,7 @@ const { newUserData } = require("../../../../../../schemas");
 
 //global imports
 
-const { get } = require("all/utilities");
+const { useRefresh } = require("redux/client-utils");
 
 //node modules
 
@@ -24,24 +24,24 @@ const { useLayoutEffect } = React;
 const UserPage = (props) => {
 
   const {
-    actions: { friendGetList, metaGetUser, userClearState, userGetItem },
-    data: { user, ready, notifications: { friends }, users: { data } },
+    actions: { userClearState, userGetItem },
+    data: { user, loading, log, ready, users: { data } },
     local: { id }
   } = props;
 
   const {
     jsx: { MetaPageList, UserControls, UserData },
-    lib: { getLocation }
+    lib: { getLocation, useRefresh }
   } = UserPage.injected;
 
   //utilities
 
   const userData = data.find((e) => e.id === id) || newUserData();
 
-  const initUserData = async () => {
-    friendGetList(); //notifications
-    metaGetUser(); //user
-    userGetItem(id, await getLocation(user)); //page
+  const refresh = async () => {
+    if (ready) {
+      userGetItem(id, await getLocation(user));
+    }
   };
 
   //lifecycle
@@ -49,16 +49,10 @@ const UserPage = (props) => {
   useLayoutEffect(userClearState, [id]);
 
   useLayoutEffect(() => {
-    if (ready) {
-      initUserData();
-    }
-  }, [
-    get(user, "data.avatar"),
-    JSON.stringify(get(user, "data.location")),
-    ready,
-    JSON.stringify(friends),
-    id
-  ]);
+    refresh(); //async
+  }, [ready, id]);
+
+  useRefresh(refresh, loading, log, ["FRIEND_GET_LIST", "META_GET_USER"]);
 
   //render
 
@@ -70,10 +64,7 @@ const UserPage = (props) => {
       {auth && (
         <UserControls
           {...props}
-          local={{
-            refresh: initUserData,
-            userData
-          }}
+          local={{ userData }}
         />
       )}
       <div className="c-page-info">
@@ -99,8 +90,9 @@ const UserPage = (props) => {
 
 UserPage.propList = [
   "data.user",
+  "data.loading",
+  "data.log",
   "data.ready",
-  "data.notifications.friends",
   "data.users.data",
   "local"
 ];
@@ -111,7 +103,10 @@ UserPage.injected = {
     UserControls,
     UserData
   },
-  lib: { getLocation }
+  lib: {
+    getLocation,
+    useRefresh
+  }
 };
 
 //exports

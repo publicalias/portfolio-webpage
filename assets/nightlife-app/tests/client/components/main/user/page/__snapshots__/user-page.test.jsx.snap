@@ -1,5 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`UserPage (general) should call useRefresh on update 1`] = `
+Array [
+  Array [
+    [Function],
+    0,
+    Array [],
+    Array [
+      "FRIEND_GET_LIST",
+      "META_GET_USER",
+    ],
+  ],
+  Array [
+    [Function],
+    0,
+    Array [],
+    Array [
+      "FRIEND_GET_LIST",
+      "META_GET_USER",
+    ],
+  ],
+]
+`;
+
 exports[`UserPage (general) should match snapshot (authenticated) 1`] = `
 <div
   className="c-page-view"
@@ -146,7 +169,6 @@ exports[`UserPage (general) should match snapshot (authenticated) 1`] = `
     }
     local={
       Object {
-        "refresh": [Function],
         "userData": Object {
           "data": Object {
             "address": "",

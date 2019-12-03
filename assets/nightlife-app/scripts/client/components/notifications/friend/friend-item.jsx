@@ -15,7 +15,7 @@ const { Link } = require("react-router-dom");
 const FriendItem = (props) => {
 
   const {
-    actions: { friendConfirm, friendDismiss, friendGetList, friendRemove },
+    actions: { friendConfirm, friendDismiss, friendRemove },
     data: { user },
     local: { friend }
   } = props;
@@ -80,8 +80,7 @@ const FriendItem = (props) => {
       local={{
         buttons,
         item: friend,
-        notification,
-        refresh: friendGetList
+        notification
       }}
     />
   );

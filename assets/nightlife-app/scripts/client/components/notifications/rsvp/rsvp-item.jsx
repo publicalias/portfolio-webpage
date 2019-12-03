@@ -14,7 +14,7 @@ const { Link } = require("react-router-dom");
 
 const RSVPItem = (props) => {
 
-  const { actions: { rsvpGetList, rsvpDismiss, rsvpRemove }, data: { user }, local: { rsvp } } = props;
+  const { actions: { rsvpDismiss, rsvpRemove }, data: { user }, local: { rsvp } } = props;
 
   const { jsx: { Link, MetaItem } } = RSVPItem.injected;
 
@@ -67,8 +67,7 @@ const RSVPItem = (props) => {
       local={{
         buttons,
         item: rsvp,
-        notification: fragment,
-        refresh: rsvpGetList
+        notification: fragment
       }}
     />
   );

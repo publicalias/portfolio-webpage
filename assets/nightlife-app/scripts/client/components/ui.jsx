@@ -14,6 +14,10 @@ const Sidebar = require("./sidebar/sidebar");
 
 const { getLocation } = require("../app-logic");
 
+//global imports
+
+const { useRefresh } = require("redux/client-utils");
+
 //node modules
 
 const React = require("react");
@@ -26,22 +30,24 @@ const { useEffect } = React;
 
 const UI = (props) => {
 
-  const { actions: { metaGetUser, metaSaveAddress, metaSetReady }, data: { user } } = props;
+  const {
+    actions: { metaGetUser, metaSaveAddress, metaSetReady },
+    data: { user, loading, log }
+  } = props;
 
   const {
     jsx: { FriendList, Route, RSVPList, Sidebar, UserList, UserPage, VenueList, VenuePage },
-    lib: { getLocation }
+    lib: { getLocation, useRefresh }
   } = UI.injected;
 
   //utilities
 
-  const initUserData = async () => {
+  const initUser = async () => {
 
     const { user } = await metaGetUser();
 
     if (user.type === "auth" && !user.data.location) {
       await metaSaveAddress(user.data.address, await getLocation(user));
-      await metaGetUser();
     }
 
     metaSetReady(true);
@@ -51,8 +57,14 @@ const UI = (props) => {
   //lifecycle
 
   useEffect(() => {
-    initUserData(); //async
+    initUser(); //async
   }, []);
+
+  useRefresh(metaGetUser, loading, log, [
+    "META_SAVE_ADDRESS",
+    "META_SAVE_AVATAR",
+    "USER_TOGGLE_BLOCK"
+  ]);
 
   //render
 
@@ -83,7 +95,7 @@ const UI = (props) => {
 
 };
 
-UI.propList = ["data.user"];
+UI.propList = ["data.user", "data.loading", "data.log"];
 
 UI.injected = {
   jsx: {
@@ -96,7 +108,10 @@ UI.injected = {
     VenueList,
     VenuePage
   },
-  lib: { getLocation }
+  lib: {
+    getLocation,
+    useRefresh
+  }
 };
 
 //exports

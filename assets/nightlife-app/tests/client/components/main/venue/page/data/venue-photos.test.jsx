@@ -9,22 +9,19 @@ const { testWrapper } = require("../../../../../test-helpers");
 
 //global imports
 
-const { initTestEvent, initTestSnapshot, withDataList } = require("redux/tests/client-tests");
+const { initTestEvent, initTestSnapshot, testMockHook, withDataList } = require("redux/tests/client-tests");
 const { mockResults, testMock } = require("redux/tests/meta-tests");
 const { reactTests } = require("redux/tests/react-tests");
 
 //utilities
 
-const { testShallow } = testWrapper(VenuePhotos);
+const { testMount, testShallow } = testWrapper(VenuePhotos);
 
 const photo = "https://www.example.com/photo.jpg";
 
 const dataList = [{ venues: { page: { photos: { photo } } } }, { venue: newVenue() }];
 
-//setup
-
-beforeAll(reactTests.setup);
-beforeEach(reactTests.inject(VenuePhotos, {
+const mockUseCarousel = () => ({
   lib: {
     useCarousel: jest.fn(() => ({
       events: {
@@ -39,17 +36,33 @@ beforeEach(reactTests.inject(VenuePhotos, {
       }
     }))
   }
-}));
+});
+
+//setup
+
+beforeAll(reactTests.setup);
+beforeEach(reactTests.inject(VenuePhotos, mockUseCarousel()));
 
 //venue photos
 
-describe("VenuePhotos (snapshots)", () => {
+describe("VenuePhotos (general)", () => {
 
-  const testSnapshot = initTestSnapshot(withDataList(testShallow, dataList));
+  const testPhotos = withDataList(testShallow, dataList);
+  const testPhotosMount = withDataList(testMount, dataList);
+
+  const testSnapshot = initTestSnapshot(testPhotos);
 
   it("should match snapshot (default)", () => testSnapshot());
 
   it("should match snapshot (turn)", () => testSnapshot(null, { venue: { photos: ["", ""] } }));
+
+  it("should call useCarousel on update", () => {
+
+    const { lib: { useCarousel } } = mockUseCarousel();
+
+    testMockHook(VenuePhotos, testPhotosMount, "useCarousel", [], useCarousel);
+
+  });
 
 });
 

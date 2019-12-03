@@ -11,7 +11,7 @@ const { newVenue } = require("../../../../../../schemas");
 
 //global imports
 
-const { get } = require("all/utilities");
+const { useRefresh } = require("redux/client-utils");
 
 //node modules
 
@@ -24,23 +24,24 @@ const { useLayoutEffect } = React;
 const VenuePage = (props) => {
 
   const {
-    actions: { rsvpGetList, venueClearState, venueGetItem },
-    data: { user, ready, notifications: { friends, rsvps }, venues: { data } },
+    actions: { venueClearState, venueGetItem },
+    data: { user, loading, log, ready, venues: { data } },
     local: { id }
   } = props;
 
   const {
     jsx: { MetaPageList, VenueControls, VenueData },
-    lib: { getLocation }
+    lib: { getLocation, useRefresh }
   } = VenuePage.injected;
 
   //utilities
 
   const venue = data.find((e) => e.id === id) || newVenue();
 
-  const initVenueData = async () => {
-    rsvpGetList(); //notifications
-    venueGetItem(id, await getLocation(user)); //page
+  const refresh = async () => {
+    if (ready) {
+      venueGetItem(id, await getLocation(user));
+    }
   };
 
   //lifecycle
@@ -48,15 +49,15 @@ const VenuePage = (props) => {
   useLayoutEffect(venueClearState, [id]);
 
   useLayoutEffect(() => {
-    if (ready) {
-      initVenueData();
-    }
-  }, [
-    JSON.stringify(get(user, "data.location")),
-    ready,
-    JSON.stringify(friends),
-    JSON.stringify(rsvps),
-    id
+    refresh(); //async
+  }, [ready, id]);
+
+  useRefresh(refresh, loading, log, [
+    "FAVORITE_ADD",
+    "FAVORITE_REMOVE",
+    "FRIEND_GET_LIST",
+    "META_GET_USER",
+    "RSVP_GET_LIST"
   ]);
 
   //render
@@ -69,10 +70,7 @@ const VenuePage = (props) => {
       {auth && (
         <VenueControls
           {...props}
-          local={{
-            refresh: initVenueData,
-            venue
-          }}
+          local={{ venue }}
         />
       )}
       <div className="c-page-info">
@@ -98,9 +96,9 @@ const VenuePage = (props) => {
 
 VenuePage.propList = [
   "data.user",
+  "data.loading",
+  "data.log",
   "data.ready",
-  "data.notifications.friends",
-  "data.notifications.rsvps",
   "data.venues.data",
   "local"
 ];
@@ -111,7 +109,10 @@ VenuePage.injected = {
     VenueControls,
     VenueData
   },
-  lib: { getLocation }
+  lib: {
+    getLocation,
+    useRefresh
+  }
 };
 
 //exports

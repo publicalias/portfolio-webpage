@@ -8,7 +8,7 @@ const { testWrapper } = require("../../../test-helpers");
 
 //global imports
 
-const { initTestSnapshot, mockInfiniteScroll } = require("redux/tests/client-tests");
+const { initTestSnapshot, mockInfiniteScroll, testMockHook } = require("redux/tests/client-tests");
 const { testMock } = require("redux/tests/meta-tests");
 const { reactTests } = require("redux/tests/react-tests");
 
@@ -31,9 +31,9 @@ describe("List", () => {
 
   it("should call handleReload conditionally on update", () => {
 
-    const { handleReload, lib } = mockInfiniteScroll();
+    const { handleReload, lib: { useInfiniteScroll } } = mockInfiniteScroll();
 
-    Object.assign(List.injected.lib, lib);
+    List.injected.lib.useInfiniteScroll = useInfiniteScroll;
 
     const { setProps, wrapper } = testMount();
 
@@ -44,6 +44,14 @@ describe("List", () => {
     testMock(handleReload, [], []);
 
     wrapper.unmount();
+
+  });
+
+  it("should call useInfiniteScroll on update", () => {
+
+    const { lib: { useInfiniteScroll } } = mockInfiniteScroll();
+
+    testMockHook(List, testMount, "useInfiniteScroll", [], useInfiniteScroll);
 
   });
 

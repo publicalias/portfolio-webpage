@@ -1,6 +1,47 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`VenuePhotos (snapshots) should match snapshot (default) 1`] = `
+exports[`VenuePhotos (general) should call useCarousel on update 1`] = `
+Array [
+  Array [
+    Object {
+      "actions": Object {
+        "setItem": [MockFunction],
+        "setPause": [MockFunction],
+        "setStart": [MockFunction],
+      },
+      "data": Object {
+        "item": "https://www.example.com/photo.jpg",
+        "list": Array [],
+        "pause": false,
+        "start": false,
+      },
+      "local": Object {
+        "getShown": [MockFunction],
+      },
+    },
+  ],
+  Array [
+    Object {
+      "actions": Object {
+        "setItem": [MockFunction],
+        "setPause": [MockFunction],
+        "setStart": [MockFunction],
+      },
+      "data": Object {
+        "item": "https://www.example.com/photo.jpg",
+        "list": Array [],
+        "pause": false,
+        "start": false,
+      },
+      "local": Object {
+        "getShown": [MockFunction],
+      },
+    },
+  ],
+]
+`;
+
+exports[`VenuePhotos (general) should match snapshot (default) 1`] = `
 <div
   className="c-venue-photos js-ref-carousel qa-ref-carousel"
   onMouseEnter={[MockFunction]}
@@ -41,7 +82,7 @@ exports[`VenuePhotos (snapshots) should match snapshot (default) 1`] = `
 </div>
 `;
 
-exports[`VenuePhotos (snapshots) should match snapshot (turn) 1`] = `
+exports[`VenuePhotos (general) should match snapshot (turn) 1`] = `
 <div
   className="c-venue-photos js-ref-carousel qa-ref-carousel"
   onMouseEnter={[MockFunction]}

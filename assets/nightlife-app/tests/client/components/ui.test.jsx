@@ -9,7 +9,7 @@ const { getGeoPoint, testWrapper } = require("../test-helpers");
 
 //global imports
 
-const { initTestSnapshot } = require("redux/tests/client-tests");
+const { initTestSnapshot, testMockHook } = require("redux/tests/client-tests");
 const { testMock } = require("redux/tests/meta-tests");
 const { reactTests } = require("redux/tests/react-tests");
 
@@ -26,11 +26,21 @@ beforeEach(reactTests.inject(UI, { lib: { getLocation: jest.fn(() => userData.lo
 
 //ui
 
-describe("UI", () => {
+describe("UI (snapshots)", () => {
+
+  const testSnapshot = initTestSnapshot(testShallow);
+
+  it("should match snapshot (default)", () => testSnapshot());
+
+  it("should match snapshot (authenticated)", () => testSnapshot({ user: newUserWithData() }));
+
+});
+
+describe("UI (lifecycle)", () => {
 
   const { location } = userData;
 
-  const testSnapshot = initTestSnapshot(testShallow);
+  const initDataList = (user = {}) => [null, null, { actions: { metaGetUser: jest.fn(() => ({ user })) } }];
 
   const testLoadDefault = (props) => {
 
@@ -45,9 +55,9 @@ describe("UI", () => {
 
   };
 
-  const testLoad = async (user = {}, fn = testLoadDefault) => {
+  const testLoad = async (user, fn = testLoadDefault) => {
 
-    const { props, wrapper } = testMount(null, null, { actions: { metaGetUser: jest.fn(() => ({ user })) } });
+    const { props, wrapper } = testMount(...initDataList(user));
 
     wrapper.mount();
 
@@ -60,13 +70,9 @@ describe("UI", () => {
 
   };
 
-  it("should match snapshot (default)", () => testSnapshot());
+  it("should call initUser on load (default)", () => testLoad());
 
-  it("should match snapshot (authenticated)", () => testSnapshot({ user: newUserWithData() }));
-
-  it("should call initUserData on load (default)", () => testLoad());
-
-  it("should call initUserData on load (authenticated, location)", () => {
+  it("should call initUser on load (authenticated, location)", () => {
 
     const user = newUserWithData({ data: { location } });
 
@@ -74,7 +80,7 @@ describe("UI", () => {
 
   });
 
-  it("should call initUserData on load (authenticated, no location)", () => {
+  it("should call initUser on load (authenticated, no location)", () => {
 
     const user = newUserWithData();
 
@@ -84,7 +90,7 @@ describe("UI", () => {
 
       const { lib: { getLocation } } = UI.injected;
 
-      testMock(metaGetUser, [], []);
+      testMock(metaGetUser, []);
       testMock(getLocation, [user]);
       testMock(metaSaveAddress, ["", location]);
       testMock(metaSetReady, [true]);
@@ -92,5 +98,12 @@ describe("UI", () => {
     });
 
   });
+
+  it("should call useRefresh on update", () => testMockHook(
+    UI,
+    testMount,
+    "useRefresh",
+    initDataList()
+  ));
 
 });

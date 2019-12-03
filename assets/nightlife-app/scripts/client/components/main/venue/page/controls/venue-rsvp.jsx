@@ -11,7 +11,7 @@ const VenueRSVP = (props) => {
   const {
     actions: { rsvpAdd, venueClearForm, venueSetMessage, venueSetOpen, venueSetTime },
     data: { venues: { page: { form } } },
-    local: { refresh, venue }
+    local: { venue }
   } = props;
 
   //events
@@ -38,7 +38,6 @@ const VenueRSVP = (props) => {
 
     if (res && !res.errors) {
       venueClearForm();
-      refresh();
     }
 
   };

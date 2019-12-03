@@ -8,6 +8,7 @@ const RSVPItem = require("./rsvp-item");
 //global imports
 
 const { initKeyGen } = require("all/react-utils");
+const { useRefresh } = require("redux/client-utils");
 
 //node modules
 
@@ -17,9 +18,19 @@ const React = require("react");
 
 const RSVPList = (props) => {
 
-  const { actions: { rsvpGetList }, data: { notifications: { rsvps } } } = props;
+  const { actions: { rsvpGetList }, data: { loading, log, notifications: { rsvps } } } = props;
 
-  const { jsx: { MetaList, RSVPItem } } = RSVPList.injected;
+  const { jsx: { MetaList, RSVPItem }, lib: { useRefresh } } = RSVPList.injected;
+
+  //lifecycle
+
+  useRefresh(rsvpGetList, loading, log, [
+    "FRIEND_GET_LIST",
+    "META_GET_USER",
+    "RSVP_ADD",
+    "RSVP_DISMISS",
+    "RSVP_REMOVE"
+  ]);
 
   //render
 
@@ -27,6 +38,7 @@ const RSVPList = (props) => {
 
   return (
     <MetaList
+      {...props}
       local={{
         heading: "RSVPs",
         refresh: rsvpGetList,
@@ -45,13 +57,14 @@ const RSVPList = (props) => {
 
 };
 
-RSVPList.propList = ["data.notifications.rsvps"];
+RSVPList.propList = ["data.loading", "data.log", "data.notifications.rsvps"];
 
 RSVPList.injected = {
   jsx: {
     MetaList,
     RSVPItem
-  }
+  },
+  lib: { useRefresh }
 };
 
 //exports

@@ -9,7 +9,6 @@ const { getLocation, getUserParams } = require("../../../../app-logic");
 
 //global imports
 
-const { get } = require("all/utilities");
 const { useInfiniteScroll } = require("redux/client-utils");
 
 //node modules
@@ -46,8 +45,7 @@ const UserList = (props) => {
       handleReload();
     }
   }, [
-    get(user, "data.avatar"),
-    JSON.stringify(get(user, "data.location")),
+    JSON.stringify(user),
     ready,
     location.search
   ]);

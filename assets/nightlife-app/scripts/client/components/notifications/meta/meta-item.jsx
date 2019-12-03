@@ -13,7 +13,7 @@ const React = require("react");
 
 const MetaItem = (props) => {
 
-  const { local: { buttons, item, notification, refresh } } = props;
+  const { local: { buttons, item, notification } } = props;
 
   //render
 
@@ -28,12 +28,8 @@ const MetaItem = (props) => {
       <div className="c-notification-item__actions">
         {buttons.map(({ handler, icon }) => {
 
-          const handleClick = async () => {
-
-            await handler(item.id);
-
-            refresh();
-
+          const handleClick = () => {
+            handler(item.id);
           };
 
           return (

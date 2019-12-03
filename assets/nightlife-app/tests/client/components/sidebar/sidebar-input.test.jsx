@@ -50,8 +50,7 @@ const initTestInput = (render, type, text, prop = type.toLowerCase()) => ({
         testMock(getLocation, []);
       },
       [`metaSave${type}`, [text, userData.location]],
-      [`metaSet${type}`, [""]],
-      ["metaGetUser", []]
+      [`metaSet${type}`, [""]]
     );
 
   }

@@ -8,12 +8,12 @@ const { testWrapper } = require("../../../test-helpers");
 
 //global imports
 
-const { initTestSnapshot } = require("redux/tests/client-tests");
+const { initTestSnapshot, testMockHook } = require("redux/tests/client-tests");
 const { reactTests } = require("redux/tests/react-tests");
 
 //utilities
 
-const { testShallow } = testWrapper(RSVPList);
+const { testMount, testShallow } = testWrapper(RSVPList);
 
 //setup
 
@@ -31,5 +31,7 @@ describe("RSVPList", () => {
   it("should match snapshot (bool)", () => testSnapshot({ venues: { data: [{}] } }));
 
   it("should match snapshot (list)", () => testSnapshot({ notifications: { rsvps: [{}] } }));
+
+  it("should call useRefresh on update", () => testMockHook(RSVPList, testMount, "useRefresh"));
 
 });

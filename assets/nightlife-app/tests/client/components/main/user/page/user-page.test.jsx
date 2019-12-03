@@ -5,12 +5,11 @@
 const UserPage = require("../../../../../../scripts/client/components/main/user/page/user-page");
 
 const { newUserWithData } = require("../../../../../../schemas");
-const { getGeoPoint, testWrapper } = require("../../../../test-helpers");
+const { testWrapper } = require("../../../../test-helpers");
 
 //global imports
 
-const { deepCopy } = require("all/utilities");
-const { initTestSnapshot, withDataList } = require("redux/tests/client-tests");
+const { initTestSnapshot, testMockHook, withDataList } = require("redux/tests/client-tests");
 const { testMock } = require("redux/tests/meta-tests");
 const { reactTests } = require("redux/tests/react-tests");
 
@@ -21,7 +20,7 @@ const { testMount, testShallow } = testWrapper(UserPage);
 //setup
 
 beforeAll(reactTests.setup);
-beforeEach(reactTests.inject(UserPage, { lib: { getLocation: jest.fn((user) => user.data.location) } }));
+beforeEach(reactTests.inject(UserPage, { lib: { getLocation: jest.fn(() => null) } }));
 
 //user page
 
@@ -33,87 +32,51 @@ describe("UserPage (general)", () => {
 
   const testPage = withDataList(testMount, dataList);
 
-  const testLoadA = (fn) => {
-
-    const { props, setProps, wrapper } = testPage();
-
-    wrapper.mount();
-
-    setProps(null, { id: "id-b" });
-
-    fn(props);
-
-    wrapper.unmount();
-
-  };
-
-  const testLoadB = async (fn) => {
-
-    const userData = {
-      a: { data: { location: null } },
-      b: { data: { avatar: "https://www.example.com/avatar.jpg" } },
-      c: { data: { location: getGeoPoint(0) } }
-    };
-
-    const list = [
-      [{ user: userData.a }],
-      [{ ready: true }],
-      [{ notifications: { friends: [{}] } }],
-      [null, { id: "id-b" }],
-      [{ user: userData.b }],
-      [{ user: userData.c }]
-    ];
-
-    const { props, setProps, wrapper } = testPage();
-
-    wrapper.mount();
-
-    for (const e of list) {
-      setProps(...e);
-    }
-
-    await Promise.resolve();
-
-    fn(props, userData);
-
-    wrapper.unmount();
-
-  };
-
   it("should match snapshot (default)", () => testSnapshot());
 
   it("should match snapshot (authenticated)", () => testSnapshot({ user: newUserWithData() }));
 
   it("should match snapshot (match)", () => testSnapshot({ users: { data: [{ id: "id-a" }] } }));
 
-  it("should call userClearState conditionally on update", () => testLoadA((props) => {
+  it("should call userClearState conditionally on update", () => {
+
+    const { props, setProps, wrapper } = testPage();
 
     const { actions: { userClearState } } = props;
 
+    wrapper.mount();
+
+    setProps(null, { id: "id-b" });
+
     testMock(userClearState, [], []);
 
-  }));
+    wrapper.unmount();
 
-  it("should call initUserData conditionally on update", () => testLoadB((props, userData) => {
+  });
 
-    const { actions: { friendGetList, metaGetUser, userGetItem } } = props;
+  it("should call refresh conditionally on update", async () => {
+
+    const { props, setProps, wrapper } = testPage();
+
+    const { actions: { userGetItem } } = props;
 
     const { lib: { getLocation } } = UserPage.injected;
 
-    const [innerA, innerB, innerC] = Object.values(userData).map((e, i, arr) => [deepCopy(e, arr[i - 1])]);
+    wrapper.mount();
 
-    const [outerA, outerB, outerC] = [
-      ["id-a", null],
-      ["id-b", null],
-      ["id-b", getGeoPoint(0)]
-    ];
+    setProps({ ready: true });
+    setProps(null, { id: "id-b" });
 
-    testMock(friendGetList, [], [], [], [], []);
-    testMock(metaGetUser, [], [], [], [], []);
-    testMock(getLocation, innerA, innerA, innerA, innerB, innerC);
-    testMock(userGetItem, outerA, outerA, outerB, outerB, outerC);
+    await Promise.resolve();
 
-  }));
+    testMock(getLocation, [{}], [{}]);
+    testMock(userGetItem, ["id-a", null], ["id-b", null]);
+
+    wrapper.unmount();
+
+  });
+
+  it("should call useRefresh on update", () => testMockHook(UserPage, testPage, "useRefresh"));
 
 });
 

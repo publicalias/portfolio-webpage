@@ -43,7 +43,6 @@ exports[`RSVPItem (self) should match snapshot (default) 1`] = `
         </p>
         
       </React.Fragment>,
-      "refresh": [MockFunction],
     }
   }
 />
@@ -96,7 +95,6 @@ exports[`RSVPItem (self) should match snapshot (message) 1`] = `
           "
         </p>
       </React.Fragment>,
-      "refresh": [MockFunction],
     }
   }
 />
@@ -145,7 +143,6 @@ exports[`RSVPItem (self) should match snapshot (name) 1`] = `
         </p>
         
       </React.Fragment>,
-      "refresh": [MockFunction],
     }
   }
 />
@@ -203,7 +200,6 @@ exports[`RSVPItem (user) should match snapshot (default) 1`] = `
         </p>
         
       </React.Fragment>,
-      "refresh": [MockFunction],
     }
   }
 />
@@ -265,7 +261,6 @@ exports[`RSVPItem (user) should match snapshot (message) 1`] = `
           "
         </p>
       </React.Fragment>,
-      "refresh": [MockFunction],
     }
   }
 />
@@ -323,7 +318,6 @@ exports[`RSVPItem (user) should match snapshot (name, user) 1`] = `
         </p>
         
       </React.Fragment>,
-      "refresh": [MockFunction],
     }
   }
 />
@@ -381,7 +375,6 @@ exports[`RSVPItem (user) should match snapshot (name, venue) 1`] = `
         </p>
         
       </React.Fragment>,
-      "refresh": [MockFunction],
     }
   }
 />

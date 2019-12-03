@@ -47,19 +47,10 @@ describe("MetaItem", () => {
   it("should call handleClick on click", () => {
 
     const handler = jest.fn();
-    const refresh = jest.fn();
 
-    return testClick(
-      ".qa-click-item",
-      [null, {
-        buttons: [{ handler }],
-        refresh
-      }],
-      () => {
-        testMock(handler, ["id-a"]);
-        testMock(refresh, []);
-      }
-    );
+    return testClick(".qa-click-item", [null, { buttons: [{ handler }] }], () => {
+      testMock(handler, ["id-a"]);
+    });
 
   });
 

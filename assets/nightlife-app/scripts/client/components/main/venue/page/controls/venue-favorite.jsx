@@ -11,7 +11,7 @@ const VenueFavorite = (props) => {
   const {
     actions: { favoriteAdd, favoriteRemove },
     data: { user },
-    local: { refresh, venue }
+    local: { venue }
   } = props;
 
   //utilities
@@ -20,16 +20,12 @@ const VenueFavorite = (props) => {
 
   //events
 
-  const handleClick = async () => {
-
+  const handleClick = () => {
     if (favorite) {
-      await favoriteRemove(favorite.id);
+      favoriteRemove(favorite.id);
     } else {
-      await favoriteAdd(venue.name, venue.id);
+      favoriteAdd(venue.name, venue.id);
     }
-
-    refresh();
-
   };
 
   //render

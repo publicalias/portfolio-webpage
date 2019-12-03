@@ -8,7 +8,7 @@ const { getGeoPoint, testWrapper } = require("../../../../test-helpers");
 
 //global imports
 
-const { initTestSnapshot, mockInfiniteScroll } = require("redux/tests/client-tests");
+const { initTestSnapshot, mockInfiniteScroll, testMockHook } = require("redux/tests/client-tests");
 const { testMock } = require("redux/tests/meta-tests");
 const { reactTests } = require("redux/tests/react-tests");
 
@@ -31,15 +31,14 @@ describe("UserList", () => {
 
   it("should call handleReload conditionally on update", () => {
 
-    const { handleReload, lib } = mockInfiniteScroll();
+    const { handleReload, lib: { useInfiniteScroll } } = mockInfiniteScroll();
 
-    Object.assign(UserList.injected.lib, lib);
+    UserList.injected.lib.useInfiniteScroll = useInfiniteScroll;
 
     const list = [
       [{ user: { data: { location: null } } }],
       [{ ready: true }],
       [null, null, { location: { search: "" } }],
-      [{ user: { data: { avatar: "https://www.example.com/avatar.jpg" } } }],
       [{ user: { data: { location: getGeoPoint(0) } } }]
     ];
 
@@ -51,9 +50,17 @@ describe("UserList", () => {
       setProps(...e);
     }
 
-    testMock(handleReload, [], [], [], []);
+    testMock(handleReload, [], [], []);
 
     wrapper.unmount();
+
+  });
+
+  it("should call useInfiniteScroll on update", () => {
+
+    const { lib: { useInfiniteScroll } } = mockInfiniteScroll();
+
+    testMockHook(UserList, testMount, "useInfiniteScroll", [], useInfiniteScroll);
 
   });
 

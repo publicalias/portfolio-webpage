@@ -5,11 +5,11 @@
 const VenuePage = require("../../../../../../scripts/client/components/main/venue/page/venue-page");
 
 const { newUserWithData } = require("../../../../../../schemas");
-const { getGeoPoint, testWrapper } = require("../../../../test-helpers");
+const { testWrapper } = require("../../../../test-helpers");
 
 //global imports
 
-const { initTestSnapshot, withDataList } = require("redux/tests/client-tests");
+const { initTestSnapshot, testMockHook, withDataList } = require("redux/tests/client-tests");
 const { testMock } = require("redux/tests/meta-tests");
 const { reactTests } = require("redux/tests/react-tests");
 
@@ -20,7 +20,7 @@ const { testMount, testShallow } = testWrapper(VenuePage);
 //setup
 
 beforeAll(reactTests.setup);
-beforeEach(reactTests.inject(VenuePage, { lib: { getLocation: jest.fn((user) => user.data.location) } }));
+beforeEach(reactTests.inject(VenuePage, { lib: { getLocation: jest.fn(() => null) } }));
 
 //venue page
 
@@ -32,85 +32,51 @@ describe("VenuePage (general)", () => {
 
   const testPage = withDataList(testMount, dataList);
 
-  const testLoadA = (fn) => {
-
-    const { props, setProps, wrapper } = testPage();
-
-    wrapper.mount();
-
-    setProps(null, { id: "id-b" });
-
-    fn(props);
-
-    wrapper.unmount();
-
-  };
-
-  const testLoadB = async (fn) => {
-
-    const userData = {
-      a: { data: { location: null } },
-      b: { data: { location: getGeoPoint(0) } }
-    };
-
-    const list = [
-      [{ user: userData.a }],
-      [{ ready: true }],
-      [{ notifications: { friends: [{}] } }],
-      [{ notifications: { rsvps: [{}] } }],
-      [null, { id: "id-b" }],
-      [{ user: userData.b }]
-    ];
-
-    const { props, setProps, wrapper } = testPage();
-
-    wrapper.mount();
-
-    for (const e of list) {
-      setProps(...e);
-    }
-
-    await Promise.resolve();
-
-    fn(props, userData);
-
-    wrapper.unmount();
-
-  };
-
   it("should match snapshot (default)", () => testSnapshot());
 
   it("should match snapshot (authenticated)", () => testSnapshot({ user: newUserWithData() }));
 
   it("should match snapshot (match)", () => testSnapshot({ venues: { data: [{ id: "id-a" }] } }));
 
-  it("should call venueClearState conditionally on update", () => testLoadA((props) => {
+  it("should call venueClearState conditionally on update", () => {
+
+    const { props, setProps, wrapper } = testPage();
 
     const { actions: { venueClearState } } = props;
 
+    wrapper.mount();
+
+    setProps(null, { id: "id-b" });
+
     testMock(venueClearState, [], []);
 
-  }));
+    wrapper.unmount();
 
-  it("should call initVenueData conditionally on update", () => testLoadB((props, userData) => {
+  });
 
-    const { actions: { rsvpGetList, venueGetItem } } = props;
+  it("should call refresh conditionally on update", async () => {
+
+    const { props, setProps, wrapper } = testPage();
+
+    const { actions: { venueGetItem } } = props;
 
     const { lib: { getLocation } } = VenuePage.injected;
 
-    const [innerA, innerB] = Object.values(userData).map((e) => [e]);
+    wrapper.mount();
 
-    const [outerA, outerB, outerC] = [
-      ["id-a", null],
-      ["id-b", null],
-      ["id-b", getGeoPoint(0)]
-    ];
+    setProps({ ready: true });
+    setProps(null, { id: "id-b" });
 
-    testMock(rsvpGetList, [], [], [], [], []);
-    testMock(getLocation, innerA, innerA, innerA, innerA, innerB);
-    testMock(venueGetItem, outerA, outerA, outerA, outerB, outerC);
+    await Promise.resolve();
 
-  }));
+    wrapper.unmount();
+
+    testMock(getLocation, [{}], [{}]);
+    testMock(venueGetItem, ["id-a", null], ["id-b", null]);
+
+  });
+
+  it("should call useRefresh on update", () => testMockHook(VenuePage, testPage, "useRefresh"));
 
 });
 

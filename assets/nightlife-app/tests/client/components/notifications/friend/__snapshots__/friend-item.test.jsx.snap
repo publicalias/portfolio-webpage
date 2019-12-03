@@ -36,7 +36,6 @@ exports[`FriendItem (confirmed, from) should match snapshot (default) 1`] = `
         </Link>
          accepted your friend request.
       </p>,
-      "refresh": [MockFunction],
     }
   }
 />
@@ -78,7 +77,6 @@ exports[`FriendItem (confirmed, from) should match snapshot (name) 1`] = `
         </Link>
          accepted your friend request.
       </p>,
-      "refresh": [MockFunction],
     }
   }
 />
@@ -121,7 +119,6 @@ exports[`FriendItem (confirmed, to) should match snapshot (default) 1`] = `
         </Link>
         's friend request.
       </p>,
-      "refresh": [MockFunction],
     }
   }
 />
@@ -164,7 +161,6 @@ exports[`FriendItem (confirmed, to) should match snapshot (name) 1`] = `
         </Link>
         's friend request.
       </p>,
-      "refresh": [MockFunction],
     }
   }
 />
@@ -207,7 +203,6 @@ exports[`FriendItem (unconfirmed, from) should match snapshot (default) 1`] = `
         </Link>
          a friend request.
       </p>,
-      "refresh": [MockFunction],
     }
   }
 />
@@ -250,7 +245,6 @@ exports[`FriendItem (unconfirmed, from) should match snapshot (name) 1`] = `
         </Link>
          a friend request.
       </p>,
-      "refresh": [MockFunction],
     }
   }
 />
@@ -296,7 +290,6 @@ exports[`FriendItem (unconfirmed, to) should match snapshot (default) 1`] = `
         </Link>
          sent you a friend request.
       </p>,
-      "refresh": [MockFunction],
     }
   }
 />
@@ -342,7 +335,6 @@ exports[`FriendItem (unconfirmed, to) should match snapshot (name) 1`] = `
         </Link>
          sent you a friend request.
       </p>,
-      "refresh": [MockFunction],
     }
   }
 />

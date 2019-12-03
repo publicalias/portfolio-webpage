@@ -18,8 +18,6 @@ const SidebarInput = (props) => {
 
   const { actions, data: { user, account }, local: { type } } = props;
 
-  const { metaGetUser } = actions;
-
   const { lib: { getLocation } } = SidebarInput.injected;
 
   //utilities
@@ -47,8 +45,6 @@ const SidebarInput = (props) => {
     await submit(text, await getLocation());
 
     change("");
-
-    metaGetUser();
 
   };
 

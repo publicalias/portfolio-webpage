@@ -81,7 +81,6 @@ describe("VenueRSVP (open)", () => {
         }
       }
     }, {
-      refresh: jest.fn(),
       venue: {
         id: "id-a",
         name: "Venue A"
@@ -92,14 +91,13 @@ describe("VenueRSVP (open)", () => {
 
     return testClick(".qa-click-submit", dataList, (props) => {
 
-      const { actions: { rsvpAdd, venueClearForm }, local: { refresh } } = props;
+      const { actions: { rsvpAdd, venueClearForm } } = props;
 
       const call = res && !res.errors ? [] : undefined;
 
       testMock(rsvpAdd, ["Venue A", "id-a", "9:00 PM", "Message"]);
 
       testMock(venueClearForm, call);
-      testMock(refresh, call);
 
     });
 

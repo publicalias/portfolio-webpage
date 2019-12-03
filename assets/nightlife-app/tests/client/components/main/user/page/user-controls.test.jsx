@@ -9,9 +9,7 @@ const { testWrapper } = require("../../../../test-helpers");
 
 //global imports
 
-const { deepCopy } = require("all/utilities");
 const { initTestEvent, initTestSnapshot, withDataList } = require("redux/tests/client-tests");
-const { testMock } = require("redux/tests/meta-tests");
 const { reactTests } = require("redux/tests/react-tests");
 
 //utilities
@@ -19,7 +17,6 @@ const { reactTests } = require("redux/tests/react-tests");
 const { testShallow } = testWrapper(UserControls);
 
 const testControls = withDataList(testShallow, [{ user: newUserWithData({ id: "id-a" }) }, {
-  refresh: jest.fn(),
   userData: newUserData({
     name: "User B",
     id: "id-b"
@@ -61,22 +58,10 @@ describe("UserControls (snapshots)", () => {
 
 describe("UserControls (events)", () => {
 
-  const initTestClick = (qa) => (dataList, fn) => {
+  const testClick = (qa) => (...args) => initTestEvent(testControls, "click")(qa, ...args);
 
-    const testClick = initTestEvent(testControls, "click");
-
-    const refresh = jest.fn();
-
-    const fullDataList = deepCopy(dataList, [null, { refresh }]);
-
-    return testClick(qa, fullDataList, fn, () => {
-      testMock(refresh, []);
-    });
-
-  };
-
-  const testFriend = initTestClick(".qa-click-friend");
-  const testBlock = initTestClick(".qa-toggle-block");
+  const testFriend = testClick(".qa-click-friend");
+  const testBlock = testClick(".qa-toggle-block");
 
   it("should call handleFriend on click (default)", () => testFriend(
     [],

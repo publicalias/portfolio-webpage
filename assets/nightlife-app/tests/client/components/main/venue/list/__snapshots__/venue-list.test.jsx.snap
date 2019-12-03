@@ -1,5 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`VenueList should call useInfiniteScroll on update 1`] = `
+Array [
+  Array [
+    Array [],
+    "venues.data",
+    50,
+    [MockFunction],
+    [Function],
+  ],
+  Array [
+    Array [],
+    "venues.data",
+    50,
+    [MockFunction],
+    [Function],
+  ],
+]
+`;
+
 exports[`VenueList should match snapshot 1`] = `
 <Fragment>
   <VenueMenu

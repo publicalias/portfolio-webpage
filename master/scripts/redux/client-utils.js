@@ -9,7 +9,7 @@ const { metaAddErrors, metaNoOp, metaSetState } = require("redux/meta-factories"
 
 //node modules
 
-const { useRef } = require("react");
+const { useEffect, useRef } = require("react");
 
 //get search params
 
@@ -173,6 +173,31 @@ const useInfiniteScroll = (list, path, limit, reset, fetch) => {
 
 };
 
+//use refresh
+
+const useRefresh = (refresh, loading, actions, list) => {
+
+  const trigger = actions.filter((e) => list.includes(e)).length;
+
+  const waiting = useRef(false);
+
+  useEffect(() => {
+    if (trigger && !waiting.current) {
+      if (loading) {
+        waiting.current = true;
+      } else {
+        refresh();
+      }
+    }
+  }, [trigger]);
+
+  if (waiting.current && !loading) {
+    waiting.current = false;
+    refresh();
+  }
+
+};
+
 //exports
 
 module.exports = {
@@ -180,5 +205,6 @@ module.exports = {
   initReducer,
   setSearchParams,
   reduxAPICall,
-  useInfiniteScroll
+  useInfiniteScroll,
+  useRefresh
 };

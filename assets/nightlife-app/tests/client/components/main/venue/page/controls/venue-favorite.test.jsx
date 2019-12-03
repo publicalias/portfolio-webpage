@@ -10,7 +10,6 @@ const { testWrapper } = require("../../../../../test-helpers");
 //global imports
 
 const { initTestEvent, initTestSnapshot, withDataList } = require("redux/tests/client-tests");
-const { testMock } = require("redux/tests/meta-tests");
 const { reactTests } = require("redux/tests/react-tests");
 
 //utilities
@@ -41,15 +40,8 @@ describe("VenueFavorite (default)", () => {
 
   it("should call handleClick on click", () => testClick(
     ".qa-toggle-favorite",
-    [null, { refresh: jest.fn() }],
-    (props) => {
-
-      const { actions: { favoriteAdd }, local: { refresh } } = props;
-
-      testMock(favoriteAdd, ["Venue A", "id-a"]);
-      testMock(refresh, []);
-
-    }
+    [],
+    ["favoriteAdd", ["Venue A", "id-a"]]
   ));
 
 });
@@ -73,15 +65,8 @@ describe("VenueFavorite (favorite)", () => {
 
   it("should call handleClick on click", () => testClick(
     ".qa-toggle-favorite",
-    [null, { refresh: jest.fn() }],
-    (props) => {
-
-      const { actions: { favoriteRemove }, local: { refresh } } = props;
-
-      testMock(favoriteRemove, ["id-b"]);
-      testMock(refresh, []);
-
-    }
+    [],
+    ["favoriteRemove", ["id-b"]]
   ));
 
 });

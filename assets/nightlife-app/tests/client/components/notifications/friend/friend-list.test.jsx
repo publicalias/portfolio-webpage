@@ -8,12 +8,12 @@ const { testWrapper } = require("../../../test-helpers");
 
 //global imports
 
-const { initTestSnapshot } = require("redux/tests/client-tests");
+const { initTestSnapshot, testMockHook } = require("redux/tests/client-tests");
 const { reactTests } = require("redux/tests/react-tests");
 
 //utilities
 
-const { testShallow } = testWrapper(FriendList);
+const { testMount, testShallow } = testWrapper(FriendList);
 
 //setup
 
@@ -31,5 +31,7 @@ describe("FriendList", () => {
   it("should match snapshot (bool)", () => testSnapshot({ users: { data: [{}] } }));
 
   it("should match snapshot (list)", () => testSnapshot({ notifications: { friends: [{}] } }));
+
+  it("should call useRefresh on update", () => testMockHook(FriendList, testMount, "useRefresh"));
 
 });

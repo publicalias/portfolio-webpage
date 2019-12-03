@@ -11,7 +11,7 @@ const UserControls = (props) => {
   const {
     actions: { friendAdd, friendRemove, userToggleBlock },
     data: { user, notifications: { friends } },
-    local: { refresh, userData }
+    local: { userData }
   } = props;
 
   //utilities
@@ -43,21 +43,9 @@ const UserControls = (props) => {
 
   //events
 
-  const handleFriend = async () => {
+  const handleFriend = handler;
 
-    await handler();
-
-    refresh();
-
-  };
-
-  const handleBlock = async () => {
-
-    await userToggleBlock(userData.id);
-
-    refresh();
-
-  };
+  const handleBlock = () => userToggleBlock(userData.id);
 
   //render
 
