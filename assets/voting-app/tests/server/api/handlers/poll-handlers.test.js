@@ -223,6 +223,16 @@ describe("pollToggleSecret", () => {
 
   it("sends status if authentication fails", () => testAuthFail(mockAPICall, getData(), [newUser()]));
 
+  it("sends errors if poll has been flagged too many times", async () => {
+
+    await pollsCol().updateOne({}, { $set: { "users.flagged": Array(5).fill("") } });
+
+    const res = await mockAPICall(newUser({ id: "id-b" }), getData());
+
+    testMock(res.json, [{ errors: ["Poll has been flagged too many times"] }]);
+
+  });
+
   it("sends noop if successful", async () => {
 
     const user = newUser({ id: "id-b" });

@@ -7,6 +7,7 @@ const { newOption } = require("../../../../schemas");
 
 //global imports
 
+const { checkErrors } = require("all/utilities");
 const { getIPUser, getOrSetUser, handleAPICall, handleAuthFail, handleErrors } = require("redux/server-utils");
 
 //utilities
@@ -171,17 +172,32 @@ const pollToggleSecret = handleAPICall({
 
     const { id } = req.body.data;
 
-    const { secret, users } = await findItem(id);
+    const item = await findItem(id);
 
-    handleAuthFail(req, res, (id) => id !== users.created);
+    handleAuthFail(req, res, (id) => id !== item.users.created);
 
-    return secret;
+    return item;
 
   },
 
-  async success(req, res, secret) {
+  errors(req, res, item) {
+
+    const { users: { flagged } } = item;
+
+    handleErrors(res, checkErrors([{
+      bool: flagged.length >= 5,
+      text: "Poll has been flagged too many times"
+    }]));
+
+    return item;
+
+  },
+
+  async success(req, res, item) {
 
     const { id } = req.body.data;
+
+    const { secret } = item;
 
     await pollsCol().updateOne({ id }, { $set: { secret: !secret } });
 

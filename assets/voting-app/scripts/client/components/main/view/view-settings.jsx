@@ -9,7 +9,7 @@ const React = require("react");
 const ViewSettings = (props) => {
 
   const {
-    actions: { metaAddErrors, metaDeletePoll, pollToggleSecret, viewToggleDelete },
+    actions: { metaDeletePoll, pollToggleSecret, viewToggleDelete },
     data: { view },
     history,
     local: { poll }
@@ -32,11 +32,7 @@ const ViewSettings = (props) => {
   };
 
   const handleSecret = () => {
-    if (poll.users.flagged.length >= 5) {
-      metaAddErrors(["Poll has been flagged too many times"]);
-    } else {
-      pollToggleSecret(poll.id);
-    }
+    pollToggleSecret(poll.id);
   };
 
   //render

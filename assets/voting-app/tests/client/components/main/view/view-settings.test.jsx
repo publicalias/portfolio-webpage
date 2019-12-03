@@ -59,19 +59,6 @@ describe("ViewSettings (events)", () => {
     ["pollToggleSecret", ["id-a"]]
   ));
 
-  it("should call handleSecret on click (secret, flagged)", () => testClick(
-    ".qa-toggle-secret",
-    [null, {
-      poll: newPoll({
-        id: "id-a",
-        users: { flagged: Array(5).fill("") }
-      })
-    }],
-    ["metaAddErrors", [
-      ["Poll has been flagged too many times"]
-    ]]
-  ));
-
   testSubmit("click", "handleDelete", (res) => {
 
     const dataList = [{ view: { delete: true } }, { poll: newPoll({ id: "id-a" }) }];
