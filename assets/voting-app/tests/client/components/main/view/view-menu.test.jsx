@@ -45,12 +45,10 @@ describe("ViewMenu", () => {
 
   });
 
-  it("should call handleClick on click", () => {
-
-    const fn = ["viewToggleSettings", []];
-
-    return testClick(".qa-toggle-settings", dataList, fn);
-
-  });
+  it("should call handleClick on click", () => testClick(
+    ".qa-toggle-settings",
+    dataList,
+    ["viewToggleSettings", []]
+  ));
 
 });

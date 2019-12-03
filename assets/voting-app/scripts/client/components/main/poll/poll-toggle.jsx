@@ -1,9 +1,5 @@
 "use strict";
 
-//local imports
-
-const { handleReload } = require("../../../event-handlers");
-
 //node modules
 
 const React = require("react");
@@ -12,14 +8,14 @@ const React = require("react");
 
 const PollToggle = (props) => {
 
-  const { actions: { pollToggleFlag, pollToggleHide }, data: { user }, local: { list, poll, role, util } } = props;
+  const { actions: { pollToggleFlag, pollToggleHide }, data: { user }, local: { poll, role, util } } = props;
 
   //utilities
 
   const toggled = (prop) => poll.users[prop].includes(user.id);
 
   const handler = (fn) => () => {
-    handleReload(() => fn(poll.id), props, list);
+    fn(poll.id);
   };
 
   const { handleClick, icon } = ((data) => data[role])({

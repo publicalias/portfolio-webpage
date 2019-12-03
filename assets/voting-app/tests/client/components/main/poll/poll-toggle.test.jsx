@@ -4,12 +4,12 @@
 
 const PollToggle = require("../../../../../scripts/client/components/main/poll/poll-toggle");
 
-const { initTestPoll, testReload, testWrapper } = require("../../../test-helpers");
+const { initTestPoll, testWrapper } = require("../../../test-helpers");
 
 //global imports
 
 const { newUser } = require("redux/schemas");
-const { initTestSnapshot } = require("redux/tests/client-tests");
+const { initTestEvent, initTestSnapshot } = require("redux/tests/client-tests");
 const { reactTests } = require("redux/tests/react-tests");
 
 //utilities
@@ -25,13 +25,11 @@ const initTestBool = (render) => (prop) => render({ user: newUser({ id: "id-a" }
   }
 });
 
-const initTestClick = (render) => (qa, type, list) => {
-
-  const dataList = [null, { id: "id-a" }, { list }];
-
-  return testReload(render, dataList, qa, list ? null : "id-a", [type, ["id-a"]]);
-
-};
+const initTestClick = (render) => (qa, type, list) => initTestEvent(render, "click")(
+  qa,
+  [null, { id: "id-a" }, { list }],
+  [type, ["id-a"]]
+);
 
 //setup
 

@@ -1,9 +1,5 @@
 "use strict";
 
-//local imports
-
-const { handleReload } = require("../../../event-handlers");
-
 //node modules
 
 const React = require("react");
@@ -29,9 +25,9 @@ const PollIcon = (props) => {
 
     if (role === "view") {
       if (voted) {
-        handleReload(() => pollRemoveVote(poll.id), props);
+        pollRemoveVote(poll.id);
       } else {
-        handleReload(() => pollRemoveOption(poll.id, text), props);
+        pollRemoveOption(poll.id, text);
       }
     } else {
       formRemoveOption(text);

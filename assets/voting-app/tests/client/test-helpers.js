@@ -2,14 +2,13 @@
 
 //local imports
 
-const { newForm, newListParams, newPoll, newState } = require("../../schemas");
+const { newForm, newPoll, newState } = require("../../schemas");
 const { actions } = require("../../scripts/client/state/actions/actions");
 const { reducer } = require("../../scripts/client/state/reducer/reducer");
 
 //global imports
 
 const { deepCopy } = require("all/utilities");
-const { initTestEvent } = require("redux/tests/client-tests");
 const { testMock } = require("redux/tests/meta-tests");
 const { initTestWrapper } = require("redux/tests/react-tests");
 const { initTestAPI, initTestReducer } = require("redux/tests/redux-tests");
@@ -26,23 +25,6 @@ const initTestPoll = (render, role) => (data, pollData, local, other) => {
   return render(data, deepCopy(init, local), other);
 
 };
-
-//init test reload / test reload
-
-const initTestReload = (type, event) => (render, dataList, qa, id, ...fnList) => {
-
-  const testClick = initTestEvent(render, type, event);
-
-  const fullList = fnList.concat([
-    ["metaGetUser", []],
-    id ? ["metaGetPollItem", [id]] : ["metaGetPollList", [newListParams(), 0]]
-  ]);
-
-  return testClick(qa, dataList, ...fullList);
-
-};
-
-const testReload = initTestReload("click");
 
 //test api
 
@@ -84,10 +66,8 @@ const testWrapper = initTestWrapper(newState, actions);
 
 module.exports = {
   initTestPoll,
-  initTestReload,
   testAPI,
   testCreateDelete,
   testReducer,
-  testReload,
   testWrapper
 };

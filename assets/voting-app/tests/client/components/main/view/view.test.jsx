@@ -8,7 +8,7 @@ const { testWrapper } = require("../../../test-helpers");
 
 //global imports
 
-const { initTestSnapshot } = require("redux/tests/client-tests");
+const { initTestSnapshot, testMockHook, withDataList } = require("redux/tests/client-tests");
 const { testMock } = require("redux/tests/meta-tests");
 const { reactTests } = require("redux/tests/react-tests");
 
@@ -25,21 +25,19 @@ beforeEach(reactTests.inject(View));
 
 describe("View", () => {
 
-  const testSnapshot = initTestSnapshot(testShallow);
+  const dataList = [null, { id: "id-a" }];
 
-  it("should match snapshot (default)", () => testSnapshot(null, { id: "id-a" }));
+  const testSnapshot = withDataList(initTestSnapshot(testShallow), dataList);
 
-  it("should match snapshot (id)", () => {
+  const testView = withDataList(testMount, dataList);
 
-    const dataList = [{ polls: [{ id: "id-a" }] }, { id: "id-a" }];
+  it("should match snapshot (default)", () => testSnapshot());
 
-    testSnapshot(...dataList);
-
-  });
+  it("should match snapshot (id)", () => testSnapshot({ polls: [{ id: "id-a" }] }));
 
   it("should call viewClearState and metaGetPollItem on load", () => {
 
-    const { props, wrapper } = testMount(null, { id: "id-a" });
+    const { props, wrapper } = testView(null, { id: "id-a" });
 
     const { actions: { metaGetPollItem, viewClearState } } = props;
 
@@ -51,5 +49,11 @@ describe("View", () => {
     wrapper.unmount();
 
   });
+
+  it("should call useRefresh on update", () => testMockHook(
+    View,
+    testView,
+    "useRefresh"
+  ));
 
 });

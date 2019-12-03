@@ -1,9 +1,5 @@
 "use strict";
 
-//local imports
-
-const { handleReload } = require("../../../event-handlers");
-
 //node modules
 
 const React = require("react");
@@ -33,7 +29,7 @@ const PollInput = (props) => {
       formAddOption(form.add, form.options);
     } else {
 
-      const res = await handleReload(() => pollAddOption(poll.id, view.add), props);
+      const res = await pollAddOption(poll.id, view.add);
 
       if (res && !res.errors) {
         viewSetAdd("");

@@ -1,37 +1,8 @@
 "use strict";
 
-//local imports
-
-const { getListParams } = require("./app-logic");
-
 //global imports
 
 const { select } = require("all/dom-api");
-
-//handle reload
-
-const handleReload = async (fn, props, list) => {
-
-  const {
-    actions: { metaGetPollItem, metaGetPollList, metaGetUser },
-    data: { polls },
-    local: { poll },
-    location
-  } = props;
-
-  const res = await fn();
-
-  metaGetUser();
-
-  if (list) {
-    metaGetPollList(getListParams(location), polls.length);
-  } else {
-    metaGetPollItem(poll.id);
-  }
-
-  return res;
-
-};
 
 //update tooltip
 
@@ -56,7 +27,4 @@ const updateTooltip = (label, count, r, [x, y]) => {
 
 //exports
 
-module.exports = {
-  handleReload,
-  updateTooltip
-};
+module.exports = { updateTooltip };

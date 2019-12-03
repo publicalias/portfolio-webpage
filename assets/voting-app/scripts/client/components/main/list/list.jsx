@@ -9,7 +9,7 @@ const { getListParams } = require("../../../app-logic");
 
 //global imports
 
-const { useInfiniteScroll } = require("redux/client-utils");
+const { useInfiniteScroll, useRefresh } = require("redux/client-utils");
 
 //node modules
 
@@ -21,9 +21,13 @@ const { useLayoutEffect } = React;
 
 const List = (props) => {
 
-  const { actions: { listClearState, metaGetPollList }, data: { polls }, location } = props;
+  const {
+    actions: { listClearState, metaGetPollList },
+    data: { loading, log, polls },
+    location
+  } = props;
 
-  const { jsx: { ListBody, ListMenu }, lib: { useInfiniteScroll } } = List.injected;
+  const { jsx: { ListBody, ListMenu }, lib: { useInfiniteScroll, useRefresh } } = List.injected;
 
   //utilities
 
@@ -33,9 +37,18 @@ const List = (props) => {
 
   //lifecycle
 
+  const refresh = () => {
+    fetch(polls.length);
+  };
+
   useLayoutEffect(() => {
     handleReload(); //async
   }, [location.search]);
+
+  useRefresh(refresh, loading, log, [
+    "POLL_TOGGLE_FLAG",
+    "POLL_TOGGLE_HIDE"
+  ]);
 
   //render
 
@@ -48,14 +61,17 @@ const List = (props) => {
 
 };
 
-List.propList = ["data.polls", "location"];
+List.propList = ["data.loading", "data.log", "data.polls", "location"];
 
 List.injected = {
   jsx: {
     ListBody,
     ListMenu
   },
-  lib: { useInfiniteScroll }
+  lib: {
+    useInfiniteScroll,
+    useRefresh
+  }
 };
 
 //exports

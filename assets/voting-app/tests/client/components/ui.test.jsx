@@ -8,7 +8,7 @@ const { testWrapper } = require("../test-helpers");
 
 //global imports
 
-const { initTestSnapshot } = require("redux/tests/client-tests");
+const { initTestSnapshot, testMockHook } = require("redux/tests/client-tests");
 const { testMock } = require("redux/tests/meta-tests");
 const { reactTests } = require("redux/tests/react-tests");
 
@@ -42,5 +42,11 @@ describe("UI", () => {
     wrapper.unmount();
 
   });
+
+  it("should call useRefresh on update", () => testMockHook(
+    UI,
+    testMount,
+    "useRefresh"
+  ));
 
 });

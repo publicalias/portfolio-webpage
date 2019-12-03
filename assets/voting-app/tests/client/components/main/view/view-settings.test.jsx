@@ -5,7 +5,7 @@
 const ViewSettings = require("../../../../../scripts/client/components/main/view/view-settings");
 
 const { newPoll } = require("../../../../../schemas");
-const { testCreateDelete, testReload, testWrapper } = require("../../../test-helpers");
+const { testCreateDelete, testWrapper } = require("../../../test-helpers");
 
 //global imports
 
@@ -47,36 +47,30 @@ describe("ViewSettings (events)", () => {
     ["viewToggleDelete", []]
   ));
 
-  it("should call handleConfirm on click (no)", () => {
+  it("should call handleConfirm on click (no)", () => testClick(
+    ".qa-click-no",
+    [{ view: { delete: true } }],
+    ["viewToggleDelete", []]
+  ));
 
-    const dataList = [{ view: { delete: true } }];
+  it("should call handleSecret on click (secret)", () => testClick(
+    ".qa-toggle-secret",
+    [null, { poll: newPoll({ id: "id-a" }) }],
+    ["pollToggleSecret", ["id-a"]]
+  ));
 
-    return testClick(".qa-click-no", dataList, ["viewToggleDelete", []]);
-
-  });
-
-  it("should call handleSecret on click (secret)", () => {
-
-    const dataList = [null, { poll: newPoll({ id: "id-a" }) }];
-
-    return testReload(testShallow, dataList, ".qa-toggle-secret", "id-a", ["pollToggleSecret", ["id-a"]]);
-
-  });
-
-  it("should call handleSecret on click (secret, flagged)", () => {
-
-    const dataList = [null, {
+  it("should call handleSecret on click (secret, flagged)", () => testClick(
+    ".qa-toggle-secret",
+    [null, {
       poll: newPoll({
         id: "id-a",
         users: { flagged: Array(5).fill("") }
       })
-    }];
-
-    return testClick(".qa-toggle-secret", dataList, ["metaAddErrors", [
+    }],
+    ["metaAddErrors", [
       ["Poll has been flagged too many times"]
-    ]]);
-
-  });
+    ]]
+  ));
 
   testSubmit("click", "handleDelete", (res) => {
 

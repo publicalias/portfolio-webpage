@@ -4,7 +4,6 @@
 
 const PollIcon = require("./poll-icon");
 
-const { handleReload } = require("../../../event-handlers");
 const { chartColor } = require("../../../view-logic");
 
 //global imports
@@ -27,7 +26,7 @@ const PollList = (props) => {
 
   const handleVote = (text) => () => {
     if (role === "view") {
-      handleReload(() => pollCastVote(poll.id, text), props);
+      pollCastVote(poll.id, text);
     }
   };
 

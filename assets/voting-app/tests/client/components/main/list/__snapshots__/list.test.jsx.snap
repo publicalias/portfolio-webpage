@@ -19,6 +19,29 @@ Array [
 ]
 `;
 
+exports[`List should call useRefresh on update 1`] = `
+Array [
+  Array [
+    [Function],
+    0,
+    Array [],
+    Array [
+      "POLL_TOGGLE_FLAG",
+      "POLL_TOGGLE_HIDE",
+    ],
+  ],
+  Array [
+    [Function],
+    0,
+    Array [],
+    Array [
+      "POLL_TOGGLE_FLAG",
+      "POLL_TOGGLE_HIDE",
+    ],
+  ],
+]
+`;
+
 exports[`List should match snapshot 1`] = `
 <Fragment>
   <ListMenu

@@ -35,7 +35,6 @@ const ListItem = (props) => {
       <PollToggle
         {...props}
         local={{
-          list: true,
           poll,
           role: "hide",
           util: "u-margin-auto"
@@ -45,7 +44,6 @@ const ListItem = (props) => {
         <PollToggle
           {...props}
           local={{
-            list: true,
             poll,
             role: "flag",
             util: "u-margin-auto"

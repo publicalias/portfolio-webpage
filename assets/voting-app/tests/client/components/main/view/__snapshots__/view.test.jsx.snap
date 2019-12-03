@@ -1,5 +1,38 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`View should call useRefresh on update 1`] = `
+Array [
+  Array [
+    [Function],
+    0,
+    Array [],
+    Array [
+      "POLL_ADD_OPTION",
+      "POLL_CAST_VOTE",
+      "POLL_REMOVE_OPTION",
+      "POLL_REMOVE_VOTE",
+      "POLL_TOGGLE_FLAG",
+      "POLL_TOGGLE_HIDE",
+      "POLL_TOGGLE_SECRET",
+    ],
+  ],
+  Array [
+    [Function],
+    0,
+    Array [],
+    Array [
+      "POLL_ADD_OPTION",
+      "POLL_CAST_VOTE",
+      "POLL_REMOVE_OPTION",
+      "POLL_REMOVE_VOTE",
+      "POLL_TOGGLE_FLAG",
+      "POLL_TOGGLE_HIDE",
+      "POLL_TOGGLE_SECRET",
+    ],
+  ],
+]
+`;
+
 exports[`View should match snapshot (default) 1`] = `
 <Fragment>
   <ViewMenu

@@ -55,4 +55,10 @@ describe("List", () => {
 
   });
 
+  it("should call useRefresh on update", () => testMockHook(
+    List,
+    testMount,
+    "useRefresh"
+  ));
+
 });

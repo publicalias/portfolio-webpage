@@ -8,6 +8,10 @@ const View = require("./main/view/view");
 
 const Sidebar = require("./sidebar");
 
+//global imports
+
+const { useRefresh } = require("redux/client-utils");
+
 //node modules
 
 const React = require("react");
@@ -20,15 +24,20 @@ const { useEffect } = React;
 
 const UI = (props) => {
 
-  const { actions: { metaGetUser } } = props;
+  const { actions: { metaGetUser }, data: { loading, log } } = props;
 
-  const { jsx: { Form, List, Route, Sidebar, View } } = UI.injected;
+  const { jsx: { Form, List, Route, Sidebar, View }, lib: { useRefresh } } = UI.injected;
 
   //lifecycle
 
   useEffect(() => {
     metaGetUser(); //async
   }, []);
+
+  useRefresh(metaGetUser, loading, log, [
+    "POLL_CAST_VOTE",
+    "POLL_TOGGLE_HIDE"
+  ]);
 
   //render
 
@@ -51,7 +60,7 @@ const UI = (props) => {
 
 };
 
-UI.propList = [];
+UI.propList = ["data.loading", "data.log"];
 
 UI.injected = {
   jsx: {
@@ -60,7 +69,8 @@ UI.injected = {
     Route,
     Sidebar,
     View
-  }
+  },
+  lib: { useRefresh }
 };
 
 //exports

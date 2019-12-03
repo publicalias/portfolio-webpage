@@ -1,9 +1,5 @@
 "use strict";
 
-//local imports
-
-const { handleReload } = require("../../../event-handlers");
-
 //node modules
 
 const React = require("react");
@@ -39,7 +35,7 @@ const ViewSettings = (props) => {
     if (poll.users.flagged.length >= 5) {
       metaAddErrors(["Poll has been flagged too many times"]);
     } else {
-      handleReload(() => pollToggleSecret(poll.id), props);
+      pollToggleSecret(poll.id);
     }
   };
 

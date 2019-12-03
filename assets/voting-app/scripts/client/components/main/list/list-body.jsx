@@ -58,7 +58,7 @@ const ListBody = (props) => {
           <div className="c-list-item">
             <p>N/A</p>
             {auth && <p>N/A</p>}
-            <p>No Polls</p>
+            <p className="u-grid-span-2">No Polls</p>
           </div>
         )}
       </div>

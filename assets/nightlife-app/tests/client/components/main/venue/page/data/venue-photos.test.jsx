@@ -47,10 +47,9 @@ beforeEach(reactTests.inject(VenuePhotos, mockUseCarousel()));
 
 describe("VenuePhotos (general)", () => {
 
-  const testPhotos = withDataList(testShallow, dataList);
-  const testPhotosMount = withDataList(testMount, dataList);
+  const testSnapshot = withDataList(initTestSnapshot(testShallow), dataList);
 
-  const testSnapshot = initTestSnapshot(testPhotos);
+  const testPhotos = withDataList(testMount, dataList);
 
   it("should match snapshot (default)", () => testSnapshot());
 
@@ -60,7 +59,7 @@ describe("VenuePhotos (general)", () => {
 
     const { lib: { useCarousel } } = mockUseCarousel();
 
-    testMockHook(VenuePhotos, testPhotosMount, "useCarousel", [], useCarousel);
+    testMockHook(VenuePhotos, testPhotos, "useCarousel", [], useCarousel);
 
   });
 

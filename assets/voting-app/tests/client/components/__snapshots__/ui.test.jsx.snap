@@ -1,5 +1,48 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`UI should call useRefresh on update 1`] = `
+Array [
+  Array [
+    [MockFunction] {
+      "calls": Array [
+        Array [],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    },
+    0,
+    Array [],
+    Array [
+      "POLL_CAST_VOTE",
+      "POLL_TOGGLE_HIDE",
+    ],
+  ],
+  Array [
+    [MockFunction] {
+      "calls": Array [
+        Array [],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    },
+    0,
+    Array [],
+    Array [
+      "POLL_CAST_VOTE",
+      "POLL_TOGGLE_HIDE",
+    ],
+  ],
+]
+`;
+
 exports[`UI should match snapshot 1`] = `
 <div
   className="c-ui"

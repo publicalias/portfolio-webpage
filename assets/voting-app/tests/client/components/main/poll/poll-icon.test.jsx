@@ -4,7 +4,7 @@
 
 const PollIcon = require("../../../../../scripts/client/components/main/poll/poll-icon");
 
-const { initTestPoll, initTestReload, testWrapper } = require("../../../test-helpers");
+const { initTestPoll, testWrapper } = require("../../../test-helpers");
 
 //global imports
 
@@ -89,13 +89,11 @@ describe("PollIcon (view, events)", () => {
 
     const event = { stopPropagation: jest.fn() };
 
-    const testReload = initTestReload("click", event);
+    const testClick = initTestEvent(testView, "click", event);
 
-    return testReload(
-      testView,
-      [null, { id: "id-b" }, getView(view)],
+    return testClick(
       ".qa-click-remove",
-      "id-b",
+      [null, { id: "id-b" }, getView(view)],
       fn,
       () => {
         testMock(event.stopPropagation, []);

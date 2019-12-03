@@ -4,7 +4,7 @@
 
 const PollList = require("../../../../../scripts/client/components/main/poll/poll-list");
 
-const { initTestPoll, testReload, testWrapper } = require("../../../test-helpers");
+const { initTestPoll, testWrapper } = require("../../../test-helpers");
 
 //global imports
 
@@ -80,14 +80,12 @@ describe("PollList (view)", () => {
 
 describe("PollList (view, events)", () => {
 
-  const testList = withDataList(testView, [null, { options: [{ text: "Option A" }] }]);
+  const testClick = initTestEvent(withDataList(testView, [null, { options: [{ text: "Option A" }] }]), "click");
 
-  it("should call handleVote on click (vote)", () => {
-
-    const dataList = [null, { id: "id-a" }];
-
-    return testReload(testList, dataList, ".qa-click-vote", "id-a", ["pollCastVote", ["id-a", "Option A"]]);
-
-  });
+  it("should call handleVote on click (vote)", () => testClick(
+    ".qa-click-vote",
+    [null, { id: "id-a" }],
+    ["pollCastVote", ["id-a", "Option A"]]
+  ));
 
 });
