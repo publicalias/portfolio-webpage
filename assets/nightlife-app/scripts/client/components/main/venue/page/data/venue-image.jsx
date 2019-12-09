@@ -1,5 +1,9 @@
 "use strict";
 
+//local imports
+
+const { useVenueImage } = require("../../../../../event-handlers");
+
 //node modules
 
 const React = require("react");
@@ -9,6 +13,8 @@ const React = require("react");
 const VenueImage = (props) => {
 
   const { local: { handleError: handleErrorEvent, handleLoad, src, venue } } = props;
+
+  const { lib: { useVenueImage } } = VenueImage.injected;
 
   //events
 
@@ -20,6 +26,10 @@ const VenueImage = (props) => {
 
   };
 
+  //lifecycle
+
+  const image = useVenueImage(".js-resize-image", src, 50); //approximate
+
   //render
 
   return (
@@ -27,10 +37,10 @@ const VenueImage = (props) => {
       <a href={venue.url || "https://www.yelp.com/"}>
         <img
           alt="Venue Photo"
-          className="c-venue-photos__image js-ref-image qa-ref-image"
+          className="c-venue-photos__image js-ref-image js-resize-image qa-ref-image"
           onError={handleError}
           onLoad={handleLoad}
-          src={src}
+          src={image}
         />
       </a>
     </div>
@@ -39,6 +49,8 @@ const VenueImage = (props) => {
 };
 
 VenueImage.propList = ["local"];
+
+VenueImage.injected = { lib: { useVenueImage } };
 
 //exports
 

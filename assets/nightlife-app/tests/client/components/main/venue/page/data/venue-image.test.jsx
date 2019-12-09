@@ -9,29 +9,31 @@ const { testWrapper } = require("../../../../../test-helpers");
 
 //global imports
 
-const { initTestEvent, initTestSnapshot, withDataList } = require("redux/tests/client-tests");
+const { initTestEvent, initTestSnapshot, testMockHook, withDataList } = require("redux/tests/client-tests");
 const { testMock } = require("redux/tests/meta-tests");
 const { reactTests } = require("redux/tests/react-tests");
 
 //utilities
 
-const { testShallow } = testWrapper(VenueImage);
+const { testMount, testShallow } = testWrapper(VenueImage);
 
 //setup
 
 beforeAll(reactTests.setup);
-beforeEach(reactTests.inject(VenueImage));
+beforeEach(reactTests.inject(VenueImage, { lib: { useVenueImage: jest.fn((x, y) => y) } }));
 
 //venue image
 
 describe("VenueImage", () => {
 
-  const testImage = withDataList(testShallow, [null, {
+  const dataList = [null, {
     handleError: jest.fn(),
     handleLoad: jest.fn(),
     src: "https://www.example.com/photo.jpg",
     venue: newVenue()
-  }]);
+  }];
+
+  const testImage = withDataList(testShallow, dataList);
 
   const testSnapshot = initTestSnapshot(testImage);
 
@@ -69,5 +71,12 @@ describe("VenueImage", () => {
     });
 
   });
+
+  it("should call useVenueImage on update", () => testMockHook(
+    VenueImage,
+    testMount,
+    "useVenueImage",
+    dataList
+  ));
 
 });

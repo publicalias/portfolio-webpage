@@ -1,5 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`VenueImage should call useVenueImage on update 1`] = `
+Array [
+  Array [
+    ".js-resize-image",
+    "https://www.example.com/photo.jpg",
+    50,
+  ],
+  Array [
+    ".js-resize-image",
+    "https://www.example.com/photo.jpg",
+    50,
+  ],
+]
+`;
+
 exports[`VenueImage should match snapshot (default) 1`] = `
 <div
   className="c-venue-photos__wrapper js-fade-carousel"
@@ -9,7 +24,7 @@ exports[`VenueImage should match snapshot (default) 1`] = `
   >
     <img
       alt="Venue Photo"
-      className="c-venue-photos__image js-ref-image qa-ref-image"
+      className="c-venue-photos__image js-ref-image js-resize-image qa-ref-image"
       onError={[Function]}
       onLoad={[MockFunction]}
       src="https://www.example.com/photo.jpg"
@@ -27,7 +42,7 @@ exports[`VenueImage should match snapshot (url) 1`] = `
   >
     <img
       alt="Venue Photo"
-      className="c-venue-photos__image js-ref-image qa-ref-image"
+      className="c-venue-photos__image js-ref-image js-resize-image qa-ref-image"
       onError={[Function]}
       onLoad={[MockFunction]}
       src="https://www.example.com/photo.jpg"

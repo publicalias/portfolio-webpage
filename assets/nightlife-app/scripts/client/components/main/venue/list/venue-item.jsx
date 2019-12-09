@@ -1,5 +1,9 @@
 "use strict";
 
+//local imports
+
+const { useVenueImage } = require("../../../../event-handlers");
+
 //global imports
 
 const { delimit } = require("all/utilities");
@@ -16,13 +20,17 @@ const VenueItem = (props) => {
 
   const { local: { venue } } = props;
 
-  const { jsx: { Link }, lib: { delimit } } = VenueItem.injected;
+  const { jsx: { Link }, lib: { delimit, useVenueImage } } = VenueItem.injected;
 
   //events
 
   const handleError = (event) => {
     event.target.src = "https://via.placeholder.com/800x450?text=undefined";
   };
+
+  //lifecycle
+
+  const image = useVenueImage(`.js-resize-image-${venue.id}`, venue.image_url, 9);
 
   //render
 
@@ -33,9 +41,9 @@ const VenueItem = (props) => {
       <div className="c-list-item">
         <img
           alt="Venue Photo"
-          className="qa-error-image"
+          className={`js-resize-image-${venue.id} qa-error-image`}
           onError={handleError}
-          src={venue.image_url}
+          src={image}
         />
         <div>
           <h5 className="u-margin-half">{venue.name || "Undefined"}</h5>
@@ -56,7 +64,10 @@ VenueItem.propList = ["local"];
 
 VenueItem.injected = {
   jsx: { Link },
-  lib: { delimit }
+  lib: {
+    delimit,
+    useVenueImage
+  }
 };
 
 //exports
