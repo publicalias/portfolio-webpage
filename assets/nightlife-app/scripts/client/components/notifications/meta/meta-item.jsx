@@ -15,6 +15,8 @@ const MetaItem = (props) => {
 
   const { local: { buttons, item, notification } } = props;
 
+  const { lib: { readDate } } = MetaItem.injected;
+
   //render
 
   const keyGen = initKeyGen();
@@ -50,6 +52,8 @@ const MetaItem = (props) => {
 };
 
 MetaItem.propList = ["local"];
+
+MetaItem.injected = { lib: { readDate } };
 
 //exports
 

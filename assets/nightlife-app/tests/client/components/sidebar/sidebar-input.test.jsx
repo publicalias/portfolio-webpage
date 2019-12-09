@@ -4,8 +4,7 @@
 
 const SidebarInput = require("../../../../scripts/client/components/sidebar/sidebar-input");
 
-const { newUserWithData } = require("../../../../schemas");
-const { getGeoPoint, testWrapper } = require("../../test-helpers");
+const { testWrapper } = require("../../test-helpers");
 
 //global imports
 
@@ -17,95 +16,69 @@ const { reactTests } = require("redux/tests/react-tests");
 
 const { testShallow } = testWrapper(SidebarInput);
 
-const userData = {
-  address: "12345",
-  avatar: "https://www.example.com/avatar.jpg",
-  location: getGeoPoint(0)
-};
-
-const initTestInput = (render, type, text, prop = type.toLowerCase()) => ({
-
-  testChange() {
-
-    const testChange = initTestEvent(render, "change", { target: { value: text } });
-
-    return testChange(".qa-change-input", [], [`metaSet${type}`, [text]]);
-
-  },
-
-  testClick() {
-
-    const testClick = initTestEvent(render, "click");
-
-    const { lib: { getLocation } } = SidebarInput.injected;
-
-    return testClick(
-      ".qa-submit-input",
-      [{
-        account: {
-          [prop]: text
-        }
-      }],
-      () => {
-        testMock(getLocation, []);
-      },
-      [`metaSave${type}`, [text, userData.location]],
-      [`metaSet${type}`, [""]]
-    );
-
-  }
-
-});
-
 //setup
 
 beforeAll(reactTests.setup);
-beforeEach(reactTests.inject(SidebarInput, { lib: { getLocation: jest.fn(() => userData.location) } }));
+beforeEach(reactTests.inject(SidebarInput, { lib: { getLocation: jest.fn(() => null) } }));
 
 //sidebar input
 
-describe("SidebarInput (address)", () => {
+describe("SidebarInput", () => {
 
-  const { address } = userData;
-
-  const testInput = withDataList(testShallow, [{ user: newUserWithData() }, { type: "address" }]);
+  const testInput = withDataList(testShallow, [null, {
+    actions: {},
+    bool: false,
+    placeholder: "Meta",
+    text: ""
+  }]);
 
   const testSnapshot = initTestSnapshot(testInput);
-  const testBool = withDataList(testSnapshot, [{ user: { data: { address } } }]);
 
-  const { testChange, testClick } = initTestInput(testInput, "Address", address);
+  const testChange = initTestEvent(testInput, "change", { target: { value: "Text" } });
+  const testClick = initTestEvent(testInput, "click");
 
   it("should match snapshot (default)", () => testSnapshot());
 
-  it("should match snapshot (bool)", () => testBool());
+  it("should match snapshot (bool)", () => testSnapshot(null, { bool: true }));
 
-  it("should match snapshot (bool, text)", () => testBool({ account: { address } }));
+  it("should match snapshot (bool, text)", () => testSnapshot(null, {
+    bool: true,
+    text: "Text"
+  }));
 
-  it("should call handleChange on change", () => testChange());
+  it("should call handleChange on change", () => {
 
-  it("should call handleSubmit on click", () => testClick());
+    const change = jest.fn();
 
-});
+    return testChange(".qa-change-input", [null, { actions: { change } }], () => {
+      testMock(change, ["Text"]);
+    });
 
-describe("SidebarInput (avatar)", () => {
+  });
 
-  const { avatar } = userData;
+  it("should call handleSubmit on click", () => {
 
-  const testInput = withDataList(testShallow, [{ user: newUserWithData() }, { type: "avatar" }]);
+    const { lib: { getLocation } } = SidebarInput.injected;
 
-  const testSnapshot = initTestSnapshot(testInput);
-  const testBool = withDataList(testSnapshot, [{ user: { data: { avatar } } }]);
+    const change = jest.fn();
+    const submit = jest.fn();
 
-  const { testChange, testClick } = initTestInput(testInput, "Avatar", avatar);
+    return testClick(
+      ".qa-submit-input",
+      [null, {
+        actions: {
+          change,
+          submit
+        },
+        text: "Text"
+      }],
+      () => {
+        testMock(getLocation, []);
+        testMock(submit, ["Text", null]);
+        testMock(change, [""]);
+      }
+    );
 
-  it("should match snapshot (default)", () => testSnapshot());
-
-  it("should match snapshot (bool)", () => testBool());
-
-  it("should match snapshot (bool, text)", () => testBool({ account: { avatar } }));
-
-  it("should call handleChange on change", () => testChange());
-
-  it("should call handleSubmit on click", () => testClick());
+  });
 
 });

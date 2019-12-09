@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FriendItem (confirmed, from) should match snapshot (default) 1`] = `
+exports[`FriendItem should match snapshot (from, confirmed) 1`] = `
 <MetaItem
   local={
     Object {
@@ -25,15 +25,16 @@ exports[`FriendItem (confirmed, from) should match snapshot (default) 1`] = `
         },
       },
       "notification": <p>
-        <Link
-          to="/users/page/id-b"
-        >
-          <span
-            className="u-underline"
-          >
-            Anonymous
-          </span>
-        </Link>
+        <MetaUserLink
+          local={
+            Object {
+              "user": Object {
+                "id": "id-b",
+                "name": "",
+              },
+            }
+          }
+        />
          accepted your friend request.
       </p>,
     }
@@ -41,132 +42,7 @@ exports[`FriendItem (confirmed, from) should match snapshot (default) 1`] = `
 />
 `;
 
-exports[`FriendItem (confirmed, from) should match snapshot (name) 1`] = `
-<MetaItem
-  local={
-    Object {
-      "buttons": Array [
-        Object {
-          "handler": [MockFunction],
-          "icon": "fas fa-times",
-        },
-      ],
-      "item": Object {
-        "confirmed": true,
-        "date": 0,
-        "from": Object {
-          "id": "id-a",
-          "name": "",
-        },
-        "hidden": Array [],
-        "id": "",
-        "to": Object {
-          "id": "id-b",
-          "name": "User B",
-        },
-      },
-      "notification": <p>
-        <Link
-          to="/users/page/id-b"
-        >
-          <span
-            className="u-underline"
-          >
-            User B
-          </span>
-        </Link>
-         accepted your friend request.
-      </p>,
-    }
-  }
-/>
-`;
-
-exports[`FriendItem (confirmed, to) should match snapshot (default) 1`] = `
-<MetaItem
-  local={
-    Object {
-      "buttons": Array [
-        Object {
-          "handler": [MockFunction],
-          "icon": "fas fa-times",
-        },
-      ],
-      "item": Object {
-        "confirmed": true,
-        "date": 0,
-        "from": Object {
-          "id": "id-a",
-          "name": "",
-        },
-        "hidden": Array [],
-        "id": "",
-        "to": Object {
-          "id": "id-b",
-          "name": "",
-        },
-      },
-      "notification": <p>
-        You accepted 
-        <Link
-          to="/users/page/id-a"
-        >
-          <span
-            className="u-underline"
-          >
-            Anonymous
-          </span>
-        </Link>
-        's friend request.
-      </p>,
-    }
-  }
-/>
-`;
-
-exports[`FriendItem (confirmed, to) should match snapshot (name) 1`] = `
-<MetaItem
-  local={
-    Object {
-      "buttons": Array [
-        Object {
-          "handler": [MockFunction],
-          "icon": "fas fa-times",
-        },
-      ],
-      "item": Object {
-        "confirmed": true,
-        "date": 0,
-        "from": Object {
-          "id": "id-a",
-          "name": "User A",
-        },
-        "hidden": Array [],
-        "id": "",
-        "to": Object {
-          "id": "id-b",
-          "name": "",
-        },
-      },
-      "notification": <p>
-        You accepted 
-        <Link
-          to="/users/page/id-a"
-        >
-          <span
-            className="u-underline"
-          >
-            User A
-          </span>
-        </Link>
-        's friend request.
-      </p>,
-    }
-  }
-/>
-`;
-
-exports[`FriendItem (unconfirmed, from) should match snapshot (default) 1`] = `
+exports[`FriendItem should match snapshot (from, unconfirmed) 1`] = `
 <MetaItem
   local={
     Object {
@@ -192,15 +68,16 @@ exports[`FriendItem (unconfirmed, from) should match snapshot (default) 1`] = `
       },
       "notification": <p>
         You sent 
-        <Link
-          to="/users/page/id-b"
-        >
-          <span
-            className="u-underline"
-          >
-            Anonymous
-          </span>
-        </Link>
+        <MetaUserLink
+          local={
+            Object {
+              "user": Object {
+                "id": "id-b",
+                "name": "",
+              },
+            }
+          }
+        />
          a friend request.
       </p>,
     }
@@ -208,18 +85,18 @@ exports[`FriendItem (unconfirmed, from) should match snapshot (default) 1`] = `
 />
 `;
 
-exports[`FriendItem (unconfirmed, from) should match snapshot (name) 1`] = `
+exports[`FriendItem should match snapshot (to, confirmed) 1`] = `
 <MetaItem
   local={
     Object {
       "buttons": Array [
         Object {
           "handler": [MockFunction],
-          "icon": "fas fa-ban",
+          "icon": "fas fa-times",
         },
       ],
       "item": Object {
-        "confirmed": false,
+        "confirmed": true,
         "date": 0,
         "from": Object {
           "id": "id-a",
@@ -229,28 +106,29 @@ exports[`FriendItem (unconfirmed, from) should match snapshot (name) 1`] = `
         "id": "",
         "to": Object {
           "id": "id-b",
-          "name": "User B",
+          "name": "",
         },
       },
       "notification": <p>
-        You sent 
-        <Link
-          to="/users/page/id-b"
-        >
-          <span
-            className="u-underline"
-          >
-            User B
-          </span>
-        </Link>
-         a friend request.
+        You accepted 
+        <MetaUserLink
+          local={
+            Object {
+              "user": Object {
+                "id": "id-a",
+                "name": "",
+              },
+            }
+          }
+        />
+        's friend request.
       </p>,
     }
   }
 />
 `;
 
-exports[`FriendItem (unconfirmed, to) should match snapshot (default) 1`] = `
+exports[`FriendItem should match snapshot (to, unconfirmed) 1`] = `
 <MetaItem
   local={
     Object {
@@ -279,60 +157,16 @@ exports[`FriendItem (unconfirmed, to) should match snapshot (default) 1`] = `
         },
       },
       "notification": <p>
-        <Link
-          to="/users/page/id-a"
-        >
-          <span
-            className="u-underline"
-          >
-            Anonymous
-          </span>
-        </Link>
-         sent you a friend request.
-      </p>,
-    }
-  }
-/>
-`;
-
-exports[`FriendItem (unconfirmed, to) should match snapshot (name) 1`] = `
-<MetaItem
-  local={
-    Object {
-      "buttons": Array [
-        Object {
-          "handler": [MockFunction],
-          "icon": "fas fa-check",
-        },
-        Object {
-          "handler": [MockFunction],
-          "icon": "fas fa-ban",
-        },
-      ],
-      "item": Object {
-        "confirmed": false,
-        "date": 0,
-        "from": Object {
-          "id": "id-a",
-          "name": "User A",
-        },
-        "hidden": Array [],
-        "id": "",
-        "to": Object {
-          "id": "id-b",
-          "name": "",
-        },
-      },
-      "notification": <p>
-        <Link
-          to="/users/page/id-a"
-        >
-          <span
-            className="u-underline"
-          >
-            User A
-          </span>
-        </Link>
+        <MetaUserLink
+          local={
+            Object {
+              "user": Object {
+                "id": "id-a",
+                "name": "",
+              },
+            }
+          }
+        />
          sent you a friend request.
       </p>,
     }

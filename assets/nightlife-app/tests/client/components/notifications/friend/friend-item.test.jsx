@@ -9,18 +9,12 @@ const { testWrapper } = require("../../../test-helpers");
 
 //global imports
 
-const { initTestSnapshot, withDataList } = require("redux/tests/client-tests");
+const { initTestSnapshot } = require("redux/tests/client-tests");
 const { reactTests } = require("redux/tests/react-tests");
 
 //utilities
 
 const { testShallow } = testWrapper(FriendItem);
-
-const getFriend = (confirmed = false) => newFriend({
-  from: { id: "id-a" },
-  to: { id: "id-b" },
-  confirmed
-});
 
 //setup
 
@@ -29,50 +23,34 @@ beforeEach(reactTests.inject(FriendItem));
 
 //friend item
 
-describe("FriendItem (confirmed, from)", () => {
+describe("FriendItem", () => {
 
-  const dataList = [{ user: newUserWithData({ id: "id-a" }) }, { friend: getFriend(true) }];
+  const testSnapshot = initTestSnapshot(testShallow);
 
-  const testSnapshot = withDataList(initTestSnapshot(testShallow), dataList);
+  const getFriend = (confirmed = false) => newFriend({
+    from: { id: "id-a" },
+    to: { id: "id-b" },
+    confirmed
+  });
 
-  it("should match snapshot (default)", () => testSnapshot());
+  it("should match snapshot (from, confirmed)", () => {
 
-  it("should match snapshot (name)", () => testSnapshot(null, { friend: { to: { name: "User B" } } }));
+    const dataList = [{ user: newUserWithData({ id: "id-a" }) }, { friend: getFriend(true) }];
 
-});
+    testSnapshot(...dataList);
 
-describe("FriendItem (confirmed, to)", () => {
+  });
 
-  const dataList = [null, { friend: getFriend(true) }];
+  it("should match snapshot (from, unconfirmed)", () => {
 
-  const testSnapshot = withDataList(initTestSnapshot(testShallow), dataList);
+    const dataList = [{ user: newUserWithData({ id: "id-a" }) }, { friend: getFriend() }];
 
-  it("should match snapshot (default)", () => testSnapshot());
+    testSnapshot(...dataList);
 
-  it("should match snapshot (name)", () => testSnapshot(null, { friend: { from: { name: "User A" } } }));
+  });
 
-});
+  it("should match snapshot (to, confirmed)", () => testSnapshot(null, { friend: getFriend(true) }));
 
-describe("FriendItem (unconfirmed, from)", () => {
-
-  const dataList = [{ user: newUserWithData({ id: "id-a" }) }, { friend: getFriend() }];
-
-  const testSnapshot = withDataList(initTestSnapshot(testShallow), dataList);
-
-  it("should match snapshot (default)", () => testSnapshot());
-
-  it("should match snapshot (name)", () => testSnapshot(null, { friend: { to: { name: "User B" } } }));
-
-});
-
-describe("FriendItem (unconfirmed, to)", () => {
-
-  const dataList = [null, { friend: getFriend() }];
-
-  const testSnapshot = withDataList(initTestSnapshot(testShallow), dataList);
-
-  it("should match snapshot (default)", () => testSnapshot());
-
-  it("should match snapshot (name)", () => testSnapshot(null, { friend: { from: { name: "User A" } } }));
+  it("should match snapshot (to, unconfirmed)", () => testSnapshot(null, { friend: getFriend() }));
 
 });

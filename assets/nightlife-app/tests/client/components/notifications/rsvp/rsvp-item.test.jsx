@@ -16,12 +16,6 @@ const { reactTests } = require("redux/tests/react-tests");
 
 const { testShallow } = testWrapper(RSVPItem);
 
-const getRSVP = () => newRSVP({
-  user: { id: "id-a" },
-  venue: { id: "id-b" },
-  time: "9:00 PM"
-});
-
 //setup
 
 beforeAll(reactTests.setup);
@@ -29,32 +23,25 @@ beforeEach(reactTests.inject(RSVPItem));
 
 //rsvp item
 
-describe("RSVPItem (self)", () => {
+describe("RSVPItem", () => {
 
-  const dataList = [{ user: newUserWithData({ id: "id-a" }) }, { rsvp: getRSVP() }];
+  const testSnapshot = initTestSnapshot(testShallow);
 
-  const testSnapshot = withDataList(initTestSnapshot(testShallow), dataList);
+  const getRSVP = () => newRSVP({
+    user: { id: "id-a" },
+    venue: { id: "id-b" },
+    time: "9:00 PM"
+  });
 
-  it("should match snapshot (default)", () => testSnapshot());
+  const testSelf = withDataList(testSnapshot, [{ user: newUserWithData({ id: "id-a" }) }, { rsvp: getRSVP() }]);
+  const testUser = withDataList(testSnapshot, [null, { rsvp: getRSVP() }]);
 
-  it("should match snapshot (name)", () => testSnapshot(null, { rsvp: { venue: { name: "Venue B" } } }));
+  it("should match snapshot (self, default)", () => testSelf());
 
-  it("should match snapshot (message)", () => testSnapshot(null, { rsvp: { message: "Message" } }));
+  it("should match snapshot (self, message)", () => testSelf(null, { rsvp: { message: "Message" } }));
 
-});
+  it("should match snapshot (user, default)", () => testUser());
 
-describe("RSVPItem (user)", () => {
-
-  const dataList = [null, { rsvp: getRSVP() }];
-
-  const testSnapshot = withDataList(initTestSnapshot(testShallow), dataList);
-
-  it("should match snapshot (default)", () => testSnapshot());
-
-  it("should match snapshot (name, user)", () => testSnapshot(null, { rsvp: { user: { name: "User A" } } }));
-
-  it("should match snapshot (name, venue)", () => testSnapshot(null, { rsvp: { venue: { name: "Venue B" } } }));
-
-  it("should match snapshot (message)", () => testSnapshot(null, { rsvp: { message: "Message" } }));
+  it("should match snapshot (user, message)", () => testUser(null, { rsvp: { message: "Message" } }));
 
 });

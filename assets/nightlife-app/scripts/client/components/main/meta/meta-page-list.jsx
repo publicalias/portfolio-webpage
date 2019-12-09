@@ -20,14 +20,10 @@ const MetaPageList = (props) => {
 
   //utilities
 
-  const mapFn = ((data) => data[type])({
-    user({ user: { name, id } }) {
-      return [name || "Anonymous", id, `/users/page/${id}`];
-    },
-    venue({ venue: { name, id } }) {
-      return [name || "Undefined", id, `/venues/page/${id}`];
-    }
-  });
+  const mapUser = ({ user: { name, id } }) => [name || "Anonymous", id, `/users/page/${id}`];
+  const mapVenue = ({ venue: { name, id } }) => [name || "Undefined", id, `/venues/page/${id}`];
+
+  const mapFn = type === "user" ? mapUser : mapVenue;
 
   //render
 

@@ -3,12 +3,12 @@
 //local imports
 
 const MetaItem = require("../meta/meta-item");
+const MetaUserLink = require("../meta/meta-user-link");
+const MetaVenueLink = require("../meta/meta-venue-link");
 
 //node modules
 
 const React = require("react");
-
-const { Link } = require("react-router-dom");
 
 //rsvp item
 
@@ -16,27 +16,14 @@ const RSVPItem = (props) => {
 
   const { actions: { rsvpDismiss, rsvpRemove }, data: { user }, local: { rsvp } } = props;
 
-  const { jsx: { Link, MetaItem } } = RSVPItem.injected;
+  const { jsx: { MetaItem, MetaUserLink, MetaVenueLink } } = RSVPItem.injected;
 
   //utilities
 
   const type = user.id === rsvp.user.id ? "self" : "user";
 
-  const userLink = (
-    <Link to={`/users/page/${rsvp.user.id}`}>
-      <span className="u-underline">
-        {rsvp.user.name || "Anonymous"}
-      </span>
-    </Link>
-  );
-
-  const venueLink = (
-    <Link to={`/venues/page/${rsvp.venue.id}`}>
-      <span className="u-underline">
-        {rsvp.venue.name || "Undefined"}
-      </span>
-    </Link>
-  );
+  const userLink = <MetaUserLink local={{ user: rsvp.user }} />;
+  const venueLink = <MetaVenueLink local={{ venue: rsvp.venue }} />;
 
   const { buttons, notification } = ((data) => data[type])({
     self: {
@@ -78,8 +65,9 @@ RSVPItem.propList = ["data.user", "local"];
 
 RSVPItem.injected = {
   jsx: {
-    Link,
-    MetaItem
+    MetaItem,
+    MetaUserLink,
+    MetaVenueLink
   }
 };
 

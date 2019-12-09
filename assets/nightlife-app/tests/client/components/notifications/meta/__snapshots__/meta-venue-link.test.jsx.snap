@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MetaVenueLink should match snapshot (default) 1`] = `
+<Link
+  to="/venues/page/id-a"
+>
+  <span
+    className="u-underline"
+  >
+    Undefined
+  </span>
+</Link>
+`;
+
+exports[`MetaVenueLink should match snapshot (name) 1`] = `
+<Link
+  to="/venues/page/id-a"
+>
+  <span
+    className="u-underline"
+  >
+    Venue A
+  </span>
+</Link>
+`;

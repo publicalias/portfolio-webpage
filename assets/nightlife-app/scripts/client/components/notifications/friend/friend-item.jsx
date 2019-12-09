@@ -3,12 +3,11 @@
 //local imports
 
 const MetaItem = require("../meta/meta-item");
+const MetaUserLink = require("../meta/meta-user-link");
 
 //node modules
 
 const React = require("react");
-
-const { Link } = require("react-router-dom");
 
 //friend item
 
@@ -20,20 +19,14 @@ const FriendItem = (props) => {
     local: { friend }
   } = props;
 
-  const { jsx: { Link, MetaItem } } = FriendItem.injected;
+  const { jsx: { MetaItem, MetaUserLink } } = FriendItem.injected;
 
   //utilities
 
   const type = user.id === friend.from.id ? "from" : "to";
   const status = friend.confirmed ? "confirmed" : "unconfirmed";
 
-  const userLink = ((user = type === "from" ? friend.to : friend.from) => (
-    <Link to={`/users/page/${user.id}`}>
-      <span className="u-underline">
-        {user.name || "Anonymous"}
-      </span>
-    </Link>
-  ))();
+  const userLink = <MetaUserLink local={{ user: type === "from" ? friend.to : friend.from }} />;
 
   const confirm = {
     handler: friendConfirm,
@@ -91,8 +84,8 @@ FriendItem.propList = ["data.user", "local"];
 
 FriendItem.injected = {
   jsx: {
-    Link,
-    MetaItem
+    MetaItem,
+    MetaUserLink
   }
 };
 

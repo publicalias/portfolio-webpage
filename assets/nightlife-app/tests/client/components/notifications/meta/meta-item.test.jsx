@@ -23,7 +23,7 @@ const { testShallow } = testWrapper(MetaItem);
 //setup
 
 beforeAll(reactTests.setup);
-beforeEach(reactTests.inject(MetaItem));
+beforeEach(reactTests.inject(MetaItem, { lib: { readDate: jest.fn(() => "31 December 1969") } }));
 
 //meta item
 

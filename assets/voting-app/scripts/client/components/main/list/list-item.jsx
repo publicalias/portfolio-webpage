@@ -22,7 +22,7 @@ const ListItem = (props) => {
 
   const { data: { user }, local: { poll } } = props;
 
-  const { jsx: { Link, PollToggle }, lib: { getVotes } } = ListItem.injected;
+  const { jsx: { Link, PollToggle }, lib: { getVotes, readDate } } = ListItem.injected;
 
   //render
 
@@ -68,7 +68,10 @@ ListItem.injected = {
     Link,
     PollToggle
   },
-  lib: { getVotes }
+  lib: {
+    getVotes,
+    readDate
+  }
 };
 
 //exports

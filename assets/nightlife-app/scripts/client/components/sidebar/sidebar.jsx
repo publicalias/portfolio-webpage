@@ -16,7 +16,9 @@ const React = require("react");
 
 const Sidebar = (props) => {
 
-  const { actions: { metaToggleSettings }, data: { user, account } } = props;
+  const { actions, data: { user, account } } = props;
+
+  const { metaToggleSettings } = actions;
 
   const { jsx: { AuthButtons, SidebarInput } } = Sidebar.injected;
 
@@ -30,6 +32,16 @@ const Sidebar = (props) => {
 
   const auth = user.type === "auth";
 
+  const inputProps = (type, prop = type.toLowerCase()) => ({
+    actions: {
+      change: actions[`metaSet${type}`],
+      submit: actions[`metaSave${type}`]
+    },
+    bool: user.data[prop],
+    placeholder: type,
+    text: account[prop]
+  });
+
   return (
     <div className="c-sidebar">
       <h4 className="u-align-left">{`Hi, ${user.name || "Anonymous"}!`}</h4>
@@ -41,8 +53,8 @@ const Sidebar = (props) => {
             {account.settings && (
               <React.Fragment>
                 <p className="u-margin-none">Tip: Set your address to "DEMO" to interact with the demo users.</p>
-                <SidebarInput {...props} local={{ type: "address" }} />
-                <SidebarInput {...props} local={{ type: "avatar" }} />
+                <SidebarInput local={inputProps("Address")} />
+                <SidebarInput local={inputProps("Avatar")} />
               </React.Fragment>
             )}
           </React.Fragment>

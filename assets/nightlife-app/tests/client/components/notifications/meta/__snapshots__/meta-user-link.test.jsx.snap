@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MetaUserLink should match snapshot (default) 1`] = `
+<Link
+  to="/users/page/id-a"
+>
+  <span
+    className="u-underline"
+  >
+    Anonymous
+  </span>
+</Link>
+`;
+
+exports[`MetaUserLink should match snapshot (name) 1`] = `
+<Link
+  to="/users/page/id-a"
+>
+  <span
+    className="u-underline"
+  >
+    User A
+  </span>
+</Link>
+`;

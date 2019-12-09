@@ -20,7 +20,12 @@ const { testShallow } = testWrapper(ListItem);
 //setup
 
 beforeAll(reactTests.setup);
-beforeEach(reactTests.inject(ListItem, { lib: { getVotes: jest.fn(() => "0 Votes") } }));
+beforeEach(reactTests.inject(ListItem, {
+  lib: {
+    getVotes: jest.fn(() => "0 Votes"),
+    readDate: jest.fn(() => "31 December 1969")
+  }
+}));
 
 //list item
 

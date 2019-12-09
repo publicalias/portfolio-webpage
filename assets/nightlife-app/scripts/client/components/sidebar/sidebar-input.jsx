@@ -4,10 +4,6 @@
 
 const { getLocation } = require("../../app-logic");
 
-//global imports
-
-const { capitalize } = require("all/utilities");
-
 //node modules
 
 const React = require("react");
@@ -16,23 +12,9 @@ const React = require("react");
 
 const SidebarInput = (props) => {
 
-  const { actions, data: { user, account }, local: { type } } = props;
+  const { local: { actions: { change, submit }, bool, placeholder, text } } = props;
 
   const { lib: { getLocation } } = SidebarInput.injected;
-
-  //utilities
-
-  const label = capitalize(type);
-
-  const { actions: { change, submit }, bool, placeholder, text } = {
-    actions: {
-      change: actions[`metaSet${label}`],
-      submit: actions[`metaSave${label}`]
-    },
-    bool: user.data[type],
-    placeholder: label,
-    text: account[type]
-  };
 
   //events
 
@@ -70,7 +52,7 @@ const SidebarInput = (props) => {
 
 };
 
-SidebarInput.propList = ["data.user", "data.account", "local"];
+SidebarInput.propList = ["local"];
 
 SidebarInput.injected = { lib: { getLocation } };
 

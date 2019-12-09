@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SidebarInput (address) should match snapshot (bool) 1`] = `
+exports[`SidebarInput should match snapshot (bool) 1`] = `
 <div
   className="c-sidebar__input-box"
 >
@@ -8,7 +8,7 @@ exports[`SidebarInput (address) should match snapshot (bool) 1`] = `
     className="c-sidebar__input qa-change-input"
     maxLength="1000"
     onChange={[Function]}
-    placeholder="Address"
+    placeholder="Meta"
     value=""
   />
   <button
@@ -20,7 +20,7 @@ exports[`SidebarInput (address) should match snapshot (bool) 1`] = `
 </div>
 `;
 
-exports[`SidebarInput (address) should match snapshot (bool, text) 1`] = `
+exports[`SidebarInput should match snapshot (bool, text) 1`] = `
 <div
   className="c-sidebar__input-box"
 >
@@ -28,8 +28,8 @@ exports[`SidebarInput (address) should match snapshot (bool, text) 1`] = `
     className="c-sidebar__input qa-change-input"
     maxLength="1000"
     onChange={[Function]}
-    placeholder="Address"
-    value="12345"
+    placeholder="Meta"
+    value="Text"
   />
   <button
     className="c-sidebar__submit qa-submit-input"
@@ -40,7 +40,7 @@ exports[`SidebarInput (address) should match snapshot (bool, text) 1`] = `
 </div>
 `;
 
-exports[`SidebarInput (address) should match snapshot (default) 1`] = `
+exports[`SidebarInput should match snapshot (default) 1`] = `
 <div
   className="c-sidebar__input-box"
 >
@@ -48,67 +48,7 @@ exports[`SidebarInput (address) should match snapshot (default) 1`] = `
     className="c-sidebar__input qa-change-input"
     maxLength="1000"
     onChange={[Function]}
-    placeholder="Address"
-    value=""
-  />
-  <button
-    className="c-sidebar__submit qa-submit-input"
-    onClick={[Function]}
-  >
-    Set
-  </button>
-</div>
-`;
-
-exports[`SidebarInput (avatar) should match snapshot (bool) 1`] = `
-<div
-  className="c-sidebar__input-box"
->
-  <input
-    className="c-sidebar__input qa-change-input"
-    maxLength="1000"
-    onChange={[Function]}
-    placeholder="Avatar"
-    value=""
-  />
-  <button
-    className="c-sidebar__submit qa-submit-input"
-    onClick={[Function]}
-  >
-    Reset
-  </button>
-</div>
-`;
-
-exports[`SidebarInput (avatar) should match snapshot (bool, text) 1`] = `
-<div
-  className="c-sidebar__input-box"
->
-  <input
-    className="c-sidebar__input qa-change-input"
-    maxLength="1000"
-    onChange={[Function]}
-    placeholder="Avatar"
-    value="https://www.example.com/avatar.jpg"
-  />
-  <button
-    className="c-sidebar__submit qa-submit-input"
-    onClick={[Function]}
-  >
-    Set
-  </button>
-</div>
-`;
-
-exports[`SidebarInput (avatar) should match snapshot (default) 1`] = `
-<div
-  className="c-sidebar__input-box"
->
-  <input
-    className="c-sidebar__input qa-change-input"
-    maxLength="1000"
-    onChange={[Function]}
-    placeholder="Avatar"
+    placeholder="Meta"
     value=""
   />
   <button
