@@ -1,0 +1,125 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ViewOptions (general) should match snapshot (can add) 1`] = `
+<div
+  className="c-meta-poll-options"
+>
+  <MetaPollInput
+    local={
+      Object {
+        "handleChange": [Function],
+        "handleSubmit": [Function],
+        "value": "",
+      }
+    }
+  />
+</div>
+`;
+
+exports[`ViewOptions (general) should match snapshot (default) 1`] = `""`;
+
+exports[`ViewOptions (general) should match snapshot (has options) 1`] = `
+<div
+  className="c-meta-poll-options"
+>
+  <div
+    className="u-margin-half--negative"
+  />
+</div>
+`;
+
+exports[`ViewOptions (options) should match snapshot (created, option) 1`] = `
+<div
+  className="c-meta-poll-options"
+>
+  <div
+    className="u-margin-half--negative"
+  >
+    <MetaPollOption
+      key="0-730"
+      local={
+        Object {
+          "created": true,
+          "fill": "black",
+          "handleRemove": [Function],
+          "handleVote": [Function],
+          "text": "Option A",
+          "voted": false,
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`ViewOptions (options) should match snapshot (created, poll) 1`] = `
+<div
+  className="c-meta-poll-options"
+>
+  <div
+    className="u-margin-half--negative"
+  >
+    <MetaPollOption
+      key="0-730"
+      local={
+        Object {
+          "created": true,
+          "fill": "black",
+          "handleRemove": [Function],
+          "handleVote": [Function],
+          "text": "Option A",
+          "voted": false,
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`ViewOptions (options) should match snapshot (default) 1`] = `
+<div
+  className="c-meta-poll-options"
+>
+  <div
+    className="u-margin-half--negative"
+  >
+    <MetaPollOption
+      key="0-730"
+      local={
+        Object {
+          "created": false,
+          "fill": "black",
+          "handleRemove": [Function],
+          "handleVote": [Function],
+          "text": "Option A",
+          "voted": false,
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`ViewOptions (options) should match snapshot (voted) 1`] = `
+<div
+  className="c-meta-poll-options"
+>
+  <div
+    className="u-margin-half--negative"
+  >
+    <MetaPollOption
+      key="0-730"
+      local={
+        Object {
+          "created": false,
+          "fill": "black",
+          "handleRemove": [Function],
+          "handleVote": [Function],
+          "text": "Option A",
+          "voted": true,
+        }
+      }
+    />
+  </div>
+</div>
+`;

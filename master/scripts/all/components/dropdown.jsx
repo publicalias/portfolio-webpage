@@ -12,7 +12,7 @@ const React = require("react");
 
 const Dropdown = (props) => {
 
-  const { local: { handleToggle, list, name, open, util } } = props;
+  const { local: { handleToggle, list, name, open, util = "" } } = props;
 
   //render
 

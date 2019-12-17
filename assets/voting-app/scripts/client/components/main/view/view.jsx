@@ -2,8 +2,9 @@
 
 //local imports
 
-const Poll = require("../poll/poll");
 const ViewMenu = require("./view-menu");
+const ViewOptions = require("./view-options");
+const ViewPoll = require("./view-poll");
 
 const { newPoll } = require("../../../../../schemas");
 
@@ -23,11 +24,11 @@ const View = (props) => {
 
   const {
     actions: { metaGetPollItem, viewClearState },
-    data: { loading, log, polls },
+    data: { user, loading, log, polls },
     local: { id }
   } = props;
 
-  const { jsx: { Poll, ViewMenu }, lib: { useRefresh } } = View.injected;
+  const { jsx: { ViewMenu, ViewOptions, ViewPoll }, lib: { useRefresh } } = View.injected;
 
   //lifecycle
 
@@ -53,25 +54,30 @@ const View = (props) => {
   const poll = polls.find((e) => e.id === id) || newPoll();
 
   const local = {
-    poll,
-    role: "view"
+    bool: {
+      canAdd: user.type === "auth" && Boolean(polls.find((e) => e.id === poll.id)),
+      hasOptions: poll.options.length > 0
+    },
+    poll
   };
 
   return (
     <React.Fragment>
       <ViewMenu {...props} local={{ poll }} />
-      <Poll {...props} local={local} />
+      <ViewPoll local={local} />
+      <ViewOptions {...props} local={local} />
     </React.Fragment>
   );
 
 };
 
-View.propList = ["data.loading", "data.log", "data.polls", "local"];
+View.propList = ["data.user", "data.loading", "data.log", "data.polls", "local"];
 
 View.injected = {
   jsx: {
-    Poll,
-    ViewMenu
+    ViewMenu,
+    ViewOptions,
+    ViewPoll
   },
   lib: { useRefresh }
 };

@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MetaPollInput should match snapshot 1`] = `
+<div
+  className="c-meta-poll-options__input-box"
+>
+  <input
+    className="c-meta-poll-options__input qa-change-input u-margin-right"
+    maxLength="100"
+    onChange={[MockFunction]}
+    placeholder="New Option (Up to 20)"
+    value=""
+  />
+  <button
+    className="c-meta-poll-options__submit qa-submit-input"
+    onClick={[MockFunction]}
+  >
+    Add
+  </button>
+</div>
+`;

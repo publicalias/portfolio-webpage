@@ -33,7 +33,7 @@ exports[`UserBody should match snapshot (list) 1`] = `
   }
 >
   <UserItem
-    key="0-0"
+    key="0-000"
     local={
       Object {
         "userData": Object {

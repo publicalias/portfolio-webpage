@@ -4,11 +4,11 @@
 
 const React = require("react");
 
-//poll toggle
+//meta poll toggle
 
-const PollToggle = (props) => {
+const MetaPollToggle = (props) => {
 
-  const { actions: { pollToggleFlag, pollToggleHide }, data: { user }, local: { poll, role, util } } = props;
+  const { actions: { pollToggleFlag, pollToggleHide }, data: { user }, local: { poll, role, util = "" } } = props;
 
   //utilities
 
@@ -33,7 +33,7 @@ const PollToggle = (props) => {
 
   return (
     <button
-      className={`c-icon-button qa-toggle-${role} ${util || ""}`}
+      className={`c-icon-button qa-toggle-${role} ${util}`}
       onClick={handleClick}
     >
       <i className={icon} />
@@ -42,8 +42,8 @@ const PollToggle = (props) => {
 
 };
 
-PollToggle.propList = ["data.user", "local"];
+MetaPollToggle.propList = ["data.user", "local"];
 
 //exports
 
-module.exports = PollToggle;
+module.exports = MetaPollToggle;

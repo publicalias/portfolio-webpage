@@ -8,6 +8,8 @@ const SidebarInput = require("./sidebar-input");
 
 const AuthButtons = require("redux/components/auth-buttons");
 
+const { capitalize } = require("all/utilities");
+
 //node modules
 
 const React = require("react");
@@ -32,7 +34,7 @@ const Sidebar = (props) => {
 
   const auth = user.type === "auth";
 
-  const inputProps = (type, prop = type.toLowerCase()) => ({
+  const inputProps = (prop, type = capitalize(prop)) => ({
     actions: {
       change: actions[`metaSet${type}`],
       submit: actions[`metaSave${type}`]
@@ -53,8 +55,8 @@ const Sidebar = (props) => {
             {account.settings && (
               <React.Fragment>
                 <p className="u-margin-none">Tip: Set your address to "DEMO" to interact with the demo users.</p>
-                <SidebarInput local={inputProps("Address")} />
-                <SidebarInput local={inputProps("Avatar")} />
+                <SidebarInput local={inputProps("address")} />
+                <SidebarInput local={inputProps("avatar")} />
               </React.Fragment>
             )}
           </React.Fragment>

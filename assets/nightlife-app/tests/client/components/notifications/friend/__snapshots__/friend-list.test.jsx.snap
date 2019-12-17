@@ -518,7 +518,7 @@ exports[`FriendList should match snapshot (list) 1`] = `
         "push": [MockFunction],
       }
     }
-    key="0-0"
+    key="0-000"
     local={
       Object {
         "friend": Object {

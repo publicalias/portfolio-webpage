@@ -2,7 +2,7 @@
 
 //local imports
 
-const PollToggle = require("../poll/poll-toggle");
+const MetaPollToggle = require("../meta/meta-poll-toggle");
 
 const { getVotes } = require("../../../view-logic");
 
@@ -22,7 +22,7 @@ const ListItem = (props) => {
 
   const { data: { user }, local: { poll } } = props;
 
-  const { jsx: { Link, PollToggle }, lib: { getVotes, readDate } } = ListItem.injected;
+  const { jsx: { Link, MetaPollToggle }, lib: { getVotes, readDate } } = ListItem.injected;
 
   //render
 
@@ -32,7 +32,7 @@ const ListItem = (props) => {
 
   return (
     <div className="c-list-item">
-      <PollToggle
+      <MetaPollToggle
         {...props}
         local={{
           poll,
@@ -41,7 +41,7 @@ const ListItem = (props) => {
         }}
       />
       {auth && (
-        <PollToggle
+        <MetaPollToggle
           {...props}
           local={{
             poll,
@@ -66,7 +66,7 @@ ListItem.propList = ["data.user", "local"];
 ListItem.injected = {
   jsx: {
     Link,
-    PollToggle
+    MetaPollToggle
   },
   lib: {
     getVotes,

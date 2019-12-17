@@ -51,7 +51,7 @@ exports[`VenueBody should match snapshot (list) 1`] = `
   }
 >
   <VenueItem
-    key="0-0"
+    key="0-000"
     local={
       Object {
         "venue": Object {

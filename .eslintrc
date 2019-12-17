@@ -89,6 +89,7 @@
     "max-nested-callbacks": [1, 2],
     "max-params": [1, 5],
     "max-statements": 1,
+    "no-case-declarations": 1,
     "no-console": 1,
     "no-empty-function": 1,
     "object-curly-newline": 1, //js-beautify conflict

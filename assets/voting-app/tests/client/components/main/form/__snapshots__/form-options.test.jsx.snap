@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormOptions should match snapshot (add) 1`] = `
+<div
+  className="c-meta-poll-options"
+>
+  <MetaPollInput
+    local={
+      Object {
+        "handleChange": [Function],
+        "handleSubmit": [Function],
+        "value": "Option A",
+      }
+    }
+  />
+</div>
+`;
+
+exports[`FormOptions should match snapshot (default) 1`] = `
+<div
+  className="c-meta-poll-options"
+>
+  <MetaPollInput
+    local={
+      Object {
+        "handleChange": [Function],
+        "handleSubmit": [Function],
+        "value": "",
+      }
+    }
+  />
+</div>
+`;
+
+exports[`FormOptions should match snapshot (options) 1`] = `
+<div
+  className="c-meta-poll-options"
+>
+  <div
+    className="u-margin-half"
+  >
+    <MetaPollOption
+      key="0-730"
+      local={
+        Object {
+          "created": true,
+          "fill": "black",
+          "handleRemove": [Function],
+          "handleVote": [Function],
+          "text": "Option A",
+          "voted": false,
+        }
+      }
+    />
+  </div>
+  <MetaPollInput
+    local={
+      Object {
+        "handleChange": [Function],
+        "handleSubmit": [Function],
+        "value": "",
+      }
+    }
+  />
+</div>
+`;

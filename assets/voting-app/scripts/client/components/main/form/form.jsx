@@ -3,7 +3,8 @@
 //local imports
 
 const FormMenu = require("./form-menu");
-const Poll = require("../poll/poll");
+const FormOptions = require("./form-options");
+const FormPoll = require("./form-poll");
 
 //node modules
 
@@ -15,9 +16,9 @@ const { useLayoutEffect } = React;
 
 const Form = (props) => {
 
-  const { actions: { formClearState }, data: { form } } = props;
+  const { actions: { formClearState } } = props;
 
-  const { jsx: { FormMenu, Poll } } = Form.injected;
+  const { jsx: { FormMenu, FormOptions, FormPoll } } = Form.injected;
 
   //lifecycle
 
@@ -25,26 +26,23 @@ const Form = (props) => {
 
   //render
 
-  const local = {
-    poll: form,
-    role: "form"
-  };
-
   return (
     <React.Fragment>
       <FormMenu {...props} />
-      <Poll {...props} local={local} />
+      <FormPoll {...props} />
+      <FormOptions {...props} />
     </React.Fragment>
   );
 
 };
 
-Form.propList = ["data.form"];
+Form.propList = [];
 
 Form.injected = {
   jsx: {
     FormMenu,
-    Poll
+    FormOptions,
+    FormPoll
   }
 };
 

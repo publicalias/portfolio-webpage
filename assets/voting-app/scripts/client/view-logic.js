@@ -141,7 +141,7 @@ const renderChart = (counts, labels) => {
 
   if (empty) {
     chart.append("text")
-      .attr("class", "c-poll-display__empty")
+      .attr("class", "c-meta-poll-display__empty")
       .text(counts.length ? "No Votes" : "No Options");
   }
 

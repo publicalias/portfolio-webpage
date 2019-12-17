@@ -2,7 +2,7 @@
 
 //local imports
 
-const PollToggle = require("../poll/poll-toggle");
+const MetaPollToggle = require("../meta/meta-poll-toggle");
 
 //node modules
 
@@ -14,7 +14,7 @@ const ViewControls = (props) => {
 
   const { data: { user }, local: { poll } } = props;
 
-  const { jsx: { PollToggle } } = ViewControls.injected;
+  const { jsx: { MetaPollToggle } } = ViewControls.injected;
 
   //events
 
@@ -30,7 +30,7 @@ const ViewControls = (props) => {
     <div className="c-view-menu__display-box u-flex-right">
       <button className="c-view-menu__button qa-click-share" onClick={handleShare}>Share</button>
       <div className="c-view-menu__button">
-        <PollToggle
+        <MetaPollToggle
           {...props}
           local={{
             poll,
@@ -40,7 +40,7 @@ const ViewControls = (props) => {
       </div>
       {auth && (
         <div className="c-view-menu__button">
-          <PollToggle
+          <MetaPollToggle
             {...props}
             local={{
               poll,
@@ -56,7 +56,7 @@ const ViewControls = (props) => {
 
 ViewControls.propList = ["data.user", "local"];
 
-ViewControls.injected = { jsx: { PollToggle } };
+ViewControls.injected = { jsx: { MetaPollToggle } };
 
 //exports
 

@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormPoll should match snapshot (default) 1`] = `
+<div
+  className="c-meta-poll-display"
+>
+  <div
+    className="u-align-center"
+  >
+    <input
+      className="c-meta-poll-display__input qa-ref-title u-margin-half"
+      maxLength="100"
+      onBlur={[Function]}
+      onChange={[Function]}
+      placeholder="Untitled"
+      value=""
+    />
+    <h4>
+      By Anonymous
+    </h4>
+  </div>
+  <hr />
+  <MetaPollDisplay
+    local={
+      Object {
+        "counts": Array [],
+        "labels": Array [],
+      }
+    }
+  />
+</div>
+`;
+
+exports[`FormPoll should match snapshot (name) 1`] = `
+<div
+  className="c-meta-poll-display"
+>
+  <div
+    className="u-align-center"
+  >
+    <input
+      className="c-meta-poll-display__input qa-ref-title u-margin-half"
+      maxLength="100"
+      onBlur={[Function]}
+      onChange={[Function]}
+      placeholder="Untitled"
+      value=""
+    />
+    <h4>
+      By User A
+    </h4>
+  </div>
+  <hr />
+  <MetaPollDisplay
+    local={
+      Object {
+        "counts": Array [],
+        "labels": Array [],
+      }
+    }
+  />
+</div>
+`;
+
+exports[`FormPoll should match snapshot (options) 1`] = `
+<div
+  className="c-meta-poll-display"
+>
+  <div
+    className="u-align-center"
+  >
+    <input
+      className="c-meta-poll-display__input qa-ref-title u-margin-half"
+      maxLength="100"
+      onBlur={[Function]}
+      onChange={[Function]}
+      placeholder="Untitled"
+      value=""
+    />
+    <h4>
+      By Anonymous
+    </h4>
+  </div>
+  <hr />
+  <MetaPollDisplay
+    local={
+      Object {
+        "counts": Array [
+          0,
+        ],
+        "labels": Array [
+          "Option A",
+        ],
+      }
+    }
+  />
+</div>
+`;

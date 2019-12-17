@@ -2,7 +2,7 @@
 
 //global imports
 
-const { get } = require("all/utilities");
+const { get, hash } = require("all/utilities");
 
 //node modules
 
@@ -51,13 +51,7 @@ const initKeyGen = () => {
 
   };
 
-  return (str) => {
-
-    const sum = str.split("").reduce((acc, e) => acc + e.codePointAt(), 0);
-
-    return checkKey(sum);
-
-  };
+  return (str) => checkKey(hash(str));
 
 };
 

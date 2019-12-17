@@ -158,12 +158,12 @@ exports[`VenueData should match snapshot (address) 1`] = `
   >
     <div>
       <p
-        key="0-1215"
+        key="0-215"
       >
         Address Line 1
       </p>
       <p
-        key="0-1216"
+        key="0-216"
       >
         Address Line 2
       </p>

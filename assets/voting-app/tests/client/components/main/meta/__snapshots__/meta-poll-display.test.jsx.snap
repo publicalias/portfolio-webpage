@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MetaPollDisplay should match snapshot 1`] = `
+<Fragment>
+  <svg
+    className="c-meta-poll-display__chart js-render-chart"
+    viewBox="0 0 450 450"
+  />
+  <div
+    className="c-meta-poll-display__tooltip js-toggle-tooltip"
+  >
+    <h5
+      className="js-edit-label"
+    />
+    <p
+      className="js-edit-count u-margin-none"
+    />
+  </div>
+</Fragment>
+`;

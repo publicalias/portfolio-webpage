@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PollToggle (flag) should match snapshot (default) 1`] = `
+exports[`MetaPollToggle (flag) should match snapshot (default) 1`] = `
 <button
   className="c-icon-button qa-toggle-flag "
   onClick={[Function]}
@@ -11,7 +11,7 @@ exports[`PollToggle (flag) should match snapshot (default) 1`] = `
 </button>
 `;
 
-exports[`PollToggle (flag) should match snapshot (toggled) 1`] = `
+exports[`MetaPollToggle (flag) should match snapshot (toggled 1`] = `
 <button
   className="c-icon-button qa-toggle-flag "
   onClick={[Function]}
@@ -22,9 +22,9 @@ exports[`PollToggle (flag) should match snapshot (toggled) 1`] = `
 </button>
 `;
 
-exports[`PollToggle (flag) should match snapshot (util) 1`] = `
+exports[`MetaPollToggle (flag) should match snapshot (util) 1`] = `
 <button
-  className="c-icon-button qa-toggle-flag u-whatever"
+  className="c-icon-button qa-toggle-flag u-meta"
   onClick={[Function]}
 >
   <i
@@ -33,7 +33,7 @@ exports[`PollToggle (flag) should match snapshot (util) 1`] = `
 </button>
 `;
 
-exports[`PollToggle (hide) should match snapshot (default) 1`] = `
+exports[`MetaPollToggle (hide) should match snapshot (default) 1`] = `
 <button
   className="c-icon-button qa-toggle-hide "
   onClick={[Function]}
@@ -44,7 +44,7 @@ exports[`PollToggle (hide) should match snapshot (default) 1`] = `
 </button>
 `;
 
-exports[`PollToggle (hide) should match snapshot (toggled) 1`] = `
+exports[`MetaPollToggle (hide) should match snapshot (toggled 1`] = `
 <button
   className="c-icon-button qa-toggle-hide "
   onClick={[Function]}
@@ -55,9 +55,9 @@ exports[`PollToggle (hide) should match snapshot (toggled) 1`] = `
 </button>
 `;
 
-exports[`PollToggle (hide) should match snapshot (util) 1`] = `
+exports[`MetaPollToggle (hide) should match snapshot (util) 1`] = `
 <button
-  className="c-icon-button qa-toggle-hide u-whatever"
+  className="c-icon-button qa-toggle-hide u-meta"
   onClick={[Function]}
 >
   <i

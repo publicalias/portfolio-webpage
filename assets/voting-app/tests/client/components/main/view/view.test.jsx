@@ -8,6 +8,7 @@ const { testWrapper } = require("../../../test-helpers");
 
 //global imports
 
+const { newUser } = require("redux/schemas");
 const { initTestSnapshot, testMockHook, withDataList } = require("redux/tests/client-tests");
 const { testMock } = require("redux/tests/meta-tests");
 const { reactTests } = require("redux/tests/react-tests");
@@ -35,9 +36,23 @@ describe("View", () => {
 
   it("should match snapshot (id)", () => testSnapshot({ polls: [{ id: "id-a" }] }));
 
+  it("should match snapshot (authenticated)", () => testSnapshot({ user: newUser() }));
+
+  it("should match snapshot (authenticated, id)", () => testSnapshot({
+    user: newUser(),
+    polls: [{ id: "id-a" }]
+  }));
+
+  it("should match snapshot (options)", () => testSnapshot({
+    polls: [{
+      id: "id-a",
+      options: [{}]
+    }]
+  }));
+
   it("should call viewClearState and metaGetPollItem on load", () => {
 
-    const { props, wrapper } = testView(null, { id: "id-a" });
+    const { props, wrapper } = testView();
 
     const { actions: { metaGetPollItem, viewClearState } } = props;
 

@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MetaPollOption should match snapshot (created) 1`] = `
+<button
+  className="c-meta-poll-options__option u-margin-half u-margin-right qa-click-vote"
+  onClick={[MockFunction]}
+>
+  <div
+    className="c-meta-poll-options__layout"
+  >
+    <span
+      className="c-meta-poll-options__remove qa-click-remove"
+      onClick={[MockFunction]}
+    >
+      <i
+        className="fas fa-trash-alt"
+      />
+    </span>
+    <span>
+      Option A
+    </span>
+  </div>
+</button>
+`;
+
+exports[`MetaPollOption should match snapshot (default) 1`] = `
+<button
+  className="c-meta-poll-options__option u-margin-half u-margin-right qa-click-vote"
+  onClick={[MockFunction]}
+>
+  <div
+    className="c-meta-poll-options__layout"
+  >
+    <svg
+      className="c-meta-poll-options__color-box"
+    >
+      <rect
+        className="c-meta-poll-options__color-icon"
+        fill="black"
+        height="100%"
+        width="100%"
+      />
+    </svg>
+    <span>
+      Option A
+    </span>
+  </div>
+</button>
+`;
+
+exports[`MetaPollOption should match snapshot (voted) 1`] = `
+<button
+  className="c-meta-poll-options__option u-margin-half u-margin-right qa-click-vote"
+  onClick={[MockFunction]}
+>
+  <div
+    className="c-meta-poll-options__layout"
+  >
+    <span
+      className="c-meta-poll-options__remove qa-click-remove"
+      onClick={[MockFunction]}
+    >
+      <i
+        className="fas fa-times"
+      />
+    </span>
+    <span>
+      Option A
+    </span>
+  </div>
+</button>
+`;

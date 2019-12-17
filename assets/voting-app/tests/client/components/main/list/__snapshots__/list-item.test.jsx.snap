@@ -4,7 +4,7 @@ exports[`ListItem should match snapshot (authenticated) 1`] = `
 <div
   className="c-list-item"
 >
-  <PollToggle
+  <MetaPollToggle
     actions={
       Object {
         "formAddOption": [MockFunction],
@@ -110,7 +110,7 @@ exports[`ListItem should match snapshot (authenticated) 1`] = `
     match={Object {}}
     staticContext={Object {}}
   />
-  <PollToggle
+  <MetaPollToggle
     actions={
       Object {
         "formAddOption": [MockFunction],
@@ -241,7 +241,7 @@ exports[`ListItem should match snapshot (default) 1`] = `
 <div
   className="c-list-item"
 >
-  <PollToggle
+  <MetaPollToggle
     actions={
       Object {
         "formAddOption": [MockFunction],

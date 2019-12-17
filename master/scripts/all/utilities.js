@@ -73,6 +73,31 @@ const get = (obj, key) => key.split(".").reduce((acc, e) => {
 
 }, obj);
 
+//hash
+
+const hash = (str, length = 3) => {
+
+  const res = str.split("")
+    .reduce((acc, e) => acc + e.codePointAt(), 0)
+    .toString();
+
+  switch (Math.sign(res.length - length)) {
+    case 1:
+      return res.slice(res.length - length);
+    case 0:
+      return res;
+    case -1:
+
+      const fill = Array(length - res.length)
+        .fill(0)
+        .join("");
+
+      return `${fill}${res}`;
+
+  }
+
+};
+
 //init deep copy / deep copy
 
 const initDeepCopy = (config) => (...args) => {
@@ -234,6 +259,7 @@ module.exports = {
   deepCopy,
   delimit,
   get,
+  hash,
   initDeepCopy,
   leadZero,
   mock,

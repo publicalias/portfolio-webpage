@@ -1,0 +1,173 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ViewPoll should match snapshot (author) 1`] = `
+<div
+  className="c-meta-poll-display--tall"
+>
+  <div
+    className="u-align-center"
+  >
+    <h1
+      className="u-margin-half"
+    >
+      Untitled
+    </h1>
+    <h4>
+      By User A
+    </h4>
+  </div>
+  <hr />
+  <MetaPollDisplay
+    local={
+      Object {
+        "counts": Array [],
+        "labels": Array [],
+      }
+    }
+  />
+</div>
+`;
+
+exports[`ViewPoll should match snapshot (can add) 1`] = `
+<div
+  className="c-meta-poll-display"
+>
+  <div
+    className="u-align-center"
+  >
+    <h1
+      className="u-margin-half"
+    >
+      Untitled
+    </h1>
+    <h4>
+      By Anonymous
+    </h4>
+  </div>
+  <hr />
+  <MetaPollDisplay
+    local={
+      Object {
+        "counts": Array [],
+        "labels": Array [],
+      }
+    }
+  />
+</div>
+`;
+
+exports[`ViewPoll should match snapshot (default) 1`] = `
+<div
+  className="c-meta-poll-display--tall"
+>
+  <div
+    className="u-align-center"
+  >
+    <h1
+      className="u-margin-half"
+    >
+      Untitled
+    </h1>
+    <h4>
+      By Anonymous
+    </h4>
+  </div>
+  <hr />
+  <MetaPollDisplay
+    local={
+      Object {
+        "counts": Array [],
+        "labels": Array [],
+      }
+    }
+  />
+</div>
+`;
+
+exports[`ViewPoll should match snapshot (has options) 1`] = `
+<div
+  className="c-meta-poll-display"
+>
+  <div
+    className="u-align-center"
+  >
+    <h1
+      className="u-margin-half"
+    >
+      Untitled
+    </h1>
+    <h4>
+      By Anonymous
+    </h4>
+  </div>
+  <hr />
+  <MetaPollDisplay
+    local={
+      Object {
+        "counts": Array [],
+        "labels": Array [],
+      }
+    }
+  />
+</div>
+`;
+
+exports[`ViewPoll should match snapshot (options) 1`] = `
+<div
+  className="c-meta-poll-display--tall"
+>
+  <div
+    className="u-align-center"
+  >
+    <h1
+      className="u-margin-half"
+    >
+      Untitled
+    </h1>
+    <h4>
+      By Anonymous
+    </h4>
+  </div>
+  <hr />
+  <MetaPollDisplay
+    local={
+      Object {
+        "counts": Array [
+          0,
+        ],
+        "labels": Array [
+          "Option A",
+        ],
+      }
+    }
+  />
+</div>
+`;
+
+exports[`ViewPoll should match snapshot (title) 1`] = `
+<div
+  className="c-meta-poll-display--tall"
+>
+  <div
+    className="u-align-center"
+  >
+    <h1
+      className="u-margin-half"
+    >
+      Title A
+    </h1>
+    <h4>
+      By Anonymous
+    </h4>
+  </div>
+  <hr />
+  <MetaPollDisplay
+    local={
+      Object {
+        "counts": Array [],
+        "labels": Array [],
+      }
+    }
+  />
+</div>
+`;
