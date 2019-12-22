@@ -11,6 +11,10 @@ const closePanel = () => {
 
   const DOMOpen = select(".js-expand-panel.is-open");
 
+  if (!DOMOpen.first) {
+    return;
+  }
+
   DOMOpen.animate({ height: 0 }, () => {
     DOMOpen.class("is-open", true).css({ height: "auto" });
   });

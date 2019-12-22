@@ -30,7 +30,7 @@
     "array-bracket-newline": [2, "consistent"],
     "capitalized-comments": [2, "never"],
     "dot-location": [2, "property"],
-    "function-call-argument-newline": [2, "consistent"], //buggy
+    "function-call-argument-newline": [2, "consistent"],
     "function-paren-newline": [2, "consistent"],
     "lines-around-comment": [2, {
       "beforeBlockComment": true,
@@ -92,7 +92,6 @@
     "no-case-declarations": 1,
     "no-console": 1,
     "no-empty-function": 1,
-    "object-curly-newline": 1, //js-beautify conflict
     "require-atomic-updates": 1,
 
     "react/jsx-handler-names": 1,

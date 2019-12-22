@@ -2,7 +2,7 @@
 
 //node modules
 
-const { TweenMax } = require("gsap/umd/TweenMax");
+const { gsap } = require("gsap");
 
 //utilities
 
@@ -51,7 +51,7 @@ const animateUtil = (api) => (props, fn) => {
 
   const { all } = api;
 
-  TweenMax.to(all, 0.5, Object.assign(props, { onComplete: fn }));
+  gsap.to(all, 0.5, Object.assign(props, { onComplete: fn }));
 
   return api;
 

@@ -52,7 +52,7 @@ describe("MetaPollInput", () => {
     const handleSubmit = jest.fn();
 
     return testSubmit(".qa-submit-input", [null, { handleSubmit }], () => {
-      testMock(handleSubmit, [{}])
+      testMock(handleSubmit, [{}]);
     });
 
   });
