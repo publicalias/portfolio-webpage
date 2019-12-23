@@ -1,17 +1,30 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`UserItem should call useLazyLoading on update 1`] = `
+Array [
+  Array [
+    ".js-ref-list",
+    ".js-ref-item-id-a",
+  ],
+  Array [
+    ".js-ref-list",
+    ".js-ref-item-id-a",
+  ],
+]
+`;
+
 exports[`UserItem should match snapshot (default) 1`] = `
 <Link
   to="/users/page/id-a"
 >
   <div
-    className="c-list-item"
+    className="c-list-item js-ref-item-id-a"
   >
     <img
       alt="User Photo"
       className="qa-error-image"
       onError={[Function]}
-      src="https://www.example.com/avatar.jpg"
+      src="https://via.placeholder.com/800x450?text=undefined"
     />
     <div>
       <h5
@@ -34,7 +47,36 @@ exports[`UserItem should match snapshot (name) 1`] = `
   to="/users/page/id-a"
 >
   <div
-    className="c-list-item"
+    className="c-list-item js-ref-item-id-a"
+  >
+    <img
+      alt="User Photo"
+      className="qa-error-image"
+      onError={[Function]}
+      src="https://via.placeholder.com/800x450?text=undefined"
+    />
+    <div>
+      <h5
+        className="u-margin-half"
+      >
+        User A
+      </h5>
+      <p
+        className="u-margin-none"
+      >
+        0 Miles
+      </p>
+    </div>
+  </div>
+</Link>
+`;
+
+exports[`UserItem should match snapshot (visible) 1`] = `
+<Link
+  to="/users/page/id-a"
+>
+  <div
+    className="c-list-item js-ref-item-id-a"
   >
     <img
       alt="User Photo"
@@ -46,7 +88,7 @@ exports[`UserItem should match snapshot (name) 1`] = `
       <h5
         className="u-margin-half"
       >
-        User A
+        Anonymous
       </h5>
       <p
         className="u-margin-none"

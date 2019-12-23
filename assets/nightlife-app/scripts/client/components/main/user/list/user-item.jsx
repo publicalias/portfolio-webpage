@@ -1,5 +1,9 @@
 "use strict";
 
+//local imports
+
+const { useLazyLoading } = require("../../../../event-handlers");
+
 //global imports
 
 const { delimit } = require("all/utilities");
@@ -16,7 +20,7 @@ const UserItem = (props) => {
 
   const { local: { userData } } = props;
 
-  const { jsx: { Link }, lib: { delimit } } = UserItem.injected;
+  const { jsx: { Link }, lib: { delimit, useLazyLoading } } = UserItem.injected;
 
   //events
 
@@ -24,18 +28,22 @@ const UserItem = (props) => {
     event.target.src = "https://via.placeholder.com/800x450?text=undefined";
   };
 
+  //lifecycle
+
+  const visible = useLazyLoading(".js-ref-list", `.js-ref-item-${userData.id}`);
+
   //render
 
   const distance = delimit(userData.data.distance);
 
   return (
     <Link to={`/users/page/${userData.id}`}>
-      <div className="c-list-item">
+      <div className={`c-list-item js-ref-item-${userData.id}`}>
         <img
           alt="User Photo"
           className="qa-error-image"
           onError={handleError}
-          src={userData.data.avatar}
+          src={visible ? userData.data.avatar : "https://via.placeholder.com/800x450?text=undefined"}
         />
         <div>
           <h5 className="u-margin-half">{userData.name || "Anonymous"}</h5>
@@ -51,7 +59,10 @@ UserItem.propList = ["local"];
 
 UserItem.injected = {
   jsx: { Link },
-  lib: { delimit }
+  lib: {
+    delimit,
+    useLazyLoading
+  }
 };
 
 //exports

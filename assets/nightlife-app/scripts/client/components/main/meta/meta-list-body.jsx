@@ -21,7 +21,7 @@ const MetaListBody = (props) => {
         <h4>Description</h4>
       </div>
       <div
-        className="c-list-body__body js-ref-scroll qa-ref-scroll"
+        className="c-list-body__body js-ref-list js-ref-scroll qa-ref-scroll"
         onScroll={handleScroll}
       >
         {children.length ? children : (

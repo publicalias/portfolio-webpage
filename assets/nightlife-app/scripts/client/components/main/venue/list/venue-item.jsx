@@ -2,7 +2,7 @@
 
 //local imports
 
-const { useVenueImage } = require("../../../../event-handlers");
+const { useLazyLoading, useVenueImage } = require("../../../../event-handlers");
 
 //global imports
 
@@ -20,7 +20,7 @@ const VenueItem = (props) => {
 
   const { local: { venue } } = props;
 
-  const { jsx: { Link }, lib: { delimit, useVenueImage } } = VenueItem.injected;
+  const { jsx: { Link }, lib: { delimit, useLazyLoading, useVenueImage } } = VenueItem.injected;
 
   //events
 
@@ -32,18 +32,20 @@ const VenueItem = (props) => {
 
   const image = useVenueImage(`.js-resize-image-${venue.id}`, venue.image_url, 9);
 
+  const visible = useLazyLoading(".js-ref-list", `.js-ref-item-${venue.id}`);
+
   //render
 
   const distance = delimit(venue.distance);
 
   return (
     <Link to={`/venues/page/${venue.id}`}>
-      <div className="c-list-item">
+      <div className={`c-list-item js-ref-item-${venue.id}`}>
         <img
           alt="Venue Photo"
           className={`js-resize-image-${venue.id} qa-error-image`}
           onError={handleError}
-          src={image}
+          src={visible ? image : "https://via.placeholder.com/800x450?text=undefined"}
         />
         <div>
           <h5 className="u-margin-half">{venue.name || "Undefined"}</h5>
@@ -66,6 +68,7 @@ VenueItem.injected = {
   jsx: { Link },
   lib: {
     delimit,
+    useLazyLoading,
     useVenueImage
   }
 };

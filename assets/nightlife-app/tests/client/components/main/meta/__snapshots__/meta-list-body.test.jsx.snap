@@ -17,7 +17,7 @@ exports[`MetaListBody should match snapshot (default) 1`] = `
     </h4>
   </div>
   <div
-    className="c-list-body__body js-ref-scroll qa-ref-scroll"
+    className="c-list-body__body js-ref-list js-ref-scroll qa-ref-scroll"
     onScroll={[MockFunction]}
   >
     <div
@@ -51,7 +51,7 @@ exports[`MetaListBody should match snapshot (list) 1`] = `
     </h4>
   </div>
   <div
-    className="c-list-body__body js-ref-scroll qa-ref-scroll"
+    className="c-list-body__body js-ref-list js-ref-scroll qa-ref-scroll"
     onScroll={[MockFunction]}
   >
     <div

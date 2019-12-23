@@ -9,34 +9,49 @@ const { testWrapper } = require("../../../../test-helpers");
 
 //global imports
 
-const { initTestEvent, initTestSnapshot, withDataList } = require("redux/tests/client-tests");
+const { initTestEvent, initTestSnapshot, testMockHook, withDataList } = require("redux/tests/client-tests");
 const { reactTests } = require("redux/tests/react-tests");
 
 //utilities
 
-const { testShallow } = testWrapper(UserItem);
+const { testMount, testShallow } = testWrapper(UserItem);
 
 //setup
 
 beforeAll(reactTests.setup);
-beforeEach(reactTests.inject(UserItem, { lib: { delimit: jest.fn((x) => x) } }));
+beforeEach(reactTests.inject(UserItem, {
+  lib: {
+    delimit: jest.fn((x) => x),
+    useLazyLoading: jest.fn(() => false)
+  }
+}));
 
 //user item
 
 describe("UserItem", () => {
 
-  const testItem = withDataList(testShallow, [null, {
+  const dataList = [null, {
     userData: newUserData({
       id: "id-a",
       data: { avatar: "https://www.example.com/avatar.jpg" }
     })
-  }]);
+  }];
+
+  const testItem = withDataList(testShallow, dataList);
 
   const testSnapshot = initTestSnapshot(testItem);
 
   it("should match snapshot (default)", () => testSnapshot());
 
   it("should match snapshot (name)", () => testSnapshot(null, { userData: { name: "User A" } }));
+
+  it("should match snapshot (visible)", () => {
+
+    UserItem.injected.lib.useLazyLoading = jest.fn(() => true);
+
+    testSnapshot();
+
+  });
 
   it("should call handleError on error", () => {
 
@@ -50,5 +65,12 @@ describe("UserItem", () => {
     });
 
   });
+
+  it("should call useLazyLoading on update", () => testMockHook(
+    UserItem,
+    testMount,
+    "useLazyLoading",
+    dataList
+  ));
 
 });

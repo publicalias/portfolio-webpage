@@ -1,5 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`VenueItem should call useLazyLoading on update 1`] = `
+Array [
+  Array [
+    ".js-ref-list",
+    ".js-ref-item-id-a",
+  ],
+  Array [
+    ".js-ref-list",
+    ".js-ref-item-id-a",
+  ],
+]
+`;
+
 exports[`VenueItem should call useVenueImage on update 1`] = `
 Array [
   Array [
@@ -20,13 +33,13 @@ exports[`VenueItem should match snapshot (default) 1`] = `
   to="/venues/page/id-a"
 >
   <div
-    className="c-list-item"
+    className="c-list-item js-ref-item-id-a"
   >
     <img
       alt="Venue Photo"
       className="js-resize-image-id-a qa-error-image"
       onError={[Function]}
-      src="https://www.example.com/photo.jpg"
+      src="https://via.placeholder.com/800x450?text=undefined"
     />
     <div>
       <h5
@@ -52,7 +65,39 @@ exports[`VenueItem should match snapshot (name) 1`] = `
   to="/venues/page/id-a"
 >
   <div
-    className="c-list-item"
+    className="c-list-item js-ref-item-id-a"
+  >
+    <img
+      alt="Venue Photo"
+      className="js-resize-image-id-a qa-error-image"
+      onError={[Function]}
+      src="https://via.placeholder.com/800x450?text=undefined"
+    />
+    <div>
+      <h5
+        className="u-margin-half"
+      >
+        Venue A
+      </h5>
+      <p>
+        0 Miles
+      </p>
+      <img
+        alt="0 Stars"
+        className="u-widget-width"
+        src="/nightlife-app/media/yelp/stars/stars-0.png"
+      />
+    </div>
+  </div>
+</Link>
+`;
+
+exports[`VenueItem should match snapshot (visible) 1`] = `
+<Link
+  to="/venues/page/id-a"
+>
+  <div
+    className="c-list-item js-ref-item-id-a"
   >
     <img
       alt="Venue Photo"
@@ -64,7 +109,7 @@ exports[`VenueItem should match snapshot (name) 1`] = `
       <h5
         className="u-margin-half"
       >
-        Venue A
+        Undefined
       </h5>
       <p>
         0 Miles

@@ -3,11 +3,44 @@
 //global imports
 
 const { select } = require("all/dom-api");
-const { hookEvent } = require("all/react-utils");
+const { hookEvent, useSetState } = require("all/react-utils");
 
 //node modules
 
 const { useLayoutEffect } = require("react");
+
+//use lazy loading
+
+const useLazyLoading = (listID, itemID) => {
+
+  const [state, setState] = useSetState({ visible: false });
+
+  useLayoutEffect(() => {
+
+    const DOMList = select(listID);
+    const DOMItem = select(itemID);
+
+    const isVisible = () => {
+
+      const visible = DOMItem.offsetTop <= DOMList.scrollTop + DOMList.clientHeight;
+
+      if (visible && !state.visible) {
+        setState({ visible });
+      }
+
+    };
+
+    DOMList.css({ position: "relative" });
+
+    isVisible();
+
+    return hookEvent(DOMList, "scroll", isVisible);
+
+  }, [state.visible]);
+
+  return state.visible;
+
+};
 
 //use venue image
 
@@ -39,4 +72,7 @@ const useVenueImage = (id, image, scale) => {
 
 //exports
 
-module.exports = { useVenueImage };
+module.exports = {
+  useLazyLoading,
+  useVenueImage
+};

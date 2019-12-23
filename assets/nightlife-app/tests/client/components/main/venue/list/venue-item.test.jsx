@@ -22,6 +22,7 @@ beforeAll(reactTests.setup);
 beforeEach(reactTests.inject(VenueItem, {
   lib: {
     delimit: jest.fn((x) => x),
+    useLazyLoading: jest.fn(() => false),
     useVenueImage: jest.fn((x, y) => y)
   }
 }));
@@ -45,6 +46,14 @@ describe("VenueItem", () => {
 
   it("should match snapshot (name)", () => testSnapshot(null, { venue: { name: "Venue A" } }));
 
+  it("should match snapshot (visible)", () => {
+
+    VenueItem.injected.lib.useLazyLoading = jest.fn(() => true);
+
+    testSnapshot();
+
+  });
+
   it("should call handleError on error", () => {
 
     const event = { target: { src: "" } };
@@ -62,6 +71,13 @@ describe("VenueItem", () => {
     VenueItem,
     testMount,
     "useVenueImage",
+    dataList
+  ));
+
+  it("should call useLazyLoading on update", () => testMockHook(
+    VenueItem,
+    testMount,
+    "useLazyLoading",
     dataList
   ));
 
