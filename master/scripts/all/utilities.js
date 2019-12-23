@@ -214,6 +214,10 @@ const months = [
 
 const objEqual = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 
+//placeholder
+
+const placeholder = (x, y = x) => `https://via.placeholder.com/${x}x${y}?text=undefined`;
+
 //read date
 
 const readDate = (unix) => {
@@ -265,6 +269,7 @@ module.exports = {
   mock,
   months,
   objEqual,
+  placeholder,
   readDate,
   rngInt,
   roundTo,

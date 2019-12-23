@@ -4,6 +4,7 @@
 
 const { getJSON } = require("all/client-utils");
 const { select } = require("all/dom-api");
+const { placeholder } = require("all/utilities");
 
 //render output
 
@@ -63,7 +64,7 @@ const writeData = ({ avatar, link, name, state, status }) => {
 const renderOutput = async (channels) => {
 
   const list = channels.map((e) => ({
-    avatar: "https://via.placeholder.com/100x100?text=undefined",
+    avatar: placeholder(100),
     link: "",
     name: e,
     state: "is-closed",

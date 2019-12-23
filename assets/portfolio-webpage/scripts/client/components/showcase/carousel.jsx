@@ -6,6 +6,10 @@ const SwipeBtn = require("./swipe-btn");
 
 const { safeLink } = require("../../app-logic");
 
+//global imports
+
+const { placeholder } = require("all/utilities");
+
 //node modules
 
 const React = require("react");
@@ -39,7 +43,7 @@ const Carousel = (props) => {
           className="js-ref-image"
           onError={handleError}
           onLoad={handleLoad}
-          src={view || "https://via.placeholder.com/800x450?text=undefined"}
+          src={view || placeholder(800, 450)}
         />
       </a>
     </div>

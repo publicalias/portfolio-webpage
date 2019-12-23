@@ -6,7 +6,7 @@ const { useLazyLoading, useVenueImage } = require("../../../../event-handlers");
 
 //global imports
 
-const { delimit } = require("all/utilities");
+const { delimit, placeholder } = require("all/utilities");
 
 //node modules
 
@@ -25,7 +25,7 @@ const VenueItem = (props) => {
   //events
 
   const handleError = (event) => {
-    event.target.src = "https://via.placeholder.com/800x450?text=undefined";
+    event.target.src = placeholder(800, 450);
   };
 
   //lifecycle
@@ -45,7 +45,7 @@ const VenueItem = (props) => {
           alt="Venue Photo"
           className={`js-resize-image-${venue.id} qa-error-image`}
           onError={handleError}
-          src={visible ? image : "https://via.placeholder.com/800x450?text=undefined"}
+          src={visible ? image : placeholder(800, 450)}
         />
         <div>
           <h5 className="u-margin-half">{venue.name || "Undefined"}</h5>

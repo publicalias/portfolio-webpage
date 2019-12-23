@@ -6,7 +6,7 @@ const { useLazyLoading } = require("../../../../event-handlers");
 
 //global imports
 
-const { delimit } = require("all/utilities");
+const { delimit, placeholder } = require("all/utilities");
 
 //node modules
 
@@ -25,7 +25,7 @@ const UserItem = (props) => {
   //events
 
   const handleError = (event) => {
-    event.target.src = "https://via.placeholder.com/800x450?text=undefined";
+    event.target.src = placeholder(800, 450);
   };
 
   //lifecycle
@@ -43,7 +43,7 @@ const UserItem = (props) => {
           alt="User Photo"
           className="qa-error-image"
           onError={handleError}
-          src={visible ? userData.data.avatar : "https://via.placeholder.com/800x450?text=undefined"}
+          src={visible ? userData.data.avatar : placeholder(800, 450)}
         />
         <div>
           <h5 className="u-margin-half">{userData.name || "Anonymous"}</h5>

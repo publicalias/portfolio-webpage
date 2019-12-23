@@ -2,7 +2,7 @@
 
 //global imports
 
-const { delimit } = require("all/utilities");
+const { delimit, placeholder } = require("all/utilities");
 
 //node modules
 
@@ -19,7 +19,7 @@ const UserData = (props) => {
   //events
 
   const handleError = (event) => {
-    event.target.src = "https://via.placeholder.com/800x450?text=undefined";
+    event.target.src = placeholder(800, 450);
   };
 
   //render

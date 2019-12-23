@@ -4,6 +4,10 @@
 
 const { useVenueImage } = require("../../../../../event-handlers");
 
+//global imports
+
+const { placeholder } = require("all/utilities");
+
 //node modules
 
 const React = require("react");
@@ -22,7 +26,7 @@ const VenueImage = (props) => {
 
     handleErrorEvent();
 
-    event.target.src = "https://via.placeholder.com/800x450?text=undefined";
+    event.target.src = placeholder(800, 450);
 
   };
 

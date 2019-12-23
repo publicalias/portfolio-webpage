@@ -4,6 +4,10 @@
 
 const { safeLink } = require("../../../app-logic");
 
+//global imports
+
+const { placeholder } = require("all/utilities");
+
 //node modules
 
 const React = require("react");
@@ -23,7 +27,7 @@ const Preview = (props) => {
           <a {...pageLink}>
             <img
               alt="Screenshot"
-              src={view || "https://via.placeholder.com/800x450?text=undefined"}
+              src={view || placeholder(800, 450)}
             />
           </a>
         </div>

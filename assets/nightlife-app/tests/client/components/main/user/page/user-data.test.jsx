@@ -9,6 +9,7 @@ const { testWrapper } = require("../../../../test-helpers");
 
 //global imports
 
+const { placeholder } = require("all/utilities");
 const { initTestEvent, initTestSnapshot, withDataList } = require("redux/tests/client-tests");
 const { reactTests } = require("redux/tests/react-tests");
 
@@ -38,12 +39,11 @@ describe("UserData", () => {
   it("should call handleError on error", () => {
 
     const event = { target: { src: "" } };
-    const placeholder = "https://via.placeholder.com/800x450?text=undefined";
 
     const testError = initTestEvent(testData, "error", event);
 
     return testError(".qa-error-image", [], () => {
-      expect(event.target.src).toEqual(placeholder);
+      expect(event.target.src).toEqual(placeholder(800, 450));
     });
 
   });
