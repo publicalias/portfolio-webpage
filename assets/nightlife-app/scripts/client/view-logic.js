@@ -4,7 +4,7 @@
 
 const { itemIsInView } = require("all/client-utils");
 const { select } = require("all/dom-api");
-const { cycleItems, get, leadZero } = require("all/utilities");
+const { cycleItems, get } = require("all/utilities");
 
 //node modules
 
@@ -14,46 +14,27 @@ const dateFormat = require("dateformat");
 
 const getHours = (venue) => {
 
-  const getTime = () => {
+  const date = new Date(); //assumes correct time zone
 
-    const date = new Date();
-    const time = `${leadZero(date.getHours())}${leadZero(date.getMinutes())}`;
+  const num = cycleItems([0, 1, 2, 3, 4, 5, 6], date.getDay(), -1);
 
-    const getKey = (offset, key) => {
+  const open = get(venue, "hours.0.open");
+  const day = open && open.find((e) => e.day === num);
+  const time = get(day, "end");
 
-      const day = cycleItems([0, 1, 2, 3, 4, 5, 6], date.getDay() + offset, -1);
+  return !get(venue, "hours.0.is_open_now") || !time ? "Closed" : (() => {
 
-      return get(venue, `hours.0.open.${day}.${key}`) || "0000";
-
-    };
-
-    const start = getKey(0, "start");
-    const end = getKey(0, "end");
-    const after = getKey(1, "start");
-
-    if (time < start) {
-      return [false, start];
-    } else if (time < end) {
-      return [true, end];
+    if (day.start === "0000" && day.end === "0000") {
+      return "Open 24 Hours";
     }
-
-    return [false, after];
-
-  };
-
-  const setTime = ([open, time]) => {
 
     const date = new Date(0);
 
     date.setHours(...time.match(/\d{2}/g));
 
-    return [open, dateFormat(date, "h:MM TT")];
+    return `Closes at ${dateFormat(date, "h:MM TT")}`;
 
-  };
-
-  const [open, time] = setTime(getTime());
-
-  return open ? `Open - Closes at ${time}` : `Closed - Opens at ${time}`;
+  })();
 
 };
 

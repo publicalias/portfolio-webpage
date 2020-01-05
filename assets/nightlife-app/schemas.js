@@ -130,7 +130,12 @@ const newOpen = initSchema({
   start: ""
 });
 
-const newHours = initSchema({ open: [] }, { open: listReplacer(newOpen) });
+const newHours = initSchema({
+  is_open_now: false,
+  open: []
+}, {
+  open: listReplacer(newOpen)
+});
 
 const newVenue = initSchema({ //uses the yelp api
 
