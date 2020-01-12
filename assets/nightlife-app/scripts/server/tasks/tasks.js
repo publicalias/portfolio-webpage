@@ -9,6 +9,7 @@ const { rsvpAdd } = require("../api/handlers/rsvp-handlers");
 const { userToggleBlock } = require("../api/handlers/user-handlers");
 const { venueGetList } = require("../api/handlers/venue-handlers");
 
+const { geoCode } = require("../app-logic");
 const { newListParamsVenues, newUserWithData } = require("../../../schemas");
 
 //global imports
@@ -49,7 +50,7 @@ const botCreateRSVP = () => hourly(async () => {
   const res = await botAPICall(venueGetList, "GET", FriendlyBot, {
     params: newListParamsVenues(),
     length: 0,
-    location: FriendlyBot.data.location
+    location: await geoCode("DEMO")
   });
 
   const [{ venues: { data: [{ id, name }] } }] = res.json.mock.calls[0];
@@ -104,6 +105,14 @@ const deleteOldRequest = () => hourly(() => {
 
 });
 
+const updateGeoCode = () => hourly(async () => {
+
+  const location = await geoCode("DEMO");
+
+  userDataCol().updateMany({ "data.address": "DEMO" }, { $set: { "data.location": location } });
+
+});
+
 const tasks = () => {
 
   botAcceptRequest();
@@ -113,6 +122,7 @@ const tasks = () => {
 
   deleteOldRSVP();
   deleteOldRequest();
+  updateGeoCode();
 
 };
 
