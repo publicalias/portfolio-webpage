@@ -163,29 +163,30 @@ exports[`ListBody (general) should match snapshot (list) 1`] = `
             "title": "",
           },
           "list": Object {
+            "data": Array [
+              Object {
+                "author": "",
+                "date": 0,
+                "id": "",
+                "options": Array [],
+                "secret": false,
+                "title": "",
+                "users": Object {
+                  "created": "",
+                  "flagged": Array [],
+                  "hidden": Array [],
+                },
+                "votes": 0,
+              },
+            ],
             "search": "",
           },
           "loading": 0,
           "log": Array [],
-          "polls": Array [
-            Object {
-              "author": "",
-              "date": 0,
-              "id": "",
-              "options": Array [],
-              "secret": false,
-              "title": "",
-              "users": Object {
-                "created": "",
-                "flagged": Array [],
-                "hidden": Array [],
-              },
-              "votes": 0,
-            },
-          ],
           "user": Object {},
           "view": Object {
             "add": "",
+            "data": Array [],
             "delete": false,
             "settings": false,
           },

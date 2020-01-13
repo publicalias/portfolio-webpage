@@ -202,21 +202,23 @@ const newState = initSchema({
   },
 
   users: {
-    data: [],
     list: {
+      data: [],
       range: false,
       search: ""
-    }
+    },
+    page: { data: [] }
   },
 
   venues: {
-    data: [],
     list: {
+      data: [],
       range: false,
       search: "",
       sort: false
     },
     page: {
+      data: [],
       photos: {
         photo: "",
         pause: false,
@@ -243,9 +245,15 @@ const newState = initSchema({
     rsvps: listReplacer(newRSVP)
   },
 
-  users: { data: listReplacer(newUserData) },
+  users: {
+    list: { data: listReplacer(newUserData) },
+    page: { data: listReplacer(newUserData) }
+  },
 
-  venues: { data: listReplacer(newVenue) }
+  venues: {
+    list: { data: listReplacer(newVenue) },
+    page: { data: listReplacer(newVenue) }
+  }
 
 });
 

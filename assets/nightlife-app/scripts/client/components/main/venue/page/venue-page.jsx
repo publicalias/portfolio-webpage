@@ -25,7 +25,7 @@ const VenuePage = (props) => {
 
   const {
     actions: { venueClearState, venueGetItem },
-    data: { user, loading, log, ready, venues: { data } },
+    data: { user, loading, log, ready, venues: { page } },
     local: { id }
   } = props;
 
@@ -36,7 +36,7 @@ const VenuePage = (props) => {
 
   //utilities
 
-  const venue = data.find((e) => e.id === id) || newVenue();
+  const venue = page.data.find((e) => e.id === id) || newVenue();
 
   const refresh = async () => {
     if (ready) {
@@ -99,7 +99,7 @@ VenuePage.propList = [
   "data.loading",
   "data.log",
   "data.ready",
-  "data.venues.data",
+  "data.venues.page",
   "local"
 ];
 

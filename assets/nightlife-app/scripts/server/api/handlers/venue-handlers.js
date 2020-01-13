@@ -18,7 +18,7 @@ const venueGetItem = async (req, res) => {
 
   const venue = location && await findVenueItem(handler, req.user, id, location);
 
-  res.json({ venues: { data: venue ? [venue] : [] } });
+  res.json({ venues: { page: { data: venue ? [venue] : [] } } });
 
 };
 
@@ -44,7 +44,7 @@ const venueGetList = handleAPICall({
 
     const venues = location && Array(length).concat(await findVenueList(handler, params, length, location));
 
-    res.json({ venues: { data: venues || [] } });
+    res.json({ venues: { list: { data: venues || [] } } });
 
   }
 

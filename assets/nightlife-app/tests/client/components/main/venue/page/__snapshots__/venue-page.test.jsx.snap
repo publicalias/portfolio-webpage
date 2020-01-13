@@ -120,20 +120,24 @@ exports[`VenuePage (general) should match snapshot (authenticated) 1`] = `
           "type": "auth",
         },
         "users": Object {
-          "data": Array [],
           "list": Object {
+            "data": Array [],
             "range": false,
             "search": "",
           },
+          "page": Object {
+            "data": Array [],
+          },
         },
         "venues": Object {
-          "data": Array [],
           "list": Object {
+            "data": Array [],
             "range": false,
             "search": "",
             "sort": false,
           },
           "page": Object {
+            "data": Array [],
             "form": Object {
               "message": "",
               "open": false,
@@ -268,20 +272,24 @@ exports[`VenuePage (general) should match snapshot (authenticated) 1`] = `
           "type": "auth",
         },
         "users": Object {
-          "data": Array [],
           "list": Object {
+            "data": Array [],
             "range": false,
             "search": "",
           },
+          "page": Object {
+            "data": Array [],
+          },
         },
         "venues": Object {
-          "data": Array [],
           "list": Object {
+            "data": Array [],
             "range": false,
             "search": "",
             "sort": false,
           },
           "page": Object {
+            "data": Array [],
             "form": Object {
               "message": "",
               "open": false,
@@ -426,20 +434,24 @@ exports[`VenuePage (general) should match snapshot (default) 1`] = `
         "ready": false,
         "user": Object {},
         "users": Object {
-          "data": Array [],
           "list": Object {
+            "data": Array [],
             "range": false,
             "search": "",
           },
+          "page": Object {
+            "data": Array [],
+          },
         },
         "venues": Object {
-          "data": Array [],
           "list": Object {
+            "data": Array [],
             "range": false,
             "search": "",
             "sort": false,
           },
           "page": Object {
+            "data": Array [],
             "form": Object {
               "message": "",
               "open": false,
@@ -584,41 +596,45 @@ exports[`VenuePage (general) should match snapshot (match) 1`] = `
         "ready": false,
         "user": Object {},
         "users": Object {
-          "data": Array [],
           "list": Object {
+            "data": Array [],
             "range": false,
             "search": "",
           },
+          "page": Object {
+            "data": Array [],
+          },
         },
         "venues": Object {
-          "data": Array [
-            Object {
-              "coordinates": Object {
-                "latitude": 0,
-                "longitude": 0,
-              },
-              "display_phone": "",
-              "distance": 0,
-              "favorites": Array [],
-              "hours": Array [],
-              "id": "id-a",
-              "image_url": "",
-              "location": Object {
-                "display_address": Array [],
-              },
-              "name": "",
-              "photos": Array [],
-              "rating": 0,
-              "rsvps": Array [],
-              "url": "",
-            },
-          ],
           "list": Object {
+            "data": Array [],
             "range": false,
             "search": "",
             "sort": false,
           },
           "page": Object {
+            "data": Array [
+              Object {
+                "coordinates": Object {
+                  "latitude": 0,
+                  "longitude": 0,
+                },
+                "display_phone": "",
+                "distance": 0,
+                "favorites": Array [],
+                "hours": Array [],
+                "id": "id-a",
+                "image_url": "",
+                "location": Object {
+                  "display_address": Array [],
+                },
+                "name": "",
+                "photos": Array [],
+                "rating": 0,
+                "rsvps": Array [],
+                "url": "",
+              },
+            ],
             "form": Object {
               "message": "",
               "open": false,
@@ -763,53 +779,57 @@ exports[`VenuePage (list) should match snapshot (favorites) 1`] = `
         "ready": false,
         "user": Object {},
         "users": Object {
-          "data": Array [],
           "list": Object {
+            "data": Array [],
             "range": false,
             "search": "",
           },
+          "page": Object {
+            "data": Array [],
+          },
         },
         "venues": Object {
-          "data": Array [
-            Object {
-              "coordinates": Object {
-                "latitude": 0,
-                "longitude": 0,
-              },
-              "display_phone": "",
-              "distance": 0,
-              "favorites": Array [
-                Object {
-                  "id": "",
-                  "user": Object {
-                    "id": "",
-                    "name": "",
-                  },
-                  "venue": Object {
-                    "id": "",
-                    "name": "",
-                  },
-                },
-              ],
-              "hours": Array [],
-              "id": "id-a",
-              "image_url": "",
-              "location": Object {
-                "display_address": Array [],
-              },
-              "name": "",
-              "photos": Array [],
-              "rating": 0,
-              "rsvps": Array [],
-              "url": "",
-            },
-          ],
           "list": Object {
+            "data": Array [],
             "range": false,
             "search": "",
             "sort": false,
           },
           "page": Object {
+            "data": Array [
+              Object {
+                "coordinates": Object {
+                  "latitude": 0,
+                  "longitude": 0,
+                },
+                "display_phone": "",
+                "distance": 0,
+                "favorites": Array [
+                  Object {
+                    "id": "",
+                    "user": Object {
+                      "id": "",
+                      "name": "",
+                    },
+                    "venue": Object {
+                      "id": "",
+                      "name": "",
+                    },
+                  },
+                ],
+                "hours": Array [],
+                "id": "id-a",
+                "image_url": "",
+                "location": Object {
+                  "display_address": Array [],
+                },
+                "name": "",
+                "photos": Array [],
+                "rating": 0,
+                "rsvps": Array [],
+                "url": "",
+              },
+            ],
             "form": Object {
               "message": "",
               "open": false,
@@ -978,57 +998,61 @@ exports[`VenuePage (list) should match snapshot (rsvps) 1`] = `
         "ready": false,
         "user": Object {},
         "users": Object {
-          "data": Array [],
           "list": Object {
+            "data": Array [],
             "range": false,
             "search": "",
           },
+          "page": Object {
+            "data": Array [],
+          },
         },
         "venues": Object {
-          "data": Array [
-            Object {
-              "coordinates": Object {
-                "latitude": 0,
-                "longitude": 0,
-              },
-              "display_phone": "",
-              "distance": 0,
-              "favorites": Array [],
-              "hours": Array [],
-              "id": "id-a",
-              "image_url": "",
-              "location": Object {
-                "display_address": Array [],
-              },
-              "name": "",
-              "photos": Array [],
-              "rating": 0,
-              "rsvps": Array [
-                Object {
-                  "date": 0,
-                  "hidden": Array [],
-                  "id": "",
-                  "message": "",
-                  "time": "",
-                  "user": Object {
-                    "id": "",
-                    "name": "",
-                  },
-                  "venue": Object {
-                    "id": "",
-                    "name": "",
-                  },
-                },
-              ],
-              "url": "",
-            },
-          ],
           "list": Object {
+            "data": Array [],
             "range": false,
             "search": "",
             "sort": false,
           },
           "page": Object {
+            "data": Array [
+              Object {
+                "coordinates": Object {
+                  "latitude": 0,
+                  "longitude": 0,
+                },
+                "display_phone": "",
+                "distance": 0,
+                "favorites": Array [],
+                "hours": Array [],
+                "id": "id-a",
+                "image_url": "",
+                "location": Object {
+                  "display_address": Array [],
+                },
+                "name": "",
+                "photos": Array [],
+                "rating": 0,
+                "rsvps": Array [
+                  Object {
+                    "date": 0,
+                    "hidden": Array [],
+                    "id": "",
+                    "message": "",
+                    "time": "",
+                    "user": Object {
+                      "id": "",
+                      "name": "",
+                    },
+                    "venue": Object {
+                      "id": "",
+                      "name": "",
+                    },
+                  },
+                ],
+                "url": "",
+              },
+            ],
             "form": Object {
               "message": "",
               "open": false,

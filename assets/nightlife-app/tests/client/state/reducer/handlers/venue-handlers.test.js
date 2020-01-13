@@ -36,13 +36,14 @@ test("reducer accepts VENUE_CLEAR_STATE actions", () => {
 
   testReducer(venueClearState(), {
     venues: {
-      data: [{}],
       list: {
+        data: [{}],
         range: true,
         search: "Coffee",
         sort: true
       },
       page: {
+        data: [{}],
         photos: {
           photo: "https://www.example.com/photo.jpg",
           pause: "true",

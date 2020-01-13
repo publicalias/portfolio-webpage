@@ -36,7 +36,7 @@ describe("UserPage (general)", () => {
 
   it("should match snapshot (authenticated)", () => testSnapshot({ user: newUserWithData() }));
 
-  it("should match snapshot (match)", () => testSnapshot({ users: { data: [{ id: "id-a" }] } }));
+  it("should match snapshot (match)", () => testSnapshot({ users: { page: { data: [{ id: "id-a" }] } } }));
 
   it("should call userClearState conditionally on update", () => {
 
@@ -82,11 +82,11 @@ describe("UserPage (general)", () => {
 
 describe("UserPage (list)", () => {
 
-  const dataList = [{ users: { data: [{ id: "id-a" }] } }, { id: "id-a" }];
+  const dataList = [{ users: { page: { data: [{ id: "id-a" }] } } }, { id: "id-a" }];
 
   const testSnapshot = withDataList(initTestSnapshot(testShallow), dataList);
 
-  const testPage = (data) => testSnapshot({ users: { data: [data] } });
+  const testPage = (data) => testSnapshot({ users: { page: { data: [data] } } });
 
   const testFriends = (from) => testPage({
     data: {

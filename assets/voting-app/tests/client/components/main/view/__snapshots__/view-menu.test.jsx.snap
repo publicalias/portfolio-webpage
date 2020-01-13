@@ -63,11 +63,11 @@ exports[`ViewMenu should match snapshot (created) 1`] = `
           "title": "",
         },
         "list": Object {
+          "data": Array [],
           "search": "",
         },
         "loading": 0,
         "log": Array [],
-        "polls": Array [],
         "user": Object {
           "auth": Object {
             "id": "",
@@ -82,6 +82,7 @@ exports[`ViewMenu should match snapshot (created) 1`] = `
         },
         "view": Object {
           "add": "",
+          "data": Array [],
           "delete": false,
           "settings": false,
         },
@@ -180,11 +181,11 @@ exports[`ViewMenu should match snapshot (created, settings) 1`] = `
           "title": "",
         },
         "list": Object {
+          "data": Array [],
           "search": "",
         },
         "loading": 0,
         "log": Array [],
-        "polls": Array [],
         "user": Object {
           "auth": Object {
             "id": "",
@@ -199,6 +200,7 @@ exports[`ViewMenu should match snapshot (created, settings) 1`] = `
         },
         "view": Object {
           "add": "",
+          "data": Array [],
           "delete": false,
           "settings": true,
         },
@@ -291,14 +293,15 @@ exports[`ViewMenu should match snapshot (default) 1`] = `
           "title": "",
         },
         "list": Object {
+          "data": Array [],
           "search": "",
         },
         "loading": 0,
         "log": Array [],
-        "polls": Array [],
         "user": Object {},
         "view": Object {
           "add": "",
+          "data": Array [],
           "delete": false,
           "settings": false,
         },

@@ -106,20 +106,24 @@ exports[`Sidebar should match snapshot (authenticated) 1`] = `
             "type": "auth",
           },
           "users": Object {
-            "data": Array [],
             "list": Object {
+              "data": Array [],
               "range": false,
               "search": "",
             },
+            "page": Object {
+              "data": Array [],
+            },
           },
           "venues": Object {
-            "data": Array [],
             "list": Object {
+              "data": Array [],
               "range": false,
               "search": "",
               "sort": false,
             },
             "page": Object {
+              "data": Array [],
               "form": Object {
                 "message": "",
                 "open": false,
@@ -233,20 +237,24 @@ exports[`Sidebar should match snapshot (default) 1`] = `
           "ready": false,
           "user": Object {},
           "users": Object {
-            "data": Array [],
             "list": Object {
+              "data": Array [],
               "range": false,
               "search": "",
             },
+            "page": Object {
+              "data": Array [],
+            },
           },
           "venues": Object {
-            "data": Array [],
             "list": Object {
+              "data": Array [],
               "range": false,
               "search": "",
               "sort": false,
             },
             "page": Object {
+              "data": Array [],
               "form": Object {
                 "message": "",
                 "open": false,
@@ -385,20 +393,24 @@ exports[`Sidebar should match snapshot (name) 1`] = `
             "type": "auth",
           },
           "users": Object {
-            "data": Array [],
             "list": Object {
+              "data": Array [],
               "range": false,
               "search": "",
             },
+            "page": Object {
+              "data": Array [],
+            },
           },
           "venues": Object {
-            "data": Array [],
             "list": Object {
+              "data": Array [],
               "range": false,
               "search": "",
               "sort": false,
             },
             "page": Object {
+              "data": Array [],
               "form": Object {
                 "message": "",
                 "open": false,
@@ -568,20 +580,24 @@ exports[`Sidebar should match snapshot (settings) 1`] = `
             "type": "auth",
           },
           "users": Object {
-            "data": Array [],
             "list": Object {
+              "data": Array [],
               "range": false,
               "search": "",
             },
+            "page": Object {
+              "data": Array [],
+            },
           },
           "venues": Object {
-            "data": Array [],
             "list": Object {
+              "data": Array [],
               "range": false,
               "search": "",
               "sort": false,
             },
             "page": Object {
+              "data": Array [],
               "form": Object {
                 "message": "",
                 "open": false,

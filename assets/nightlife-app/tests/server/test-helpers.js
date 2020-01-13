@@ -44,7 +44,7 @@ const initTestUserItem = (mockAPICall, getData, getItemData) => async (id) => {
 
   Object.assign(item.data, await getItemData());
 
-  testMock(res.json, [{ users: { data: [item] } }]);
+  testMock(res.json, [{ users: { page: { data: [item] } } }]);
 
 };
 
@@ -92,7 +92,7 @@ const initTestVenueItem = (mockAPICall, getData, getItemData) => async (id) => {
   const item = newVenue(data, await getItemData());
 
   testMock(handler, ["id-a"]);
-  testMock(res.json, [{ venues: { data: [item] } }]);
+  testMock(res.json, [{ venues: { page: { data: [item] } } }]);
 
 };
 

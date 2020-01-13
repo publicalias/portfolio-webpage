@@ -14,11 +14,12 @@ test("reducer accepts USER_CLEAR_STATE actions", () => {
 
   testReducer(userClearState(), {
     users: {
-      data: [{}],
       list: {
+        data: [{}],
         range: true,
         search: "User A"
-      }
+      },
+      page: { data: [{}] }
     }
   }, {
     users: newState().users

@@ -88,11 +88,11 @@ exports[`View should match snapshot (authenticated) 1`] = `
           "title": "",
         },
         "list": Object {
+          "data": Array [],
           "search": "",
         },
         "loading": 0,
         "log": Array [],
-        "polls": Array [],
         "user": Object {
           "auth": Object {
             "id": "",
@@ -107,6 +107,7 @@ exports[`View should match snapshot (authenticated) 1`] = `
         },
         "view": Object {
           "add": "",
+          "data": Array [],
           "delete": false,
           "settings": false,
         },
@@ -216,11 +217,11 @@ exports[`View should match snapshot (authenticated) 1`] = `
           "title": "",
         },
         "list": Object {
+          "data": Array [],
           "search": "",
         },
         "loading": 0,
         "log": Array [],
-        "polls": Array [],
         "user": Object {
           "auth": Object {
             "id": "",
@@ -235,6 +236,7 @@ exports[`View should match snapshot (authenticated) 1`] = `
         },
         "view": Object {
           "add": "",
+          "data": Array [],
           "delete": false,
           "settings": false,
         },
@@ -329,26 +331,11 @@ exports[`View should match snapshot (authenticated, id) 1`] = `
           "title": "",
         },
         "list": Object {
+          "data": Array [],
           "search": "",
         },
         "loading": 0,
         "log": Array [],
-        "polls": Array [
-          Object {
-            "author": "",
-            "date": 0,
-            "id": "id-a",
-            "options": Array [],
-            "secret": false,
-            "title": "",
-            "users": Object {
-              "created": "",
-              "flagged": Array [],
-              "hidden": Array [],
-            },
-            "votes": 0,
-          },
-        ],
         "user": Object {
           "auth": Object {
             "id": "",
@@ -363,6 +350,22 @@ exports[`View should match snapshot (authenticated, id) 1`] = `
         },
         "view": Object {
           "add": "",
+          "data": Array [
+            Object {
+              "author": "",
+              "date": 0,
+              "id": "id-a",
+              "options": Array [],
+              "secret": false,
+              "title": "",
+              "users": Object {
+                "created": "",
+                "flagged": Array [],
+                "hidden": Array [],
+              },
+              "votes": 0,
+            },
+          ],
           "delete": false,
           "settings": false,
         },
@@ -472,26 +475,11 @@ exports[`View should match snapshot (authenticated, id) 1`] = `
           "title": "",
         },
         "list": Object {
+          "data": Array [],
           "search": "",
         },
         "loading": 0,
         "log": Array [],
-        "polls": Array [
-          Object {
-            "author": "",
-            "date": 0,
-            "id": "id-a",
-            "options": Array [],
-            "secret": false,
-            "title": "",
-            "users": Object {
-              "created": "",
-              "flagged": Array [],
-              "hidden": Array [],
-            },
-            "votes": 0,
-          },
-        ],
         "user": Object {
           "auth": Object {
             "id": "",
@@ -506,6 +494,22 @@ exports[`View should match snapshot (authenticated, id) 1`] = `
         },
         "view": Object {
           "add": "",
+          "data": Array [
+            Object {
+              "author": "",
+              "date": 0,
+              "id": "id-a",
+              "options": Array [],
+              "secret": false,
+              "title": "",
+              "users": Object {
+                "created": "",
+                "flagged": Array [],
+                "hidden": Array [],
+              },
+              "votes": 0,
+            },
+          ],
           "delete": false,
           "settings": false,
         },
@@ -600,14 +604,15 @@ exports[`View should match snapshot (default) 1`] = `
           "title": "",
         },
         "list": Object {
+          "data": Array [],
           "search": "",
         },
         "loading": 0,
         "log": Array [],
-        "polls": Array [],
         "user": Object {},
         "view": Object {
           "add": "",
+          "data": Array [],
           "delete": false,
           "settings": false,
         },
@@ -717,14 +722,15 @@ exports[`View should match snapshot (default) 1`] = `
           "title": "",
         },
         "list": Object {
+          "data": Array [],
           "search": "",
         },
         "loading": 0,
         "log": Array [],
-        "polls": Array [],
         "user": Object {},
         "view": Object {
           "add": "",
+          "data": Array [],
           "delete": false,
           "settings": false,
         },
@@ -819,29 +825,30 @@ exports[`View should match snapshot (id) 1`] = `
           "title": "",
         },
         "list": Object {
+          "data": Array [],
           "search": "",
         },
         "loading": 0,
         "log": Array [],
-        "polls": Array [
-          Object {
-            "author": "",
-            "date": 0,
-            "id": "id-a",
-            "options": Array [],
-            "secret": false,
-            "title": "",
-            "users": Object {
-              "created": "",
-              "flagged": Array [],
-              "hidden": Array [],
-            },
-            "votes": 0,
-          },
-        ],
         "user": Object {},
         "view": Object {
           "add": "",
+          "data": Array [
+            Object {
+              "author": "",
+              "date": 0,
+              "id": "id-a",
+              "options": Array [],
+              "secret": false,
+              "title": "",
+              "users": Object {
+                "created": "",
+                "flagged": Array [],
+                "hidden": Array [],
+              },
+              "votes": 0,
+            },
+          ],
           "delete": false,
           "settings": false,
         },
@@ -951,29 +958,30 @@ exports[`View should match snapshot (id) 1`] = `
           "title": "",
         },
         "list": Object {
+          "data": Array [],
           "search": "",
         },
         "loading": 0,
         "log": Array [],
-        "polls": Array [
-          Object {
-            "author": "",
-            "date": 0,
-            "id": "id-a",
-            "options": Array [],
-            "secret": false,
-            "title": "",
-            "users": Object {
-              "created": "",
-              "flagged": Array [],
-              "hidden": Array [],
-            },
-            "votes": 0,
-          },
-        ],
         "user": Object {},
         "view": Object {
           "add": "",
+          "data": Array [
+            Object {
+              "author": "",
+              "date": 0,
+              "id": "id-a",
+              "options": Array [],
+              "secret": false,
+              "title": "",
+              "users": Object {
+                "created": "",
+                "flagged": Array [],
+                "hidden": Array [],
+              },
+              "votes": 0,
+            },
+          ],
           "delete": false,
           "settings": false,
         },
@@ -1068,35 +1076,36 @@ exports[`View should match snapshot (options) 1`] = `
           "title": "",
         },
         "list": Object {
+          "data": Array [],
           "search": "",
         },
         "loading": 0,
         "log": Array [],
-        "polls": Array [
-          Object {
-            "author": "",
-            "date": 0,
-            "id": "id-a",
-            "options": Array [
-              Object {
-                "created": "",
-                "text": "",
-                "voted": Array [],
-              },
-            ],
-            "secret": false,
-            "title": "",
-            "users": Object {
-              "created": "",
-              "flagged": Array [],
-              "hidden": Array [],
-            },
-            "votes": 0,
-          },
-        ],
         "user": Object {},
         "view": Object {
           "add": "",
+          "data": Array [
+            Object {
+              "author": "",
+              "date": 0,
+              "id": "id-a",
+              "options": Array [
+                Object {
+                  "created": "",
+                  "text": "",
+                  "voted": Array [],
+                },
+              ],
+              "secret": false,
+              "title": "",
+              "users": Object {
+                "created": "",
+                "flagged": Array [],
+                "hidden": Array [],
+              },
+              "votes": 0,
+            },
+          ],
           "delete": false,
           "settings": false,
         },
@@ -1218,35 +1227,36 @@ exports[`View should match snapshot (options) 1`] = `
           "title": "",
         },
         "list": Object {
+          "data": Array [],
           "search": "",
         },
         "loading": 0,
         "log": Array [],
-        "polls": Array [
-          Object {
-            "author": "",
-            "date": 0,
-            "id": "id-a",
-            "options": Array [
-              Object {
-                "created": "",
-                "text": "",
-                "voted": Array [],
-              },
-            ],
-            "secret": false,
-            "title": "",
-            "users": Object {
-              "created": "",
-              "flagged": Array [],
-              "hidden": Array [],
-            },
-            "votes": 0,
-          },
-        ],
         "user": Object {},
         "view": Object {
           "add": "",
+          "data": Array [
+            Object {
+              "author": "",
+              "date": 0,
+              "id": "id-a",
+              "options": Array [
+                Object {
+                  "created": "",
+                  "text": "",
+                  "voted": Array [],
+                },
+              ],
+              "secret": false,
+              "title": "",
+              "users": Object {
+                "created": "",
+                "flagged": Array [],
+                "hidden": Array [],
+              },
+              "votes": 0,
+            },
+          ],
           "delete": false,
           "settings": false,
         },

@@ -47,7 +47,7 @@ describe("userGetItem (no data)", () => {
 
     const res = await mockAPICall({}, getData(location));
 
-    testMock(res.json, [{ users: { data: [] } }]);
+    testMock(res.json, [{ users: { page: { data: [] } } }]);
 
   };
 
@@ -151,7 +151,7 @@ describe("userGetList (no data)", () => {
 
     const res = await mockAPICall({}, getData(...args));
 
-    testMock(res.json, [{ users: { data: [] } }]);
+    testMock(res.json, [{ users: { list: { data: [] } } }]);
 
   };
 
@@ -199,7 +199,7 @@ describe("userGetList (data, length)", () => {
 
     const res = await mockAPICall({}, getData(length));
 
-    testMock(res.json, [{ users: { data: Array(length).concat(users.slice(length, length + 50)) } }]);
+    testMock(res.json, [{ users: { list: { data: Array(length).concat(users.slice(length, length + 50)) } } }]);
 
   };
 
@@ -227,7 +227,7 @@ describe("userGetList (data, params)", () => {
 
     const res = await mockAPICall({}, getData(params));
 
-    testMock(res.json, [{ users: { data: fn(users) } }]);
+    testMock(res.json, [{ users: { list: { data: fn(users) } } }]);
 
   };
 

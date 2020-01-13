@@ -17,7 +17,7 @@ const React = require("react");
 
 const UserBody = (props) => {
 
-  const { data: { users: { data } }, local: { handleScroll } } = props;
+  const { data: { users: { list } }, local: { handleScroll } } = props;
 
   const { jsx: { MetaListBody, UserItem } } = UserBody.injected;
 
@@ -38,7 +38,7 @@ const UserBody = (props) => {
         header
       }}
     >
-      {data.map((e) => (
+      {list.data.map((e) => (
         <UserItem
           key={keyGen(e.id)}
           local={{ userData: e }}
@@ -49,7 +49,7 @@ const UserBody = (props) => {
 
 };
 
-UserBody.propList = ["data.users.data", "local"];
+UserBody.propList = ["data.users.list", "local"];
 
 UserBody.injected = {
   jsx: {

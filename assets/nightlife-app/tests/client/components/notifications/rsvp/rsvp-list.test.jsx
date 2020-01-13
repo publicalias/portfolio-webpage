@@ -28,8 +28,6 @@ describe("RSVPList", () => {
 
   it("should match snapshot (default)", () => testSnapshot());
 
-  it("should match snapshot (bool)", () => testSnapshot({ venues: { data: [{}] } }));
-
   it("should match snapshot (list)", () => testSnapshot({ notifications: { rsvps: [{}] } }));
 
   it("should call useRefresh on update", () => testMockHook(RSVPList, testMount, "useRefresh"));

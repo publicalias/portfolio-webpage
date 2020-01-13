@@ -28,6 +28,6 @@ describe("VenueBody", () => {
 
   it("should match snapshot (default)", () => testSnapshot());
 
-  it("should match snapshot (list)", () => testSnapshot({ venues: { data: [{}] } }));
+  it("should match snapshot (list)", () => testSnapshot({ venues: { list: { data: [{}] } } }));
 
 });

@@ -92,7 +92,7 @@ const metaGetPollItem = async (req, res) => {
 
   const poll = await findItem(id);
 
-  res.json({ polls: poll ? [poll] : [] });
+  res.json({ view: { data: poll ? [poll] : [] } });
 
 };
 
@@ -127,7 +127,7 @@ const metaGetPollList = handleAPICall({
 
     const user = req.user || await getIPUser(req.ip) || {};
 
-    res.json({ polls: await findList(user, params, length) });
+    res.json({ list: { data: await findList(user, params, length) } });
 
   }
 

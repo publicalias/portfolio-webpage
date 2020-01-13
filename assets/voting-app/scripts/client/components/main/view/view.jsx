@@ -24,7 +24,7 @@ const View = (props) => {
 
   const {
     actions: { metaGetPollItem, viewClearState },
-    data: { user, loading, log, polls },
+    data: { user, loading, log, view },
     local: { id }
   } = props;
 
@@ -51,11 +51,11 @@ const View = (props) => {
 
   //render
 
-  const poll = polls.find((e) => e.id === id) || newPoll();
+  const poll = view.data.find((e) => e.id === id) || newPoll();
 
   const local = {
     bool: {
-      canAdd: user.type === "auth" && Boolean(polls.find((e) => e.id === poll.id)),
+      canAdd: user.type === "auth" && Boolean(view.data.find((e) => e.id === poll.id)),
       hasOptions: poll.options.length > 0
     },
     poll
@@ -71,7 +71,7 @@ const View = (props) => {
 
 };
 
-View.propList = ["data.user", "data.loading", "data.log", "data.polls", "local"];
+View.propList = ["data.user", "data.loading", "data.log", "data.view", "local"];
 
 View.injected = {
   jsx: {

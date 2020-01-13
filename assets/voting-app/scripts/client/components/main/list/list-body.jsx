@@ -18,7 +18,7 @@ const React = require("react");
 
 const ListBody = (props) => {
 
-  const { data: { user, polls }, local: { handleScroll }, location } = props;
+  const { data: { user, list }, local: { handleScroll }, location } = props;
 
   const { jsx: { ListItem } } = ListBody.injected;
 
@@ -48,7 +48,7 @@ const ListBody = (props) => {
         className="c-list-body__body js-ref-scroll qa-ref-scroll"
         onScroll={handleScroll}
       >
-        {polls.length ? polls.map((e) => (
+        {list.data.length ? list.data.map((e) => (
           <ListItem
             {...props}
             key={keyGen(e.title)}
@@ -67,7 +67,7 @@ const ListBody = (props) => {
 
 };
 
-ListBody.propList = ["data.user", "data.polls", "local", "location"];
+ListBody.propList = ["data.user", "data.list", "local", "location"];
 
 ListBody.injected = { jsx: { ListItem } };
 

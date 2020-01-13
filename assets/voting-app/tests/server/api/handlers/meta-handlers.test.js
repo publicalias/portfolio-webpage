@@ -119,7 +119,7 @@ describe("metaGetPollItem", () => {
 
     const res = await mockAPICall({}, getData());
 
-    testMock(res.json, [{ polls: polls.filter((e) => e.id) }]);
+    testMock(res.json, [{ view: { data: polls.filter((e) => e.id) } }]);
 
   };
 
@@ -152,7 +152,7 @@ describe("metaGetPollList (general)", () => {
 
     const res = await mockAPICall({}, getData(length));
 
-    testMock(res.json, [{ polls: polls.slice(0, length + 100) }]);
+    testMock(res.json, [{ list: { data: polls.slice(0, length + 100) } }]);
 
   };
 
@@ -178,7 +178,7 @@ describe("metaGetPollList (sort)", () => {
 
     const res = await mockAPICall({}, getData(sort));
 
-    testMock(res.json, [{ polls: polls.reverse() }]);
+    testMock(res.json, [{ list: { data: polls.reverse() } }]);
 
   };
 
@@ -213,7 +213,7 @@ describe("metaGetPollList (search)", () => {
 
     const res = await mockAPICall({}, getData(search));
 
-    testMock(res.json, [{ polls: polls.slice(0, count).reverse() }]);
+    testMock(res.json, [{ list: { data: polls.slice(0, count).reverse() } }]);
 
   };
 
@@ -267,7 +267,7 @@ describe("metaGetPollList (filter)", () => {
     const res = await Promise.all(users.map((e) => mockAPICall(e, getData(filter))));
 
     res.forEach((e, i) => {
-      testMock(e.json, [{ polls: polls.slice(0, counts[i]) }]);
+      testMock(e.json, [{ list: { data: polls.slice(0, counts[i]) } }]);
     });
 
   };

@@ -17,7 +17,7 @@ const React = require("react");
 
 const VenueBody = (props) => {
 
-  const { data: { venues: { data } }, local: { handleScroll } } = props;
+  const { data: { venues: { list } }, local: { handleScroll } } = props;
 
   const { jsx: { MetaListBody, VenueItem } } = VenueBody.injected;
 
@@ -45,7 +45,7 @@ const VenueBody = (props) => {
         header
       }}
     >
-      {data.map((e) => (
+      {list.data.map((e) => (
         <VenueItem
           key={keyGen(e.id)}
           local={{ venue: e }}
@@ -56,7 +56,7 @@ const VenueBody = (props) => {
 
 };
 
-VenueBody.propList = ["data.venues.data", "local"];
+VenueBody.propList = ["data.venues.list", "local"];
 
 VenueBody.injected = {
   jsx: {

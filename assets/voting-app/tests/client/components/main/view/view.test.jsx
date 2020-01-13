@@ -34,20 +34,22 @@ describe("View", () => {
 
   it("should match snapshot (default)", () => testSnapshot());
 
-  it("should match snapshot (id)", () => testSnapshot({ polls: [{ id: "id-a" }] }));
+  it("should match snapshot (id)", () => testSnapshot({ view: { data: [{ id: "id-a" }] } }));
 
   it("should match snapshot (authenticated)", () => testSnapshot({ user: newUser() }));
 
   it("should match snapshot (authenticated, id)", () => testSnapshot({
     user: newUser(),
-    polls: [{ id: "id-a" }]
+    view: { data: [{ id: "id-a" }] }
   }));
 
   it("should match snapshot (options)", () => testSnapshot({
-    polls: [{
-      id: "id-a",
-      options: [{}]
-    }]
+    view: {
+      data: [{
+        id: "id-a",
+        options: [{}]
+      }]
+    }
   }));
 
   it("should call viewClearState and metaGetPollItem on load", () => {

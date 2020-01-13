@@ -52,13 +52,7 @@ const newState = initSchema({
 
   log: [],
 
-  //data
-
-  polls: [],
-
   //page
-
-  list: { search: "" },
 
   form: {
     title: "",
@@ -68,7 +62,13 @@ const newState = initSchema({
     delete: false
   },
 
+  list: {
+    data: [],
+    search: ""
+  },
+
   view: {
+    data: [],
     add: "",
     settings: false,
     delete: false
@@ -89,7 +89,8 @@ const newState = initSchema({
 
   errors: listReplacer(newError),
 
-  polls: listReplacer(newPoll)
+  list: { data: listReplacer(newPoll) },
+  view: { data: listReplacer(newPoll) }
 
 });
 

@@ -36,7 +36,7 @@ describe("VenuePage (general)", () => {
 
   it("should match snapshot (authenticated)", () => testSnapshot({ user: newUserWithData() }));
 
-  it("should match snapshot (match)", () => testSnapshot({ venues: { data: [{ id: "id-a" }] } }));
+  it("should match snapshot (match)", () => testSnapshot({ venues: { page: { data: [{ id: "id-a" }] } } }));
 
   it("should call venueClearState conditionally on update", () => {
 
@@ -82,11 +82,11 @@ describe("VenuePage (general)", () => {
 
 describe("VenuePage (list)", () => {
 
-  const dataList = [{ venues: { data: [{ id: "id-a" }] } }, { id: "id-a" }];
+  const dataList = [{ venues: { page: { data: [{ id: "id-a" }] } } }, { id: "id-a" }];
 
   const testSnapshot = withDataList(initTestSnapshot(testShallow), dataList);
 
-  const testPage = (data) => testSnapshot({ venues: { data: [data] } });
+  const testPage = (data) => testSnapshot({ venues: { page: { data: [data] } } });
 
   it("should match snapshot (favorites)", () => testPage({ favorites: [{}] }));
 

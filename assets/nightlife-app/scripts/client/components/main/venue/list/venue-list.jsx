@@ -23,7 +23,7 @@ const VenueList = (props) => {
 
   const {
     actions: { venueClearState, venueGetList },
-    data: { user, ready, venues: { data } },
+    data: { user, ready, venues: { list } },
     location
   } = props;
 
@@ -36,7 +36,7 @@ const VenueList = (props) => {
 
   const fetch = async (length) => venueGetList(getVenueParams(location), length, await getLocation(user));
 
-  const { handleReload, handleScroll } = useInfiniteScroll(data, "venues.data", 50, venueClearState, fetch);
+  const { handleReload, handleScroll } = useInfiniteScroll(list.data, "venues.list.data", 50, venueClearState, fetch);
 
   //lifecycle
 
@@ -61,7 +61,7 @@ const VenueList = (props) => {
 
 };
 
-VenueList.propList = ["data.user", "data.ready", "data.venues.data", "location"];
+VenueList.propList = ["data.user", "data.ready", "data.venues.list", "location"];
 
 VenueList.injected = {
   jsx: {

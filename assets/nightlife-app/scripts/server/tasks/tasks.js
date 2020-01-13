@@ -53,7 +53,7 @@ const botCreateRSVP = () => hourly(async () => {
     location: await geoCode("DEMO")
   });
 
-  const [{ venues: { data: [{ id, name }] } }] = res.json.mock.calls[0];
+  const [{ venues: { list: { data: [{ id, name }] } } }] = res.json.mock.calls[0];
 
   botAPICall(rsvpAdd, "POST", FriendlyBot, {
     name,

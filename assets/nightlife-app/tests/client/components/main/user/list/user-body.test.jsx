@@ -28,6 +28,6 @@ describe("UserBody", () => {
 
   it("should match snapshot (default)", () => testSnapshot());
 
-  it("should match snapshot (list)", () => testSnapshot({ users: { data: [{}] } }));
+  it("should match snapshot (list)", () => testSnapshot({ users: { list: { data: [{}] } } }));
 
 });

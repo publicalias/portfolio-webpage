@@ -34,7 +34,7 @@ describe("ListBody (general)", () => {
 
   it("should match snapshot (authenticated)", () => testSnapshot({ user: newUser() }));
 
-  it("should match snapshot (list)", () => testSnapshot({ polls: [{}] }));
+  it("should match snapshot (list)", () => testSnapshot({ list: { data: [{}] } }));
 
   it("should call handleScroll on scroll", () => {
 
