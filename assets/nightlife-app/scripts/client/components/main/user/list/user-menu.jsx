@@ -19,7 +19,7 @@ const UserMenu = (props) => {
 
   const {
     actions: { userSetSearch, userToggleRange },
-    data: { users: { list } },
+    data: { users: { list: { menu } } },
     history,
     location
   } = props;
@@ -57,8 +57,8 @@ const UserMenu = (props) => {
         local={{
           handleChange,
           handleClear: handleSearch("search", ""),
-          handleSubmit: handleSearch("search", list.search),
-          value: list.search
+          handleSubmit: handleSearch("search", menu.search),
+          value: menu.search
         }}
       />
       <Dropdown
@@ -66,7 +66,7 @@ const UserMenu = (props) => {
           handleToggle: userToggleRange,
           list: rangeList,
           name: "Range",
-          open: list.range,
+          open: menu.range,
           util: "u-widget-width"
         }}
       />
@@ -75,7 +75,7 @@ const UserMenu = (props) => {
 
 };
 
-UserMenu.propList = ["data.users.list", "location"];
+UserMenu.propList = ["data.users.list.menu", "location"];
 
 UserMenu.injected = {
   jsx: {

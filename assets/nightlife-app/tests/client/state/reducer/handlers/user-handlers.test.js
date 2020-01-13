@@ -16,8 +16,10 @@ test("reducer accepts USER_CLEAR_STATE actions", () => {
     users: {
       list: {
         data: [{}],
-        range: true,
-        search: "User A"
+        menu: {
+          range: true,
+          search: "User A"
+        }
       },
       page: { data: [{}] }
     }
@@ -33,7 +35,7 @@ test("reducer accepts USER_SET_SEARCH actions", () => {
 
   const { userSetSearch } = actions;
 
-  testReducer(userSetSearch("User A"), null, { users: { list: { search: "User A" } } });
+  testReducer(userSetSearch("User A"), null, { users: { list: { menu: { search: "User A" } } } });
 
 });
 
@@ -43,6 +45,6 @@ test("reducer accepts USER_TOGGLE_RANGE actions", () => {
 
   const { userToggleRange } = actions;
 
-  testReducer(userToggleRange(), null, { users: { list: { range: true } } });
+  testReducer(userToggleRange(), null, { users: { list: { menu: { range: true } } } });
 
 });

@@ -37,7 +37,7 @@ describe("Sidebar", () => {
 
   it("should match snapshot (settings)", () => testSnapshot({
     user: newUserWithData(),
-    account: { settings: true }
+    account: { settings: { open: true } }
   }));
 
   it("should call handleClick on click", () => testClick(

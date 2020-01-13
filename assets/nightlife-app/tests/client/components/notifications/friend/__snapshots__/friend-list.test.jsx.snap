@@ -83,10 +83,12 @@ exports[`FriendList should match snapshot (default) 1`] = `
   data={
     Object {
       "account": Object {
-        "address": "",
-        "avatar": "",
         "delete": false,
-        "settings": false,
+        "settings": Object {
+          "address": "",
+          "avatar": "",
+          "open": false,
+        },
       },
       "errors": Array [],
       "loading": 0,
@@ -100,8 +102,10 @@ exports[`FriendList should match snapshot (default) 1`] = `
       "users": Object {
         "list": Object {
           "data": Array [],
-          "range": false,
-          "search": "",
+          "menu": Object {
+            "range": false,
+            "search": "",
+          },
         },
         "page": Object {
           "data": Array [],
@@ -110,21 +114,23 @@ exports[`FriendList should match snapshot (default) 1`] = `
       "venues": Object {
         "list": Object {
           "data": Array [],
-          "range": false,
-          "search": "",
-          "sort": false,
+          "menu": Object {
+            "range": false,
+            "search": "",
+            "sort": false,
+          },
         },
         "page": Object {
+          "body": Object {
+            "pause": false,
+            "photo": "",
+            "start": false,
+          },
           "data": Array [],
           "form": Object {
             "message": "",
             "open": false,
             "time": "",
-          },
-          "photos": Object {
-            "pause": false,
-            "photo": "",
-            "start": false,
           },
         },
       },
@@ -202,10 +208,12 @@ exports[`FriendList should match snapshot (list) 1`] = `
   data={
     Object {
       "account": Object {
-        "address": "",
-        "avatar": "",
         "delete": false,
-        "settings": false,
+        "settings": Object {
+          "address": "",
+          "avatar": "",
+          "open": false,
+        },
       },
       "errors": Array [],
       "loading": 0,
@@ -234,8 +242,10 @@ exports[`FriendList should match snapshot (list) 1`] = `
       "users": Object {
         "list": Object {
           "data": Array [],
-          "range": false,
-          "search": "",
+          "menu": Object {
+            "range": false,
+            "search": "",
+          },
         },
         "page": Object {
           "data": Array [],
@@ -244,21 +254,23 @@ exports[`FriendList should match snapshot (list) 1`] = `
       "venues": Object {
         "list": Object {
           "data": Array [],
-          "range": false,
-          "search": "",
-          "sort": false,
+          "menu": Object {
+            "range": false,
+            "search": "",
+            "sort": false,
+          },
         },
         "page": Object {
+          "body": Object {
+            "pause": false,
+            "photo": "",
+            "start": false,
+          },
           "data": Array [],
           "form": Object {
             "message": "",
             "open": false,
             "time": "",
-          },
-          "photos": Object {
-            "pause": false,
-            "photo": "",
-            "start": false,
           },
         },
       },
@@ -333,10 +345,12 @@ exports[`FriendList should match snapshot (list) 1`] = `
     data={
       Object {
         "account": Object {
-          "address": "",
-          "avatar": "",
           "delete": false,
-          "settings": false,
+          "settings": Object {
+            "address": "",
+            "avatar": "",
+            "open": false,
+          },
         },
         "errors": Array [],
         "loading": 0,
@@ -365,8 +379,10 @@ exports[`FriendList should match snapshot (list) 1`] = `
         "users": Object {
           "list": Object {
             "data": Array [],
-            "range": false,
-            "search": "",
+            "menu": Object {
+              "range": false,
+              "search": "",
+            },
           },
           "page": Object {
             "data": Array [],
@@ -375,21 +391,23 @@ exports[`FriendList should match snapshot (list) 1`] = `
         "venues": Object {
           "list": Object {
             "data": Array [],
-            "range": false,
-            "search": "",
-            "sort": false,
+            "menu": Object {
+              "range": false,
+              "search": "",
+              "sort": false,
+            },
           },
           "page": Object {
+            "body": Object {
+              "pause": false,
+              "photo": "",
+              "start": false,
+            },
             "data": Array [],
             "form": Object {
               "message": "",
               "open": false,
               "time": "",
-            },
-            "photos": Object {
-              "pause": false,
-              "photo": "",
-              "start": false,
             },
           },
         },

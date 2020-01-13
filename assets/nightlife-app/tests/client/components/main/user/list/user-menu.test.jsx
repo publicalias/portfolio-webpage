@@ -28,6 +28,6 @@ describe("UserMenu", () => {
 
   it("should match snapshot (default)", () => testSnapshot());
 
-  it("should match snapshot (search)", () => testSnapshot({ users: { list: { search: "User A" } } }));
+  it("should match snapshot (search)", () => testSnapshot({ users: { list: { menu: { search: "User A" } } } }));
 
 });

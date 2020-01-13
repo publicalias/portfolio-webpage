@@ -19,7 +19,7 @@ const { testMount, testShallow } = testWrapper(VenuePhotos);
 
 const photo = "https://www.example.com/photo.jpg";
 
-const dataList = [{ venues: { page: { photos: { photo } } } }, { venue: newVenue() }];
+const dataList = [{ venues: { page: { body: { photo } } } }, { venue: newVenue() }];
 
 const mockUseCarousel = () => ({
   lib: {

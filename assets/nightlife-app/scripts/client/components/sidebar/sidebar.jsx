@@ -18,7 +18,7 @@ const React = require("react");
 
 const Sidebar = (props) => {
 
-  const { actions, data: { user, account } } = props;
+  const { actions, data: { user, account: { settings } } } = props;
 
   const { metaToggleSettings } = actions;
 
@@ -41,7 +41,7 @@ const Sidebar = (props) => {
     },
     bool: user.data[prop],
     placeholder: type,
-    text: account[prop]
+    text: settings[prop]
   });
 
   return (
@@ -52,7 +52,7 @@ const Sidebar = (props) => {
         {auth && (
           <React.Fragment>
             <button className="c-sidebar__toggle qa-toggle-settings" onClick={handleClick}>Settings</button>
-            {account.settings && (
+            {settings.open && (
               <React.Fragment>
                 <p className="u-margin-none">Tip: Set your address to "DEMO" to interact with the demo users.</p>
                 <SidebarInput local={inputProps("address")} />
@@ -68,7 +68,7 @@ const Sidebar = (props) => {
 
 };
 
-Sidebar.propList = ["data.user", "data.account"];
+Sidebar.propList = ["data.user", "data.account.settings"];
 
 Sidebar.injected = {
   jsx: {

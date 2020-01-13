@@ -183,9 +183,11 @@ const newState = initSchema({
 
   user: {},
   account: {
-    settings: false,
-    avatar: "",
-    address: "",
+    settings: {
+      open: false,
+      avatar: "",
+      address: ""
+    },
     delete: false
   },
   errors: [],
@@ -204,8 +206,10 @@ const newState = initSchema({
   users: {
     list: {
       data: [],
-      range: false,
-      search: ""
+      menu: {
+        range: false,
+        search: ""
+      }
     },
     page: { data: [] }
   },
@@ -213,13 +217,15 @@ const newState = initSchema({
   venues: {
     list: {
       data: [],
-      range: false,
-      search: "",
-      sort: false
+      menu: {
+        range: false,
+        search: "",
+        sort: false
+      }
     },
     page: {
       data: [],
-      photos: {
+      body: {
         photo: "",
         pause: false,
         start: false

@@ -26,19 +26,19 @@ const VENUE_SET_OPEN = (state, { open }) => deepCopy(state, { venues: { page: { 
 
 //venue set pause
 
-const VENUE_SET_PAUSE = (state, { pause }) => deepCopy(state, { venues: { page: { photos: { pause } } } });
+const VENUE_SET_PAUSE = (state, { pause }) => deepCopy(state, { venues: { page: { body: { pause } } } });
 
 //venue set photo
 
-const VENUE_SET_PHOTO = (state, { photo }) => deepCopy(state, { venues: { page: { photos: { photo } } } });
+const VENUE_SET_PHOTO = (state, { photo }) => deepCopy(state, { venues: { page: { body: { photo } } } });
 
 //venue set search
 
-const VENUE_SET_SEARCH = (state, { search }) => deepCopy(state, { venues: { list: { search } } });
+const VENUE_SET_SEARCH = (state, { search }) => deepCopy(state, { venues: { list: { menu: { search } } } });
 
 //venue set start
 
-const VENUE_SET_START = (state, { start }) => deepCopy(state, { venues: { page: { photos: { start } } } });
+const VENUE_SET_START = (state, { start }) => deepCopy(state, { venues: { page: { body: { start } } } });
 
 //venue set time
 
@@ -49,8 +49,10 @@ const VENUE_SET_TIME = (state, { time }) => deepCopy(state, { venues: { page: { 
 const VENUE_TOGGLE_RANGE = (state) => deepCopy(state, {
   venues: {
     list: {
-      range: !state.venues.list.range,
-      sort: false
+      menu: {
+        range: !state.venues.list.menu.range,
+        sort: false
+      }
     }
   }
 });
@@ -60,8 +62,10 @@ const VENUE_TOGGLE_RANGE = (state) => deepCopy(state, {
 const VENUE_TOGGLE_SORT = (state) => deepCopy(state, {
   venues: {
     list: {
-      range: false,
-      sort: !state.venues.list.sort
+      menu: {
+        range: false,
+        sort: !state.venues.list.menu.sort
+      }
     }
   }
 });

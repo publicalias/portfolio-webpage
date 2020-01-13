@@ -25,7 +25,7 @@ const UserPage = (props) => {
 
   const {
     actions: { userClearState, userGetItem },
-    data: { user, loading, log, ready, users: { page } },
+    data: { user, loading, log, ready, users: { page: { data } } },
     local: { id }
   } = props;
 
@@ -36,7 +36,7 @@ const UserPage = (props) => {
 
   //utilities
 
-  const userData = page.data.find((e) => e.id === id) || newUserData();
+  const userData = data.find((e) => e.id === id) || newUserData();
 
   const refresh = async () => {
     if (ready) {
@@ -93,7 +93,7 @@ UserPage.propList = [
   "data.loading",
   "data.log",
   "data.ready",
-  "data.users.page",
+  "data.users.page.data",
   "local"
 ];
 

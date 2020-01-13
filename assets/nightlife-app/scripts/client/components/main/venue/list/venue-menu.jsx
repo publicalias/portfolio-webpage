@@ -19,7 +19,7 @@ const VenueMenu = (props) => {
 
   const {
     actions: { venueSetSearch, venueToggleRange, venueToggleSort },
-    data: { venues: { list } },
+    data: { venues: { list: { menu } } },
     history,
     location
   } = props;
@@ -63,8 +63,8 @@ const VenueMenu = (props) => {
         local={{
           handleChange,
           handleClear: handleSearch("search", ""),
-          handleSubmit: handleSearch("search", list.search),
-          value: list.search
+          handleSubmit: handleSearch("search", menu.search),
+          value: menu.search
         }}
       />
       <Dropdown
@@ -72,7 +72,7 @@ const VenueMenu = (props) => {
           handleToggle: venueToggleRange,
           list: rangeList,
           name: "Range",
-          open: list.range,
+          open: menu.range,
           util: "u-widget-width"
         }}
       />
@@ -81,7 +81,7 @@ const VenueMenu = (props) => {
           handleToggle: venueToggleSort,
           list: sortList,
           name: "Sort By",
-          open: list.sort,
+          open: menu.sort,
           util: "u-widget-width"
         }}
       />
@@ -90,7 +90,7 @@ const VenueMenu = (props) => {
 
 };
 
-VenueMenu.propList = ["data.venues.list", "location"];
+VenueMenu.propList = ["data.venues.list.menu", "location"];
 
 VenueMenu.injected = {
   jsx: {

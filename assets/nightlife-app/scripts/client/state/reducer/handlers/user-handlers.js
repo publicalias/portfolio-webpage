@@ -14,11 +14,11 @@ const USER_CLEAR_STATE = (state) => deepCopy(state, { users: newState().users })
 
 //user set search
 
-const USER_SET_SEARCH = (state, { search }) => deepCopy(state, { users: { list: { search } } });
+const USER_SET_SEARCH = (state, { search }) => deepCopy(state, { users: { list: { menu: { search } } } });
 
 //user toggle range
 
-const USER_TOGGLE_RANGE = (state) => deepCopy(state, { users: { list: { range: !state.users.list.range } } });
+const USER_TOGGLE_RANGE = (state) => deepCopy(state, { users: { list: { menu: { range: !state.users.list.menu.range } } } });
 
 //exports
 

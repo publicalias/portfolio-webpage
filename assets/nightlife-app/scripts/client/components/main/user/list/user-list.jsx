@@ -23,7 +23,7 @@ const UserList = (props) => {
 
   const {
     actions: { userClearState, userGetList },
-    data: { user, ready, users: { list } },
+    data: { user, ready, users: { list: { data } } },
     location
   } = props;
 
@@ -36,7 +36,7 @@ const UserList = (props) => {
 
   const fetch = async (length) => userGetList(getUserParams(location), length, await getLocation(user));
 
-  const { handleReload, handleScroll } = useInfiniteScroll(list.data, "users.list.data", 50, userClearState, fetch);
+  const { handleReload, handleScroll } = useInfiniteScroll(data, "users.list.data", 50, userClearState, fetch);
 
   //lifecycle
 
@@ -61,7 +61,7 @@ const UserList = (props) => {
 
 };
 
-UserList.propList = ["data.user", "data.ready", "data.users.list", "location"];
+UserList.propList = ["data.user", "data.ready", "data.users.list.data", "location"];
 
 UserList.injected = {
   jsx: {

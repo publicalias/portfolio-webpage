@@ -11,7 +11,7 @@ test("reducer accepts META_SET_ADDRESS actions", () => {
 
   const { metaSetAddress } = actions;
 
-  testReducer(metaSetAddress("12345"), null, { account: { address: "12345" } });
+  testReducer(metaSetAddress("12345"), null, { account: { settings: { address: "12345" } } });
 
 });
 
@@ -23,7 +23,7 @@ test("reducer accepts META_SET_AVATAR actions", () => {
 
   const avatar = "https://www.example.com/avatar.jpg";
 
-  testReducer(metaSetAvatar(avatar), null, { account: { avatar } });
+  testReducer(metaSetAvatar(avatar), null, { account: { settings: { avatar } } });
 
 });
 
@@ -43,6 +43,6 @@ test("reducer accepts META_TOGGLE_SETTINGS actions", () => {
 
   const { metaToggleSettings } = actions;
 
-  testReducer(metaToggleSettings(), null, { account: { settings: true } });
+  testReducer(metaToggleSettings(), null, { account: { settings: { open: true } } });
 
 });

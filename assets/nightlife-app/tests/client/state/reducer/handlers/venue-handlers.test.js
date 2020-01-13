@@ -38,16 +38,18 @@ test("reducer accepts VENUE_CLEAR_STATE actions", () => {
     venues: {
       list: {
         data: [{}],
-        range: true,
-        search: "Coffee",
-        sort: true
+        menu: {
+          range: true,
+          search: "Coffee",
+          sort: true
+        }
       },
       page: {
         data: [{}],
-        photos: {
+        body: {
           photo: "https://www.example.com/photo.jpg",
-          pause: "true",
-          start: "true"
+          pause: true,
+          start: true
         },
         form: {
           open: true,
@@ -88,7 +90,7 @@ test("reducer accepts VENUE_SET_PAUSE actions", () => {
 
   const { venueSetPause } = actions;
 
-  testReducer(venueSetPause(true), null, { venues: { page: { photos: { pause: true } } } });
+  testReducer(venueSetPause(true), null, { venues: { page: { body: { pause: true } } } });
 
 });
 
@@ -100,7 +102,7 @@ test("reducer accepts VENUE_SET_PHOTO actions", () => {
 
   const photo = "https://www.example.com/photo.jpg";
 
-  testReducer(venueSetPhoto(photo), null, { venues: { page: { photos: { photo } } } });
+  testReducer(venueSetPhoto(photo), null, { venues: { page: { body: { photo } } } });
 
 });
 
@@ -110,7 +112,7 @@ test("reducer accepts VENUE_SET_SEARCH actions", () => {
 
   const { venueSetSearch } = actions;
 
-  testReducer(venueSetSearch("Coffee"), null, { venues: { list: { search: "Coffee" } } });
+  testReducer(venueSetSearch("Coffee"), null, { venues: { list: { menu: { search: "Coffee" } } } });
 
 });
 
@@ -120,7 +122,7 @@ test("reducer accepts VENUE_SET_START actions", () => {
 
   const { venueSetStart } = actions;
 
-  testReducer(venueSetStart(true), null, { venues: { page: { photos: { start: true } } } });
+  testReducer(venueSetStart(true), null, { venues: { page: { body: { start: true } } } });
 
 });
 
@@ -140,11 +142,13 @@ test("reducer accepts VENUE_TOGGLE_RANGE actions", () => {
 
   const { venueToggleRange } = actions;
 
-  testReducer(venueToggleRange(), { venues: { list: { sort: true } } }, {
+  testReducer(venueToggleRange(), { venues: { list: { menu: { sort: true } } } }, {
     venues: {
       list: {
-        range: true,
-        sort: false
+        menu: {
+          range: true,
+          sort: false
+        }
       }
     }
   });
@@ -157,11 +161,13 @@ test("reducer accepts VENUE_TOGGLE_SORT actions", () => {
 
   const { venueToggleSort } = actions;
 
-  testReducer(venueToggleSort(), { venues: { list: { range: true } } }, {
+  testReducer(venueToggleSort(), { venues: { list: { menu: { range: true } } } }, {
     venues: {
       list: {
-        range: false,
-        sort: true
+        menu: {
+          range: false,
+          sort: true
+        }
       }
     }
   });

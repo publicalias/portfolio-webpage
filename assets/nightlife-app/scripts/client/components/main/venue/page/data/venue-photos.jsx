@@ -22,7 +22,7 @@ const VenuePhotos = (props) => {
 
   const {
     actions: { venueSetPhoto, venueSetStart, venueSetPause },
-    data: { venues: { page: { photos } } },
+    data: { venues: { page: { body } } },
     local: { venue }
   } = props;
 
@@ -40,10 +40,10 @@ const VenuePhotos = (props) => {
       setStart: venueSetStart
     },
     data: {
-      item: photos.photo,
+      item: body.photo,
       list: venue.photos,
-      pause: photos.pause,
-      start: photos.start
+      pause: body.pause,
+      start: body.start
     },
     local: { getShown }
   });
@@ -86,7 +86,7 @@ const VenuePhotos = (props) => {
         local={{
           handleError,
           handleLoad,
-          src: photos.photo,
+          src: body.photo,
           venue
         }}
       />
@@ -95,7 +95,7 @@ const VenuePhotos = (props) => {
 
 };
 
-VenuePhotos.propList = ["data.venues.page.photos", "local"];
+VenuePhotos.propList = ["data.venues.page.body", "local"];
 
 VenuePhotos.injected = {
   jsx: {

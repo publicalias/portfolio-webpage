@@ -28,6 +28,6 @@ describe("VenueMenu", () => {
 
   it("should match snapshot (default)", () => testSnapshot());
 
-  it("should match snapshot (search)", () => testSnapshot({ venues: { list: { search: "Coffee" } } }));
+  it("should match snapshot (search)", () => testSnapshot({ venues: { list: { menu: { search: "Coffee" } } } }));
 
 });
