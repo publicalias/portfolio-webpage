@@ -16,7 +16,7 @@ const React = require("react");
 
 const ListMenu = (props) => {
 
-  const { actions: { listSetSearch }, data: { list }, history, location } = props;
+  const { actions: { listSetSearch }, data: { list: { menu } }, history, location } = props;
 
   const { jsx: { SearchBar } } = ListMenu.injected;
 
@@ -39,8 +39,8 @@ const ListMenu = (props) => {
           local={{
             handleChange,
             handleClear: handleSearch("search", ""),
-            handleSubmit: handleSearch("search", list.search),
-            value: list.search
+            handleSubmit: handleSearch("search", menu.search),
+            value: menu.search
           }}
         />
       </div>
@@ -53,7 +53,7 @@ const ListMenu = (props) => {
 
 };
 
-ListMenu.propList = ["data.list", "location"];
+ListMenu.propList = ["data.list.menu", "location"];
 
 ListMenu.injected = { jsx: { SearchBar } };
 

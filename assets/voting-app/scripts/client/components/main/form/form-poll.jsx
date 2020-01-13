@@ -16,14 +16,14 @@ const React = require("react");
 
 const FormPoll = (props) => {
 
-  const { actions: { formCheckTitle, formSetTitle }, data: { user, form } } = props;
+  const { actions: { formCheckTitle, formSetTitle }, data: { user, form: { body } } } = props;
 
   const { jsx: { MetaPollDisplay }, lib: { hash } } = FormPoll.injected;
 
   //events
 
   const handleBlur = () => {
-    formCheckTitle(form.title);
+    formCheckTitle(body.title);
   };
 
   const handleChange = (event) => {
@@ -41,15 +41,15 @@ const FormPoll = (props) => {
           onBlur={handleBlur}
           onChange={handleChange}
           placeholder="Untitled"
-          value={form.title}
+          value={body.title}
         />
         <h4>{`By ${user.name || "Anonymous"}`}</h4>
       </div>
       <hr />
       <MetaPollDisplay
         local={{
-          counts: form.options.map((e) => Number(hash(e, 1))),
-          labels: form.options
+          counts: body.options.map((e) => Number(hash(e, 1))),
+          labels: body.options
         }}
       />
     </div>
@@ -57,7 +57,7 @@ const FormPoll = (props) => {
 
 };
 
-FormPoll.propList = ["data.user", "data.form"];
+FormPoll.propList = ["data.user", "data.form.body"];
 
 FormPoll.injected = {
   jsx: { MetaPollDisplay },

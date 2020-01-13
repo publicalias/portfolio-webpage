@@ -34,11 +34,11 @@ describe("FormPoll", () => {
 
   it("should match snapshot (name)", () => testSnapshot({ user: newUser({ name: "User A" }) }));
 
-  it("should match snapshot (options)", () => testSnapshot({ form: { options: ["Option A"] } }));
+  it("should match snapshot (options)", () => testSnapshot({ form: { body: { options: ["Option A"] } } }));
 
   it("should call handleBlur on blur", () => testBlur(
     ".qa-ref-title",
-    [{ form: { title: "Title A" } }],
+    [{ form: { body: { title: "Title A" } } }],
     ["formCheckTitle", ["Title A"]]
   ));
 

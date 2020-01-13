@@ -4,7 +4,7 @@
 
 const handlers = require("../../../../scripts/server/api/handlers/meta-handlers");
 
-const { newForm, newListParams, newPoll } = require("../../../../schemas");
+const { newFormData, newListParams, newPoll } = require("../../../../schemas");
 const { testOptions, testTitle } = require("../../test-helpers");
 
 //global imports
@@ -32,11 +32,11 @@ describe("metaCreatePoll", () => {
 
   const mockAPICall = initMockAPICall(metaCreatePoll, "POST");
 
-  const getData = (form) => newForm(form);
+  const getData = (data) => newFormData(data);
 
-  const testError = async (error, form) => {
+  const testError = async (error, data) => {
 
-    const res = await mockAPICall(newUser(), getData(form));
+    const res = await mockAPICall(newUser(), getData(data));
 
     const [{ errors }] = res.json.mock.calls[0];
 

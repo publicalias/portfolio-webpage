@@ -4,6 +4,14 @@
 
 const { initSchema, listReplacer, newError, newIPUser, newUser } = require("redux/schemas");
 
+//new form data
+
+const newFormData = initSchema({
+  secret: false,
+  title: "",
+  options: []
+});
+
 //new option
 
 const newOption = initSchema({
@@ -39,7 +47,7 @@ const newPoll = initSchema({
   options: listReplacer(newOption)
 });
 
-//new state / new form
+//new state
 
 const newState = initSchema({
 
@@ -55,23 +63,29 @@ const newState = initSchema({
   //page
 
   form: {
-    title: "",
-    options: [],
-    add: "",
-    secret: false,
-    delete: false
+    menu: {
+      secret: false,
+      delete: false
+    },
+    body: {
+      title: "",
+      options: [],
+      add: ""
+    }
   },
 
   list: {
     data: [],
-    search: ""
+    menu: { search: "" }
   },
 
   view: {
     data: [],
-    add: "",
-    settings: false,
-    delete: false
+    menu: {
+      settings: false,
+      delete: false
+    },
+    body: { add: "" }
   }
 
 }, {
@@ -94,12 +108,10 @@ const newState = initSchema({
 
 });
 
-const newForm = initSchema(newState().form);
-
 //exports
 
 module.exports = {
-  newForm,
+  newFormData,
   newOption,
   newListParams,
   newPoll,

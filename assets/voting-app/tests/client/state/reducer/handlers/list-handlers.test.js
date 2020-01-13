@@ -15,7 +15,7 @@ test("reducer accepts LIST_CLEAR_STATE actions", () => {
   testReducer(listClearState(), {
     list: {
       data: [{}],
-      search: "Apple"
+      menu: { search: "Apple" }
     }
   }, {
     list: newState().list
@@ -29,6 +29,6 @@ test("reducer accepts LIST_SET_SEARCH actions", () => {
 
   const { listSetSearch } = actions;
 
-  testReducer(listSetSearch("Apple"), null, { list: { search: "Apple" } });
+  testReducer(listSetSearch("Apple"), null, { list: { menu: { search: "Apple" } } });
 
 });

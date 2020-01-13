@@ -28,8 +28,8 @@ describe("FormOptions", () => {
 
   it("should match snapshot (default)", () => testSnapshot());
 
-  it("should match snapshot (options)", () => testSnapshot({ form: { options: ["Option A"] } }));
+  it("should match snapshot (options)", () => testSnapshot({ form: { body: { options: ["Option A"] } } }));
 
-  it("should match snapshot (add)", () => testSnapshot({ form: { add: "Option A" } }));
+  it("should match snapshot (add)", () => testSnapshot({ form: { body: { add: "Option A" } } }));
 
 });

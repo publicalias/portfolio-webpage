@@ -29,7 +29,7 @@ describe("ViewSettings (snapshots)", () => {
 
   it("should match snapshot (default)", () => testSnapshot());
 
-  it("should match snapshot (confirm)", () => testSnapshot({ view: { delete: true } }));
+  it("should match snapshot (confirm)", () => testSnapshot({ view: { menu: { delete: true } } }));
 
   it("should match snapshot (secret)", () => testSnapshot(null, { poll: { secret: true } }));
 
@@ -49,7 +49,7 @@ describe("ViewSettings (events)", () => {
 
   it("should call handleConfirm on click (no)", () => testClick(
     ".qa-click-no",
-    [{ view: { delete: true } }],
+    [{ view: { menu: { delete: true } } }],
     ["viewToggleDelete", []]
   ));
 
@@ -61,7 +61,7 @@ describe("ViewSettings (events)", () => {
 
   testSubmit("click", "handleDelete", (res) => {
 
-    const dataList = [{ view: { delete: true } }, { poll: newPoll({ id: "id-a" }) }];
+    const dataList = [{ view: { menu: { delete: true } } }, { poll: newPoll({ id: "id-a" }) }];
 
     return testCreateDelete(testShallow, dataList, ".qa-click-yes", res, ["metaDeletePoll", ["id-a"]]);
 

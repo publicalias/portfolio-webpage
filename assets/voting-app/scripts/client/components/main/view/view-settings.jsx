@@ -10,7 +10,7 @@ const ViewSettings = (props) => {
 
   const {
     actions: { metaDeletePoll, pollToggleSecret, viewToggleDelete },
-    data: { view },
+    data: { view: { menu } },
     history,
     local: { poll }
   } = props;
@@ -39,7 +39,7 @@ const ViewSettings = (props) => {
 
   return (
     <div className="c-view-menu__display-box u-flex-1">
-      {view.delete ? (
+      {menu.delete ? (
         <div className="c-view-menu__display-box">
           <p className="c-view-menu__confirm-text">Are you sure?</p>
           <button className="c-view-menu__control-btn qa-click-yes" onClick={handleDelete}>Yes</button>
@@ -57,7 +57,7 @@ const ViewSettings = (props) => {
 
 };
 
-ViewSettings.propList = ["data.view", "local"];
+ViewSettings.propList = ["data.view.menu", "local"];
 
 //exports
 

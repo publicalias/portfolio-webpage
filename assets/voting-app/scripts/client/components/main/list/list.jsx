@@ -23,7 +23,7 @@ const List = (props) => {
 
   const {
     actions: { listClearState, metaGetPollList },
-    data: { loading, log, list },
+    data: { loading, log, list: { data } },
     location
   } = props;
 
@@ -33,12 +33,12 @@ const List = (props) => {
 
   const fetch = (length) => metaGetPollList(getListParams(location), length);
 
-  const { handleReload, handleScroll } = useInfiniteScroll(list.data, "list.data", 100, listClearState, fetch);
+  const { handleReload, handleScroll } = useInfiniteScroll(data, "list.data", 100, listClearState, fetch);
 
   //lifecycle
 
   const refresh = () => {
-    fetch(list.data.length);
+    fetch(data.length);
   };
 
   useLayoutEffect(() => {
@@ -61,7 +61,7 @@ const List = (props) => {
 
 };
 
-List.propList = ["data.loading", "data.log", "data.list", "location"];
+List.propList = ["data.loading", "data.log", "data.list.data", "location"];
 
 List.injected = {
   jsx: {

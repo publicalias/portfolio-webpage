@@ -56,15 +56,21 @@ exports[`ViewMenu should match snapshot (created) 1`] = `
         },
         "errors": Array [],
         "form": Object {
-          "add": "",
-          "delete": false,
-          "options": Array [],
-          "secret": false,
-          "title": "",
+          "body": Object {
+            "add": "",
+            "options": Array [],
+            "title": "",
+          },
+          "menu": Object {
+            "delete": false,
+            "secret": false,
+          },
         },
         "list": Object {
           "data": Array [],
-          "search": "",
+          "menu": Object {
+            "search": "",
+          },
         },
         "loading": 0,
         "log": Array [],
@@ -81,10 +87,14 @@ exports[`ViewMenu should match snapshot (created) 1`] = `
           "type": "auth",
         },
         "view": Object {
-          "add": "",
+          "body": Object {
+            "add": "",
+          },
           "data": Array [],
-          "delete": false,
-          "settings": false,
+          "menu": Object {
+            "delete": false,
+            "settings": false,
+          },
         },
       }
     }
@@ -174,15 +184,21 @@ exports[`ViewMenu should match snapshot (created, settings) 1`] = `
         },
         "errors": Array [],
         "form": Object {
-          "add": "",
-          "delete": false,
-          "options": Array [],
-          "secret": false,
-          "title": "",
+          "body": Object {
+            "add": "",
+            "options": Array [],
+            "title": "",
+          },
+          "menu": Object {
+            "delete": false,
+            "secret": false,
+          },
         },
         "list": Object {
           "data": Array [],
-          "search": "",
+          "menu": Object {
+            "search": "",
+          },
         },
         "loading": 0,
         "log": Array [],
@@ -199,10 +215,14 @@ exports[`ViewMenu should match snapshot (created, settings) 1`] = `
           "type": "auth",
         },
         "view": Object {
-          "add": "",
+          "body": Object {
+            "add": "",
+          },
           "data": Array [],
-          "delete": false,
-          "settings": true,
+          "menu": Object {
+            "delete": false,
+            "settings": true,
+          },
         },
       }
     }
@@ -286,24 +306,34 @@ exports[`ViewMenu should match snapshot (default) 1`] = `
         },
         "errors": Array [],
         "form": Object {
-          "add": "",
-          "delete": false,
-          "options": Array [],
-          "secret": false,
-          "title": "",
+          "body": Object {
+            "add": "",
+            "options": Array [],
+            "title": "",
+          },
+          "menu": Object {
+            "delete": false,
+            "secret": false,
+          },
         },
         "list": Object {
           "data": Array [],
-          "search": "",
+          "menu": Object {
+            "search": "",
+          },
         },
         "loading": 0,
         "log": Array [],
         "user": Object {},
         "view": Object {
-          "add": "",
+          "body": Object {
+            "add": "",
+          },
           "data": Array [],
-          "delete": false,
-          "settings": false,
+          "menu": Object {
+            "delete": false,
+            "settings": false,
+          },
         },
       }
     }

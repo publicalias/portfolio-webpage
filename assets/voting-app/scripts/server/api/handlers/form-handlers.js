@@ -31,8 +31,10 @@ const formAddOption = handleAPICall({
   success(req, res, all) {
     res.json({
       form: {
-        options: all,
-        add: ""
+        body: {
+          options: all,
+          add: ""
+        }
       }
     });
   }

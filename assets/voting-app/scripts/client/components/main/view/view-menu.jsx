@@ -13,7 +13,7 @@ const React = require("react");
 
 const ViewMenu = (props) => {
 
-  const { actions: { viewToggleSettings }, data: { user, view }, local: { poll } } = props;
+  const { actions: { viewToggleSettings }, data: { user, view: { menu } }, local: { poll } } = props;
 
   const { jsx: { ViewControls, ViewSettings } } = ViewMenu.injected;
 
@@ -37,13 +37,13 @@ const ViewMenu = (props) => {
           Settings
         </button>
       )}
-      {created && view.settings ? <ViewSettings {...props} /> : <ViewControls {...props} />}
+      {created && menu.settings ? <ViewSettings {...props} /> : <ViewControls {...props} />}
     </div>
   );
 
 };
 
-ViewMenu.propList = ["data.user", "data.view", "local"];
+ViewMenu.propList = ["data.user", "data.view.menu", "local"];
 
 ViewMenu.injected = {
   jsx: {

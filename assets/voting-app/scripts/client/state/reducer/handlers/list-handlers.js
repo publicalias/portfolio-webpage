@@ -14,7 +14,7 @@ const LIST_CLEAR_STATE = (state) => deepCopy(state, { list: newState().list });
 
 //list set search
 
-const LIST_SET_SEARCH = (state, { search }) => deepCopy(state, { list: { search } });
+const LIST_SET_SEARCH = (state, { search }) => deepCopy(state, { list: { menu: { search } } });
 
 //exports
 

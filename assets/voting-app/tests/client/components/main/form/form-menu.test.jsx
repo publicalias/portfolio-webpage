@@ -4,7 +4,7 @@
 
 const FormMenu = require("../../../../../scripts/client/components/main/form/form-menu");
 
-const { newForm } = require("../../../../../schemas");
+const { newFormData } = require("../../../../../schemas");
 const { testCreateDelete, testWrapper } = require("../../../test-helpers");
 
 //global imports
@@ -29,15 +29,15 @@ describe("FormMenu (snapshots)", () => {
 
   it("should match snapshot (default)", () => testSnapshot());
 
-  it("should match snapshot (confirm)", () => testSnapshot({ form: { delete: true } }));
+  it("should match snapshot (confirm)", () => testSnapshot({ form: { menu: { delete: true } } }));
 
-  it("should match snapshot (secret)", () => testSnapshot({ form: { secret: true } }));
+  it("should match snapshot (secret)", () => testSnapshot({ form: { menu: { secret: true } } }));
 
 });
 
 describe("FormMenu (events)", () => {
 
-  const dataList = [{ form: { delete: true } }];
+  const dataList = [{ form: { menu: { delete: true } } }];
 
   const testClick = initTestEvent(testShallow, "click");
 
@@ -67,7 +67,7 @@ describe("FormMenu (events)", () => {
 
   testSubmit("click", "handleCreate", (res) => {
 
-    const args = [testShallow, [], ".qa-click-create", res, ["metaCreatePoll", [newForm()]]];
+    const args = [testShallow, [], ".qa-click-create", res, ["metaCreatePoll", [newFormData()]]];
 
     return testCreateDelete(...args);
 

@@ -19,7 +19,7 @@ const React = require("react");
 
 const FormOptions = (props) => {
 
-  const { actions: { formAddOption, formRemoveOption, formSetAdd }, data: { form } } = props;
+  const { actions: { formAddOption, formRemoveOption, formSetAdd }, data: { form: { body } } } = props;
 
   const { jsx: { MetaPollInput, MetaPollOption }, lib: { chartColor } } = FormOptions.injected;
 
@@ -34,7 +34,7 @@ const FormOptions = (props) => {
   };
 
   const handleSubmit = () => {
-    formAddOption(form.add, form.options);
+    formAddOption(body.add, body.options);
   };
 
   const handleVote = () => {}; //required
@@ -43,18 +43,18 @@ const FormOptions = (props) => {
 
   const keyGen = initKeyGen();
 
-  const hasOptions = form.options.length > 0;
+  const hasOptions = body.options.length > 0;
 
   return (
     <div className="c-meta-poll-options">
       {hasOptions && (
         <div className="u-margin-half">
-          {form.options.map((e, i) => (
+          {body.options.map((e, i) => (
             <MetaPollOption
               key={keyGen(e)}
               local={{
                 created: true,
-                fill: chartColor(i, form.options),
+                fill: chartColor(i, body.options),
                 handleRemove: handleRemove(e),
                 handleVote,
                 text: e,
@@ -68,7 +68,7 @@ const FormOptions = (props) => {
         local={{
           handleChange,
           handleSubmit,
-          value: form.add
+          value: body.add
         }}
       />
     </div>
@@ -76,7 +76,7 @@ const FormOptions = (props) => {
 
 };
 
-FormOptions.propList = ["data.form"];
+FormOptions.propList = ["data.form.body"];
 
 FormOptions.injected = {
   jsx: {

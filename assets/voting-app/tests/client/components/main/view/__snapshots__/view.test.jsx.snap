@@ -81,15 +81,21 @@ exports[`View should match snapshot (authenticated) 1`] = `
         },
         "errors": Array [],
         "form": Object {
-          "add": "",
-          "delete": false,
-          "options": Array [],
-          "secret": false,
-          "title": "",
+          "body": Object {
+            "add": "",
+            "options": Array [],
+            "title": "",
+          },
+          "menu": Object {
+            "delete": false,
+            "secret": false,
+          },
         },
         "list": Object {
           "data": Array [],
-          "search": "",
+          "menu": Object {
+            "search": "",
+          },
         },
         "loading": 0,
         "log": Array [],
@@ -106,10 +112,14 @@ exports[`View should match snapshot (authenticated) 1`] = `
           "type": "auth",
         },
         "view": Object {
-          "add": "",
+          "body": Object {
+            "add": "",
+          },
           "data": Array [],
-          "delete": false,
-          "settings": false,
+          "menu": Object {
+            "delete": false,
+            "settings": false,
+          },
         },
       }
     }
@@ -210,15 +220,21 @@ exports[`View should match snapshot (authenticated) 1`] = `
         },
         "errors": Array [],
         "form": Object {
-          "add": "",
-          "delete": false,
-          "options": Array [],
-          "secret": false,
-          "title": "",
+          "body": Object {
+            "add": "",
+            "options": Array [],
+            "title": "",
+          },
+          "menu": Object {
+            "delete": false,
+            "secret": false,
+          },
         },
         "list": Object {
           "data": Array [],
-          "search": "",
+          "menu": Object {
+            "search": "",
+          },
         },
         "loading": 0,
         "log": Array [],
@@ -235,10 +251,14 @@ exports[`View should match snapshot (authenticated) 1`] = `
           "type": "auth",
         },
         "view": Object {
-          "add": "",
+          "body": Object {
+            "add": "",
+          },
           "data": Array [],
-          "delete": false,
-          "settings": false,
+          "menu": Object {
+            "delete": false,
+            "settings": false,
+          },
         },
       }
     }
@@ -324,15 +344,21 @@ exports[`View should match snapshot (authenticated, id) 1`] = `
         },
         "errors": Array [],
         "form": Object {
-          "add": "",
-          "delete": false,
-          "options": Array [],
-          "secret": false,
-          "title": "",
+          "body": Object {
+            "add": "",
+            "options": Array [],
+            "title": "",
+          },
+          "menu": Object {
+            "delete": false,
+            "secret": false,
+          },
         },
         "list": Object {
           "data": Array [],
-          "search": "",
+          "menu": Object {
+            "search": "",
+          },
         },
         "loading": 0,
         "log": Array [],
@@ -349,7 +375,9 @@ exports[`View should match snapshot (authenticated, id) 1`] = `
           "type": "auth",
         },
         "view": Object {
-          "add": "",
+          "body": Object {
+            "add": "",
+          },
           "data": Array [
             Object {
               "author": "",
@@ -366,8 +394,10 @@ exports[`View should match snapshot (authenticated, id) 1`] = `
               "votes": 0,
             },
           ],
-          "delete": false,
-          "settings": false,
+          "menu": Object {
+            "delete": false,
+            "settings": false,
+          },
         },
       }
     }
@@ -468,15 +498,21 @@ exports[`View should match snapshot (authenticated, id) 1`] = `
         },
         "errors": Array [],
         "form": Object {
-          "add": "",
-          "delete": false,
-          "options": Array [],
-          "secret": false,
-          "title": "",
+          "body": Object {
+            "add": "",
+            "options": Array [],
+            "title": "",
+          },
+          "menu": Object {
+            "delete": false,
+            "secret": false,
+          },
         },
         "list": Object {
           "data": Array [],
-          "search": "",
+          "menu": Object {
+            "search": "",
+          },
         },
         "loading": 0,
         "log": Array [],
@@ -493,7 +529,9 @@ exports[`View should match snapshot (authenticated, id) 1`] = `
           "type": "auth",
         },
         "view": Object {
-          "add": "",
+          "body": Object {
+            "add": "",
+          },
           "data": Array [
             Object {
               "author": "",
@@ -510,8 +548,10 @@ exports[`View should match snapshot (authenticated, id) 1`] = `
               "votes": 0,
             },
           ],
-          "delete": false,
-          "settings": false,
+          "menu": Object {
+            "delete": false,
+            "settings": false,
+          },
         },
       }
     }
@@ -597,24 +637,34 @@ exports[`View should match snapshot (default) 1`] = `
         },
         "errors": Array [],
         "form": Object {
-          "add": "",
-          "delete": false,
-          "options": Array [],
-          "secret": false,
-          "title": "",
+          "body": Object {
+            "add": "",
+            "options": Array [],
+            "title": "",
+          },
+          "menu": Object {
+            "delete": false,
+            "secret": false,
+          },
         },
         "list": Object {
           "data": Array [],
-          "search": "",
+          "menu": Object {
+            "search": "",
+          },
         },
         "loading": 0,
         "log": Array [],
         "user": Object {},
         "view": Object {
-          "add": "",
+          "body": Object {
+            "add": "",
+          },
           "data": Array [],
-          "delete": false,
-          "settings": false,
+          "menu": Object {
+            "delete": false,
+            "settings": false,
+          },
         },
       }
     }
@@ -715,24 +765,34 @@ exports[`View should match snapshot (default) 1`] = `
         },
         "errors": Array [],
         "form": Object {
-          "add": "",
-          "delete": false,
-          "options": Array [],
-          "secret": false,
-          "title": "",
+          "body": Object {
+            "add": "",
+            "options": Array [],
+            "title": "",
+          },
+          "menu": Object {
+            "delete": false,
+            "secret": false,
+          },
         },
         "list": Object {
           "data": Array [],
-          "search": "",
+          "menu": Object {
+            "search": "",
+          },
         },
         "loading": 0,
         "log": Array [],
         "user": Object {},
         "view": Object {
-          "add": "",
+          "body": Object {
+            "add": "",
+          },
           "data": Array [],
-          "delete": false,
-          "settings": false,
+          "menu": Object {
+            "delete": false,
+            "settings": false,
+          },
         },
       }
     }
@@ -818,21 +878,29 @@ exports[`View should match snapshot (id) 1`] = `
         },
         "errors": Array [],
         "form": Object {
-          "add": "",
-          "delete": false,
-          "options": Array [],
-          "secret": false,
-          "title": "",
+          "body": Object {
+            "add": "",
+            "options": Array [],
+            "title": "",
+          },
+          "menu": Object {
+            "delete": false,
+            "secret": false,
+          },
         },
         "list": Object {
           "data": Array [],
-          "search": "",
+          "menu": Object {
+            "search": "",
+          },
         },
         "loading": 0,
         "log": Array [],
         "user": Object {},
         "view": Object {
-          "add": "",
+          "body": Object {
+            "add": "",
+          },
           "data": Array [
             Object {
               "author": "",
@@ -849,8 +917,10 @@ exports[`View should match snapshot (id) 1`] = `
               "votes": 0,
             },
           ],
-          "delete": false,
-          "settings": false,
+          "menu": Object {
+            "delete": false,
+            "settings": false,
+          },
         },
       }
     }
@@ -951,21 +1021,29 @@ exports[`View should match snapshot (id) 1`] = `
         },
         "errors": Array [],
         "form": Object {
-          "add": "",
-          "delete": false,
-          "options": Array [],
-          "secret": false,
-          "title": "",
+          "body": Object {
+            "add": "",
+            "options": Array [],
+            "title": "",
+          },
+          "menu": Object {
+            "delete": false,
+            "secret": false,
+          },
         },
         "list": Object {
           "data": Array [],
-          "search": "",
+          "menu": Object {
+            "search": "",
+          },
         },
         "loading": 0,
         "log": Array [],
         "user": Object {},
         "view": Object {
-          "add": "",
+          "body": Object {
+            "add": "",
+          },
           "data": Array [
             Object {
               "author": "",
@@ -982,8 +1060,10 @@ exports[`View should match snapshot (id) 1`] = `
               "votes": 0,
             },
           ],
-          "delete": false,
-          "settings": false,
+          "menu": Object {
+            "delete": false,
+            "settings": false,
+          },
         },
       }
     }
@@ -1069,21 +1149,29 @@ exports[`View should match snapshot (options) 1`] = `
         },
         "errors": Array [],
         "form": Object {
-          "add": "",
-          "delete": false,
-          "options": Array [],
-          "secret": false,
-          "title": "",
+          "body": Object {
+            "add": "",
+            "options": Array [],
+            "title": "",
+          },
+          "menu": Object {
+            "delete": false,
+            "secret": false,
+          },
         },
         "list": Object {
           "data": Array [],
-          "search": "",
+          "menu": Object {
+            "search": "",
+          },
         },
         "loading": 0,
         "log": Array [],
         "user": Object {},
         "view": Object {
-          "add": "",
+          "body": Object {
+            "add": "",
+          },
           "data": Array [
             Object {
               "author": "",
@@ -1106,8 +1194,10 @@ exports[`View should match snapshot (options) 1`] = `
               "votes": 0,
             },
           ],
-          "delete": false,
-          "settings": false,
+          "menu": Object {
+            "delete": false,
+            "settings": false,
+          },
         },
       }
     }
@@ -1220,21 +1310,29 @@ exports[`View should match snapshot (options) 1`] = `
         },
         "errors": Array [],
         "form": Object {
-          "add": "",
-          "delete": false,
-          "options": Array [],
-          "secret": false,
-          "title": "",
+          "body": Object {
+            "add": "",
+            "options": Array [],
+            "title": "",
+          },
+          "menu": Object {
+            "delete": false,
+            "secret": false,
+          },
         },
         "list": Object {
           "data": Array [],
-          "search": "",
+          "menu": Object {
+            "search": "",
+          },
         },
         "loading": 0,
         "log": Array [],
         "user": Object {},
         "view": Object {
-          "add": "",
+          "body": Object {
+            "add": "",
+          },
           "data": Array [
             Object {
               "author": "",
@@ -1257,8 +1355,10 @@ exports[`View should match snapshot (options) 1`] = `
               "votes": 0,
             },
           ],
-          "delete": false,
-          "settings": false,
+          "menu": Object {
+            "delete": false,
+            "settings": false,
+          },
         },
       }
     }

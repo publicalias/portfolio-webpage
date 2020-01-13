@@ -1,5 +1,9 @@
 "use strict";
 
+//local imports
+
+const { newFormData } = require("../../../../../schemas");
+
 //node modules
 
 const React = require("react");
@@ -10,7 +14,7 @@ const FormMenu = (props) => {
 
   const {
     actions: { formClearState, formToggleDelete, formToggleSecret, metaCreatePoll },
-    data: { form },
+    data: { form: { menu, body } },
     history
   } = props;
 
@@ -22,7 +26,7 @@ const FormMenu = (props) => {
 
   const handleCreate = async () => {
 
-    const res = await metaCreatePoll(form);
+    const res = await metaCreatePoll(newFormData(menu, body));
 
     if (res && !res.errors) {
       history.push("/list?filter=created");
@@ -43,7 +47,7 @@ const FormMenu = (props) => {
   return (
     <div className="c-form-menu">
       <button className="c-form-menu__control-btn qa-click-create" onClick={handleCreate}>Create</button>
-      {form.delete ? (
+      {menu.delete ? (
         <div className="c-form-menu__display-box">
           <p className="c-form-menu__confirm-text">Are you sure?</p>
           <button className="c-form-menu__control-btn qa-click-yes" onClick={handleDiscard}>Yes</button>
@@ -54,14 +58,14 @@ const FormMenu = (props) => {
         className="c-form-menu__button qa-toggle-secret u-flex-right"
         onClick={handleSecret}
       >
-        {form.secret ? "Private" : "Public"}
+        {menu.secret ? "Private" : "Public"}
       </button>
     </div>
   );
 
 };
 
-FormMenu.propList = ["data.form"];
+FormMenu.propList = ["data.form.menu", "data.form.body"];
 
 //exports
 

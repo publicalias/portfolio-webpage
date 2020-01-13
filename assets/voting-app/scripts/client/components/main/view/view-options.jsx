@@ -21,7 +21,7 @@ const ViewOptions = (props) => {
 
   const {
     actions: { pollAddOption, pollCastVote, pollRemoveOption, pollRemoveVote, viewSetAdd },
-    data: { user, view },
+    data: { user, view: { body } },
     local: { bool: { canAdd, hasOptions }, poll }
   } = props;
 
@@ -47,7 +47,7 @@ const ViewOptions = (props) => {
 
   const handleSubmit = async () => {
 
-    const res = await pollAddOption(poll.id, view.add);
+    const res = await pollAddOption(poll.id, body.add);
 
     if (res && !res.errors) {
       viewSetAdd("");
@@ -102,7 +102,7 @@ const ViewOptions = (props) => {
           local={{
             handleChange,
             handleSubmit,
-            value: view.add
+            value: body.add
           }}
         />
       )}
@@ -111,7 +111,7 @@ const ViewOptions = (props) => {
 
 };
 
-ViewOptions.propList = ["data.user", "data.view", "local"];
+ViewOptions.propList = ["data.user", "data.view.body", "local"];
 
 ViewOptions.injected = {
   jsx: {

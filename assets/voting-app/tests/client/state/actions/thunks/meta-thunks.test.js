@@ -2,7 +2,7 @@
 
 //local imports
 
-const { newForm, newListParams } = require("../../../../../schemas");
+const { newFormData, newListParams } = require("../../../../../schemas");
 const { actions } = require("../../../../../scripts/client/state/actions/actions");
 const { testAPI } = require("../../../test-helpers");
 
@@ -12,11 +12,11 @@ describe("metaCreatePoll", () => {
 
   const { metaCreatePoll } = actions;
 
-  testAPI.default(metaCreatePoll(newForm()), {
+  testAPI.default(metaCreatePoll(newFormData()), {
     type: "META_CREATE_POLL",
     path: "/voting-app/api/meta-create-poll",
     method: "POST",
-    data: newForm()
+    data: newFormData()
   });
 
 });

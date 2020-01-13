@@ -48,8 +48,10 @@ describe("formAddOption", () => {
 
     testMock(res.json, [{
       form: {
-        options: ["Option A"],
-        add: ""
+        body: {
+          options: ["Option A"],
+          add: ""
+        }
       }
     }]);
 

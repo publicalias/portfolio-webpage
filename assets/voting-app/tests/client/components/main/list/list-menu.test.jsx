@@ -39,7 +39,7 @@ describe("ListMenu", () => {
 
   it("should match snapshot (default)", () => testSnapshot());
 
-  it("should match snapshot (search)", () => testSnapshot({ list: { search: "Apple" } }));
+  it("should match snapshot (search)", () => testSnapshot({ list: { menu: { search: "Apple" } } }));
 
   it("should call handleSearch on click (new)", () => testSort("new"));
 
