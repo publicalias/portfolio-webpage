@@ -39,12 +39,14 @@ const initReducer = (initialState, handlers) => (state = initialState, action) =
 
 const resHandlers = (dispatch, config, successFn, failureFn) => ({
 
-  success: successFn || ((res) => {
+  success: successFn || ((res, isLast) => {
 
     const { errors } = res;
     const { length } = Object.keys(res);
 
-    if (errors) {
+    if (!isLast) { //anti-race condition
+      dispatch(metaNoOp());
+    } else if (errors) {
       dispatch(metaAddErrors(errors));
     } else if (length) {
       dispatch(metaSetState(res, config));
@@ -62,17 +64,27 @@ const resHandlers = (dispatch, config, successFn, failureFn) => ({
 
 const reduxAPICall = (args, config, successFn, failureFn) => {
 
-  const fn = async (dispatch) => {
+  const fn = async (dispatch, getState) => {
 
     const { path, init } = encodeAPICall(args);
 
     const { success, failure } = resHandlers(dispatch, config, successFn, failureFn);
 
+    const getLast = () => {
+
+      const { log } = getState();
+
+      return log.lastIndexOf(args.type);
+
+    };
+
     try {
+
+      const current = getLast();
 
       const res = await getJSON(path, init);
 
-      success(res);
+      success(res, current === getLast());
 
       return res;
 

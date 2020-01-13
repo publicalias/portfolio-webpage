@@ -44,7 +44,7 @@ const useLazyLoading = (listID, itemID) => {
 
 //use venue image
 
-const getImage = (image, scale) => image.replace("o.jpg", (() => {
+const getImage = (image = "", scale) => image.replace("o.jpg", (() => {
 
   const width = Math.max(window.innerHeight, window.innerWidth) * scale / 100; //no reload on rotate
 
