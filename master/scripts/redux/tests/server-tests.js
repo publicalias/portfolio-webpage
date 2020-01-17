@@ -34,7 +34,7 @@ const mongoTests = {
 
   async setup() {
 
-    this.server = new MongoMemoryServer();
+    this.server = new MongoMemoryServer({ binary: { version: "4.2.0" } });
 
     this.client = await MongoClient.connect(await this.server.getConnectionString(), {
       useNewUrlParser: true,

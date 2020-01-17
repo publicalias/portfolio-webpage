@@ -14,7 +14,6 @@ const { handleAuthFail } = require("redux/server-utils");
 const chrono = require("chrono-node");
 const dateFormat = require("dateformat");
 const haversine = require("haversine");
-const round = require("mongo-round");
 const NodeCache = require("node-cache");
 const request = require("request-promise-native");
 
@@ -80,12 +79,13 @@ const aggDistUser = async (location, max = Infinity) => {
       near: location,
       distanceField: field,
       maxDistance: max * 1609, //miles to meters
-      distanceMultiplier: 1 / 1609, //meters to miles
-      limit: 1000
+      distanceMultiplier: 1 / 1609 //meters to miles
     }
   }, {
+    $limit: 1000
+  }, {
     $addFields: {
-      [field]: round(`$${field}`, 1) //no $round
+      [field]: { $round: [`$${field}`, 1] }
     }
   }];
 

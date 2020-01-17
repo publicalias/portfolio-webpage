@@ -72,6 +72,10 @@
     }],
     "spaced-comment": [2, "never"],
 
+    "react/function-component-definition": [2, {
+      "namedComponents": "arrow-function",
+      "unnamedComponents": "arrow-function"
+    }],
     "react/jsx-fragments": [2, "element"],
     "react/jsx-indent": [2, 2],
     "react/jsx-indent-props": [2, 2],
