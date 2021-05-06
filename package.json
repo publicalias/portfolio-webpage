@@ -7,7 +7,7 @@
     "@babel/preset-react": "^7.8.3",
     "app-module-path": "^2.2.0",
     "babel-loader": "^8.0.6",
-    "chrono-node": "^1.4.2",
+    "chrono-node": "^2.2.4",
     "compression": "^1.7.4",
     "connect-mongodb-session": "^2.2.0",
     "cron": "^1.7.2",
